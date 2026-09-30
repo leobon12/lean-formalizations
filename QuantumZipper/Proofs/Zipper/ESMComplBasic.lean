@@ -1,0 +1,152 @@
+import QuantumZipper.GFF.Defs
+import Mathlib.Probability.BrownianMotion.Basic
+import Mathlib.Probability.Independence.Basic
+
+/-!
+# ESM-COMPL (1/2): transfer to the completed probability space
+
+AUDIT12 note N12-2. The E-SM filtration (`ESM.exists_filtration_ESM`) needs a `P`-complete
+ambient σ-algebra. Here we pass from `(Ω, mΩ, P)` to `(NullMeasurableSpace Ω P, P.completion)`
+(mathlib `MeasureTheory.Measure.completion`) and show that everything the E-SM identity uses
+transfers:
+
+* `completion_apply` is definitional: `P.completion s = P s` for **every** set `s`, and the a.e.
+  filters coincide (`ae_completion`, `rfl`);
+* `map_completion`: `P.completion.map f = P.map f` for `P`-a.e.-measurable `f`;
+* `integral_completion`: `∫ f ∂P.completion = ∫ f ∂P` for `P`-a.e.-strongly-measurable `f`;
+* `lintegral_completion`: `∫⁻ f ∂P.completion = ∫⁻ f ∂P` for **every** `f : Ω → ℝ≥0∞`
+  (measurable minorant `exists_measurable_le_lintegral_eq` + `NullMeasurable.aemeasurable`);
+* `indepFun_completion`, `isBrownianReal_completion`, `isGaussianProcess_completion`,
+  `isFreeGFFModConstH_completion`: the hypotheses of the E-SM identity transfer.
+
+All of this is standard measure-theoretic bookkeeping (own; the only mathematical input is that
+the completion has the same outer measure, which is mathlib's definition).
+-/
+
+noncomputable section
+
+open MeasureTheory ProbabilityTheory
+open scoped NNReal ENNReal
+
+namespace QuantumZipper
+namespace ESM
+
+variable {Ω : Type*} [mΩ : MeasurableSpace Ω] {P : Measure Ω}
+
+/-- The identity map from the completed space to `Ω`. -/
+def ofCompl (P : Measure Ω) : NullMeasurableSpace Ω P → Ω := fun ω => ω
+
+lemma measurable_ofCompl : Measurable (ofCompl P) := fun _ hs => hs.nullMeasurableSet
+
+lemma measurable_completion {β : Type*} [MeasurableSpace β] {f : Ω → β} (hf : Measurable f) :
+    Measurable (f ∘ ofCompl P) :=
+  hf.comp measurable_ofCompl
+
+lemma map_ofCompl : P.completion.map (ofCompl P) = P := by
+  ext s hs
+  rw [Measure.map_apply measurable_ofCompl hs]
+  rfl
+
+instance isProbabilityMeasure_completion [IsProbabilityMeasure P] :
+    IsProbabilityMeasure P.completion :=
+  ⟨(measure_univ : P Set.univ = 1)⟩
+
+/-- The a.e. filters coincide. -/
+lemma ae_completion_iff {p : Ω → Prop} :
+    (∀ᵐ ω ∂P.completion, p (ofCompl P ω)) ↔ ∀ᵐ ω ∂P, p ω :=
+  Iff.rfl
+
+lemma aemeasurable_completion {β : Type*} [MeasurableSpace β] {f : Ω → β}
+    (hf : AEMeasurable f P) : AEMeasurable (f ∘ ofCompl P) P.completion :=
+  ⟨hf.mk f ∘ ofCompl P, measurable_completion hf.measurable_mk,
+    ae_completion_iff.2 hf.ae_eq_mk⟩
+
+lemma map_completion {β : Type*} [MeasurableSpace β] {f : Ω → β} (hf : AEMeasurable f P) :
+    P.completion.map (f ∘ ofCompl P) = P.map f := by
+  rw [← AEMeasurable.map_map_of_aemeasurable (by rwa [map_ofCompl])
+    measurable_ofCompl.aemeasurable, map_ofCompl]
+
+lemma integral_completion {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] {f : Ω → E}
+    (hf : AEStronglyMeasurable f P) :
+    ∫ x, f (ofCompl P x) ∂P.completion = ∫ x, f x ∂P := by
+  have hf' : AEStronglyMeasurable f (P.completion.map (ofCompl P)) := by rwa [map_ofCompl]
+  have h := integral_map measurable_ofCompl.aemeasurable hf'
+  rw [map_ofCompl] at h
+  exact h.symm
+
+/-- Lebesgue integrals agree under `P` and `P.completion`, for **every** `f`. -/
+lemma lintegral_completion (f : Ω → ℝ≥0∞) :
+    ∫⁻ x, f (ofCompl P x) ∂P.completion = ∫⁻ x, f x ∂P := by
+  apply le_antisymm
+  · obtain ⟨g, hg, hgf, hfg⟩ := exists_measurable_le_lintegral_eq (μ := P.completion)
+      (f ∘ ofCompl P)
+    let g' : Ω → ℝ≥0∞ := fun ω => g ω
+    have hgn : NullMeasurable g' P := fun _ hs => hg hs
+    have hga : AEMeasurable g' P := hgn.aemeasurable
+    have e1 : ∫⁻ x, g x ∂P.completion = ∫⁻ x, hga.mk g' (ofCompl P x) ∂P.completion :=
+      lintegral_congr_ae (ae_completion_iff.2 hga.ae_eq_mk)
+    have e2 : ∫⁻ x, hga.mk g' (ofCompl P x) ∂P.completion = ∫⁻ x, hga.mk g' x ∂P := by
+      have h := lintegral_map (μ := P.completion) hga.measurable_mk (measurable_ofCompl (P := P))
+      rw [map_ofCompl] at h
+      exact h.symm
+    have e3 : ∫⁻ x, hga.mk g' x ∂P = ∫⁻ x, g' x ∂P := lintegral_congr_ae hga.ae_eq_mk.symm
+    calc ∫⁻ x, f (ofCompl P x) ∂P.completion = ∫⁻ x, g x ∂P.completion := hfg
+      _ = ∫⁻ x, g' x ∂P := by rw [e1, e2, e3]
+      _ ≤ ∫⁻ x, f x ∂P := lintegral_mono fun ω => hgf ω
+  · have h := lintegral_map_le (μ := P.completion) f (measurable_ofCompl (P := P)).aemeasurable
+    rw [map_ofCompl] at h
+    exact h
+
+lemma indepFun_completion {β β' : Type*} [MeasurableSpace β] [MeasurableSpace β'] {f : Ω → β}
+    {g : Ω → β'} (h : IndepFun f g P) :
+    IndepFun (f ∘ ofCompl P) (g ∘ ofCompl P) P.completion := by
+  rw [indepFun_iff_measure_inter_preimage_eq_mul] at h ⊢
+  intro s t hs ht
+  exact h s t hs ht
+
+lemma hasLaw_completion {β : Type*} [MeasurableSpace β] {f : Ω → β} {ν : Measure β}
+    (h : HasLaw f ν P) : HasLaw (f ∘ ofCompl P) ν P.completion :=
+  ⟨aemeasurable_completion h.aemeasurable, (map_completion h.aemeasurable).trans h.map_eq⟩
+
+lemma isBrownianReal_completion {B : ℝ≥0 → Ω → ℝ} (hB : IsBrownianReal B P) :
+    IsBrownianReal (fun t => B t ∘ ofCompl P) P.completion where
+  hasLaw I := hasLaw_completion (hB.hasLaw I)
+  cont := ae_completion_iff.2 hB.cont
+
+lemma isGaussianProcess_completion {T E : Type*} [MeasurableSpace E] [TopologicalSpace E]
+    [AddCommMonoid E] [Module ℝ E] {Y : T → Ω → E} (h : IsGaussianProcess Y P) :
+    IsGaussianProcess (fun t => Y t ∘ ofCompl P) P.completion where
+  hasGaussianLaw I :=
+    { aemeasurable := aemeasurable_completion (h.hasGaussianLaw I).aemeasurable
+      isGaussian_map := by
+        have e := map_completion (h.hasGaussianLaw I).aemeasurable
+        have hG := (h.hasGaussianLaw I).isGaussian_map
+        rw [← e] at hG
+        exact hG }
+
+lemma covariance_completion {Y Z : Ω → ℝ} (hY : Measurable Y) (hZ : Measurable Z) :
+    cov[Y ∘ ofCompl P, Z ∘ ofCompl P; P.completion] = cov[Y, Z; P] := by
+  unfold covariance
+  have e1 := integral_completion hY.aestronglyMeasurable (P := P)
+  have e2 := integral_completion hZ.aestronglyMeasurable (P := P)
+  have e3 := integral_completion (P := P)
+    (((hY.sub_const (∫ x, Y x ∂P)).mul (hZ.sub_const (∫ x, Z x ∂P)))).aestronglyMeasurable
+  simp only [Function.comp_apply] at e3 ⊢
+  rw [e1, e2]
+  exact e3
+
+lemma isFreeGFFModConstH_completion {X : Ω → Measure ℂ → ℝ} (hX : IsFreeGFFModConstH X P) :
+    IsFreeGFFModConstH (X ∘ ofCompl P) P.completion where
+  measurable_coord μ := measurable_completion (hX.measurable_coord μ)
+  gaussian := isGaussianProcess_completion hX.gaussian
+  centered μ ν hμ hν he :=
+    (integral_completion ((hX.measurable_coord μ).sub
+      (hX.measurable_coord ν)).aestronglyMeasurable).trans (hX.centered μ ν hμ hν he)
+  covariance_eq p q h1 h2 h3 h4 h5 h6 :=
+    (covariance_completion ((hX.measurable_coord _).sub (hX.measurable_coord _))
+      ((hX.measurable_coord _).sub (hX.measurable_coord _))).trans
+      (hX.covariance_eq p q h1 h2 h3 h4 h5 h6)
+  linear μ ν hμ hν a b := ae_completion_iff.2 (hX.linear μ ν hμ hν a b)
+
+end ESM
+end QuantumZipper

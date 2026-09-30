@@ -8,5 +8,7 @@ require mathlib from git
 lean_lib BouRabeeGwynne
 lean_lib ReflectedWalk
 lean_lib ReflectedGMS
+lean_lib LQGDimension
+lean_lib QuantumZipper
 @[default_target]
 lean_lib Certificate

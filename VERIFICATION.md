@@ -1,33 +1,64 @@
 # Verification record
 
-The selected source snapshot is commit `14bd3363a07c0197d324bacabbff072e3f9a00c5`.
-`source-manifest.json` lists the exact four entry modules, their complete local import closure,
-original relative paths, direct imports, and SHA-256 hashes. The release contains 1,007 original
-Lean modules: 319 BouRabeeGwynne, 31 ReflectedWalk, and 657 ReflectedGMS. Their source bytes are
-unchanged. Dependencies needed by the selected results are included even when they establish
-more general results; unrelated development files, manuscripts, private notes, logs, and Git
-history are excluded.
+The release contains 3,873 byte-preserved Lean modules from two selected source snapshots:
 
-## Checks completed for this export
+| Source commit | Included modules | Scope |
+| --- | ---: | --- |
+| `14bd3363a07c0197d324bacabbff072e3f9a00c5` | 1,007 | 319 BouRabeeGwynne, 31 ReflectedWalk, 657 ReflectedGMS |
+| `8c270ff3965b979e2bf27828a2f28c746eabd19b` | 2,866 | 2,846 QuantumZipper and 20 required LQGDimension support modules |
 
-`python3 scripts/verify.py --scan-only` passed:
+`source-manifest.json` records the 18 selected entry modules, their exact transitive local import closure,
+original relative paths, direct imports, source commits and SHA-256 hashes. The original release's 1,007
+modules are unchanged. New module rows have an explicit `source_commit`; older rows inherit the manifest's
+original `source_commit`. Only selected proof dependencies are included, without private development history,
+worker conversations, scratch files, manuscripts or unrelated projects.
 
-- Every included module matches its recorded SHA-256 hash.
-- The module set is exactly the transitive local import closure of the four selected roots.
-- All local imports resolve inside the release.
-- The source scan found no `sorry`, `admit`, `axiom`, or `sorryAx` tokens outside comments and
-  strings in the exported proof modules. It also rejects `debug.skipKernelTC`,
-  `implemented_by`, and unsafe definitions or theorems.
-- The proof directories contain no extra files; private working directories and public
-  symbolic links are absent.
+## Source checks
 
-A source scan is not a kernel check, and compilation does not by itself establish that a Lean
-statement matches a paper. The result READMEs specify the intended scope and known differences.
+`python3 scripts/verify.py --scan-only` checks:
 
-## Build and certificate
+- Each included file matches its source hash, byte count, module path and import list.
+- The module set is exactly the transitive local import closure of the selected roots.
+- All local imports resolve and are classified consistently.
+- No `sorry`, `admit`, `axiom` or `sorryAx` tokens occur outside comments and strings in proof modules.
+  The scan also rejects `debug.skipKernelTC`, `implemented_by`, and unsafe definitions or theorems.
+- Proof directories contain no extra files, and the public source contains no symbolic links or private
+  working directories.
 
-Lean is pinned by `lean-toolchain`. Mathlib and its dependencies retain the original exact pins
-in `lake-manifest.json`. After installing [elan](https://github.com/leanprover/elan), Git, and Python 3, run:
+A source scan is not a kernel check. Compilation establishes a formal proof of the Lean statement;
+the result READMEs explain its mathematical scope and differences from the source paper.
+
+## Verification evidence
+
+The original public snapshot `93aade873b75f3236472baa5da06aead387cece1` passed a fresh build of all
+1,007 project modules and the release certificate in
+[GitHub Actions run 36507686824](https://github.com/leobon12/lean-formalizations/actions/runs/36507686824).
+Its verification artifact records 1,007 freshly compiled modules, no reused project modules, and the
+three standard axioms listed below. That successful run and its artifact were inspected for this release.
+
+For Quantum Zipper, the upstream clean clone at `31604bd70c37138cab1357b20862851f501e23a6` passed
+its build, source scan and audit (17 theorem/witness axiom reports), followed by
+`leanchecker --fresh QuantumZipper` with exit code 0. The saved build, audit and kernel-replay logs were
+inspected on 2026-09-30. The published source snapshot at `8c270ff3965b979e2bf27828a2f28c746eabd19b`
+has no Lean, toolchain or dependency-lockfile changes from that certified commit.
+
+The public release's **combined certificate passed** after export. It reused compiled modules from the
+successful original public CI artifact and the certified Quantum Zipper clone, after checking source
+equality, and compiled the combined certificate afresh. The whole-declaration audit checked 51,169 project
+declarations and 138,649 reachable declarations; its only axioms were `propext`, `Classical.choice` and
+`Quot.sound`. See the [machine-readable result](results/quantum-zipper/verification.json), including the
+certificate hash. This was an incremental certificate check, distinct from a fresh rebuild of all 3,873
+modules. The audit caches the loaded module-name list once, avoiding repeated reconstruction during traversal.
+
+The publication's GitHub Actions workflow independently runs the default fresh rebuild. Consult the
+[workflow history](https://github.com/leobon12/lean-formalizations/actions/workflows/verify.yml)
+for the result attached to the exact public commit; earlier successful runs do not certify a later commit.
+
+## Reproduce the checks
+
+Lean is pinned to `v4.34.0-rc2`, and Mathlib to `a4c8ef0a69f52ec80525d5086bb3542f4660faaf`.
+`lake-manifest.json` retains the exact dependency pins used by both source workspaces.
+After installing [elan](https://github.com/leanprover/elan), Git and Python 3:
 
 ```sh
 git clone https://github.com/leobon12/lean-formalizations.git
@@ -36,21 +67,18 @@ lake exe cache get
 python3 scripts/verify.py
 ```
 
-The verifier compiles the 1,007 project modules from source in dependency order with at most two
-Lean processes, then compiles `Certificate.lean`. It stops at the first compilation failure.
-Build logs and a machine-readable result are written under the ignored `.lake/verification/`.
-This default mode does not use pre-existing project oleans.
+The default verifier compiles all 3,873 project modules from source in dependency order with at most two
+Lean processes, then compiles `Certificate.lean`. It stops on compilation failure. Logs and a
+machine-readable result are written under the ignored `.lake/verification/`. This mode does not use
+pre-existing project oleans. `python3 scripts/verify.py --cached` explicitly permits reuse of project
+oleans while still compiling the certificate afresh; the result distinguishes these modes.
 
-`Certificate.lean` prints the exact types and axiom dependencies of all four selected results,
-checks their stated interfaces, rejects `sorryAx`, and traverses the dependency graph of **every
-declaration originating in any included project module**, permitting only `propext`,
-`Classical.choice`, and `Quot.sound` as axioms.
+The certificate checks the exact types and axiom dependencies of the four previously released proof
+declarations, all eight Quantum Zipper Section 1 results, and its three companion results. It also checks
+seven supporting non-vacuity declarations, including the unconditional forward-coupling addendum setup.
+Their precise scope is described in the [Quantum Zipper README](results/quantum-zipper/).
 
-For an explicitly incremental local check, `python3 scripts/verify.py --cached` permits existing
-project oleans while still compiling the certificate afresh. This mode is reported distinctly
-and is not a fresh project rebuild.
-
-**Export-time status:** the source checks above have passed. A fresh full source rebuild and a
-successful run of the release certificate have not yet been recorded for this public snapshot.
-The GitHub Actions run, when completed successfully, provides the fresh-build result; consult
-its exact commit and logs rather than treating this document as a record of an unperformed run.
+Finally, the certificate traverses the dependency graph of **every declaration originating in an included
+project module**, allowing only `propext`, `Classical.choice` and `Quot.sound` as axioms. This covers the
+included LQGDimension support modules as well as the four formalization libraries. It does not by itself
+establish source-paper correspondence.

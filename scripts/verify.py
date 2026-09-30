@@ -8,6 +8,7 @@ from pathlib import Path
 import argparse,hashlib,json,os,re,shutil,subprocess,sys,time
 
 ROOT=Path(__file__).resolve().parents[1]
+NAMESPACES=['BouRabeeGwynne','ReflectedWalk','ReflectedGMS','QuantumZipper','LQGDimension']
 def stripped(s):
     res=[];i=0;depth=0;string=False
     while i<len(s):
@@ -26,13 +27,17 @@ def imports(s):
     return [m for line in re.findall(r'^\s*(?:(?:public|private|meta)\s+)*import\s+(.*)',stripped(s),re.M) for m in line.split() if m!='all']
 def scan(manifest):
     modules=manifest['modules']; names=set(modules)
-    present={str(p.relative_to(ROOT)) for ns in ['BouRabeeGwynne','ReflectedWalk','ReflectedGMS'] for p in (ROOT/ns).rglob('*') if p.is_file()}
+    present={str(p.relative_to(ROOT)) for ns in NAMESPACES for p in (ROOT/ns).rglob('*') if p.is_file()}
     assert present=={r['path'] for r in modules.values()},'Unexpected or missing proof files'
     for mod,row in modules.items():
+        assert row['path']==str(Path(*mod.split('.')).with_suffix('.lean')),f'Module path mismatch: {mod}'
+        assert re.fullmatch(r'[0-9a-f]{40}',row.get('source_commit',manifest['source_commit'])),f'Invalid source provenance: {mod}'
         data=(ROOT/row['path']).read_bytes()
+        assert len(data)==row['bytes'],f'Source size mismatch: {mod}'
         assert hashlib.sha256(data).hexdigest()==row['sha256'],f'Source hash mismatch: {mod}'
         text=data.decode();actual=imports(text)
         assert actual==row['imports'],f'Import mismatch: {mod}'
+        assert [d for d in actual if d.split('.')[0] in NAMESPACES]==row['local_imports'],f'Local import classification mismatch: {mod}'
         bad=re.findall(r'\b(?:sorry|admit|axiom|sorryAx|implemented_by)\b|debug\.skipKernelTC|\bunsafe\s+(?:def|theorem)\b',stripped(text))
         assert not bad,f'Forbidden proof token in {mod}: {bad}'
         assert all(d in names for d in row['local_imports']),f'Missing local import: {mod}'
@@ -92,7 +97,8 @@ def main():
         certificate=(logs/'Certificate.log').read_text();print(certificate,flush=True)
         if rc:raise RuntimeError('Certificate failed')
         assert 'PUBLIC_RELEASE_AUDIT' in certificate,'Whole-declaration audit did not finish'
-        result={'status':'passed','mode':'cached dependencies with freshly compiled certificate' if args.cached else 'fresh project source rebuild and certificate','source_commit':manifest['source_commit'],'source_modules':len(modules),'fresh_modules':len(fresh),'reused_modules':len(reused),'seconds':round(time.time()-start,1),'lean_version':subprocess.check_output([lean,'--version'],text=True).strip(),'axioms_allowed':['propext','Classical.choice','Quot.sound']}
+        source_commits=sorted({r.get('source_commit',manifest['source_commit']) for r in modules.values()})
+        result={'status':'passed','mode':'cached dependencies with freshly compiled certificate' if args.cached else 'fresh project source rebuild and certificate','source_commits':source_commits,'source_modules':len(modules),'fresh_modules':len(fresh),'reused_modules':len(reused),'seconds':round(time.time()-start,1),'lean_version':subprocess.check_output([lean,'--version'],text=True).strip(),'axioms_allowed':['propext','Classical.choice','Quot.sound']}
         (out/'result.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result),flush=True)
     finally:
         for p,fh,t in running.values():

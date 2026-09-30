@@ -9,6 +9,7 @@ Each result below has a short guide to its mathematical scope, the exact Lean st
 | Ahmed Bou-Rabee and Ewain Gwynne, *Random walk on sphere packings and Delaunay triangulations in arbitrary dimension* | Theorems A and B(a), with the documented ambient-domain correction | [README](results/bou-rabee-gwynne/) |
 | Ewain Gwynne and Jinwoo Sung, *Random walk reflected off of infinity, with applications to uniform spanning forests and supercritical Liouville quantum gravity* | Theorem 1.6 with right continuity at infinity included | [README](results/gwynne-sung/) |
 | Ewain Gwynne, Jason Miller, and Scott Sheffield, *An invariance principle for ergodic scale-free random environments* | Theorem 1.16 in the documented interpolated-path formulation | [README](results/gwynne-miller-sheffield/) |
+| Scott Sheffield, *Conformal weldings of random surfaces: SLE and the quantum gravity zipper* | The eight Section 1 results and three companions, with documented statement conventions | [README](results/quantum-zipper/) |
 
 ## Verify the proofs
 
@@ -18,7 +19,7 @@ The [Lean certificate](Certificate.lean) checks the named proof declarations and
 
 ## Release contents
 
-This is a selected source snapshot from a private development repository. It includes the released proof entrypoints and their transitive source dependencies. Development history, worker conversations, scratch files, build caches, and unrelated projects are excluded. Quantum Zipper is not part of this release.
+This is a selected source snapshot from a private development repository. It includes the released proof entrypoints and their transitive source dependencies. Development history, worker conversations, scratch files, build caches, and unrelated projects are excluded. The Quantum Zipper release includes only the `LQGDimension` support modules required by its proofs; it does not publish the separate LQG-dimension project.
 
 Some shared dependency modules contain auxiliary results or statement definitions. The publication claims are exactly the named proof declarations in the table's READMEs; a definition of a proposition alone is not a proof.
 

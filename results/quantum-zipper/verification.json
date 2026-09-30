@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "mode": "cached dependencies with freshly compiled certificate",
+  "source_commits": [
+    "14bd3363a07c0197d324bacabbff072e3f9a00c5",
+    "8c270ff3965b979e2bf27828a2f28c746eabd19b"
+  ],
+  "source_modules": 3873,
+  "fresh_modules": 0,
+  "reused_modules": 3873,
+  "seconds": 47.5,
+  "lean_version": "Lean (version 4.34.0-rc2, x86_64-unknown-linux-gnu, commit 6a10ac8c22beadecabdbb0919c2b50214762f91d, Release)",
+  "axioms_allowed": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "certificate_sha256": "1fbe3745e5543d6d09cf7afa558e99ae4ee64d4e9c9748362304eacb56048631",
+  "project_declarations_checked": 51169,
+  "reachable_declarations_checked": 138649,
+  "certified_quantum_zipper_source_commit": "31604bd70c37138cab1357b20862851f501e23a6",
+  "quantum_zipper_modules_byte_equal_to_certified_clone": 2866,
+  "prior_public_ci_run": 36507686824,
+  "prior_public_ci_artifact": 11009051561
+}
