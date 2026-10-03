@@ -1,15 +1,16 @@
 # Verification record
 
-The release contains 3,873 byte-preserved Lean modules from two selected source snapshots:
+The release contains 6,322 byte-preserved Lean modules from three selected source snapshots:
 
 | Source commit | Included modules | Scope |
 | --- | ---: | --- |
 | `14bd3363a07c0197d324bacabbff072e3f9a00c5` | 1,007 | 319 BouRabeeGwynne, 31 ReflectedWalk, 657 ReflectedGMS |
 | `8c270ff3965b979e2bf27828a2f28c746eabd19b` | 2,866 | 2,846 QuantumZipper and 20 required LQGDimension support modules |
+| `32156ac07851dc378a0a00e3140f15646ffe38bf` | 2,449 | 2,362 LQGMetric and 87 additional LQGDimension support modules |
 
-`source-manifest.json` records the 18 selected entry modules, their exact transitive local import closure,
+`source-manifest.json` records the 19 selected entry modules, their exact transitive local import closure,
 original relative paths, direct imports, source commits and SHA-256 hashes. The original release's 1,007
-modules are unchanged. New module rows have an explicit `source_commit`; older rows inherit the manifest's
+modules and the 2,866 Quantum Zipper release modules are unchanged. New module rows have an explicit `source_commit`; older rows inherit the manifest's
 original `source_commit`. Only selected proof dependencies are included, without private development history,
 worker conversations, scratch files, manuscripts or unrelated projects.
 
@@ -50,6 +51,40 @@ declarations and 138,649 reachable declarations; its only axioms were `propext`,
 certificate hash. This was an incremental certificate check, distinct from a fresh rebuild of all 3,873
 modules. The audit caches the loaded module-name list once, avoiding repeated reconstruction during traversal.
 
+The complete Quantum Zipper public release at `bbffc9e49d5aa93300b98e24793c1d1b8647638a` subsequently
+passed its fresh rebuild and combined certificate in
+[GitHub Actions run 36792894039](https://github.com/leobon12/lean-formalizations/actions/runs/36792894039).
+
+### LQG metric release
+
+The new entrypoint is `LQGMetric.Assembly.MainFinal`. Its exact import closure has 3,400 project
+modules: 2,362 LQGMetric, 931 QuantumZipper and 107 LQGDimension. The 951 modules shared with
+the previous public snapshot are byte-identical, so the export adds 2,449 files without changing
+any previously released proof module. All new files are copied byte-for-byte from source commit
+`32156ac07851dc378a0a00e3140f15646ffe38bf`. Lean and all dependency revisions match the existing release.
+
+The upstream certification report records a successful build, a `leanchecker --fresh` replay of
+the full closure, and a per-module replay of all 3,399 project modules at commit
+`0adbf04172dbadb6c33ece7cc5867b828e2e4a7b`. It records only `propext`, `Classical.choice` and
+`Quot.sound` for `theorem11_proved`, `theorem12_proved` and `main_result`. Later source commits
+add `LFPP/EventMeasurable.lean` and the two explicit-measurability companions; the upstream
+release reports their successful build and five-result axiom audit. These are upstream
+verification reports, distinct from an independent fresh build of the exported snapshot.
+
+The public source scan checks all 6,322 files, their hashes and exact import closure. The combined
+certificate now checks the LQG metric headline types, the GFF existence witness, both measurability
+companions, and every declaration in the included LQGMetric modules as well as the earlier libraries.
+The [result guide](results/lqg-metric/) documents the statement conventions and the source corrections.
+
+The **combined public certificate passed** after export. It was compiled afresh against previously
+built project modules after checking byte equality with the prior public release and the current
+upstream checkout. The current upstream audit log was inspected: all five LQG metric declarations
+reported exactly the standard three axioms. The public certificate then checked **84,734 project
+declarations and 176,114 reachable declarations**, with only `propext`, `Classical.choice` and
+`Quot.sound`. The [machine-readable record](results/lqg-metric/verification.json) includes the
+certificate and manifest hashes. This is an incremental certificate check; the separate public
+workflow performs the fresh rebuild of all 6,322 project modules.
+
 The publication's GitHub Actions workflow independently runs the default fresh rebuild. Consult the
 [workflow history](https://github.com/leobon12/lean-formalizations/actions/workflows/verify.yml)
 for the result attached to the exact public commit; earlier successful runs do not certify a later commit.
@@ -67,7 +102,7 @@ lake exe cache get
 python3 scripts/verify.py
 ```
 
-The default verifier compiles all 3,873 project modules from source in dependency order with at most two
+The default verifier compiles all 6,322 project modules from source in dependency order with at most two
 Lean processes, then compiles `Certificate.lean`. It stops on compilation failure. Logs and a
 machine-readable result are written under the ignored `.lake/verification/`. This mode does not use
 pre-existing project oleans. `python3 scripts/verify.py --cached` explicitly permits reuse of project
@@ -75,10 +110,11 @@ oleans while still compiling the certificate afresh; the result distinguishes th
 
 The certificate checks the exact types and axiom dependencies of the four previously released proof
 declarations, all eight Quantum Zipper Section 1 results, and its three companion results. It also checks
-seven supporting non-vacuity declarations, including the unconditional forward-coupling addendum setup.
+seven supporting non-vacuity declarations, including the unconditional forward-coupling addendum setup,
+and the five LQG metric declarations described above.
 Their precise scope is described in the [Quantum Zipper README](results/quantum-zipper/).
 
 Finally, the certificate traverses the dependency graph of **every declaration originating in an included
 project module**, allowing only `propext`, `Classical.choice` and `Quot.sound` as axioms. This covers the
-included LQGDimension support modules as well as the four formalization libraries. It does not by itself
+included LQGDimension support modules as well as the five formalization libraries. It does not by itself
 establish source-paper correspondence.

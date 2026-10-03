@@ -10,5 +10,6 @@ lean_lib ReflectedWalk
 lean_lib ReflectedGMS
 lean_lib LQGDimension
 lean_lib QuantumZipper
+lean_lib LQGMetric
 @[default_target]
 lean_lib Certificate

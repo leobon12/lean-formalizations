@@ -16,6 +16,7 @@ import QuantumZipper.Proofs.Final18NonVacuity
 import QuantumZipper.Proofs.NonVacuityAddendum
 import QuantumZipper.Proofs.NonVacuityFinal
 import QuantumZipper.Proofs.Section5.Prop16LitCert
+import LQGMetric.Assembly.MainFinal
 import Mathlib.Util.AssertNoSorry
 
 /-! Verification of the selected public results and every declaration in their included modules.
@@ -134,6 +135,31 @@ assert_no_sorry QuantumZipper.NonVacuityAddendum.exists_addendum_setup
 #print QuantumZipper.theorem1_6_general
 #print QuantumZipper.theorem1_6_literal
 
+/-! ## Gwynne–Miller: existence and uniqueness of the LQG metric -/
+
+#check (LQGMetric.theorem11_proved : LQGMetric.Theorem11)
+assert_no_sorry LQGMetric.theorem11_proved
+#print axioms LQGMetric.theorem11_proved
+
+#check (LQGMetric.theorem12_proved : LQGMetric.Theorem12)
+assert_no_sorry LQGMetric.theorem12_proved
+#print axioms LQGMetric.theorem12_proved
+
+#check LQGMetric.main_result
+assert_no_sorry LQGMetric.main_result
+#print axioms LQGMetric.main_result
+
+#check LQGMetric.theorem11_proved_measurable
+assert_no_sorry LQGMetric.theorem11_proved_measurable
+#print axioms LQGMetric.theorem11_proved_measurable
+
+#check LQGMetric.theorem12_existence_measurable
+assert_no_sorry LQGMetric.theorem12_existence_measurable
+#print axioms LQGMetric.theorem12_existence_measurable
+
+#print LQGMetric.Theorem11
+#print LQGMetric.Theorem12
+
 open Lean Elab Command in
 set_option maxHeartbeats 0 in
 run_cmd do
@@ -146,7 +172,7 @@ run_cmd do
     let m := moduleNames[idx.toNat]!
     if (`BouRabeeGwynne).isPrefixOf m || (`ReflectedWalk).isPrefixOf m ||
         (`ReflectedGMS).isPrefixOf m || (`QuantumZipper).isPrefixOf m ||
-        (`LQGDimension).isPrefixOf m then
+        (`LQGDimension).isPrefixOf m || (`LQGMetric).isPrefixOf m then
       roots := roots.push n
   if roots.isEmpty then throwError "No included declarations found"
   let mut pending := roots

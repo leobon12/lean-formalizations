@@ -8,7 +8,7 @@ from pathlib import Path
 import argparse,hashlib,json,os,re,shutil,subprocess,sys,time
 
 ROOT=Path(__file__).resolve().parents[1]
-NAMESPACES=['BouRabeeGwynne','ReflectedWalk','ReflectedGMS','QuantumZipper','LQGDimension']
+NAMESPACES=['BouRabeeGwynne','ReflectedWalk','ReflectedGMS','QuantumZipper','LQGDimension','LQGMetric']
 def stripped(s):
     res=[];i=0;depth=0;string=False
     while i<len(s):

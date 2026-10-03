@@ -1,0 +1,151 @@
+import LQGMetric.Papers.GM.S2.BilipLocal
+import LQGMetric.Papers.GM.S2.TightA
+
+/-!
+# GM Proposition 2.2: weak LQG metrics with the same scaling constants are bi-Lipschitz
+(task P2-M2A, WP-M2a, row 2 of `blueprint/M2.md`)
+
+GM (arXiv:1905.00383v3, `uniqueness-final.tex`) Prop 2.2, l. 890–896: for a whole-plane GFF `h`
+and weak γ-LQG metrics `D`, `D̃` with the same `𝔠_r`, there is a deterministic `C > 0` with a.s.
+`C⁻¹ D_h ≤ D̃_h ≤ C D_h` on `ℂ × ℂ`. GM's proof (l. 927–936), followed step by step:
+
+1. `D_h`, `D̃_h` are jointly local and ξ-additive (GM S2.3, `gm_S2_3`, from LM Lemma 1.4).
+2. By Axioms IV′ and V ("for any `p ∈ (0,1)` we can find `C_p`", l. 928–933; here the tightness
+   facts `Blueprint.GMS2_4a` (i) with `K = ∂B_{1/2}(0)`, `U = B_1(0)` and `Blueprint.GMS2_4c` with
+   `K = ∂B_1(0)`, `U = A_{1/2,2}(0)`), with probability `≥ p` both
+   `sup_{u,v ∈ ∂B_r(z)} D̃_h(u,v; A_{r/2,2r}(z)) ≤ S 𝔠_r e^{ξh_r(z)}` and
+   `D_h(∂B_{r/2}(z), ∂B_r(z)) ≥ s 𝔠_r e^{ξh_r(z)}`; so LM (1.6) holds with `C = S/s`
+   (`C_p²` in GM) for `(D, D̃)` and for `(D̃, D)`.
+3. LM Theorem 1.6 (`Blueprint.LMThm1_6`, = GM Thm 2.5) gives `D̃_h ≤ C D_h` a.s.
+
+LM Thm 1.6 is for the normalized field `h − h_1(0)`; GM applies it to `h` directly. We apply it to
+`h − h_1(0)` on one reference probability space and transfer the (measurable) conclusion to every
+whole-plane GFF by the uniqueness of the law of `h − h_1(0)` (`Tight.map_normalize_eq`) and Weyl
+scaling by the constant `h_1(0)` (`IsWeakLQGMetric.ae_dist_addConst`); this is what makes `C`
+deterministic, i.e. independent of the probability space (reading BP-M2-6).
+-/
+
+set_option autoImplicit false
+set_option relaxedAutoImplicit false
+
+noncomputable section
+
+open MeasureTheory ProbabilityTheory Filter Topology Set
+open scoped ENNReal
+
+namespace LQGMetric.GM
+open Blueprint
+
+namespace Bilip
+
+/-! ## Elementary geometry of `scaleSet` -/
+
+lemma scaleSet_eq_preimage {r : ℝ} (hr : r ≠ 0) (z : ℂ) (A : Set ℂ) :
+    scaleSet r z A = (fun x => (x - z) / r) ⁻¹' A := by
+  have hr' : (r : ℂ) ≠ 0 := Complex.ofReal_ne_zero.2 hr
+  ext x
+  constructor
+  · rintro ⟨y, hy, rfl⟩
+    change ((r : ℂ) * y + z - z) / r ∈ A
+    rwa [add_sub_cancel_right, mul_div_cancel_left₀ _ hr']
+  · intro hx
+    refine ⟨(x - z) / r, hx, ?_⟩
+    change (r : ℂ) * ((x - z) / r) + z = x
+    rw [mul_div_assoc', mul_div_cancel_left₀ _ hr', sub_add_cancel]
+
+lemma norm_div_ofReal {r : ℝ} (hr : 0 < r) (x : ℂ) : ‖x / (r : ℂ)‖ = ‖x‖ / r := by
+  rw [norm_div, Complex.norm_real, Real.norm_eq_abs, abs_of_pos hr]
+
+lemma scaleSet_sphere {r : ℝ} (hr : 0 < r) (z : ℂ) (ρ : ℝ) :
+    scaleSet r z (Metric.sphere 0 ρ) = Metric.sphere z (r * ρ) := by
+  rw [scaleSet_eq_preimage hr.ne']
+  ext x
+  simp only [mem_preimage, mem_sphere_iff_norm, sub_zero, norm_div_ofReal hr]
+  rw [div_eq_iff hr.ne', mul_comm]
+
+lemma scaleSet_annulus {r : ℝ} (hr : 0 < r) (z : ℂ) (a b : ℝ) :
+    scaleSet r z (annulus 0 a b : Set ℂ) = (annulus z (r * a) (r * b) : Set ℂ) := by
+  rw [scaleSet_eq_preimage hr.ne']
+  ext x
+  change (a < ‖(x - z) / r - 0‖ ∧ ‖(x - z) / r - 0‖ < b) ↔ (r * a < ‖x - z‖ ∧ ‖x - z‖ < r * b)
+  rw [sub_zero, norm_div_ofReal hr, lt_div_iff₀ hr, div_lt_iff₀ hr, mul_comm a, mul_comm b]
+
+lemma isPreconnected_annulus_zero {a b : ℝ} (ha : 0 ≤ a) :
+    IsPreconnected (annulus 0 a b : Set ℂ) := by
+  have e : (annulus 0 a b : Set ℂ) =
+      (fun p : ℝ × ℝ => (p.1 : ℂ) * Complex.exp (p.2 * Complex.I)) '' (Ioo a b ×ˢ univ) := by
+    ext w
+    constructor
+    · rintro ⟨h1, h2⟩
+      rw [sub_zero] at h1 h2
+      exact ⟨(‖w‖, Complex.arg w), ⟨⟨h1, h2⟩, mem_univ _⟩, Complex.norm_mul_exp_arg_mul_I w⟩
+    · rintro ⟨⟨t, θ⟩, ⟨⟨h1, h2⟩, -⟩, rfl⟩
+      have ht : 0 < t := ha.trans_lt h1
+      have hn : ‖(t : ℂ) * Complex.exp (θ * Complex.I) - 0‖ = t := by
+        rw [sub_zero, norm_mul, Complex.norm_exp_ofReal_mul_I, mul_one, Complex.norm_real,
+          Real.norm_eq_abs, abs_of_pos ht]
+      exact ⟨hn.symm ▸ h1, hn.symm ▸ h2⟩
+  rw [e]
+  exact (isPreconnected_Ioo.prod isPreconnected_univ).image _
+    (by fun_prop : Continuous fun p : ℝ × ℝ => (p.1 : ℂ) * Complex.exp (p.2 * Complex.I)).continuousOn
+
+lemma isBounded_annulus_zero (a b : ℝ) : Bornology.IsBounded (annulus 0 a b : Set ℂ) :=
+  Metric.isBounded_ball.subset fun w hw => by
+    rw [mem_ball_zero_iff]; simpa using hw.2
+
+lemma sphere_subset_annulus_zero {a ρ b : ℝ} (ha : a < ρ) (hb : ρ < b) :
+    Metric.sphere (0 : ℂ) ρ ⊆ (annulus 0 a b : Set ℂ) := fun w hw => by
+  rw [mem_sphere_zero_iff_norm] at hw
+  exact ⟨by rw [sub_zero, hw]; exact ha, by rw [sub_zero, hw]; exact hb⟩
+
+/-! ## Probability bookkeeping -/
+
+lemma ofReal_le_of_compl_le {Ω : Type} [MeasurableSpace Ω] {P : Measure Ω}
+    [IsProbabilityMeasure P] {E : Set Ω} {q : ℝ} (hq0 : 0 ≤ q) (hq1 : q ≤ 1)
+    (h : P Eᶜ ≤ ENNReal.ofReal (1 - q)) : ENNReal.ofReal q ≤ P E := by
+  have h1 : (1 : ℝ≥0∞) ≤ P E + P Eᶜ :=
+    calc (1 : ℝ≥0∞) = P univ := measure_univ.symm
+      _ = P (E ∪ Eᶜ) := by rw [union_compl_self]
+      _ ≤ P E + P Eᶜ := measure_union_le _ _
+  have h2 : ENNReal.ofReal q + ENNReal.ofReal (1 - q) = 1 := by
+    rw [← ENNReal.ofReal_add hq0 (by linarith), add_sub_cancel, ENNReal.ofReal_one]
+  refine (ENNReal.add_le_add_iff_right (ENNReal.ofReal_ne_top (r := 1 - q))).1 ?_
+  rw [h2]
+  exact h1.trans (add_le_add le_rfl h)
+
+lemma measurableSet_bilip {D D' : DistC → ContMetric} (hD : Measurable D) (hD' : Measurable D')
+    (C : ℝ) : MeasurableSet {g : DistC | ∀ u v : ℂ,
+      C⁻¹ * (D g).1 (u, v) ≤ (D' g).1 (u, v) ∧ (D' g).1 (u, v) ≤ C * (D g).1 (u, v)} := by
+  obtain ⟨Q, hQc, hQd⟩ := TopologicalSpace.exists_countable_dense (ℂ × ℂ)
+  have ev : ∀ E : DistC → ContMetric, Measurable E → ∀ p : ℂ × ℂ, Measurable fun g => (E g).1 p :=
+    fun E hE p => (continuous_eval_const p).measurable.comp (measurable_subtype_coe.comp hE)
+  have e : {g : DistC | ∀ u v : ℂ,
+      C⁻¹ * (D g).1 (u, v) ≤ (D' g).1 (u, v) ∧ (D' g).1 (u, v) ≤ C * (D g).1 (u, v)} =
+      ⋂ p ∈ Q, {g | C⁻¹ * (D g).1 p ≤ (D' g).1 p ∧ (D' g).1 p ≤ C * (D g).1 p} := by
+    ext g
+    simp only [mem_setOf_eq, mem_iInter]
+    constructor
+    · intro h p _
+      exact h p.1 p.2
+    · intro h u v
+      have hcl : IsClosed {p : ℂ × ℂ | C⁻¹ * (D g).1 p ≤ (D' g).1 p ∧
+          (D' g).1 p ≤ C * (D g).1 p} :=
+        (isClosed_le (continuous_const.mul (D g).1.continuous) (D' g).1.continuous).inter
+          (isClosed_le (D' g).1.continuous (continuous_const.mul (D g).1.continuous))
+      have := hcl.closure_subset_iff.2 fun p hp => h p hp
+      rw [hQd.closure_eq] at this
+      exact this (mem_univ (u, v))
+  rw [e]
+  exact MeasurableSet.biInter hQc fun p _ =>
+    (measurableSet_le ((ev D hD p).const_mul _) (ev D' hD' p)).inter
+      (measurableSet_le (ev D' hD' p) ((ev D hD p).const_mul _))
+
+/-! ## One direction on a fixed probability space (GM l. 927–936) -/
+
+variable {γ : ℝ} {D₁ D₂ : DistC → ContMetric} {c : ℝ → ℝ}
+
+/-! ## GM Proposition 2.2 -/
+
+end Bilip
+
+end LQGMetric.GM

@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "mode": "cached dependencies with freshly compiled certificate",
+  "source_commits": [
+    "14bd3363a07c0197d324bacabbff072e3f9a00c5",
+    "32156ac07851dc378a0a00e3140f15646ffe38bf",
+    "8c270ff3965b979e2bf27828a2f28c746eabd19b"
+  ],
+  "source_modules": 6322,
+  "fresh_modules": 0,
+  "reused_modules": 6322,
+  "seconds": 127.1,
+  "lean_version": "Lean (version 4.34.0-rc2, x86_64-unknown-linux-gnu, commit 6a10ac8c22beadecabdbb0919c2b50214762f91d, Release)",
+  "axioms_allowed": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "certificate_sha256": "583ac401749859797362fe4ff5f8a6a4ead1fcbbfe2cc6dc34cad099e04754fd",
+  "manifest_sha256": "8dee9f02b1525674cf7791a6ae7177966393563ff208060c20e48ab3425a1733",
+  "new_source_commit": "32156ac07851dc378a0a00e3140f15646ffe38bf",
+  "prior_public_commit": "bbffc9e49d5aa93300b98e24793c1d1b8647638a",
+  "prior_public_fresh_ci_run": 36792894039,
+  "previous_public_modules_byte_checked": 3873,
+  "new_upstream_modules_byte_checked": 2449
+}
