@@ -19,7 +19,11 @@
     "QuantumZipper.Proofs.NonVacuityAddendum",
     "QuantumZipper.Proofs.NonVacuityFinal",
     "QuantumZipper.Proofs.Section5.Prop16LitCert",
-    "LQGMetric.Assembly.MainFinal"
+    "LQGMetric.Assembly.MainFinal",
+    "MeshOnly.MeshOnlyConvergence",
+    "LQGDimension.Assembly.Theorem11",
+    "LQGDimension.Existence.Assembly",
+    "LQGDimension.Sanity"
   ],
   "modules": {
     "BouRabeeGwynne.AbsorbingExcursionKernel": {
@@ -102581,6 +102585,1112 @@
         "ReflectedWalk.StrongMarkov"
       ],
       "bytes": 41571
+    },
+    "MeshOnly.MeshOnlyConvergence": {
+      "path": "MeshOnly/MeshOnlyConvergence.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyConvergence.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "8df36e9a8dff1c71181195336578585a125cdfc2f2bcb0e42dc3ec02e4c96696",
+      "imports": [
+        "MeshOnly.MeshOnlyUniformL2",
+        "MeshOnly.MeshOnlyUniformCollar",
+        "MeshOnly.MeshOnlyDirichletControl",
+        "MeshOnly.MeshOnlyTilingSpike",
+        "MeshOnly.MeshOnlyTargetAssembly"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyUniformL2",
+        "MeshOnly.MeshOnlyUniformCollar",
+        "MeshOnly.MeshOnlyDirichletControl",
+        "MeshOnly.MeshOnlyTilingSpike",
+        "MeshOnly.MeshOnlyTargetAssembly"
+      ],
+      "bytes": 5895
+    },
+    "MeshOnly.MeshOnlyTargetAssembly": {
+      "path": "MeshOnly/MeshOnlyTargetAssembly.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyTargetAssembly.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "ab20b42c92a2b1bfdf0c19c1d9dc7608ed4f665ae7491d515141eaeeee525694",
+      "imports": [
+        "MeshOnly.MeshOnlyStatement",
+        "BouRabeeGwynne.CoordinateHyperplane"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyStatement",
+        "BouRabeeGwynne.CoordinateHyperplane"
+      ],
+      "bytes": 2635
+    },
+    "MeshOnly.MeshOnlyStatement": {
+      "path": "MeshOnly/MeshOnlyStatement.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyStatement.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "39a959321b3c68d0d97a6ad087e49fcf8ac6ee0d6efcc0778c08b95568380e0a",
+      "imports": [
+        "MeshOnly.MeshOnlyLocalization"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyLocalization"
+      ],
+      "bytes": 2452
+    },
+    "MeshOnly.MeshOnlyLocalization": {
+      "path": "MeshOnly/MeshOnlyLocalization.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyLocalization.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "39d3897e6e94d868e1b774558c62543925060e7d37e8ac43364329fa2f640794",
+      "imports": [
+        "BouRabeeGwynne.Section3WellPosed",
+        "BouRabeeGwynne.Section3CompactCollar"
+      ],
+      "local_imports": [
+        "BouRabeeGwynne.Section3WellPosed",
+        "BouRabeeGwynne.Section3CompactCollar"
+      ],
+      "bytes": 4826
+    },
+    "MeshOnly.MeshOnlyTilingSpike": {
+      "path": "MeshOnly/MeshOnlyTilingSpike.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyTilingSpike.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "0bff0a836f909ac70fd4946ffd06de40cd7775443d557c8c395248b605494017",
+      "imports": [
+        "MeshOnly.MeshOnlyHeatTiling",
+        "MeshOnly.MeshOnlyFiniteSpike",
+        "MeshOnly.MeshOnlyTilingClock",
+        "MeshOnly.MeshOnlySpikeScales"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyHeatTiling",
+        "MeshOnly.MeshOnlyFiniteSpike",
+        "MeshOnly.MeshOnlyTilingClock",
+        "MeshOnly.MeshOnlySpikeScales"
+      ],
+      "bytes": 4889
+    },
+    "MeshOnly.MeshOnlySpikeScales": {
+      "path": "MeshOnly/MeshOnlySpikeScales.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlySpikeScales.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "09c0e08144f2f494ba4efe81a21d094124f200d4f0f76e6c04cb308f66f1eeec",
+      "imports": [
+        "Mathlib.Analysis.SpecialFunctions.Pow.Continuity",
+        "Mathlib.Tactic"
+      ],
+      "local_imports": [],
+      "bytes": 2607
+    },
+    "MeshOnly.MeshOnlyTilingClock": {
+      "path": "MeshOnly/MeshOnlyTilingClock.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyTilingClock.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "fca4b2dfd6eb3271899ae9f74a025874c28b1a36f2c7a1f30effecc47a6393d8",
+      "imports": [
+        "MeshOnly.MeshOnlyPowerClock",
+        "MeshOnly.MeshOnlyCellMass",
+        "MeshOnly.MeshOnlyClockCrossing"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyPowerClock",
+        "MeshOnly.MeshOnlyCellMass",
+        "MeshOnly.MeshOnlyClockCrossing"
+      ],
+      "bytes": 3986
+    },
+    "MeshOnly.MeshOnlyClockCrossing": {
+      "path": "MeshOnly/MeshOnlyClockCrossing.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyClockCrossing.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "aee662bfadc1c32bf3935617b40f9c8f364c659852894f9a055df6cbebc670e8",
+      "imports": [
+        "MeshOnly.MeshOnlyClockMoments",
+        "MeshOnly.MeshOnlyClockSupport"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyClockMoments",
+        "MeshOnly.MeshOnlyClockSupport"
+      ],
+      "bytes": 3304
+    },
+    "MeshOnly.MeshOnlyClockSupport": {
+      "path": "MeshOnly/MeshOnlyClockSupport.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyClockSupport.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "1e90fa90600b78892068671bba7d52ce8e5288b6c6f45f5bbdd6aa59fdb5720c",
+      "imports": [
+        "MeshOnly.MeshOnlyHeatPoissonLaw"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyHeatPoissonLaw"
+      ],
+      "bytes": 2623
+    },
+    "MeshOnly.MeshOnlyHeatPoissonLaw": {
+      "path": "MeshOnly/MeshOnlyHeatPoissonLaw.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyHeatPoissonLaw.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "b5a9d1a5c7814df323948e7fb0706fe7b717d02f46c827fbef4cd698304c26c7",
+      "imports": [
+        "MeshOnly.MeshOnlyHeatUniformization",
+        "Mathlib.Probability.Distributions.Poisson.Basic"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyHeatUniformization"
+      ],
+      "bytes": 1547
+    },
+    "MeshOnly.MeshOnlyHeatUniformization": {
+      "path": "MeshOnly/MeshOnlyHeatUniformization.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyHeatUniformization.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "e00d6e261f8e46b679de47945d4d65c0d0a098069a096667e2dc7472a1ab334c",
+      "imports": [
+        "MeshOnly.MeshOnlyHeatGenerator",
+        "BouRabeeGwynne.StoppedWalk"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyHeatGenerator",
+        "BouRabeeGwynne.StoppedWalk"
+      ],
+      "bytes": 6861
+    },
+    "MeshOnly.MeshOnlyHeatGenerator": {
+      "path": "MeshOnly/MeshOnlyHeatGenerator.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyHeatGenerator.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "7e8a161cdf206165b70bdc41f058056a1f090563b03660cd2650671d61b89d72",
+      "imports": [
+        "BouRabeeGwynne.DiscretePDEAlgebra",
+        "Mathlib.Analysis.Calculus.Deriv.Add",
+        "Mathlib.Analysis.Calculus.Deriv.Mul",
+        "Mathlib.Analysis.Calculus.Deriv.Pow"
+      ],
+      "local_imports": [
+        "BouRabeeGwynne.DiscretePDEAlgebra"
+      ],
+      "bytes": 4861
+    },
+    "MeshOnly.MeshOnlyClockMoments": {
+      "path": "MeshOnly/MeshOnlyClockMoments.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyClockMoments.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "bc982f57bc9da200592aaba263b22d8d57c5d3e9199af0f6d08416827bc6c062",
+      "imports": [
+        "MeshOnly.MeshOnlyClockSteps",
+        "MeshOnly.MeshOnlyClockPoisson",
+        "BouRabeeGwynne.FiniteDirichlet"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyClockSteps",
+        "MeshOnly.MeshOnlyClockPoisson",
+        "BouRabeeGwynne.FiniteDirichlet"
+      ],
+      "bytes": 2538
+    },
+    "MeshOnly.MeshOnlyClockPoisson": {
+      "path": "MeshOnly/MeshOnlyClockPoisson.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyClockPoisson.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "2fcf6a2a52131411ae8a6a39dd8489f41578aa53728f8e21a4c8c3f7234b64d1",
+      "imports": [
+        "Mathlib.Probability.Distributions.Poisson.Basic",
+        "Mathlib.Probability.ProbabilityMassFunction.Integrals",
+        "Mathlib.Tactic.FieldSimp",
+        "Mathlib.Tactic.Ring"
+      ],
+      "local_imports": [],
+      "bytes": 4421
+    },
+    "MeshOnly.MeshOnlyClockSteps": {
+      "path": "MeshOnly/MeshOnlyClockSteps.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyClockSteps.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "1ad227e86ed476340594eadb3a23afbb616da746e93e09418f7565a01a2e0645",
+      "imports": [
+        "MeshOnly.MeshOnlyHeatUniformization"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyHeatUniformization"
+      ],
+      "bytes": 4331
+    },
+    "MeshOnly.MeshOnlyCellMass": {
+      "path": "MeshOnly/MeshOnlyCellMass.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyCellMass.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "fc3c79e578e39b3bdf42458d3c69e406b7de7e84b10e2494fcb8977b1967b620",
+      "imports": [
+        "MeshOnly.MeshOnlySobolevCells"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlySobolevCells"
+      ],
+      "bytes": 808
+    },
+    "MeshOnly.MeshOnlySobolevCells": {
+      "path": "MeshOnly/MeshOnlySobolevCells.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlySobolevCells.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "f3d205c812093acf40823d023af3445755c67af242e05dda632c2702273e17cf",
+      "imports": [
+        "BouRabeeGwynne.DualAdditivity",
+        "Mathlib.MeasureTheory.Integral.Bochner.Set",
+        "Mathlib.Topology.Algebra.Support"
+      ],
+      "local_imports": [
+        "BouRabeeGwynne.DualAdditivity"
+      ],
+      "bytes": 6475
+    },
+    "MeshOnly.MeshOnlyPowerClock": {
+      "path": "MeshOnly/MeshOnlyPowerClock.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyPowerClock.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "56d0edf17e663177938d9f4fbab1a775fb5f899d28bc35bdd108ad905d78f5b7",
+      "imports": [
+        "MeshOnly.MeshOnlyPowerWeights",
+        "BouRabeeGwynne.TilingNetwork",
+        "MeshOnly.MeshOnlyHeatGenerator",
+        "MeshOnly.MeshOnlyCellMass"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyPowerWeights",
+        "BouRabeeGwynne.TilingNetwork",
+        "MeshOnly.MeshOnlyHeatGenerator",
+        "MeshOnly.MeshOnlyCellMass"
+      ],
+      "bytes": 4076
+    },
+    "MeshOnly.MeshOnlyPowerWeights": {
+      "path": "MeshOnly/MeshOnlyPowerWeights.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyPowerWeights.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "65d8f6a0e80bdbe13805f1dc2fa0cbb9adb97087f55c9928933f5fe046e6aca5",
+      "imports": [
+        "MeshOnly.MeshOnlyPowerConvolution",
+        "MeshOnly.MeshOnlyPowerArzela",
+        "MeshOnly.MeshOnlyPowerBumps",
+        "MeshOnly.MeshOnlyPowerLimits"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyPowerConvolution",
+        "MeshOnly.MeshOnlyPowerArzela",
+        "MeshOnly.MeshOnlyPowerBumps",
+        "MeshOnly.MeshOnlyPowerLimits"
+      ],
+      "bytes": 5195
+    },
+    "MeshOnly.MeshOnlyPowerLimits": {
+      "path": "MeshOnly/MeshOnlyPowerLimits.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyPowerLimits.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "c8c428562040670e35d186bd5a1fdc9222b16f9e6a2fcdb6e2cb71d782fc7120",
+      "imports": [
+        "MeshOnly.MeshOnlyPowerMollification",
+        "Mathlib.Analysis.Calculus.UniformLimitsDeriv"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyPowerMollification"
+      ],
+      "bytes": 1713
+    },
+    "MeshOnly.MeshOnlyPowerMollification": {
+      "path": "MeshOnly/MeshOnlyPowerMollification.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyPowerMollification.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "a9de778175cf4d3593a721ff59e5f2942c09ec3889ee5a667ff75e409e0bb999",
+      "imports": [
+        "MeshOnly.MeshOnlyPowerGeometry",
+        "Mathlib.Analysis.Calculus.BumpFunction.Convolution",
+        "Mathlib.Analysis.Calculus.ContDiff.Convolution"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyPowerGeometry"
+      ],
+      "bytes": 5112
+    },
+    "MeshOnly.MeshOnlyPowerGeometry": {
+      "path": "MeshOnly/MeshOnlyPowerGeometry.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyPowerGeometry.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "99865c5a44c0f1407ff512a4d9695bd0d3c342b9725b85f2df3f0395d9bb4792",
+      "imports": [
+        "BouRabeeGwynne.DiscretePDE",
+        "Mathlib.Analysis.InnerProductSpace.Basic"
+      ],
+      "local_imports": [
+        "BouRabeeGwynne.DiscretePDE"
+      ],
+      "bytes": 4982
+    },
+    "MeshOnly.MeshOnlyPowerBumps": {
+      "path": "MeshOnly/MeshOnlyPowerBumps.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyPowerBumps.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "45c861b3754c8998dbe31502eacc5f383353f4b935c8df09ce656054cfd491ff",
+      "imports": [
+        "BouRabeeGwynne.PaperObjects",
+        "Mathlib.Analysis.Calculus.BumpFunction.Basic",
+        "Mathlib.Analysis.SpecificLimits.Basic"
+      ],
+      "local_imports": [
+        "BouRabeeGwynne.PaperObjects"
+      ],
+      "bytes": 1329
+    },
+    "MeshOnly.MeshOnlyPowerArzela": {
+      "path": "MeshOnly/MeshOnlyPowerArzela.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyPowerArzela.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "0307aeb5709db573d6cabd0a0c793105825ca81dfae42c8911eef0bd8ab0c15f",
+      "imports": [
+        "MeshOnly.MeshOnlyPowerCompactness",
+        "BouRabeeGwynne.PaperObjects",
+        "Mathlib.Topology.MetricSpace.Lipschitz"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyPowerCompactness",
+        "BouRabeeGwynne.PaperObjects"
+      ],
+      "bytes": 2574
+    },
+    "MeshOnly.MeshOnlyPowerCompactness": {
+      "path": "MeshOnly/MeshOnlyPowerCompactness.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyPowerCompactness.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "43cb0bdde5eb27c4ba0dcea0fcc52d565ed6b97f50530fec1a79c5ab357f91d0",
+      "imports": [
+        "Mathlib.Topology.ContinuousMap.Bounded.ArzelaAscoli",
+        "Mathlib.Topology.MetricSpace.UniformConvergence",
+        "Mathlib.Topology.Sequences"
+      ],
+      "local_imports": [],
+      "bytes": 1913
+    },
+    "MeshOnly.MeshOnlyPowerConvolution": {
+      "path": "MeshOnly/MeshOnlyPowerConvolution.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyPowerConvolution.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "93251338c0e397324dfdd62c1994e4788521875303adf4599a4c2a9ac6769fb2",
+      "imports": [
+        "MeshOnly.MeshOnlyPowerDifferential",
+        "MeshOnly.MeshOnlyPowerPotential"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyPowerDifferential",
+        "MeshOnly.MeshOnlyPowerPotential"
+      ],
+      "bytes": 9031
+    },
+    "MeshOnly.MeshOnlyPowerPotential": {
+      "path": "MeshOnly/MeshOnlyPowerPotential.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyPowerPotential.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "98437ae1e3f7e72cc5f6e6bfacfdebc30ee6a53c599c9ea77b212ca70c1c26f0",
+      "imports": [
+        "MeshOnly.MeshOnlyPowerFlux",
+        "MeshOnly.MeshOnlyPowerMollification",
+        "MeshOnly.MeshOnlyPowerLocalization",
+        "Mathlib.MeasureTheory.Integral.CurveIntegral.Poincare",
+        "Mathlib.Analysis.Convex.Topology"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyPowerFlux",
+        "MeshOnly.MeshOnlyPowerMollification",
+        "MeshOnly.MeshOnlyPowerLocalization"
+      ],
+      "bytes": 4827
+    },
+    "MeshOnly.MeshOnlyPowerLocalization": {
+      "path": "MeshOnly/MeshOnlyPowerLocalization.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyPowerLocalization.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "0503c81155885322c9a2d991ab66e720cff6698f318431db916c3f756b379dc3",
+      "imports": [
+        "MeshOnly.MeshOnlyPowerGeometry"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyPowerGeometry"
+      ],
+      "bytes": 1858
+    },
+    "MeshOnly.MeshOnlyPowerFlux": {
+      "path": "MeshOnly/MeshOnlyPowerFlux.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyPowerFlux.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "a43488b5c69f3eda0479e3723f4281b9acebbf1f3537b512308d08fdb46913fa",
+      "imports": [
+        "MeshOnly.MeshOnlyPowerGeometry",
+        "BouRabeeGwynne.PolytopeGaussGreen",
+        "Mathlib.Analysis.InnerProductSpace.Calculus"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyPowerGeometry",
+        "BouRabeeGwynne.PolytopeGaussGreen"
+      ],
+      "bytes": 5181
+    },
+    "MeshOnly.MeshOnlyPowerDifferential": {
+      "path": "MeshOnly/MeshOnlyPowerDifferential.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyPowerDifferential.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "d8cc1001eda05a776c2a96b76f00edf9508e6cd372c46729edf911e5527970e0",
+      "imports": [
+        "MeshOnly.MeshOnlyPowerMollification",
+        "MeshOnly.MeshOnlyPowerClosed",
+        "Mathlib.Analysis.Convex.Measure"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyPowerMollification",
+        "MeshOnly.MeshOnlyPowerClosed"
+      ],
+      "bytes": 4264
+    },
+    "MeshOnly.MeshOnlyPowerClosed": {
+      "path": "MeshOnly/MeshOnlyPowerClosed.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyPowerClosed.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "993ca6fb80d0a974817dc76b077587f76081d138ffe2e44f4b929c5b58db83e4",
+      "imports": [
+        "MeshOnly.MeshOnlySobolevFlux"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlySobolevFlux"
+      ],
+      "bytes": 7763
+    },
+    "MeshOnly.MeshOnlySobolevFlux": {
+      "path": "MeshOnly/MeshOnlySobolevFlux.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlySobolevFlux.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "bb21dd61de564ff6676e571aa8098d539b8dfcfe0c16acab9522b1daf1a965e4",
+      "imports": [
+        "BouRabeeGwynne.PolytopeGaussGreen",
+        "BouRabeeGwynne.DiscretePDEAlgebra"
+      ],
+      "local_imports": [
+        "BouRabeeGwynne.PolytopeGaussGreen",
+        "BouRabeeGwynne.DiscretePDEAlgebra"
+      ],
+      "bytes": 5282
+    },
+    "MeshOnly.MeshOnlyFiniteSpike": {
+      "path": "MeshOnly/MeshOnlyFiniteSpike.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyFiniteSpike.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "3511d2e9737f337dfd44b6a6fca6c7d36adfe90cdfb7a162928a0056b967347b",
+      "imports": [
+        "MeshOnly.MeshOnlyClockCrossing",
+        "MeshOnly.MeshOnlySpikeProbability",
+        "Mathlib.MeasureTheory.Measure.Real"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyClockCrossing",
+        "MeshOnly.MeshOnlySpikeProbability"
+      ],
+      "bytes": 3734
+    },
+    "MeshOnly.MeshOnlySpikeProbability": {
+      "path": "MeshOnly/MeshOnlySpikeProbability.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlySpikeProbability.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "cb232db0d139d8d73fc4f03c79005ed0fbf888d540ef5c411fee22a72943401a",
+      "imports": [
+        "BouRabeeGwynne.DiscreteHarmonicMeasure"
+      ],
+      "local_imports": [
+        "BouRabeeGwynne.DiscreteHarmonicMeasure"
+      ],
+      "bytes": 1962
+    },
+    "MeshOnly.MeshOnlyHeatTiling": {
+      "path": "MeshOnly/MeshOnlyHeatTiling.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyHeatTiling.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "6b70198ed92405ea8d8479e2648a1ba3dee2e19ceb05cea314b138ed46bf532b",
+      "imports": [
+        "MeshOnly.MeshOnlyHeatBound",
+        "MeshOnly.MeshOnlySobolevNash"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyHeatBound",
+        "MeshOnly.MeshOnlySobolevNash"
+      ],
+      "bytes": 2427
+    },
+    "MeshOnly.MeshOnlySobolevNash": {
+      "path": "MeshOnly/MeshOnlySobolevNash.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlySobolevNash.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "a3943c7f4d473cf15de944003b9ae3c646cb42cbb2132df69bef7a08873f108e",
+      "imports": [
+        "MeshOnly.MeshOnlySobolevNorms",
+        "MeshOnly.MeshOnlySobolevInterpolation"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlySobolevNorms",
+        "MeshOnly.MeshOnlySobolevInterpolation"
+      ],
+      "bytes": 6605
+    },
+    "MeshOnly.MeshOnlySobolevInterpolation": {
+      "path": "MeshOnly/MeshOnlySobolevInterpolation.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlySobolevInterpolation.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "002eddb47aa7bc81b3cde4dfed2558c80a073a399569240d893328ad1c31c9e6",
+      "imports": [
+        "Mathlib.Analysis.MeanInequalities"
+      ],
+      "local_imports": [],
+      "bytes": 4576
+    },
+    "MeshOnly.MeshOnlySobolevNorms": {
+      "path": "MeshOnly/MeshOnlySobolevNorms.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlySobolevNorms.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "e76e38644952df594fa7340172fec567783fc11a5ae13c3721596906ce50f21e",
+      "imports": [
+        "MeshOnly.MeshOnlySobolevBV",
+        "MeshOnly.MeshOnlySobolevJump",
+        "MeshOnly.MeshOnlyCellMass"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlySobolevBV",
+        "MeshOnly.MeshOnlySobolevJump",
+        "MeshOnly.MeshOnlyCellMass"
+      ],
+      "bytes": 4751
+    },
+    "MeshOnly.MeshOnlySobolevJump": {
+      "path": "MeshOnly/MeshOnlySobolevJump.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlySobolevJump.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "87b152a2fe0efa2bedb387a0e55cbb5f53fe64bdcba4551a51c8ffc18fe28dac",
+      "imports": [
+        "MeshOnly.MeshOnlySobolevVolumes",
+        "Mathlib.Algebra.Order.BigOperators.Ring.Finset"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlySobolevVolumes"
+      ],
+      "bytes": 5277
+    },
+    "MeshOnly.MeshOnlySobolevVolumes": {
+      "path": "MeshOnly/MeshOnlySobolevVolumes.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlySobolevVolumes.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "d74458e681adfa287e0aeb6bca72f482c2d78e9005ab5de7b8eaefb0c3271d82",
+      "imports": [
+        "MeshOnly.MeshOnlySobolevAlgebra",
+        "BouRabeeGwynne.DualVolume",
+        "BouRabeeGwynne.DualVolumeSums",
+        "BouRabeeGwynne.TilingNetwork"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlySobolevAlgebra",
+        "BouRabeeGwynne.DualVolume",
+        "BouRabeeGwynne.DualVolumeSums",
+        "BouRabeeGwynne.TilingNetwork"
+      ],
+      "bytes": 6186
+    },
+    "MeshOnly.MeshOnlySobolevAlgebra": {
+      "path": "MeshOnly/MeshOnlySobolevAlgebra.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlySobolevAlgebra.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "a987629e2693f1ca6c5c13baf5ad947be3f2d315c15a0a08677eddc28eb933b2",
+      "imports": [
+        "BouRabeeGwynne.DiscretePDEAlgebra",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Real"
+      ],
+      "local_imports": [
+        "BouRabeeGwynne.DiscretePDEAlgebra"
+      ],
+      "bytes": 3365
+    },
+    "MeshOnly.MeshOnlySobolevBV": {
+      "path": "MeshOnly/MeshOnlySobolevBV.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlySobolevBV.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "390aa052a2861bad106183190141642730cd28d63ed1224aaf2c33b1b72577dd",
+      "imports": [
+        "MeshOnly.MeshOnlySobolevKernel",
+        "MeshOnly.MeshOnlySobolevApproximation",
+        "Mathlib.Analysis.SpecificLimits.Basic"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlySobolevKernel",
+        "MeshOnly.MeshOnlySobolevApproximation"
+      ],
+      "bytes": 3630
+    },
+    "MeshOnly.MeshOnlySobolevApproximation": {
+      "path": "MeshOnly/MeshOnlySobolevApproximation.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlySobolevApproximation.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "f388d7978f692fe7cc0c02c39b3c983bee6269b6de87267c050695a681eca9d9",
+      "imports": [
+        "BouRabeeGwynne.PaperObjects",
+        "Mathlib.Analysis.FunctionalSpaces.SobolevInequality",
+        "Mathlib.Analysis.Calculus.BumpFunction.Convolution",
+        "Mathlib.Analysis.Calculus.ContDiff.Convolution"
+      ],
+      "local_imports": [
+        "BouRabeeGwynne.PaperObjects"
+      ],
+      "bytes": 2274
+    },
+    "MeshOnly.MeshOnlySobolevKernel": {
+      "path": "MeshOnly/MeshOnlySobolevKernel.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlySobolevKernel.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "ac4e5179c5969c4931e5fe742162d49e7282ab700574f1c1902fb9623b82db4c",
+      "imports": [
+        "MeshOnly.MeshOnlySobolevDerivative",
+        "Mathlib.MeasureTheory.Group.LIntegral"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlySobolevDerivative"
+      ],
+      "bytes": 6949
+    },
+    "MeshOnly.MeshOnlySobolevDerivative": {
+      "path": "MeshOnly/MeshOnlySobolevDerivative.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlySobolevDerivative.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "f8bc289d307a965a71bb5d0999d637d6b50e316462df00c4c9c053c1764adea0",
+      "imports": [
+        "MeshOnly.MeshOnlySobolevMollification"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlySobolevMollification"
+      ],
+      "bytes": 5098
+    },
+    "MeshOnly.MeshOnlySobolevMollification": {
+      "path": "MeshOnly/MeshOnlySobolevMollification.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlySobolevMollification.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "96fede9c43d44e7605c5e406d12ffc653cfd5f102c4a7a373ad64b89e16df5a3",
+      "imports": [
+        "MeshOnly.MeshOnlySobolevCells",
+        "MeshOnly.MeshOnlySobolevFlux",
+        "Mathlib.Analysis.Calculus.ContDiff.Convolution",
+        "Mathlib.Analysis.Calculus.BumpFunction.Convolution"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlySobolevCells",
+        "MeshOnly.MeshOnlySobolevFlux"
+      ],
+      "bytes": 3996
+    },
+    "MeshOnly.MeshOnlyHeatBound": {
+      "path": "MeshOnly/MeshOnlyHeatBound.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyHeatBound.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "c33f70caecd1ffc3e97d3ee76d0edbb12e89e9b093260f0af3d776cceeeb6d8b",
+      "imports": [
+        "MeshOnly.MeshOnlyHeatLaw",
+        "MeshOnly.MeshOnlyHeatSurvivalScale",
+        "MeshOnly.MeshOnlyNashKernelBound"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyHeatLaw",
+        "MeshOnly.MeshOnlyHeatSurvivalScale",
+        "MeshOnly.MeshOnlyNashKernelBound"
+      ],
+      "bytes": 5327
+    },
+    "MeshOnly.MeshOnlyNashKernelBound": {
+      "path": "MeshOnly/MeshOnlyNashKernelBound.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyNashKernelBound.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "fe04337daa4ac0804e43fb37b87d3dd08bb051768eacc951e884030fabbbb639",
+      "imports": [
+        "MeshOnly.MeshOnlyNashTwoRegimes",
+        "MeshOnly.MeshOnlyNashRate"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyNashTwoRegimes",
+        "MeshOnly.MeshOnlyNashRate"
+      ],
+      "bytes": 3557
+    },
+    "MeshOnly.MeshOnlyNashRate": {
+      "path": "MeshOnly/MeshOnlyNashRate.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyNashRate.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "eeebc27b0cad280762f49e76a558d44439a6a7b56e8b0d49b6c75f16d789000a",
+      "imports": [
+        "Mathlib.Analysis.SpecialFunctions.Pow.Real",
+        "Mathlib.Tactic.Linarith",
+        "Mathlib.Tactic.Positivity",
+        "Mathlib.Tactic.Ring"
+      ],
+      "local_imports": [],
+      "bytes": 2378
+    },
+    "MeshOnly.MeshOnlyNashTwoRegimes": {
+      "path": "MeshOnly/MeshOnlyNashTwoRegimes.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyNashTwoRegimes.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "c17044fa57332e3de205c3c68c7244f779200135cffbd1d9c8ef2ae9d8cfaf91",
+      "imports": [
+        "MeshOnly.MeshOnlyNashDecay"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyNashDecay"
+      ],
+      "bytes": 4217
+    },
+    "MeshOnly.MeshOnlyNashDecay": {
+      "path": "MeshOnly/MeshOnlyNashDecay.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyNashDecay.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "a5cecc9ff8056fdfce7113bbeeb0282ce1f1e049e4187828776721dd2fdc13d0",
+      "imports": [
+        "Mathlib.Analysis.Calculus.Deriv.MeanValue",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Deriv",
+        "Mathlib.Tactic.FieldSimp",
+        "Mathlib.Tactic.Linarith",
+        "Mathlib.Tactic.Positivity",
+        "Mathlib.Tactic.Ring"
+      ],
+      "local_imports": [],
+      "bytes": 2624
+    },
+    "MeshOnly.MeshOnlyHeatSurvivalScale": {
+      "path": "MeshOnly/MeshOnlyHeatSurvivalScale.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyHeatSurvivalScale.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "47b32df75ae33cc7d122b7ae889c6ecb625fd30828e1054fa1d7335914a359ce",
+      "imports": [
+        "Mathlib.Analysis.SpecialFunctions.Pow.Real",
+        "Mathlib.Analysis.SpecialFunctions.Sqrt",
+        "Mathlib.Tactic.Ring",
+        "Mathlib.Tactic.Linarith",
+        "Mathlib.Tactic.Positivity"
+      ],
+      "local_imports": [],
+      "bytes": 2009
+    },
+    "MeshOnly.MeshOnlyHeatLaw": {
+      "path": "MeshOnly/MeshOnlyHeatLaw.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyHeatLaw.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "cb02153ec2741c0a1d9177fe7b3f30070da8f17681ddb85ed0b89b27ed3033a6",
+      "imports": [
+        "MeshOnly.MeshOnlyHeatKernel",
+        "MeshOnly.MeshOnlyHeatPoissonLaw",
+        "Mathlib.MeasureTheory.Measure.Real"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyHeatKernel",
+        "MeshOnly.MeshOnlyHeatPoissonLaw"
+      ],
+      "bytes": 5898
+    },
+    "MeshOnly.MeshOnlyHeatKernel": {
+      "path": "MeshOnly/MeshOnlyHeatKernel.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyHeatKernel.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "62a7d6b262645b0ee632ecbf6133807332731396cfa0b39fd9571b2d15cdd160",
+      "imports": [
+        "MeshOnly.MeshOnlyHeatPositivity",
+        "MeshOnly.MeshOnlyHeatUniformization",
+        "MeshOnly.MeshOnlyHeatMatrixBounds",
+        "Mathlib.Analysis.Calculus.MeanValue",
+        "Mathlib.Analysis.Calculus.FDeriv.Pi"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyHeatPositivity",
+        "MeshOnly.MeshOnlyHeatUniformization",
+        "MeshOnly.MeshOnlyHeatMatrixBounds"
+      ],
+      "bytes": 8081
+    },
+    "MeshOnly.MeshOnlyHeatMatrixBounds": {
+      "path": "MeshOnly/MeshOnlyHeatMatrixBounds.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyHeatMatrixBounds.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "b931918eaf690ce93a31ed270b76fe88d0e1fbfd3e9cf91420a104ff8d5a444b",
+      "imports": [
+        "Mathlib.Analysis.Normed.Algebra.MatrixExponential",
+        "Mathlib.Analysis.SpecialFunctions.Exponential",
+        "Mathlib.Algebra.Order.BigOperators.Ring.Finset",
+        "Mathlib.Probability.Distributions.Poisson.Basic"
+      ],
+      "local_imports": [],
+      "bytes": 6536
+    },
+    "MeshOnly.MeshOnlyHeatPositivity": {
+      "path": "MeshOnly/MeshOnlyHeatPositivity.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyHeatPositivity.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "863b9fcb1b84e9a822b1d325dd8a631ff3ec5a866e7bad5ad1052a8d8f85ec87",
+      "imports": [
+        "MeshOnly.MeshOnlyHeatSemigroup",
+        "MeshOnly.MeshOnlyHeatUniformization",
+        "MeshOnly.MeshOnlyHeatMatrixBounds"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyHeatSemigroup",
+        "MeshOnly.MeshOnlyHeatUniformization",
+        "MeshOnly.MeshOnlyHeatMatrixBounds"
+      ],
+      "bytes": 4352
+    },
+    "MeshOnly.MeshOnlyHeatSemigroup": {
+      "path": "MeshOnly/MeshOnlyHeatSemigroup.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyHeatSemigroup.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "a205e1dabf462e75e162fd68f7a24773d094b73c742b1fb8062ffbbde883124b",
+      "imports": [
+        "MeshOnly.MeshOnlyHeatGenerator",
+        "Mathlib.Analysis.Matrix.Normed",
+        "Mathlib.Analysis.SpecialFunctions.Exponential",
+        "Mathlib.Analysis.Normed.Module.FiniteDimension",
+        "Mathlib.Analysis.Calculus.Deriv.Comp"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyHeatGenerator"
+      ],
+      "bytes": 4070
+    },
+    "MeshOnly.MeshOnlyDirichletControl": {
+      "path": "MeshOnly/MeshOnlyDirichletControl.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyDirichletControl.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "ff9abe8544eea27619d342f3c7caf7917a227e2980fbd4ef62e91553131d4693",
+      "imports": [
+        "MeshOnly.MeshOnlyLocalization",
+        "BouRabeeGwynne.CoordinateHyperplane",
+        "BouRabeeGwynne.TilingDirichlet",
+        "Mathlib.Analysis.Calculus.MeanValue"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyLocalization",
+        "BouRabeeGwynne.CoordinateHyperplane",
+        "BouRabeeGwynne.TilingDirichlet"
+      ],
+      "bytes": 2896
+    },
+    "MeshOnly.MeshOnlyUniformCollar": {
+      "path": "MeshOnly/MeshOnlyUniformCollar.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyUniformCollar.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "a9de0ed1bf1ebefe3ecb6931c07297e0728c3dcd64af6e5d57eb8d412bb717c2",
+      "imports": [
+        "MeshOnly.MeshOnlyLocalization"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyLocalization"
+      ],
+      "bytes": 2764
+    },
+    "MeshOnly.MeshOnlyUniformL2": {
+      "path": "MeshOnly/MeshOnlyUniformL2.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyUniformL2.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "8fa9acd708515000d98b467a18e5eddfad8753bf690ce8acba6e4c9cfa372aa2",
+      "imports": [
+        "MeshOnly.MeshOnlyUniformEnergy",
+        "MeshOnly.MeshOnlySobolevSupport",
+        "MeshOnly.MeshOnlySobolevSupportVolume"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyUniformEnergy",
+        "MeshOnly.MeshOnlySobolevSupport",
+        "MeshOnly.MeshOnlySobolevSupportVolume"
+      ],
+      "bytes": 4413
+    },
+    "MeshOnly.MeshOnlySobolevSupportVolume": {
+      "path": "MeshOnly/MeshOnlySobolevSupportVolume.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlySobolevSupportVolume.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "2d4c6e95fda8ece99d024869aed034f425a5350b2fae13e5b167bdce3ca6157a",
+      "imports": [
+        "MeshOnly.MeshOnlySobolevCells"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlySobolevCells"
+      ],
+      "bytes": 2562
+    },
+    "MeshOnly.MeshOnlySobolevSupport": {
+      "path": "MeshOnly/MeshOnlySobolevSupport.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlySobolevSupport.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "d0c2dda9a6421775ee63ed26cbea43874773bc2aef3aedf4a57b84dd4fc6546e",
+      "imports": [
+        "MeshOnly.MeshOnlySobolevNash",
+        "MeshOnly.MeshOnlySobolevSupportVolume"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlySobolevNash",
+        "MeshOnly.MeshOnlySobolevSupportVolume"
+      ],
+      "bytes": 3855
+    },
+    "MeshOnly.MeshOnlyUniformEnergy": {
+      "path": "MeshOnly/MeshOnlyUniformEnergy.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyUniformEnergy.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "c343070770d78022c0f5cc885c9d97008ba3988f8db080e5c2592d2e352c0633",
+      "imports": [
+        "MeshOnly.MeshOnlyEnergy"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyEnergy"
+      ],
+      "bytes": 2507
+    },
+    "MeshOnly.MeshOnlyEnergy": {
+      "path": "MeshOnly/MeshOnlyEnergy.lean",
+      "source_path": "formalizations/mesh_only_orthogonal_tilings/MeshOnly/MeshOnlyEnergy.lean",
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+      "sha256": "bbc3cff94fc77291e2674c6e0fd7afe481c18a8a5683564d9bd0edadda21081c",
+      "imports": [
+        "MeshOnly.MeshOnlyLocalization",
+        "BouRabeeGwynne.Section3HarmonicInput",
+        "BouRabeeGwynne.Section3InternalMass"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyLocalization",
+        "BouRabeeGwynne.Section3HarmonicInput",
+        "BouRabeeGwynne.Section3InternalMass"
+      ],
+      "bytes": 2507
+    },
+    "LQGDimension.Existence.Assembly": {
+      "path": "LQGDimension/Existence/Assembly.lean",
+      "source_path": "formalizations/lqg_dimension_limit/LQGDimension/Existence/Assembly.lean",
+      "sha256": "2862385853bd950c050d5edb3a73163dcdb033bffe799cc88a64e201264202ea",
+      "imports": [
+        "LQGDimension.Existence.AssemblyAux1",
+        "LQGDimension.Existence.AssemblyAux2",
+        "LQGDimension.Existence.GffKernel",
+        "LQGDimension.Existence.CountableGram",
+        "LQGDimension.Existence.SeriesContinuity"
+      ],
+      "local_imports": [
+        "LQGDimension.Existence.AssemblyAux1",
+        "LQGDimension.Existence.AssemblyAux2",
+        "LQGDimension.Existence.GffKernel",
+        "LQGDimension.Existence.CountableGram",
+        "LQGDimension.Existence.SeriesContinuity"
+      ],
+      "bytes": 16486,
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160"
+    },
+    "LQGDimension.Existence.AssemblyAux2": {
+      "path": "LQGDimension/Existence/AssemblyAux2.lean",
+      "source_path": "formalizations/lqg_dimension_limit/LQGDimension/Existence/AssemblyAux2.lean",
+      "sha256": "c78474c17bd53c291038aacc1a054154db973a4be5e0f7c209859686ca08413c",
+      "imports": [
+        "LQGDimension.Blueprint.Existence",
+        "Mathlib.Topology.ExtendFrom",
+        "Mathlib.Topology.Sequences",
+        "Mathlib.Topology.UniformSpace.Cauchy"
+      ],
+      "local_imports": [
+        "LQGDimension.Blueprint.Existence"
+      ],
+      "bytes": 5857,
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160"
+    },
+    "LQGDimension.Existence.CountableGram": {
+      "path": "LQGDimension/Existence/CountableGram.lean",
+      "source_path": "formalizations/lqg_dimension_limit/LQGDimension/Existence/CountableGram.lean",
+      "sha256": "f260599c02cf18865b0ed92dea2a6345e985792c639c2ca8eb41c5980bc178f0",
+      "imports": [
+        "LQGDimension.Blueprint.Existence",
+        "Mathlib.Analysis.InnerProductSpace.Reproducing",
+        "Mathlib.Analysis.InnerProductSpace.GramSchmidtOrtho"
+      ],
+      "local_imports": [
+        "LQGDimension.Blueprint.Existence"
+      ],
+      "bytes": 8678,
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160"
+    },
+    "LQGDimension.Existence.GffKernel": {
+      "path": "LQGDimension/Existence/GffKernel.lean",
+      "source_path": "formalizations/lqg_dimension_limit/LQGDimension/Existence/GffKernel.lean",
+      "sha256": "20674dc6edd13d5b039a0afd06aeed63d23767ad9a97933e6c7489a5387e0b32",
+      "imports": [
+        "LQGDimension.LFPP.CouplingAux3",
+        "LQGDimension.Blueprint.Existence"
+      ],
+      "local_imports": [
+        "LQGDimension.LFPP.CouplingAux3",
+        "LQGDimension.Blueprint.Existence"
+      ],
+      "bytes": 19319,
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160"
+    },
+    "LQGDimension.Existence.SeriesContinuity": {
+      "path": "LQGDimension/Existence/SeriesContinuity.lean",
+      "source_path": "formalizations/lqg_dimension_limit/LQGDimension/Existence/SeriesContinuity.lean",
+      "sha256": "f66d65f368cdfec9a1742157c905db1d2b46e92a5c4141780000759b46318e9d",
+      "imports": [
+        "LQGDimension.Existence.SeriesContinuityAux1",
+        "LQGDimension.Existence.SeriesContinuityAux2"
+      ],
+      "local_imports": [
+        "LQGDimension.Existence.SeriesContinuityAux1",
+        "LQGDimension.Existence.SeriesContinuityAux2"
+      ],
+      "bytes": 10797,
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160"
+    },
+    "LQGDimension.Existence.SeriesContinuityAux1": {
+      "path": "LQGDimension/Existence/SeriesContinuityAux1.lean",
+      "source_path": "formalizations/lqg_dimension_limit/LQGDimension/Existence/SeriesContinuityAux1.lean",
+      "sha256": "f733ce3b9a8870ef3d9dc7bc5ff22e8c720ec33a854eb2b5452182d6e11182ab",
+      "imports": [
+        "LQGDimension.Gaussian.ChainingBox",
+        "LQGDimension.Gaussian.Concentration",
+        "Mathlib.Probability.ProductMeasure"
+      ],
+      "local_imports": [
+        "LQGDimension.Gaussian.ChainingBox",
+        "LQGDimension.Gaussian.Concentration"
+      ],
+      "bytes": 12759,
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160"
+    },
+    "LQGDimension.Existence.SeriesContinuityAux2": {
+      "path": "LQGDimension/Existence/SeriesContinuityAux2.lean",
+      "source_path": "formalizations/lqg_dimension_limit/LQGDimension/Existence/SeriesContinuityAux2.lean",
+      "sha256": "c08852cd3ebdf75880b90bd6c295d6741dd9c8cecdd626eadc438ec3bb0bc617",
+      "imports": [
+        "LQGDimension.Blueprint.Existence",
+        "Mathlib.Analysis.SpecificLimits.Normed"
+      ],
+      "local_imports": [
+        "LQGDimension.Blueprint.Existence"
+      ],
+      "bytes": 8355,
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160"
+    },
+    "LQGDimension.Sanity": {
+      "path": "LQGDimension/Sanity.lean",
+      "source_path": "formalizations/lqg_dimension_limit/LQGDimension/Sanity.lean",
+      "sha256": "5afcfe67056002d02403e41842e441e1d587ef44c72d839c23aba64f6e89c237",
+      "imports": [
+        "LQGDimension.LFPP.CouplingAux3",
+        "LQGDimension.LFPP.LowerAssemblyAux1",
+        "Mathlib.MeasureTheory.Function.ConvergenceInMeasure"
+      ],
+      "local_imports": [
+        "LQGDimension.LFPP.CouplingAux3",
+        "LQGDimension.LFPP.LowerAssemblyAux1"
+      ],
+      "bytes": 3261,
+      "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160"
     }
   }
 }

@@ -1,0 +1,5 @@
+import MeshOnly.MeshOnlyConvergence
+import Mathlib.Util.AssertNoSorry
+#check (BouRabeeGwynne.meshOnly_theorem11_proved : BouRabeeGwynne.MeshOnlyTheorem11Statement)
+assert_no_sorry BouRabeeGwynne.meshOnly_theorem11_proved
+#print axioms BouRabeeGwynne.meshOnly_theorem11_proved

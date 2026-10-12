@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "mode": "freshly compiled focused certificate using cached proof modules after all 115 source files matched byte-for-byte",
+  "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160",
+  "modules": 115,
+  "new_modules": 8,
+  "existing_identical_modules": 107,
+  "cache_source_matches": 115,
+  "conflicts": 0,
+  "lean_version": "v4.34.0-rc2",
+  "mathlib_commit": "a4c8ef0a69f52ec80525d5086bb3542f4660faaf",
+  "check_sha256": "566a9f8bb15df47f0fff82813ff94ecf98fc5152c4ca6ade56a38be4c17ef214",
+  "proofs": [
+    "LQGDimension.theorem11",
+    "LQGDimension.theorem11_aStar",
+    "LQGDimension.theorem11_lambda",
+    "LQGDimension.theorem11_dimension",
+    "LQGDimension.prop12Upper",
+    "LQGDimension.prop12Lower",
+    "LQGDimension.gffCircleAverageExists"
+  ],
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "output": "LQGDimension.theorem11 : LQGDimension.Theorem11\nLQGDimension.theorem11_aStar : LQGDimension.Theorem11_AStar\nLQGDimension.theorem11_lambda : LQGDimension.Theorem11_Lambda\nLQGDimension.theorem11_dimension : LQGDimension.Theorem11_Dimension\nLQGDimension.prop12Upper : LQGDimension.Blueprint.Prop12Upper\nLQGDimension.prop12Lower : LQGDimension.Blueprint.Prop12Lower\nLQGDimension.gffCircleAverageExists : LQGDimension.Blueprint.Existence.GFFCircleAverageExists\n'LQGDimension.theorem11' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LQGDimension.gffCircleAverageExists' depends on axioms: [propext, Classical.choice, Quot.sound]\nSMALL_GAMMA_AUDIT declarations=4418; reachable=69331; axioms=[Quot.sound, Classical.choice, propext]\n",
+  "project_declarations": 4418,
+  "reachable_declarations": 69331
+}

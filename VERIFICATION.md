@@ -118,3 +118,10 @@ Finally, the certificate traverses the dependency graph of **every declaration o
 project module**, allowing only `propext`, `Classical.choice` and `Quot.sound` as axioms. This covers the
 included LQGDimension support modules as well as the five formalization libraries. It does not by itself
 establish source-paper correspondence.
+
+
+## AI research companions (11 October 2026)
+
+The small-parameter LQG-dimension [focused certificate](results/small-gamma-dimension/Check.lean) was compiled afresh against 115 source-matched cached modules. It checked the exact named theorem types, the GFF-existence witness, absence of `sorry`, and 4,418 project declarations with 69,331 reachable declarations. Only `propext`, `Classical.choice`, and `Quot.sound` occurred. The [verification record](results/small-gamma-dimension/verification.json) gives the source commit, package pins, and output. This is an incremental check, not a fresh dependency rebuild.
+
+The [mesh-only](results/mesh-only/) and [reflected singular-set](results/reflected-gms/) guides expose their exact proof entrypoints and clarify manuscript scope. The source scan covers the complete release manifest, including the newly included MeshOnly modules.

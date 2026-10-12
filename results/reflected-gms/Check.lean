@@ -1,0 +1,8 @@
+import ReflectedGMS.GeomTop.Theorems
+import Mathlib.Util.AssertNoSorry
+#check (ReflectedGMS.GeomTop.geomHarmonicCoordinateMainTheorem : ReflectedGMS.GeomTop.GeomHarmonicCoordinateMainTheorem)
+#check (ReflectedGMS.GeomTop.geomReflectedInvarianceMainTheorem : ReflectedGMS.GeomTop.GeomReflectedInvarianceMainTheorem)
+assert_no_sorry ReflectedGMS.GeomTop.geomHarmonicCoordinateMainTheorem
+assert_no_sorry ReflectedGMS.GeomTop.geomReflectedInvarianceMainTheorem
+#print axioms ReflectedGMS.GeomTop.geomHarmonicCoordinateMainTheorem
+#print axioms ReflectedGMS.GeomTop.geomReflectedInvarianceMainTheorem

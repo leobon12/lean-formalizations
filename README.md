@@ -12,6 +12,14 @@ Each result below has a short guide to its mathematical scope, the exact Lean st
 | Scott Sheffield, *Conformal weldings of random surfaces: SLE and the quantum gravity zipper* | The eight Section 1 results and three companions, with documented statement conventions | [README](results/quantum-zipper/) |
 | Ewain Gwynne and Jason Miller, *Existence and uniqueness of the Liouville quantum gravity metric for γ ∈ (0,2)* | Theorems 1.1 and 1.2, with a normalized-GFF existence witness and documented statement conventions | [README](results/lqg-metric/) |
 
+## AI-generated research companions
+
+| Paper | Accompanying Lean scope | Read the source |
+| --- | --- | --- |
+| Small-parameter LQG dimension | Theorem 1.1 and Proposition 1.2, with explicit LFPP literature inputs; GFF existence witness | [README](results/small-gamma-dimension/) |
+| Mesh-only convergence for orthogonal tilings | Qualitative Dirichlet convergence; the sharper rate and walk corollary are not included | [README](results/mesh-only/) |
+| Reflected random walks with spatial singularities | Harmonic coordinates and invariance principle in the earlier geometric-topology revision; see the revision correspondence | [README](results/reflected-gms/) |
+
 ## Verify the proofs
 
 The release pins Lean to `v4.34.0-rc2` and Mathlib to `a4c8ef0a69f52ec80525d5086bb3542f4660faaf`; the full dependency lockfile is included. Install [elan](https://github.com/leanprover/elan), Git, and Python 3, then follow [the verification instructions](VERIFICATION.md).
@@ -20,7 +28,7 @@ The [Lean certificate](Certificate.lean) checks the named proof declarations and
 
 ## Release contents
 
-This is a selected source snapshot from a private development repository. It includes the released proof entrypoints and their transitive source dependencies. Development history, worker conversations, scratch files, build caches, and unrelated projects are excluded. The Quantum Zipper and LQG metric releases include only the `LQGDimension` support modules required by their proofs; they do not publish the separate LQG-dimension project.
+This is a selected source snapshot from a private development repository. It includes the released proof entrypoints and their transitive source dependencies. Development history, worker conversations, scratch files, build caches, and unrelated projects are excluded. The selected small-parameter LQG-dimension theorem, its explicit input assumptions, and its GFF-existence witness are also documented above. Only the named result closures are included; unrelated development files are excluded.
 
 Some shared dependency modules contain auxiliary results or statement definitions. The publication claims are exactly the named proof declarations in the table's READMEs; a definition of a proposition alone is not a proof.
 
