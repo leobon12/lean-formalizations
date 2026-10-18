@@ -1,14 +1,16 @@
 # Verification record
 
-The release contains 6,322 byte-preserved Lean modules from three selected source snapshots:
+The release contains 6,429 byte-preserved Lean modules from five selected source snapshots:
 
 | Source commit | Included modules | Scope |
 | --- | ---: | --- |
 | `14bd3363a07c0197d324bacabbff072e3f9a00c5` | 1,007 | 319 BouRabeeGwynne, 31 ReflectedWalk, 657 ReflectedGMS |
 | `8c270ff3965b979e2bf27828a2f28c746eabd19b` | 2,866 | 2,846 QuantumZipper and 20 required LQGDimension support modules |
 | `32156ac07851dc378a0a00e3140f15646ffe38bf` | 2,449 | 2,362 LQGMetric and 87 additional LQGDimension support modules |
+| `ec3738f9c8df2e584e35ad8ef816b581cf217160` | 72 | 64 MeshOnly and 8 additional LQGDimension support modules |
+| `5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab` | 35 | 34 MeshRates and 1 additional BouRabeeGwynne module |
 
-`source-manifest.json` records the 19 selected entry modules, their exact transitive local import closure,
+`source-manifest.json` records the 30 selected entry modules, their exact transitive local import closure,
 original relative paths, direct imports, source commits and SHA-256 hashes. The original release's 1,007
 modules and the 2,866 Quantum Zipper release modules are unchanged. New module rows have an explicit `source_commit`; older rows inherit the manifest's
 original `source_commit`. Only selected proof dependencies are included, without private development history,
@@ -102,7 +104,7 @@ lake exe cache get
 python3 scripts/verify.py
 ```
 
-The default verifier compiles all 6,322 project modules from source in dependency order with at most two
+The default verifier compiles all 6,429 project modules from source in dependency order with at most two
 Lean processes, then compiles `Certificate.lean`. It stops on compilation failure. Logs and a
 machine-readable result are written under the ignored `.lake/verification/`. This mode does not use
 pre-existing project oleans. `python3 scripts/verify.py --cached` explicitly permits reuse of project
@@ -125,3 +127,25 @@ establish source-paper correspondence.
 The small-parameter LQG-dimension [focused certificate](results/small-gamma-dimension/Check.lean) was compiled afresh against 115 source-matched cached modules. It checked the exact named theorem types, the GFF-existence witness, absence of `sorry`, and 4,418 project declarations with 69,331 reachable declarations. Only `propext`, `Classical.choice`, and `Quot.sound` occurred. The [verification record](results/small-gamma-dimension/verification.json) gives the source commit, package pins, and output. This is an incremental check, not a fresh dependency rebuild.
 
 The [mesh-only](results/mesh-only/) and [reflected singular-set](results/reflected-gms/) guides expose their exact proof entrypoints and clarify manuscript scope. The source scan covers the complete release manifest, including the newly included MeshOnly modules.
+
+## Mesh-only rates (18 October 2026)
+
+The new entrypoints are `MeshRates.Theorem11RateProof` and `MeshRates.Corollary12.Full`, with five
+further modules holding named lemma-level results: `Section1Dirichlet`, `PathToBoundary`,
+`Section2Comparison`, `Section4Clock` and `Section4Crossing`. Their import closure has 416 local
+modules: 34 MeshRates, 318 BouRabeeGwynne and 64 MeshOnly. Of these, 381 were already released and
+are byte-identical, so the export adds 35 files without changing any previously released proof
+module. All new files are copied byte-for-byte from source commit
+`5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab`. Lean and all dependency revisions match the existing release.
+
+The upstream project check at that commit passed on 18 October 2026: a build of the `MeshRates`
+library followed by its audit file. All 15 axiom reports listed only `propext`, `Classical.choice` and `Quot.sound`.
+
+The public source scan passed for all 6,429 files. The 416-module closure was then **compiled afresh
+from the exported files**, without cached project modules, and the
+[focused certificate](results/mesh-only/Check.lean) passed. It checked the exact headline types,
+absence of `sorry`, and the axioms of both headline results, the 13 named lemma-level results and the
+earlier qualitative theorem. It then audited **4,086 project declarations and 75,076 reachable
+declarations**, with only `propext`, `Classical.choice` and `Quot.sound`. See the
+[machine-readable record](results/mesh-only/verification.json). This is a focused check of the new
+closure; the public workflow performs the fresh rebuild of all 6,429 modules and the combined certificate.

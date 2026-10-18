@@ -17,7 +17,7 @@ Each result below has a short guide to its mathematical scope, the exact Lean st
 | Paper | Accompanying Lean scope | Read the source |
 | --- | --- | --- |
 | Small-parameter LQG dimension | Theorem 1.1 and Proposition 1.2, with explicit LFPP literature inputs; GFF existence witness | [README](results/small-gamma-dimension/) |
-| Mesh-only convergence for orthogonal tilings | Qualitative Dirichlet convergence; the sharper rate and walk corollary are not included | [README](results/mesh-only/) |
+| Mesh-only convergence and sharper rates on orthogonal tilings | Theorem 1.1 with the rate ε^(4/(d+4)) and Corollary 1.2 (random-walk consequences without alternatives I–III), with documented statement conventions | [README](results/mesh-only/) |
 | Reflected random walks with spatial singularities | Harmonic coordinates and invariance principle in the earlier geometric-topology revision; see the revision correspondence | [README](results/reflected-gms/) |
 
 ## Verify the proofs

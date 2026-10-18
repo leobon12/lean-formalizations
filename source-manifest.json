@@ -23,7 +23,14 @@
     "MeshOnly.MeshOnlyConvergence",
     "LQGDimension.Assembly.Theorem11",
     "LQGDimension.Existence.Assembly",
-    "LQGDimension.Sanity"
+    "LQGDimension.Sanity",
+    "MeshRates.Theorem11RateProof",
+    "MeshRates.Corollary12.Full",
+    "MeshRates.Section1Dirichlet",
+    "MeshRates.PathToBoundary",
+    "MeshRates.Section2Comparison",
+    "MeshRates.Section4Clock",
+    "MeshRates.Section4Crossing"
   ],
   "modules": {
     "BouRabeeGwynne.AbsorbingExcursionKernel": {
@@ -103691,6 +103698,553 @@
       ],
       "bytes": 3261,
       "source_commit": "ec3738f9c8df2e584e35ad8ef816b581cf217160"
+    },
+    "BouRabeeGwynne.AffineDiscreteHarmonic": {
+      "path": "BouRabeeGwynne/AffineDiscreteHarmonic.lean",
+      "source_path": "formalizations/2405_11673_main/BouRabeeGwynne/AffineDiscreteHarmonic.lean",
+      "source_commit": "5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab",
+      "sha256": "8a296ac35670ea3e85906f57aa5e536ab46e97840666e2f220c22b7a92e7c26f",
+      "imports": [
+        "BouRabeeGwynne.PolytopeGaussGreen"
+      ],
+      "local_imports": [
+        "BouRabeeGwynne.PolytopeGaussGreen"
+      ],
+      "bytes": 3307
+    },
+    "MeshRates.Corollary12.AmbientExitPartitions": {
+      "path": "MeshRates/Corollary12/AmbientExitPartitions.lean",
+      "source_path": "formalizations/mesh_only_rates/MeshRates/Corollary12/AmbientExitPartitions.lean",
+      "source_commit": "5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab",
+      "sha256": "753586b82a0c22285b40bf506bdf8e9c1a9085d847a5f11ad28a812a252dd45d",
+      "imports": [
+        "BouRabeeGwynne.AmbientExitPartitions",
+        "MeshRates.Corollary12.BackwardExitPartitions"
+      ],
+      "local_imports": [
+        "BouRabeeGwynne.AmbientExitPartitions",
+        "MeshRates.Corollary12.BackwardExitPartitions"
+      ],
+      "bytes": 5891
+    },
+    "MeshRates.Corollary12.AssumptionD": {
+      "path": "MeshRates/Corollary12/AssumptionD.lean",
+      "source_path": "formalizations/mesh_only_rates/MeshRates/Corollary12/AssumptionD.lean",
+      "source_commit": "5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab",
+      "sha256": "a4a79d9f8b960f12f9dc7bd16ed1a9b7cd9ed3981d0565f28f178f1070e547b7",
+      "imports": [
+        "MeshRates.Statement.Corollary12",
+        "MeshRates.Theorem11Qualitative",
+        "BouRabeeGwynne.ApproximationGeometry"
+      ],
+      "local_imports": [
+        "MeshRates.Statement.Corollary12",
+        "MeshRates.Theorem11Qualitative",
+        "BouRabeeGwynne.ApproximationGeometry"
+      ],
+      "bytes": 1481
+    },
+    "MeshRates.Corollary12.BackwardExitPartitions": {
+      "path": "MeshRates/Corollary12/BackwardExitPartitions.lean",
+      "source_path": "formalizations/mesh_only_rates/MeshRates/Corollary12/BackwardExitPartitions.lean",
+      "source_commit": "5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab",
+      "sha256": "3810c35d0df332e8282fdf5b94d0496d283d9be9676062822f68a0e8567fc9b8",
+      "imports": [
+        "BouRabeeGwynne.BackwardExitPartitions",
+        "MeshRates.Corollary12.Section4BallExitCouplingInputs"
+      ],
+      "local_imports": [
+        "BouRabeeGwynne.BackwardExitPartitions",
+        "MeshRates.Corollary12.Section4BallExitCouplingInputs"
+      ],
+      "bytes": 9159
+    },
+    "MeshRates.Corollary12.BallDirichlet": {
+      "path": "MeshRates/Corollary12/BallDirichlet.lean",
+      "source_path": "formalizations/mesh_only_rates/MeshRates/Corollary12/BallDirichlet.lean",
+      "source_commit": "5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab",
+      "sha256": "24f5aa64077622cc3f51095548039d55d05f6f3974395d5d07d40ea767bc5f2d",
+      "imports": [
+        "MeshOnly.MeshOnlyConvergence",
+        "BouRabeeGwynne.TheoremBStatement"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyConvergence",
+        "BouRabeeGwynne.TheoremBStatement"
+      ],
+      "bytes": 1432
+    },
+    "MeshRates.Corollary12.CouplingPartitions": {
+      "path": "MeshRates/Corollary12/CouplingPartitions.lean",
+      "source_path": "formalizations/mesh_only_rates/MeshRates/Corollary12/CouplingPartitions.lean",
+      "source_commit": "5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab",
+      "sha256": "2488c40df171d1bb63ac0d5e029733aee558ee2bab1503e9fdb0c5e463e0b34f",
+      "imports": [
+        "BouRabeeGwynne.CouplingPartitions",
+        "MeshRates.Corollary12.AmbientExitPartitions"
+      ],
+      "local_imports": [
+        "BouRabeeGwynne.CouplingPartitions",
+        "MeshRates.Corollary12.AmbientExitPartitions"
+      ],
+      "bytes": 7332
+    },
+    "MeshRates.Corollary12.Full": {
+      "path": "MeshRates/Corollary12/Full.lean",
+      "source_path": "formalizations/mesh_only_rates/MeshRates/Corollary12/Full.lean",
+      "source_commit": "5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab",
+      "sha256": "52aa69ade630a8e07da447d46e7be94f2c372bae82e316b354ab31a4a7db2fac",
+      "imports": [
+        "MeshRates.Corollary12.AssumptionD",
+        "MeshRates.Corollary12.HarmonicMeasure",
+        "MeshRates.Corollary12.StoppedWalk"
+      ],
+      "local_imports": [
+        "MeshRates.Corollary12.AssumptionD",
+        "MeshRates.Corollary12.HarmonicMeasure",
+        "MeshRates.Corollary12.StoppedWalk"
+      ],
+      "bytes": 664
+    },
+    "MeshRates.Corollary12.HarmonicMeasure": {
+      "path": "MeshRates/Corollary12/HarmonicMeasure.lean",
+      "source_path": "formalizations/mesh_only_rates/MeshRates/Corollary12/HarmonicMeasure.lean",
+      "source_commit": "5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab",
+      "sha256": "3ebce7139c069db461123f7286e961fa39d469701241366e6644c4b280d3ce8d",
+      "imports": [
+        "MeshRates.Corollary12.Section4BallExitConvergence",
+        "MeshRates.Corollary12.BallDirichlet",
+        "MeshRates.Corollary12.LevyProkhorovCompact",
+        "MeshRates.Statement.Corollary12"
+      ],
+      "local_imports": [
+        "MeshRates.Corollary12.Section4BallExitConvergence",
+        "MeshRates.Corollary12.BallDirichlet",
+        "MeshRates.Corollary12.LevyProkhorovCompact",
+        "MeshRates.Statement.Corollary12"
+      ],
+      "bytes": 3728
+    },
+    "MeshRates.Corollary12.LevyProkhorovCompact": {
+      "path": "MeshRates/Corollary12/LevyProkhorovCompact.lean",
+      "source_path": "formalizations/mesh_only_rates/MeshRates/Corollary12/LevyProkhorovCompact.lean",
+      "source_commit": "5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab",
+      "sha256": "df48e3a6311563bef6096cf1b9789fdc1d75c39cb63d3709931863d9849d127f",
+      "imports": [
+        "BouRabeeGwynne.Section4UniformExitTopology",
+        "Mathlib.MeasureTheory.Measure.Prokhorov"
+      ],
+      "local_imports": [
+        "BouRabeeGwynne.Section4UniformExitTopology"
+      ],
+      "bytes": 2311
+    },
+    "MeshRates.Corollary12.Section4BallExitConvergence": {
+      "path": "MeshRates/Corollary12/Section4BallExitConvergence.lean",
+      "source_path": "formalizations/mesh_only_rates/MeshRates/Corollary12/Section4BallExitConvergence.lean",
+      "source_commit": "5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab",
+      "sha256": "6528b15e847e108f34d9b42ed47ad590c183032f69a7c5285ab6dc5f496e0b84",
+      "imports": [
+        "BouRabeeGwynne.Section4BallExitConvergence",
+        "MeshRates.Corollary12.Section4BallHarmonicMeasure"
+      ],
+      "local_imports": [
+        "BouRabeeGwynne.Section4BallExitConvergence",
+        "MeshRates.Corollary12.Section4BallHarmonicMeasure"
+      ],
+      "bytes": 4255
+    },
+    "MeshRates.Corollary12.Section4BallExitCouplingInputs": {
+      "path": "MeshRates/Corollary12/Section4BallExitCouplingInputs.lean",
+      "source_path": "formalizations/mesh_only_rates/MeshRates/Corollary12/Section4BallExitCouplingInputs.lean",
+      "source_commit": "5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab",
+      "sha256": "69bbff299e45ffc927c360684c510f8f393855ef4cc1cd4430f13b914815188d",
+      "imports": [
+        "BouRabeeGwynne.Section4BallExitCouplingInputs",
+        "MeshRates.Corollary12.Section4BallExitLevyProkhorov"
+      ],
+      "local_imports": [
+        "BouRabeeGwynne.Section4BallExitCouplingInputs",
+        "MeshRates.Corollary12.Section4BallExitLevyProkhorov"
+      ],
+      "bytes": 7384
+    },
+    "MeshRates.Corollary12.Section4BallExitLevyProkhorov": {
+      "path": "MeshRates/Corollary12/Section4BallExitLevyProkhorov.lean",
+      "source_path": "formalizations/mesh_only_rates/MeshRates/Corollary12/Section4BallExitLevyProkhorov.lean",
+      "source_commit": "5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab",
+      "sha256": "3a5c2fe9b595332bf6b37ef57d0609facc59ed2a6516c8300163ff04c2b2ab93",
+      "imports": [
+        "BouRabeeGwynne.Section4BallExitLevyProkhorov",
+        "MeshRates.Corollary12.Section4BallExitConvergence"
+      ],
+      "local_imports": [
+        "BouRabeeGwynne.Section4BallExitLevyProkhorov",
+        "MeshRates.Corollary12.Section4BallExitConvergence"
+      ],
+      "bytes": 4306
+    },
+    "MeshRates.Corollary12.Section4BallHarmonicMeasure": {
+      "path": "MeshRates/Corollary12/Section4BallHarmonicMeasure.lean",
+      "source_path": "formalizations/mesh_only_rates/MeshRates/Corollary12/Section4BallHarmonicMeasure.lean",
+      "source_commit": "5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab",
+      "sha256": "70ab42eb17b0b02f01d20f69fe695af6e7e731124014d79a9f301e6bc584a699",
+      "imports": [
+        "BouRabeeGwynne.Section4BallHarmonicMeasure",
+        "MeshRates.Corollary12.BallDirichlet"
+      ],
+      "local_imports": [
+        "BouRabeeGwynne.Section4BallHarmonicMeasure",
+        "MeshRates.Corollary12.BallDirichlet"
+      ],
+      "bytes": 5145
+    },
+    "MeshRates.Corollary12.StoppedWalk": {
+      "path": "MeshRates/Corollary12/StoppedWalk.lean",
+      "source_path": "formalizations/mesh_only_rates/MeshRates/Corollary12/StoppedWalk.lean",
+      "source_commit": "5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab",
+      "sha256": "55d8c5193efe3c04213328d37ee916384efb80e6f7a133cb22dc2767a4da833a",
+      "imports": [
+        "BouRabeeGwynne.TheoremAProcessLaws",
+        "MeshRates.Corollary12.UniformStoppedWalkConvergence",
+        "MeshRates.Statement.Corollary12"
+      ],
+      "local_imports": [
+        "BouRabeeGwynne.TheoremAProcessLaws",
+        "MeshRates.Corollary12.UniformStoppedWalkConvergence",
+        "MeshRates.Statement.Corollary12"
+      ],
+      "bytes": 1447
+    },
+    "MeshRates.Corollary12.UniformStoppedWalkConvergence": {
+      "path": "MeshRates/Corollary12/UniformStoppedWalkConvergence.lean",
+      "source_path": "formalizations/mesh_only_rates/MeshRates/Corollary12/UniformStoppedWalkConvergence.lean",
+      "source_commit": "5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab",
+      "sha256": "5d8efe335dbeb9eac80f710d4a674a30067b0b1e7bbc24ee641deb5126e0d212",
+      "imports": [
+        "BouRabeeGwynne.UniformStoppedWalkConvergence",
+        "MeshRates.Corollary12.CouplingPartitions"
+      ],
+      "local_imports": [
+        "BouRabeeGwynne.UniformStoppedWalkConvergence",
+        "MeshRates.Corollary12.CouplingPartitions"
+      ],
+      "bytes": 5311
+    },
+    "MeshRates.ExitTime": {
+      "path": "MeshRates/ExitTime.lean",
+      "source_path": "formalizations/mesh_only_rates/MeshRates/ExitTime.lean",
+      "source_commit": "5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab",
+      "sha256": "b0188c9b7225c5af5a7844a7ac982a0a93198ecfae8fa263bba6f997bca01d36",
+      "imports": [
+        "MeshRates.Section3Heat"
+      ],
+      "local_imports": [
+        "MeshRates.Section3Heat"
+      ],
+      "bytes": 1671
+    },
+    "MeshRates.PathToBoundary": {
+      "path": "MeshRates/PathToBoundary.lean",
+      "source_path": "formalizations/mesh_only_rates/MeshRates/PathToBoundary.lean",
+      "source_commit": "5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab",
+      "sha256": "da9555323a8e7660bbfe9037cef10eb9c04f0cb230ac74d5f24c1a60a0351945",
+      "imports": [
+        "MeshOnly.MeshOnlyLocalization",
+        "BouRabeeGwynne.Section4BallExitLevyProkhorov"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyLocalization",
+        "BouRabeeGwynne.Section4BallExitLevyProkhorov"
+      ],
+      "bytes": 1995
+    },
+    "MeshRates.Section1Dirichlet": {
+      "path": "MeshRates/Section1Dirichlet.lean",
+      "source_path": "formalizations/mesh_only_rates/MeshRates/Section1Dirichlet.lean",
+      "source_commit": "5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab",
+      "sha256": "a31df9e76c9347e0033c1a18f9c47e6eaeba1b4a4e76792bf78344704b72fde0",
+      "imports": [
+        "BouRabeeGwynne.FiniteDirichlet"
+      ],
+      "local_imports": [
+        "BouRabeeGwynne.FiniteDirichlet"
+      ],
+      "bytes": 1428
+    },
+    "MeshRates.Section2Comparison": {
+      "path": "MeshRates/Section2Comparison.lean",
+      "source_path": "formalizations/mesh_only_rates/MeshRates/Section2Comparison.lean",
+      "source_commit": "5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab",
+      "sha256": "ccdf184c0e277d89a17048933df5c4373fc8fad67a5caafdc84490e40b98cfce",
+      "imports": [
+        "MeshOnly.MeshOnlySobolevNorms",
+        "MeshOnly.MeshOnlySobolevJump"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlySobolevNorms",
+        "MeshOnly.MeshOnlySobolevJump"
+      ],
+      "bytes": 5639
+    },
+    "MeshRates.Section2Nash": {
+      "path": "MeshRates/Section2Nash.lean",
+      "source_path": "formalizations/mesh_only_rates/MeshRates/Section2Nash.lean",
+      "source_commit": "5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab",
+      "sha256": "00495d66fe6171101e413403261f783d922e5c948e004e6fed011e9d818ea618",
+      "imports": [
+        "MeshOnly.MeshOnlySobolevSupport"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlySobolevSupport"
+      ],
+      "bytes": 3325
+    },
+    "MeshRates.Section3Heat": {
+      "path": "MeshRates/Section3Heat.lean",
+      "source_path": "formalizations/mesh_only_rates/MeshRates/Section3Heat.lean",
+      "source_commit": "5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab",
+      "sha256": "bb5a3bb3c1b67b9dc378ae7cbf8d78868f8d8560116ce5cd02bc6458fed934c7",
+      "imports": [
+        "MeshOnly.MeshOnlyHeatTiling"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyHeatTiling"
+      ],
+      "bytes": 3203
+    },
+    "MeshRates.Section4Clock": {
+      "path": "MeshRates/Section4Clock.lean",
+      "source_path": "formalizations/mesh_only_rates/MeshRates/Section4Clock.lean",
+      "source_commit": "5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab",
+      "sha256": "ba4abcd0ee715cdd357626133ad56cb5770abc3b1853020cac6cbd9b9985a566",
+      "imports": [
+        "MeshOnly.MeshOnlyPowerWeights",
+        "MeshOnly.MeshOnlyPowerClock",
+        "MeshRates.Section3Heat"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyPowerWeights",
+        "MeshOnly.MeshOnlyPowerClock",
+        "MeshRates.Section3Heat"
+      ],
+      "bytes": 8288
+    },
+    "MeshRates.Section4Crossing": {
+      "path": "MeshRates/Section4Crossing.lean",
+      "source_path": "formalizations/mesh_only_rates/MeshRates/Section4Crossing.lean",
+      "source_commit": "5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab",
+      "sha256": "2cc81cef48b6b07b25f5a17ff29ec2adc2d078882d5aa9dff971db3f35435bbf",
+      "imports": [
+        "MeshOnly.MeshOnlyTilingClock",
+        "MeshRates.Section3Heat",
+        "Mathlib.Analysis.Normed.Module.Ball.Pointwise"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyTilingClock",
+        "MeshRates.Section3Heat"
+      ],
+      "bytes": 4996
+    },
+    "MeshRates.Section5Energy": {
+      "path": "MeshRates/Section5Energy.lean",
+      "source_path": "formalizations/mesh_only_rates/MeshRates/Section5Energy.lean",
+      "source_commit": "5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab",
+      "sha256": "c126b29061651ea72d7920f7eccb46d83a8e8dfd2bcd67ec7ad5cb570f312b4e",
+      "imports": [
+        "MeshOnly.MeshOnlyEnergy",
+        "MeshOnly.MeshOnlySobolevSupport",
+        "MeshOnly.MeshOnlySobolevSupportVolume",
+        "BouRabeeGwynne.Section3CompactCollar"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyEnergy",
+        "MeshOnly.MeshOnlySobolevSupport",
+        "MeshOnly.MeshOnlySobolevSupportVolume",
+        "BouRabeeGwynne.Section3CompactCollar"
+      ],
+      "bytes": 6232
+    },
+    "MeshRates.Section6Calculus": {
+      "path": "MeshRates/Section6Calculus.lean",
+      "source_path": "formalizations/mesh_only_rates/MeshRates/Section6Calculus.lean",
+      "source_commit": "5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab",
+      "sha256": "2114968f17ad63d41fc964488749249cf29e40870e0a935880ab3cd55c00de67",
+      "imports": [
+        "Mathlib.Analysis.Calculus.MeanValue",
+        "Mathlib.Analysis.Calculus.Deriv.Pow",
+        "Mathlib.Analysis.Calculus.ContDiff.Operations",
+        "Mathlib.Analysis.InnerProductSpace.PiL2",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Real",
+        "BouRabeeGwynne.PaperObjects"
+      ],
+      "local_imports": [
+        "BouRabeeGwynne.PaperObjects"
+      ],
+      "bytes": 4973
+    },
+    "MeshRates.Section6ExitBound": {
+      "path": "MeshRates/Section6ExitBound.lean",
+      "source_path": "formalizations/mesh_only_rates/MeshRates/Section6ExitBound.lean",
+      "source_commit": "5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab",
+      "sha256": "fc17d54d479384e9969ba03fd7b1f58d8c5fbf73916f3ffa121fdadb12546f8a",
+      "imports": [
+        "MeshRates.ExitTime",
+        "MeshRates.Section2Nash",
+        "Mathlib.Analysis.SpecialFunctions.ImproperIntegrals",
+        "Mathlib.MeasureTheory.Integral.ExpDecay",
+        "Mathlib.Analysis.Calculus.Deriv.MeanValue"
+      ],
+      "local_imports": [
+        "MeshRates.ExitTime",
+        "MeshRates.Section2Nash"
+      ],
+      "bytes": 17109
+    },
+    "MeshRates.Section6ExitLaw": {
+      "path": "MeshRates/Section6ExitLaw.lean",
+      "source_path": "formalizations/mesh_only_rates/MeshRates/Section6ExitLaw.lean",
+      "source_commit": "5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab",
+      "sha256": "9e1dd603c7ba334680c3154b361d62fb92394e8dfe349fb7afc22362ffa7b6d0",
+      "imports": [
+        "BouRabeeGwynne.DiscreteHarmonicMeasure"
+      ],
+      "local_imports": [
+        "BouRabeeGwynne.DiscreteHarmonicMeasure"
+      ],
+      "bytes": 3050
+    },
+    "MeshRates.Section6OneSided": {
+      "path": "MeshRates/Section6OneSided.lean",
+      "source_path": "formalizations/mesh_only_rates/MeshRates/Section6OneSided.lean",
+      "source_commit": "5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab",
+      "sha256": "2965195d42f5f8d9cae23ef3e6121a5f622555344b9ff48260e53aada8bcb96a",
+      "imports": [
+        "MeshRates.Section6ExitLaw",
+        "MeshRates.Section6Calculus",
+        "MeshRates.Section3Heat",
+        "MeshOnly.MeshOnlyPowerClock",
+        "BouRabeeGwynne.Section3Accessibility",
+        "BouRabeeGwynne.AffineDiscreteHarmonic"
+      ],
+      "local_imports": [
+        "MeshRates.Section6ExitLaw",
+        "MeshRates.Section6Calculus",
+        "MeshRates.Section3Heat",
+        "MeshOnly.MeshOnlyPowerClock",
+        "BouRabeeGwynne.Section3Accessibility",
+        "BouRabeeGwynne.AffineDiscreteHarmonic"
+      ],
+      "bytes": 10434
+    },
+    "MeshRates.Section6Torsion": {
+      "path": "MeshRates/Section6Torsion.lean",
+      "source_path": "formalizations/mesh_only_rates/MeshRates/Section6Torsion.lean",
+      "source_commit": "5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab",
+      "sha256": "106dc4cd97c4bd2c9a812368f616500f26f73825ced418285fb8a7251cdbc26e",
+      "imports": [
+        "MeshRates.ExitTime"
+      ],
+      "local_imports": [
+        "MeshRates.ExitTime"
+      ],
+      "bytes": 6371
+    },
+    "MeshRates.Statement.Corollary12": {
+      "path": "MeshRates/Statement/Corollary12.lean",
+      "source_path": "formalizations/mesh_only_rates/MeshRates/Statement/Corollary12.lean",
+      "source_commit": "5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab",
+      "sha256": "94d75ad6ea4ab1d07660d35b9cc8be5c91f6acfdaf4ac2ebf812fc602814b488",
+      "imports": [
+        "BouRabeeGwynne.TheoremAStatement",
+        "BouRabeeGwynne.TheoremBStatement",
+        "BouRabeeGwynne.Section4BallExitLevyProkhorov"
+      ],
+      "local_imports": [
+        "BouRabeeGwynne.TheoremAStatement",
+        "BouRabeeGwynne.TheoremBStatement",
+        "BouRabeeGwynne.Section4BallExitLevyProkhorov"
+      ],
+      "bytes": 5998
+    },
+    "MeshRates.Statement.Theorem11Rate": {
+      "path": "MeshRates/Statement/Theorem11Rate.lean",
+      "source_path": "formalizations/mesh_only_rates/MeshRates/Statement/Theorem11Rate.lean",
+      "source_commit": "5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab",
+      "sha256": "78fd11a0bb504d845e333e73d8e109aa8e97ccab47d4c76f05b28801ce3acb1c",
+      "imports": [
+        "MeshOnly.MeshOnlyStatement"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyStatement"
+      ],
+      "bytes": 3953
+    },
+    "MeshRates.Theorem11Qualitative": {
+      "path": "MeshRates/Theorem11Qualitative.lean",
+      "source_path": "formalizations/mesh_only_rates/MeshRates/Theorem11Qualitative.lean",
+      "source_commit": "5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab",
+      "sha256": "8c34ba9bf2c762e975762b1454152a060e4147212764de8c8260a1aef100a3f8",
+      "imports": [
+        "MeshRates.Statement.Theorem11Rate",
+        "MeshOnly.MeshOnlyConvergence"
+      ],
+      "local_imports": [
+        "MeshRates.Statement.Theorem11Rate",
+        "MeshOnly.MeshOnlyConvergence"
+      ],
+      "bytes": 709
+    },
+    "MeshRates.Theorem11RateAux": {
+      "path": "MeshRates/Theorem11RateAux.lean",
+      "source_path": "formalizations/mesh_only_rates/MeshRates/Theorem11RateAux.lean",
+      "source_commit": "5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab",
+      "sha256": "54cbc115f538eae0dd8eef1ff4183b1a451f2ec682af08384ebfdd6f5b4d0ec7",
+      "imports": [
+        "MeshRates.Section6OneSided",
+        "MeshRates.Section6Torsion",
+        "MeshRates.Section6ExitBound"
+      ],
+      "local_imports": [
+        "MeshRates.Section6OneSided",
+        "MeshRates.Section6Torsion",
+        "MeshRates.Section6ExitBound"
+      ],
+      "bytes": 11265
+    },
+    "MeshRates.Theorem11RateProof": {
+      "path": "MeshRates/Theorem11RateProof.lean",
+      "source_path": "formalizations/mesh_only_rates/MeshRates/Theorem11RateProof.lean",
+      "source_commit": "5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab",
+      "sha256": "8e22510dd42eea63c11cb224d19e6de7d64bce87f3dd31fe4553f0d185986da1",
+      "imports": [
+        "MeshRates.Theorem11RateAux",
+        "MeshRates.Section5Energy",
+        "MeshRates.WellPosed",
+        "MeshRates.Theorem11Qualitative",
+        "MeshRates.Statement.Theorem11Rate"
+      ],
+      "local_imports": [
+        "MeshRates.Theorem11RateAux",
+        "MeshRates.Section5Energy",
+        "MeshRates.WellPosed",
+        "MeshRates.Theorem11Qualitative",
+        "MeshRates.Statement.Theorem11Rate"
+      ],
+      "bytes": 8892
+    },
+    "MeshRates.WellPosed": {
+      "path": "MeshRates/WellPosed.lean",
+      "source_path": "formalizations/mesh_only_rates/MeshRates/WellPosed.lean",
+      "source_commit": "5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab",
+      "sha256": "14a4a3214704d065890b4d4c4dd4f3c8e119b0aeb38b21f7b51e25f210af0fa9",
+      "imports": [
+        "MeshOnly.MeshOnlyLocalization"
+      ],
+      "local_imports": [
+        "MeshOnly.MeshOnlyLocalization"
+      ],
+      "bytes": 2623
     }
   }
 }

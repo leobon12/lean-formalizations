@@ -21,6 +21,13 @@ import QuantumZipper.Proofs.NonVacuityAddendum
 import QuantumZipper.Proofs.NonVacuityFinal
 import QuantumZipper.Proofs.Section5.Prop16LitCert
 import LQGMetric.Assembly.MainFinal
+import MeshRates.Theorem11RateProof
+import MeshRates.Corollary12.Full
+import MeshRates.Section1Dirichlet
+import MeshRates.PathToBoundary
+import MeshRates.Section2Comparison
+import MeshRates.Section4Clock
+import MeshRates.Section4Crossing
 import Mathlib.Util.AssertNoSorry
 
 /-! Verification of the selected public results and every declaration in their included modules.
@@ -176,7 +183,7 @@ run_cmd do
     let m := moduleNames[idx.toNat]!
     if (`MeshOnly).isPrefixOf m || (`BouRabeeGwynne).isPrefixOf m || (`ReflectedWalk).isPrefixOf m ||
         (`ReflectedGMS).isPrefixOf m || (`QuantumZipper).isPrefixOf m ||
-        (`LQGDimension).isPrefixOf m || (`LQGMetric).isPrefixOf m then
+        (`LQGDimension).isPrefixOf m || (`LQGMetric).isPrefixOf m || (`MeshRates).isPrefixOf m then
       roots := roots.push n
   if roots.isEmpty then throwError "No included declarations found"
   let mut pending := roots
@@ -202,6 +209,12 @@ run_cmd do
 #check (BouRabeeGwynne.meshOnly_theorem11_proved : BouRabeeGwynne.MeshOnlyTheorem11Statement)
 assert_no_sorry BouRabeeGwynne.meshOnly_theorem11_proved
 #print axioms BouRabeeGwynne.meshOnly_theorem11_proved
+#check (BouRabeeGwynne.MeshRates.theorem11_full : BouRabeeGwynne.MeshRates.MeshRatesTheorem11Statement)
+#check (BouRabeeGwynne.MeshRates.corollary12_full : BouRabeeGwynne.MeshRates.MeshRatesCorollary12Statement)
+assert_no_sorry BouRabeeGwynne.MeshRates.theorem11_full
+assert_no_sorry BouRabeeGwynne.MeshRates.corollary12_full
+#print axioms BouRabeeGwynne.MeshRates.theorem11_full
+#print axioms BouRabeeGwynne.MeshRates.corollary12_full
 assert_no_sorry ReflectedGMS.GeomTop.geomHarmonicCoordinateMainTheorem
 assert_no_sorry ReflectedGMS.GeomTop.geomReflectedInvarianceMainTheorem
 #print axioms ReflectedGMS.GeomTop.geomHarmonicCoordinateMainTheorem

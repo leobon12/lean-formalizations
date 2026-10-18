@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "mode": "fresh focused build of the 416-module import closure from the exported public files (no cached project modules), then Check.lean",
+  "source_commit": "5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab",
+  "modules": 416,
+  "new_modules": 35,
+  "existing_identical_modules": 381,
+  "conflicts": 0,
+  "lean_version": "v4.34.0-rc2",
+  "mathlib_commit": "a4c8ef0a69f52ec80525d5086bb3542f4660faaf",
+  "check_sha256": "3f53ca45b78f74d97b1ff28dc2aac02a7eb9099262286979f1bbf2aeaae15949",
+  "proofs": [
+    "BouRabeeGwynne.MeshRates.theorem11_full",
+    "BouRabeeGwynne.MeshRates.corollary12_full",
+    "BouRabeeGwynne.meshOnly_theorem11_proved"
+  ],
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "output": "BouRabeeGwynne.meshOnly_theorem11_proved : BouRabeeGwynne.MeshOnlyTheorem11Statement\n'BouRabeeGwynne.meshOnly_theorem11_proved' depends on axioms: [propext, Classical.choice, Quot.sound]\ntheorem11_full : MeshRatesTheorem11Statement\ntheorem11_qualitative : MeshRatesTheorem11QualitativeStatement\ntheorem11_rate : MeshRatesTheorem11RateStatement\ncorollary12_full : MeshRatesCorollary12Statement\ncorollary12_assumptionD : MeshRatesCorollary12AssumptionDStatement\ncorollary12_harmonicMeasure : MeshRatesCorollary12HarmonicMeasureStatement\ncorollary12_stoppedWalk : MeshRatesCorollary12StoppedWalkStatement\n'BouRabeeGwynne.MeshRates.theorem11_full' depends on axioms: [propext, Classical.choice, Quot.sound]\n'BouRabeeGwynne.MeshRates.corollary12_full' depends on axioms: [propext, Classical.choice, Quot.sound]\n'BouRabeeGwynne.MeshRates.lemma8_dirichlet_maximum' depends on axioms: [propext, Classical.choice, Quot.sound]\n'BouRabeeGwynne.MeshRates.mr_p3_pathToBoundary' depends on axioms: [propext, Classical.choice, Quot.sound]\n'BouRabeeGwynne.MeshRates.wellPosed_of_mesh_le' depends on axioms: [propext, Classical.choice, Quot.sound]\n'BouRabeeGwynne.MeshRates.lemma21_nu_le_tileL2_add_energy' depends on axioms: [propext, Classical.choice, Quot.sound]\n'BouRabeeGwynne.MeshRates.lemma22_bvSobolev' depends on axioms: [propext, Classical.choice, Quot.sound]\n'BouRabeeGwynne.MeshRates.prop23_defectiveNash_and_support' depends on axioms: [propext, Classical.choice, Quot.sound]\n'BouRabeeGwynne.MeshRates.prop31_onDiagonal_and_survival' depends on axioms: [propext, Classical.choice, Quot.sound]\n'BouRabeeGwynne.MeshRates.lemma41_localPowerPotential' depends on axioms: [propext, Classical.choice, Quot.sound]\n'BouRabeeGwynne.MeshRates.lemma42_exactClock' depends on axioms: [propext, Classical.choice, Quot.sound]\n'BouRabeeGwynne.MeshRates.prop43_ball_crossing_le' depends on axioms: [propext, Classical.choice, Quot.sound]\n'BouRabeeGwynne.MeshRates.lemma51_energy_and_l2_error' depends on axioms: [propext, Classical.choice, Quot.sound]\n'BouRabeeGwynne.MeshRates.lemma61_expectedExitTime_le' depends on axioms: [propext, Classical.choice, Quot.sound]\n'BouRabeeGwynne.MeshRates.section6_oneSided_estimate' depends on axioms: [propext, Classical.choice, Quot.sound]\nMESH_RATES_AUDIT declarations=4086; reachable=75076; axioms=[Quot.sound, Classical.choice, propext]\n",
+  "project_declarations": 4086,
+  "reachable_declarations": 75076
+}
