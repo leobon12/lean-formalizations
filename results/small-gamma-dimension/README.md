@@ -63,6 +63,14 @@ about γ/d_γ are not required by the Lean dimension implication. This release d
 formal proof of unrelated odd-dimensional cone, SDP, higher-dimensional metric, or supercritical
 conformal-covariance results.
 
+**Update (19 October 2026).** The [higher-dimensional LFPP release](../higher-dim-lfpp/) discharges these
+inputs in separate theorems. `HigherDimLFPP.gff_circle_average_lfpp` proves, for every
+`IsGFFCircleAverage` process, that the LFPP exponent exists for all small ξ and that
+λ(ξ)/ξ^(4/3) → κ₂: this is `theorem11_lambda` without its existence hypothesis.
+`HigherDimLFPP.lqg_dimension_asymptotics` proves (d_γ − 2)/γ^(4/3) → 2^(−1/3)κ₂ for the LQG dimension
+`LQGMetric.dGamma`, and `HigherDimLFPP.kappa_two_eq` gives κ₂ = a*/log 16. The statements above are
+unchanged.
+
 ## Verification
 
 The export adds **8 modules**, with **107 existing public modules reused without changing a

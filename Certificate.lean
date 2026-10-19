@@ -29,6 +29,13 @@ import MeshRates.Section2Comparison
 import MeshRates.Section4Clock
 import MeshRates.Section4Crossing
 import GaussianLQG.Frozen.MainTheorem
+import HigherDimLFPP.Frozen.MainTheorem
+import HigherDimLFPP.Frozen.DimensionComparison
+import HigherDimLFPP.Frozen.KappaTwo
+import HigherDimLFPP.Frozen.BandVecNormSq
+import HigherDimLFPP.Frozen.FieldExists
+import HigherDimLFPP.Frozen.LQGDimensionAsymptotics
+import HigherDimLFPP.Frozen.GFFCircleAverage
 import Mathlib.Util.AssertNoSorry
 
 /-! Verification of the selected public results and every declaration in their included modules.
@@ -185,7 +192,7 @@ run_cmd do
     if (`MeshOnly).isPrefixOf m || (`BouRabeeGwynne).isPrefixOf m || (`ReflectedWalk).isPrefixOf m ||
         (`ReflectedGMS).isPrefixOf m || (`QuantumZipper).isPrefixOf m ||
         (`LQGDimension).isPrefixOf m || (`LQGMetric).isPrefixOf m || (`MeshRates).isPrefixOf m ||
-        (`GaussianLQG).isPrefixOf m then
+        (`GaussianLQG).isPrefixOf m || (`HigherDimLFPP).isPrefixOf m then
       roots := roots.push n
   if roots.isEmpty then throwError "No included declarations found"
   let mut pending := roots
@@ -317,3 +324,81 @@ end GaussianLQGRelease
 
 assert_no_sorry GaussianLQG.main_theorem
 #print axioms GaussianLQG.main_theorem
+
+/-! ## A small-parameter limit for higher-dimensional LFPP
+
+The frozen main theorem `HigherDimLFPP.theorem11` (Theorem 1.1 of the source paper, in every dimension
+`d ≥ 2`) and the six further frozen theorems of that release. The `example`s restate their types
+verbatim from `HigherDimLFPP/Frozen/`; the result guide documents the correspondence with the paper. -/
+
+section HigherDimLFPPRelease
+open MeasureTheory ProbabilityTheory Filter Topology Set
+
+set_option pp.explicit false in
+set_option pp.universes false in
+#check HigherDimLFPP.theorem11
+
+namespace HigherDimLFPP
+
+example : ∀ d : ℕ, 2 ≤ d →
+    (∀ n : ℕ, A n d ≠ ⊥ ∧ A n d ≠ ⊤) ∧
+    (∀ n r : ℕ, A (n + r) d ≤ A n d + A r d) ∧
+    Tendsto (fun n : ℕ => (A n d).toReal / ((n : ℝ) * Real.log 2)) atTop (𝓝 (kappa d)) ∧
+    0 < kappa d ∧
+    ∀ κ : Rd d → ℝ, IsLFPPKernel κ →
+    ∀ (Ω : Type) [MeasurableSpace Ω] (P : Measure Ω) (W : WN d → Ω → ℝ), IsWhiteNoise P W →
+    ∀ H : ℝ → Rd d → Ω → ℝ, (∀ ε ∈ Ioo (0 : ℝ) 1, IsBandVersion P W κ ε 1 (H ε)) →
+      (∃ ζ₀ > 0, ∀ ζ ∈ Ioo (0 : ℝ) ζ₀, ∃ lam : ℝ, IsLFPPExponent H P ζ lam) ∧
+      ∀ lam : ℝ → ℝ, (∃ ζ₀ > 0, ∀ ζ ∈ Ioo (0 : ℝ) ζ₀, IsLFPPExponent H P ζ (lam ζ)) →
+        Tendsto (fun ζ => lam ζ / ζ ^ (4 / 3 : ℝ)) (𝓝[>] 0) (𝓝 (kappa d)) :=
+  theorem11
+
+example : ∀ d : ℕ, 2 ≤ d →
+    ((d : ℝ) - 1) ^ (2 / 3 : ℝ) * kappa 2 ≤ kappa d ∧ kappa d ≤ ((d : ℝ) - 1) * kappa 2 :=
+  dimension_comparison
+
+example : kappa 2 = LQGDimension.aStar / Real.log 16 :=
+  kappa_two_eq
+
+example : ∀ d : ℕ, 1 ≤ d → ∀ κ : Rd d → ℝ, IsLFPPKernel κ →
+    ∀ a b : ℝ, 0 < a → a < b → ∀ z : Rd d,
+      MemLp (bandKernel κ a b z) 2 volume ∧ ‖bandVec κ a b z‖ ^ 2 = Real.log (b / a) :=
+  bandVec_norm_sq
+
+example : ∀ d : ℕ, 1 ≤ d →
+    (∃ κ : Rd d → ℝ, IsLFPPKernel κ) ∧
+    ∀ κ : Rd d → ℝ, IsLFPPKernel κ →
+      ∃ (Ω : Type) (_ : MeasurableSpace Ω) (P : Measure Ω) (W : WN d → Ω → ℝ)
+        (H : ℝ → Rd d → Ω → ℝ),
+        IsProbabilityMeasure P ∧ IsWhiteNoise P W ∧
+          ∀ ε ∈ Ioo (0 : ℝ) 1, IsBandVersion P W κ ε 1 (H ε) :=
+  field_exists
+
+example : Tendsto (fun γ : ℝ => (LQGMetric.dGamma γ - 2) / γ ^ (4 / 3 : ℝ)) (𝓝[>] 0)
+      (𝓝 (2 ^ (-1 / 3 : ℝ) * kappa 2)) :=
+  lqg_dimension_asymptotics
+
+example : ∀ (Ω : Type) [MeasurableSpace Ω] (P : Measure Ω) (h : ℝ → ℂ → Ω → ℝ),
+      LQGDimension.IsGFFCircleAverage h P →
+      (∃ ξ₀ > 0, ∀ ξ ∈ Ioo (0 : ℝ) ξ₀, ∃ lam : ℝ, LQGDimension.IsLFPPExponent h P ξ lam) ∧
+      ∀ lam : ℝ → ℝ, (∃ ξ₀ > 0, ∀ ξ ∈ Ioo (0 : ℝ) ξ₀, LQGDimension.IsLFPPExponent h P ξ (lam ξ)) →
+        Tendsto (fun ξ => lam ξ / ξ ^ (4 / 3 : ℝ)) (𝓝[>] 0) (𝓝 (kappa 2)) :=
+  gff_circle_average_lfpp
+
+end HigherDimLFPP
+end HigherDimLFPPRelease
+
+assert_no_sorry HigherDimLFPP.theorem11
+assert_no_sorry HigherDimLFPP.dimension_comparison
+assert_no_sorry HigherDimLFPP.kappa_two_eq
+assert_no_sorry HigherDimLFPP.bandVec_norm_sq
+assert_no_sorry HigherDimLFPP.field_exists
+assert_no_sorry HigherDimLFPP.lqg_dimension_asymptotics
+assert_no_sorry HigherDimLFPP.gff_circle_average_lfpp
+#print axioms HigherDimLFPP.theorem11
+#print axioms HigherDimLFPP.dimension_comparison
+#print axioms HigherDimLFPP.kappa_two_eq
+#print axioms HigherDimLFPP.bandVec_norm_sq
+#print axioms HigherDimLFPP.field_exists
+#print axioms HigherDimLFPP.lqg_dimension_asymptotics
+#print axioms HigherDimLFPP.gff_circle_average_lfpp

@@ -1,6 +1,6 @@
 # Verification record
 
-The release contains 6,596 byte-preserved Lean modules from six selected source snapshots:
+The release contains 6,756 byte-preserved Lean modules from seven selected source snapshots:
 
 | Source commit | Included modules | Scope |
 | --- | ---: | --- |
@@ -11,8 +11,9 @@ The release contains 6,596 byte-preserved Lean modules from six selected source 
 | `5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab` | 35 | 34 MeshRates and 1 additional BouRabeeGwynne module |
 | `6eb5a29e8fb37c70823e6966d3cad60e400e874a` | 163 | 163 GaussianLQG |
 | `a69d1d3ff0550bd33713f02ebbd602ca97e98848` | 4 | 4 GaussianLQG (docstring-only updates of Core/MainDefs, Core/Setup, Assembly/Provider, Uniform/InterfacesLFPP) |
+| `ab73b5b7338fe49917894eac509a727ef7a39efc` | 160 | 160 HigherDimLFPP |
 
-`source-manifest.json` records the 31 selected entry modules, their exact transitive local import closure,
+`source-manifest.json` records the 38 selected entry modules, their exact transitive local import closure,
 original relative paths, direct imports, source commits and SHA-256 hashes. The original release's 1,007
 modules and the 2,866 Quantum Zipper release modules are unchanged. New module rows have an explicit `source_commit`; older rows inherit the manifest's
 original `source_commit`. Only selected proof dependencies are included, without private development history,
@@ -106,7 +107,7 @@ lake exe cache get
 python3 scripts/verify.py
 ```
 
-The default verifier compiles all 6,596 project modules from source in dependency order with at most two
+The default verifier compiles all 6,756 project modules from source in dependency order with at most two
 Lean processes, then compiles `Certificate.lean`. It stops on compilation failure. Logs and a
 machine-readable result are written under the ignored `.lake/verification/`. This mode does not use
 pre-existing project oleans. `python3 scripts/verify.py --cached` explicitly permits reuse of project
@@ -192,4 +193,52 @@ lake exe cache get
 lake build GaussianLQG.Frozen.MainTheorem
 lake env lean results/gaussian-lqg-distance/Check.lean
 lake env leanchecker --fresh GaussianLQG.Frozen.MainTheorem
+```
+
+## Higher-dimensional LFPP (19 October 2026)
+
+The new entrypoints are the seven frozen theorem modules `HigherDimLFPP.Frozen.MainTheorem`,
+`DimensionComparison`, `KappaTwo`, `BandVecNormSq`, `FieldExists`, `LQGDimensionAsymptotics` and
+`GFFCircleAverage`. `HigherDimLFPP.theorem11` is Theorem 1.1 of the source paper in every dimension d ≥
+2; the [result guide](results/higher-dim-lfpp/) describes the other six. Their import closure has 3,562
+local modules: 160 HigherDimLFPP, 2,362 LQGMetric, 931 QuantumZipper, 107 LQGDimension and 2 GaussianLQG.
+Of these, 3,402 were already released and are byte-identical, so the export adds 160 files without
+changing any previously released proof module. All new files are copied byte-for-byte from source commit
+`ab73b5b7338fe49917894eac509a727ef7a39efc`, the commit that sealed `theorem11`. Lean and all dependency
+revisions match the existing release.
+
+In the development workspace, `lake env leanchecker --fresh HigherDimLFPP` re-checked, in a fresh
+environment, every declaration in the import closure of the development root module `HigherDimLFPP`,
+Mathlib included. That root module imports the seven frozen theorem modules and is not part of this
+snapshot. The replay **exited with code 0**, with no errors, on 19 October 2026 (08:55–09:08 CEST, 12 min
+34 s), on the Lean sources of commit `ab73b5b73`. This is an upstream verification report, distinct from
+a check of the exported snapshot.
+
+The public source scan passed for all 6,756 files. All 3,562 closure files, and the 2,088 further files
+in the closure of the partial certificate below, were checked byte-for-byte against the sources of the
+development build, whose compiled modules Lake reported up to date. The 160 new modules were then
+**compiled afresh from the exported files**, with the verifier's per-module settings (`lean -j1 -M8192`):
+459 seconds of wall time with one process, at most 18.0 seconds and 5.1 GB per module. The 3,402
+previously released dependencies were reused from that build. The [focused
+certificate](results/higher-dim-lfpp/Check.lean) was compiled afresh against the new modules and
+**passed**. It restates the seven theorems verbatim and checks that the frozen declarations prove them,
+prints the twenty frozen definitions, derives an LFPP exponent for an actual field in every dimension d ≥
+2, and checks the existence of the exponent, the percolation statements that replace Ding–Gwynne–Zhuang's
+duality argument, and both comparisons. It rejects `sorry` and audits **54,822 project declarations and
+138,850 reachable declarations**, with only `propext`, `Classical.choice` and `Quot.sound`. See the
+[machine-readable record](results/higher-dim-lfpp/verification.json). A copy of the combined certificate
+without the imports and checks of the five libraries outside this closure also compiled, including the
+new section and the extended whole-declaration audit (73,922 project declarations, standard axioms only).
+These are incremental checks; the public workflow performs the fresh rebuild of all 6,756 modules and the
+combined certificate.
+
+To reproduce:
+
+```sh
+lake exe cache get
+lake build HigherDimLFPP.Frozen.MainTheorem HigherDimLFPP.Frozen.DimensionComparison \
+  HigherDimLFPP.Frozen.KappaTwo HigherDimLFPP.Frozen.BandVecNormSq HigherDimLFPP.Frozen.FieldExists \
+  HigherDimLFPP.Frozen.LQGDimensionAsymptotics HigherDimLFPP.Frozen.GFFCircleAverage
+lake env lean results/higher-dim-lfpp/Check.lean
+lake env leanchecker --fresh HigherDimLFPP.Frozen.MainTheorem
 ```

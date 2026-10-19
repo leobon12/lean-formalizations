@@ -31,7 +31,14 @@
     "MeshRates.Section2Comparison",
     "MeshRates.Section4Clock",
     "MeshRates.Section4Crossing",
-    "GaussianLQG.Frozen.MainTheorem"
+    "GaussianLQG.Frozen.MainTheorem",
+    "HigherDimLFPP.Frozen.MainTheorem",
+    "HigherDimLFPP.Frozen.DimensionComparison",
+    "HigherDimLFPP.Frozen.KappaTwo",
+    "HigherDimLFPP.Frozen.BandVecNormSq",
+    "HigherDimLFPP.Frozen.FieldExists",
+    "HigherDimLFPP.Frozen.LQGDimensionAsymptotics",
+    "HigherDimLFPP.Frozen.GFFCircleAverage"
   ],
   "modules": {
     "BouRabeeGwynne.AbsorbingExcursionKernel": {
@@ -106940,6 +106947,2516 @@
         "LQGMetric.Papers.DDDF.P18Step4"
       ],
       "bytes": 12379
+    },
+    "HigherDimLFPP.Assembly.Main": {
+      "path": "HigherDimLFPP/Assembly/Main.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Assembly/Main.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "282a7a19243a07770c19fd3dc5a8e52331e211774c63b585e04eb43452be890d",
+      "imports": [
+        "HigherDimLFPP.Assembly.Reductions",
+        "HigherDimLFPP.Upper.LocalMean",
+        "HigherDimLFPP.Lower.Lemma53"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Assembly.Reductions",
+        "HigherDimLFPP.Upper.LocalMean",
+        "HigherDimLFPP.Lower.Lemma53"
+      ],
+      "bytes": 2016
+    },
+    "HigherDimLFPP.Assembly.Reductions": {
+      "path": "HigherDimLFPP/Assembly/Reductions.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Assembly/Reductions.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "93996b3de089f7b38dbeda6309d4ff19e967326aaf163940f1f8053f616f3f25",
+      "imports": [
+        "HigherDimLFPP.Var.Theorem11",
+        "HigherDimLFPP.Exist.Exponent",
+        "HigherDimLFPP.Upper.UpperAssembly",
+        "HigherDimLFPP.Lower.LowerAssembly"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Var.Theorem11",
+        "HigherDimLFPP.Exist.Exponent",
+        "HigherDimLFPP.Upper.UpperAssembly",
+        "HigherDimLFPP.Lower.LowerAssembly"
+      ],
+      "bytes": 3276
+    },
+    "HigherDimLFPP.Core.Defs": {
+      "path": "HigherDimLFPP/Core/Defs.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Core/Defs.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "1d74f1772d15f78acc534189a5003090785dd3afaa97396e9a236da56df17904",
+      "imports": [
+        "HigherDimLFPP.Frozen.Kappa",
+        "HigherDimLFPP.Frozen.IsLFPPKernel",
+        "HigherDimLFPP.Frozen.IsBandVersion",
+        "HigherDimLFPP.Frozen.IsLFPPExponent"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Frozen.Kappa",
+        "HigherDimLFPP.Frozen.IsLFPPKernel",
+        "HigherDimLFPP.Frozen.IsBandVersion",
+        "HigherDimLFPP.Frozen.IsLFPPExponent"
+      ],
+      "bytes": 771
+    },
+    "HigherDimLFPP.Exist.Concentration": {
+      "path": "HigherDimLFPP/Exist/Concentration.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Exist/Concentration.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "32892a34876ab415b1679bcdedafe0877ea0a7408e4deb1c24e405e2e9051651",
+      "imports": [
+        "HigherDimLFPP.Exist.SupBound",
+        "HigherDimLFPP.Exist.Interp",
+        "HigherDimLFPP.Paths.Measurable",
+        "LQGMetric.Gaussian.ConcentrationVector"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Exist.SupBound",
+        "HigherDimLFPP.Exist.Interp",
+        "HigherDimLFPP.Paths.Measurable",
+        "LQGMetric.Gaussian.ConcentrationVector"
+      ],
+      "bytes": 18207
+    },
+    "HigherDimLFPP.Exist.Construction": {
+      "path": "HigherDimLFPP/Exist/Construction.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Exist/Construction.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "26c3724c87db0e77ea4dc9304e8f0ffc2f632fddead5cdcb614ea144a283e3ca",
+      "imports": [
+        "HigherDimLFPP.Exist.Discretize",
+        "HigherDimLFPP.Paths.Compare",
+        "Mathlib.Analysis.Complex.ExponentialBounds"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Exist.Discretize",
+        "HigherDimLFPP.Paths.Compare"
+      ],
+      "bytes": 38893
+    },
+    "HigherDimLFPP.Exist.CrudeBounds": {
+      "path": "HigherDimLFPP/Exist/CrudeBounds.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Exist/CrudeBounds.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "929a5b4f05427d68ae8b7ee535e481fd9aead441278055258e2f7a34f778ed82",
+      "imports": [
+        "HigherDimLFPP.Field.SupBounds",
+        "HigherDimLFPP.Exist.Quantile",
+        "HigherDimLFPP.Exist.Scaling"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Field.SupBounds",
+        "HigherDimLFPP.Exist.Quantile",
+        "HigherDimLFPP.Exist.Scaling"
+      ],
+      "bytes": 35793
+    },
+    "HigherDimLFPP.Exist.Discretize": {
+      "path": "HigherDimLFPP/Exist/Discretize.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Exist/Discretize.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "3a591b400f4093484d8ad2fdfd064d09ff4dd57321fc4c33514a4623bfb93546",
+      "imports": [
+        "HigherDimLFPP.Paths.DistOn",
+        "HigherDimLFPP.Perc.Clusters",
+        "Mathlib.Algebra.Order.Round"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Paths.DistOn",
+        "HigherDimLFPP.Perc.Clusters"
+      ],
+      "bytes": 32762
+    },
+    "HigherDimLFPP.Exist.Exponent": {
+      "path": "HigherDimLFPP/Exist/Exponent.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Exist/Exponent.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "c15b8d4f8662c023e8605dd942a96c7427f3b5fdcf8490ea25c8934dcf73a9f3",
+      "imports": [
+        "HigherDimLFPP.Exist.Prop31"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Exist.Prop31"
+      ],
+      "bytes": 17893
+    },
+    "HigherDimLFPP.Exist.GoodEvent": {
+      "path": "HigherDimLFPP/Exist/GoodEvent.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Exist/GoodEvent.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "adf82e6e00ece95211ca1351fcc75faad6340e470044666f6abb84974ab56fca",
+      "imports": [
+        "HigherDimLFPP.Exist.Sites",
+        "HigherDimLFPP.Exist.Lemma35",
+        "HigherDimLFPP.Field.Exists"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Exist.Sites",
+        "HigherDimLFPP.Exist.Lemma35",
+        "HigherDimLFPP.Field.Exists"
+      ],
+      "bytes": 29865
+    },
+    "HigherDimLFPP.Exist.Interp": {
+      "path": "HigherDimLFPP/Exist/Interp.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Exist/Interp.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "4aac641b026c46bd7e1fced8fa3773c8f953cafaf46c1724d0fd25e8a97b2782",
+      "imports": [
+        "HigherDimLFPP.Paths.Compare",
+        "Mathlib.Topology.PartitionOfUnity"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Paths.Compare"
+      ],
+      "bytes": 9065
+    },
+    "HigherDimLFPP.Exist.Lemma33": {
+      "path": "HigherDimLFPP/Exist/Lemma33.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Exist/Lemma33.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "5293862daef35c12fa41e3dd0a1ea84e40d526cc01c8b3becee7137987ed9a70",
+      "imports": [
+        "HigherDimLFPP.Exist.GoodEvent"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Exist.GoodEvent"
+      ],
+      "bytes": 39339
+    },
+    "HigherDimLFPP.Exist.Lemma35": {
+      "path": "HigherDimLFPP/Exist/Lemma35.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Exist/Lemma35.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "c1fb2ca0206f028f59991946ba28f05d2cb9317840564982fe85185bf89a7836",
+      "imports": [
+        "HigherDimLFPP.Exist.CrudeBounds"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Exist.CrudeBounds"
+      ],
+      "bytes": 19224
+    },
+    "HigherDimLFPP.Exist.Prop31": {
+      "path": "HigherDimLFPP/Exist/Prop31.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Exist/Prop31.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "080e92594a0f451103885b9d95da9344a2f148282bacfb737847946b165347ae",
+      "imports": [
+        "HigherDimLFPP.Exist.Lemma33",
+        "LQGMetric.Papers.DZZ.S5Sub"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Exist.Lemma33",
+        "LQGMetric.Papers.DZZ.S5Sub"
+      ],
+      "bytes": 7916
+    },
+    "HigherDimLFPP.Exist.Quantile": {
+      "path": "HigherDimLFPP/Exist/Quantile.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Exist/Quantile.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "75e25e8e388a6acf1bab7beb5a226e24e255b638b6ba85b74aa18aaae330d4e7",
+      "imports": [
+        "HigherDimLFPP.Exist.Concentration",
+        "LQGMetric.Prob.Quantile"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Exist.Concentration",
+        "LQGMetric.Prob.Quantile"
+      ],
+      "bytes": 20330
+    },
+    "HigherDimLFPP.Exist.Scaling": {
+      "path": "HigherDimLFPP/Exist/Scaling.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Exist/Scaling.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "ba0dfc5401ec0d59c64ee3a7c740ef947978d3b6f50acdecd6df0ca025661bf5",
+      "imports": [
+        "HigherDimLFPP.Field.SymmetryLaw",
+        "HigherDimLFPP.Paths.Measurable"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Field.SymmetryLaw",
+        "HigherDimLFPP.Paths.Measurable"
+      ],
+      "bytes": 13366
+    },
+    "HigherDimLFPP.Exist.Sites": {
+      "path": "HigherDimLFPP/Exist/Sites.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Exist/Sites.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "b4ed17f1e28bf90c5389a1209ff8b4b4270bc7ce235dd917cf4f9ff70949461a",
+      "imports": [
+        "HigherDimLFPP.Exist.Construction",
+        "HigherDimLFPP.Paths.Measurable",
+        "HigherDimLFPP.Field.FiniteRange",
+        "HigherDimLFPP.Field.SymmetryLaw",
+        "LQGMetric.Prob.Quantile"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Exist.Construction",
+        "HigherDimLFPP.Paths.Measurable",
+        "HigherDimLFPP.Field.FiniteRange",
+        "HigherDimLFPP.Field.SymmetryLaw",
+        "LQGMetric.Prob.Quantile"
+      ],
+      "bytes": 27133
+    },
+    "HigherDimLFPP.Exist.SupBound": {
+      "path": "HigherDimLFPP/Exist/SupBound.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Exist/SupBound.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "4269fd504e81e0c36d8c6aa6bb7c4e0a93327098ebd2d6dd84d108e283378aea",
+      "imports": [
+        "HigherDimLFPP.Field.BandFacts",
+        "LQGMetric.Gaussian.SupTailField",
+        "LQGMetric.Gaussian.FerniqueFinite"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Field.BandFacts",
+        "LQGMetric.Gaussian.SupTailField",
+        "LQGMetric.Gaussian.FerniqueFinite"
+      ],
+      "bytes": 11016
+    },
+    "HigherDimLFPP.Field.BandFacts": {
+      "path": "HigherDimLFPP/Field/BandFacts.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Field/BandFacts.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "cdf9d551adbf8ce316d47bfa1ecdbc1b2cc0e1021ad78e221ff3c7b3834e2a48",
+      "imports": [
+        "HigherDimLFPP.Field.Version"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Field.Version"
+      ],
+      "bytes": 8435
+    },
+    "HigherDimLFPP.Field.BandVec": {
+      "path": "HigherDimLFPP/Field/BandVec.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Field/BandVec.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "a2ccbead3dadb10b7f5e62db0d767b35bfc710325d964ea153102d414bba54f2",
+      "imports": [
+        "HigherDimLFPP.Field.Kernel",
+        "Mathlib.MeasureTheory.Function.L2Space",
+        "Mathlib.MeasureTheory.Integral.Prod",
+        "Mathlib.Analysis.SpecialFunctions.Integrals.Basic",
+        "Mathlib.Analysis.SpecialFunctions.ImproperIntegrals"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Field.Kernel"
+      ],
+      "bytes": 18155
+    },
+    "HigherDimLFPP.Field.Bands": {
+      "path": "HigherDimLFPP/Field/Bands.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Field/Bands.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "5e2d60254d6f5757f3ff48209b32ef262e380e37df297d0343bd0add834975ed",
+      "imports": [
+        "HigherDimLFPP.Field.VarBounds"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Field.VarBounds"
+      ],
+      "bytes": 24883
+    },
+    "HigherDimLFPP.Field.BandsGraph": {
+      "path": "HigherDimLFPP/Field/BandsGraph.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Field/BandsGraph.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "d5538c119be9370a2d07560be21c07ebc42200556794e266abe457433343e6f1",
+      "imports": [
+        "HigherDimLFPP.Field.Bands",
+        "HigherDimLFPP.Lower.Frames"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Field.Bands",
+        "HigherDimLFPP.Lower.Frames"
+      ],
+      "bytes": 27610
+    },
+    "HigherDimLFPP.Field.BandsMax": {
+      "path": "HigherDimLFPP/Field/BandsMax.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Field/BandsMax.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "11435a73d33a874c907a0c57f2dc5fb8f69d58e33f2a2201b815de7fda1c0303",
+      "imports": [
+        "HigherDimLFPP.Field.Bands",
+        "HigherDimLFPP.Field.WhiteNoise",
+        "LQGDimension.Gaussian.MaxInequality",
+        "GaussianLQG.Probability.Gaussian"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Field.Bands",
+        "HigherDimLFPP.Field.WhiteNoise",
+        "LQGDimension.Gaussian.MaxInequality",
+        "GaussianLQG.Probability.Gaussian"
+      ],
+      "bytes": 19761
+    },
+    "HigherDimLFPP.Field.BandsSup": {
+      "path": "HigherDimLFPP/Field/BandsSup.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Field/BandsSup.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "c4cea6f5dcd6639c4c4546d1cc74c4584e666911f0b54c922752a9612da9f752",
+      "imports": [
+        "HigherDimLFPP.Field.BandsGraph",
+        "HigherDimLFPP.Field.BandsMax",
+        "HigherDimLFPP.Var.EnergyBall",
+        "HigherDimLFPP.Var.Scaling",
+        "LQGDimension.Gaussian.SudakovFernique"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Field.BandsGraph",
+        "HigherDimLFPP.Field.BandsMax",
+        "HigherDimLFPP.Var.EnergyBall",
+        "HigherDimLFPP.Var.Scaling",
+        "LQGDimension.Gaussian.SudakovFernique"
+      ],
+      "bytes": 45190
+    },
+    "HigherDimLFPP.Field.Exists": {
+      "path": "HigherDimLFPP/Field/Exists.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Field/Exists.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "9f5cfa862d7b897e7c5338dd3615d18288985339f3f1d05c8489f51c658c27a4",
+      "imports": [
+        "HigherDimLFPP.Field.Version",
+        "Mathlib.Analysis.SpecialFunctions.SmoothTransition"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Field.Version"
+      ],
+      "bytes": 5087
+    },
+    "HigherDimLFPP.Field.ExpectedSupDrift": {
+      "path": "HigherDimLFPP/Field/ExpectedSupDrift.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Field/ExpectedSupDrift.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "f83055861efe16539bbd11d06434a0ceaf591174862079231b8b0dde3fbb6db1",
+      "imports": [
+        "HigherDimLFPP.Field.GraphLimit",
+        "HigherDimLFPP.Var.Scaling",
+        "LQGDimension.LFPP.ExpectedSupLimit",
+        "LQGDimension.Gaussian.Chatterjee"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Field.GraphLimit",
+        "HigherDimLFPP.Var.Scaling",
+        "LQGDimension.LFPP.ExpectedSupLimit",
+        "LQGDimension.Gaussian.Chatterjee"
+      ],
+      "bytes": 41781
+    },
+    "HigherDimLFPP.Field.FiniteRange": {
+      "path": "HigherDimLFPP/Field/FiniteRange.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Field/FiniteRange.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "11af7224735435acb5e47f122275cf1995a6ae6d60b4221fd97b1b961a65683f",
+      "imports": [
+        "HigherDimLFPP.Field.BandFacts"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Field.BandFacts"
+      ],
+      "bytes": 12759
+    },
+    "HigherDimLFPP.Field.GraphLimit": {
+      "path": "HigherDimLFPP/Field/GraphLimit.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Field/GraphLimit.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "38bd20e8a9dc900d7201308f9dff439991d3ea0a3a6e9315818acc81ff830efd",
+      "imports": [
+        "HigherDimLFPP.Field.GraphMeasure",
+        "LQGDimension.LFPP.GraphCov"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Field.GraphMeasure",
+        "LQGDimension.LFPP.GraphCov"
+      ],
+      "bytes": 32390
+    },
+    "HigherDimLFPP.Field.GraphMeasure": {
+      "path": "HigherDimLFPP/Field/GraphMeasure.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Field/GraphMeasure.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "17e03519b6e2f7289cf8548209fc5bff78eedaee0dbb39df1a72249ffe916c61",
+      "imports": [
+        "HigherDimLFPP.Field.LogEnergy",
+        "HigherDimLFPP.Lower.Frames",
+        "HigherDimLFPP.Upper.PolygonMeasure",
+        "HigherDimLFPP.Var.Basic"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Field.LogEnergy",
+        "HigherDimLFPP.Lower.Frames",
+        "HigherDimLFPP.Upper.PolygonMeasure",
+        "HigherDimLFPP.Var.Basic"
+      ],
+      "bytes": 32400
+    },
+    "HigherDimLFPP.Field.Kernel": {
+      "path": "HigherDimLFPP/Field/Kernel.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Field/Kernel.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "1b1f98328adfdb08634dca35df680aff80e426c7e63a750d67818e871dafd391",
+      "imports": [
+        "HigherDimLFPP.Core.Defs",
+        "Mathlib.Analysis.Calculus.ContDiff.RCLike",
+        "Mathlib.Analysis.Calculus.ContDiff.Convolution",
+        "Mathlib.Analysis.InnerProductSpace.Projection.Reflection",
+        "Mathlib.MeasureTheory.Measure.Haar.NormedSpace",
+        "Mathlib.MeasureTheory.Group.Integral"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Core.Defs"
+      ],
+      "bytes": 18298
+    },
+    "HigherDimLFPP.Field.LawTransfer": {
+      "path": "HigherDimLFPP/Field/LawTransfer.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Field/LawTransfer.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "dda7eaa98e55fdfd43eb83bb763d552a80400a6ae56a902407dbd05ecff1f256",
+      "imports": [
+        "HigherDimLFPP.Field.BandFacts",
+        "HigherDimLFPP.Frozen.LfppDistance",
+        "LQGMetric.Field.WhiteNoiseLaw",
+        "Mathlib.MeasureTheory.Constructions.BorelSpace.ContinuousMap"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Field.BandFacts",
+        "HigherDimLFPP.Frozen.LfppDistance",
+        "LQGMetric.Field.WhiteNoiseLaw"
+      ],
+      "bytes": 16181
+    },
+    "HigherDimLFPP.Field.LogCov": {
+      "path": "HigherDimLFPP/Field/LogCov.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Field/LogCov.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "6459c1c857f49cc5fbdd449b0692cbd3875e5cf45a4a4198d91c0634192729b3",
+      "imports": [
+        "HigherDimLFPP.Field.Measures",
+        "HigherDimLFPP.Field.Exists",
+        "Mathlib.Analysis.SpecialFunctions.FrullaniIntegral"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Field.Measures",
+        "HigherDimLFPP.Field.Exists"
+      ],
+      "bytes": 30106
+    },
+    "HigherDimLFPP.Field.LogEnergy": {
+      "path": "HigherDimLFPP/Field/LogEnergy.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Field/LogEnergy.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "f997c3b6d7e35b428b23421de6e1ca970e1307c4735c1adda02ec1f5c42c9463",
+      "imports": [
+        "HigherDimLFPP.Field.Transport"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Field.Transport"
+      ],
+      "bytes": 11570
+    },
+    "HigherDimLFPP.Field.Measures": {
+      "path": "HigherDimLFPP/Field/Measures.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Field/Measures.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "1b53c267c42446b9aa150fc2e6306242f6272352fa8daaefcaf17861b2508944",
+      "imports": [
+        "HigherDimLFPP.Field.BandVec",
+        "LQGDimension.Blueprint.Gaussian"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Field.BandVec",
+        "LQGDimension.Blueprint.Gaussian"
+      ],
+      "bytes": 54140
+    },
+    "HigherDimLFPP.Field.OscBlock": {
+      "path": "HigherDimLFPP/Field/OscBlock.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Field/OscBlock.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "545780987f2e98b3d2cf93231efaa8c1ef32c441ec822f1106902f505079d69b",
+      "imports": [
+        "HigherDimLFPP.Field.BandFacts",
+        "HigherDimLFPP.Upper.CutTree",
+        "LQGMetric.Gaussian.SupTailField",
+        "LQGMetric.Gaussian.FerniqueFinite"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Field.BandFacts",
+        "HigherDimLFPP.Upper.CutTree",
+        "LQGMetric.Gaussian.SupTailField",
+        "LQGMetric.Gaussian.FerniqueFinite"
+      ],
+      "bytes": 22407
+    },
+    "HigherDimLFPP.Field.Oscillation": {
+      "path": "HigherDimLFPP/Field/Oscillation.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Field/Oscillation.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "3c637e279ac7d501042c4cc4635d2c4f19f94a524b4a82e03a4feac59c18e27c",
+      "imports": [
+        "HigherDimLFPP.Field.OscBlock",
+        "HigherDimLFPP.Field.RootAverage"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Field.OscBlock",
+        "HigherDimLFPP.Field.RootAverage"
+      ],
+      "bytes": 16065
+    },
+    "HigherDimLFPP.Field.PolygonLimit": {
+      "path": "HigherDimLFPP/Field/PolygonLimit.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Field/PolygonLimit.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "2ad21e4864e93357936f4503dd7993336cf4b86d3b4ca078e6330a08654c50fc",
+      "imports": [
+        "HigherDimLFPP.Field.QPolygon",
+        "HigherDimLFPP.Field.ExpectedSupDrift"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Field.QPolygon",
+        "HigherDimLFPP.Field.ExpectedSupDrift"
+      ],
+      "bytes": 15893
+    },
+    "HigherDimLFPP.Field.QPolygon": {
+      "path": "HigherDimLFPP/Field/QPolygon.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Field/QPolygon.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "052c09de645904ef42b7410a466778fa114e812e8504541891e2f783c816d2fa",
+      "imports": [
+        "HigherDimLFPP.Field.RampPath"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Field.RampPath"
+      ],
+      "bytes": 36706
+    },
+    "HigherDimLFPP.Field.RampPath": {
+      "path": "HigherDimLFPP/Field/RampPath.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Field/RampPath.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "bc8a649cae29bb4fd3b7b0800e5fc3b9d13aaa768dd535c1dc328511c7da08d1",
+      "imports": [
+        "HigherDimLFPP.Field.GraphMeasure"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Field.GraphMeasure"
+      ],
+      "bytes": 10667
+    },
+    "HigherDimLFPP.Field.RootAverage": {
+      "path": "HigherDimLFPP/Field/RootAverage.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Field/RootAverage.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "cf04d0c86c2f993b76a042211cc084eb832b6f5c503a58bffdb9a289e3225689",
+      "imports": [
+        "HigherDimLFPP.Field.OscBlock",
+        "HigherDimLFPP.Upper.PathTree"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Field.OscBlock",
+        "HigherDimLFPP.Upper.PathTree"
+      ],
+      "bytes": 18593
+    },
+    "HigherDimLFPP.Field.Similarity": {
+      "path": "HigherDimLFPP/Field/Similarity.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Field/Similarity.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "d5cc15708879025ce732206353da74bb9b9b7939f4d902b1d9fd3b1fb73d6ce3",
+      "imports": [
+        "HigherDimLFPP.Field.LogCov"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Field.LogCov"
+      ],
+      "bytes": 13988
+    },
+    "HigherDimLFPP.Field.SupBounds": {
+      "path": "HigherDimLFPP/Field/SupBounds.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Field/SupBounds.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "9f138d606621aa3a1767891377b278db03106df274672d4140c78b592c8610f0",
+      "imports": [
+        "HigherDimLFPP.Field.OscBlock",
+        "LQGDimension.Gaussian.Concentration"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Field.OscBlock",
+        "LQGDimension.Gaussian.Concentration"
+      ],
+      "bytes": 43105
+    },
+    "HigherDimLFPP.Field.Symmetry": {
+      "path": "HigherDimLFPP/Field/Symmetry.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Field/Symmetry.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "be9af40eed06aa72727ee25db0b403d5c964b6cf4bc0c2d73e0f1fd39e4e2577",
+      "imports": [
+        "HigherDimLFPP.Field.BandFacts",
+        "Mathlib.MeasureTheory.Measure.Lebesgue.EqHaar"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Field.BandFacts"
+      ],
+      "bytes": 19274
+    },
+    "HigherDimLFPP.Field.SymmetryLaw": {
+      "path": "HigherDimLFPP/Field/SymmetryLaw.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Field/SymmetryLaw.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "6e33317c63ca184b53ebce4e7a2908474e4f861572c249006f903a04bc8f7e40",
+      "imports": [
+        "HigherDimLFPP.Field.Symmetry",
+        "HigherDimLFPP.Field.LawTransfer"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Field.Symmetry",
+        "HigherDimLFPP.Field.LawTransfer"
+      ],
+      "bytes": 8745
+    },
+    "HigherDimLFPP.Field.Transport": {
+      "path": "HigherDimLFPP/Field/Transport.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Field/Transport.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "095cc2994087c1cca1af5bbd7eb6eefad25042caf58a5955b3b692c5978d7cca",
+      "imports": [
+        "HigherDimLFPP.Field.LogCov"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Field.LogCov"
+      ],
+      "bytes": 42517
+    },
+    "HigherDimLFPP.Field.VarBounds": {
+      "path": "HigherDimLFPP/Field/VarBounds.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Field/VarBounds.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "41ad228b7c9e6c347292a13c638c8b115411ba39fad4487f02adf5aaaeffbfdb",
+      "imports": [
+        "HigherDimLFPP.Field.Transport"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Field.Transport"
+      ],
+      "bytes": 12081
+    },
+    "HigherDimLFPP.Field.Version": {
+      "path": "HigherDimLFPP/Field/Version.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Field/Version.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "38846477322561baf72911172b0f70ee286416152506e796c8fa94168314775b",
+      "imports": [
+        "HigherDimLFPP.Field.BandVec",
+        "HigherDimLFPP.Field.WhiteNoise",
+        "LQGMetric.Field.WhiteNoiseC1Proc"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Field.BandVec",
+        "HigherDimLFPP.Field.WhiteNoise",
+        "LQGMetric.Field.WhiteNoiseC1Proc"
+      ],
+      "bytes": 5047
+    },
+    "HigherDimLFPP.Field.WhiteNoise": {
+      "path": "HigherDimLFPP/Field/WhiteNoise.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Field/WhiteNoise.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "9f30db7efea7683f1e0d9cf8c74f65985b0627172fc2b1db459be865d88d87e9",
+      "imports": [
+        "HigherDimLFPP.Core.Defs",
+        "QuantumZipper.Proofs.GFF.Existence.GaussianSeries",
+        "LQGMetric.Gaussian.PittVector",
+        "LQGDimension.Gaussian.Basic",
+        "Mathlib.Probability.Distributions.Gaussian.IsGaussianProcess.Independence",
+        "Mathlib.MeasureTheory.Function.L2Space",
+        "Mathlib.MeasureTheory.Measure.SeparableMeasure"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Core.Defs",
+        "QuantumZipper.Proofs.GFF.Existence.GaussianSeries",
+        "LQGMetric.Gaussian.PittVector",
+        "LQGDimension.Gaussian.Basic"
+      ],
+      "bytes": 14302
+    },
+    "HigherDimLFPP.Frozen.A": {
+      "path": "HigherDimLFPP/Frozen/A.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Frozen/A.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "a37392ec99e61bfd17f308cb6042d081b54e3f78161076f1850d91d49f89fe15",
+      "imports": [
+        "HigherDimLFPP.Frozen.Rd",
+        "HigherDimLFPP.Frozen.Ag"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Frozen.Rd",
+        "HigherDimLFPP.Frozen.Ag"
+      ],
+      "bytes": 598
+    },
+    "HigherDimLFPP.Frozen.Ag": {
+      "path": "HigherDimLFPP/Frozen/Ag.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Frozen/Ag.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "8d006a6cfbb1e163706cac5f0f398cfa5044ed71f5f1f41078460b1cf378c9aa",
+      "imports": [
+        "HigherDimLFPP.Frozen.Vg",
+        "HigherDimLFPP.Frozen.Energy",
+        "HigherDimLFPP.Frozen.GCov",
+        "LQGDimension.Statement.Defs"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Frozen.Vg",
+        "HigherDimLFPP.Frozen.Energy",
+        "HigherDimLFPP.Frozen.GCov",
+        "LQGDimension.Statement.Defs"
+      ],
+      "bytes": 1170
+    },
+    "HigherDimLFPP.Frozen.BandKernel": {
+      "path": "HigherDimLFPP/Frozen/BandKernel.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Frozen/BandKernel.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "9d4390e81c10cd9af8398e9e9b78e98ba559ead00cbac2bea85f61bc0faae3ef",
+      "imports": [
+        "HigherDimLFPP.Frozen.ScaleKernel",
+        "Mathlib.Algebra.Order.Group.Indicator"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Frozen.ScaleKernel"
+      ],
+      "bytes": 823
+    },
+    "HigherDimLFPP.Frozen.BandVec": {
+      "path": "HigherDimLFPP/Frozen/BandVec.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Frozen/BandVec.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "9fbf23167615725fe83a857478f7c6a601dbb45205b758009758d31d40445f1f",
+      "imports": [
+        "HigherDimLFPP.Frozen.BandKernel",
+        "HigherDimLFPP.Frozen.WN"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Frozen.BandKernel",
+        "HigherDimLFPP.Frozen.WN"
+      ],
+      "bytes": 892
+    },
+    "HigherDimLFPP.Frozen.BandVecNormSq": {
+      "path": "HigherDimLFPP/Frozen/BandVecNormSq.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Frozen/BandVecNormSq.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "ae6f2698b537f6a5493424bef4a917b5c749d2d9f747e30d98f8550cbba62cff",
+      "imports": [
+        "HigherDimLFPP.Frozen.BandVec",
+        "HigherDimLFPP.Frozen.IsLFPPKernel",
+        "Mathlib.Analysis.SpecialFunctions.Log.Basic",
+        "HigherDimLFPP.Field.BandVec"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Frozen.BandVec",
+        "HigherDimLFPP.Frozen.IsLFPPKernel",
+        "HigherDimLFPP.Field.BandVec"
+      ],
+      "bytes": 1354
+    },
+    "HigherDimLFPP.Frozen.Cube": {
+      "path": "HigherDimLFPP/Frozen/Cube.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Frozen/Cube.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "045060b74afb1303d6e19f42dc10adf0d5d5132ee100f602fe827e3796924370",
+      "imports": [
+        "HigherDimLFPP.Frozen.Rd"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Frozen.Rd"
+      ],
+      "bytes": 524
+    },
+    "HigherDimLFPP.Frozen.DimensionComparison": {
+      "path": "HigherDimLFPP/Frozen/DimensionComparison.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Frozen/DimensionComparison.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "74f1e3cc4d501aa4253a2b8481d512f2a545b87b364b3b1d3a2454ce8533907e",
+      "imports": [
+        "HigherDimLFPP.Frozen.Kappa",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Real",
+        "HigherDimLFPP.Var.Theorem11"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Frozen.Kappa",
+        "HigherDimLFPP.Var.Theorem11"
+      ],
+      "bytes": 1039
+    },
+    "HigherDimLFPP.Frozen.E1": {
+      "path": "HigherDimLFPP/Frozen/E1.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Frozen/E1.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "33339e688c48f73f5138b5ff00eb9125e908587eaf4298b808ba1d50028c1bda",
+      "imports": [
+        "HigherDimLFPP.Frozen.Rd"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Frozen.Rd"
+      ],
+      "bytes": 584
+    },
+    "HigherDimLFPP.Frozen.Energy": {
+      "path": "HigherDimLFPP/Frozen/Energy.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Frozen/Energy.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "7e1a4bbe08cc168512483cb7cd2a2fc68ba9d07c84b9f08df8780db07cb2f580",
+      "imports": [
+        "Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic",
+        "Mathlib.Analysis.Calculus.Deriv.Basic"
+      ],
+      "local_imports": [],
+      "bytes": 732
+    },
+    "HigherDimLFPP.Frozen.FieldExists": {
+      "path": "HigherDimLFPP/Frozen/FieldExists.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Frozen/FieldExists.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "9153a2d56c5369269ffadc0b9456becc59b301672bb786358a71c7a2fe35804d",
+      "imports": [
+        "HigherDimLFPP.Frozen.IsLFPPKernel",
+        "HigherDimLFPP.Frozen.IsBandVersion",
+        "HigherDimLFPP.Field.Exists"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Frozen.IsLFPPKernel",
+        "HigherDimLFPP.Frozen.IsBandVersion",
+        "HigherDimLFPP.Field.Exists"
+      ],
+      "bytes": 1410
+    },
+    "HigherDimLFPP.Frozen.GCov": {
+      "path": "HigherDimLFPP/Frozen/GCov.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Frozen/GCov.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "8866acd535628bb4aa7266c381de26244288528832c965b0727b25373f139d6a",
+      "imports": [
+        "Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic",
+        "Mathlib.Analysis.Real.Pi.Bounds"
+      ],
+      "local_imports": [],
+      "bytes": 787
+    },
+    "HigherDimLFPP.Frozen.GFFCircleAverage": {
+      "path": "HigherDimLFPP/Frozen/GFFCircleAverage.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Frozen/GFFCircleAverage.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "875305ad2735fdb9431475f79f4009354b2fc6f6e3973f40e87e57cab10a8c0a",
+      "imports": [
+        "HigherDimLFPP.Frozen.Kappa",
+        "LQGDimension.Statement.Defs",
+        "HigherDimLFPP.TwoD.GFFCorollary"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Frozen.Kappa",
+        "LQGDimension.Statement.Defs",
+        "HigherDimLFPP.TwoD.GFFCorollary"
+      ],
+      "bytes": 1669
+    },
+    "HigherDimLFPP.Frozen.IsAdmissiblePath": {
+      "path": "HigherDimLFPP/Frozen/IsAdmissiblePath.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Frozen/IsAdmissiblePath.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "f3cd0c826990e821c40a1d0d9c00997576c8adc684e3c3aaaacd8bf4975b866d",
+      "imports": [
+        "HigherDimLFPP.Frozen.Cube",
+        "HigherDimLFPP.Frozen.E1",
+        "Mathlib.Analysis.Calculus.ContDiff.Defs",
+        "Mathlib.Order.Fin.Basic"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Frozen.Cube",
+        "HigherDimLFPP.Frozen.E1"
+      ],
+      "bytes": 1335
+    },
+    "HigherDimLFPP.Frozen.IsBandVersion": {
+      "path": "HigherDimLFPP/Frozen/IsBandVersion.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Frozen/IsBandVersion.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "4c30566f7bbe4b1d9018d680fc9671cdddaa3cfd0ecb8ea47efc82d0cab15def",
+      "imports": [
+        "HigherDimLFPP.Frozen.BandVec",
+        "HigherDimLFPP.Frozen.IsWhiteNoise"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Frozen.BandVec",
+        "HigherDimLFPP.Frozen.IsWhiteNoise"
+      ],
+      "bytes": 1003
+    },
+    "HigherDimLFPP.Frozen.IsLFPPExponent": {
+      "path": "HigherDimLFPP/Frozen/IsLFPPExponent.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Frozen/IsLFPPExponent.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "3ec1fbf7f35e665717d76b9a56baf3e31c6f00ce56efe58a95b526245b08d25c",
+      "imports": [
+        "HigherDimLFPP.Frozen.LfppDistance",
+        "Mathlib.MeasureTheory.Function.ConvergenceInMeasure"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Frozen.LfppDistance"
+      ],
+      "bytes": 983
+    },
+    "HigherDimLFPP.Frozen.IsLFPPKernel": {
+      "path": "HigherDimLFPP/Frozen/IsLFPPKernel.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Frozen/IsLFPPKernel.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "2b22eba6e3e7c3b3902be81ead1eb9f253bb758a48ead5c5b2afc2ddf60bb75f",
+      "imports": [
+        "HigherDimLFPP.Frozen.Rd",
+        "Mathlib.MeasureTheory.Measure.Haar.InnerProductSpace",
+        "Mathlib.Analysis.Calculus.ContDiff.Defs",
+        "Mathlib.Topology.Algebra.Support",
+        "Mathlib.MeasureTheory.Integral.Bochner.Basic"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Frozen.Rd"
+      ],
+      "bytes": 1218
+    },
+    "HigherDimLFPP.Frozen.IsWhiteNoise": {
+      "path": "HigherDimLFPP/Frozen/IsWhiteNoise.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Frozen/IsWhiteNoise.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "15051eaf32c437aa2de532cd3bcfa17770d703ea13aa13bb4241bcb1fcf93af8",
+      "imports": [
+        "HigherDimLFPP.Frozen.WN",
+        "Mathlib.Probability.Distributions.Gaussian.Real",
+        "Mathlib.Probability.HasLaw"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Frozen.WN"
+      ],
+      "bytes": 1173
+    },
+    "HigherDimLFPP.Frozen.Kappa": {
+      "path": "HigherDimLFPP/Frozen/Kappa.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Frozen/Kappa.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "2bc0e7425ddc093b20c6237f255876ac9336b477f2e73ccb2a4b1515c6f122de",
+      "imports": [
+        "HigherDimLFPP.Frozen.A",
+        "Mathlib.Analysis.SpecialFunctions.Log.Basic",
+        "Mathlib.Data.PNat.Basic"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Frozen.A"
+      ],
+      "bytes": 766
+    },
+    "HigherDimLFPP.Frozen.KappaTwo": {
+      "path": "HigherDimLFPP/Frozen/KappaTwo.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Frozen/KappaTwo.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "a1302d2315dceca2755c0d8270a7fd99e31a8036f276ac422c99ade9c009c739",
+      "imports": [
+        "HigherDimLFPP.Frozen.Kappa",
+        "LQGDimension.Statement.Defs",
+        "HigherDimLFPP.Var.Theorem11"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Frozen.Kappa",
+        "LQGDimension.Statement.Defs",
+        "HigherDimLFPP.Var.Theorem11"
+      ],
+      "bytes": 1062
+    },
+    "HigherDimLFPP.Frozen.LQGDimensionAsymptotics": {
+      "path": "HigherDimLFPP/Frozen/LQGDimensionAsymptotics.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Frozen/LQGDimensionAsymptotics.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "f6c96cb72ffef58ea37c884bd99037a924aed246e79029918768f6f550c0f004",
+      "imports": [
+        "HigherDimLFPP.Frozen.Kappa",
+        "LQGMetric.Statement.Dimension",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Real",
+        "HigherDimLFPP.TwoD.DimensionAsymptotics"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Frozen.Kappa",
+        "LQGMetric.Statement.Dimension",
+        "HigherDimLFPP.TwoD.DimensionAsymptotics"
+      ],
+      "bytes": 1312
+    },
+    "HigherDimLFPP.Frozen.LfppDistance": {
+      "path": "HigherDimLFPP/Frozen/LfppDistance.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Frozen/LfppDistance.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "a40c24dbf003798cecc1fa7f6aa9a1e59f100692d438cef65f29ad9c03515903",
+      "imports": [
+        "HigherDimLFPP.Frozen.IsAdmissiblePath",
+        "HigherDimLFPP.Frozen.LfppLength"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Frozen.IsAdmissiblePath",
+        "HigherDimLFPP.Frozen.LfppLength"
+      ],
+      "bytes": 757
+    },
+    "HigherDimLFPP.Frozen.LfppLength": {
+      "path": "HigherDimLFPP/Frozen/LfppLength.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Frozen/LfppLength.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "7a89e51d53d80bab5b25894e9ad1aa93f8c3402bb95cd63d0410bbf9f029a552",
+      "imports": [
+        "HigherDimLFPP.Frozen.Rd",
+        "Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic",
+        "Mathlib.Analysis.Calculus.Deriv.Basic",
+        "Mathlib.Analysis.SpecialFunctions.Exp"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Frozen.Rd"
+      ],
+      "bytes": 929
+    },
+    "HigherDimLFPP.Frozen.MainTheorem": {
+      "path": "HigherDimLFPP/Frozen/MainTheorem.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Frozen/MainTheorem.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "ec3d5145eff72dbb39eac70efb41842d203509f3fbe75824a48a7f9ab0e1f7e4",
+      "imports": [
+        "HigherDimLFPP.Frozen.Kappa",
+        "HigherDimLFPP.Frozen.IsLFPPKernel",
+        "HigherDimLFPP.Frozen.IsBandVersion",
+        "HigherDimLFPP.Frozen.IsLFPPExponent",
+        "HigherDimLFPP.Assembly.Main"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Frozen.Kappa",
+        "HigherDimLFPP.Frozen.IsLFPPKernel",
+        "HigherDimLFPP.Frozen.IsBandVersion",
+        "HigherDimLFPP.Frozen.IsLFPPExponent",
+        "HigherDimLFPP.Assembly.Main"
+      ],
+      "bytes": 2250
+    },
+    "HigherDimLFPP.Frozen.Rd": {
+      "path": "HigherDimLFPP/Frozen/Rd.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Frozen/Rd.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "6ddde843de611188d62d04b9e58f242fdc83ca9e402f75f27f0b1ad4bec02868",
+      "imports": [
+        "Mathlib.Analysis.InnerProductSpace.PiL2"
+      ],
+      "local_imports": [],
+      "bytes": 646
+    },
+    "HigherDimLFPP.Frozen.ScaleKernel": {
+      "path": "HigherDimLFPP/Frozen/ScaleKernel.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Frozen/ScaleKernel.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "51f28c502ca99ae6bfcecfc9c38edc43094476ca1db63827f7d9b8cb0999b335",
+      "imports": [
+        "HigherDimLFPP.Frozen.Rd",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Real"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Frozen.Rd"
+      ],
+      "bytes": 681
+    },
+    "HigherDimLFPP.Frozen.Vg": {
+      "path": "HigherDimLFPP/Frozen/Vg.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Frozen/Vg.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "8c1f31c30baa9bcaf98f6cdbd68721209f4ff39f4ecd212e872baa6b96c39d34",
+      "imports": [
+        "Mathlib.Analysis.Normed.Module.Basic",
+        "Mathlib.Order.Interval.Set.Defs"
+      ],
+      "local_imports": [],
+      "bytes": 1053
+    },
+    "HigherDimLFPP.Frozen.WN": {
+      "path": "HigherDimLFPP/Frozen/WN.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Frozen/WN.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "7d6648694059119edfd3b5898e056181d678a89b3091f02f759410503543dd09",
+      "imports": [
+        "HigherDimLFPP.Frozen.Rd",
+        "Mathlib.MeasureTheory.Function.LpSpace.Basic",
+        "Mathlib.MeasureTheory.Constructions.BorelSpace.Real",
+        "Mathlib.MeasureTheory.Measure.Haar.InnerProductSpace",
+        "Mathlib.MeasureTheory.Measure.Prod"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Frozen.Rd"
+      ],
+      "bytes": 984
+    },
+    "HigherDimLFPP.Lower.AtomCoupling": {
+      "path": "HigherDimLFPP/Lower/AtomCoupling.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Lower/AtomCoupling.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "7707f17e9fb559430ea7e38eab43bf8631471fd009c687e2a43776ea73aeb210",
+      "imports": [
+        "HigherDimLFPP.Field.Bands",
+        "HigherDimLFPP.Field.RampPath",
+        "HigherDimLFPP.Lower.Quantile"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Field.Bands",
+        "HigherDimLFPP.Field.RampPath",
+        "HigherDimLFPP.Lower.Quantile"
+      ],
+      "bytes": 17532
+    },
+    "HigherDimLFPP.Lower.ClassC": {
+      "path": "HigherDimLFPP/Lower/ClassC.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Lower/ClassC.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "12f3e1c7ed7376ce86ebe3e122f73fa5b90663f29c55903c0c99456a75c8d2a7",
+      "imports": [
+        "HigherDimLFPP.Lower.EqualEdge"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Lower.EqualEdge"
+      ],
+      "bytes": 42019
+    },
+    "HigherDimLFPP.Lower.DecisionTree": {
+      "path": "HigherDimLFPP/Lower/DecisionTree.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Lower/DecisionTree.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "1c0ab24739d51875c2af13173de156d584d2a2e907ee527d20b97fa0e3437529",
+      "imports": [
+        "HigherDimLFPP.Lower.Triples",
+        "HigherDimLFPP.Lower.Glue",
+        "HigherDimLFPP.Lower.ClassC"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Lower.Triples",
+        "HigherDimLFPP.Lower.Glue",
+        "HigherDimLFPP.Lower.ClassC"
+      ],
+      "bytes": 30145
+    },
+    "HigherDimLFPP.Lower.EqualEdge": {
+      "path": "HigherDimLFPP/Lower/EqualEdge.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Lower/EqualEdge.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "8172ff09c85e035f8cf204a2650418829aa2606b35128ff33e332525b0774f0a",
+      "imports": [
+        "HigherDimLFPP.Lower.Frames",
+        "HigherDimLFPP.Lower.Profiles",
+        "Mathlib.Analysis.Convex.SpecificFunctions.Pow",
+        "Mathlib.Topology.Order.IntermediateValue"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Lower.Frames",
+        "HigherDimLFPP.Lower.Profiles"
+      ],
+      "bytes": 44796
+    },
+    "HigherDimLFPP.Lower.EqualEdgePath": {
+      "path": "HigherDimLFPP/Lower/EqualEdgePath.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Lower/EqualEdgePath.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "16d9a4fdc54f9a6da179644bfa4798eec2fcab3c419feeac70d538578c53a352",
+      "imports": [
+        "HigherDimLFPP.Lower.ClassC",
+        "HigherDimLFPP.Lower.Polygon"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Lower.ClassC",
+        "HigherDimLFPP.Lower.Polygon"
+      ],
+      "bytes": 9263
+    },
+    "HigherDimLFPP.Lower.Frames": {
+      "path": "HigherDimLFPP/Lower/Frames.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Lower/Frames.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "50e69ba61ee8cf44f9a0f7c32c2119027dccf9144afea60d9983b890ced60c63",
+      "imports": [
+        "HigherDimLFPP.Core.Defs",
+        "Mathlib.Analysis.InnerProductSpace.Projection.Reflection"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Core.Defs"
+      ],
+      "bytes": 18476
+    },
+    "HigherDimLFPP.Lower.GaussModel": {
+      "path": "HigherDimLFPP/Lower/GaussModel.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Lower/GaussModel.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "0fd5965bb42cf7c04d78ac24b5164dbb0c18a7afa546748648abb39a5b639552",
+      "imports": [
+        "LQGDimension.Gaussian.Basic",
+        "LQGDimension.Gaussian.MaxInequality",
+        "Mathlib.Probability.Distributions.Gaussian.HasGaussianLaw.Independence"
+      ],
+      "local_imports": [
+        "LQGDimension.Gaussian.Basic",
+        "LQGDimension.Gaussian.MaxInequality"
+      ],
+      "bytes": 20698
+    },
+    "HigherDimLFPP.Lower.Glue": {
+      "path": "HigherDimLFPP/Lower/Glue.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Lower/Glue.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "c32285afb0e10e3fd8a06cd86e22fc284e0a99b05480dfeb7dec8e1ae1a2b9bd",
+      "imports": [
+        "HigherDimLFPP.Lower.Frames"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Lower.Frames"
+      ],
+      "bytes": 17445
+    },
+    "HigherDimLFPP.Lower.Iteration": {
+      "path": "HigherDimLFPP/Lower/Iteration.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Lower/Iteration.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "495ec406a05aced3897c2824b1756bc400520cb3ba5c4e0a72d841fc22016099",
+      "imports": [
+        "HigherDimLFPP.Lower.Transfer",
+        "HigherDimLFPP.Var.EnergyBall",
+        "Mathlib.Analysis.SpecialFunctions.Log.Base"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Lower.Transfer",
+        "HigherDimLFPP.Var.EnergyBall"
+      ],
+      "bytes": 25343
+    },
+    "HigherDimLFPP.Lower.Lemma52": {
+      "path": "HigherDimLFPP/Lower/Lemma52.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Lower/Lemma52.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "8075dbcdecb5577410f927dea19b5be4d83c298e79906bbed3c0d23fef0269d9",
+      "imports": [
+        "HigherDimLFPP.Lower.Lemma52Aux"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Lower.Lemma52Aux"
+      ],
+      "bytes": 27052
+    },
+    "HigherDimLFPP.Lower.Lemma52Aux": {
+      "path": "HigherDimLFPP/Lower/Lemma52Aux.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Lower/Lemma52Aux.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "042dfbc6d914d66471d62c37af3df05da80a92ba43938103a09a6f7171572e1b",
+      "imports": [
+        "HigherDimLFPP.Lower.Lemma52Setup",
+        "HigherDimLFPP.Field.BandsSup",
+        "HigherDimLFPP.Field.ExpectedSupDrift"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Lower.Lemma52Setup",
+        "HigherDimLFPP.Field.BandsSup",
+        "HigherDimLFPP.Field.ExpectedSupDrift"
+      ],
+      "bytes": 14400
+    },
+    "HigherDimLFPP.Lower.Lemma52Riemann": {
+      "path": "HigherDimLFPP/Lower/Lemma52Riemann.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Lower/Lemma52Riemann.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "ce15490450dbb0d66e42b38d588515c0461364d0c2e4512091df8450eb986239",
+      "imports": [
+        "HigherDimLFPP.Lower.Lemma52",
+        "HigherDimLFPP.Lower.Iteration"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Lower.Lemma52",
+        "HigherDimLFPP.Lower.Iteration"
+      ],
+      "bytes": 16848
+    },
+    "HigherDimLFPP.Lower.Lemma52Setup": {
+      "path": "HigherDimLFPP/Lower/Lemma52Setup.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Lower/Lemma52Setup.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "a3b90de64cd024bdc28e7d7e369500ecc1cfe67c9f31afdb4a282bfbd571f03a",
+      "imports": [
+        "HigherDimLFPP.Lower.PolyMeasure",
+        "HigherDimLFPP.Lower.WNMax",
+        "HigherDimLFPP.Var.Lemma22Family"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Lower.PolyMeasure",
+        "HigherDimLFPP.Lower.WNMax",
+        "HigherDimLFPP.Var.Lemma22Family"
+      ],
+      "bytes": 9021
+    },
+    "HigherDimLFPP.Lower.Lemma53": {
+      "path": "HigherDimLFPP/Lower/Lemma53.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Lower/Lemma53.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "0a59a93f71198f660e0d0c2467007cf8cf20d6c38608700d3b6ab53bc536f8d9",
+      "imports": [
+        "HigherDimLFPP.Lower.Lemma53Class"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Lower.Lemma53Class"
+      ],
+      "bytes": 37401
+    },
+    "HigherDimLFPP.Lower.Lemma53Class": {
+      "path": "HigherDimLFPP/Lower/Lemma53Class.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Lower/Lemma53Class.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "bfaf3e143c08f23e63165a1faa36c365f0f4073597bd2456f26aa3c7228e5427",
+      "imports": [
+        "HigherDimLFPP.Lower.Lemma53Core"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Lower.Lemma53Core"
+      ],
+      "bytes": 14178
+    },
+    "HigherDimLFPP.Lower.Lemma53Core": {
+      "path": "HigherDimLFPP/Lower/Lemma53Core.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Lower/Lemma53Core.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "f4438582b87a93f5541732a76d778b2d8ec56210d5f1d0422aea5a4b429fb4c4",
+      "imports": [
+        "HigherDimLFPP.Lower.Lemma53WN"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Lower.Lemma53WN"
+      ],
+      "bytes": 12648
+    },
+    "HigherDimLFPP.Lower.Lemma53Expand": {
+      "path": "HigherDimLFPP/Lower/Lemma53Expand.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Lower/Lemma53Expand.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "bb65d43bfaf0ed38313cc329587b708b417c4f2c63a6c1426b7e6e4e42494422",
+      "imports": [
+        "HigherDimLFPP.Lower.Lemma52Riemann"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Lower.Lemma52Riemann"
+      ],
+      "bytes": 7471
+    },
+    "HigherDimLFPP.Lower.Lemma53WN": {
+      "path": "HigherDimLFPP/Lower/Lemma53WN.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Lower/Lemma53WN.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "de2eb57e8a5b6be8148c0042a9f73ae5981219b75f94b4b21192972de7431dfd",
+      "imports": [
+        "HigherDimLFPP.Lower.Lemma53Expand"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Lower.Lemma53Expand"
+      ],
+      "bytes": 13374
+    },
+    "HigherDimLFPP.Lower.LowerAssembly": {
+      "path": "HigherDimLFPP/Lower/LowerAssembly.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Lower/LowerAssembly.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "a2fc9ffe400a6b1924f632df5bd20dd718ee79b6952b042503f116c4e160806c",
+      "imports": [
+        "HigherDimLFPP.Lower.LowerFixed",
+        "HigherDimLFPP.Var.Lemma22"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Lower.LowerFixed",
+        "HigherDimLFPP.Var.Lemma22"
+      ],
+      "bytes": 20243
+    },
+    "HigherDimLFPP.Lower.LowerFixed": {
+      "path": "HigherDimLFPP/Lower/LowerFixed.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Lower/LowerFixed.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "b72cc1effbaf1a5c05078c4d76006837e90bcf07c61845e6032342fde00908f5",
+      "imports": [
+        "HigherDimLFPP.Lower.Iteration",
+        "HigherDimLFPP.Lower.Polygon"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Lower.Iteration",
+        "HigherDimLFPP.Lower.Polygon"
+      ],
+      "bytes": 23825
+    },
+    "HigherDimLFPP.Lower.Occupation": {
+      "path": "HigherDimLFPP/Lower/Occupation.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Lower/Occupation.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "38b79d23d3640eb36be6997d835f67033e095050b152b8833d0782f8e26c98a9",
+      "imports": [
+        "HigherDimLFPP.Lower.DecisionTree"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Lower.DecisionTree"
+      ],
+      "bytes": 17336
+    },
+    "HigherDimLFPP.Lower.PolyMeasure": {
+      "path": "HigherDimLFPP/Lower/PolyMeasure.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Lower/PolyMeasure.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "b293de2793583e5e1462b170699de0de1c8052b7fd675a48b552cb5279c43e34",
+      "imports": [
+        "HigherDimLFPP.Lower.AtomCoupling",
+        "HigherDimLFPP.Field.GraphMeasure"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Lower.AtomCoupling",
+        "HigherDimLFPP.Field.GraphMeasure"
+      ],
+      "bytes": 12147
+    },
+    "HigherDimLFPP.Lower.Polygon": {
+      "path": "HigherDimLFPP/Lower/Polygon.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Lower/Polygon.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "c8585f53716df2a917e46cae83c634aa2119e04e9fc3ac10e2751bdc4c378a76",
+      "imports": [
+        "HigherDimLFPP.Lower.Glue",
+        "Mathlib.MeasureTheory.Integral.DivergenceTheorem",
+        "Mathlib.Analysis.Calculus.FDeriv.Measurable",
+        "LQGDimension.LFPP.SegCombLaw"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Lower.Glue",
+        "LQGDimension.LFPP.SegCombLaw"
+      ],
+      "bytes": 31290
+    },
+    "HigherDimLFPP.Lower.Profiles": {
+      "path": "HigherDimLFPP/Lower/Profiles.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Lower/Profiles.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "a6be50b10d188b5a1a80e12fae5a722ef71bed894b4d35fb57a4099e8d032b51",
+      "imports": [
+        "HigherDimLFPP.Var.Basic",
+        "Mathlib.Algebra.Order.Chebyshev"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Var.Basic"
+      ],
+      "bytes": 21855
+    },
+    "HigherDimLFPP.Lower.Quantile": {
+      "path": "HigherDimLFPP/Lower/Quantile.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Lower/Quantile.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "d267f5b85948442c5d9f841ea9e2922f5e2e9a2328d4ebc621a138b46e3712b1",
+      "imports": [
+        "HigherDimLFPP.Lower.EqualEdgePath",
+        "Mathlib.MeasureTheory.Integral.Bochner.Set",
+        "Mathlib.MeasureTheory.Measure.Lebesgue.Basic"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Lower.EqualEdgePath"
+      ],
+      "bytes": 15155
+    },
+    "HigherDimLFPP.Lower.Recursion": {
+      "path": "HigherDimLFPP/Lower/Recursion.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Lower/Recursion.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "11485e6cb222ad3d3d20ce3e4357821660886fd851c11afa94835c374a3d6496",
+      "imports": [
+        "HigherDimLFPP.Lower.Occupation"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Lower.Occupation"
+      ],
+      "bytes": 39352
+    },
+    "HigherDimLFPP.Lower.Transfer": {
+      "path": "HigherDimLFPP/Lower/Transfer.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Lower/Transfer.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "6d4e1ea67f3b604f0c19b0ef2d4a5425c6ac15045cba2eb4ce9eb935f2bb04d7",
+      "imports": [
+        "HigherDimLFPP.Lower.Recursion"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Lower.Recursion"
+      ],
+      "bytes": 19174
+    },
+    "HigherDimLFPP.Lower.Triples": {
+      "path": "HigherDimLFPP/Lower/Triples.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Lower/Triples.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "c1d05f4836646455cecff7266957e0bc3f509d0b2a1ee4396d7560f221fe49ec",
+      "imports": [
+        "HigherDimLFPP.Lower.GaussModel",
+        "HigherDimLFPP.Lower.Frames",
+        "HigherDimLFPP.Field.BandFacts",
+        "QuantumZipper.Proofs.LQG.WedgeRestriction"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Lower.GaussModel",
+        "HigherDimLFPP.Lower.Frames",
+        "HigherDimLFPP.Field.BandFacts",
+        "QuantumZipper.Proofs.LQG.WedgeRestriction"
+      ],
+      "bytes": 20334
+    },
+    "HigherDimLFPP.Lower.WNMax": {
+      "path": "HigherDimLFPP/Lower/WNMax.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Lower/WNMax.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "bf61821c7873e2e8b4a26087acb40d0ee175f2f5e84f770f3d3e80e72f874424",
+      "imports": [
+        "HigherDimLFPP.Field.WhiteNoise",
+        "GaussianLQG.Probability.Gaussian"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Field.WhiteNoise",
+        "GaussianLQG.Probability.Gaussian"
+      ],
+      "bytes": 9476
+    },
+    "HigherDimLFPP.Paths.Basic": {
+      "path": "HigherDimLFPP/Paths/Basic.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Paths/Basic.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "c54a23e6342a63501f4480e57e3c870581c24f065b30c671b8616bec589377b1",
+      "imports": [
+        "HigherDimLFPP.Core.Defs",
+        "Mathlib.MeasureTheory.Integral.DivergenceTheorem",
+        "Mathlib.Analysis.Calculus.FDeriv.Measurable",
+        "Mathlib.Analysis.Calculus.ContDiff.Deriv",
+        "Mathlib.Analysis.Normed.Lp.MeasurableSpace",
+        "Mathlib.Analysis.Calculus.Deriv.Shift",
+        "Mathlib.Analysis.Calculus.Deriv.CompMul"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Core.Defs"
+      ],
+      "bytes": 30527
+    },
+    "HigherDimLFPP.Paths.Compare": {
+      "path": "HigherDimLFPP/Paths/Compare.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Paths/Compare.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "cb7145093fd92ccc3c6ef7ba44c20a57cf7290ab18af8f57d8f323238eba21f5",
+      "imports": [
+        "HigherDimLFPP.Paths.DistOn"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Paths.DistOn"
+      ],
+      "bytes": 15868
+    },
+    "HigherDimLFPP.Paths.DistOn": {
+      "path": "HigherDimLFPP/Paths/DistOn.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Paths/DistOn.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "9314598fd9cc61000e751536755f7a9ddd67ff7ec96f08e58a84a665832c7e97",
+      "imports": [
+        "HigherDimLFPP.Paths.Basic"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Paths.Basic"
+      ],
+      "bytes": 22520
+    },
+    "HigherDimLFPP.Paths.Measurable": {
+      "path": "HigherDimLFPP/Paths/Measurable.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Paths/Measurable.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "f5b1cea5ff0d90cddacc765835b3ba525127e15bb94f969bcb10e472969a7467",
+      "imports": [
+        "HigherDimLFPP.Paths.Compare",
+        "HigherDimLFPP.Paths.Polygon",
+        "Mathlib.Topology.Instances.Rat",
+        "Mathlib.Topology.CompactOpen"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Paths.Compare",
+        "HigherDimLFPP.Paths.Polygon"
+      ],
+      "bytes": 10860
+    },
+    "HigherDimLFPP.Paths.Polygon": {
+      "path": "HigherDimLFPP/Paths/Polygon.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Paths/Polygon.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "d1e195131dc3374244b609040f91f80953c2ce5cd7f720e92255d0292965efc6",
+      "imports": [
+        "HigherDimLFPP.Paths.DistOn"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Paths.DistOn"
+      ],
+      "bytes": 17095
+    },
+    "HigherDimLFPP.Perc.Clusters": {
+      "path": "HigherDimLFPP/Perc/Clusters.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Perc/Clusters.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "c72369aab5817dcef83be5e19df118da7c29954c135955be645c842dcaff1455",
+      "imports": [
+        "HigherDimLFPP.Perc.Peierls",
+        "HigherDimLFPP.Perc.Surgery",
+        "Mathlib.Analysis.SpecificLimits.Basic"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Perc.Peierls",
+        "HigherDimLFPP.Perc.Surgery"
+      ],
+      "bytes": 15084
+    },
+    "HigherDimLFPP.Perc.Defs": {
+      "path": "HigherDimLFPP/Perc/Defs.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Perc/Defs.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "f1753dd03cb994897745502ed434976be1cf421bdca0400960f5897503734253",
+      "imports": [
+        "Mathlib.Data.ZMod.Basic",
+        "Mathlib.Logic.Relation",
+        "Mathlib.MeasureTheory.Measure.MeasureSpaceDef",
+        "Mathlib.Algebra.BigOperators.Fin"
+      ],
+      "local_imports": [],
+      "bytes": 7206
+    },
+    "HigherDimLFPP.Perc.ExtBoundary": {
+      "path": "HigherDimLFPP/Perc/ExtBoundary.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Perc/ExtBoundary.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "a8f5cf41bc7ccfbfb99e67cd95c9619d21f55813cc5112f996b0a94c678eba10",
+      "imports": [
+        "HigherDimLFPP.Perc.Poincare"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Perc.Poincare"
+      ],
+      "bytes": 14170
+    },
+    "HigherDimLFPP.Perc.Lattice": {
+      "path": "HigherDimLFPP/Perc/Lattice.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Perc/Lattice.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "3170d968b72cd9fe4d24d3b268bbe2185226cc73a2dccb69359c4000e6f9139d",
+      "imports": [
+        "HigherDimLFPP.Perc.Defs",
+        "Mathlib.Algebra.Order.BigOperators.Group.Finset",
+        "Mathlib.Data.Fintype.BigOperators",
+        "Mathlib.Order.Interval.Finset.Defs",
+        "Mathlib.Data.Int.Interval"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Perc.Defs"
+      ],
+      "bytes": 15176
+    },
+    "HigherDimLFPP.Perc.Peierls": {
+      "path": "HigherDimLFPP/Perc/Peierls.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Perc/Peierls.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "5c2737ac96ac272529ffe26afb310123926b62738de3c3ed18ba956720173f9e",
+      "imports": [
+        "HigherDimLFPP.Perc.Lattice",
+        "Mathlib.Combinatorics.SimpleGraph.Paths",
+        "Mathlib.Combinatorics.SimpleGraph.Connectivity.Connected",
+        "Mathlib.Combinatorics.Pigeonhole",
+        "Mathlib.MeasureTheory.Measure.MeasureSpaceDef",
+        "Mathlib.Data.Fintype.Pi",
+        "Mathlib.Data.Rat.Cast.Order",
+        "Mathlib.Tactic.FieldSimp"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Perc.Lattice"
+      ],
+      "bytes": 14732
+    },
+    "HigherDimLFPP.Perc.Poincare": {
+      "path": "HigherDimLFPP/Perc/Poincare.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Perc/Poincare.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "83311a80ca5f48ecdec38c57bf6f91db898ab6c32f221e0f2217cde60de7fdfc",
+      "imports": [
+        "HigherDimLFPP.Perc.Lattice",
+        "Mathlib.Algebra.BigOperators.Intervals"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Perc.Lattice"
+      ],
+      "bytes": 9833
+    },
+    "HigherDimLFPP.Perc.Surgery": {
+      "path": "HigherDimLFPP/Perc/Surgery.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Perc/Surgery.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "019ac52c0dcaf594e357c73947b549b20fe97927c28ce5d52b697f6ae42eef0f",
+      "imports": [
+        "HigherDimLFPP.Perc.ExtBoundary",
+        "Mathlib.Data.Fintype.Pi",
+        "Mathlib.Data.List.GetD"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Perc.ExtBoundary"
+      ],
+      "bytes": 9205
+    },
+    "HigherDimLFPP.TwoD.CircleCorollary": {
+      "path": "HigherDimLFPP/TwoD/CircleCorollary.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/TwoD/CircleCorollary.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "28cc35067f2c77ff26e0adf91fb4fc430681d01d52d58658797259e54b74aac4",
+      "imports": [
+        "HigherDimLFPP.TwoD.ExponentTransfer",
+        "HigherDimLFPP.TwoD.CircleLaw",
+        "HigherDimLFPP.TwoD.CoupledGFF",
+        "HigherDimLFPP.Var.Theorem11",
+        "LQGDimension.Assembly.Theorem11"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.TwoD.ExponentTransfer",
+        "HigherDimLFPP.TwoD.CircleLaw",
+        "HigherDimLFPP.TwoD.CoupledGFF",
+        "HigherDimLFPP.Var.Theorem11",
+        "LQGDimension.Assembly.Theorem11"
+      ],
+      "bytes": 3756
+    },
+    "HigherDimLFPP.TwoD.CircleKernel": {
+      "path": "HigherDimLFPP/TwoD/CircleKernel.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/TwoD/CircleKernel.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "032022d518029c12addc7c891751e9825983d575ae63a26cfb007194b9065d03",
+      "imports": [
+        "HigherDimLFPP.TwoD.Plane",
+        "HigherDimLFPP.Field.LogCov",
+        "LQGMetric.Field.CircleAvgBridge"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.TwoD.Plane",
+        "HigherDimLFPP.Field.LogCov",
+        "LQGMetric.Field.CircleAvgBridge"
+      ],
+      "bytes": 12667
+    },
+    "HigherDimLFPP.TwoD.CircleLaw": {
+      "path": "HigherDimLFPP/TwoD/CircleLaw.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/TwoD/CircleLaw.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "06924cc4dc0c5440be610a43957704deae0b444d65606b88b3cc0f8c06b11ae2",
+      "imports": [
+        "HigherDimLFPP.TwoD.Plane",
+        "HigherDimLFPP.Field.LawTransfer",
+        "HigherDimLFPP.Field.FiniteRange",
+        "HigherDimLFPP.Paths.Measurable"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.TwoD.Plane",
+        "HigherDimLFPP.Field.LawTransfer",
+        "HigherDimLFPP.Field.FiniteRange",
+        "HigherDimLFPP.Paths.Measurable"
+      ],
+      "bytes": 13878
+    },
+    "HigherDimLFPP.TwoD.CoupledGFF": {
+      "path": "HigherDimLFPP/TwoD/CoupledGFF.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/TwoD/CoupledGFF.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "455b2bcafd33dcdd46307f33c012b5ad19919313d8b9a59bcc138ee16320aef0",
+      "imports": [
+        "HigherDimLFPP.TwoD.CircleKernel",
+        "HigherDimLFPP.Field.Version",
+        "HigherDimLFPP.Field.FiniteRange",
+        "HigherDimLFPP.Field.Exists"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.TwoD.CircleKernel",
+        "HigherDimLFPP.Field.Version",
+        "HigherDimLFPP.Field.FiniteRange",
+        "HigherDimLFPP.Field.Exists"
+      ],
+      "bytes": 8788
+    },
+    "HigherDimLFPP.TwoD.DimensionAsymptotics": {
+      "path": "HigherDimLFPP/TwoD/DimensionAsymptotics.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/TwoD/DimensionAsymptotics.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "0a30eb40925c9658feeb73a4a8b77bd12dca01bd0c8d96abae2ebb51f89a08b0",
+      "imports": [
+        "HigherDimLFPP.Var.Theorem11",
+        "LQGDimension.Assembly.Theorem11",
+        "GaussianLQG.LQG.Dimension"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Var.Theorem11",
+        "LQGDimension.Assembly.Theorem11",
+        "GaussianLQG.LQG.Dimension"
+      ],
+      "bytes": 3949
+    },
+    "HigherDimLFPP.TwoD.ExponentTransfer": {
+      "path": "HigherDimLFPP/TwoD/ExponentTransfer.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/TwoD/ExponentTransfer.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "254d6cfcb7b34cf6a1dcbfa39b64b08cfba85c1e79f0e00147d315df6eecc58f",
+      "imports": [
+        "HigherDimLFPP.TwoD.LemmaA1",
+        "HigherDimLFPP.TwoD.Plane",
+        "HigherDimLFPP.Paths.Compare",
+        "HigherDimLFPP.Frozen.IsLFPPExponent"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.TwoD.LemmaA1",
+        "HigherDimLFPP.TwoD.Plane",
+        "HigherDimLFPP.Paths.Compare",
+        "HigherDimLFPP.Frozen.IsLFPPExponent"
+      ],
+      "bytes": 9716
+    },
+    "HigherDimLFPP.TwoD.GFFCorollary": {
+      "path": "HigherDimLFPP/TwoD/GFFCorollary.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/TwoD/GFFCorollary.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "d2af4777a94deb3c71fa96688fe5fe1aa06f294260064e99995cd565b781f252",
+      "imports": [
+        "HigherDimLFPP.TwoD.CircleCorollary",
+        "HigherDimLFPP.Exist.Exponent"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.TwoD.CircleCorollary",
+        "HigherDimLFPP.Exist.Exponent"
+      ],
+      "bytes": 1795
+    },
+    "HigherDimLFPP.TwoD.LemmaA1": {
+      "path": "HigherDimLFPP/TwoD/LemmaA1.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/TwoD/LemmaA1.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "e9f7be84a31b977dd1a5124bab127f4e07b1b6466a40be7367ad8969cefe1a71",
+      "imports": [
+        "HigherDimLFPP.TwoD.RemainderVar",
+        "HigherDimLFPP.TwoD.CoupledGFF",
+        "HigherDimLFPP.Field.OscBlock",
+        "QuantumZipper.Proofs.GFF.ZeroRegBoundary"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.TwoD.RemainderVar",
+        "HigherDimLFPP.TwoD.CoupledGFF",
+        "HigherDimLFPP.Field.OscBlock",
+        "QuantumZipper.Proofs.GFF.ZeroRegBoundary"
+      ],
+      "bytes": 18969
+    },
+    "HigherDimLFPP.TwoD.Plane": {
+      "path": "HigherDimLFPP/TwoD/Plane.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/TwoD/Plane.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "13527bd624c2b2a504b1b9057f13150489f1f9e5effca8c1753e710255d20453",
+      "imports": [
+        "HigherDimLFPP.Frozen.LfppDistance",
+        "LQGDimension.Statement.Defs",
+        "Mathlib.Analysis.InnerProductSpace.PiL2",
+        "Mathlib.Analysis.Complex.Basic",
+        "Mathlib.MeasureTheory.Constructions.BorelSpace.Metrizable",
+        "Mathlib.Analysis.Calculus.FDeriv.Equiv"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Frozen.LfppDistance",
+        "LQGDimension.Statement.Defs"
+      ],
+      "bytes": 7485
+    },
+    "HigherDimLFPP.TwoD.RemainderVar": {
+      "path": "HigherDimLFPP/TwoD/RemainderVar.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/TwoD/RemainderVar.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "22eec1e5bea1d507dd06cc00df4192bf4bde6a91a23d8497c18d96ea62a638ba",
+      "imports": [
+        "HigherDimLFPP.TwoD.CircleKernel",
+        "HigherDimLFPP.Field.VarBounds"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.TwoD.CircleKernel",
+        "HigherDimLFPP.Field.VarBounds"
+      ],
+      "bytes": 23026
+    },
+    "HigherDimLFPP.Upper.BadRecordMean": {
+      "path": "HigherDimLFPP/Upper/BadRecordMean.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Upper/BadRecordMean.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "ef23dcce6fc275ebf9535de81b3906d4a8884a51de5efcb101e20332a3bf1346",
+      "imports": [
+        "HigherDimLFPP.Upper.RecordVariance",
+        "LQGDimension.Gaussian.ChainingBox",
+        "LQGDimension.Gaussian.SudakovFernique"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Upper.RecordVariance",
+        "LQGDimension.Gaussian.ChainingBox",
+        "LQGDimension.Gaussian.SudakovFernique"
+      ],
+      "bytes": 13425
+    },
+    "HigherDimLFPP.Upper.ChainRecords": {
+      "path": "HigherDimLFPP/Upper/ChainRecords.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Upper/ChainRecords.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "e72c4f1ab9d338d93e62ff69b162b0b990da30999273d807aab2510555ee8f29",
+      "imports": [
+        "HigherDimLFPP.Upper.RecordCount",
+        "HigherDimLFPP.Upper.PathTree"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Upper.RecordCount",
+        "HigherDimLFPP.Upper.PathTree"
+      ],
+      "bytes": 21665
+    },
+    "HigherDimLFPP.Upper.ChainSimultaneity": {
+      "path": "HigherDimLFPP/Upper/ChainSimultaneity.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Upper/ChainSimultaneity.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "45d41891b83d4e5aef56eacb3653801bfca5d2c6939f15d124e6dd65982d473d",
+      "imports": [
+        "HigherDimLFPP.Upper.ChainUnion",
+        "HigherDimLFPP.Upper.TreeInequality",
+        "HigherDimLFPP.Frozen.A"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Upper.ChainUnion",
+        "HigherDimLFPP.Upper.TreeInequality",
+        "HigherDimLFPP.Frozen.A"
+      ],
+      "bytes": 18569
+    },
+    "HigherDimLFPP.Upper.ChainUnion": {
+      "path": "HigherDimLFPP/Upper/ChainUnion.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Upper/ChainUnion.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "b912b6f84d47a5ea65222503d9382d10cfcf20bdc375d8edba216b82a84935f8",
+      "imports": [
+        "HigherDimLFPP.Upper.BadRecordMean",
+        "LQGDimension.LFPP.ChainUnionAux"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Upper.BadRecordMean",
+        "LQGDimension.LFPP.ChainUnionAux"
+      ],
+      "bytes": 32357
+    },
+    "HigherDimLFPP.Upper.CutTree": {
+      "path": "HigherDimLFPP/Upper/CutTree.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Upper/CutTree.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "3e8cd4a07a3e539242991c1f66aa7924f8030c1d24d255807af2ba4516889e80",
+      "imports": [
+        "HigherDimLFPP.Frozen.IsAdmissiblePath",
+        "HigherDimLFPP.Frozen.LfppLength",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Real"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Frozen.IsAdmissiblePath",
+        "HigherDimLFPP.Frozen.LfppLength"
+      ],
+      "bytes": 9940
+    },
+    "HigherDimLFPP.Upper.GoodNode": {
+      "path": "HigherDimLFPP/Upper/GoodNode.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Upper/GoodNode.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "5bd73c97a734b639307a31c6178cde88c55fff8982990da2e82f87e3988c6986",
+      "imports": [
+        "HigherDimLFPP.Upper.TreeJensen",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds",
+        "Mathlib.Algebra.Order.Chebyshev"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Upper.TreeJensen"
+      ],
+      "bytes": 26092
+    },
+    "HigherDimLFPP.Upper.LocalMean": {
+      "path": "HigherDimLFPP/Upper/LocalMean.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Upper/LocalMean.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "a28da92e020308c0a36dd53f4919eff775157271e50c1d404072586152c59a4c",
+      "imports": [
+        "HigherDimLFPP.Upper.LocalMeanEndpoints",
+        "HigherDimLFPP.Upper.ChainSimultaneity"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Upper.LocalMeanEndpoints",
+        "HigherDimLFPP.Upper.ChainSimultaneity"
+      ],
+      "bytes": 31075
+    },
+    "HigherDimLFPP.Upper.LocalMeanCompact": {
+      "path": "HigherDimLFPP/Upper/LocalMeanCompact.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Upper/LocalMeanCompact.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "1279f53ec66d008c03d7db7bfc8215a3e5fd9683dd88a7be33091fb4acda77e4",
+      "imports": [
+        "HigherDimLFPP.Upper.LocalMeanParam"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Upper.LocalMeanParam"
+      ],
+      "bytes": 31477
+    },
+    "HigherDimLFPP.Upper.LocalMeanEndpoints": {
+      "path": "HigherDimLFPP/Upper/LocalMeanEndpoints.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Upper/LocalMeanEndpoints.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "55023f10059dd4eee4557a7a32d4d331e916e9fdd3384013755915207b0d48d9",
+      "imports": [
+        "HigherDimLFPP.Upper.LocalMeanCompact"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Upper.LocalMeanCompact"
+      ],
+      "bytes": 29740
+    },
+    "HigherDimLFPP.Upper.LocalMeanParam": {
+      "path": "HigherDimLFPP/Upper/LocalMeanParam.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Upper/LocalMeanParam.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "ed6ae21436c091a9148b72710216cc5b7b8326a31879870c022533de35f7d452",
+      "imports": [
+        "HigherDimLFPP.Upper.LocalMeanShells"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Upper.LocalMeanShells"
+      ],
+      "bytes": 33047
+    },
+    "HigherDimLFPP.Upper.LocalMeanSetup": {
+      "path": "HigherDimLFPP/Upper/LocalMeanSetup.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Upper/LocalMeanSetup.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "469b50a4030eb8f5ff54abbee56fb670fbfc718633280fab529b6eceee6b9ccd",
+      "imports": [
+        "HigherDimLFPP.Field.PolygonLimit",
+        "HigherDimLFPP.Field.Similarity",
+        "HigherDimLFPP.Var.Theorem11",
+        "HigherDimLFPP.Var.Blocks",
+        "HigherDimLFPP.Upper.GoodNode",
+        "LQGDimension.Gaussian.ChainingBox",
+        "LQGDimension.Gaussian.Concentration",
+        "LQGDimension.LFPP.ExpectedSupLimit"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Field.PolygonLimit",
+        "HigherDimLFPP.Field.Similarity",
+        "HigherDimLFPP.Var.Theorem11",
+        "HigherDimLFPP.Var.Blocks",
+        "HigherDimLFPP.Upper.GoodNode",
+        "LQGDimension.Gaussian.ChainingBox",
+        "LQGDimension.Gaussian.Concentration",
+        "LQGDimension.LFPP.ExpectedSupLimit"
+      ],
+      "bytes": 33152
+    },
+    "HigherDimLFPP.Upper.LocalMeanShells": {
+      "path": "HigherDimLFPP/Upper/LocalMeanShells.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Upper/LocalMeanShells.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "b9da1f78ae9e44bda79f5e573e3a33832744ce686d22107303e81e462b4f8b92",
+      "imports": [
+        "HigherDimLFPP.Upper.LocalMeanSetup",
+        "HigherDimLFPP.Upper.Records",
+        "Mathlib.Data.List.GetD"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Upper.LocalMeanSetup",
+        "HigherDimLFPP.Upper.Records"
+      ],
+      "bytes": 40747
+    },
+    "HigherDimLFPP.Upper.PathTree": {
+      "path": "HigherDimLFPP/Upper/PathTree.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Upper/PathTree.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "0503ddac802eafea887dd3f453fa95144019bc95fe7f2e720256cf065ee8f9ba",
+      "imports": [
+        "HigherDimLFPP.Upper.CutTree"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Upper.CutTree"
+      ],
+      "bytes": 26855
+    },
+    "HigherDimLFPP.Upper.PolygonMeasure": {
+      "path": "HigherDimLFPP/Upper/PolygonMeasure.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Upper/PolygonMeasure.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "9a46c33c57a7d40234ca7a541b1edb0b492d8949150a1c1ea4f0048ce1d7fe6a",
+      "imports": [
+        "HigherDimLFPP.Upper.GoodNode",
+        "Mathlib.Analysis.Normed.Lp.MeasurableSpace",
+        "Mathlib.MeasureTheory.Measure.Lebesgue.Basic"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Upper.GoodNode"
+      ],
+      "bytes": 32773
+    },
+    "HigherDimLFPP.Upper.RecordCount": {
+      "path": "HigherDimLFPP/Upper/RecordCount.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Upper/RecordCount.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "457cbdac54f03eb54823ef5dc599be3931ed33d5dfae92173e772bf8ac02a65a",
+      "imports": [
+        "HigherDimLFPP.Upper.Records",
+        "Mathlib.Data.List.GetD"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Upper.Records"
+      ],
+      "bytes": 39861
+    },
+    "HigherDimLFPP.Upper.RecordLaw": {
+      "path": "HigherDimLFPP/Upper/RecordLaw.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Upper/RecordLaw.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "e2fc03803c0cd06f38d5623461ec140a8a09bee5f1956c35f3b1495573392382",
+      "imports": [
+        "HigherDimLFPP.Field.VarBounds",
+        "HigherDimLFPP.Field.BandFacts",
+        "HigherDimLFPP.Field.SupBounds",
+        "HigherDimLFPP.Upper.ChainRecords",
+        "QuantumZipper.Proofs.Section5.Prop16DomCoupleFubini"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Field.VarBounds",
+        "HigherDimLFPP.Field.BandFacts",
+        "HigherDimLFPP.Field.SupBounds",
+        "HigherDimLFPP.Upper.ChainRecords",
+        "QuantumZipper.Proofs.Section5.Prop16DomCoupleFubini"
+      ],
+      "bytes": 22572
+    },
+    "HigherDimLFPP.Upper.RecordVariance": {
+      "path": "HigherDimLFPP/Upper/RecordVariance.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Upper/RecordVariance.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "2416fe174b230c420d607cb2789293118746d78cc16f2f99ba00aa0950f747fc",
+      "imports": [
+        "HigherDimLFPP.Upper.RecordLaw",
+        "LQGDimension.LFPP.RecordVarianceAux3"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Upper.RecordLaw",
+        "LQGDimension.LFPP.RecordVarianceAux3"
+      ],
+      "bytes": 28565
+    },
+    "HigherDimLFPP.Upper.Records": {
+      "path": "HigherDimLFPP/Upper/Records.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Upper/Records.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "58db2192f9cbee3a838217a06073f26a4bc295b3b44e05c7c76f4f5ae6610000",
+      "imports": [
+        "HigherDimLFPP.Upper.PolygonMeasure",
+        "LQGDimension.LFPP.ChainUnionAux",
+        "Mathlib.Data.Int.Log"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Upper.PolygonMeasure",
+        "LQGDimension.LFPP.ChainUnionAux"
+      ],
+      "bytes": 24131
+    },
+    "HigherDimLFPP.Upper.TreeInequality": {
+      "path": "HigherDimLFPP/Upper/TreeInequality.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Upper/TreeInequality.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "4b232024aae9dbf4dccbb9ef08718f45d895be71623a1baee46f78a5ea489127",
+      "imports": [
+        "HigherDimLFPP.Upper.TreeJensen",
+        "HigherDimLFPP.Upper.PathTree",
+        "Mathlib.MeasureTheory.Integral.DivergenceTheorem",
+        "Mathlib.Analysis.Calculus.FDeriv.Measurable",
+        "Mathlib.Analysis.Calculus.ContDiff.Deriv",
+        "Mathlib.Analysis.Normed.Lp.MeasurableSpace"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Upper.TreeJensen",
+        "HigherDimLFPP.Upper.PathTree"
+      ],
+      "bytes": 21671
+    },
+    "HigherDimLFPP.Upper.TreeJensen": {
+      "path": "HigherDimLFPP/Upper/TreeJensen.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Upper/TreeJensen.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "21fcaf9cc87c5b752c90c5a232548827a7171873375b7b1c6d1515dfdef2e6ca",
+      "imports": [
+        "HigherDimLFPP.Upper.CutTree",
+        "Mathlib.Analysis.Convex.SpecificFunctions.Basic"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Upper.CutTree"
+      ],
+      "bytes": 23090
+    },
+    "HigherDimLFPP.Upper.UpperAssembly": {
+      "path": "HigherDimLFPP/Upper/UpperAssembly.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Upper/UpperAssembly.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "a2eeee75ec70fb35193b81bd3657704c8bd48aeb698db883fed78316c4d92f3b",
+      "imports": [
+        "HigherDimLFPP.Upper.UpperProb",
+        "HigherDimLFPP.Frozen.Kappa",
+        "HigherDimLFPP.Frozen.IsLFPPExponent"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Upper.UpperProb",
+        "HigherDimLFPP.Frozen.Kappa",
+        "HigherDimLFPP.Frozen.IsLFPPExponent"
+      ],
+      "bytes": 18566
+    },
+    "HigherDimLFPP.Upper.UpperProb": {
+      "path": "HigherDimLFPP/Upper/UpperProb.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Upper/UpperProb.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "b153434bc6347a24c7f48136af5c39f7901abac389e4f3b38cf9604e4bc0ff19",
+      "imports": [
+        "HigherDimLFPP.Upper.ChainSimultaneity",
+        "HigherDimLFPP.Field.Oscillation",
+        "HigherDimLFPP.Var.Theorem11"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Upper.ChainSimultaneity",
+        "HigherDimLFPP.Field.Oscillation",
+        "HigherDimLFPP.Var.Theorem11"
+      ],
+      "bytes": 27789
+    },
+    "HigherDimLFPP.Var.Ag": {
+      "path": "HigherDimLFPP/Var/Ag.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Var/Ag.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "65f48078e47134eb723fc8dca8e31345d482c06d37736cf4dd98bf93c540e0b7",
+      "imports": [
+        "HigherDimLFPP.Var.PSD",
+        "LQGDimension.Gaussian.Basic",
+        "LQGDimension.Section2.Subadditive",
+        "LQGDimension.Assembly.AStar"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Var.PSD",
+        "LQGDimension.Gaussian.Basic",
+        "LQGDimension.Section2.Subadditive",
+        "LQGDimension.Assembly.AStar"
+      ],
+      "bytes": 7054
+    },
+    "HigherDimLFPP.Var.Basic": {
+      "path": "HigherDimLFPP/Var/Basic.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Var/Basic.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "d4979e6dec4ddd9a650c64dac2d93431d71533a52ef67afbd34a93ca12946f39",
+      "imports": [
+        "HigherDimLFPP.Core.Defs",
+        "Mathlib.Analysis.Calculus.Deriv.Mul",
+        "Mathlib.Analysis.InnerProductSpace.Basic"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Core.Defs"
+      ],
+      "bytes": 13462
+    },
+    "HigherDimLFPP.Var.Blocks": {
+      "path": "HigherDimLFPP/Var/Blocks.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Var/Blocks.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "bc15e1e831544c775e74b1c82864776206cded05899a690d24aab4b996364364",
+      "imports": [
+        "HigherDimLFPP.Var.Ag",
+        "LQGDimension.Gaussian.SudakovFernique"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Var.Ag",
+        "LQGDimension.Gaussian.SudakovFernique"
+      ],
+      "bytes": 10657
+    },
+    "HigherDimLFPP.Var.Bridge": {
+      "path": "HigherDimLFPP/Var/Bridge.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Var/Bridge.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "b15b34c237185e42bbc508df23034fa23ca4308a7c30fe96b024aefc928f0d01",
+      "imports": [
+        "HigherDimLFPP.Var.Coord",
+        "LQGDimension.Assembly.AStarProved"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Var.Coord",
+        "LQGDimension.Assembly.AStarProved"
+      ],
+      "bytes": 3163
+    },
+    "HigherDimLFPP.Var.Coord": {
+      "path": "HigherDimLFPP/Var/Coord.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Var/Coord.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "4a67121d4914ee783580d6dcd29f1d485d50292ecafddc66fa666e55ac6e7b6f",
+      "imports": [
+        "HigherDimLFPP.Var.Subadditive",
+        "LQGDimension.Section2.Bounds",
+        "Mathlib.Algebra.Order.Chebyshev"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Var.Subadditive",
+        "LQGDimension.Section2.Bounds"
+      ],
+      "bytes": 17175
+    },
+    "HigherDimLFPP.Var.EnergyBall": {
+      "path": "HigherDimLFPP/Var/EnergyBall.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Var/EnergyBall.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "8638cec9de861f1a7f6c0ed881bf8975d4da116bcef9d217e7c581ce9dbe6e30",
+      "imports": [
+        "HigherDimLFPP.Var.Theorem11",
+        "HigherDimLFPP.Var.Scaling",
+        "HigherDimLFPP.Lower.Profiles",
+        "LQGDimension.Section2.Lemma23Aux"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Var.Theorem11",
+        "HigherDimLFPP.Var.Scaling",
+        "HigherDimLFPP.Lower.Profiles",
+        "LQGDimension.Section2.Lemma23Aux"
+      ],
+      "bytes": 28293
+    },
+    "HigherDimLFPP.Var.Lemma22": {
+      "path": "HigherDimLFPP/Var/Lemma22.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Var/Lemma22.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "e9ff0b8f2edf8a4b54551a54206d586efd99dbc6fd5afeb10147d63fe98eeb2c",
+      "imports": [
+        "HigherDimLFPP.Var.EnergyBall",
+        "LQGDimension.Gaussian.Concentration"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Var.EnergyBall",
+        "LQGDimension.Gaussian.Concentration"
+      ],
+      "bytes": 22482
+    },
+    "HigherDimLFPP.Var.Lemma22Family": {
+      "path": "HigherDimLFPP/Var/Lemma22Family.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Var/Lemma22Family.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "ad057fbc669778aa08309f56a54b8da9fed9ef3e906346be4aa2e20ecdfdda67",
+      "imports": [
+        "HigherDimLFPP.Var.Lemma22"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Var.Lemma22"
+      ],
+      "bytes": 44354
+    },
+    "HigherDimLFPP.Var.PSD": {
+      "path": "HigherDimLFPP/Var/PSD.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Var/PSD.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "820895a7e2b4d1ab85842af68b20ca1cbc3b971511c32019efdda3d16e412317",
+      "imports": [
+        "HigherDimLFPP.Var.Basic",
+        "LQGDimension.Gaussian.MaxInequality",
+        "GaussianLQG.Probability.Gaussian"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Var.Basic",
+        "LQGDimension.Gaussian.MaxInequality",
+        "GaussianLQG.Probability.Gaussian"
+      ],
+      "bytes": 15500
+    },
+    "HigherDimLFPP.Var.Scaling": {
+      "path": "HigherDimLFPP/Var/Scaling.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Var/Scaling.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "dd2cd9ba5de7421b23c5867cb5c3f044cd66498bb952f8d2719598958f3d44c2",
+      "imports": [
+        "HigherDimLFPP.Var.Ag",
+        "LQGDimension.Section2.Bounds"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Var.Ag",
+        "LQGDimension.Section2.Bounds"
+      ],
+      "bytes": 7757
+    },
+    "HigherDimLFPP.Var.Subadditive": {
+      "path": "HigherDimLFPP/Var/Subadditive.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Var/Subadditive.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "670a02c07d66ec92b97e23696c7d07754d3c626f25688e9ec8e060e4981643b7",
+      "imports": [
+        "HigherDimLFPP.Var.Blocks",
+        "HigherDimLFPP.Var.SubadditiveAux"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Var.Blocks",
+        "HigherDimLFPP.Var.SubadditiveAux"
+      ],
+      "bytes": 5860
+    },
+    "HigherDimLFPP.Var.SubadditiveAux": {
+      "path": "HigherDimLFPP/Var/SubadditiveAux.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Var/SubadditiveAux.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "a25777332ef6983b3cd58cbd81545dd09a19e40bdb6c7809f9ddacd3886a4b6f",
+      "imports": [
+        "HigherDimLFPP.Var.Basic",
+        "Mathlib.Tactic.Module"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Var.Basic"
+      ],
+      "bytes": 17434
+    },
+    "HigherDimLFPP.Var.Theorem11": {
+      "path": "HigherDimLFPP/Var/Theorem11.lean",
+      "source_path": "formalizations/higher_dim_lfpp/HigherDimLFPP/Var/Theorem11.lean",
+      "source_commit": "ab73b5b7338fe49917894eac509a727ef7a39efc",
+      "sha256": "e9f42d6d3c56bd4dbf0b9be99d4ef3b73782742136d314c6ca5ad2b167e2d854",
+      "imports": [
+        "HigherDimLFPP.Var.Bridge",
+        "Mathlib.Analysis.Subadditive"
+      ],
+      "local_imports": [
+        "HigherDimLFPP.Var.Bridge"
+      ],
+      "bytes": 8376
     }
   }
 }
