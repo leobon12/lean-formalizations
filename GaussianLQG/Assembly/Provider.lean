@@ -9,9 +9,11 @@ import GaussianLQG.LQG.EnergyApprox
 `main_theorem_provider` has exactly the statement of the draft main theorem
 (`planning/main-theorem-draft.lean.txt`, source Theorem 1.1, blueprint Theorem `thm:main`):
 the same binders, hypotheses and conclusions; only the name differs. Its only hypotheses are those of
-the draft: `hD` (each `D γ` is the canonical γ-LQG metric) and `hS6` (the source's Lemma 2.1, the
-single trust input, ruling R7). Once the author approves and the statement is frozen, the frozen
-anchor's body will be this provider.
+the draft: `hD` (each `D γ` is the canonical γ-LQG metric) and `hS6` (the source's Lemma 2.1). It is
+the conditional milestone. `hS6` is discharged in `Assembly/FrontierS6.lean` and
+`Assembly/MainUnconditional.lean`, where Lemma 2.1 is proved for the canonical metric. The frozen,
+unconditional main theorem (`GaussianLQG/Frozen/MainTheorem.lean`) is sealed with
+`main_theorem_impl`.
 -/
 
 set_option autoImplicit false
@@ -21,8 +23,8 @@ open MeasureTheory ProbabilityTheory Filter Topology Set
 
 namespace GaussianLQG
 
-/-- **Main theorem** (source Theorem 1.1, blueprint Theorem `thm:main`), relative to the single input
-(S6) (source Lemma 2.1, unproved; taken as a hypothesis under ruling R7). -/
+/-- **Main theorem** (source Theorem 1.1, blueprint Theorem `thm:main`), relative to (S6), the source's
+Lemma 2.1. The unconditional version is `GaussianLQG.main_theorem`, where (S6) is proved. -/
 theorem main_theorem_provider (D : ℝ → LQGMetric.DistC → LQGMetric.ContMetric)
     (hD : ∀ γ, 0 < γ → γ < 2 → IsCanonicalLQGMetric γ (D γ))
     (hS6 : UniformMomentInput D)

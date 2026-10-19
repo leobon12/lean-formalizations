@@ -104390,8 +104390,8 @@
     "GaussianLQG.Assembly.Provider": {
       "path": "GaussianLQG/Assembly/Provider.lean",
       "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Assembly/Provider.lean",
-      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
-      "sha256": "084d720a8e2bdf203a7edb07ce594a3b76fcd0322717df76e5f66451e4755827",
+      "source_commit": "a69d1d3ff0550bd33713f02ebbd602ca97e98848",
+      "sha256": "83430e96839a979b7f1ec63413f095787e4dc45991edba833bed97220da2519b",
       "imports": [
         "GaussianLQG.Assembly.Main",
         "GaussianLQG.Assembly.Discharge",
@@ -104404,7 +104404,7 @@
         "GaussianLQG.LQG.Crossing",
         "GaussianLQG.LQG.EnergyApprox"
       ],
-      "bytes": 2690
+      "bytes": 2860
     },
     "GaussianLQG.Assembly.Realize": {
       "path": "GaussianLQG/Assembly/Realize.lean",
@@ -104524,8 +104524,8 @@
     "GaussianLQG.Core.MainDefs": {
       "path": "GaussianLQG/Core/MainDefs.lean",
       "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Core/MainDefs.lean",
-      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
-      "sha256": "08a20df39d38a2614270f0285b7a9c3da2849707fce5f1e9d6fd2f3defebe776",
+      "source_commit": "a69d1d3ff0550bd33713f02ebbd602ca97e98848",
+      "sha256": "1cf3b744f913cbfae2feeb757207d7c567100d798f55b188c2a9dd00f58ebc34",
       "imports": [
         "GaussianLQG.Core.Defs",
         "GaussianLQG.LQG.Bridge.Defs",
@@ -104537,13 +104537,13 @@
         "GaussianLQG.LQG.Bridge.Defs",
         "GaussianLQG.Frozen.QConst"
       ],
-      "bytes": 1818
+      "bytes": 1962
     },
     "GaussianLQG.Core.Setup": {
       "path": "GaussianLQG/Core/Setup.lean",
       "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Core/Setup.lean",
-      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
-      "sha256": "a7b5ad43e8a2b39abea5ba0114a937c83bdaed0d013abe5653fa9b16462fc931",
+      "source_commit": "a69d1d3ff0550bd33713f02ebbd602ca97e98848",
+      "sha256": "37cf4641a254ccb33b299d7452cfd1aaaa84c132128be16265ccc3e76411557e",
       "imports": [
         "GaussianLQG.Core.Defs",
         "LQGMetric.Basic",
@@ -104555,7 +104555,7 @@
         "LQGMetric.Basic",
         "LQGMetric.Papers.GM.S1.Defs"
       ],
-      "bytes": 5218
+      "bytes": 5286
     },
     "GaussianLQG.Energy.All": {
       "path": "GaussianLQG/Energy/All.lean",
@@ -106408,8 +106408,8 @@
     "GaussianLQG.Uniform.InterfacesLFPP": {
       "path": "GaussianLQG/Uniform/InterfacesLFPP.lean",
       "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/InterfacesLFPP.lean",
-      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
-      "sha256": "13d065c8a7f1e516c53f2b34db05728b875a10d98b6f039626ac9929a2c728e3",
+      "source_commit": "a69d1d3ff0550bd33713f02ebbd602ca97e98848",
+      "sha256": "1ed21bb621f8b5e27880b42cdf2f7b07e245686e0ddddbd43edef3e317a21ab5",
       "imports": [
         "GaussianLQG.Uniform.Interfaces",
         "GaussianLQG.Core.Defs",
@@ -106420,7 +106420,7 @@
         "GaussianLQG.Core.Defs",
         "LQGMetric.LFPP.DistOn"
       ],
-      "bytes": 1554
+      "bytes": 1586
     },
     "GaussianLQG.Uniform.InverseMoments": {
       "path": "GaussianLQG/Uniform/InverseMoments.lean",

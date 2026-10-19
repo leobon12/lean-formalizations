@@ -233,10 +233,11 @@ lake env lean results/gaussian-lqg-distance/Check.lean
 lake env leanchecker --fresh GaussianLQG.Frozen.MainTheorem
 ```
 
-The sources are published byte-for-byte. Some docstrings were written before Lemma 2.1 was proved and
-still call it an unproved or trust input, for example in `Core/MainDefs.lean` and
-`Assembly/Provider.lean`. `main_theorem` has no such hypothesis, as its statement and axiom check show.
-Docstrings also cite development documents that are not part of this snapshot, such as the corrected
+The sources are published byte-for-byte. Four docstring-only updates (`Core/MainDefs.lean`,
+`Core/Setup.lean`, `Assembly/Provider.lean`, `Uniform/InterfacesLFPP.lean`) come from source commit
+`a69d1d3ff0550bd33713f02ebbd602ca97e98848`, so that no docstring calls Lemma 2.1 unproved; all other
+`GaussianLQG` files come from `6eb5a29e8`. `main_theorem` has no Lemma 2.1 hypothesis, as its statement
+and axiom check show. Docstrings also cite development documents that are not part of this snapshot, such as the corrected
 rewrite ("blueprint"), rulings, audits, the uniform-constants ledger and the frozen-anchor manifest.
 Kernel checking establishes the Lean proof; correspondence with the paper is the subject of the
 conventions above.

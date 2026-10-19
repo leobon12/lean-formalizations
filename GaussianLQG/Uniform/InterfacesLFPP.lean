@@ -8,7 +8,8 @@ import LQGMetric.LFPP.DistOn
 The ledger statement U12 (`holder_moment_unif`, `blueprint/phaseB/uniform-ledger.tex`): uniform
 moments of the 1/2-Hölder constant of the internal LFPP distance of the DDDF field `φ_{0,n}` on the
 box `V_R = [-R-1, R+1]²`, over pairs in `V'_R = [-R, R]²`, normalized by `λ_n`. The packet proving
-U12 exports a theorem implying it; the (★) packet (U15) takes it as a hypothesis meanwhile.
+U12 proves it (`Uniform.ifaceHolderMomentU_holds`, `GaussianLQG/Uniform/Holder/Done.lean`); the (★)
+step (U15) consumes it.
 -/
 
 set_option autoImplicit false

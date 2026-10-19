@@ -9,8 +9,8 @@ import Mathlib.MeasureTheory.Constructions.BorelSpace.ContinuousMap
 `Setup` packages the six properties (S1)–(S6) of blueprint §1.6 in coordinate form, for metrics
 `D γ : Coord → ContMetric` driven by a GFF frame `e` on `(ℝ^ℕ, stdP)`. Sections 3–7 of the blueprint
 are proved for an arbitrary `Setup`. The main theorem instantiates it: the realization (blueprint
-Prop. `prop:realization`) and the canonical GM21 metric (Prop. `prop:S2-S5`) give (S2)–(S5), and the
-two inputs give (S1) and (S6).
+Prop. `prop:realization`) and the canonical GM21 metric (Prop. `prop:S2-S5`) give (S2)–(S5); (S1) is
+proved by `dimensionInput_holds` and (S6) by the Phase B results (blueprint v4, Theorem `thm:S6`).
 
 This is an internal implementation interface, not a source-facing statement. It never appears in a
 frozen declaration.

@@ -27,9 +27,11 @@ namespace GaussianLQG
 /-- Input (S6): uniform moments of the `1/2`-Hölder constant and of inverse separated distances
 (source Lemma 2.1), under the law of the normalized whole-plane GFF.
 
-This is **not proved** anywhere. It is the source's own Lemma 2.1, whose proof (source Appendix A)
-is a reduction to an unproved uniform-in-ξ version of DDDF20 Lemma A.1 (blueprint erratum E16,
-audit A4). The main theorem takes it as a hypothesis under ruling R7. -/
+This is the source's own Lemma 2.1. The source's Appendix A only reduces it to an unproved
+uniform-in-ξ version of DDDF20 Lemma A.1 (blueprint erratum E16). It is proved here for the canonical
+metric: `uniformMomentInput_of_lfppUniformMoments` with `StarBound.exists_lfppUniformMoments` and
+`Uniform.ifaceHolderMomentU_holds` (blueprint v4, Theorem `thm:S6`). The frozen main theorem has no such
+hypothesis. -/
 def UniformMomentInput (D : ℝ → LQGMetric.DistC → LQGMetric.ContMetric) : Prop :=
   ∀ p : ℝ, 1 ≤ p → ∃ γp : ℝ, 0 < γp ∧ ∀ K : Set ℂ, IsCompact K → ∀ δ : ℝ, 0 < δ →
     ∃ C : ℝ≥0∞, C ≠ ⊤ ∧ ∀ γ ∈ Ioc (0 : ℝ) γp,

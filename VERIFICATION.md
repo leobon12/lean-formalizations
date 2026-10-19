@@ -9,7 +9,8 @@ The release contains 6,596 byte-preserved Lean modules from six selected source 
 | `32156ac07851dc378a0a00e3140f15646ffe38bf` | 2,449 | 2,362 LQGMetric and 87 additional LQGDimension support modules |
 | `ec3738f9c8df2e584e35ad8ef816b581cf217160` | 72 | 64 MeshOnly and 8 additional LQGDimension support modules |
 | `5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab` | 35 | 34 MeshRates and 1 additional BouRabeeGwynne module |
-| `6eb5a29e8fb37c70823e6966d3cad60e400e874a` | 167 | 167 GaussianLQG |
+| `6eb5a29e8fb37c70823e6966d3cad60e400e874a` | 163 | 163 GaussianLQG |
+| `a69d1d3ff0550bd33713f02ebbd602ca97e98848` | 4 | 4 GaussianLQG (docstring-only updates of Core/MainDefs, Core/Setup, Assembly/Provider, Uniform/InterfacesLFPP) |
 
 `source-manifest.json` records the 31 selected entry modules, their exact transitive local import closure,
 original relative paths, direct imports, source commits and SHA-256 hashes. The original release's 1,007
