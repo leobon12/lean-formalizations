@@ -19,6 +19,7 @@ Each result below has a short guide to its mathematical scope, the exact Lean st
 | Small-parameter LQG dimension | Theorem 1.1 and Proposition 1.2, with explicit LFPP literature inputs; GFF existence witness | [README](results/small-gamma-dimension/) |
 | Mesh-only convergence and sharper rates on orthogonal tilings | Theorem 1.1 with the rate ε^(4/(d+4)) and Corollary 1.2 (random-walk consequences without alternatives I–III), with documented statement conventions | [README](results/mesh-only/) |
 | Reflected random walks with spatial singularities | Harmonic coordinates and invariance principle in the earlier geometric-topology revision; see the revision correspondence | [README](results/reflected-gms/) |
+| Gaussian fluctuations of small-γ LQG distance | Theorem 1.1 in full (all of (1.7)–(1.9), the law, q<0, unique median), unconditional — including the note's Lemma 2.1 | [README](results/gaussian-lqg-distance/) |
 
 ## Verify the proofs
 

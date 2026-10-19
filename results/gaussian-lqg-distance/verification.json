@@ -1,0 +1,51 @@
+{
+  "status": "passed",
+  "mode": "fresh build of the 167 new GaussianLQG modules from the exported public files (lean -j1 -M8192, as in scripts/verify.py), against 3403 cached dependencies after all 3570 source files matched byte-for-byte, then a freshly compiled Check.lean",
+  "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+  "modules": 3570,
+  "new_modules": 167,
+  "existing_identical_modules": 3403,
+  "cache_source_matches": 3570,
+  "conflicts": 0,
+  "fresh_modules": 167,
+  "reused_modules": 3403,
+  "fresh_build_wall_seconds": 117,
+  "fresh_build_max_module_seconds": 11.2,
+  "fresh_build_max_rss_mb": 5090,
+  "lean_version": "v4.34.0-rc2",
+  "mathlib_commit": "a4c8ef0a69f52ec80525d5086bb3542f4660faaf",
+  "check_sha256": "226f428c5d5550676701b0ff57b39e6684cd538eb8778fad94760f4464758c45",
+  "frozen_statement_file": "GaussianLQG/Frozen/MainTheorem.lean",
+  "frozen_statement_sha256": "b39a3bf672a237e1b0ef694144a112a01aa6cd109f67cc807acec53eaca910b6",
+  "proofs": [
+    "GaussianLQG.main_theorem",
+    "GaussianLQG.dimensionInput_holds",
+    "GaussianLQG.Uniform.ifaceHolderMomentU_holds",
+    "GaussianLQG.StarBound.exists_lfppUniformMoments",
+    "GaussianLQG.uniformMomentInput_of_lfppUniformMoments",
+    "GaussianLQG.Uniform.cor17_unif",
+    "GaussianLQG.Uniform.prop18_unif",
+    "GaussianLQG.Uniform.p18_step4_unif",
+    "GaussianLQG.Uniform.conditionTU_small_all",
+    "GaussianLQG.Uniform.thm20_unif_holds"
+  ],
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "output": "GaussianLQG.main_theorem (D : ℝ → LQGMetric.DistC → LQGMetric.ContMetric)\n  (_hD : ∀ (γ : ℝ), 0 < γ → γ < 2 → GaussianLQG.IsCanonicalLQGMetric γ (D γ)) {Ω : Type} [MeasurableSpace Ω]\n  (P : Measure Ω) [IsProbabilityMeasure P] (h : Ω → LQGMetric.DistC) (_hh : LQGMetric.IsNormalizedWPGFF h P) :\n  (LQGMetric.IsMedian (Measure.map (fun ω => GaussianLQG.diagMin (h ω)) P) GaussianLQG.qConst ∧\n      ∀ (m : ℝ), LQGMetric.IsMedian (Measure.map (fun ω => GaussianLQG.diagMin (h ω)) P) m → m = GaussianLQG.qConst) ∧\n    GaussianLQG.qConst < 0 ∧\n      (TendstoInMeasure P (fun γ ω => (↑(D γ (h ω)) (0, 1) - 1) / γ) (𝓝[>] 0) fun ω =>\n          (GaussianLQG.segPairing (h ω) 0 0 - GaussianLQG.qConst) / 2) ∧\n        Measure.map (fun ω => (GaussianLQG.segPairing (h ω) 0 0 - GaussianLQG.qConst) / 2) P =\n            gaussianReal (-GaussianLQG.qConst / 2) (3 / 8) ∧\n          TendstoInDistribution (fun γ ω => (↑(D (↑γ) (h ω)) (0, 1) - 1) / ↑γ) (comap Subtype.val (𝓝[>] 0)) id\n              (fun x => P) (gaussianReal (-GaussianLQG.qConst / 2) (3 / 8)) ∧\n            ∀ (m : ℝ → ℝ),\n              (∀ (γ : ℝ), 0 < γ → γ < 2 → LQGMetric.IsMedian (Measure.map (fun ω => ↑(D γ (h ω)) (0, 1)) P) (m γ)) →\n                Tendsto (fun γ => (m γ - (1 - GaussianLQG.qConst / 2 * γ)) / γ) (𝓝[>] 0) (𝓝 0)\n'GaussianLQG.main_theorem' depends on axioms: [propext, Classical.choice, Quot.sound]\ndef GaussianLQG.segMeasure : ℂ → ℂ → Measure ℂ :=\nfun z w => Measure.map (fun u => ↑(1 - u) * z + ↑u * w) (ℙ.restrict (Icc 0 1))\ndef GaussianLQG.measPairing : LQGMetric.DistC → Measure ℂ → ℝ :=\nfun g μ => atTop.limUnder fun n => ∫ (x : ℂ), g (LQGMetric.bumpTest n x) ∂μ\ndef GaussianLQG.segPairing : LQGMetric.DistC → ℝ → ℝ → ℝ :=\nfun h s t => GaussianLQG.measPairing h (GaussianLQG.segMeasure (↑s * Complex.I) (1 + ↑t * Complex.I))\ndef GaussianLQG.dyadicUnit : Set ℝ :=\n{y | ∃ n, ∃ k ≤ 2 ^ n, y = ↑k / 2 ^ n}\ndef GaussianLQG.diagMin : LQGMetric.DistC → ℝ :=\nfun h => ⨅ y, GaussianLQG.segPairing h ↑y ↑y\ndef GaussianLQG.qConst : ℝ :=\nLQGMetric.lowerMedian LQGMetric.normGFFLaw GaussianLQG.diagMin\ndef GaussianLQG.IsCanonicalLQGMetric : ℝ → (LQGMetric.DistC → LQGMetric.ContMetric) → Prop :=\nfun γ D =>\n  LQGMetric.IsStrongLQGMetric γ D ∧\n    ∀ {Ω : Type} [inst : MeasurableSpace Ω] (P : Measure Ω) [IsProbabilityMeasure P] (h : Ω → LQGMetric.DistC),\n      LQGMetric.IsGFFPlusBddCont h P →\n        LQGMetric.TendstoInProbLU P\n          (fun ε ω => (LQGMetric.aEps (LQGMetric.xiGamma γ) ε)⁻¹ • LQGMetric.lfppDist (LQGMetric.xiGamma γ) ε (h ω))\n          (𝓝[>] 0) fun ω => ⇑↑(D (h ω))\nGaussianLQG.dimensionInput_holds : ∃ γ₀ C₀, 0 < γ₀ ∧ ∀ γ ∈ Ioc 0 γ₀, |LQGMetric.dGamma γ - 2| ≤ C₀ * γ\n'GaussianLQG.dimensionInput_holds' depends on axioms: [propext, Classical.choice, Quot.sound]\ndef GaussianLQG.UniformMomentInput : (ℝ → LQGMetric.DistC → LQGMetric.ContMetric) → Prop :=\nfun D =>\n  ∀ (p : ℝ),\n    1 ≤ p →\n      ∃ γp,\n        0 < γp ∧\n          ∀ (K : Set ℂ),\n            IsCompact K →\n              ∀ (δ : ℝ),\n                0 < δ →\n                  ∃ C,\n                    C ≠ ⊤ ∧\n                      ∀ γ ∈ Ioc 0 γp,\n                        ∫⁻ (g : LQGMetric.DistC), GaussianLQG.holderConst (⇑↑(D γ g)) K ^ p ∂LQGMetric.normGFFLaw ≤ C ∧\n                          ∫⁻ (g : LQGMetric.DistC), (GaussianLQG.sepInf (⇑↑(D γ g)) K δ)⁻¹ ^ p ∂LQGMetric.normGFFLaw ≤ C\n'GaussianLQG.Uniform.ifaceHolderMomentU_holds' depends on axioms: [propext, Classical.choice, Quot.sound]\n'GaussianLQG.StarBound.exists_lfppUniformMoments' depends on axioms: [propext, Classical.choice, Quot.sound]\n'GaussianLQG.uniformMomentInput_of_lfppUniformMoments' depends on axioms: [propext, Classical.choice, Quot.sound]\nGaussianLQG.Uniform.cor17_unif.{u} (ξs : ℝ) (hξs : 0 < ξs) :\n  ∃ p₀,\n    0 < p₀ ∧\n      ∀ (p : ℝ),\n        0 < p →\n          p ≤ p₀ →\n            ∃ C c,\n              0 < C ∧\n                0 < c ∧\n                  ∀ {Ω : Type u} [inst : MeasurableSpace Ω] {P : Measure Ω} {W : LQGMetric.WhiteNoise.WNSpace → Ω → ℝ},\n                    LQGMetric.WhiteNoise.IsWhiteNoise P W →\n                      ∀ ξ ∈ Ioc 0 ξs,\n                        ∀ (n : ℕ) (s : ℝ),\n                          0 < s →\n                            P\n                                {ω |\n                                  LQGMetric.DDDF.lenObs ξ (LQGMetric.DDDF.phiMN W P 0 n) (LQGMetric.DDDF.rectAB 1 3) ω ≤\n                                    Real.exp (-s) * LQGMetric.DDDF.ellN ξ W P n (ENNReal.ofReal p)} ≤\n                              ENNReal.ofReal (C * Real.exp (-c * s ^ 2))\nGaussianLQG.Uniform.prop18_unif (ξs : ℝ) (hξs : 0 < ξs) :\n  ∃ p₀,\n    0 < p₀ ∧\n      ∀ (p : ℝ),\n        0 < p →\n          p ≤ p₀ →\n            ∃ C c,\n              0 < C ∧\n                0 < c ∧\n                  ∀ {Ω : Type} [inst : MeasurableSpace Ω] {P : Measure Ω} {W : LQGMetric.WhiteNoise.WNSpace → Ω → ℝ},\n                    LQGMetric.WhiteNoise.IsWhiteNoise P W →\n                      ∀ ξ ∈ Ioc 0 ξs,\n                        ∀ (n : ℕ) (s : ℝ),\n                          2 < s →\n                            P\n                                {ω |\n                                  Real.exp s * LQGMetric.DDDF.LambdaN ξ W P n (ENNReal.ofReal p) *\n                                      LQGMetric.DDDF.ellN ξ W P n (ENNReal.ofReal p) ≤\n                                    LQGMetric.DDDF.lenObs ξ (LQGMetric.DDDF.phiMN W P 0 n) (LQGMetric.DDDF.rectAB 3 1)\n                                      ω} ≤\n                              ENNReal.ofReal (C * Real.exp (-c * s ^ 2 / Real.log s))\nGaussianLQG.Uniform.p18_step4_unif.{u_1} (ξs : ℝ) (hξs : 0 < ξs) {p : ℝ} (hp0 : 0 < p) (hp : p ≤ 1 / 2) :\n  ∃ C c,\n    0 < C ∧\n      0 < c ∧\n        ∀ {Ω : Type u_1} [inst : MeasurableSpace Ω] {P : Measure Ω} {W : LQGMetric.WhiteNoise.WNSpace → Ω → ℝ},\n          LQGMetric.WhiteNoise.IsWhiteNoise P W →\n            ∀ ξ ∈ Ioc 0 ξs,\n              ∀ (n : ℕ) (s : ℝ),\n                1 ≤ n →\n                  2 < s →\n                    2 ^ n ≤ s ^ 2 →\n                      P\n                          {ω |\n                            Real.exp s * LQGMetric.DDDF.LambdaN ξ W P n (ENNReal.ofReal p) *\n                                LQGMetric.DDDF.ellN ξ W P n (ENNReal.ofReal p) ≤\n                              LQGMetric.DDDF.lenObs ξ (LQGMetric.DDDF.phiMN W P 0 n) (LQGMetric.DDDF.rectAB 3 1) ω} ≤\n                        ENNReal.ofReal (C * Real.exp (-c * s ^ 2 / Real.log s))\nGaussianLQG.Uniform.conditionTU_small_all.{u} (Q : LQGMetric.WhiteNoise.PsiParams) :\n  GaussianLQG.Uniform.ConditionTUAll (1 / 8) Q\nGaussianLQG.Uniform.thm20_unif_holds :\n  ∃ p₀,\n    0 < p₀ ∧\n      ∀ (p : ℝ),\n        0 < p →\n          p ≤ p₀ →\n            ∃ B,\n              ∀ {Ω : Type} [inst : MeasurableSpace Ω] {P : Measure Ω} {W : LQGMetric.WhiteNoise.WNSpace → Ω → ℝ},\n                LQGMetric.WhiteNoise.IsWhiteNoise P W →\n                  ∀ ξ ∈ Ioc 0 (1 / 8),\n                    ∀ (n : ℕ),\n                      LQGMetric.DDDF.LambdaN ξ W P n (ENNReal.ofReal p) ≤ B ∧\n                        LQGMetric.DDDF.LambdaNPsi ξ LQGMetric.DDDF.S6.psiQ₁ W P n (ENNReal.ofReal (p / 2)) ≤ B ∧\n                          Var[LQGMetric.DDDF.L24.logLenPsi ξ LQGMetric.DDDF.S6.psiQ₁ W P n; P] ≤ B\n'GaussianLQG.Uniform.cor17_unif' depends on axioms: [propext, Classical.choice, Quot.sound]\n'GaussianLQG.Uniform.prop18_unif' depends on axioms: [propext, Classical.choice, Quot.sound]\n'GaussianLQG.Uniform.p18_step4_unif' depends on axioms: [propext, Classical.choice, Quot.sound]\n'GaussianLQG.Uniform.conditionTU_small_all' depends on axioms: [propext, Classical.choice, Quot.sound]\n'GaussianLQG.Uniform.thm20_unif_holds' depends on axioms: [propext, Classical.choice, Quot.sound]\nGAUSSIAN_LQG_AUDIT declarations=52100; reachable=136346; axioms=[Quot.sound, Classical.choice, propext]\n",
+  "project_declarations": 52100,
+  "reachable_declarations": 136346,
+  "seconds": 10.6,
+  "upstream_kernel_replay": {
+    "command": "lake env leanchecker --fresh GaussianLQG.Frozen.MainTheorem",
+    "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+    "seal_commit": "c7347d22ca9460a4d68f0e02eb2bc6b73cf26028",
+    "lean_sources_identical_to_seal_commit": true,
+    "date": "2026-10-19, 03:24-03:36 CEST",
+    "seconds": 725.4,
+    "exit_code": 0,
+    "status": "passed"
+  }
+}

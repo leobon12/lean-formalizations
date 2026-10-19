@@ -1,6 +1,6 @@
 # Verification record
 
-The release contains 6,429 byte-preserved Lean modules from five selected source snapshots:
+The release contains 6,596 byte-preserved Lean modules from six selected source snapshots:
 
 | Source commit | Included modules | Scope |
 | --- | ---: | --- |
@@ -9,8 +9,9 @@ The release contains 6,429 byte-preserved Lean modules from five selected source
 | `32156ac07851dc378a0a00e3140f15646ffe38bf` | 2,449 | 2,362 LQGMetric and 87 additional LQGDimension support modules |
 | `ec3738f9c8df2e584e35ad8ef816b581cf217160` | 72 | 64 MeshOnly and 8 additional LQGDimension support modules |
 | `5c9b1cf3eacb5c8d42c90c55d02a4a2e8b6566ab` | 35 | 34 MeshRates and 1 additional BouRabeeGwynne module |
+| `6eb5a29e8fb37c70823e6966d3cad60e400e874a` | 167 | 167 GaussianLQG |
 
-`source-manifest.json` records the 30 selected entry modules, their exact transitive local import closure,
+`source-manifest.json` records the 31 selected entry modules, their exact transitive local import closure,
 original relative paths, direct imports, source commits and SHA-256 hashes. The original release's 1,007
 modules and the 2,866 Quantum Zipper release modules are unchanged. New module rows have an explicit `source_commit`; older rows inherit the manifest's
 original `source_commit`. Only selected proof dependencies are included, without private development history,
@@ -104,7 +105,7 @@ lake exe cache get
 python3 scripts/verify.py
 ```
 
-The default verifier compiles all 6,429 project modules from source in dependency order with at most two
+The default verifier compiles all 6,596 project modules from source in dependency order with at most two
 Lean processes, then compiles `Certificate.lean`. It stops on compilation failure. Logs and a
 machine-readable result are written under the ignored `.lake/verification/`. This mode does not use
 pre-existing project oleans. `python3 scripts/verify.py --cached` explicitly permits reuse of project
@@ -149,3 +150,45 @@ earlier qualitative theorem. It then audited **4,086 project declarations and 75
 declarations**, with only `propext`, `Classical.choice` and `Quot.sound`. See the
 [machine-readable record](results/mesh-only/verification.json). This is a focused check of the new
 closure; the public workflow performs the fresh rebuild of all 6,429 modules and the combined certificate.
+
+## Small-γ LQG distance (19 October 2026)
+
+The new entrypoint is `GaussianLQG.Frozen.MainTheorem`, which holds the frozen main theorem
+`GaussianLQG.main_theorem` (Theorem 1.1 of the source note). Its import closure has 3,570 local modules:
+167 GaussianLQG, 2,362 LQGMetric, 931 QuantumZipper and 110 LQGDimension. Of these, 3,403 were already
+released and are byte-identical, so the export adds 167 files without changing any previously released
+proof module. All new files are copied byte-for-byte from source commit
+`6eb5a29e8fb37c70823e6966d3cad60e400e874a`. Lean and all dependency revisions match the existing release.
+
+In the development workspace, `lake env leanchecker --fresh GaussianLQG.Frozen.MainTheorem` re-checked
+every declaration of the theorem's import closure, Mathlib included, in a fresh environment. It **exited
+with code 0**, with no errors, on 19 October 2026 (03:24–03:36 CEST, 12 min 5 s), with the Lean sources of
+commit `6eb5a29e8`. These are identical to those of the seal commit
+`c7347d22ca9460a4d68f0e02eb2bc6b73cf26028`. This is an upstream verification report, distinct from a check
+of the exported snapshot.
+
+The public source scan passed for all 6,596 files. All 3,570 closure files were checked byte-for-byte
+against the sources of the development build, whose compiled modules Lake reported up to date. The 167
+new modules were then **compiled afresh from the exported files**, with the verifier's per-module
+settings (`lean -j1 -M8192`): 117 seconds of wall time with four processes, at most 11.2 seconds and
+5.1 GB per module. The 3,403 previously released dependencies were reused from that build. The
+[focused certificate](results/gaussian-lqg-distance/Check.lean) was compiled afresh against the new
+modules and **passed**. It restates the theorem verbatim and checks that `main_theorem` proves it, prints
+the seven frozen definitions, checks the dimension input (S1), derives (S6), the note's Lemma 2.1, for
+every family of canonical metrics, and checks the uniform DDDF20 results. It rejects `sorry` and audits
+**52,100 project declarations and 136,346 reachable declarations**, with only `propext`,
+`Classical.choice` and `Quot.sound`. See the
+[machine-readable record](results/gaussian-lqg-distance/verification.json). A copy of the combined
+certificate without the imports and checks of the five libraries outside this closure also compiled,
+including the new section and the extended whole-declaration audit (68,736 project declarations,
+standard axioms only). These are incremental checks; the public workflow performs the fresh rebuild of
+all 6,596 modules and the combined certificate.
+
+To reproduce:
+
+```sh
+lake exe cache get
+lake build GaussianLQG.Frozen.MainTheorem
+lake env lean results/gaussian-lqg-distance/Check.lean
+lake env leanchecker --fresh GaussianLQG.Frozen.MainTheorem
+```

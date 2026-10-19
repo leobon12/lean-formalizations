@@ -28,6 +28,7 @@ import MeshRates.PathToBoundary
 import MeshRates.Section2Comparison
 import MeshRates.Section4Clock
 import MeshRates.Section4Crossing
+import GaussianLQG.Frozen.MainTheorem
 import Mathlib.Util.AssertNoSorry
 
 /-! Verification of the selected public results and every declaration in their included modules.
@@ -183,7 +184,8 @@ run_cmd do
     let m := moduleNames[idx.toNat]!
     if (`MeshOnly).isPrefixOf m || (`BouRabeeGwynne).isPrefixOf m || (`ReflectedWalk).isPrefixOf m ||
         (`ReflectedGMS).isPrefixOf m || (`QuantumZipper).isPrefixOf m ||
-        (`LQGDimension).isPrefixOf m || (`LQGMetric).isPrefixOf m || (`MeshRates).isPrefixOf m then
+        (`LQGDimension).isPrefixOf m || (`LQGMetric).isPrefixOf m || (`MeshRates).isPrefixOf m ||
+        (`GaussianLQG).isPrefixOf m then
       roots := roots.push n
   if roots.isEmpty then throwError "No included declarations found"
   let mut pending := roots
@@ -268,3 +270,50 @@ run_cmd do
     if let some v := ci.value? (allowOpaque := true) then
       pending := pending ++ v.getUsedConstants
   logInfo m!"SMALL_GAMMA_AUDIT declarations={roots.size}; reachable={seen.size}; axioms={axioms.toList}"
+
+
+/-! ## First-order fluctuations of small-γ LQG distance
+
+The frozen main theorem `GaussianLQG.main_theorem` (Theorem 1.1 of the source note). The `example`
+restates its type verbatim from `GaussianLQG/Frozen/MainTheorem.lean`; the result guide documents the
+correspondence with the paper. -/
+
+section GaussianLQGRelease
+open MeasureTheory ProbabilityTheory Filter Topology Set
+
+set_option pp.explicit false in
+set_option pp.universes false in
+#check GaussianLQG.main_theorem
+
+namespace GaussianLQG
+
+example :
+    ∀ (D : ℝ → LQGMetric.DistC → LQGMetric.ContMetric)
+    (_hD : ∀ γ, 0 < γ → γ < 2 → IsCanonicalLQGMetric γ (D γ))
+    {Ω : Type} [MeasurableSpace Ω] (P : Measure Ω) [IsProbabilityMeasure P]
+    (h : Ω → LQGMetric.DistC) (_hh : LQGMetric.IsNormalizedWPGFF h P),
+    -- `q` is the unique median of `M`, and `q < 0`
+    (LQGMetric.IsMedian (P.map fun ω => diagMin (h ω)) qConst ∧
+      ∀ m, LQGMetric.IsMedian (P.map fun ω => diagMin (h ω)) m → m = qConst) ∧
+    qConst < 0 ∧
+    -- (1.7): convergence in probability
+    TendstoInMeasure P (fun γ ω => ((D γ (h ω)).1 (0, 1) - 1) / γ) (𝓝[>] 0)
+      (fun ω => (segPairing (h ω) 0 0 - qConst) / 2) ∧
+    -- the limit has law `N(-q/2, 3/8)`
+    P.map (fun ω => (segPairing (h ω) 0 0 - qConst) / 2) =
+      gaussianReal (-qConst / 2) (3 / 8 : NNReal) ∧
+    -- (1.8): convergence in law to `N(-q/2, 3/8)` (indexed by `γ ∈ (0,2)`)
+    TendstoInDistribution (fun (γ : Ioo (0 : ℝ) 2) ω => ((D γ (h ω)).1 (0, 1) - 1) / (γ : ℝ))
+      ((𝓝[>] (0 : ℝ)).comap Subtype.val) (id : ℝ → ℝ) (fun _ => P)
+      (gaussianReal (-qConst / 2) (3 / 8 : NNReal)) ∧
+    -- (1.9) for every choice of medians `m_γ` of `D^γ(0,1)`
+    ∀ m : ℝ → ℝ, (∀ γ, 0 < γ → γ < 2 →
+        LQGMetric.IsMedian (P.map fun ω => (D γ (h ω)).1 (0, 1)) (m γ)) →
+      Tendsto (fun γ => (m γ - (1 - qConst / 2 * γ)) / γ) (𝓝[>] 0) (𝓝 0) :=
+  main_theorem
+
+end GaussianLQG
+end GaussianLQGRelease
+
+assert_no_sorry GaussianLQG.main_theorem
+#print axioms GaussianLQG.main_theorem

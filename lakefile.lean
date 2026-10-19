@@ -13,5 +13,6 @@ lean_lib LQGDimension
 lean_lib QuantumZipper
 lean_lib LQGMetric
 lean_lib MeshRates
+lean_lib GaussianLQG
 @[default_target]
 lean_lib Certificate

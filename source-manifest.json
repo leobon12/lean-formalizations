@@ -30,7 +30,8 @@
     "MeshRates.PathToBoundary",
     "MeshRates.Section2Comparison",
     "MeshRates.Section4Clock",
-    "MeshRates.Section4Crossing"
+    "MeshRates.Section4Crossing",
+    "GaussianLQG.Frozen.MainTheorem"
   ],
   "modules": {
     "BouRabeeGwynne.AbsorbingExcursionKernel": {
@@ -104245,6 +104246,2700 @@
         "MeshOnly.MeshOnlyLocalization"
       ],
       "bytes": 2623
+    },
+    "GaussianLQG.Assembly.Discharge": {
+      "path": "GaussianLQG/Assembly/Discharge.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Assembly/Discharge.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "8549032b50105b4fa9c0fcfef47cd09eab97b8d1fb0c56b3816254188b8a0147",
+      "imports": [
+        "GaussianLQG.Field.Pairing",
+        "GaussianLQG.Medians.LawM"
+      ],
+      "local_imports": [
+        "GaussianLQG.Field.Pairing",
+        "GaussianLQG.Medians.LawM"
+      ],
+      "bytes": 798
+    },
+    "GaussianLQG.Assembly.FrontierS6": {
+      "path": "GaussianLQG/Assembly/FrontierS6.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Assembly/FrontierS6.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "8c889bb1a8988ecb4aee745e17fc80151d9c1db33b50425f4f5b002ce0f435d3",
+      "imports": [
+        "GaussianLQG.Assembly.Provider",
+        "GaussianLQG.Uniform.Limit",
+        "GaussianLQG.Core.InterfacesS6"
+      ],
+      "local_imports": [
+        "GaussianLQG.Assembly.Provider",
+        "GaussianLQG.Uniform.Limit",
+        "GaussianLQG.Core.InterfacesS6"
+      ],
+      "bytes": 2261
+    },
+    "GaussianLQG.Assembly.FrontierU12": {
+      "path": "GaussianLQG/Assembly/FrontierU12.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Assembly/FrontierU12.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "c61654f37ed480c7c03d95b7d8cde96c26ffff19b1bc1e7c590728fb796a2218",
+      "imports": [
+        "GaussianLQG.Assembly.FrontierS6",
+        "GaussianLQG.Uniform.Star"
+      ],
+      "local_imports": [
+        "GaussianLQG.Assembly.FrontierS6",
+        "GaussianLQG.Uniform.Star"
+      ],
+      "bytes": 2471
+    },
+    "GaussianLQG.Assembly.Instance": {
+      "path": "GaussianLQG/Assembly/Instance.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Assembly/Instance.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "97854cd44d717abfb266df7800e7700d42889a57975e559e18ca9179240a93c0",
+      "imports": [
+        "GaussianLQG.Assembly.Realize",
+        "GaussianLQG.Assembly.Transfer",
+        "GaussianLQG.Core.Setup",
+        "GaussianLQG.Energy.Segments",
+        "GaussianLQG.LQG.Dimension",
+        "GaussianLQG.LQG.Bridge"
+      ],
+      "local_imports": [
+        "GaussianLQG.Assembly.Realize",
+        "GaussianLQG.Assembly.Transfer",
+        "GaussianLQG.Core.Setup",
+        "GaussianLQG.Energy.Segments",
+        "GaussianLQG.LQG.Dimension",
+        "GaussianLQG.LQG.Bridge"
+      ],
+      "bytes": 11407
+    },
+    "GaussianLQG.Assembly.Main": {
+      "path": "GaussianLQG/Assembly/Main.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Assembly/Main.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "630869c7bc878967ffc7dfd61d9ded0f28c100e0af5d17c49d993a2c4999fd7d",
+      "imports": [
+        "GaussianLQG.Assembly.MainCoord",
+        "GaussianLQG.Assembly.Instance",
+        "GaussianLQG.Core.MainDefs",
+        "GaussianLQG.LQG.Bridge.Defs"
+      ],
+      "local_imports": [
+        "GaussianLQG.Assembly.MainCoord",
+        "GaussianLQG.Assembly.Instance",
+        "GaussianLQG.Core.MainDefs",
+        "GaussianLQG.LQG.Bridge.Defs"
+      ],
+      "bytes": 6882
+    },
+    "GaussianLQG.Assembly.MainCoord": {
+      "path": "GaussianLQG/Assembly/MainCoord.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Assembly/MainCoord.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "c44baac97124781713bb8c101abe6b02763755cda8cbe0f500b93c51609987bd",
+      "imports": [
+        "GaussianLQG.Core.Interfaces",
+        "GaussianLQG.Probability.Medians",
+        "GaussianLQG.LQG.Exponents",
+        "GaussianLQG.Assembly.MainCoord.Limits",
+        "LQGMetric.Papers.GM.S1.Assembly"
+      ],
+      "local_imports": [
+        "GaussianLQG.Core.Interfaces",
+        "GaussianLQG.Probability.Medians",
+        "GaussianLQG.LQG.Exponents",
+        "GaussianLQG.Assembly.MainCoord.Limits",
+        "LQGMetric.Papers.GM.S1.Assembly"
+      ],
+      "bytes": 14561
+    },
+    "GaussianLQG.Assembly.MainCoord.Limits": {
+      "path": "GaussianLQG/Assembly/MainCoord/Limits.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Assembly/MainCoord/Limits.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "9ee291ba17ac9fd2be31766c416a961fcbdf1f00908cb53d5bb032a684f29b45",
+      "imports": [
+        "LQGMetric.Prob.Median",
+        "Mathlib.MeasureTheory.Function.ConvergenceInDistribution",
+        "Mathlib.Probability.Distributions.Gaussian.Real"
+      ],
+      "local_imports": [
+        "LQGMetric.Prob.Median"
+      ],
+      "bytes": 9454
+    },
+    "GaussianLQG.Assembly.MainUnconditional": {
+      "path": "GaussianLQG/Assembly/MainUnconditional.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Assembly/MainUnconditional.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "3c3f921f9c7d529876c23c140657b8764cf69a665613d37b5acb0a49b47dc0fd",
+      "imports": [
+        "GaussianLQG.Assembly.FrontierU12",
+        "GaussianLQG.Uniform.Holder.Done"
+      ],
+      "local_imports": [
+        "GaussianLQG.Assembly.FrontierU12",
+        "GaussianLQG.Uniform.Holder.Done"
+      ],
+      "bytes": 2613
+    },
+    "GaussianLQG.Assembly.Provider": {
+      "path": "GaussianLQG/Assembly/Provider.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Assembly/Provider.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "084d720a8e2bdf203a7edb07ce594a3b76fcd0322717df76e5f66451e4755827",
+      "imports": [
+        "GaussianLQG.Assembly.Main",
+        "GaussianLQG.Assembly.Discharge",
+        "GaussianLQG.LQG.Crossing",
+        "GaussianLQG.LQG.EnergyApprox"
+      ],
+      "local_imports": [
+        "GaussianLQG.Assembly.Main",
+        "GaussianLQG.Assembly.Discharge",
+        "GaussianLQG.LQG.Crossing",
+        "GaussianLQG.LQG.EnergyApprox"
+      ],
+      "bytes": 2690
+    },
+    "GaussianLQG.Assembly.Realize": {
+      "path": "GaussianLQG/Assembly/Realize.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Assembly/Realize.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "313e44cb3d9ef8c8f5db2b41b7283a39c97943198f05a168acc56398cf1f5a52",
+      "imports": [
+        "GaussianLQG.Field.Frame",
+        "GaussianLQG.Field.Realization",
+        "GaussianLQG.Energy.Measures",
+        "LQGMetric.Field.MeasurableAvg"
+      ],
+      "local_imports": [
+        "GaussianLQG.Field.Frame",
+        "GaussianLQG.Field.Realization",
+        "GaussianLQG.Energy.Measures",
+        "LQGMetric.Field.MeasurableAvg"
+      ],
+      "bytes": 3321
+    },
+    "GaussianLQG.Assembly.Transfer": {
+      "path": "GaussianLQG/Assembly/Transfer.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Assembly/Transfer.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "114c55932e994a3886bcd73b9225684ecfcc02c0fd05a0cb0b85af72c077b08b",
+      "imports": [
+        "GaussianLQG.Core.MainDefs",
+        "GaussianLQG.Energy.Measures",
+        "GaussianLQG.LQG.Bridge.Basic",
+        "GaussianLQG.LQG.Scaling.Measurability",
+        "LQGMetric.Field.MeasurableAvg",
+        "LQGMetric.Papers.GM.S1.FieldAux",
+        "LQGMetric.Meas.CR"
+      ],
+      "local_imports": [
+        "GaussianLQG.Core.MainDefs",
+        "GaussianLQG.Energy.Measures",
+        "GaussianLQG.LQG.Bridge.Basic",
+        "GaussianLQG.LQG.Scaling.Measurability",
+        "LQGMetric.Field.MeasurableAvg",
+        "LQGMetric.Papers.GM.S1.FieldAux",
+        "LQGMetric.Meas.CR"
+      ],
+      "bytes": 9030
+    },
+    "GaussianLQG.Core.Defs": {
+      "path": "GaussianLQG/Core/Defs.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Core/Defs.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "72eb7cde7f07e1b21df2faf39fc3d54351169ed8a874a64f050d55635eeaf2cf",
+      "imports": [
+        "LQGDimension.Existence.AssemblyAux1",
+        "LQGMetric.Statement.Metric",
+        "LQGMetric.Blueprint.M2Defs",
+        "LQGMetric.Prob.Median",
+        "LQGMetric.Field.WhiteNoise",
+        "LQGMetric.Statement.Field",
+        "Mathlib.Analysis.SpecialFunctions.Complex.Circle",
+        "Mathlib.MeasureTheory.Integral.CircleIntegral",
+        "GaussianLQG.Frozen.SegMeasure",
+        "GaussianLQG.Frozen.MeasPairing"
+      ],
+      "local_imports": [
+        "LQGDimension.Existence.AssemblyAux1",
+        "LQGMetric.Statement.Metric",
+        "LQGMetric.Blueprint.M2Defs",
+        "LQGMetric.Prob.Median",
+        "LQGMetric.Field.WhiteNoise",
+        "LQGMetric.Statement.Field",
+        "GaussianLQG.Frozen.SegMeasure",
+        "GaussianLQG.Frozen.MeasPairing"
+      ],
+      "bytes": 7448
+    },
+    "GaussianLQG.Core.Interfaces": {
+      "path": "GaussianLQG/Core/Interfaces.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Core/Interfaces.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "5214166959dd8faae9783270e04430a96f63e57bfab40ba64dc3a42aab925857",
+      "imports": [
+        "GaussianLQG.Core.Setup",
+        "Mathlib.Probability.Distributions.Gaussian.Real"
+      ],
+      "local_imports": [
+        "GaussianLQG.Core.Setup"
+      ],
+      "bytes": 1729
+    },
+    "GaussianLQG.Core.InterfacesEuclid": {
+      "path": "GaussianLQG/Core/InterfacesEuclid.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Core/InterfacesEuclid.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "fc0097a46e5773e3eee1d9cbc5f6297bc8e386a76f59b27369414449afe6402a",
+      "imports": [
+        "GaussianLQG.Core.Setup"
+      ],
+      "local_imports": [
+        "GaussianLQG.Core.Setup"
+      ],
+      "bytes": 2370
+    },
+    "GaussianLQG.Core.InterfacesS6": {
+      "path": "GaussianLQG/Core/InterfacesS6.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Core/InterfacesS6.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "5948387e0fcd7d2b213c9ecb974e4e92277fc28a25642b269bb9a42b0f63808b",
+      "imports": [
+        "GaussianLQG.Core.MainDefs",
+        "LQGMetric.Statement.LFPP"
+      ],
+      "local_imports": [
+        "GaussianLQG.Core.MainDefs",
+        "LQGMetric.Statement.LFPP"
+      ],
+      "bytes": 1695
+    },
+    "GaussianLQG.Core.MainDefs": {
+      "path": "GaussianLQG/Core/MainDefs.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Core/MainDefs.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "08a20df39d38a2614270f0285b7a9c3da2849707fce5f1e9d6fd2f3defebe776",
+      "imports": [
+        "GaussianLQG.Core.Defs",
+        "GaussianLQG.LQG.Bridge.Defs",
+        "GaussianLQG.Frozen.QConst",
+        "Mathlib.Probability.Distributions.Gaussian.Real"
+      ],
+      "local_imports": [
+        "GaussianLQG.Core.Defs",
+        "GaussianLQG.LQG.Bridge.Defs",
+        "GaussianLQG.Frozen.QConst"
+      ],
+      "bytes": 1818
+    },
+    "GaussianLQG.Core.Setup": {
+      "path": "GaussianLQG/Core/Setup.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Core/Setup.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "a7b5ad43e8a2b39abea5ba0114a937c83bdaed0d013abe5653fa9b16462fc931",
+      "imports": [
+        "GaussianLQG.Core.Defs",
+        "LQGMetric.Basic",
+        "LQGMetric.Papers.GM.S1.Defs",
+        "Mathlib.MeasureTheory.Constructions.BorelSpace.ContinuousMap"
+      ],
+      "local_imports": [
+        "GaussianLQG.Core.Defs",
+        "LQGMetric.Basic",
+        "LQGMetric.Papers.GM.S1.Defs"
+      ],
+      "bytes": 5218
+    },
+    "GaussianLQG.Energy.All": {
+      "path": "GaussianLQG/Energy/All.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Energy/All.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "4800ab396175d74913e445bd68e09b9b554153c6555cdc310daba1f50b53bb7f",
+      "imports": [
+        "GaussianLQG.Energy.Measures",
+        "GaussianLQG.Energy.LogPotential",
+        "GaussianLQG.Energy.Basic",
+        "GaussianLQG.Energy.Bound",
+        "GaussianLQG.Energy.Coupling",
+        "GaussianLQG.Energy.SegmentsBasic",
+        "GaussianLQG.Energy.Segments"
+      ],
+      "local_imports": [
+        "GaussianLQG.Energy.Measures",
+        "GaussianLQG.Energy.LogPotential",
+        "GaussianLQG.Energy.Basic",
+        "GaussianLQG.Energy.Bound",
+        "GaussianLQG.Energy.Coupling",
+        "GaussianLQG.Energy.SegmentsBasic",
+        "GaussianLQG.Energy.Segments"
+      ],
+      "bytes": 714
+    },
+    "GaussianLQG.Energy.Basic": {
+      "path": "GaussianLQG/Energy/Basic.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Energy/Basic.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "055d9bf0bda9ea889c9c6e55d503946481e91977789388fc984a9f272c6aa32a",
+      "imports": [
+        "GaussianLQG.Energy.LogPotential"
+      ],
+      "local_imports": [
+        "GaussianLQG.Energy.LogPotential"
+      ],
+      "bytes": 10533
+    },
+    "GaussianLQG.Energy.Bound": {
+      "path": "GaussianLQG/Energy/Bound.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Energy/Bound.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "0704297edf21c6e65241eb1c4ba93e400da9ec347981a9ff11cf5870c516f15e",
+      "imports": [
+        "GaussianLQG.Energy.Basic"
+      ],
+      "local_imports": [
+        "GaussianLQG.Energy.Basic"
+      ],
+      "bytes": 3837
+    },
+    "GaussianLQG.Energy.Coupling": {
+      "path": "GaussianLQG/Energy/Coupling.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Energy/Coupling.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "dc288acddfa2bc785e29dfddc2b004cfb8cc4a422f4d0fabe10c9ed7e9eed39c",
+      "imports": [
+        "GaussianLQG.Energy.Basic"
+      ],
+      "local_imports": [
+        "GaussianLQG.Energy.Basic"
+      ],
+      "bytes": 13300
+    },
+    "GaussianLQG.Energy.LogPotential": {
+      "path": "GaussianLQG/Energy/LogPotential.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Energy/LogPotential.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "60935e2cddbb54efa1ce3468bac91edb96935cf968112efa4be070ea2fd431ec",
+      "imports": [
+        "GaussianLQG.Energy.Measures",
+        "Mathlib.MeasureTheory.Integral.Layercake"
+      ],
+      "local_imports": [
+        "GaussianLQG.Energy.Measures"
+      ],
+      "bytes": 9867
+    },
+    "GaussianLQG.Energy.Measures": {
+      "path": "GaussianLQG/Energy/Measures.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Energy/Measures.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "4d4e5fbecd98473ae3be7c90270efa729da18e879ba7c348192e3042059d64c1",
+      "imports": [
+        "GaussianLQG.Core.Defs",
+        "LQGDimension.LFPP.CouplingAux1"
+      ],
+      "local_imports": [
+        "GaussianLQG.Core.Defs",
+        "LQGDimension.LFPP.CouplingAux1"
+      ],
+      "bytes": 17225
+    },
+    "GaussianLQG.Energy.Segments": {
+      "path": "GaussianLQG/Energy/Segments.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Energy/Segments.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "e4650f685427da6f6dc7d83c817bdafa9a90958ca8a5115d9feee61e1fde6289",
+      "imports": [
+        "GaussianLQG.Energy.SegmentsBasic",
+        "Mathlib.MeasureTheory.Measure.Lebesgue.VolumeOfBalls"
+      ],
+      "local_imports": [
+        "GaussianLQG.Energy.SegmentsBasic"
+      ],
+      "bytes": 16659
+    },
+    "GaussianLQG.Energy.SegmentsBasic": {
+      "path": "GaussianLQG/Energy/SegmentsBasic.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Energy/SegmentsBasic.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "b4c9f6b2e725077b5c97c28e5a2f6b26a60999a932c1b772e07d7003de8a13d0",
+      "imports": [
+        "GaussianLQG.Energy.Coupling"
+      ],
+      "local_imports": [
+        "GaussianLQG.Energy.Coupling"
+      ],
+      "bytes": 13095
+    },
+    "GaussianLQG.Field.Frame": {
+      "path": "GaussianLQG/Field/Frame.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Field/Frame.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "02f4c54639b3e69b10ab7fe971498bf6f584bc894d43e599e98b1e5a3549c227",
+      "imports": [
+        "GaussianLQG.Field.Frame.Kappa",
+        "GaussianLQG.Field.Frame.Nice"
+      ],
+      "local_imports": [
+        "GaussianLQG.Field.Frame.Kappa",
+        "GaussianLQG.Field.Frame.Nice"
+      ],
+      "bytes": 2227
+    },
+    "GaussianLQG.Field.Frame.Circle": {
+      "path": "GaussianLQG/Field/Frame/Circle.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Field/Frame/Circle.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "13a984e704844b3c58b4dc3c4c30513077d610394f8ca615f8cc33f4d5a460de",
+      "imports": [
+        "GaussianLQG.Core.Defs",
+        "GaussianLQG.Energy.Measures",
+        "Mathlib.Analysis.SpecialFunctions.Integrals.PosLogEqCircleAverage"
+      ],
+      "local_imports": [
+        "GaussianLQG.Core.Defs",
+        "GaussianLQG.Energy.Measures"
+      ],
+      "bytes": 4704
+    },
+    "GaussianLQG.Field.Frame.Energy": {
+      "path": "GaussianLQG/Field/Frame/Energy.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Field/Frame/Energy.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "78fc530b0f2cdfdbd3e11c7010512f82e75a51a75a15bf46eb10749527f51d22",
+      "imports": [
+        "GaussianLQG.Field.Frame.Heat"
+      ],
+      "local_imports": [
+        "GaussianLQG.Field.Frame.Heat"
+      ],
+      "bytes": 9492
+    },
+    "GaussianLQG.Field.Frame.Heat": {
+      "path": "GaussianLQG/Field/Frame/Heat.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Field/Frame/Heat.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "d73e8c0704141599fb7c4633135bac60ff09720c712d01560877e5f09b132718",
+      "imports": [
+        "GaussianLQG.Field.Frame.LogInt",
+        "LQGMetric.Field.ExistHeatCov",
+        "LQGMetric.Field.ExistKernel"
+      ],
+      "local_imports": [
+        "GaussianLQG.Field.Frame.LogInt",
+        "LQGMetric.Field.ExistHeatCov",
+        "LQGMetric.Field.ExistKernel"
+      ],
+      "bytes": 8594
+    },
+    "GaussianLQG.Field.Frame.Kappa": {
+      "path": "GaussianLQG/Field/Frame/Kappa.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Field/Frame/Kappa.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "3bcaab08781662c6287f267b671c8cc93647528cf0dc5aab2abbb86e9d6bc8fb",
+      "imports": [
+        "GaussianLQG.Field.Frame.Energy",
+        "GaussianLQG.Field.FrameFun"
+      ],
+      "local_imports": [
+        "GaussianLQG.Field.Frame.Energy",
+        "GaussianLQG.Field.FrameFun"
+      ],
+      "bytes": 11096
+    },
+    "GaussianLQG.Field.Frame.LogInt": {
+      "path": "GaussianLQG/Field/Frame/LogInt.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Field/Frame/LogInt.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "64ad4d970b014258ed59e1d1d0926c8aff922e5c0f5bddac5df058edd1ac831e",
+      "imports": [
+        "GaussianLQG.Field.Frame.Circle",
+        "Mathlib.MeasureTheory.Integral.Layercake",
+        "Mathlib.MeasureTheory.Integral.ExpDecay",
+        "Mathlib.Analysis.SpecialFunctions.ImproperIntegrals"
+      ],
+      "local_imports": [
+        "GaussianLQG.Field.Frame.Circle"
+      ],
+      "bytes": 11356
+    },
+    "GaussianLQG.Field.Frame.Nice": {
+      "path": "GaussianLQG/Field/Frame/Nice.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Field/Frame/Nice.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "319441c4ec42a06b573d2a8db902e73274a8c843c8e763de4d7bb91a2ed7e8f3",
+      "imports": [
+        "GaussianLQG.Core.Defs",
+        "Mathlib.Analysis.InnerProductSpace.GramSchmidtOrtho",
+        "Mathlib.MeasureTheory.Function.SimpleFuncDenseLp"
+      ],
+      "local_imports": [
+        "GaussianLQG.Core.Defs"
+      ],
+      "bytes": 15225
+    },
+    "GaussianLQG.Field.FrameFun": {
+      "path": "GaussianLQG/Field/FrameFun.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Field/FrameFun.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "f77b4cc3f272045b05076f7cc909b1f5a30d89426646e9c6ee10b7d46dc19bac",
+      "imports": [
+        "GaussianLQG.Core.Defs",
+        "LQGMetric.Field.ExistSFub2"
+      ],
+      "local_imports": [
+        "GaussianLQG.Core.Defs",
+        "LQGMetric.Field.ExistSFub2"
+      ],
+      "bytes": 13953
+    },
+    "GaussianLQG.Field.Pairing": {
+      "path": "GaussianLQG/Field/Pairing.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Field/Pairing.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "1bdd1faff14632cc476be2b5869f4a1f211bd2a823f8b5156ce0552f998206ff",
+      "imports": [
+        "GaussianLQG.Field.Pairing.Basic",
+        "GaussianLQG.Field.Pairing.Linear",
+        "GaussianLQG.Field.Pairing.Quasi",
+        "GaussianLQG.Field.Pairing.Circle",
+        "GaussianLQG.Field.Pairing.Segments"
+      ],
+      "local_imports": [
+        "GaussianLQG.Field.Pairing.Basic",
+        "GaussianLQG.Field.Pairing.Linear",
+        "GaussianLQG.Field.Pairing.Quasi",
+        "GaussianLQG.Field.Pairing.Circle",
+        "GaussianLQG.Field.Pairing.Segments"
+      ],
+      "bytes": 4733
+    },
+    "GaussianLQG.Field.Pairing.Basic": {
+      "path": "GaussianLQG/Field/Pairing/Basic.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Field/Pairing/Basic.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "19a17957569c26d7987863ba24597a7f8a8fd3fa090104a0ba372a82263b609f",
+      "imports": [
+        "GaussianLQG.Energy.All",
+        "GaussianLQG.Field.Realization.Series",
+        "Mathlib.MeasureTheory.Constructions.Polish.StronglyMeasurable"
+      ],
+      "local_imports": [
+        "GaussianLQG.Energy.All",
+        "GaussianLQG.Field.Realization.Series"
+      ],
+      "bytes": 11986
+    },
+    "GaussianLQG.Field.Pairing.Circle": {
+      "path": "GaussianLQG/Field/Pairing/Circle.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Field/Pairing/Circle.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "de559ccb53ddb00e7aec4e80e112481428698fe5741c4895b37276170486232a",
+      "imports": [
+        "GaussianLQG.Field.Pairing.Linear",
+        "LQGDimension.LFPP.CouplingAux2"
+      ],
+      "local_imports": [
+        "GaussianLQG.Field.Pairing.Linear",
+        "LQGDimension.LFPP.CouplingAux2"
+      ],
+      "bytes": 5959
+    },
+    "GaussianLQG.Field.Pairing.Linear": {
+      "path": "GaussianLQG/Field/Pairing/Linear.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Field/Pairing/Linear.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "ca163294c453d1d765eec97751186b70cd3c4ac55d7433331453714efc947b20",
+      "imports": [
+        "GaussianLQG.Field.Pairing.Basic",
+        "GaussianLQG.Probability.Gaussian",
+        "LQGDimension.Existence.AssemblyAux1",
+        "Mathlib.Probability.Distributions.Gaussian.IsGaussianProcess.Basic"
+      ],
+      "local_imports": [
+        "GaussianLQG.Field.Pairing.Basic",
+        "GaussianLQG.Probability.Gaussian",
+        "LQGDimension.Existence.AssemblyAux1"
+      ],
+      "bytes": 12436
+    },
+    "GaussianLQG.Field.Pairing.Quasi": {
+      "path": "GaussianLQG/Field/Pairing/Quasi.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Field/Pairing/Quasi.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "6b18b1569d782add45238258e6ddf02640b00f818c747dc019b9d222e5873b03",
+      "imports": [
+        "GaussianLQG.Field.Pairing.Basic",
+        "QuantumZipper.Proofs.Probability.CameronMartin",
+        "LQGDimension.Existence.AssemblyAux1"
+      ],
+      "local_imports": [
+        "GaussianLQG.Field.Pairing.Basic",
+        "QuantumZipper.Proofs.Probability.CameronMartin",
+        "LQGDimension.Existence.AssemblyAux1"
+      ],
+      "bytes": 5346
+    },
+    "GaussianLQG.Field.Pairing.Segments": {
+      "path": "GaussianLQG/Field/Pairing/Segments.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Field/Pairing/Segments.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "624e6655b7565620f581fe511389d91bf8cd590aa19e1bf4750bec18302dace8",
+      "imports": [
+        "GaussianLQG.Core.Setup",
+        "GaussianLQG.Core.Interfaces",
+        "GaussianLQG.Field.Pairing.Linear",
+        "GaussianLQG.Probability.Kolmogorov"
+      ],
+      "local_imports": [
+        "GaussianLQG.Core.Setup",
+        "GaussianLQG.Core.Interfaces",
+        "GaussianLQG.Field.Pairing.Linear",
+        "GaussianLQG.Probability.Kolmogorov"
+      ],
+      "bytes": 11319
+    },
+    "GaussianLQG.Field.Realization": {
+      "path": "GaussianLQG/Field/Realization.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Field/Realization.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "275b57932d5c4a02e476ad8da4464b0660f251a1c3fac87f31b490041992a65d",
+      "imports": [
+        "GaussianLQG.Field.Realization.Pairing"
+      ],
+      "local_imports": [
+        "GaussianLQG.Field.Realization.Pairing"
+      ],
+      "bytes": 2609
+    },
+    "GaussianLQG.Field.Realization.Field": {
+      "path": "GaussianLQG/Field/Realization/Field.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Field/Realization/Field.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "1192b5f5ae951eca9d903cd7e45d68320726bfd13e4174903371454aa4e71d5c",
+      "imports": [
+        "GaussianLQG.Field.Realization.Uniform",
+        "GaussianLQG.Field.FrameFun",
+        "LQGMetric.Field.ExistGFF",
+        "LQGMetric.Field.CircleAvgCont"
+      ],
+      "local_imports": [
+        "GaussianLQG.Field.Realization.Uniform",
+        "GaussianLQG.Field.FrameFun",
+        "LQGMetric.Field.ExistGFF",
+        "LQGMetric.Field.CircleAvgCont"
+      ],
+      "bytes": 11999
+    },
+    "GaussianLQG.Field.Realization.Mollify": {
+      "path": "GaussianLQG/Field/Realization/Mollify.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Field/Realization/Mollify.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "54ed3dbaeaa9edaa35016bb0b5b1fd6ed92a168c3e89e65e8cffdaae5a2ee052",
+      "imports": [
+        "GaussianLQG.Field.Realization.Potential",
+        "LQGMetric.Field.CircleAvgRate"
+      ],
+      "local_imports": [
+        "GaussianLQG.Field.Realization.Potential",
+        "LQGMetric.Field.CircleAvgRate"
+      ],
+      "bytes": 14532
+    },
+    "GaussianLQG.Field.Realization.Pairing": {
+      "path": "GaussianLQG/Field/Realization/Pairing.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Field/Realization/Pairing.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "0ab15b7186aca2818cc88628db1acf8b3cccc20f60d2fb71fe91934559a2cd19",
+      "imports": [
+        "GaussianLQG.Field.Realization.Represent",
+        "GaussianLQG.Field.Realization.Mollify",
+        "GaussianLQG.Field.Frame.Circle",
+        "LQGMetric.Field.CircleAvgAffine"
+      ],
+      "local_imports": [
+        "GaussianLQG.Field.Realization.Represent",
+        "GaussianLQG.Field.Realization.Mollify",
+        "GaussianLQG.Field.Frame.Circle",
+        "LQGMetric.Field.CircleAvgAffine"
+      ],
+      "bytes": 13261
+    },
+    "GaussianLQG.Field.Realization.Potential": {
+      "path": "GaussianLQG/Field/Realization/Potential.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Field/Realization/Potential.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "4495682ca864d6c14f4b575af932ac1808ddf293bbc44ae1a2ff89d123028b13",
+      "imports": [
+        "GaussianLQG.Core.Defs",
+        "GaussianLQG.Energy.Basic",
+        "Mathlib.MeasureTheory.Integral.Layercake",
+        "Mathlib.Analysis.SpecialFunctions.ImproperIntegrals"
+      ],
+      "local_imports": [
+        "GaussianLQG.Core.Defs",
+        "GaussianLQG.Energy.Basic"
+      ],
+      "bytes": 19873
+    },
+    "GaussianLQG.Field.Realization.Represent": {
+      "path": "GaussianLQG/Field/Realization/Represent.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Field/Realization/Represent.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "48ce8c8432493cd7aa844d92dd93c6eb268c7759631bef1b1df5449540bc2d88",
+      "imports": [
+        "GaussianLQG.Field.Realization.Field",
+        "GaussianLQG.Field.Realization.Potential"
+      ],
+      "local_imports": [
+        "GaussianLQG.Field.Realization.Field",
+        "GaussianLQG.Field.Realization.Potential"
+      ],
+      "bytes": 13894
+    },
+    "GaussianLQG.Field.Realization.Series": {
+      "path": "GaussianLQG/Field/Realization/Series.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Field/Realization/Series.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "17de29bed691ddf0492d6672ca04dda79b9c5289d662790ebedb4f381f81f66f",
+      "imports": [
+        "GaussianLQG.Core.Defs",
+        "LQGDimension.Existence.SeriesContinuityAux1"
+      ],
+      "local_imports": [
+        "GaussianLQG.Core.Defs",
+        "LQGDimension.Existence.SeriesContinuityAux1"
+      ],
+      "bytes": 13955
+    },
+    "GaussianLQG.Field.Realization.Uniform": {
+      "path": "GaussianLQG/Field/Realization/Uniform.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Field/Realization/Uniform.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "45ee182fb0b019b2fa566a03a46e47a85787217aceb1029ff74006d46ccae8f2",
+      "imports": [
+        "GaussianLQG.Field.Realization.WhiteNoise",
+        "LQGMetric.Field.ExistSFub2",
+        "LQGDimension.Existence.SeriesContinuity",
+        "Mathlib.Topology.UniformSpace.Dini"
+      ],
+      "local_imports": [
+        "GaussianLQG.Field.Realization.WhiteNoise",
+        "LQGMetric.Field.ExistSFub2",
+        "LQGDimension.Existence.SeriesContinuity"
+      ],
+      "bytes": 26292
+    },
+    "GaussianLQG.Field.Realization.WhiteNoise": {
+      "path": "GaussianLQG/Field/Realization/WhiteNoise.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Field/Realization/WhiteNoise.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "c1d465ee5e0b408609847bba2a580543edb9768f3331e63e104d637820097ceb",
+      "imports": [
+        "GaussianLQG.Field.Realization.Series",
+        "LQGMetric.Field.WhiteNoise"
+      ],
+      "local_imports": [
+        "GaussianLQG.Field.Realization.Series",
+        "LQGMetric.Field.WhiteNoise"
+      ],
+      "bytes": 3660
+    },
+    "GaussianLQG.Frozen.DiagMin": {
+      "path": "GaussianLQG/Frozen/DiagMin.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Frozen/DiagMin.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "d74b02d9480e575e1a1330ce02a449b0402b78f8304d8ef50498378cec834210",
+      "imports": [
+        "GaussianLQG.Frozen.SegPairing",
+        "GaussianLQG.Frozen.DyadicUnit"
+      ],
+      "local_imports": [
+        "GaussianLQG.Frozen.SegPairing",
+        "GaussianLQG.Frozen.DyadicUnit"
+      ],
+      "bytes": 670
+    },
+    "GaussianLQG.Frozen.DyadicUnit": {
+      "path": "GaussianLQG/Frozen/DyadicUnit.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Frozen/DyadicUnit.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "4db9f77ff215b985dfee1d45acfcd4aeca51f4445a859688c2d3b6f9d8bda53a",
+      "imports": [
+        "GaussianLQG.Frozen.SegMeasure"
+      ],
+      "local_imports": [
+        "GaussianLQG.Frozen.SegMeasure"
+      ],
+      "bytes": 604
+    },
+    "GaussianLQG.Frozen.IsCanonicalLQGMetric": {
+      "path": "GaussianLQG/Frozen/IsCanonicalLQGMetric.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Frozen/IsCanonicalLQGMetric.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "f8a985944441dec645ae476ddc3305ba4f3dd724cccf33245af1d30755f71e4d",
+      "imports": [
+        "LQGMetric.Statement.Thm12"
+      ],
+      "local_imports": [
+        "LQGMetric.Statement.Thm12"
+      ],
+      "bytes": 1562
+    },
+    "GaussianLQG.Frozen.MainTheorem": {
+      "path": "GaussianLQG/Frozen/MainTheorem.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Frozen/MainTheorem.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "b39a3bf672a237e1b0ef694144a112a01aa6cd109f67cc807acec53eaca910b6",
+      "imports": [
+        "GaussianLQG.Frozen.QConst",
+        "GaussianLQG.Frozen.IsCanonicalLQGMetric",
+        "GaussianLQG.Assembly.MainUnconditional",
+        "Mathlib.Probability.Distributions.Gaussian.Real"
+      ],
+      "local_imports": [
+        "GaussianLQG.Frozen.QConst",
+        "GaussianLQG.Frozen.IsCanonicalLQGMetric",
+        "GaussianLQG.Assembly.MainUnconditional"
+      ],
+      "bytes": 2978
+    },
+    "GaussianLQG.Frozen.MeasPairing": {
+      "path": "GaussianLQG/Frozen/MeasPairing.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Frozen/MeasPairing.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "8980da0f0e28abca44245b7342b5d8d3b6a370403497bba0519e4d82fd5e676a",
+      "imports": [
+        "LQGDimension.Existence.AssemblyAux1",
+        "LQGMetric.Statement.Metric",
+        "LQGMetric.Blueprint.M2Defs",
+        "LQGMetric.Prob.Median",
+        "LQGMetric.Field.WhiteNoise",
+        "LQGMetric.Statement.Field",
+        "Mathlib.Analysis.SpecialFunctions.Complex.Circle",
+        "Mathlib.MeasureTheory.Integral.CircleIntegral"
+      ],
+      "local_imports": [
+        "LQGDimension.Existence.AssemblyAux1",
+        "LQGMetric.Statement.Metric",
+        "LQGMetric.Blueprint.M2Defs",
+        "LQGMetric.Prob.Median",
+        "LQGMetric.Field.WhiteNoise",
+        "LQGMetric.Statement.Field"
+      ],
+      "bytes": 1233
+    },
+    "GaussianLQG.Frozen.QConst": {
+      "path": "GaussianLQG/Frozen/QConst.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Frozen/QConst.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "065352570c023acd938d5d2ddebd9cf44fffb62157ec90e434412299e3ca66cf",
+      "imports": [
+        "GaussianLQG.Frozen.DiagMin",
+        "LQGMetric.Statement.LFPP"
+      ],
+      "local_imports": [
+        "GaussianLQG.Frozen.DiagMin",
+        "LQGMetric.Statement.LFPP"
+      ],
+      "bytes": 634
+    },
+    "GaussianLQG.Frozen.SegMeasure": {
+      "path": "GaussianLQG/Frozen/SegMeasure.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Frozen/SegMeasure.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "f31ce3c97fce671641ef6f2dcd363805a1a2cf20d88d39ef3c79d1b07d3f4bba",
+      "imports": [
+        "LQGDimension.Existence.AssemblyAux1",
+        "LQGMetric.Statement.Metric",
+        "LQGMetric.Blueprint.M2Defs",
+        "LQGMetric.Prob.Median",
+        "LQGMetric.Field.WhiteNoise",
+        "LQGMetric.Statement.Field",
+        "Mathlib.Analysis.SpecialFunctions.Complex.Circle",
+        "Mathlib.MeasureTheory.Integral.CircleIntegral"
+      ],
+      "local_imports": [
+        "LQGDimension.Existence.AssemblyAux1",
+        "LQGMetric.Statement.Metric",
+        "LQGMetric.Blueprint.M2Defs",
+        "LQGMetric.Prob.Median",
+        "LQGMetric.Field.WhiteNoise",
+        "LQGMetric.Statement.Field"
+      ],
+      "bytes": 972
+    },
+    "GaussianLQG.Frozen.SegPairing": {
+      "path": "GaussianLQG/Frozen/SegPairing.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Frozen/SegPairing.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "32d3e310f2ea66ce5dcce1efd76bb9d4ee075a69289b358a65fb1b2307353858",
+      "imports": [
+        "GaussianLQG.Frozen.SegMeasure",
+        "GaussianLQG.Frozen.MeasPairing"
+      ],
+      "local_imports": [
+        "GaussianLQG.Frozen.SegMeasure",
+        "GaussianLQG.Frozen.MeasPairing"
+      ],
+      "bytes": 771
+    },
+    "GaussianLQG.LQG.Bridge": {
+      "path": "GaussianLQG/LQG/Bridge.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/Bridge.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "d62bf1af92338ac8709a21d017e83ecb6e7ba13dabc66cf3347eee89c67119a9",
+      "imports": [
+        "GaussianLQG.LQG.Bridge.Defs",
+        "GaussianLQG.LQG.Bridge.Basic",
+        "GaussianLQG.LQG.Bridge.RotNormalized",
+        "GaussianLQG.LQG.Bridge.LFPPRotBdd",
+        "GaussianLQG.LQG.Bridge.RotMetric",
+        "GaussianLQG.LQG.Bridge.Affine",
+        "GaussianLQG.LQG.Bridge.Median",
+        "GaussianLQG.LQG.Bridge.Exists"
+      ],
+      "local_imports": [
+        "GaussianLQG.LQG.Bridge.Defs",
+        "GaussianLQG.LQG.Bridge.Basic",
+        "GaussianLQG.LQG.Bridge.RotNormalized",
+        "GaussianLQG.LQG.Bridge.LFPPRotBdd",
+        "GaussianLQG.LQG.Bridge.RotMetric",
+        "GaussianLQG.LQG.Bridge.Affine",
+        "GaussianLQG.LQG.Bridge.Median",
+        "GaussianLQG.LQG.Bridge.Exists"
+      ],
+      "bytes": 2401
+    },
+    "GaussianLQG.LQG.Bridge.Affine": {
+      "path": "GaussianLQG/LQG/Bridge/Affine.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/Bridge/Affine.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "e134ded6fa35fe551081c024a40cdd74f2bb1e9ca53da99780b7e5a2550e5cee",
+      "imports": [
+        "GaussianLQG.LQG.Bridge.RotMetric",
+        "GaussianLQG.LQG.Bridge.RotNormalized",
+        "LQGMetric.Metric.WeylLQG",
+        "LQGMetric.Field.MeasurableAvg"
+      ],
+      "local_imports": [
+        "GaussianLQG.LQG.Bridge.RotMetric",
+        "GaussianLQG.LQG.Bridge.RotNormalized",
+        "LQGMetric.Metric.WeylLQG",
+        "LQGMetric.Field.MeasurableAvg"
+      ],
+      "bytes": 11806
+    },
+    "GaussianLQG.LQG.Bridge.Basic": {
+      "path": "GaussianLQG/LQG/Bridge/Basic.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/Bridge/Basic.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "24473a5465a0370d5bc719d7412ef3e6294aca568c3725cbd0101386f9bec14a",
+      "imports": [
+        "GaussianLQG.LQG.Bridge.Defs",
+        "LQGMetric.Papers.GM.S1.FieldAux"
+      ],
+      "local_imports": [
+        "GaussianLQG.LQG.Bridge.Defs",
+        "LQGMetric.Papers.GM.S1.FieldAux"
+      ],
+      "bytes": 3305
+    },
+    "GaussianLQG.LQG.Bridge.Defs": {
+      "path": "GaussianLQG/LQG/Bridge/Defs.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/Bridge/Defs.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "73ab1aee262a67624e79c58235e1c78d25487ac9652c346fcfd1bf5508868110",
+      "imports": [
+        "LQGMetric.Statement.Thm12",
+        "GaussianLQG.Frozen.IsCanonicalLQGMetric"
+      ],
+      "local_imports": [
+        "LQGMetric.Statement.Thm12",
+        "GaussianLQG.Frozen.IsCanonicalLQGMetric"
+      ],
+      "bytes": 1161
+    },
+    "GaussianLQG.LQG.Bridge.Exists": {
+      "path": "GaussianLQG/LQG/Bridge/Exists.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/Bridge/Exists.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "c22d69c816b6b113d46b62b57607d42fb3d7ed9c84c27de5c8a4d9e994693c59",
+      "imports": [
+        "GaussianLQG.LQG.Bridge.Defs",
+        "LQGMetric.Assembly.MainFinal"
+      ],
+      "local_imports": [
+        "GaussianLQG.LQG.Bridge.Defs",
+        "LQGMetric.Assembly.MainFinal"
+      ],
+      "bytes": 813
+    },
+    "GaussianLQG.LQG.Bridge.LFPPRotBdd": {
+      "path": "GaussianLQG/LQG/Bridge/LFPPRotBdd.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/Bridge/LFPPRotBdd.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "7740209f4809a4d194f571db171c9cd1e7617ac322b5197e22c7d0e64f6fefce",
+      "imports": [
+        "GaussianLQG.LQG.Bridge.RotNormalized",
+        "GaussianLQG.Metric.LFPPRotation",
+        "LQGMetric.LFPP.WeylField"
+      ],
+      "local_imports": [
+        "GaussianLQG.LQG.Bridge.RotNormalized",
+        "GaussianLQG.Metric.LFPPRotation",
+        "LQGMetric.LFPP.WeylField"
+      ],
+      "bytes": 6582
+    },
+    "GaussianLQG.LQG.Bridge.Median": {
+      "path": "GaussianLQG/LQG/Bridge/Median.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/Bridge/Median.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "c3d8e6412ebaf2fe210ed50cf18f54ad6a0fb9105dbcd855c2a14dea1ad90c48",
+      "imports": [
+        "GaussianLQG.LQG.Bridge.Basic",
+        "LQGMetric.Papers.GM.S1.NoGap",
+        "LQGMetric.LFPP.Measurable"
+      ],
+      "local_imports": [
+        "GaussianLQG.LQG.Bridge.Basic",
+        "LQGMetric.Papers.GM.S1.NoGap",
+        "LQGMetric.LFPP.Measurable"
+      ],
+      "bytes": 7529
+    },
+    "GaussianLQG.LQG.Bridge.RotMetric": {
+      "path": "GaussianLQG/LQG/Bridge/RotMetric.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/Bridge/RotMetric.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "a10bd51896355c571d04d9c4f79b7ed44319569124373c598fbc8ca2a76b4fe6",
+      "imports": [
+        "GaussianLQG.LQG.Bridge.Basic",
+        "GaussianLQG.LQG.Bridge.LFPPRotBdd"
+      ],
+      "local_imports": [
+        "GaussianLQG.LQG.Bridge.Basic",
+        "GaussianLQG.LQG.Bridge.LFPPRotBdd"
+      ],
+      "bytes": 10510
+    },
+    "GaussianLQG.LQG.Bridge.RotNormalized": {
+      "path": "GaussianLQG/LQG/Bridge/RotNormalized.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/Bridge/RotNormalized.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "3b1673c515c36b17156d85552fb8abdb66972cd96719be5748419878cc1ef88c",
+      "imports": [
+        "GaussianLQG.Metric.Rotation",
+        "LQGMetric.Field.CircleAvgAffine"
+      ],
+      "local_imports": [
+        "GaussianLQG.Metric.Rotation",
+        "LQGMetric.Field.CircleAvgAffine"
+      ],
+      "bytes": 8041
+    },
+    "GaussianLQG.LQG.Concentration": {
+      "path": "GaussianLQG/LQG/Concentration.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/Concentration.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "9311d6342d1531e5fb5971ee5cf48871db680a1d81585e9371a50749dccf6823",
+      "imports": [
+        "GaussianLQG.LQG.Derivative",
+        "GaussianLQG.Probability.GaussianLp"
+      ],
+      "local_imports": [
+        "GaussianLQG.LQG.Derivative",
+        "GaussianLQG.Probability.GaussianLp"
+      ],
+      "bytes": 8098
+    },
+    "GaussianLQG.LQG.ConcentrationU": {
+      "path": "GaussianLQG/LQG/ConcentrationU.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/ConcentrationU.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "8e65ba83d565c632f8ece13991c9751a8a0a8475cd968e297a86acb7df015b6c",
+      "imports": [
+        "GaussianLQG.LQG.Concentration",
+        "GaussianLQG.LQG.Localization",
+        "GaussianLQG.LQG.Geodesics",
+        "GaussianLQG.LQG.Scaling"
+      ],
+      "local_imports": [
+        "GaussianLQG.LQG.Concentration",
+        "GaussianLQG.LQG.Localization",
+        "GaussianLQG.LQG.Geodesics",
+        "GaussianLQG.LQG.Scaling"
+      ],
+      "bytes": 5684
+    },
+    "GaussianLQG.LQG.Crossing": {
+      "path": "GaussianLQG/LQG/Crossing.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/Crossing.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "0ced4ee2f83514dd98761081fcb16291680777911d181a8ac4b32cc429e24c03",
+      "imports": [
+        "GaussianLQG.LQG.Crossing.Lower"
+      ],
+      "local_imports": [
+        "GaussianLQG.LQG.Crossing.Lower"
+      ],
+      "bytes": 9115
+    },
+    "GaussianLQG.LQG.Crossing.Bounds": {
+      "path": "GaussianLQG/LQG/Crossing/Bounds.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/Crossing/Bounds.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "c7d8b0cfc6a771e8bf01cc93e153e1b14b16d52e37ae4d2f40d586157c7885e3",
+      "imports": [
+        "GaussianLQG.LQG.Crossing.Grid",
+        "GaussianLQG.Probability.Gaussian",
+        "GaussianLQG.Metric.Geodesic",
+        "LQGMetric.Papers.GM.S1.Assembly"
+      ],
+      "local_imports": [
+        "GaussianLQG.LQG.Crossing.Grid",
+        "GaussianLQG.Probability.Gaussian",
+        "GaussianLQG.Metric.Geodesic",
+        "LQGMetric.Papers.GM.S1.Assembly"
+      ],
+      "bytes": 13221
+    },
+    "GaussianLQG.LQG.Crossing.Grid": {
+      "path": "GaussianLQG/LQG/Crossing/Grid.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/Crossing/Grid.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "b37a4be3e674e7f01ca35c8c01a1d3bb02d468e23f2f304bf80c563c1ebbd231",
+      "imports": [
+        "GaussianLQG.LQG.FirstOrder",
+        "Mathlib.Analysis.SpecialFunctions.Log.Base",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics"
+      ],
+      "local_imports": [
+        "GaussianLQG.LQG.FirstOrder"
+      ],
+      "bytes": 16210
+    },
+    "GaussianLQG.LQG.Crossing.Lower": {
+      "path": "GaussianLQG/LQG/Crossing/Lower.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/Crossing/Lower.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "2c46344e2b282c768665ed9d90fe9d34c152adb7845229970b9e1e8f59217275",
+      "imports": [
+        "GaussianLQG.LQG.Crossing.Bounds"
+      ],
+      "local_imports": [
+        "GaussianLQG.LQG.Crossing.Bounds"
+      ],
+      "bytes": 21828
+    },
+    "GaussianLQG.LQG.Derivative": {
+      "path": "GaussianLQG/LQG/Derivative.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/Derivative.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "6155ece30ead111045fb489a09dc391f32879dd48861d04aed6836f828f6e885",
+      "imports": [
+        "GaussianLQG.Core.Setup",
+        "GaussianLQG.LQG.Scaling.Measurability",
+        "GaussianLQG.Metric.Weyl",
+        "GaussianLQG.Probability.GaussianLp.CoordDeriv"
+      ],
+      "local_imports": [
+        "GaussianLQG.Core.Setup",
+        "GaussianLQG.LQG.Scaling.Measurability",
+        "GaussianLQG.Metric.Weyl",
+        "GaussianLQG.Probability.GaussianLp.CoordDeriv"
+      ],
+      "bytes": 18431
+    },
+    "GaussianLQG.LQG.Dimension": {
+      "path": "GaussianLQG/LQG/Dimension.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/Dimension.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "c7c205669e95057c90ea883ab4507b428a833e596286ec1b6ea90ced87808ad4",
+      "imports": [
+        "LQGMetric.Assembly.MainFinal",
+        "LQGMetric.Papers.DG.S3Wire3",
+        "LQGMetric.Papers.DG.S3L37Q1",
+        "LQGMetric.Papers.DG.S3P16D3",
+        "LQGMetric.Papers.DG.BallMass",
+        "LQGMetric.Papers.DG.XiQBound",
+        "LQGMetric.Papers.DG.Adapter",
+        "LQGMetric.Papers.DZZ.S5L53W1"
+      ],
+      "local_imports": [
+        "LQGMetric.Assembly.MainFinal",
+        "LQGMetric.Papers.DG.S3Wire3",
+        "LQGMetric.Papers.DG.S3L37Q1",
+        "LQGMetric.Papers.DG.S3P16D3",
+        "LQGMetric.Papers.DG.BallMass",
+        "LQGMetric.Papers.DG.XiQBound",
+        "LQGMetric.Papers.DG.Adapter",
+        "LQGMetric.Papers.DZZ.S5L53W1"
+      ],
+      "bytes": 4635
+    },
+    "GaussianLQG.LQG.EnergyApprox": {
+      "path": "GaussianLQG/LQG/EnergyApprox.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/EnergyApprox.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "f2a0a254d15c7b1596e50ed6d66549cc6faadd3cc29d14c9c349a3443a39fe81",
+      "imports": [
+        "GaussianLQG.LQG.Euclid",
+        "GaussianLQG.LQG.Euclid.Coupling",
+        "GaussianLQG.LQG.Euclid.Moments",
+        "GaussianLQG.LQG.Localization"
+      ],
+      "local_imports": [
+        "GaussianLQG.LQG.Euclid",
+        "GaussianLQG.LQG.Euclid.Coupling",
+        "GaussianLQG.LQG.Euclid.Moments",
+        "GaussianLQG.LQG.Localization"
+      ],
+      "bytes": 10847
+    },
+    "GaussianLQG.LQG.Euclid": {
+      "path": "GaussianLQG/LQG/Euclid.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/Euclid.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "11528f38baac23489b3915eb73ae6f3f6e00d0e2c93cc81066ae900d54d1985b",
+      "imports": [
+        "GaussianLQG.LQG.Euclid.Pair",
+        "GaussianLQG.LQG.Euclid.Grid",
+        "GaussianLQG.LQG.Euclid.Union",
+        "GaussianLQG.LQG.Euclid.Measurability"
+      ],
+      "local_imports": [
+        "GaussianLQG.LQG.Euclid.Pair",
+        "GaussianLQG.LQG.Euclid.Grid",
+        "GaussianLQG.LQG.Euclid.Union",
+        "GaussianLQG.LQG.Euclid.Measurability"
+      ],
+      "bytes": 13666
+    },
+    "GaussianLQG.LQG.Euclid.Basic": {
+      "path": "GaussianLQG/LQG/Euclid/Basic.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/Euclid/Basic.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "6c0f736f2bac357295232174c03c2baba47f3ad2a7068b8ca6639a321b284ba1",
+      "imports": [
+        "GaussianLQG.Probability.Gaussian",
+        "Mathlib.Analysis.SpecialFunctions.Log.PosLog",
+        "Mathlib.MeasureTheory.Function.LpSeminorm.CompareExp",
+        "Mathlib.MeasureTheory.Function.LpSeminorm.TriangleInequality"
+      ],
+      "local_imports": [
+        "GaussianLQG.Probability.Gaussian"
+      ],
+      "bytes": 8205
+    },
+    "GaussianLQG.LQG.Euclid.Coupling": {
+      "path": "GaussianLQG/LQG/Euclid/Coupling.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/Euclid/Coupling.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "cebc263088f0f2c6bce550acc7abbddd21a498abb9b9c5cb9d9824b7ef73ac69",
+      "imports": [
+        "GaussianLQG.LQG.Tube",
+        "GaussianLQG.Energy.All",
+        "GaussianLQG.Field.Pairing"
+      ],
+      "local_imports": [
+        "GaussianLQG.LQG.Tube",
+        "GaussianLQG.Energy.All",
+        "GaussianLQG.Field.Pairing"
+      ],
+      "bytes": 9860
+    },
+    "GaussianLQG.LQG.Euclid.Grid": {
+      "path": "GaussianLQG/LQG/Euclid/Grid.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/Euclid/Grid.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "453072aff34d525221dd23634cd5f81999d5a7cfd612c6ba6aea87030881b154",
+      "imports": [
+        "Mathlib.Analysis.Complex.Basic",
+        "Mathlib.Algebra.Order.Round",
+        "Mathlib.Order.Interval.Finset.Defs",
+        "Mathlib.Data.Int.Interval"
+      ],
+      "local_imports": [],
+      "bytes": 5652
+    },
+    "GaussianLQG.LQG.Euclid.Measurability": {
+      "path": "GaussianLQG/LQG/Euclid/Measurability.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/Euclid/Measurability.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "f85a1cce139a6e2a73ec0b369366de97363137800421dc2ac2b6674e3bda5744",
+      "imports": [
+        "GaussianLQG.Core.InterfacesEuclid",
+        "GaussianLQG.LQG.Scaling"
+      ],
+      "local_imports": [
+        "GaussianLQG.Core.InterfacesEuclid",
+        "GaussianLQG.LQG.Scaling"
+      ],
+      "bytes": 2310
+    },
+    "GaussianLQG.LQG.Euclid.Moments": {
+      "path": "GaussianLQG/LQG/Euclid/Moments.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/Euclid/Moments.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "73ec3957f8ff6abad01ba4add2b1c9b4648270347b9b6c128e62f130d22c6ba1",
+      "imports": [
+        "GaussianLQG.LQG.Localization.Tail",
+        "GaussianLQG.LQG.Geodesics",
+        "GaussianLQG.LQG.Euclid.Basic"
+      ],
+      "local_imports": [
+        "GaussianLQG.LQG.Localization.Tail",
+        "GaussianLQG.LQG.Geodesics",
+        "GaussianLQG.LQG.Euclid.Basic"
+      ],
+      "bytes": 14549
+    },
+    "GaussianLQG.LQG.Euclid.Pair": {
+      "path": "GaussianLQG/LQG/Euclid/Pair.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/Euclid/Pair.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "e67fef82faaf0afe616bfa397d6e9fb3125cf8302456a271027cf41eb298ea5c",
+      "imports": [
+        "GaussianLQG.LQG.ConcentrationU",
+        "GaussianLQG.LQG.Exponents",
+        "GaussianLQG.LQG.Euclid.Basic"
+      ],
+      "local_imports": [
+        "GaussianLQG.LQG.ConcentrationU",
+        "GaussianLQG.LQG.Exponents",
+        "GaussianLQG.LQG.Euclid.Basic"
+      ],
+      "bytes": 20436
+    },
+    "GaussianLQG.LQG.Euclid.Union": {
+      "path": "GaussianLQG/LQG/Euclid/Union.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/Euclid/Union.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "b51b4d2365e6b26d0b8e196427fdfeacf92aa6302fbdceb21be95618eacb6806",
+      "imports": [
+        "GaussianLQG.Core.Defs",
+        "GaussianLQG.LQG.Euclid.Basic"
+      ],
+      "local_imports": [
+        "GaussianLQG.Core.Defs",
+        "GaussianLQG.LQG.Euclid.Basic"
+      ],
+      "bytes": 6467
+    },
+    "GaussianLQG.LQG.Exponents": {
+      "path": "GaussianLQG/LQG/Exponents.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/Exponents.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "636bb1d7778ee16e6a3a49c263767e2df989c19e008932483e26ed8575c03305",
+      "imports": [
+        "GaussianLQG.Core.Setup"
+      ],
+      "local_imports": [
+        "GaussianLQG.Core.Setup"
+      ],
+      "bytes": 7501
+    },
+    "GaussianLQG.LQG.FirstOrder": {
+      "path": "GaussianLQG/LQG/FirstOrder.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/FirstOrder.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "0af22c33add0895c572b2a0ab75dc2a2fe5adb83246af2ff3fb78110cd55c336",
+      "imports": [
+        "GaussianLQG.LQG.Concentration",
+        "GaussianLQG.Core.InterfacesEuclid",
+        "GaussianLQG.Core.Interfaces",
+        "GaussianLQG.Field.Pairing",
+        "GaussianLQG.LQG.Scaling",
+        "GaussianLQG.LQG.Geodesics",
+        "GaussianLQG.LQG.Exponents",
+        "GaussianLQG.Energy.All"
+      ],
+      "local_imports": [
+        "GaussianLQG.LQG.Concentration",
+        "GaussianLQG.Core.InterfacesEuclid",
+        "GaussianLQG.Core.Interfaces",
+        "GaussianLQG.Field.Pairing",
+        "GaussianLQG.LQG.Scaling",
+        "GaussianLQG.LQG.Geodesics",
+        "GaussianLQG.LQG.Exponents",
+        "GaussianLQG.Energy.All"
+      ],
+      "bytes": 21956
+    },
+    "GaussianLQG.LQG.Geodesics": {
+      "path": "GaussianLQG/LQG/Geodesics.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/Geodesics.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "fbd7e1714a831e2bffdaa7fe04039cfa33d7c1af2f5772cea40552d8e7aded8b",
+      "imports": [
+        "GaussianLQG.Core.Setup",
+        "GaussianLQG.LQG.Scaling.Measurability",
+        "GaussianLQG.LQG.Exponents",
+        "GaussianLQG.Metric.HopfRinow",
+        "GaussianLQG.Metric.Geodesic",
+        "LQGMetric.Meas.CR",
+        "LQGMetric.Meas.Geod",
+        "LQGMetric.Papers.GM.S2.TightE"
+      ],
+      "local_imports": [
+        "GaussianLQG.Core.Setup",
+        "GaussianLQG.LQG.Scaling.Measurability",
+        "GaussianLQG.LQG.Exponents",
+        "GaussianLQG.Metric.HopfRinow",
+        "GaussianLQG.Metric.Geodesic",
+        "LQGMetric.Meas.CR",
+        "LQGMetric.Meas.Geod",
+        "LQGMetric.Papers.GM.S2.TightE"
+      ],
+      "bytes": 15750
+    },
+    "GaussianLQG.LQG.Localization": {
+      "path": "GaussianLQG/LQG/Localization.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/Localization.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "272d201d5b889ef94cc872ff83af036377df5a59e8ab1c023a30000f36c7f9ef",
+      "imports": [
+        "GaussianLQG.LQG.Localization.Moments"
+      ],
+      "local_imports": [
+        "GaussianLQG.LQG.Localization.Moments"
+      ],
+      "bytes": 12990
+    },
+    "GaussianLQG.LQG.Localization.Defs": {
+      "path": "GaussianLQG/LQG/Localization/Defs.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/Localization/Defs.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "917c4aa56d9fc73a3b7e4aafd1dc7887285857706e785c82341acd484201e914",
+      "imports": [
+        "GaussianLQG.LQG.Localization.Measurability"
+      ],
+      "local_imports": [
+        "GaussianLQG.LQG.Localization.Measurability"
+      ],
+      "bytes": 12459
+    },
+    "GaussianLQG.LQG.Localization.Deterministic": {
+      "path": "GaussianLQG/LQG/Localization/Deterministic.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/Localization/Deterministic.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "963fbe57ae791b16359c365e2d7164029a730979ac30155f67699e8079ae4b3a",
+      "imports": [
+        "GaussianLQG.LQG.Localization.Defs",
+        "GaussianLQG.Energy.Bound"
+      ],
+      "local_imports": [
+        "GaussianLQG.LQG.Localization.Defs",
+        "GaussianLQG.Energy.Bound"
+      ],
+      "bytes": 8943
+    },
+    "GaussianLQG.LQG.Localization.Measurability": {
+      "path": "GaussianLQG/LQG/Localization/Measurability.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/Localization/Measurability.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "55133d2be8612ca22a010e9cf7382ca97fc91d85baa36b638b50c9f5b7b8ec76",
+      "imports": [
+        "GaussianLQG.LQG.Geodesics",
+        "GaussianLQG.LQG.Scaling.Measurability"
+      ],
+      "local_imports": [
+        "GaussianLQG.LQG.Geodesics",
+        "GaussianLQG.LQG.Scaling.Measurability"
+      ],
+      "bytes": 2669
+    },
+    "GaussianLQG.LQG.Localization.Moments": {
+      "path": "GaussianLQG/LQG/Localization/Moments.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/Localization/Moments.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "05db68824f354b7f0b6d58edad821995ccafd2eb1c627d22a9dcabb2bc6a0505",
+      "imports": [
+        "GaussianLQG.LQG.Localization.Tail"
+      ],
+      "local_imports": [
+        "GaussianLQG.LQG.Localization.Tail"
+      ],
+      "bytes": 14139
+    },
+    "GaussianLQG.LQG.Localization.Tail": {
+      "path": "GaussianLQG/LQG/Localization/Tail.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/Localization/Tail.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "93144a775af070332347e7d3f15fcc7e6dcddb034d0a2c963098afd571a2c125",
+      "imports": [
+        "GaussianLQG.LQG.Localization.Deterministic"
+      ],
+      "local_imports": [
+        "GaussianLQG.LQG.Localization.Deterministic"
+      ],
+      "bytes": 15160
+    },
+    "GaussianLQG.LQG.Scaling": {
+      "path": "GaussianLQG/LQG/Scaling.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/Scaling.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "899a71a132bbac62d06e31995e8b611084b4585c827de08d04e2ab0d3aec0b78",
+      "imports": [
+        "GaussianLQG.LQG.Scaling.LogMoments"
+      ],
+      "local_imports": [
+        "GaussianLQG.LQG.Scaling.LogMoments"
+      ],
+      "bytes": 12705
+    },
+    "GaussianLQG.LQG.Scaling.Affine": {
+      "path": "GaussianLQG/LQG/Scaling/Affine.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/Scaling/Affine.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "7465cd5c09825439a39a1d1b976e5bc601f217251700069ffd5b9afc305c52d1",
+      "imports": [
+        "GaussianLQG.LQG.Scaling.Measurability",
+        "GaussianLQG.Field.Pairing.Circle"
+      ],
+      "local_imports": [
+        "GaussianLQG.LQG.Scaling.Measurability",
+        "GaussianLQG.Field.Pairing.Circle"
+      ],
+      "bytes": 9510
+    },
+    "GaussianLQG.LQG.Scaling.LogMoments": {
+      "path": "GaussianLQG/LQG/Scaling/LogMoments.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/Scaling/LogMoments.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "6e4dbc7b779f45cb6a174da7bf0d5a14b1c2157859d2a241b98203f007a9aaba",
+      "imports": [
+        "GaussianLQG.LQG.Scaling.Affine"
+      ],
+      "local_imports": [
+        "GaussianLQG.LQG.Scaling.Affine"
+      ],
+      "bytes": 11169
+    },
+    "GaussianLQG.LQG.Scaling.Measurability": {
+      "path": "GaussianLQG/LQG/Scaling/Measurability.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/Scaling/Measurability.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "8b3fa8179d13569e1599aa8b3c3bc037d3aac7bb70b0d064f50e3743ef46935c",
+      "imports": [
+        "GaussianLQG.Core.Setup"
+      ],
+      "local_imports": [
+        "GaussianLQG.Core.Setup"
+      ],
+      "bytes": 8892
+    },
+    "GaussianLQG.LQG.Tube": {
+      "path": "GaussianLQG/LQG/Tube.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/LQG/Tube.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "873373eeac8c43a7ef609cd86adb2dd36cf7478d84557e1b8ea5666da0c3bd55",
+      "imports": [
+        "GaussianLQG.Metric.Geodesic"
+      ],
+      "local_imports": [
+        "GaussianLQG.Metric.Geodesic"
+      ],
+      "bytes": 8858
+    },
+    "GaussianLQG.Medians.LawM": {
+      "path": "GaussianLQG/Medians/LawM.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Medians/LawM.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "28cb3cbce86a4ca228554a3bfd804516c4de52cc945ecb29bbd837360c0394a6",
+      "imports": [
+        "GaussianLQG.Medians.LawM.Basic",
+        "GaussianLQG.Core.Interfaces",
+        "GaussianLQG.Energy.Segments"
+      ],
+      "local_imports": [
+        "GaussianLQG.Medians.LawM.Basic",
+        "GaussianLQG.Core.Interfaces",
+        "GaussianLQG.Energy.Segments"
+      ],
+      "bytes": 16553
+    },
+    "GaussianLQG.Medians.LawM.Basic": {
+      "path": "GaussianLQG/Medians/LawM/Basic.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Medians/LawM/Basic.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "e29149bd895c53b6bb6156c67295e455977c346ff87e8cf98fc0780873b38413",
+      "imports": [
+        "GaussianLQG.Core.Setup",
+        "Mathlib.Probability.Distributions.Gaussian.Real",
+        "Mathlib.Topology.Order.IntermediateValue"
+      ],
+      "local_imports": [
+        "GaussianLQG.Core.Setup"
+      ],
+      "bytes": 16412
+    },
+    "GaussianLQG.Metric.Geodesic": {
+      "path": "GaussianLQG/Metric/Geodesic.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Metric/Geodesic.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "a86c588ec60e24081626d6bd574b27a6ff6310c905557e52bc55b04884c2b571",
+      "imports": [
+        "GaussianLQG.Core.Defs",
+        "LQGMetric.Metric.WeylCont",
+        "LQGMetric.Metric.InternalLimitC"
+      ],
+      "local_imports": [
+        "GaussianLQG.Core.Defs",
+        "LQGMetric.Metric.WeylCont",
+        "LQGMetric.Metric.InternalLimitC"
+      ],
+      "bytes": 19923
+    },
+    "GaussianLQG.Metric.HopfRinow": {
+      "path": "GaussianLQG/Metric/HopfRinow.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Metric/HopfRinow.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "d28aebf12c335ad203987c82ac9865ce0306b6a13bfca6866bf6843045559e8c",
+      "imports": [
+        "LQGMetric.Papers.GM.S2.Geodesics"
+      ],
+      "local_imports": [
+        "LQGMetric.Papers.GM.S2.Geodesics"
+      ],
+      "bytes": 2123
+    },
+    "GaussianLQG.Metric.LFPPRotation": {
+      "path": "GaussianLQG/Metric/LFPPRotation.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Metric/LFPPRotation.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "a5831b9299e0df1c24afd788dcdd0fcb14d3df6f10a5219134862fd91e7c1de9",
+      "imports": [
+        "GaussianLQG.Metric.Rotation",
+        "LQGMetric.Papers.DFGPS.L2_6"
+      ],
+      "local_imports": [
+        "GaussianLQG.Metric.Rotation",
+        "LQGMetric.Papers.DFGPS.L2_6"
+      ],
+      "bytes": 12573
+    },
+    "GaussianLQG.Metric.Rotation": {
+      "path": "GaussianLQG/Metric/Rotation.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Metric/Rotation.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "95a94a92d4a064fee7b41e07a5f547d04b33ad33c58d813a204a7d174c42f6fc",
+      "imports": [
+        "LQGMetric.Field.GFFInvariance",
+        "Mathlib.Analysis.Complex.Isometry",
+        "Mathlib.MeasureTheory.Measure.Haar.InnerProductSpace"
+      ],
+      "local_imports": [
+        "LQGMetric.Field.GFFInvariance"
+      ],
+      "bytes": 9247
+    },
+    "GaussianLQG.Metric.Weyl": {
+      "path": "GaussianLQG/Metric/Weyl.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Metric/Weyl.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "0c4f6db6432b5eaedfc0c2ecbebef6e56a038b2f52404aa532bf7116285fd9d9",
+      "imports": [
+        "GaussianLQG.Metric.Geodesic"
+      ],
+      "local_imports": [
+        "GaussianLQG.Metric.Geodesic"
+      ],
+      "bytes": 7450
+    },
+    "GaussianLQG.Probability.Gaussian": {
+      "path": "GaussianLQG/Probability/Gaussian.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Probability/Gaussian.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "51032d1662a521f127ba6927540bfc5d46ddff095df1ea67d0f9bc63e972b54d",
+      "imports": [
+        "Mathlib.Probability.Distributions.Gaussian.Real",
+        "Mathlib.Probability.Distributions.Gaussian.HasGaussianLaw.Basic",
+        "Mathlib.Probability.Moments.Basic",
+        "Mathlib.Probability.HasLaw",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Real"
+      ],
+      "local_imports": [],
+      "bytes": 15965
+    },
+    "GaussianLQG.Probability.GaussianLp": {
+      "path": "GaussianLQG/Probability/GaussianLp.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Probability/GaussianLp.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "e0509e52e13c2f7a28eab38c5def849d96a0244888f79579055cd48558769867",
+      "imports": [
+        "GaussianLQG.Probability.GaussianLp.Projection"
+      ],
+      "local_imports": [
+        "GaussianLQG.Probability.GaussianLp.Projection"
+      ],
+      "bytes": 5983
+    },
+    "GaussianLQG.Probability.GaussianLp.Basic": {
+      "path": "GaussianLQG/Probability/GaussianLp/Basic.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Probability/GaussianLp/Basic.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "eb01951e7f37f048543d2efa91aaef1a13cac52a745b09d73fdccee98d1427a8",
+      "imports": [
+        "GaussianLQG.Core.Defs",
+        "LQGDimension.Gaussian.Concentration",
+        "LQGDimension.Gaussian.MaxInequality",
+        "Mathlib.Analysis.Calculus.Rademacher"
+      ],
+      "local_imports": [
+        "GaussianLQG.Core.Defs",
+        "LQGDimension.Gaussian.Concentration",
+        "LQGDimension.Gaussian.MaxInequality"
+      ],
+      "bytes": 10061
+    },
+    "GaussianLQG.Probability.GaussianLp.CoordDeriv": {
+      "path": "GaussianLQG/Probability/GaussianLp/CoordDeriv.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Probability/GaussianLp/CoordDeriv.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "42c812b6bff5cd5f3865bd71dec3a2af024c65355f5ddd64e41fc6f7fee5634e",
+      "imports": [
+        "GaussianLQG.Probability.GaussianLp.Split"
+      ],
+      "local_imports": [
+        "GaussianLQG.Probability.GaussianLp.Split"
+      ],
+      "bytes": 20001
+    },
+    "GaussianLQG.Probability.GaussianLp.FiniteDim": {
+      "path": "GaussianLQG/Probability/GaussianLp/FiniteDim.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Probability/GaussianLp/FiniteDim.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "e4ad4b4fa848d2b07b6489bac4dda8d7d17d7ffb7bed9a8a5e6a385e9272ff20",
+      "imports": [
+        "GaussianLQG.Probability.GaussianLp.Basic"
+      ],
+      "local_imports": [
+        "GaussianLQG.Probability.GaussianLp.Basic"
+      ],
+      "bytes": 19155
+    },
+    "GaussianLQG.Probability.GaussianLp.Projection": {
+      "path": "GaussianLQG/Probability/GaussianLp/Projection.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Probability/GaussianLp/Projection.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "b07cd26309692a56b838a7545399e1b5ad1cb00f5892f841da178bf71f320c0d",
+      "imports": [
+        "GaussianLQG.Probability.GaussianLp.CoordDeriv",
+        "GaussianLQG.Probability.GaussianLp.FiniteDim"
+      ],
+      "local_imports": [
+        "GaussianLQG.Probability.GaussianLp.CoordDeriv",
+        "GaussianLQG.Probability.GaussianLp.FiniteDim"
+      ],
+      "bytes": 13613
+    },
+    "GaussianLQG.Probability.GaussianLp.Split": {
+      "path": "GaussianLQG/Probability/GaussianLp/Split.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Probability/GaussianLp/Split.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "1bc04bb2be58107c3d41fbee037ca43c94e3d10ba68faaea487e64c8cfbd3e06",
+      "imports": [
+        "GaussianLQG.Probability.GaussianLp.Basic"
+      ],
+      "local_imports": [
+        "GaussianLQG.Probability.GaussianLp.Basic"
+      ],
+      "bytes": 12946
+    },
+    "GaussianLQG.Probability.Kolmogorov": {
+      "path": "GaussianLQG/Probability/Kolmogorov.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Probability/Kolmogorov.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "4d868c7a2e9330af8b68270235b1994d71fe1d4e83a87e595a7279bd4a9096f8",
+      "imports": [
+        "GaussianLQG.Probability.Gaussian",
+        "QuantumZipper.Proofs.Probability.KolmN"
+      ],
+      "local_imports": [
+        "GaussianLQG.Probability.Gaussian",
+        "QuantumZipper.Proofs.Probability.KolmN"
+      ],
+      "bytes": 9555
+    },
+    "GaussianLQG.Probability.Medians": {
+      "path": "GaussianLQG/Probability/Medians.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Probability/Medians.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "53f41133bc85d720c8ea294e31303338bd62ecc315c6f26ea214060b7a862499",
+      "imports": [
+        "LQGMetric.Prob.Median",
+        "Mathlib.MeasureTheory.Function.ConvergenceInMeasure",
+        "Mathlib.Analysis.SpecialFunctions.Log.Basic"
+      ],
+      "local_imports": [
+        "LQGMetric.Prob.Median"
+      ],
+      "bytes": 9121
+    },
+    "GaussianLQG.Uniform.ConditionT": {
+      "path": "GaussianLQG/Uniform/ConditionT.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/ConditionT.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "7d62b8094870e522763b916c7eef5436883f0da91d9bbb2859d3433067ba897b",
+      "imports": [
+        "GaussianLQG.Uniform.RSW.Law",
+        "LQGMetric.Papers.DDDF.S6P21Ratio",
+        "LQGMetric.Papers.DDDF.S6P21Max",
+        "LQGMetric.Papers.DDDF.T20CMain"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.RSW.Law",
+        "LQGMetric.Papers.DDDF.S6P21Ratio",
+        "LQGMetric.Papers.DDDF.S6P21Max",
+        "LQGMetric.Papers.DDDF.T20CMain"
+      ],
+      "bytes": 23465
+    },
+    "GaussianLQG.Uniform.Consequences": {
+      "path": "GaussianLQG/Uniform/Consequences.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/Consequences.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "3b2061348c6daf8a64361aae3673470a03417fa4b90e573755c0a2242491b840",
+      "imports": [
+        "GaussianLQG.Uniform.Consequences.Scale",
+        "GaussianLQG.Uniform.LowerTail"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.Consequences.Scale",
+        "GaussianLQG.Uniform.LowerTail"
+      ],
+      "bytes": 15383
+    },
+    "GaussianLQG.Uniform.Consequences.Basic": {
+      "path": "GaussianLQG/Uniform/Consequences/Basic.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/Consequences/Basic.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "8be85a7a660574a81b9c581670efe43fdedaf3ad67044d7872fa6c46e61f39f6",
+      "imports": [
+        "GaussianLQG.Uniform.InterfacesCons",
+        "LQGMetric.Papers.DDDF.S6TailsAB3",
+        "LQGMetric.Papers.DDDF.S6P21Mom"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.InterfacesCons",
+        "LQGMetric.Papers.DDDF.S6TailsAB3",
+        "LQGMetric.Papers.DDDF.S6P21Mom"
+      ],
+      "bytes": 13921
+    },
+    "GaussianLQG.Uniform.Consequences.Scale": {
+      "path": "GaussianLQG/Uniform/Consequences/Scale.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/Consequences/Scale.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "ab349304496e6d46eee852093b266b44affecbff8e02171f22f11bf7447bfa8d",
+      "imports": [
+        "GaussianLQG.Uniform.Consequences.Basic",
+        "LQGMetric.Papers.DDDF.S6Eq698",
+        "LQGMetric.Papers.DDDF.S6P28Sup",
+        "LQGMetric.Papers.DDDF.S6P26Up",
+        "LQGMetric.Papers.DDDF.P18Zero",
+        "LQGMetric.Papers.DDDF.P18Straight"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.Consequences.Basic",
+        "LQGMetric.Papers.DDDF.S6Eq698",
+        "LQGMetric.Papers.DDDF.S6P28Sup",
+        "LQGMetric.Papers.DDDF.S6P26Up",
+        "LQGMetric.Papers.DDDF.P18Zero",
+        "LQGMetric.Papers.DDDF.P18Straight"
+      ],
+      "bytes": 20986
+    },
+    "GaussianLQG.Uniform.CoreDone": {
+      "path": "GaussianLQG/Uniform/CoreDone.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/CoreDone.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "396dbedb819d57faa26fe54e50d520f67396e8b1f85552067cc28026049c1879",
+      "imports": [
+        "GaussianLQG.Uniform.Thm20.Unconditional",
+        "GaussianLQG.Uniform.UpperTail",
+        "GaussianLQG.Uniform.Consequences"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.Thm20.Unconditional",
+        "GaussianLQG.Uniform.UpperTail",
+        "GaussianLQG.Uniform.Consequences"
+      ],
+      "bytes": 1153
+    },
+    "GaussianLQG.Uniform.FieldComparison": {
+      "path": "GaussianLQG/Uniform/FieldComparison.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/FieldComparison.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "d6a46eb245e92e82f616039329309449d74a81a15cd0429b06ed1b5023c49cfa",
+      "imports": [
+        "GaussianLQG.Uniform.FieldComparison.Identify",
+        "GaussianLQG.Uniform.FieldComparison.Bounds",
+        "GaussianLQG.Uniform.FieldComparison.SupTail"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.FieldComparison.Identify",
+        "GaussianLQG.Uniform.FieldComparison.Bounds",
+        "GaussianLQG.Uniform.FieldComparison.SupTail"
+      ],
+      "bytes": 15170
+    },
+    "GaussianLQG.Uniform.FieldComparison.Bounds": {
+      "path": "GaussianLQG/Uniform/FieldComparison/Bounds.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/FieldComparison/Bounds.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "be8c29695f7c6c219b4d4bda32e5abf45e011d2bdec41326009ec0694c445ffd",
+      "imports": [
+        "GaussianLQG.Uniform.FieldComparison.Shift",
+        "GaussianLQG.Uniform.FieldComparison.Kernel"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.FieldComparison.Shift",
+        "GaussianLQG.Uniform.FieldComparison.Kernel"
+      ],
+      "bytes": 20774
+    },
+    "GaussianLQG.Uniform.FieldComparison.Identify": {
+      "path": "GaussianLQG/Uniform/FieldComparison/Identify.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/FieldComparison/Identify.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "05bf96074c0574089f3bc51fec271340baaa4666ba1f2555278836c1ea49e687",
+      "imports": [
+        "GaussianLQG.Uniform.FieldComparison.Kernel"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.FieldComparison.Kernel"
+      ],
+      "bytes": 10616
+    },
+    "GaussianLQG.Uniform.FieldComparison.Kernel": {
+      "path": "GaussianLQG/Uniform/FieldComparison/Kernel.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/FieldComparison/Kernel.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "97aa0fd4e626c4fdc29836f5dbd240d03bd0dffca86da35b2b39c341027de097",
+      "imports": [
+        "LQGMetric.Papers.DG.L3_1C3",
+        "LQGMetric.Field.HeatKernelSquareCK",
+        "LQGMetric.Field.HeatMollifyUnif"
+      ],
+      "local_imports": [
+        "LQGMetric.Papers.DG.L3_1C3",
+        "LQGMetric.Field.HeatKernelSquareCK",
+        "LQGMetric.Field.HeatMollifyUnif"
+      ],
+      "bytes": 13646
+    },
+    "GaussianLQG.Uniform.FieldComparison.Shift": {
+      "path": "GaussianLQG/Uniform/FieldComparison/Shift.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/FieldComparison/Shift.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "1598f130980ea104c2d03eb094cc3fe0066ec9e0496b0de45463da20bf6e0f31",
+      "imports": [
+        "LQGMetric.Papers.DDDF.P10Law",
+        "LQGMetric.Papers.DDDF.S6P29Shift"
+      ],
+      "local_imports": [
+        "LQGMetric.Papers.DDDF.P10Law",
+        "LQGMetric.Papers.DDDF.S6P29Shift"
+      ],
+      "bytes": 10815
+    },
+    "GaussianLQG.Uniform.FieldComparison.SupTail": {
+      "path": "GaussianLQG/Uniform/FieldComparison/SupTail.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/FieldComparison/SupTail.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "694571458f20a33de5d6890e687041ab16db408c8551a147647d1c91c42bc1ea",
+      "imports": [
+        "LQGMetric.Papers.DDDF.L6FinalTail"
+      ],
+      "local_imports": [
+        "LQGMetric.Papers.DDDF.L6FinalTail"
+      ],
+      "bytes": 8634
+    },
+    "GaussianLQG.Uniform.Holder": {
+      "path": "GaussianLQG/Uniform/Holder.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/Holder.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "0eea9aaf96d73336a5888f0e23be014c54bc216b1e6ff8bc4bf0fc88d3de227c",
+      "imports": [
+        "GaussianLQG.Uniform.Holder.Assembly",
+        "GaussianLQG.Uniform.InterfacesCons"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.Holder.Assembly",
+        "GaussianLQG.Uniform.InterfacesCons"
+      ],
+      "bytes": 9345
+    },
+    "GaussianLQG.Uniform.Holder.Assembly": {
+      "path": "GaussianLQG/Uniform/Holder/Assembly.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/Holder/Assembly.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "ad9c725282f4dd6be66bee4fb686e7abfcb6a604386e497b341e88a9b9c04689",
+      "imports": [
+        "GaussianLQG.Uniform.Holder.Level"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.Holder.Level"
+      ],
+      "bytes": 19705
+    },
+    "GaussianLQG.Uniform.Holder.Chain": {
+      "path": "GaussianLQG/Uniform/Holder/Chain.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/Holder/Chain.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "b226b9bdf9ef067d42f891ca999c7ea2383b0ac9403ade06538cc6fb0bc2c87c",
+      "imports": [
+        "GaussianLQG.Uniform.Holder.Geom"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.Holder.Geom"
+      ],
+      "bytes": 23481
+    },
+    "GaussianLQG.Uniform.Holder.Done": {
+      "path": "GaussianLQG/Uniform/Holder/Done.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/Holder/Done.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "696766a5ce90a7a5912d7d863af7369e5ad84162903830ff752beaad88a4021f",
+      "imports": [
+        "GaussianLQG.Uniform.Holder",
+        "GaussianLQG.Uniform.CoreDone"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.Holder",
+        "GaussianLQG.Uniform.CoreDone"
+      ],
+      "bytes": 2128
+    },
+    "GaussianLQG.Uniform.Holder.Geom": {
+      "path": "GaussianLQG/Uniform/Holder/Geom.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/Holder/Geom.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "01f75f5b0e08c9778c04f5fd9ebe3a1cc3dd5c2775c5eb0b6b81923bcbe9d85a",
+      "imports": [
+        "GaussianLQG.Uniform.InterfacesLFPP",
+        "LQGMetric.Papers.DDDF.S6P28U1Sum"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.InterfacesLFPP",
+        "LQGMetric.Papers.DDDF.S6P28U1Sum"
+      ],
+      "bytes": 16132
+    },
+    "GaussianLQG.Uniform.Holder.Level": {
+      "path": "GaussianLQG/Uniform/Holder/Level.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/Holder/Level.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "a926096d9d2ddd44f84e875a5e4f0ac44165c7dc015f902a1a1e77176d1f6bf6",
+      "imports": [
+        "GaussianLQG.Uniform.Holder.Lp"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.Holder.Lp"
+      ],
+      "bytes": 13675
+    },
+    "GaussianLQG.Uniform.Holder.Lp": {
+      "path": "GaussianLQG/Uniform/Holder/Lp.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/Holder/Lp.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "25f26990e9758eb58061a5e97aa0f6b61e07499c417d5ab21f94cf10ac7b9479",
+      "imports": [
+        "GaussianLQG.Uniform.Holder.Moments",
+        "Mathlib.Algebra.Order.Field.GeomSum"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.Holder.Moments"
+      ],
+      "bytes": 6772
+    },
+    "GaussianLQG.Uniform.Holder.Moments": {
+      "path": "GaussianLQG/Uniform/Holder/Moments.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/Holder/Moments.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "e54f8f31c2b34175347c4303190d4fec423fd973192edf0681e40213300157f6",
+      "imports": [
+        "GaussianLQG.Uniform.Holder.Chain"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.Holder.Chain"
+      ],
+      "bytes": 20958
+    },
+    "GaussianLQG.Uniform.Interfaces": {
+      "path": "GaussianLQG/Uniform/Interfaces.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/Interfaces.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "5398c6e5d1bb8e6a4b30342d8cc717a0550c12081fddf670ad316deb87636ce6",
+      "imports": [
+        "LQGMetric.Papers.DDDF.LenObs",
+        "LQGMetric.Papers.DDDF.LenBasic"
+      ],
+      "local_imports": [
+        "LQGMetric.Papers.DDDF.LenObs",
+        "LQGMetric.Papers.DDDF.LenBasic"
+      ],
+      "bytes": 3313
+    },
+    "GaussianLQG.Uniform.InterfacesCons": {
+      "path": "GaussianLQG/Uniform/InterfacesCons.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/InterfacesCons.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "6023cb1938b45202ade66b0cca62586359b82a67e6a058b588ffe661e447637f",
+      "imports": [
+        "GaussianLQG.Uniform.Interfaces"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.Interfaces"
+      ],
+      "bytes": 3018
+    },
+    "GaussianLQG.Uniform.InterfacesLFPP": {
+      "path": "GaussianLQG/Uniform/InterfacesLFPP.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/InterfacesLFPP.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "13d065c8a7f1e516c53f2b34db05728b875a10d98b6f039626ac9929a2c728e3",
+      "imports": [
+        "GaussianLQG.Uniform.Interfaces",
+        "GaussianLQG.Core.Defs",
+        "LQGMetric.LFPP.DistOn"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.Interfaces",
+        "GaussianLQG.Core.Defs",
+        "LQGMetric.LFPP.DistOn"
+      ],
+      "bytes": 1554
+    },
+    "GaussianLQG.Uniform.InverseMoments": {
+      "path": "GaussianLQG/Uniform/InverseMoments.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/InverseMoments.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "04d5fbdbaeb90392f54f545e5b860817590eefcd09c81eac40e68fd901f5f947",
+      "imports": [
+        "GaussianLQG.Uniform.InverseMoments.Strip",
+        "GaussianLQG.Uniform.InterfacesCons"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.InverseMoments.Strip",
+        "GaussianLQG.Uniform.InterfacesCons"
+      ],
+      "bytes": 24851
+    },
+    "GaussianLQG.Uniform.InverseMoments.Planar": {
+      "path": "GaussianLQG/Uniform/InverseMoments/Planar.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/InverseMoments/Planar.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "86229c1de5856f583ae933d09fc4c9b1139ff62a2372535d9a57b34906bb2619",
+      "imports": [
+        "LQGMetric.Papers.DDDF.S6P28L1C"
+      ],
+      "local_imports": [
+        "LQGMetric.Papers.DDDF.S6P28L1C"
+      ],
+      "bytes": 17976
+    },
+    "GaussianLQG.Uniform.InverseMoments.Strip": {
+      "path": "GaussianLQG/Uniform/InverseMoments/Strip.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/InverseMoments/Strip.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "1aa9b3ea74e2d6f24aef56b803c0c9e7a5858ada84de5aa85ee8f888a68fa8cd",
+      "imports": [
+        "GaussianLQG.Uniform.InverseMoments.Planar",
+        "LQGMetric.Papers.DDDF.T20BRect",
+        "LQGMetric.Papers.DDDF.S6P21Max"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.InverseMoments.Planar",
+        "LQGMetric.Papers.DDDF.T20BRect",
+        "LQGMetric.Papers.DDDF.S6P21Max"
+      ],
+      "bytes": 8865
+    },
+    "GaussianLQG.Uniform.InverseMoments.Unconditional": {
+      "path": "GaussianLQG/Uniform/InverseMoments/Unconditional.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/InverseMoments/Unconditional.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "99ec76a8d1ad8ee7b3dc3afae07d78aab9969dd89be93f831e08c92242b7706e",
+      "imports": [
+        "GaussianLQG.Uniform.InverseMoments",
+        "GaussianLQG.Uniform.CoreDone"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.InverseMoments",
+        "GaussianLQG.Uniform.CoreDone"
+      ],
+      "bytes": 2480
+    },
+    "GaussianLQG.Uniform.Limit": {
+      "path": "GaussianLQG/Uniform/Limit.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/Limit.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "c4d7d19fbd54c72e51858e4b0f71ec43f567f9581c82ed314e0d398726e0f1c8",
+      "imports": [
+        "GaussianLQG.Core.InterfacesS6",
+        "GaussianLQG.LQG.Bridge.Median",
+        "GaussianLQG.Uniform.Limit.Normalization"
+      ],
+      "local_imports": [
+        "GaussianLQG.Core.InterfacesS6",
+        "GaussianLQG.LQG.Bridge.Median",
+        "GaussianLQG.Uniform.Limit.Normalization"
+      ],
+      "bytes": 12466
+    },
+    "GaussianLQG.Uniform.Limit.Basic": {
+      "path": "GaussianLQG/Uniform/Limit/Basic.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/Limit/Basic.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "193fb9b94bf459df1a51b5adc6c664b5b4af7eac4051f7e9b966ac5077cb36a6",
+      "imports": [
+        "GaussianLQG.LQG.Scaling.Measurability",
+        "LQGMetric.LFPP.ContMetric",
+        "LQGMetric.Field.ExistGFF",
+        "LQGMetric.Papers.GM.S1.FieldAux"
+      ],
+      "local_imports": [
+        "GaussianLQG.LQG.Scaling.Measurability",
+        "LQGMetric.LFPP.ContMetric",
+        "LQGMetric.Field.ExistGFF",
+        "LQGMetric.Papers.GM.S1.FieldAux"
+      ],
+      "bytes": 14871
+    },
+    "GaussianLQG.Uniform.Limit.Normalization": {
+      "path": "GaussianLQG/Uniform/Limit/Normalization.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/Limit/Normalization.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "cf2c93e4622e02da518b63a3adb4ed1455cc7004d62bf20c544b5dcf163a79e5",
+      "imports": [
+        "GaussianLQG.Uniform.Limit.Basic"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.Limit.Basic"
+      ],
+      "bytes": 10973
+    },
+    "GaussianLQG.Uniform.LowerTail": {
+      "path": "GaussianLQG/Uniform/LowerTail.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/LowerTail.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "b02f8950024dee8bee4198091656e581cbdedd4a6d6c508e503a09206ec4a282",
+      "imports": [
+        "GaussianLQG.Uniform.RSW.Psi",
+        "GaussianLQG.Uniform.Interfaces",
+        "LQGMetric.Papers.DDDF.C17"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.RSW.Psi",
+        "GaussianLQG.Uniform.Interfaces",
+        "LQGMetric.Papers.DDDF.C17"
+      ],
+      "bytes": 21595
+    },
+    "GaussianLQG.Uniform.RSW.Law": {
+      "path": "GaussianLQG/Uniform/RSW/Law.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/RSW/Law.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "775824d2677121b38805a5d63422b718f2100c0c0ff253a90f845ed66072d5b8",
+      "imports": [
+        "LQGMetric.Papers.DDDF.P10Law",
+        "LQGMetric.Papers.DDDF.T20CMom",
+        "LQGMetric.Papers.DDDF.C8"
+      ],
+      "local_imports": [
+        "LQGMetric.Papers.DDDF.P10Law",
+        "LQGMetric.Papers.DDDF.T20CMom",
+        "LQGMetric.Papers.DDDF.C8"
+      ],
+      "bytes": 15487
+    },
+    "GaussianLQG.Uniform.RSW.P10": {
+      "path": "GaussianLQG/Uniform/RSW/P10.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/RSW/P10.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "5128ddaae94a71c4f3a8807db639bdabce900d9db94a071baa3628a3d5eb0b70",
+      "imports": [
+        "GaussianLQG.Uniform.RSW.Law",
+        "LQGMetric.Papers.DDDF.P10Main"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.RSW.Law",
+        "LQGMetric.Papers.DDDF.P10Main"
+      ],
+      "bytes": 19803
+    },
+    "GaussianLQG.Uniform.RSW.Phi": {
+      "path": "GaussianLQG/Uniform/RSW/Phi.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/RSW/Phi.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "3cee55dc4e7057a3ca57aaa1247043d1ec96d2b723ec9054cdc975a451d8986a",
+      "imports": [
+        "GaussianLQG.Uniform.RSW.P10",
+        "LQGMetric.Papers.DDDF.RSWUnifQ"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.RSW.P10",
+        "LQGMetric.Papers.DDDF.RSWUnifQ"
+      ],
+      "bytes": 27208
+    },
+    "GaussianLQG.Uniform.RSW.Psi": {
+      "path": "GaussianLQG/Uniform/RSW/Psi.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/RSW/Psi.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "443e96fe2b87ffe164fb4454b1c8e2fea82abbdf25005323fae5fd84d58f33c6",
+      "imports": [
+        "GaussianLQG.Uniform.RSW.Phi",
+        "LQGMetric.Papers.DDDF.C8High"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.RSW.Phi",
+        "LQGMetric.Papers.DDDF.C8High"
+      ],
+      "bytes": 16693
+    },
+    "GaussianLQG.Uniform.Shapes": {
+      "path": "GaussianLQG/Uniform/Shapes.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/Shapes.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "815e32edf5bcd2f7a08434281f5f8c3655ea5d5820a1248f2d3522cc2e5686bd",
+      "imports": [
+        "GaussianLQG.Uniform.Interfaces",
+        "LQGMetric.Papers.DDDF.RSWUnif"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.Interfaces",
+        "LQGMetric.Papers.DDDF.RSWUnif"
+      ],
+      "bytes": 5311
+    },
+    "GaussianLQG.Uniform.Star": {
+      "path": "GaussianLQG/Uniform/Star.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/Star.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "e8052c66d57f2ae70951e475a0c5795c705ff934eccf3892d5d8c8a808c1f634",
+      "imports": [
+        "GaussianLQG.Uniform.Star.Inverse",
+        "GaussianLQG.Core.InterfacesS6",
+        "LQGMetric.Papers.DG.BallMass"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.Star.Inverse",
+        "GaussianLQG.Core.InterfacesS6",
+        "LQGMetric.Papers.DG.BallMass"
+      ],
+      "bytes": 7837
+    },
+    "GaussianLQG.Uniform.Star.Basic": {
+      "path": "GaussianLQG/Uniform/Star/Basic.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/Star/Basic.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "c4b59b77db1dbfcf4ea52beb781ae108394f026e7580ec85b1902d862d118e63",
+      "imports": [
+        "GaussianLQG.Uniform.FieldComparison",
+        "GaussianLQG.Uniform.Limit.Basic",
+        "GaussianLQG.Uniform.InterfacesLFPP",
+        "LQGMetric.Papers.DFGPS.L2_1Ratio"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.FieldComparison",
+        "GaussianLQG.Uniform.Limit.Basic",
+        "GaussianLQG.Uniform.InterfacesLFPP",
+        "LQGMetric.Papers.DFGPS.L2_1Ratio"
+      ],
+      "bytes": 13250
+    },
+    "GaussianLQG.Uniform.Star.Holder": {
+      "path": "GaussianLQG/Uniform/Star/Holder.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/Star/Holder.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "c59aac79ee207108817d45d0269182172e99ace106dce5e2efc8ff6d530b630a",
+      "imports": [
+        "GaussianLQG.Uniform.Star.Basic",
+        "LQGMetric.Papers.DDDF.S6Mul"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.Star.Basic",
+        "LQGMetric.Papers.DDDF.S6Mul"
+      ],
+      "bytes": 9416
+    },
+    "GaussianLQG.Uniform.Star.Inverse": {
+      "path": "GaussianLQG/Uniform/Star/Inverse.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/Star/Inverse.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "694db3b6481a77d366bef00b260a786c9dffa5a25f785f03cf2dd9547b4b1f01",
+      "imports": [
+        "GaussianLQG.Uniform.Star.Holder",
+        "GaussianLQG.Uniform.InverseMoments.Unconditional"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.Star.Holder",
+        "GaussianLQG.Uniform.InverseMoments.Unconditional"
+      ],
+      "bytes": 14536
+    },
+    "GaussianLQG.Uniform.Thm20": {
+      "path": "GaussianLQG/Uniform/Thm20.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/Thm20.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "54b3b673716b39d2176ebe1e3ffa96e3c08939e5c59f50f239e898beef449f50",
+      "imports": [
+        "GaussianLQG.Uniform.Thm20.Step5",
+        "LQGMetric.Papers.DDDF.S6P21"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.Thm20.Step5",
+        "LQGMetric.Papers.DDDF.S6P21"
+      ],
+      "bytes": 3813
+    },
+    "GaussianLQG.Uniform.Thm20.Apriori": {
+      "path": "GaussianLQG/Uniform/Thm20/Apriori.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/Thm20/Apriori.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "e547e3749243a61ef865ddfc3b4005c2337bd8ccf5afce0ebd279729c05f2d7b",
+      "imports": [
+        "GaussianLQG.Uniform.Thm20.Defs",
+        "GaussianLQG.Uniform.RSW.Law"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.Thm20.Defs",
+        "GaussianLQG.Uniform.RSW.Law"
+      ],
+      "bytes": 15781
+    },
+    "GaussianLQG.Uniform.Thm20.Defs": {
+      "path": "GaussianLQG/Uniform/Thm20/Defs.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/Thm20/Defs.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "3b754ba06c1611f11d174e219f09b11479e0152a9db58106da82f79881e1a4e2",
+      "imports": [
+        "LQGMetric.Papers.DDDF.T20EMain",
+        "GaussianLQG.Uniform.Interfaces"
+      ],
+      "local_imports": [
+        "LQGMetric.Papers.DDDF.T20EMain",
+        "GaussianLQG.Uniform.Interfaces"
+      ],
+      "bytes": 13307
+    },
+    "GaussianLQG.Uniform.Thm20.Glue": {
+      "path": "GaussianLQG/Uniform/Thm20/Glue.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/Thm20/Glue.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "42a88baeb7b0d3ffc1e65517a49943259aec00e282daa495461d28be76c76ab7",
+      "imports": [
+        "GaussianLQG.Uniform.Thm20.Defs"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.Thm20.Defs"
+      ],
+      "bytes": 19631
+    },
+    "GaussianLQG.Uniform.Thm20.Pathwise": {
+      "path": "GaussianLQG/Uniform/Thm20/Pathwise.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/Thm20/Pathwise.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "0959a8513cdae878242045cde71f459247a12a2b27cf238d2326e3866c0d5234",
+      "imports": [
+        "GaussianLQG.Uniform.Thm20.Glue"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.Thm20.Glue"
+      ],
+      "bytes": 17158
+    },
+    "GaussianLQG.Uniform.Thm20.Ratio": {
+      "path": "GaussianLQG/Uniform/Thm20/Ratio.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/Thm20/Ratio.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "45c46c02002e55772c3cdd894954ccdb12f926399fb6eabb51ad044fecad707a",
+      "imports": [
+        "GaussianLQG.Uniform.Thm20.Defs"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.Thm20.Defs"
+      ],
+      "bytes": 21931
+    },
+    "GaussianLQG.Uniform.Thm20.Step5": {
+      "path": "GaussianLQG/Uniform/Thm20/Step5.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/Thm20/Step5.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "147bf64cfaf3a7cf9504e900cc0151b6c4ed6197816fbcdc35cdb269303176b9",
+      "imports": [
+        "GaussianLQG.Uniform.Thm20.Visited"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.Thm20.Visited"
+      ],
+      "bytes": 12588
+    },
+    "GaussianLQG.Uniform.Thm20.Unconditional": {
+      "path": "GaussianLQG/Uniform/Thm20/Unconditional.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/Thm20/Unconditional.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "97c69e697385d70345cca3f976b33b5734cc1e4cdab016fc756f3e71830cf081",
+      "imports": [
+        "GaussianLQG.Uniform.Thm20",
+        "GaussianLQG.Uniform.Shapes",
+        "GaussianLQG.Uniform.UpperTail"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.Thm20",
+        "GaussianLQG.Uniform.Shapes",
+        "GaussianLQG.Uniform.UpperTail"
+      ],
+      "bytes": 2963
+    },
+    "GaussianLQG.Uniform.Thm20.Visited": {
+      "path": "GaussianLQG/Uniform/Thm20/Visited.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/Thm20/Visited.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "0996f06873739c0fb49ad634fe74823f8ccf0c31ac51d8da57670c91f18669f8",
+      "imports": [
+        "GaussianLQG.Uniform.Thm20.Pathwise",
+        "GaussianLQG.Uniform.Thm20.Ratio",
+        "GaussianLQG.Uniform.Thm20.Apriori",
+        "GaussianLQG.Uniform.ConditionT"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.Thm20.Pathwise",
+        "GaussianLQG.Uniform.Thm20.Ratio",
+        "GaussianLQG.Uniform.Thm20.Apriori",
+        "GaussianLQG.Uniform.ConditionT"
+      ],
+      "bytes": 25118
+    },
+    "GaussianLQG.Uniform.UpperTail": {
+      "path": "GaussianLQG/Uniform/UpperTail.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/UpperTail.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "99e735c9d11d37ad735f5cd0a3c082e0bee0503372b24656a6d50779880039b0",
+      "imports": [
+        "GaussianLQG.Uniform.UpperTail.Comb",
+        "GaussianLQG.Uniform.LowerTail"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.UpperTail.Comb",
+        "GaussianLQG.Uniform.LowerTail"
+      ],
+      "bytes": 4582
+    },
+    "GaussianLQG.Uniform.UpperTail.Comb": {
+      "path": "GaussianLQG/Uniform/UpperTail/Comb.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/UpperTail/Comb.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "140d26b2cd43557f0e4f8cfd5f28c9318dc58f0c9548e346e88a73d81ad25c20",
+      "imports": [
+        "GaussianLQG.Uniform.UpperTail.Step1",
+        "GaussianLQG.Uniform.UpperTail.Step3",
+        "GaussianLQG.Uniform.UpperTail.Step4",
+        "LQGMetric.Papers.DDDF.P18Zero"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.UpperTail.Step1",
+        "GaussianLQG.Uniform.UpperTail.Step3",
+        "GaussianLQG.Uniform.UpperTail.Step4",
+        "LQGMetric.Papers.DDDF.P18Zero"
+      ],
+      "bytes": 14740
+    },
+    "GaussianLQG.Uniform.UpperTail.Defs": {
+      "path": "GaussianLQG/Uniform/UpperTail/Defs.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/UpperTail/Defs.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "33a646d8958b1165b7d1eac16ac07e855673a05b7bb0c893bdd27a4146be63ca",
+      "imports": [
+        "LQGMetric.Papers.DDDF.P18S1Conv"
+      ],
+      "local_imports": [
+        "LQGMetric.Papers.DDDF.P18S1Conv"
+      ],
+      "bytes": 5144
+    },
+    "GaussianLQG.Uniform.UpperTail.Leaves": {
+      "path": "GaussianLQG/Uniform/UpperTail/Leaves.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/UpperTail/Leaves.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "7ff8b4dbb473275fe96e7aa2d22bd0d8f777f8792d457651798f926dbd5ee4a7",
+      "imports": [
+        "GaussianLQG.Uniform.RSW.Law",
+        "LQGMetric.Papers.DDDF.P18Max",
+        "LQGMetric.Papers.DDDF.P18Ell",
+        "LQGMetric.Papers.DDDF.P5ULarge"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.RSW.Law",
+        "LQGMetric.Papers.DDDF.P18Max",
+        "LQGMetric.Papers.DDDF.P18Ell",
+        "LQGMetric.Papers.DDDF.P5ULarge"
+      ],
+      "bytes": 11330
+    },
+    "GaussianLQG.Uniform.UpperTail.Step1": {
+      "path": "GaussianLQG/Uniform/UpperTail/Step1.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/UpperTail/Step1.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "c87d8fbad716ce47867a10f3aded2f49a0b965f77c1ab001caa0ae9807098896",
+      "imports": [
+        "GaussianLQG.Uniform.UpperTail.Defs",
+        "GaussianLQG.Uniform.UpperTail.Leaves",
+        "GaussianLQG.Uniform.RSW.Psi",
+        "LQGMetric.Papers.DDDF.P18S2"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.UpperTail.Defs",
+        "GaussianLQG.Uniform.UpperTail.Leaves",
+        "GaussianLQG.Uniform.RSW.Psi",
+        "LQGMetric.Papers.DDDF.P18S2"
+      ],
+      "bytes": 19016
+    },
+    "GaussianLQG.Uniform.UpperTail.Step3": {
+      "path": "GaussianLQG/Uniform/UpperTail/Step3.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/UpperTail/Step3.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "a218c7e0dda230e2a3bda7825a0c99f9c482af7c2f6a1ee2e2ca83874903e355",
+      "imports": [
+        "GaussianLQG.Uniform.UpperTail.Defs",
+        "GaussianLQG.Uniform.Interfaces",
+        "LQGMetric.Papers.DDDF.P18Step3"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.UpperTail.Defs",
+        "GaussianLQG.Uniform.Interfaces",
+        "LQGMetric.Papers.DDDF.P18Step3"
+      ],
+      "bytes": 15711
+    },
+    "GaussianLQG.Uniform.UpperTail.Step4": {
+      "path": "GaussianLQG/Uniform/UpperTail/Step4.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/UpperTail/Step4.lean",
+      "source_commit": "6eb5a29e8fb37c70823e6966d3cad60e400e874a",
+      "sha256": "16561180f5240ef5359af654cba703cf663607bd0d0ca0f202f18f76fd5f77eb",
+      "imports": [
+        "GaussianLQG.Uniform.UpperTail.Leaves",
+        "LQGMetric.Papers.DDDF.P18Step4"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.UpperTail.Leaves",
+        "LQGMetric.Papers.DDDF.P18Step4"
+      ],
+      "bytes": 12379
     }
   }
 }
