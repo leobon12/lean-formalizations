@@ -1,0 +1,93 @@
+{
+  "status": "passed",
+  "mode": "fresh build of the 140 modules this release adds (138 SmallGammaGeodesics and GaussianLQG, GaussianLQG.Uniform.RSW) from the exported public files (lean -j1 -M8192, as in scripts/verify.py; 1 process at a time), against 3570 cached dependencies after all 3710 closure files matched the development sources byte-for-byte, then a freshly compiled Check.lean",
+  "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+  "modules": 3710,
+  "new_modules": 140,
+  "new_modules_outside_namespace": [
+    "GaussianLQG",
+    "GaussianLQG.Uniform.RSW"
+  ],
+  "existing_identical_modules": 3570,
+  "cache_source_matches": 5790,
+  "conflicts": 0,
+  "fresh_modules": 140,
+  "reused_modules": 3570,
+  "fresh_build_wall_seconds": 392.4,
+  "fresh_build_summed_seconds": 377.6,
+  "fresh_build_max_module_seconds": 10.25,
+  "fresh_build_max_rss_mb": 5236,
+  "fresh_build_modules_with_warnings": 0,
+  "lean_version": "v4.34.0-rc2",
+  "mathlib_commit": "a4c8ef0a69f52ec80525d5086bb3542f4660faaf",
+  "check_sha256": "848108a59a24fe3d505853e093f3eda4fe84799b687bcc733293e8d9f91e3270",
+  "frozen_statement_files": {
+    "SmallGammaGeodesics/Frozen/DeviationScale.lean": "ff971b6fba1da894ae3a2c2a361e743b82a7ff627a732c101b5320d63205a5a8",
+    "SmallGammaGeodesics/Frozen/FunctionalTightness.lean": "e746f9445a31e21b0c8838a820a6f1e3c7a0973a9a7214acaf4d44ea35ec51ec",
+    "SmallGammaGeodesics/Frozen/GeodesicAeUnique.lean": "0918d97285fb721e9cddd2b7eb4123c6642f1a4f2bc4cd308bf62d6d13b97624",
+    "SmallGammaGeodesics/Frozen/HorizDev.lean": "585544ded43dc7c5947e088984c6e493494af6183ba07148d44fafb2c00eec26",
+    "SmallGammaGeodesics/Frozen/MaxDev.lean": "7aaa0af62368d7f25c662124c415f885944df7d355d191174862c2b12873fcd6",
+    "SmallGammaGeodesics/Frozen/RescaledPath.lean": "d676cdaaeab8f7d53534ccc89e75a04acbb02739c72b59bb5fe8930e25e827f4"
+  },
+  "proofs": [
+    "SmallGammaGeodesics.deviation_scale",
+    "SmallGammaGeodesics.functional_tightness",
+    "SmallGammaGeodesics.geodesic_ae_unique",
+    "SmallGammaGeodesics.CC.masterCCLE_holds",
+    "SmallGammaGeodesics.CC.masterCC_of_masterCCLE",
+    "SmallGammaGeodesics.CC.masterCCStrong_of_masterCC",
+    "SmallGammaGeodesics.CC.confSmallScale_holds",
+    "SmallGammaGeodesics.CC.mcInput_of_masterCC",
+    "SmallGammaGeodesics.NIC.nicInput_holds",
+    "SmallGammaGeodesics.lemma42_holds",
+    "SmallGammaGeodesics.dimension_input",
+    "SmallGammaGeodesics.uniformMomentInput_canonical",
+    "SmallGammaGeodesics.exists_canonical_family",
+    "SmallGammaGeodesics.upperBoundsXi_of_interfaces",
+    "SmallGammaGeodesics.lowerBound71_of_MC",
+    "SmallGammaGeodesics.devConcl_of_bounds",
+    "SmallGammaGeodesics.tightConcl_of_interfaces",
+    "SmallGammaGeodesics.smallScale_lower",
+    "SmallGammaGeodesics.tendstoInMeasure_horizDev"
+  ],
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "output": "SmallGammaGeodesics.deviation_scale (D : ℝ → LQGMetric.DistC → LQGMetric.ContMetric)\n  (_hD : ∀ (γ : ℝ), 0 < γ → γ < 2 → LQGMetric.IsStrongLQGMetric γ (D γ)) {Ω : Type} [MeasurableSpace Ω] (P : Measure Ω)\n  [IsProbabilityMeasure P] (h : Ω → LQGMetric.DistC) (_hh : LQGMetric.IsNormalizedWPGFF h P)\n  (η : ℝ → Ω → C(↑unitInterval, ℂ))\n  (_hη : ∀ (γ : ℝ), 0 < γ → γ < 2 → ∀ᵐ (ω : Ω) ∂P, LQGMetric.Blueprint.IsGeod01 (D γ (h ω)) 0 1 (η γ ω)) :\n  ∃ C γ₀,\n    0 < γ₀ ∧\n      (∀ γ ∈ Ioo 0 γ₀,\n          ∫⁻ (ω : Ω), ENNReal.ofReal (SmallGammaGeodesics.maxDev (η γ ω)) ∂P ≤ ENNReal.ofReal (C * γ ^ (2 / 3))) ∧\n        (∀ (A : ℝ),\n            1 ≤ A →\n              ∀ (ε : ℝ),\n                0 < ε →\n                  ∀ᶠ (γ : ℝ) in 𝓝[>] 0,\n                    P {ω | A * γ ^ (2 / 3) < SmallGammaGeodesics.maxDev (η γ ω)} ≤\n                      ENNReal.ofReal (C * (A ^ (-3) + A ^ (-4)) + ε)) ∧\n          (∀ γ ∈ Ioo 0 γ₀,\n              ∀ a ∈ Ioc 0 1,\n                P {ω | SmallGammaGeodesics.maxDev (η γ ω) ≤ a * γ ^ (2 / 3)} ≤ ENNReal.ofReal (C * a ^ (3 / 5))) ∧\n            (∀ (ε : ℝ),\n                0 < ε →\n                  ∃ a A,\n                    0 < a ∧\n                      ∀ᶠ (γ : ℝ) in 𝓝[>] 0,\n                        P\n                            {ω |\n                              ¬(a ≤ SmallGammaGeodesics.maxDev (η γ ω) / γ ^ (2 / 3) ∧\n                                  SmallGammaGeodesics.maxDev (η γ ω) / γ ^ (2 / 3) ≤ A)} ≤\n                          ENNReal.ofReal ε) ∧\n              (∀ r ∈ Ioo 0 (3 / 5),\n                  ∃ K,\n                    ∀ γ ∈ Ioo 0 γ₀,\n                      ∫⁻ (ω : Ω), ENNReal.ofReal (SmallGammaGeodesics.maxDev (η γ ω) / γ ^ (2 / 3)) ^ (-r) ∂P ≤\n                        ENNReal.ofReal K) ∧\n                ∀ (ε : ℝ),\n                  0 < ε →\n                    Tendsto\n                      (fun γ =>\n                        P\n                          {ω |\n                            ¬(γ ^ (2 / 3 + ε) ≤ SmallGammaGeodesics.maxDev (η γ ω) ∧\n                                SmallGammaGeodesics.maxDev (η γ ω) ≤ γ ^ (2 / 3 - ε))})\n                      (𝓝[>] 0) (𝓝 0)\nSmallGammaGeodesics.functional_tightness (D : ℝ → LQGMetric.DistC → LQGMetric.ContMetric)\n  (_hD : ∀ (γ : ℝ), 0 < γ → γ < 2 → LQGMetric.IsStrongLQGMetric γ (D γ)) {Ω : Type} [MeasurableSpace Ω] (P : Measure Ω)\n  [IsProbabilityMeasure P] (h : Ω → LQGMetric.DistC) (_hh : LQGMetric.IsNormalizedWPGFF h P)\n  (η : ℝ → Ω → C(↑unitInterval, ℂ))\n  (_hη : ∀ (γ : ℝ), 0 < γ → γ < 2 → ∀ᵐ (ω : Ω) ∂P, LQGMetric.Blueprint.IsGeod01 (D γ (h ω)) 0 1 (η γ ω)) :\n  (∀ (γ : ℝ), 0 < γ → γ < 2 → AEMeasurable (fun ω => SmallGammaGeodesics.rescaledPath (γ ^ (2 / 3)) (η γ ω)) P) ∧\n    (∀ (ε : ℝ),\n        0 < ε →\n          ∃ K,\n            IsCompact K ∧\n              ∀ᶠ (γ : ℝ) in 𝓝[>] 0,\n                P {ω | SmallGammaGeodesics.rescaledPath (γ ^ (2 / 3)) (η γ ω) ∉ K} ≤ ENNReal.ofReal ε) ∧\n      TendstoInMeasure P (fun γ ω => SmallGammaGeodesics.horizDev (γ ^ (2 / 3)) (η γ ω)) (𝓝[>] 0) fun x => 0\nSmallGammaGeodesics.geodesic_ae_unique (D : ℝ → LQGMetric.DistC → LQGMetric.ContMetric)\n  (_hD : ∀ (γ : ℝ), 0 < γ → γ < 2 → LQGMetric.IsStrongLQGMetric γ (D γ)) {Ω : Type} [MeasurableSpace Ω] (P : Measure Ω)\n  [IsProbabilityMeasure P] (h : Ω → LQGMetric.DistC) (_hh : LQGMetric.IsNormalizedWPGFF h P) :\n  (∀ (γ : ℝ), 0 < γ → γ < 2 → ∀ᵐ (ω : Ω) ∂P, ∃! η, LQGMetric.Blueprint.IsGeod01 (D γ (h ω)) 0 1 η) ∧\n    ∃ η,\n      (∀ (γ : ℝ), Measurable (η γ)) ∧\n        ∀ (γ : ℝ), 0 < γ → γ < 2 → ∀ᵐ (ω : Ω) ∂P, LQGMetric.Blueprint.IsGeod01 (D γ (h ω)) 0 1 (η γ ω)\n'SmallGammaGeodesics.deviation_scale' depends on axioms: [propext, Classical.choice, Quot.sound]\n'SmallGammaGeodesics.functional_tightness' depends on axioms: [propext, Classical.choice, Quot.sound]\n'SmallGammaGeodesics.geodesic_ae_unique' depends on axioms: [propext, Classical.choice, Quot.sound]\ndef SmallGammaGeodesics.maxDev : C(↑unitInterval, ℂ) → ℝ :=\nfun η => ⨆ t, Metric.infDist (η t) (segment ℝ 0 1)\ndef SmallGammaGeodesics.rescaledPath : ℝ → C(↑unitInterval, ℂ) → C(↑unitInterval, ℂ) :=\nfun s η => { toFun := fun t => (η t - ↑↑t) / ↑s, continuous_toFun := ⋯ }\ndef SmallGammaGeodesics.horizDev : ℝ → C(↑unitInterval, ℂ) → ℝ :=\nfun s η => ⨆ t, |(η t).re - ↑t| / s\ndef SmallGammaGeodesics.CC.ConfCov : ℝ → (LQGMetric.DistC → LQGMetric.ContMetric) → Prop :=\nfun γ D =>\n  ∀ (ϕ : ℂ → ℂ) (W V : Set ℂ),\n    SmallGammaGeodesics.CC.IsConfNbhd ϕ W V →\n      ∀ {Ω : Type} [inst : MeasurableSpace Ω] (P : Measure Ω) [IsProbabilityMeasure P] (h hbar : Ω → LQGMetric.DistC)\n        (f : Ω → C(ℂ, ℝ)),\n        LQGMetric.IsWholePlaneGFF h P →\n          LQGMetric.IsWholePlaneGFF hbar P →\n            Measurable f →\n              (∀ᵐ (ω : Ω) ∂P, SmallGammaGeodesics.CC.IsConfCoupling γ ϕ W V (h ω) (hbar ω) (f ω)) →\n                ∀ᵐ (ω : Ω) ∂P,\n                  ∀ z ∈ V,\n                    ∀ w ∈ V, (D (h ω)).internal V z w = SmallGammaGeodesics.CC.confMetric D ϕ V (hbar ω) (f ω) z w\ndef SmallGammaGeodesics.CC.MasterCCStrong : Prop :=\n∀ (γ : ℝ),\n  0 < γ →\n    γ < 2 →\n      ∀ (D : LQGMetric.DistC → LQGMetric.ContMetric),\n        LQGMetric.IsStrongLQGMetric γ D → SmallGammaGeodesics.CC.ConfCov γ D\nSmallGammaGeodesics.CC.masterCCLE_holds : SmallGammaGeodesics.CC.MasterCCLE\nSmallGammaGeodesics.CC.confSmallScale_holds {γ : ℝ} (hγ : 0 < γ) (hγ2 : γ < 2)\n  {D : LQGMetric.DistC → LQGMetric.ContMetric} (hD : GaussianLQG.IsCanonicalLQGMetric γ D) :\n  SmallGammaGeodesics.CC.ConfSmallScale γ D\nSmallGammaGeodesics.CC.mcInput_of_masterCC (hM : SmallGammaGeodesics.CC.MasterCC) {γ : ℝ} (hγ : 0 < γ) (hγ2 : γ < 2)\n  {D : LQGMetric.DistC → LQGMetric.ContMetric} (hD : GaussianLQG.IsCanonicalLQGMetric γ D) :\n  SmallGammaGeodesics.CC.MCInput D γ\nSmallGammaGeodesics.NIC.nicInput_holds : SmallGammaGeodesics.CC.NICInput\nSmallGammaGeodesics.lemma42_holds : SmallGammaGeodesics.Lemma42\nSmallGammaGeodesics.dimension_input :\n  ∃ γ₀ C,\n    0 < γ₀ ∧\n      ∀ γ ∈ Ioc 0 γ₀,\n        |LQGMetric.xiGamma γ * LQGMetric.Q γ - 1| ≤ C * LQGMetric.xiGamma γ ∧\n          γ / 3 ≤ LQGMetric.xiGamma γ ∧ LQGMetric.xiGamma γ ≤ γ\nSmallGammaGeodesics.uniformMomentInput_canonical (D : ℝ → LQGMetric.DistC → LQGMetric.ContMetric)\n  (hD : ∀ (γ : ℝ), 0 < γ → γ < 2 → GaussianLQG.IsCanonicalLQGMetric γ (D γ)) : GaussianLQG.UniformMomentInput D\nSmallGammaGeodesics.exists_canonical_family (D : ℝ → LQGMetric.DistC → LQGMetric.ContMetric)\n  (hD : ∀ (γ : ℝ), 0 < γ → γ < 2 → LQGMetric.IsStrongLQGMetric γ (D γ)) :\n  ∃ D',\n    (∀ (γ : ℝ), 0 < γ → γ < 2 → GaussianLQG.IsCanonicalLQGMetric γ (D' γ)) ∧\n      ∀ (γ : ℝ),\n        0 < γ →\n          γ < 2 →\n            ∀ {Ω : Type} [inst : MeasurableSpace Ω] (P : Measure Ω) [IsProbabilityMeasure P] (h : Ω → LQGMetric.DistC),\n              LQGMetric.IsGFFPlusCont h P →\n                ∀ᵐ (ω : Ω) ∂P,\n                  ∀ (z w : ℂ) (η : C(↑unitInterval, ℂ)),\n                    LQGMetric.Blueprint.IsGeod01 (D γ (h ω)) z w η ↔ LQGMetric.Blueprint.IsGeod01 (D' γ (h ω)) z w η\nSmallGammaGeodesics.upperBoundsXi_of_interfaces (G : SmallGammaGeodesics.GSetup)\n  (hCC : ∀ (γ : ℝ), 0 < γ → γ < 2 → SmallGammaGeodesics.CC.ConfCovLE γ (G.Dfam γ)) (h42 : SmallGammaGeodesics.Lemma42)\n  (η : ℝ → GaussianLQG.Coord → C(↑unitInterval, ℂ)) (hm : ∀ (γ : ℝ), Measurable (η γ))\n  (hη :\n    ∀ (γ : ℝ),\n      0 < γ →\n        γ < 2 →\n          ∀ᵐ (ω : GaussianLQG.Coord) ∂GaussianLQG.stdP, LQGMetric.Blueprint.IsGeod01 (G.Dfam γ (G.h₀ ω)) 0 1 (η γ ω)) :\n  SmallGammaGeodesics.UpperBoundsXi GaussianLQG.stdP η\nSmallGammaGeodesics.lowerBound71_of_MC (D : ℝ → LQGMetric.DistC → LQGMetric.ContMetric)\n  (hD : ∀ (γ : ℝ), 0 < γ → γ < 2 → GaussianLQG.IsCanonicalLQGMetric γ (D γ))\n  (hMC : ∀ (γ : ℝ), 0 < γ → γ < 2 → SmallGammaGeodesics.CC.MCInput (D γ) γ) {Ω : Type} [MeasurableSpace Ω]\n  (P : Measure Ω) [IsProbabilityMeasure P] (h : Ω → LQGMetric.DistC) (hh : LQGMetric.IsNormalizedWPGFF h P)\n  (η : ℝ → Ω → C(↑unitInterval, ℂ))\n  (hη : ∀ (γ : ℝ), 0 < γ → γ < 2 → ∀ᵐ (ω : Ω) ∂P, LQGMetric.Blueprint.IsGeod01 (D γ (h ω)) 0 1 (η γ ω)) :\n  SmallGammaGeodesics.LowerBound71 P η\nSmallGammaGeodesics.devConcl_of_bounds {Ω : Type} [MeasurableSpace Ω] {P : Measure Ω} [IsProbabilityMeasure P]\n  {η : ℝ → Ω → C(↑unitInterval, ℂ)} (hη : ∀ (γ : ℝ), 0 < γ → γ < 2 → AEMeasurable (η γ) P)\n  (hU : SmallGammaGeodesics.UpperBoundsXi P η) (hL : SmallGammaGeodesics.LowerBound71 P η) :\n  SmallGammaGeodesics.DevConcl P η\nSmallGammaGeodesics.tightConcl_of_interfaces (G : SmallGammaGeodesics.GSetup)\n  (hCC : ∀ (γ : ℝ), 0 < γ → γ < 2 → SmallGammaGeodesics.CC.ConfCovLE γ (G.Dfam γ)) (h42 : SmallGammaGeodesics.Lemma42)\n  (η : ℝ → GaussianLQG.Coord → C(↑unitInterval, ℂ)) (hm : ∀ (γ : ℝ), Measurable (η γ))\n  (hη :\n    ∀ (γ : ℝ),\n      0 < γ →\n        γ < 2 →\n          ∀ᵐ (ω : GaussianLQG.Coord) ∂GaussianLQG.stdP, LQGMetric.Blueprint.IsGeod01 (G.Dfam γ (G.h₀ ω)) 0 1 (η γ ω)) :\n  SmallGammaGeodesics.TightConcl GaussianLQG.stdP η\nSmallGammaGeodesics.smallScale_lower (S : GaussianLQG.Setup) (ε : ℝ) :\n  0 < ε →\n    ∃ n γs,\n      0 < γs ∧\n        ∀ γ ∈ Ioc 0 γs,\n          GaussianLQG.stdP\n              {ω |\n                ∃ z ∈ Metric.closedBall 0 2,\n                  ∃ w ∈ Metric.closedBall 0 2,\n                    0 < ‖z - w‖ ∧ ‖z - w‖ ≤ 2⁻¹ ^ n ∧ Real.exp (-S.b γ) * ↑(S.D γ ω) (z, w) < ‖z - w‖ ^ (5 / 4)} ≤\n            ENNReal.ofReal ε\nSmallGammaGeodesics.tendstoInMeasure_horizDev (G : SmallGammaGeodesics.GSetup)\n  (η : ℝ → GaussianLQG.Coord → C(↑unitInterval, ℂ)) (hm : ∀ (γ : ℝ), Measurable (η γ))\n  (hη :\n    ∀ (γ : ℝ),\n      0 < γ →\n        γ < 2 →\n          ∀ᵐ (ω : GaussianLQG.Coord) ∂GaussianLQG.stdP, LQGMetric.Blueprint.IsGeod01 (G.Dfam γ (G.h₀ ω)) 0 1 (η γ ω)) :\n  TendstoInMeasure GaussianLQG.stdP (fun γ ω => SmallGammaGeodesics.horizDev (γ ^ (2 / 3)) (η γ ω)) (𝓝[>] 0) fun x => 0\nSmallGammaGeodesics.deviation_scale_of_internal\n  (hint :\n    ∀ (G : SmallGammaGeodesics.GSetup) (η₀ : ℝ → GaussianLQG.Coord → C(↑unitInterval, ℂ)),\n      (∀ (γ : ℝ), Measurable (η₀ γ)) →\n        (∀ (γ : ℝ),\n            0 < γ →\n              γ < 2 →\n                ∀ᵐ (ω : GaussianLQG.Coord) ∂GaussianLQG.stdP,\n                  LQGMetric.Blueprint.IsGeod01 (G.Dfam γ (G.h₀ ω)) 0 1 (η₀ γ ω)) →\n          SmallGammaGeodesics.DevConcl GaussianLQG.stdP η₀)\n  (D : ℝ → LQGMetric.DistC → LQGMetric.ContMetric)\n  (_hD : ∀ (γ : ℝ), 0 < γ → γ < 2 → LQGMetric.IsStrongLQGMetric γ (D γ)) {Ω : Type} [MeasurableSpace Ω] (P : Measure Ω)\n  [IsProbabilityMeasure P] (h : Ω → LQGMetric.DistC) (_hh : LQGMetric.IsNormalizedWPGFF h P)\n  (η : ℝ → Ω → C(↑unitInterval, ℂ))\n  (_hη : ∀ (γ : ℝ), 0 < γ → γ < 2 → ∀ᵐ (ω : Ω) ∂P, LQGMetric.Blueprint.IsGeod01 (D γ (h ω)) 0 1 (η γ ω)) :\n  SmallGammaGeodesics.DevConcl P η\nSmallGammaGeodesics.functional_tightness_of_internal\n  (hint :\n    ∀ (G : SmallGammaGeodesics.GSetup) (η₀ : ℝ → GaussianLQG.Coord → C(↑unitInterval, ℂ)),\n      (∀ (γ : ℝ), Measurable (η₀ γ)) →\n        (∀ (γ : ℝ),\n            0 < γ →\n              γ < 2 →\n                ∀ᵐ (ω : GaussianLQG.Coord) ∂GaussianLQG.stdP,\n                  LQGMetric.Blueprint.IsGeod01 (G.Dfam γ (G.h₀ ω)) 0 1 (η₀ γ ω)) →\n          SmallGammaGeodesics.TightConcl GaussianLQG.stdP η₀)\n  (D : ℝ → LQGMetric.DistC → LQGMetric.ContMetric)\n  (_hD : ∀ (γ : ℝ), 0 < γ → γ < 2 → LQGMetric.IsStrongLQGMetric γ (D γ)) {Ω : Type} [MeasurableSpace Ω] (P : Measure Ω)\n  [IsProbabilityMeasure P] (h : Ω → LQGMetric.DistC) (_hh : LQGMetric.IsNormalizedWPGFF h P)\n  (η : ℝ → Ω → C(↑unitInterval, ℂ))\n  (_hη : ∀ (γ : ℝ), 0 < γ → γ < 2 → ∀ᵐ (ω : Ω) ∂P, LQGMetric.Blueprint.IsGeod01 (D γ (h ω)) 0 1 (η γ ω)) :\n  SmallGammaGeodesics.TightConcl P η\n'SmallGammaGeodesics.CC.masterCCLE_holds' depends on axioms: [propext, Classical.choice, Quot.sound]\n'SmallGammaGeodesics.CC.masterCC_of_masterCCLE' depends on axioms: [propext, Classical.choice, Quot.sound]\n'SmallGammaGeodesics.CC.masterCCStrong_of_masterCC' depends on axioms: [propext, Classical.choice, Quot.sound]\n'SmallGammaGeodesics.CC.confSmallScale_holds' depends on axioms: [propext, Classical.choice, Quot.sound]\n'SmallGammaGeodesics.CC.mcInput_of_masterCC' depends on axioms: [propext, Classical.choice, Quot.sound]\n'SmallGammaGeodesics.NIC.nicInput_holds' depends on axioms: [propext, Classical.choice, Quot.sound]\n'SmallGammaGeodesics.lemma42_holds' depends on axioms: [propext, Classical.choice, Quot.sound]\n'SmallGammaGeodesics.dimension_input' depends on axioms: [propext, Classical.choice, Quot.sound]\n'SmallGammaGeodesics.uniformMomentInput_canonical' depends on axioms: [propext, Classical.choice, Quot.sound]\n'SmallGammaGeodesics.exists_canonical_family' depends on axioms: [propext, Classical.choice, Quot.sound]\n'SmallGammaGeodesics.upperBoundsXi_of_interfaces' depends on axioms: [propext, Classical.choice, Quot.sound]\n'SmallGammaGeodesics.lowerBound71_of_MC' depends on axioms: [propext, Classical.choice, Quot.sound]\n'SmallGammaGeodesics.devConcl_of_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]\n'SmallGammaGeodesics.tightConcl_of_interfaces' depends on axioms: [propext, Classical.choice, Quot.sound]\n'SmallGammaGeodesics.smallScale_lower' depends on axioms: [propext, Classical.choice, Quot.sound]\n'SmallGammaGeodesics.tendstoInMeasure_horizDev' depends on axioms: [propext, Classical.choice, Quot.sound]\nSMALL_GAMMA_GEODESICS_AUDIT declarations=55178; reachable=139923; axioms=[Quot.sound, Classical.choice, propext]\n",
+  "project_declarations": 55178,
+  "reachable_declarations": 139923,
+  "seconds": 11.32,
+  "partial_combined_certificate": {
+    "description": "Certificate.lean of this release without the imports and checks of MeshOnly, BouRabeeGwynne, ReflectedWalk, ReflectedGMS and MeshRates",
+    "status": "passed",
+    "seconds": 17.22,
+    "project_declarations": 77000,
+    "reachable_declarations": 162919,
+    "axiom_reports": 31
+  },
+  "export_kernel_replay": {
+    "command": "leanchecker --fresh SGGReplayRoot (a scratch module importing the release roots; LEAN_PATH: the fresh build of the exported new modules first, then the source-matched development build)",
+    "roots": [
+      "SmallGammaGeodesics.Frozen.DeviationScale",
+      "SmallGammaGeodesics.Frozen.FunctionalTightness",
+      "SmallGammaGeodesics.Frozen.GeodesicAeUnique"
+    ],
+    "exit_code": 0,
+    "seconds": 726.8,
+    "max_rss_mb": 9235,
+    "status": "passed",
+    "output": ""
+  },
+  "upstream_kernel_replay": {
+    "command": "lake env leanchecker --fresh SmallGammaGeodesics",
+    "root_module": "SmallGammaGeodesics (development root: imports the six frozen anchor modules and the other modules of the development library at that commit; not part of this snapshot)",
+    "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+    "date": "2026-10-21",
+    "time": "11:10-11:22 CEST",
+    "seconds": 770.0,
+    "exit_code": 0,
+    "status": "passed"
+  }
+}

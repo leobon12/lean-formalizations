@@ -15,5 +15,6 @@ lean_lib LQGMetric
 lean_lib MeshRates
 lean_lib GaussianLQG
 lean_lib HigherDimLFPP
+lean_lib SmallGammaGeodesics
 @[default_target]
 lean_lib Certificate

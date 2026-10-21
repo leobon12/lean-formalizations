@@ -21,6 +21,7 @@ Each result below has a short guide to its mathematical scope, the exact Lean st
 | Reflected random walks with spatial singularities | Harmonic coordinates and invariance principle in the earlier geometric-topology revision; see the revision correspondence | [README](results/reflected-gms/) |
 | Gaussian fluctuations of small-γ LQG distance | Theorem 1.1 in full (all of (1.7)–(1.9), the law, q<0, unique median), unconditional — including the note's Lemma 2.1 | [README](results/gaussian-lqg-distance/) |
 | A small-parameter limit for higher-dimensional LFPP | Theorem 1.1 in every dimension d ≥ 2, with no assumptions: the existence of the exponent (Ding–Gwynne–Zhuang's Proposition 1.1, with a percolation-duality gap filled) and κ_d > 0 are proved; (1.8); and d = 2 corollaries giving unconditional versions of the small-parameter LQG-dimension theorem | [README](results/higher-dim-lfpp/) |
+| Small-parameter LQG geodesics: deviation and functional tightness | Theorems 1.1 and 1.2 in full, with no assumptions: the two-thirds deviation scale of the γ-LQG geodesic from 0 to 1 ((1.4)–(1.9)) and tightness of the rescaled path in C([0,1], ℝ²) with (1.11); the conformal covariance of the LQG metric that the paper cites from Gwynne–Miller is proved for maps conformal near the closure of a bounded domain | [README](results/small-parameter-lqg-geodesics/) |
 
 ## Verify the proofs
 

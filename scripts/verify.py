@@ -8,7 +8,7 @@ from pathlib import Path
 import argparse,hashlib,json,os,re,shutil,subprocess,sys,time
 
 ROOT=Path(__file__).resolve().parents[1]
-NAMESPACES=['MeshOnly','BouRabeeGwynne','ReflectedWalk','ReflectedGMS','QuantumZipper','LQGDimension','LQGMetric','MeshRates','GaussianLQG','HigherDimLFPP']
+NAMESPACES=['MeshOnly','BouRabeeGwynne','ReflectedWalk','ReflectedGMS','QuantumZipper','LQGDimension','LQGMetric','MeshRates','GaussianLQG','HigherDimLFPP','SmallGammaGeodesics']
 def stripped(s):
     res=[];i=0;depth=0;string=False
     while i<len(s):
@@ -27,7 +27,7 @@ def imports(s):
     return [m for line in re.findall(r'^\s*(?:(?:public|private|meta)\s+)*import\s+(.*)',stripped(s),re.M) for m in line.split() if m!='all']
 def scan(manifest):
     modules=manifest['modules']; names=set(modules)
-    present={str(p.relative_to(ROOT)) for ns in NAMESPACES for p in (ROOT/ns).rglob('*') if p.is_file()}
+    present={str(p.relative_to(ROOT)) for ns in NAMESPACES for p in [*(ROOT/ns).rglob('*'),ROOT/(ns+'.lean')] if p.is_file()}
     assert present=={r['path'] for r in modules.values()},'Unexpected or missing proof files'
     for mod,row in modules.items():
         assert row['path']==str(Path(*mod.split('.')).with_suffix('.lean')),f'Module path mismatch: {mod}'

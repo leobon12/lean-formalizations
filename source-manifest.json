@@ -38,7 +38,10 @@
     "HigherDimLFPP.Frozen.BandVecNormSq",
     "HigherDimLFPP.Frozen.FieldExists",
     "HigherDimLFPP.Frozen.LQGDimensionAsymptotics",
-    "HigherDimLFPP.Frozen.GFFCircleAverage"
+    "HigherDimLFPP.Frozen.GFFCircleAverage",
+    "SmallGammaGeodesics.Frozen.DeviationScale",
+    "SmallGammaGeodesics.Frozen.FunctionalTightness",
+    "SmallGammaGeodesics.Frozen.GeodesicAeUnique"
   ],
   "modules": {
     "BouRabeeGwynne.AbsorbingExcursionKernel": {
@@ -109457,6 +109460,2536 @@
         "HigherDimLFPP.Var.Bridge"
       ],
       "bytes": 8376
+    },
+    "GaussianLQG": {
+      "path": "GaussianLQG.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "9dc5a32a14366113ab7cb68eb721a9661ea084720d1386b6d7b88c44c94c0a63",
+      "imports": [
+        "GaussianLQG.Core.Defs",
+        "GaussianLQG.Core.Setup",
+        "GaussianLQG.Metric.HopfRinow",
+        "GaussianLQG.Metric.Geodesic",
+        "GaussianLQG.Metric.Weyl",
+        "GaussianLQG.Metric.Rotation",
+        "GaussianLQG.Metric.LFPPRotation",
+        "GaussianLQG.Field.FrameFun",
+        "GaussianLQG.Field.Frame",
+        "GaussianLQG.Energy.All",
+        "GaussianLQG.Probability.GaussianLp",
+        "GaussianLQG.LQG.Dimension",
+        "GaussianLQG.LQG.Bridge",
+        "GaussianLQG.Field.Realization",
+        "GaussianLQG.Core.MainDefs",
+        "GaussianLQG.LQG.Derivative",
+        "GaussianLQG.LQG.Concentration",
+        "GaussianLQG.LQG.Tube",
+        "GaussianLQG.Core.Interfaces",
+        "GaussianLQG.Assembly.Instance",
+        "GaussianLQG.Assembly.Transfer",
+        "GaussianLQG.LQG.Exponents",
+        "GaussianLQG.Medians.LawM",
+        "GaussianLQG.Field.Pairing",
+        "GaussianLQG.LQG.Scaling",
+        "GaussianLQG.Probability.Kolmogorov",
+        "GaussianLQG.Probability.Medians",
+        "GaussianLQG.LQG.Geodesics",
+        "GaussianLQG.LQG.Localization",
+        "GaussianLQG.Core.InterfacesEuclid",
+        "GaussianLQG.Assembly.Discharge",
+        "GaussianLQG.Assembly.Main",
+        "GaussianLQG.LQG.FirstOrder",
+        "GaussianLQG.LQG.Crossing",
+        "GaussianLQG.LQG.ConcentrationU",
+        "GaussianLQG.LQG.Euclid",
+        "GaussianLQG.LQG.EnergyApprox",
+        "GaussianLQG.Assembly.Provider",
+        "GaussianLQG.Uniform.Limit",
+        "GaussianLQG.Assembly.FrontierS6",
+        "GaussianLQG.Uniform.RSW",
+        "GaussianLQG.Uniform.ConditionT",
+        "GaussianLQG.Uniform.Interfaces",
+        "GaussianLQG.Uniform.FieldComparison",
+        "GaussianLQG.Uniform.LowerTail",
+        "GaussianLQG.Uniform.InterfacesCons",
+        "GaussianLQG.Uniform.Consequences",
+        "GaussianLQG.Uniform.InterfacesLFPP",
+        "GaussianLQG.Uniform.UpperTail",
+        "GaussianLQG.Uniform.Thm20",
+        "GaussianLQG.Uniform.Shapes",
+        "GaussianLQG.Uniform.Thm20.Unconditional",
+        "GaussianLQG.Uniform.CoreDone",
+        "GaussianLQG.Uniform.InverseMoments",
+        "GaussianLQG.Uniform.InverseMoments.Unconditional",
+        "GaussianLQG.Uniform.Star",
+        "GaussianLQG.Assembly.FrontierU12",
+        "GaussianLQG.Assembly.MainUnconditional",
+        "GaussianLQG.Frozen.MainTheorem",
+        "GaussianLQG.Uniform.Holder",
+        "GaussianLQG.Uniform.Holder.Done"
+      ],
+      "local_imports": [
+        "GaussianLQG.Core.Defs",
+        "GaussianLQG.Core.Setup",
+        "GaussianLQG.Metric.HopfRinow",
+        "GaussianLQG.Metric.Geodesic",
+        "GaussianLQG.Metric.Weyl",
+        "GaussianLQG.Metric.Rotation",
+        "GaussianLQG.Metric.LFPPRotation",
+        "GaussianLQG.Field.FrameFun",
+        "GaussianLQG.Field.Frame",
+        "GaussianLQG.Energy.All",
+        "GaussianLQG.Probability.GaussianLp",
+        "GaussianLQG.LQG.Dimension",
+        "GaussianLQG.LQG.Bridge",
+        "GaussianLQG.Field.Realization",
+        "GaussianLQG.Core.MainDefs",
+        "GaussianLQG.LQG.Derivative",
+        "GaussianLQG.LQG.Concentration",
+        "GaussianLQG.LQG.Tube",
+        "GaussianLQG.Core.Interfaces",
+        "GaussianLQG.Assembly.Instance",
+        "GaussianLQG.Assembly.Transfer",
+        "GaussianLQG.LQG.Exponents",
+        "GaussianLQG.Medians.LawM",
+        "GaussianLQG.Field.Pairing",
+        "GaussianLQG.LQG.Scaling",
+        "GaussianLQG.Probability.Kolmogorov",
+        "GaussianLQG.Probability.Medians",
+        "GaussianLQG.LQG.Geodesics",
+        "GaussianLQG.LQG.Localization",
+        "GaussianLQG.Core.InterfacesEuclid",
+        "GaussianLQG.Assembly.Discharge",
+        "GaussianLQG.Assembly.Main",
+        "GaussianLQG.LQG.FirstOrder",
+        "GaussianLQG.LQG.Crossing",
+        "GaussianLQG.LQG.ConcentrationU",
+        "GaussianLQG.LQG.Euclid",
+        "GaussianLQG.LQG.EnergyApprox",
+        "GaussianLQG.Assembly.Provider",
+        "GaussianLQG.Uniform.Limit",
+        "GaussianLQG.Assembly.FrontierS6",
+        "GaussianLQG.Uniform.RSW",
+        "GaussianLQG.Uniform.ConditionT",
+        "GaussianLQG.Uniform.Interfaces",
+        "GaussianLQG.Uniform.FieldComparison",
+        "GaussianLQG.Uniform.LowerTail",
+        "GaussianLQG.Uniform.InterfacesCons",
+        "GaussianLQG.Uniform.Consequences",
+        "GaussianLQG.Uniform.InterfacesLFPP",
+        "GaussianLQG.Uniform.UpperTail",
+        "GaussianLQG.Uniform.Thm20",
+        "GaussianLQG.Uniform.Shapes",
+        "GaussianLQG.Uniform.Thm20.Unconditional",
+        "GaussianLQG.Uniform.CoreDone",
+        "GaussianLQG.Uniform.InverseMoments",
+        "GaussianLQG.Uniform.InverseMoments.Unconditional",
+        "GaussianLQG.Uniform.Star",
+        "GaussianLQG.Assembly.FrontierU12",
+        "GaussianLQG.Assembly.MainUnconditional",
+        "GaussianLQG.Frozen.MainTheorem",
+        "GaussianLQG.Uniform.Holder",
+        "GaussianLQG.Uniform.Holder.Done"
+      ],
+      "bytes": 2372
+    },
+    "GaussianLQG.Uniform.RSW": {
+      "path": "GaussianLQG/Uniform/RSW.lean",
+      "source_path": "formalizations/gaussian_lqg_distance/GaussianLQG/Uniform/RSW.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "fc18c63b4845fe739d383682ab13b13d568629b1b5cb501d05e42eb5bfcf75d0",
+      "imports": [
+        "GaussianLQG.Uniform.RSW.Law",
+        "GaussianLQG.Uniform.RSW.P10",
+        "GaussianLQG.Uniform.RSW.Phi",
+        "GaussianLQG.Uniform.RSW.Psi"
+      ],
+      "local_imports": [
+        "GaussianLQG.Uniform.RSW.Law",
+        "GaussianLQG.Uniform.RSW.P10",
+        "GaussianLQG.Uniform.RSW.Phi",
+        "GaussianLQG.Uniform.RSW.Psi"
+      ],
+      "bytes": 2196
+    },
+    "SmallGammaGeodesics.Assembly.Deviation": {
+      "path": "SmallGammaGeodesics/Assembly/Deviation.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Assembly/Deviation.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "c16e8079e2829ce7a21e12e2435e68d7441190f30df2a52b16619a9d637c4dbf",
+      "imports": [
+        "SmallGammaGeodesics.Assembly.Reduction",
+        "SmallGammaGeodesics.Assembly.Scalar",
+        "SmallGammaGeodesics.Lower.Prop71",
+        "SmallGammaGeodesics.CC.Master",
+        "SmallGammaGeodesics.CC.Sigma0MC",
+        "SmallGammaGeodesics.CC.MasterLE",
+        "SmallGammaGeodesics.Upper.Lemma42Holds",
+        "SmallGammaGeodesics.Upper.Main"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Assembly.Reduction",
+        "SmallGammaGeodesics.Assembly.Scalar",
+        "SmallGammaGeodesics.Lower.Prop71",
+        "SmallGammaGeodesics.CC.Master",
+        "SmallGammaGeodesics.CC.Sigma0MC",
+        "SmallGammaGeodesics.CC.MasterLE",
+        "SmallGammaGeodesics.Upper.Lemma42Holds",
+        "SmallGammaGeodesics.Upper.Main"
+      ],
+      "bytes": 3684
+    },
+    "SmallGammaGeodesics.Assembly.Reduction": {
+      "path": "SmallGammaGeodesics/Assembly/Reduction.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Assembly/Reduction.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "250b1022e1a8e6c9361b77dddd0edea37d43bcb6c06300e9647b34bdd9c79d66",
+      "imports": [
+        "SmallGammaGeodesics.Assembly.Transfer",
+        "LQGMetric.Papers.GM.S1.FieldAux"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Assembly.Transfer",
+        "LQGMetric.Papers.GM.S1.FieldAux"
+      ],
+      "bytes": 5522
+    },
+    "SmallGammaGeodesics.Assembly.Scalar": {
+      "path": "SmallGammaGeodesics/Assembly/Scalar.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Assembly/Scalar.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "c8e4afc6a428b64cdc0a40621c7eb12cba55983d433e3a06fc5b64b46517c215",
+      "imports": [
+        "SmallGammaGeodesics.Assembly.Transfer",
+        "Mathlib.MeasureTheory.Integral.Layercake",
+        "Mathlib.Analysis.SpecialFunctions.ImproperIntegrals",
+        "Mathlib.MeasureTheory.Integral.Lebesgue.Markov"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Assembly.Transfer"
+      ],
+      "bytes": 20632
+    },
+    "SmallGammaGeodesics.Assembly.Tightness": {
+      "path": "SmallGammaGeodesics/Assembly/Tightness.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Assembly/Tightness.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "f7d67aef7c44eb86db43b70ca1cfc9e772f5947cfb7cabab35ed5c8f96fc429b",
+      "imports": [
+        "SmallGammaGeodesics.Assembly.Reduction",
+        "SmallGammaGeodesics.CC.MasterLE",
+        "SmallGammaGeodesics.Upper.Lemma42Holds",
+        "SmallGammaGeodesics.Tight.Main"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Assembly.Reduction",
+        "SmallGammaGeodesics.CC.MasterLE",
+        "SmallGammaGeodesics.Upper.Lemma42Holds",
+        "SmallGammaGeodesics.Tight.Main"
+      ],
+      "bytes": 2110
+    },
+    "SmallGammaGeodesics.Assembly.Transfer": {
+      "path": "SmallGammaGeodesics/Assembly/Transfer.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Assembly/Transfer.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "29e8413ffe47cd14d8bf7513d30b7cd08fa228a7592aa797476be50f3ba5d082",
+      "imports": [
+        "SmallGammaGeodesics.Core.Setup",
+        "SmallGammaGeodesics.Core.PathFunctionals",
+        "Mathlib.MeasureTheory.Function.ConvergenceInMeasure"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Core.Setup",
+        "SmallGammaGeodesics.Core.PathFunctionals"
+      ],
+      "bytes": 11973
+    },
+    "SmallGammaGeodesics.CC.BiLip": {
+      "path": "SmallGammaGeodesics/CC/BiLip.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/BiLip.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "9185d929f841f6ee70ab44e03210c5e971406c30d165349169b5be5acfeda4c9",
+      "imports": [
+        "SmallGammaGeodesics.CC.BiLipChain",
+        "SmallGammaGeodesics.CC.Lemma35Local",
+        "SmallGammaGeodesics.CC.Cover",
+        "SmallGammaGeodesics.CC.LocalGlobal",
+        "SmallGammaGeodesics.Geodesic.Basic"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.BiLipChain",
+        "SmallGammaGeodesics.CC.Lemma35Local",
+        "SmallGammaGeodesics.CC.Cover",
+        "SmallGammaGeodesics.CC.LocalGlobal",
+        "SmallGammaGeodesics.Geodesic.Basic"
+      ],
+      "bytes": 11432
+    },
+    "SmallGammaGeodesics.CC.BiLipChain": {
+      "path": "SmallGammaGeodesics/CC/BiLipChain.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/BiLipChain.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "49e31534fed5b94a53db845edd2e3a2909ca23af3badea62bbf3c31ca7c25875",
+      "imports": [
+        "SmallGammaGeodesics.CC.ChainDet",
+        "LQGMetric.Papers.GM.S3.GoodAnnulusMeas"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.ChainDet",
+        "LQGMetric.Papers.GM.S3.GoodAnnulusMeas"
+      ],
+      "bytes": 14033
+    },
+    "SmallGammaGeodesics.CC.ChainDet": {
+      "path": "SmallGammaGeodesics/CC/ChainDet.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/ChainDet.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "d408d9b85e7346d2ab86d7de452c221d4173ee1d38c131705f6d1d4040a55c1c",
+      "imports": [
+        "SmallGammaGeodesics.Core.Interfaces",
+        "LQGMetric.Papers.LM.T1_6Chain"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Core.Interfaces",
+        "LQGMetric.Papers.LM.T1_6Chain"
+      ],
+      "bytes": 10706
+    },
+    "SmallGammaGeodesics.CC.ConfMetric": {
+      "path": "SmallGammaGeodesics/CC/ConfMetric.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/ConfMetric.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "7c4498851f9cb3c6e01ff225c8769f75f19067d28e06b7a27f96500cab8a8d60",
+      "imports": [
+        "SmallGammaGeodesics.CC.Pullback",
+        "LQGMetric.Metric.InternalC",
+        "LQGMetric.Metric.WeylLQG",
+        "LQGMetric.Papers.GM.S3.GoodAnnulusMeas",
+        "LQGMetric.Meas.Internal"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.Pullback",
+        "LQGMetric.Metric.InternalC",
+        "LQGMetric.Metric.WeylLQG",
+        "LQGMetric.Papers.GM.S3.GoodAnnulusMeas",
+        "LQGMetric.Meas.Internal"
+      ],
+      "bytes": 29112
+    },
+    "SmallGammaGeodesics.CC.Coupling": {
+      "path": "SmallGammaGeodesics/CC/Coupling.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/Coupling.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "49f4419353af50cfdb13f9b4cada577275b6cf9d3b71db0f857c30f8252d2fd6",
+      "imports": [
+        "SmallGammaGeodesics.CC.PullbackConv",
+        "SmallGammaGeodesics.CC.PullbackMobius",
+        "LQGMetric.Field.GFFInvariance",
+        "LQGMetric.Field.Measurable"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.PullbackConv",
+        "SmallGammaGeodesics.CC.PullbackMobius",
+        "LQGMetric.Field.GFFInvariance",
+        "LQGMetric.Field.Measurable"
+      ],
+      "bytes": 14199
+    },
+    "SmallGammaGeodesics.CC.Cover": {
+      "path": "SmallGammaGeodesics/CC/Cover.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/Cover.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "4d0a1e6be2ca4b29e44122927d8ff3ae8061b0fd99c9133ae62a12a267751456",
+      "imports": [
+        "SmallGammaGeodesics.Core.Interfaces",
+        "LQGMetric.Papers.LM.L3_4M6",
+        "LQGMetric.Papers.GM.S3.DeterministicScale",
+        "LQGMetric.Papers.GM.S2.TightLaw",
+        "LQGMetric.Field.CircleAvgRate"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Core.Interfaces",
+        "LQGMetric.Papers.LM.L3_4M6",
+        "LQGMetric.Papers.GM.S3.DeterministicScale",
+        "LQGMetric.Papers.GM.S2.TightLaw",
+        "LQGMetric.Field.CircleAvgRate"
+      ],
+      "bytes": 20411
+    },
+    "SmallGammaGeodesics.CC.Extension": {
+      "path": "SmallGammaGeodesics/CC/Extension.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/Extension.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "110c02261f6c10febb95a4e5dbe92547a5b85a56f1563906ab8f4113cf9da0f0",
+      "imports": [
+        "SmallGammaGeodesics.CC.UniversalLocality",
+        "LQGMetric.Field.StandardBorelRange",
+        "Mathlib.Probability.Kernel.CondDistrib"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.UniversalLocality",
+        "LQGMetric.Field.StandardBorelRange"
+      ],
+      "bytes": 7846
+    },
+    "SmallGammaGeodesics.CC.ExtensionMobius": {
+      "path": "SmallGammaGeodesics/CC/ExtensionMobius.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/ExtensionMobius.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "9c8b757c3bb5f3f1c39b09542e206ecef76844a6ee7138e9197749b7b36356f8",
+      "imports": [
+        "SmallGammaGeodesics.CC.Pullback",
+        "LQGMetric.Field.GFFInvariance",
+        "LQGMetric.Field.KilledHeatLaw",
+        "QuantumZipper.Proofs.GFF.K3.Polar",
+        "Mathlib.MeasureTheory.Constructions.Projective"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.Pullback",
+        "LQGMetric.Field.GFFInvariance",
+        "LQGMetric.Field.KilledHeatLaw",
+        "QuantumZipper.Proofs.GFF.K3.Polar"
+      ],
+      "bytes": 14499
+    },
+    "SmallGammaGeodesics.CC.ExtensionPull": {
+      "path": "SmallGammaGeodesics/CC/ExtensionPull.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/ExtensionPull.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "75fab3e8a1bc9f1014b2c927b780342107391426188d6442b3c895ad17660715",
+      "imports": [
+        "SmallGammaGeodesics.CC.Extension",
+        "SmallGammaGeodesics.CC.LocalPull",
+        "SmallGammaGeodesics.CC.LocalityConf",
+        "SmallGammaGeodesics.CC.Coupling",
+        "LQGMetric.Field.StandardBorelDist",
+        "Mathlib.Geometry.Manifold.PartitionOfUnity"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.Extension",
+        "SmallGammaGeodesics.CC.LocalPull",
+        "SmallGammaGeodesics.CC.LocalityConf",
+        "SmallGammaGeodesics.CC.Coupling",
+        "LQGMetric.Field.StandardBorelDist"
+      ],
+      "bytes": 24399
+    },
+    "SmallGammaGeodesics.CC.GoodAnnulus": {
+      "path": "SmallGammaGeodesics/CC/GoodAnnulus.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/GoodAnnulus.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "a49d92ae1a231e32e5607b5fd59cb2e75217a31e04d99ca56fc0f2069e67ec08",
+      "imports": [
+        "SmallGammaGeodesics.CC.ConfMetric",
+        "SmallGammaGeodesics.Geodesic.Basic",
+        "LQGMetric.Papers.GM.S3.GoodAnnulusMeas3",
+        "LQGMetric.Papers.GM.S3.GoodAnnulusAround",
+        "LQGMetric.Papers.GM.S2.Geodesics",
+        "LQGMetric.Papers.GM.S2.Bilip",
+        "LQGMetric.Papers.GM.S1.Eq115"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.ConfMetric",
+        "SmallGammaGeodesics.Geodesic.Basic",
+        "LQGMetric.Papers.GM.S3.GoodAnnulusMeas3",
+        "LQGMetric.Papers.GM.S3.GoodAnnulusAround",
+        "LQGMetric.Papers.GM.S2.Geodesics",
+        "LQGMetric.Papers.GM.S2.Bilip",
+        "LQGMetric.Papers.GM.S1.Eq115"
+      ],
+      "bytes": 33694
+    },
+    "SmallGammaGeodesics.CC.GoodAnnulusDense": {
+      "path": "SmallGammaGeodesics/CC/GoodAnnulusDense.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/GoodAnnulusDense.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "04f26ed4a113c4dac9454cbaf09545639a0b1b628fc705753f242b10735e31ef",
+      "imports": [
+        "LQGMetric.Papers.GM.S3.GoodAnnulusMeas3"
+      ],
+      "local_imports": [
+        "LQGMetric.Papers.GM.S3.GoodAnnulusMeas3"
+      ],
+      "bytes": 10497
+    },
+    "SmallGammaGeodesics.CC.GoodAnnulusLocal": {
+      "path": "SmallGammaGeodesics/CC/GoodAnnulusLocal.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/GoodAnnulusLocal.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "48f4ec59180b50813e162f900db050dda768664395a90725588c2e35b9200d84",
+      "imports": [
+        "SmallGammaGeodesics.CC.GoodAnnulus"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.GoodAnnulus"
+      ],
+      "bytes": 11428
+    },
+    "SmallGammaGeodesics.CC.GoodAnnulusMeas": {
+      "path": "SmallGammaGeodesics/CC/GoodAnnulusMeas.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/GoodAnnulusMeas.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "4604d3ca2169d81f694979b2c8eb20f8198e61f488fd22b8ebe33301353656ea",
+      "imports": [
+        "SmallGammaGeodesics.CC.GoodAnnulusMeasForm",
+        "SmallGammaGeodesics.CC.LocalityConf"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.GoodAnnulusMeasForm",
+        "SmallGammaGeodesics.CC.LocalityConf"
+      ],
+      "bytes": 15996
+    },
+    "SmallGammaGeodesics.CC.GoodAnnulusMeasForm": {
+      "path": "SmallGammaGeodesics/CC/GoodAnnulusMeasForm.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/GoodAnnulusMeasForm.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "107b418e51963f8ff4c0c1184d962f6bcd51c96561f9029f11538a6b795f253f",
+      "imports": [
+        "SmallGammaGeodesics.CC.GoodAnnulus",
+        "SmallGammaGeodesics.CC.GoodAnnulusDense",
+        "LQGMetric.Papers.GM.S3.GoodAnnulusMeas4"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.GoodAnnulus",
+        "SmallGammaGeodesics.CC.GoodAnnulusDense",
+        "LQGMetric.Papers.GM.S3.GoodAnnulusMeas4"
+      ],
+      "bytes": 14435
+    },
+    "SmallGammaGeodesics.CC.GoodAnnulusProb": {
+      "path": "SmallGammaGeodesics/CC/GoodAnnulusProb.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/GoodAnnulusProb.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "568f568d0a52a206a6d257d9037d904dd8e3fb2e05c27fe6cdf3150ab219194d",
+      "imports": [
+        "SmallGammaGeodesics.CC.GoodAnnulusProbDet",
+        "SmallGammaGeodesics.CC.GoodAnnulusMeas",
+        "SmallGammaGeodesics.Core.GoodAnnulusInput",
+        "SmallGammaGeodesics.Core.GMInputs",
+        "LQGMetric.Papers.GM.S2.TightC"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.GoodAnnulusProbDet",
+        "SmallGammaGeodesics.CC.GoodAnnulusMeas",
+        "SmallGammaGeodesics.Core.GoodAnnulusInput",
+        "SmallGammaGeodesics.Core.GMInputs",
+        "LQGMetric.Papers.GM.S2.TightC"
+      ],
+      "bytes": 10623
+    },
+    "SmallGammaGeodesics.CC.GoodAnnulusProbDet": {
+      "path": "SmallGammaGeodesics/CC/GoodAnnulusProbDet.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/GoodAnnulusProbDet.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "6ec160471165c22a7a7c43a88d5f3e94adc02de57b125f6889f8c6ea15e919be",
+      "imports": [
+        "SmallGammaGeodesics.CC.GoodAnnulusLocal"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.GoodAnnulusLocal"
+      ],
+      "bytes": 21726
+    },
+    "SmallGammaGeodesics.CC.Improve": {
+      "path": "SmallGammaGeodesics/CC/Improve.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/Improve.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "50b6ff65b41ef912514c57e21e7421d234be5c637f157f4dbed99e8fd1ea273c",
+      "imports": [
+        "SmallGammaGeodesics.CC.ImproveDet",
+        "SmallGammaGeodesics.Core.GoodAnnulusInput",
+        "SmallGammaGeodesics.CC.Cover",
+        "SmallGammaGeodesics.CC.LocalGlobal",
+        "SmallGammaGeodesics.CC.ConfMetric",
+        "SmallGammaGeodesics.Geodesic.Basic"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.ImproveDet",
+        "SmallGammaGeodesics.Core.GoodAnnulusInput",
+        "SmallGammaGeodesics.CC.Cover",
+        "SmallGammaGeodesics.CC.LocalGlobal",
+        "SmallGammaGeodesics.CC.ConfMetric",
+        "SmallGammaGeodesics.Geodesic.Basic"
+      ],
+      "bytes": 19197
+    },
+    "SmallGammaGeodesics.CC.ImproveDet": {
+      "path": "SmallGammaGeodesics/CC/ImproveDet.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/ImproveDet.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "ca30f233f7461df54c5ca119d0e1a1952d7e22b6014c49c86e59a804ccc2e48a",
+      "imports": [
+        "SmallGammaGeodesics.CC.Telescope",
+        "LQGMetric.Papers.GM.S3.AttainedP36Conf"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.Telescope",
+        "LQGMetric.Papers.GM.S3.AttainedP36Conf"
+      ],
+      "bytes": 13421
+    },
+    "SmallGammaGeodesics.CC.LawEqCont": {
+      "path": "SmallGammaGeodesics/CC/LawEqCont.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/LawEqCont.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "1a50ebb7f12f360dffd3f3c945914f920ba729ac2c63f7cca8b6c258ef1ce318",
+      "imports": [
+        "SmallGammaGeodesics.Core.Interfaces",
+        "SmallGammaGeodesics.CC.Lusin",
+        "SmallGammaGeodesics.CC.LusinRestrict",
+        "Mathlib.Topology.UniformSpace.HeineCantor"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Core.Interfaces",
+        "SmallGammaGeodesics.CC.Lusin",
+        "SmallGammaGeodesics.CC.LusinRestrict"
+      ],
+      "bytes": 7923
+    },
+    "SmallGammaGeodesics.CC.Lemma23": {
+      "path": "SmallGammaGeodesics/CC/Lemma23.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/Lemma23.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "fba944e7467ff0804372127afb8f2a512ad415426343eed2b4329a222ec6a26f",
+      "imports": [
+        "SmallGammaGeodesics.CC.Lemma23Close",
+        "SmallGammaGeodesics.CC.LawEqCont",
+        "SmallGammaGeodesics.CC.LusinRestrict",
+        "SmallGammaGeodesics.CC.UniversalLocality",
+        "SmallGammaGeodesics.CC.LocalityConf",
+        "SmallGammaGeodesics.CC.ConfMetric",
+        "LQGMetric.Field.GFFLaw",
+        "LQGMetric.Field.RandomDistVersion",
+        "LQGMetric.Metric.InternalC"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.Lemma23Close",
+        "SmallGammaGeodesics.CC.LawEqCont",
+        "SmallGammaGeodesics.CC.LusinRestrict",
+        "SmallGammaGeodesics.CC.UniversalLocality",
+        "SmallGammaGeodesics.CC.LocalityConf",
+        "SmallGammaGeodesics.CC.ConfMetric",
+        "LQGMetric.Field.GFFLaw",
+        "LQGMetric.Field.RandomDistVersion",
+        "LQGMetric.Metric.InternalC"
+      ],
+      "bytes": 36511
+    },
+    "SmallGammaGeodesics.CC.Lemma23Close": {
+      "path": "SmallGammaGeodesics/CC/Lemma23Close.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/Lemma23Close.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "0c0908f3023840f04f78487e9e756cd2c7d19aca31556107d28ff71d577f2c42",
+      "imports": [
+        "SmallGammaGeodesics.CC.ZoomNIC",
+        "SmallGammaGeodesics.CC.PullbackCov",
+        "SmallGammaGeodesics.NIC.Transport",
+        "Mathlib.Probability.Moments.Variance"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.ZoomNIC",
+        "SmallGammaGeodesics.CC.PullbackCov",
+        "SmallGammaGeodesics.NIC.Transport"
+      ],
+      "bytes": 17092
+    },
+    "SmallGammaGeodesics.CC.Lemma23Zoom": {
+      "path": "SmallGammaGeodesics/CC/Lemma23Zoom.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/Lemma23Zoom.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "14a062c4c7e2895c1626fea5bf652e4901772b35cfe79d0c826e111773d6e44f",
+      "imports": [
+        "SmallGammaGeodesics.CC.Lemma23",
+        "SmallGammaGeodesics.NIC.Main"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.Lemma23",
+        "SmallGammaGeodesics.NIC.Main"
+      ],
+      "bytes": 10925
+    },
+    "SmallGammaGeodesics.CC.Lemma35": {
+      "path": "SmallGammaGeodesics/CC/Lemma35.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/Lemma35.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "97f595f29706dde350d74aa2627f0bee008d50bbb929796a606c864cfa47a556",
+      "imports": [
+        "SmallGammaGeodesics.CC.ConfMetric",
+        "LQGMetric.Papers.GM.S2.TightA",
+        "LQGMetric.Papers.GM.S1.Eq115"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.ConfMetric",
+        "LQGMetric.Papers.GM.S2.TightA",
+        "LQGMetric.Papers.GM.S1.Eq115"
+      ],
+      "bytes": 20902
+    },
+    "SmallGammaGeodesics.CC.Lemma35Local": {
+      "path": "SmallGammaGeodesics/CC/Lemma35Local.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/Lemma35Local.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "1ace3e08b19a4526bb4cb05714575b1cb8d128025e81e9544da63673c26afd61",
+      "imports": [
+        "SmallGammaGeodesics.CC.Lemma35",
+        "SmallGammaGeodesics.CC.LocalityConf",
+        "LQGMetric.Papers.GM.S3.GoodAnnulusMeas",
+        "LQGMetric.Papers.GM.S2.SpatialIndepCirc"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.Lemma35",
+        "SmallGammaGeodesics.CC.LocalityConf",
+        "LQGMetric.Papers.GM.S3.GoodAnnulusMeas",
+        "LQGMetric.Papers.GM.S2.SpatialIndepCirc"
+      ],
+      "bytes": 15028
+    },
+    "SmallGammaGeodesics.CC.LocalGlobal": {
+      "path": "SmallGammaGeodesics/CC/LocalGlobal.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/LocalGlobal.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "924afc00e5c66e479b76106c1c56dabbf4335b0be28fa03df0c21821d0dede9d",
+      "imports": [
+        "LQGMetric.Metric.InternalLimitC"
+      ],
+      "local_imports": [
+        "LQGMetric.Metric.InternalLimitC"
+      ],
+      "bytes": 9547
+    },
+    "SmallGammaGeodesics.CC.LocalPull": {
+      "path": "SmallGammaGeodesics/CC/LocalPull.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/LocalPull.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "a5406efcb87ab3348027bc692a0d7ec42f024277fd776d0a131491211c868634",
+      "imports": [
+        "SmallGammaGeodesics.CC.Pullback"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.Pullback"
+      ],
+      "bytes": 18571
+    },
+    "SmallGammaGeodesics.CC.LocalityConf": {
+      "path": "SmallGammaGeodesics/CC/LocalityConf.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/LocalityConf.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "bbcdf6944b35ecbccb3ed13debc1b75f2802c74898377fe0136d67e92a11231c",
+      "imports": [
+        "SmallGammaGeodesics.CC.ConfMetric",
+        "SmallGammaGeodesics.CC.UniversalLocality",
+        "SmallGammaGeodesics.CC.Coupling",
+        "LQGMetric.Field.StandardBorelRange",
+        "LQGMetric.Field.RandomDistVersion"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.ConfMetric",
+        "SmallGammaGeodesics.CC.UniversalLocality",
+        "SmallGammaGeodesics.CC.Coupling",
+        "LQGMetric.Field.StandardBorelRange",
+        "LQGMetric.Field.RandomDistVersion"
+      ],
+      "bytes": 18168
+    },
+    "SmallGammaGeodesics.CC.Lusin": {
+      "path": "SmallGammaGeodesics/CC/Lusin.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/Lusin.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "b5d6cb9d7063822b5ad74020fdedcf7981e55211a5c1f675dce4850a3b14ec88",
+      "imports": [
+        "Mathlib.MeasureTheory.Measure.RegularityCompacts",
+        "Mathlib.Topology.MetricSpace.Polish",
+        "Mathlib.Analysis.SpecificLimits.Basic"
+      ],
+      "local_imports": [],
+      "bytes": 5989
+    },
+    "SmallGammaGeodesics.CC.LusinRestrict": {
+      "path": "SmallGammaGeodesics/CC/LusinRestrict.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/LusinRestrict.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "1a1b628bdd1e8f74f08740b96692351e4d3ed6f42d59da31e8ed93d0bacf4ba2",
+      "imports": [
+        "Mathlib.MeasureTheory.Constructions.BorelSpace.ContinuousMap",
+        "Mathlib.MeasureTheory.Constructions.BorelSpace.Metrizable",
+        "Mathlib.Topology.ContinuousMap.Compact",
+        "Mathlib.Topology.UniformSpace.HeineCantor",
+        "Mathlib.Topology.Instances.ENNReal.Lemmas"
+      ],
+      "local_imports": [],
+      "bytes": 13350
+    },
+    "SmallGammaGeodesics.CC.Master": {
+      "path": "SmallGammaGeodesics/CC/Master.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/Master.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "56a10f200aadbf98bfdb1219bd0e7b04474ee5da7eec55521f0c2a1ceb558607",
+      "imports": [
+        "SmallGammaGeodesics.CC.Reversal",
+        "SmallGammaGeodesics.Core.Setup",
+        "LQGMetric.Papers.GM.S1.StrongWeak"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.Reversal",
+        "SmallGammaGeodesics.Core.Setup",
+        "LQGMetric.Papers.GM.S1.StrongWeak"
+      ],
+      "bytes": 4299
+    },
+    "SmallGammaGeodesics.CC.MasterLE": {
+      "path": "SmallGammaGeodesics/CC/MasterLE.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/MasterLE.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "3e4d117c49ac17cd977a406654c4bcf9534c82575add582deae83ca017bd83d4",
+      "imports": [
+        "SmallGammaGeodesics.CC.BiLip",
+        "SmallGammaGeodesics.CC.Improve",
+        "SmallGammaGeodesics.CC.GoodAnnulusProb",
+        "SmallGammaGeodesics.CC.Prop21"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.BiLip",
+        "SmallGammaGeodesics.CC.Improve",
+        "SmallGammaGeodesics.CC.GoodAnnulusProb",
+        "SmallGammaGeodesics.CC.Prop21"
+      ],
+      "bytes": 1876
+    },
+    "SmallGammaGeodesics.CC.Prop21": {
+      "path": "SmallGammaGeodesics/CC/Prop21.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/Prop21.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "3945d54921efb32320344f782905dea4e53294685b91b7d564dff112467f3e0f",
+      "imports": [
+        "SmallGammaGeodesics.CC.Prop21Bound",
+        "SmallGammaGeodesics.CC.Prop21Transfer"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.Prop21Bound",
+        "SmallGammaGeodesics.CC.Prop21Transfer"
+      ],
+      "bytes": 9946
+    },
+    "SmallGammaGeodesics.CC.Prop21Bound": {
+      "path": "SmallGammaGeodesics/CC/Prop21Bound.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/Prop21Bound.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "9e64d938540ca853d8bf6d575418844eb3d0feec0b45e39fc328dbda8fdcf10b",
+      "imports": [
+        "SmallGammaGeodesics.CC.Prop21NIC",
+        "SmallGammaGeodesics.CC.Prop21Geom",
+        "SmallGammaGeodesics.CC.Prop21Good"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.Prop21NIC",
+        "SmallGammaGeodesics.CC.Prop21Geom",
+        "SmallGammaGeodesics.CC.Prop21Good"
+      ],
+      "bytes": 28600
+    },
+    "SmallGammaGeodesics.CC.Prop21Det": {
+      "path": "SmallGammaGeodesics/CC/Prop21Det.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/Prop21Det.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "022cf0d7062cba0533ac71e6d5648f297428afd07549a19507f7fe0b846a3b28",
+      "imports": [
+        "SmallGammaGeodesics.CC.Zoom26",
+        "LQGMetric.Metric.InternalC",
+        "LQGMetric.Meas.Internal"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.Zoom26",
+        "LQGMetric.Metric.InternalC",
+        "LQGMetric.Meas.Internal"
+      ],
+      "bytes": 11593
+    },
+    "SmallGammaGeodesics.CC.Prop21Geom": {
+      "path": "SmallGammaGeodesics/CC/Prop21Geom.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/Prop21Geom.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "84148fde063b7ea103323fce5d85f4bc10498a8aa735ce91f49562e409243b50",
+      "imports": [
+        "SmallGammaGeodesics.CC.Prop21Pull"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.Prop21Pull"
+      ],
+      "bytes": 7773
+    },
+    "SmallGammaGeodesics.CC.Prop21Good": {
+      "path": "SmallGammaGeodesics/CC/Prop21Good.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/Prop21Good.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "537074c104d45f6bfc13154d9950ceede5d74f972e1e82fd004c776534aa3138",
+      "imports": [
+        "SmallGammaGeodesics.CC.Prop21Det",
+        "LQGMetric.Metric.InternalLimitC"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.Prop21Det",
+        "LQGMetric.Metric.InternalLimitC"
+      ],
+      "bytes": 13029
+    },
+    "SmallGammaGeodesics.CC.Prop21NIC": {
+      "path": "SmallGammaGeodesics/CC/Prop21NIC.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/Prop21NIC.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "7b80eb4a45dee3b7d49348bbb226b1c49b85201b9f217806c71e79e548e2eefa",
+      "imports": [
+        "SmallGammaGeodesics.CC.Prop21Pull",
+        "SmallGammaGeodesics.CC.Prop21Tight"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.Prop21Pull",
+        "SmallGammaGeodesics.CC.Prop21Tight"
+      ],
+      "bytes": 13057
+    },
+    "SmallGammaGeodesics.CC.Prop21Pull": {
+      "path": "SmallGammaGeodesics/CC/Prop21Pull.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/Prop21Pull.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "1a983623652c259fab131eaf3de886acce87f5875a63e410f45f0923351284cd",
+      "imports": [
+        "SmallGammaGeodesics.CC.Lemma23Zoom",
+        "SmallGammaGeodesics.CC.Prop21Det",
+        "GaussianLQG.LQG.Bridge.Affine"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.Lemma23Zoom",
+        "SmallGammaGeodesics.CC.Prop21Det",
+        "GaussianLQG.LQG.Bridge.Affine"
+      ],
+      "bytes": 17719
+    },
+    "SmallGammaGeodesics.CC.Prop21Tight": {
+      "path": "SmallGammaGeodesics/CC/Prop21Tight.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/Prop21Tight.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "5582db33defb0af5cfdc045238cfedd762e2ae4f849e19976ac09cf6f4760a82",
+      "imports": [
+        "LQGMetric.Papers.DFGPS.L2_1RadialMeas",
+        "LQGMetric.Papers.LM.L3_4N5",
+        "LQGMetric.Papers.GM.S2.TightGauss",
+        "LQGMetric.Papers.GM.S2.TightA",
+        "LQGMetric.Papers.GM.S1.Eq115"
+      ],
+      "local_imports": [
+        "LQGMetric.Papers.DFGPS.L2_1RadialMeas",
+        "LQGMetric.Papers.LM.L3_4N5",
+        "LQGMetric.Papers.GM.S2.TightGauss",
+        "LQGMetric.Papers.GM.S2.TightA",
+        "LQGMetric.Papers.GM.S1.Eq115"
+      ],
+      "bytes": 4984
+    },
+    "SmallGammaGeodesics.CC.Prop21Transfer": {
+      "path": "SmallGammaGeodesics/CC/Prop21Transfer.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/Prop21Transfer.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "f7f27eb876b8e3ae1440392c8529e9376a5053cfe95c2c62ac623ddd71807188",
+      "imports": [
+        "SmallGammaGeodesics.CC.Prop21Det",
+        "SmallGammaGeodesics.CC.LocalityConf",
+        "LQGMetric.Field.CircleAvgLaw"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.Prop21Det",
+        "SmallGammaGeodesics.CC.LocalityConf",
+        "LQGMetric.Field.CircleAvgLaw"
+      ],
+      "bytes": 11289
+    },
+    "SmallGammaGeodesics.CC.Pullback": {
+      "path": "SmallGammaGeodesics/CC/Pullback.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/Pullback.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "5a9fa59bb78a7a8164f68d6da8d75c0416410122dc45fd20dafa941d01261414",
+      "imports": [
+        "SmallGammaGeodesics.Core.Interfaces",
+        "QuantumZipper.Proofs.GFF.K3.Conformal",
+        "QuantumZipper.Proofs.Analysis.Pushforward"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Core.Interfaces",
+        "QuantumZipper.Proofs.GFF.K3.Conformal",
+        "QuantumZipper.Proofs.Analysis.Pushforward"
+      ],
+      "bytes": 23682
+    },
+    "SmallGammaGeodesics.CC.PullbackConv": {
+      "path": "SmallGammaGeodesics/CC/PullbackConv.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/PullbackConv.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "751e3f01f9b90cf97dc45973bbb5fcacc81820de9883ee693770f2ea37e6dff2",
+      "imports": [
+        "SmallGammaGeodesics.CC.PullbackCov"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.PullbackCov"
+      ],
+      "bytes": 22330
+    },
+    "SmallGammaGeodesics.CC.PullbackCov": {
+      "path": "SmallGammaGeodesics/CC/PullbackCov.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/PullbackCov.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "3cdc2cd0f712e554b5cfa67c7171ae5b96eeec9e2a9b22c0ec52239ab4302675",
+      "imports": [
+        "SmallGammaGeodesics.CC.PullbackZoom",
+        "LQGMetric.Field.HeatMollifyVar",
+        "LQGMetric.Field.HeatMollifyPoint",
+        "LQGMetric.Field.GFFInvariance"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.PullbackZoom",
+        "LQGMetric.Field.HeatMollifyVar",
+        "LQGMetric.Field.HeatMollifyPoint",
+        "LQGMetric.Field.GFFInvariance"
+      ],
+      "bytes": 6948
+    },
+    "SmallGammaGeodesics.CC.PullbackMobius": {
+      "path": "SmallGammaGeodesics/CC/PullbackMobius.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/PullbackMobius.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "1c604f4255fd3a8ab1a24cefad60dcb42ac469d88026b7d62c2acfd81ba80ad3",
+      "imports": [
+        "SmallGammaGeodesics.CC.Pullback",
+        "SmallGammaGeodesics.Lower.MobiusLaw"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.Pullback",
+        "SmallGammaGeodesics.Lower.MobiusLaw"
+      ],
+      "bytes": 2057
+    },
+    "SmallGammaGeodesics.CC.PullbackZoom": {
+      "path": "SmallGammaGeodesics/CC/PullbackZoom.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/PullbackZoom.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "12bcd99e2221621731d6c1ef78ac696ec49f7c4a1a567b569aef3b27bb302561",
+      "imports": [
+        "SmallGammaGeodesics.CC.Pullback"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.Pullback"
+      ],
+      "bytes": 8699
+    },
+    "SmallGammaGeodesics.CC.Reversal": {
+      "path": "SmallGammaGeodesics/CC/Reversal.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/Reversal.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "b8b65d964c84dbb439536ff4b73b858ca3a95108d5e52b834cb768bf119a7dcb",
+      "imports": [
+        "SmallGammaGeodesics.CC.ReversalLength",
+        "SmallGammaGeodesics.CC.Coupling"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.ReversalLength",
+        "SmallGammaGeodesics.CC.Coupling"
+      ],
+      "bytes": 5783
+    },
+    "SmallGammaGeodesics.CC.ReversalLength": {
+      "path": "SmallGammaGeodesics/CC/ReversalLength.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/ReversalLength.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "917631966dc8ef228076013238145b77d859078707fb8e8fee6b59523e9e0722",
+      "imports": [
+        "SmallGammaGeodesics.CC.ConfMetric",
+        "LQGMetric.Metric.WeylPathLength"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.ConfMetric",
+        "LQGMetric.Metric.WeylPathLength"
+      ],
+      "bytes": 14338
+    },
+    "SmallGammaGeodesics.CC.Sigma0": {
+      "path": "SmallGammaGeodesics/CC/Sigma0.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/Sigma0.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "5b71175c08d2200e7610f52fb308df7c2fce2bec75f56d40a2c250c827d6a19e",
+      "imports": [
+        "SmallGammaGeodesics.CC.ExtensionPull",
+        "SmallGammaGeodesics.CC.ConfMetric",
+        "LQGMetric.Field.ExistGFF",
+        "LQGMetric.Field.CameronMartin"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.ExtensionPull",
+        "SmallGammaGeodesics.CC.ConfMetric",
+        "LQGMetric.Field.ExistGFF",
+        "LQGMetric.Field.CameronMartin"
+      ],
+      "bytes": 15447
+    },
+    "SmallGammaGeodesics.CC.Sigma0MC": {
+      "path": "SmallGammaGeodesics/CC/Sigma0MC.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/Sigma0MC.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "c6e8b42c14fac7924fd0325d059c0d8a43146f27ee9cb65be5d294042394ea4b",
+      "imports": [
+        "SmallGammaGeodesics.CC.Sigma0",
+        "SmallGammaGeodesics.CC.ExtensionMobius"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.Sigma0",
+        "SmallGammaGeodesics.CC.ExtensionMobius"
+      ],
+      "bytes": 7716
+    },
+    "SmallGammaGeodesics.CC.Telescope": {
+      "path": "SmallGammaGeodesics/CC/Telescope.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/Telescope.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "d58d059a776387e82d4140b3a7939ebaf9753f6c6e2f43e4a46987106024f69f",
+      "imports": [
+        "LQGMetric.Papers.GM.S3.AttainedP36Det",
+        "LQGMetric.Metric.Internal",
+        "LQGMetric.Metric.InternalLimitC"
+      ],
+      "local_imports": [
+        "LQGMetric.Papers.GM.S3.AttainedP36Det",
+        "LQGMetric.Metric.Internal",
+        "LQGMetric.Metric.InternalLimitC"
+      ],
+      "bytes": 34015
+    },
+    "SmallGammaGeodesics.CC.UniversalLocality": {
+      "path": "SmallGammaGeodesics/CC/UniversalLocality.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/UniversalLocality.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "0ebcee3079349015e9af812c08cc598429c69fcf163e678987cb9feb6c65d402",
+      "imports": [
+        "SmallGammaGeodesics.Core.Interfaces",
+        "LQGMetric.Field.GFFLaw"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Core.Interfaces",
+        "LQGMetric.Field.GFFLaw"
+      ],
+      "bytes": 12714
+    },
+    "SmallGammaGeodesics.CC.Zoom26": {
+      "path": "SmallGammaGeodesics/CC/Zoom26.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/Zoom26.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "f988aa0100d37554451ae6de3016f760f507e6e68feef44aa6d2eba5073597ee",
+      "imports": [
+        "SmallGammaGeodesics.CC.ConfMetric",
+        "SmallGammaGeodesics.CC.Coupling",
+        "LQGMetric.Papers.GM.S1.Dilate",
+        "LQGMetric.Metric.InternalOps",
+        "LQGMetric.Field.MeasurableAvg"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.ConfMetric",
+        "SmallGammaGeodesics.CC.Coupling",
+        "LQGMetric.Papers.GM.S1.Dilate",
+        "LQGMetric.Metric.InternalOps",
+        "LQGMetric.Field.MeasurableAvg"
+      ],
+      "bytes": 19033
+    },
+    "SmallGammaGeodesics.CC.ZoomExt": {
+      "path": "SmallGammaGeodesics/CC/ZoomExt.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/ZoomExt.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "4e3b70927b860b931e2535ff713a4eed3ba5656b5a8498d352a910d668bacc99",
+      "imports": [
+        "SmallGammaGeodesics.CC.PullbackZoom",
+        "SmallGammaGeodesics.NIC.Transport",
+        "Mathlib.Analysis.Calculus.InverseFunctionTheorem.ApproximatesLinearOn",
+        "Mathlib.Analysis.Calculus.BumpFunction.InnerProduct"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.PullbackZoom",
+        "SmallGammaGeodesics.NIC.Transport"
+      ],
+      "bytes": 39648
+    },
+    "SmallGammaGeodesics.CC.ZoomNIC": {
+      "path": "SmallGammaGeodesics/CC/ZoomNIC.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/CC/ZoomNIC.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "a43dcbcb28ad3b583169ac7e0f86a1b770130ce285d588887e4f8ddb38a91070",
+      "imports": [
+        "SmallGammaGeodesics.CC.ZoomExt",
+        "Mathlib.Analysis.Complex.Harmonic.Poisson",
+        "Mathlib.Probability.Moments.Variance",
+        "Mathlib.Probability.Distributions.Gaussian.IsGaussianProcess.Basic",
+        "Mathlib.Probability.Distributions.Gaussian.HasGaussianLaw.Basic",
+        "Mathlib.MeasureTheory.Constructions.BorelSpace.ContinuousMap"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.CC.ZoomExt"
+      ],
+      "bytes": 25981
+    },
+    "SmallGammaGeodesics.Core.GMInputs": {
+      "path": "SmallGammaGeodesics/Core/GMInputs.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Core/GMInputs.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "99e25b9ee8b59912af0e0667969c17a9322c752e64042a86c029b3bce18290c7",
+      "imports": [
+        "GaussianLQG.LQG.Dimension",
+        "LQGMetric.Assembly.MainReducedS",
+        "LQGMetric.Assembly.MainOpenI"
+      ],
+      "local_imports": [
+        "GaussianLQG.LQG.Dimension",
+        "LQGMetric.Assembly.MainReducedS",
+        "LQGMetric.Assembly.MainOpenI"
+      ],
+      "bytes": 2523
+    },
+    "SmallGammaGeodesics.Core.GoodAnnulusInput": {
+      "path": "SmallGammaGeodesics/Core/GoodAnnulusInput.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Core/GoodAnnulusInput.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "5b72a9219f2a7882f40e89fccccdb645d2d1f32568dd1ceeef098c532d43f4bc",
+      "imports": [
+        "SmallGammaGeodesics.Core.Interfaces",
+        "LQGMetric.Papers.GM.S3.Defs",
+        "LQGMetric.Topo.Disconnect"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Core.Interfaces",
+        "LQGMetric.Papers.GM.S3.Defs",
+        "LQGMetric.Topo.Disconnect"
+      ],
+      "bytes": 3723
+    },
+    "SmallGammaGeodesics.Core.Interfaces": {
+      "path": "SmallGammaGeodesics/Core/Interfaces.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Core/Interfaces.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "1af8783b4a058ffeff6a5188cf93b09f5eab7a04047ff030368412de143746db",
+      "imports": [
+        "GaussianLQG.Frozen.IsCanonicalLQGMetric",
+        "LQGMetric.Blueprint.M2Defs",
+        "LQGMetric.Metric.WeylBasic",
+        "LQGMetric.Field.CameronMartin",
+        "LQGMetric.Papers.GM.S3.GoodAnnulus",
+        "LQGMetric.Papers.LM.T1_6Cross",
+        "SmallGammaGeodesics.Core.TestFun"
+      ],
+      "local_imports": [
+        "GaussianLQG.Frozen.IsCanonicalLQGMetric",
+        "LQGMetric.Blueprint.M2Defs",
+        "LQGMetric.Metric.WeylBasic",
+        "LQGMetric.Field.CameronMartin",
+        "LQGMetric.Papers.GM.S3.GoodAnnulus",
+        "LQGMetric.Papers.LM.T1_6Cross",
+        "SmallGammaGeodesics.Core.TestFun"
+      ],
+      "bytes": 20552
+    },
+    "SmallGammaGeodesics.Core.PathFunctionals": {
+      "path": "SmallGammaGeodesics/Core/PathFunctionals.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Core/PathFunctionals.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "aa39ac0e73ac5f0d62e729b1c4691c0f816e6c2204395fa4cd8c02ce8c0ca9c4",
+      "imports": [
+        "SmallGammaGeodesics.Frozen.MaxDev",
+        "SmallGammaGeodesics.Frozen.RescaledPath",
+        "SmallGammaGeodesics.Frozen.HorizDev",
+        "Mathlib.Topology.ContinuousMap.Compact",
+        "Mathlib.MeasureTheory.Constructions.BorelSpace.Metrizable",
+        "Mathlib.MeasureTheory.Constructions.BorelSpace.ContinuousMap"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Frozen.MaxDev",
+        "SmallGammaGeodesics.Frozen.RescaledPath",
+        "SmallGammaGeodesics.Frozen.HorizDev"
+      ],
+      "bytes": 2409
+    },
+    "SmallGammaGeodesics.Core.Setup": {
+      "path": "SmallGammaGeodesics/Core/Setup.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Core/Setup.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "bd457d7613a31ec8654c9acb1f3aeddb60f3a505252a74bfb917d50780c01b59",
+      "imports": [
+        "GaussianLQG",
+        "LQGMetric.Assembly.MainFinal",
+        "LQGMetric.Papers.GM.S1.Subseq",
+        "SmallGammaGeodesics.Geodesic.Basic"
+      ],
+      "local_imports": [
+        "GaussianLQG",
+        "LQGMetric.Assembly.MainFinal",
+        "LQGMetric.Papers.GM.S1.Subseq",
+        "SmallGammaGeodesics.Geodesic.Basic"
+      ],
+      "bytes": 6958
+    },
+    "SmallGammaGeodesics.Core.TestFun": {
+      "path": "SmallGammaGeodesics/Core/TestFun.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Core/TestFun.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "6efb0c461a69bc64f130e436bfc745a74e608dab7e7d46ab54a50e863f634ab0",
+      "imports": [
+        "LQGMetric.Statement.GFF"
+      ],
+      "local_imports": [
+        "LQGMetric.Statement.GFF"
+      ],
+      "bytes": 623
+    },
+    "SmallGammaGeodesics.Frozen.DeviationScale": {
+      "path": "SmallGammaGeodesics/Frozen/DeviationScale.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Frozen/DeviationScale.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "ff971b6fba1da894ae3a2c2a361e743b82a7ff627a732c101b5320d63205a5a8",
+      "imports": [
+        "SmallGammaGeodesics.Frozen.MaxDev",
+        "LQGMetric.Blueprint.M2Defs",
+        "LQGMetric.Statement.LQGMetric",
+        "LQGMetric.Statement.GFF",
+        "Mathlib.Analysis.SpecialFunctions.Pow.NNReal",
+        "SmallGammaGeodesics.Assembly.Deviation"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Frozen.MaxDev",
+        "LQGMetric.Blueprint.M2Defs",
+        "LQGMetric.Statement.LQGMetric",
+        "LQGMetric.Statement.GFF",
+        "SmallGammaGeodesics.Assembly.Deviation"
+      ],
+      "bytes": 2957
+    },
+    "SmallGammaGeodesics.Frozen.FunctionalTightness": {
+      "path": "SmallGammaGeodesics/Frozen/FunctionalTightness.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Frozen/FunctionalTightness.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "e746f9445a31e21b0c8838a820a6f1e3c7a0973a9a7214acaf4d44ea35ec51ec",
+      "imports": [
+        "SmallGammaGeodesics.Frozen.RescaledPath",
+        "SmallGammaGeodesics.Frozen.HorizDev",
+        "LQGMetric.Blueprint.M2Defs",
+        "LQGMetric.Statement.LQGMetric",
+        "LQGMetric.Statement.GFF",
+        "Mathlib.MeasureTheory.Function.ConvergenceInMeasure",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Real",
+        "SmallGammaGeodesics.Assembly.Tightness"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Frozen.RescaledPath",
+        "SmallGammaGeodesics.Frozen.HorizDev",
+        "LQGMetric.Blueprint.M2Defs",
+        "LQGMetric.Statement.LQGMetric",
+        "LQGMetric.Statement.GFF",
+        "SmallGammaGeodesics.Assembly.Tightness"
+      ],
+      "bytes": 2381
+    },
+    "SmallGammaGeodesics.Frozen.GeodesicAeUnique": {
+      "path": "SmallGammaGeodesics/Frozen/GeodesicAeUnique.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Frozen/GeodesicAeUnique.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "0918d97285fb721e9cddd2b7eb4123c6642f1a4f2bc4cd308bf62d6d13b97624",
+      "imports": [
+        "LQGMetric.Meas.Geod",
+        "LQGMetric.Blueprint.M2Defs",
+        "LQGMetric.Statement.LQGMetric",
+        "LQGMetric.Statement.GFF",
+        "SmallGammaGeodesics.Geodesic.Provider"
+      ],
+      "local_imports": [
+        "LQGMetric.Meas.Geod",
+        "LQGMetric.Blueprint.M2Defs",
+        "LQGMetric.Statement.LQGMetric",
+        "LQGMetric.Statement.GFF",
+        "SmallGammaGeodesics.Geodesic.Provider"
+      ],
+      "bytes": 1902
+    },
+    "SmallGammaGeodesics.Frozen.HorizDev": {
+      "path": "SmallGammaGeodesics/Frozen/HorizDev.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Frozen/HorizDev.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "585544ded43dc7c5947e088984c6e493494af6183ba07148d44fafb2c00eec26",
+      "imports": [
+        "Mathlib.Topology.ContinuousMap.Basic",
+        "Mathlib.Topology.UnitInterval",
+        "Mathlib.Analysis.Complex.Basic"
+      ],
+      "local_imports": [],
+      "bytes": 840
+    },
+    "SmallGammaGeodesics.Frozen.MaxDev": {
+      "path": "SmallGammaGeodesics/Frozen/MaxDev.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Frozen/MaxDev.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "7aaa0af62368d7f25c662124c415f885944df7d355d191174862c2b12873fcd6",
+      "imports": [
+        "Mathlib.Analysis.Convex.Segment",
+        "Mathlib.Topology.ContinuousMap.Basic",
+        "Mathlib.Topology.UnitInterval",
+        "Mathlib.Topology.MetricSpace.HausdorffDistance",
+        "Mathlib.Analysis.Complex.Basic"
+      ],
+      "local_imports": [],
+      "bytes": 1035
+    },
+    "SmallGammaGeodesics.Frozen.RescaledPath": {
+      "path": "SmallGammaGeodesics/Frozen/RescaledPath.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Frozen/RescaledPath.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "d676cdaaeab8f7d53534ccc89e75a04acbb02739c72b59bb5fe8930e25e827f4",
+      "imports": [
+        "Mathlib.Topology.ContinuousMap.Basic",
+        "Mathlib.Topology.UnitInterval",
+        "Mathlib.Analysis.Complex.Basic",
+        "Mathlib.Topology.Algebra.Module.Basic"
+      ],
+      "local_imports": [],
+      "bytes": 983
+    },
+    "SmallGammaGeodesics.Geodesic.Basic": {
+      "path": "SmallGammaGeodesics/Geodesic/Basic.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Geodesic/Basic.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "b3d78756b9c2917424a897c5e3aa1af4a268f7814c44aa6c84d7ab973711662c",
+      "imports": [
+        "LQGMetric.Assembly.MainFinal",
+        "LQGMetric.Papers.GM.S2.Geodesics",
+        "LQGMetric.Papers.GM.S1.Eq115",
+        "LQGMetric.Papers.GM.S1.FieldAux",
+        "LQGMetric.Papers.MQ.SphereMain",
+        "LQGMetric.Meas.Geod",
+        "GaussianLQG.Uniform.Limit.Basic"
+      ],
+      "local_imports": [
+        "LQGMetric.Assembly.MainFinal",
+        "LQGMetric.Papers.GM.S2.Geodesics",
+        "LQGMetric.Papers.GM.S1.Eq115",
+        "LQGMetric.Papers.GM.S1.FieldAux",
+        "LQGMetric.Papers.MQ.SphereMain",
+        "LQGMetric.Meas.Geod",
+        "GaussianLQG.Uniform.Limit.Basic"
+      ],
+      "bytes": 6534
+    },
+    "SmallGammaGeodesics.Geodesic.Provider": {
+      "path": "SmallGammaGeodesics/Geodesic/Provider.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Geodesic/Provider.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "5b470a81362e12c4baa053690882014c857ae7e4f28baf0fa0d9ab2465cfab38",
+      "imports": [
+        "SmallGammaGeodesics.Geodesic.Basic"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Geodesic.Basic"
+      ],
+      "bytes": 1887
+    },
+    "SmallGammaGeodesics.Inputs.EuclidFine": {
+      "path": "SmallGammaGeodesics/Inputs/EuclidFine.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Inputs/EuclidFine.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "046b1b32229ed061666d9b61d1f899967e5a914fa5a61477bf6f586ff0efa90a",
+      "imports": [
+        "GaussianLQG.LQG.Euclid"
+      ],
+      "local_imports": [
+        "GaussianLQG.LQG.Euclid"
+      ],
+      "bytes": 21153
+    },
+    "SmallGammaGeodesics.Inputs.Moments": {
+      "path": "SmallGammaGeodesics/Inputs/Moments.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Inputs/Moments.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "e0a48f539d2554ae8af42245ef3a5bdc1aa42a846f4dbb47eadbe439d1af2818",
+      "imports": [
+        "GaussianLQG.LQG.Localization",
+        "GaussianLQG.LQG.Scaling",
+        "SmallGammaGeodesics.Core.PathFunctionals"
+      ],
+      "local_imports": [
+        "GaussianLQG.LQG.Localization",
+        "GaussianLQG.LQG.Scaling",
+        "SmallGammaGeodesics.Core.PathFunctionals"
+      ],
+      "bytes": 16093
+    },
+    "SmallGammaGeodesics.Lower.Drift": {
+      "path": "SmallGammaGeodesics/Lower/Drift.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Lower/Drift.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "1bb5428b374419304d64a69031d5d5632b135292d86fe8e9d68fc692f3b3e2bb",
+      "imports": [
+        "SmallGammaGeodesics.Lower.MobiusLawBase",
+        "QuantumZipper.Proofs.GFF.K3.Conformal",
+        "LQGMetric.Field.Green",
+        "Mathlib.Analysis.Complex.OperatorNorm",
+        "Mathlib.Analysis.Calculus.BumpFunction.FiniteDimension"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Lower.MobiusLawBase",
+        "QuantumZipper.Proofs.GFF.K3.Conformal",
+        "LQGMetric.Field.Green"
+      ],
+      "bytes": 25540
+    },
+    "SmallGammaGeodesics.Lower.Mobius": {
+      "path": "SmallGammaGeodesics/Lower/Mobius.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Lower/Mobius.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "2edee3e1d654bf0a6899f45ae5988c81349d6753e4d3f725daa82925bc47ff67",
+      "imports": [
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.ArctanDeriv",
+        "Mathlib.Analysis.Calculus.Deriv.MeanValue",
+        "Mathlib.Topology.MetricSpace.HausdorffDistance",
+        "Mathlib.Analysis.Convex.Segment"
+      ],
+      "local_imports": [],
+      "bytes": 25987
+    },
+    "SmallGammaGeodesics.Lower.MobiusLaw": {
+      "path": "SmallGammaGeodesics/Lower/MobiusLaw.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Lower/MobiusLaw.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "c414d70cc2b86f397c16fa8c490d9152d083d67b3afd0eef5d6e30852548c9be",
+      "imports": [
+        "SmallGammaGeodesics.Lower.MobiusLawBase",
+        "SmallGammaGeodesics.Core.TestFun",
+        "LQGMetric.Field.GFFInvariance",
+        "LQGMetric.Field.KilledHeatLaw",
+        "QuantumZipper.Proofs.GFF.K3.Conformal",
+        "QuantumZipper.Proofs.GFF.K3.Polar",
+        "QuantumZipper.Proofs.Analysis.Pushforward",
+        "Mathlib.MeasureTheory.Constructions.Projective"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Lower.MobiusLawBase",
+        "SmallGammaGeodesics.Core.TestFun",
+        "LQGMetric.Field.GFFInvariance",
+        "LQGMetric.Field.KilledHeatLaw",
+        "QuantumZipper.Proofs.GFF.K3.Conformal",
+        "QuantumZipper.Proofs.GFF.K3.Polar",
+        "QuantumZipper.Proofs.Analysis.Pushforward"
+      ],
+      "bytes": 21494
+    },
+    "SmallGammaGeodesics.Lower.MobiusLawBase": {
+      "path": "SmallGammaGeodesics/Lower/MobiusLawBase.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Lower/MobiusLawBase.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "079e05948babeec3224578599261be9104dc4c2c942f8f3a249f8ec18b535413",
+      "imports": [
+        "SmallGammaGeodesics.Lower.Mobius",
+        "Mathlib.Analysis.Calculus.Deriv.Inv",
+        "Mathlib.Analysis.Calculus.Deriv.Mul",
+        "Mathlib.Analysis.Normed.Field.Lemmas"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Lower.Mobius"
+      ],
+      "bytes": 7588
+    },
+    "SmallGammaGeodesics.Lower.Prop71": {
+      "path": "SmallGammaGeodesics/Lower/Prop71.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Lower/Prop71.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "c5301521df19a10b588e326163e27fb99211a0e5cd34edad2d5bc52a1b08583f",
+      "imports": [
+        "SmallGammaGeodesics.Lower.Windows",
+        "SmallGammaGeodesics.Lower.MobiusLaw",
+        "SmallGammaGeodesics.Lower.Drift",
+        "SmallGammaGeodesics.Lower.TV",
+        "SmallGammaGeodesics.Core.Interfaces",
+        "SmallGammaGeodesics.Geodesic.Basic",
+        "SmallGammaGeodesics.Assembly.Scalar"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Lower.Windows",
+        "SmallGammaGeodesics.Lower.MobiusLaw",
+        "SmallGammaGeodesics.Lower.Drift",
+        "SmallGammaGeodesics.Lower.TV",
+        "SmallGammaGeodesics.Core.Interfaces",
+        "SmallGammaGeodesics.Geodesic.Basic",
+        "SmallGammaGeodesics.Assembly.Scalar"
+      ],
+      "bytes": 31080
+    },
+    "SmallGammaGeodesics.Lower.TV": {
+      "path": "SmallGammaGeodesics/Lower/TV.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Lower/TV.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "bb64b0008f1361f1247a8fdef93396454c3dac7f2c7aa33acfbf29c5cdd5c164",
+      "imports": [
+        "LQGMetric.Field.CameronMartin"
+      ],
+      "local_imports": [
+        "LQGMetric.Field.CameronMartin"
+      ],
+      "bytes": 3711
+    },
+    "SmallGammaGeodesics.Lower.Windows": {
+      "path": "SmallGammaGeodesics/Lower/Windows.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Lower/Windows.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "88fd02c0da93a08deb93f354abbf0903b12db85eb532d91bcf6c4732ec439164",
+      "imports": [
+        "SmallGammaGeodesics.Lower.Mobius",
+        "SmallGammaGeodesics.Core.PathFunctionals",
+        "LQGMetric.Metric.InternalC",
+        "LQGMetric.Blueprint.M2Defs",
+        "LQGMetric.Papers.GM.S3.GoodAnnulusUnique",
+        "LQGMetric.Papers.GM.S5.Tubes55Det"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Lower.Mobius",
+        "SmallGammaGeodesics.Core.PathFunctionals",
+        "LQGMetric.Metric.InternalC",
+        "LQGMetric.Blueprint.M2Defs",
+        "LQGMetric.Papers.GM.S3.GoodAnnulusUnique",
+        "LQGMetric.Papers.GM.S5.Tubes55Det"
+      ],
+      "bytes": 20594
+    },
+    "SmallGammaGeodesics.NIC.Binomial": {
+      "path": "SmallGammaGeodesics/NIC/Binomial.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/NIC/Binomial.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "88029801ae795e9194f4f317f2d75b68de48594465725bba33e20e666b397e6e",
+      "imports": [
+        "Mathlib.RingTheory.PowerSeries.Binomial",
+        "Mathlib.RingTheory.Polynomial.Pochhammer",
+        "Mathlib.Analysis.InnerProductSpace.Adjoint",
+        "Mathlib.Analysis.Normed.Ring.InfiniteSum",
+        "Mathlib.Analysis.SpecificLimits.Basic"
+      ],
+      "local_imports": [],
+      "bytes": 11423
+    },
+    "SmallGammaGeodesics.NIC.Bump": {
+      "path": "SmallGammaGeodesics/NIC/Bump.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/NIC/Bump.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "b51a00caa5eee92d4dca4970ec07e657eeb2283a6763c59cce4acb6e4e7b3fd0",
+      "imports": [
+        "LQGMetric.Field.MarkovWeyl3",
+        "LQGMetric.Field.CircleAvgRate"
+      ],
+      "local_imports": [
+        "LQGMetric.Field.MarkovWeyl3",
+        "LQGMetric.Field.CircleAvgRate"
+      ],
+      "bytes": 18208
+    },
+    "SmallGammaGeodesics.NIC.Dual": {
+      "path": "SmallGammaGeodesics/NIC/Dual.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/NIC/Dual.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "ca92c651bfb51934e0df55ef6e36dba03c6e4d073f0425f030cad3ec68fdfb36",
+      "imports": [
+        "SmallGammaGeodesics.NIC.Transport",
+        "LQGMetric.Field.MarkovGermVer2A",
+        "LQGMetric.Field.ExistGFF"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.NIC.Transport",
+        "LQGMetric.Field.MarkovGermVer2A",
+        "LQGMetric.Field.ExistGFF"
+      ],
+      "bytes": 15994
+    },
+    "SmallGammaGeodesics.NIC.Gram": {
+      "path": "SmallGammaGeodesics/NIC/Gram.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/NIC/Gram.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "950b93a62e2cc3dd5e422f3da1f5341b325547b7755dec1d6c39c8d6f5141d33",
+      "imports": [
+        "SmallGammaGeodesics.NIC.Dual",
+        "SmallGammaGeodesics.NIC.Laplacian",
+        "Mathlib.Analysis.Normed.Operator.Extend",
+        "Mathlib.Analysis.InnerProductSpace.Rayleigh",
+        "Mathlib.Analysis.InnerProductSpace.Adjoint"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.NIC.Dual",
+        "SmallGammaGeodesics.NIC.Laplacian"
+      ],
+      "bytes": 14467
+    },
+    "SmallGammaGeodesics.NIC.Harmonic": {
+      "path": "SmallGammaGeodesics/NIC/Harmonic.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/NIC/Harmonic.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "0a10f5e873cf539502ab35c05e6a1b882b1730fd8b194d4cec0d167b75d89e0f",
+      "imports": [
+        "SmallGammaGeodesics.NIC.WhiteNoise",
+        "SmallGammaGeodesics.NIC.TransportCLM",
+        "SmallGammaGeodesics.NIC.Bump",
+        "LQGMetric.Field.MarkovAsmA"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.NIC.WhiteNoise",
+        "SmallGammaGeodesics.NIC.TransportCLM",
+        "SmallGammaGeodesics.NIC.Bump",
+        "LQGMetric.Field.MarkovAsmA"
+      ],
+      "bytes": 12711
+    },
+    "SmallGammaGeodesics.NIC.Increments": {
+      "path": "SmallGammaGeodesics/NIC/Increments.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/NIC/Increments.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "a463b2b40daa3425d695c82b1a0167fc6f1e0133b2f569d9814529d718010afb",
+      "imports": [
+        "SmallGammaGeodesics.NIC.Harmonic"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.NIC.Harmonic"
+      ],
+      "bytes": 5452
+    },
+    "SmallGammaGeodesics.NIC.Laplacian": {
+      "path": "SmallGammaGeodesics/NIC/Laplacian.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/NIC/Laplacian.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "15dee0f1e4db0fd4bc1483f2276f6ea1afb98a5ca17fb41f0b93b81bb804ecf7",
+      "imports": [
+        "SmallGammaGeodesics.NIC.Transport",
+        "LQGMetric.Field.Green",
+        "Mathlib.Analysis.InnerProductSpace.Harmonic.Constructions"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.NIC.Transport",
+        "LQGMetric.Field.Green"
+      ],
+      "bytes": 9063
+    },
+    "SmallGammaGeodesics.NIC.Main": {
+      "path": "SmallGammaGeodesics/NIC/Main.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/NIC/Main.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "f13832f39d992dad074915af06ed0dc1ffeaf68c5bc7c2683510bc9328fc4a5d",
+      "imports": [
+        "SmallGammaGeodesics.NIC.Increments"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.NIC.Increments"
+      ],
+      "bytes": 5292
+    },
+    "SmallGammaGeodesics.NIC.Sqrt": {
+      "path": "SmallGammaGeodesics/NIC/Sqrt.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/NIC/Sqrt.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "31df1d3c20028deba4087a11ccb37002d8d0dfbc726ed70c900479b1a0bba054",
+      "imports": [
+        "SmallGammaGeodesics.NIC.Gram",
+        "SmallGammaGeodesics.NIC.Binomial"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.NIC.Gram",
+        "SmallGammaGeodesics.NIC.Binomial"
+      ],
+      "bytes": 8075
+    },
+    "SmallGammaGeodesics.NIC.Transport": {
+      "path": "SmallGammaGeodesics/NIC/Transport.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/NIC/Transport.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "cc36fd2ed2f00a640f70cda36639e931f31cbec238919bf2d075c2f17ef8afeb",
+      "imports": [
+        "LQGMetric.Statement.GFF",
+        "Mathlib.MeasureTheory.Function.Jacobian",
+        "Mathlib.LinearAlgebra.Complex.Determinant",
+        "SmallGammaGeodesics.Core.Interfaces"
+      ],
+      "local_imports": [
+        "LQGMetric.Statement.GFF",
+        "SmallGammaGeodesics.Core.Interfaces"
+      ],
+      "bytes": 20307
+    },
+    "SmallGammaGeodesics.NIC.TransportCLM": {
+      "path": "SmallGammaGeodesics/NIC/TransportCLM.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/NIC/TransportCLM.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "ee3a767f83a580bfc737d03ca4cbbf6d3a6b7fc0308d6361d97973dd9af8a392",
+      "imports": [
+        "SmallGammaGeodesics.NIC.Transport"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.NIC.Transport"
+      ],
+      "bytes": 7330
+    },
+    "SmallGammaGeodesics.NIC.WhiteNoise": {
+      "path": "SmallGammaGeodesics/NIC/WhiteNoise.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/NIC/WhiteNoise.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "4c3db39d828d944df46c85cc735d524e30eee37c52b711a9407f67644a8741cb",
+      "imports": [
+        "SmallGammaGeodesics.NIC.Sqrt",
+        "LQGMetric.Field.ExistGFF"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.NIC.Sqrt",
+        "LQGMetric.Field.ExistGFF"
+      ],
+      "bytes": 6979
+    },
+    "SmallGammaGeodesics.Probes.Bands": {
+      "path": "SmallGammaGeodesics/Probes/Bands.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Probes/Bands.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "272358df8faac4824ec4798a9a6359aa318aa9ab22d9a1c011d2a07003a9b6ad",
+      "imports": [
+        "SmallGammaGeodesics.Probes.Basic",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Deriv",
+        "Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Probes.Basic"
+      ],
+      "bytes": 7721
+    },
+    "SmallGammaGeodesics.Probes.Basic": {
+      "path": "SmallGammaGeodesics/Probes/Basic.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Probes/Basic.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "bd4caf2a5ab7f26b699dab343e86bbd714ca7593ea05746cbe1c56ea755f8c42",
+      "imports": [
+        "SmallGammaGeodesics.Probes.Defs",
+        "Mathlib.Analysis.Calculus.ContDiff.FTaylorSeries",
+        "Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas",
+        "Mathlib.Analysis.Normed.Group.Bounded"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Probes.Defs"
+      ],
+      "bytes": 7373
+    },
+    "SmallGammaGeodesics.Probes.Bounds": {
+      "path": "SmallGammaGeodesics/Probes/Bounds.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Probes/Bounds.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "fb6714b2a48a35f4602cd8ee78ad6d534e1bd0c885e51fdaf853333cc95c6f2b",
+      "imports": [
+        "SmallGammaGeodesics.Probes.Kernel",
+        "SmallGammaGeodesics.Probes.Bands",
+        "SmallGammaGeodesics.Probes.LowPass",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.ArctanDeriv",
+        "Mathlib.MeasureTheory.Integral.IntervalIntegral.FundThmCalculus",
+        "Mathlib.Analysis.Convex.Basic"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Probes.Kernel",
+        "SmallGammaGeodesics.Probes.Bands",
+        "SmallGammaGeodesics.Probes.LowPass"
+      ],
+      "bytes": 28678
+    },
+    "SmallGammaGeodesics.Probes.Decay": {
+      "path": "SmallGammaGeodesics/Probes/Decay.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Probes/Decay.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "a75ac31dd1c11f28cff0de18f0fe701c6edf3a63b2cc669bf4ce7ea73116ba69",
+      "imports": [
+        "Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas",
+        "Mathlib.Analysis.Calculus.MeanValue",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds",
+        "Mathlib.Algebra.BigOperators.Intervals",
+        "Mathlib.Algebra.Order.Interval.Finset.Basic",
+        "Mathlib.Data.Int.Interval"
+      ],
+      "local_imports": [],
+      "bytes": 17783
+    },
+    "SmallGammaGeodesics.Probes.Defs": {
+      "path": "SmallGammaGeodesics/Probes/Defs.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Probes/Defs.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "a5e3a037d3b29dd3f9d1c9fbffd38440414196324a62827abb8cdf6a7baaaa77",
+      "imports": [
+        "Mathlib.Analysis.Calculus.BumpFunction.InnerProduct",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Complex",
+        "Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic",
+        "Mathlib.Topology.MetricSpace.HausdorffDistance"
+      ],
+      "local_imports": [],
+      "bytes": 4705
+    },
+    "SmallGammaGeodesics.Probes.Kernel": {
+      "path": "SmallGammaGeodesics/Probes/Kernel.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Probes/Kernel.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "2c14ec28eaa05890ad8d428edd4da5c6e09ad5ed0dd1188311254f985dc06ede",
+      "imports": [
+        "SmallGammaGeodesics.Probes.Basic",
+        "SmallGammaGeodesics.Probes.Decay",
+        "Mathlib.Analysis.SpecialFunctions.ExpDeriv",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Deriv",
+        "Mathlib.Analysis.Calculus.ContDiff.Bounds",
+        "Mathlib.Algebra.Order.Round"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Probes.Basic",
+        "SmallGammaGeodesics.Probes.Decay"
+      ],
+      "bytes": 23134
+    },
+    "SmallGammaGeodesics.Probes.LowPass": {
+      "path": "SmallGammaGeodesics/Probes/LowPass.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Probes/LowPass.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "7162b91dd1014606d9af2baab3a735acf2aa7464f21d0651f78b1a918b8208ab",
+      "imports": [
+        "SmallGammaGeodesics.Probes.Basic",
+        "SmallGammaGeodesics.Probes.Decay",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.ArctanDeriv",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Deriv",
+        "Mathlib.MeasureTheory.Integral.IntervalIntegral.FundThmCalculus",
+        "Mathlib.Algebra.Order.Floor.Semiring"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Probes.Basic",
+        "SmallGammaGeodesics.Probes.Decay"
+      ],
+      "bytes": 30908
+    },
+    "SmallGammaGeodesics.Probes.Sampling": {
+      "path": "SmallGammaGeodesics/Probes/Sampling.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Probes/Sampling.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "f4e7e038507c26a89dfdb5f314dd24e04aa7d5a80679e7c21b02b332fdfcd4e4",
+      "imports": [
+        "SmallGammaGeodesics.Probes.Bands",
+        "Mathlib.RingTheory.RootsOfUnity.Complex",
+        "Mathlib.Analysis.RCLike.Basic",
+        "Mathlib.Analysis.Complex.RealDeriv",
+        "Mathlib.Analysis.SpecialFunctions.ExpDeriv"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Probes.Bands"
+      ],
+      "bytes": 42524
+    },
+    "SmallGammaGeodesics.Tight.Band": {
+      "path": "SmallGammaGeodesics/Tight/Band.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Tight/Band.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "e3992cb4b7485a42633373be2d2855d2d8f95f4415f732418503f91cb57f003b",
+      "imports": [
+        "SmallGammaGeodesics.Tight.Coord"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Tight.Coord"
+      ],
+      "bytes": 15889
+    },
+    "SmallGammaGeodesics.Tight.Coord": {
+      "path": "SmallGammaGeodesics/Tight/Coord.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Tight/Coord.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "0a473d2afb9b533caacb7ea8c49d074a28b471b497de06273aa3f39698c29c64",
+      "imports": [
+        "SmallGammaGeodesics.Tight.LowPass",
+        "SmallGammaGeodesics.Tight.SmallScale",
+        "SmallGammaGeodesics.Upper.Good"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Tight.LowPass",
+        "SmallGammaGeodesics.Tight.SmallScale",
+        "SmallGammaGeodesics.Upper.Good"
+      ],
+      "bytes": 19080
+    },
+    "SmallGammaGeodesics.Tight.LowPass": {
+      "path": "SmallGammaGeodesics/Tight/LowPass.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Tight/LowPass.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "a5e21ec369c9878c79e55c1d0b3ff33e2f7efd7a68135fc32047f430068b1c86",
+      "imports": [
+        "SmallGammaGeodesics.Upper.Basic",
+        "SmallGammaGeodesics.Tight.Modulus",
+        "SmallGammaGeodesics.Assembly.Transfer"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Upper.Basic",
+        "SmallGammaGeodesics.Tight.Modulus",
+        "SmallGammaGeodesics.Assembly.Transfer"
+      ],
+      "bytes": 28998
+    },
+    "SmallGammaGeodesics.Tight.Main": {
+      "path": "SmallGammaGeodesics/Tight/Main.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Tight/Main.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "0d787a9fb51c3f8800a2485f6176c4aa20f748b083887da86dc8bd131b4dbb9e",
+      "imports": [
+        "SmallGammaGeodesics.Tight.Band",
+        "SmallGammaGeodesics.Upper.MainMean"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Tight.Band",
+        "SmallGammaGeodesics.Upper.MainMean"
+      ],
+      "bytes": 2936
+    },
+    "SmallGammaGeodesics.Tight.Modulus": {
+      "path": "SmallGammaGeodesics/Tight/Modulus.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Tight/Modulus.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "defdbfe82075ef7eb57b6dce92ae08ec4a25a62a3d31e487123a961de4d2cd01",
+      "imports": [
+        "Mathlib.Topology.UniformSpace.Ascoli",
+        "Mathlib.Topology.MetricSpace.Equicontinuity",
+        "Mathlib.Topology.UnitInterval",
+        "Mathlib.Topology.Order.IntermediateValue",
+        "Mathlib.Topology.Order.ProjIcc",
+        "Mathlib.Analysis.Complex.Basic",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Real"
+      ],
+      "local_imports": [],
+      "bytes": 9221
+    },
+    "SmallGammaGeodesics.Tight.SmallScale": {
+      "path": "SmallGammaGeodesics/Tight/SmallScale.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Tight/SmallScale.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "1cb55a43aceb78aca7e16b13ff0882f7526cc9f960e2adfb3187eb6d907e3c57",
+      "imports": [
+        "GaussianLQG.LQG.Scaling.LogMoments",
+        "GaussianLQG.LQG.Exponents"
+      ],
+      "local_imports": [
+        "GaussianLQG.LQG.Scaling.LogMoments",
+        "GaussianLQG.LQG.Exponents"
+      ],
+      "bytes": 31626
+    },
+    "SmallGammaGeodesics.Upper.Basic": {
+      "path": "SmallGammaGeodesics/Upper/Basic.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Upper/Basic.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "efa46949a12a578ffacca7cebd90e14cafa6e1bb1848c3a00fa11e9439d3b5f2",
+      "imports": [
+        "SmallGammaGeodesics.Upper.Defs",
+        "SmallGammaGeodesics.Probes.Sampling",
+        "SmallGammaGeodesics.Probes.LowPass"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Upper.Defs",
+        "SmallGammaGeodesics.Probes.Sampling",
+        "SmallGammaGeodesics.Probes.LowPass"
+      ],
+      "bytes": 20129
+    },
+    "SmallGammaGeodesics.Upper.Competitor": {
+      "path": "SmallGammaGeodesics/Upper/Competitor.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Upper/Competitor.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "08bae227095c60a39a5979add3725c587d464d1345692269aafa23597c7be539",
+      "imports": [
+        "SmallGammaGeodesics.Upper.Defs",
+        "SmallGammaGeodesics.Upper.ProbeInv",
+        "SmallGammaGeodesics.Upper.CompetitorWeyl",
+        "SmallGammaGeodesics.CC.Coupling",
+        "SmallGammaGeodesics.CC.ConfMetric"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Upper.Defs",
+        "SmallGammaGeodesics.Upper.ProbeInv",
+        "SmallGammaGeodesics.Upper.CompetitorWeyl",
+        "SmallGammaGeodesics.CC.Coupling",
+        "SmallGammaGeodesics.CC.ConfMetric"
+      ],
+      "bytes": 31106
+    },
+    "SmallGammaGeodesics.Upper.CompetitorWeyl": {
+      "path": "SmallGammaGeodesics/Upper/CompetitorWeyl.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Upper/CompetitorWeyl.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "7aa851ad04ecd94f7d4497f55b2a0a43d5737feb677db35fd087f05e14dbaae4",
+      "imports": [
+        "LQGMetric.Metric.WeylPathLength",
+        "Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic",
+        "Mathlib.Topology.UniformSpace.HeineCantor"
+      ],
+      "local_imports": [
+        "LQGMetric.Metric.WeylPathLength"
+      ],
+      "bytes": 11000
+    },
+    "SmallGammaGeodesics.Upper.Coupling42": {
+      "path": "SmallGammaGeodesics/Upper/Coupling42.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Upper/Coupling42.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "1c71d5ef11ad1ca9d65ac89633873aa30bea32ab8b178b32f74fa4d2e9356ddc",
+      "imports": [
+        "SmallGammaGeodesics.Upper.Coupling42Diffeo",
+        "SmallGammaGeodesics.Upper.Coupling42Sup",
+        "SmallGammaGeodesics.Upper.Coupling42Pairing",
+        "LQGMetric.Field.GFFInvariance"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Upper.Coupling42Diffeo",
+        "SmallGammaGeodesics.Upper.Coupling42Sup",
+        "SmallGammaGeodesics.Upper.Coupling42Pairing",
+        "LQGMetric.Field.GFFInvariance"
+      ],
+      "bytes": 11861
+    },
+    "SmallGammaGeodesics.Upper.Coupling42Diffeo": {
+      "path": "SmallGammaGeodesics/Upper/Coupling42Diffeo.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Upper/Coupling42Diffeo.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "bc3c6217c274ce1b685d06350fa1acd0b795b3fe64d8c01a0aea734f9dbe54c9",
+      "imports": [
+        "SmallGammaGeodesics.Upper.Interfaces",
+        "SmallGammaGeodesics.Probes.Bounds",
+        "SmallGammaGeodesics.NIC.Transport",
+        "Mathlib.Analysis.Calculus.InverseFunctionTheorem.ApproximatesLinearOn",
+        "Mathlib.Analysis.Calculus.Deriv.Inverse",
+        "Mathlib.Analysis.Complex.OperatorNorm",
+        "Mathlib.Analysis.Complex.CauchyIntegral"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Upper.Interfaces",
+        "SmallGammaGeodesics.Probes.Bounds",
+        "SmallGammaGeodesics.NIC.Transport"
+      ],
+      "bytes": 31687
+    },
+    "SmallGammaGeodesics.Upper.Coupling42Pairing": {
+      "path": "SmallGammaGeodesics/Upper/Coupling42Pairing.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Upper/Coupling42Pairing.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "fd399c79a3d276b6521f2e1a062651b27110d253d8d820c5a35c582268a81490",
+      "imports": [
+        "SmallGammaGeodesics.Upper.Coupling42Path",
+        "SmallGammaGeodesics.NIC.Transport"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Upper.Coupling42Path",
+        "SmallGammaGeodesics.NIC.Transport"
+      ],
+      "bytes": 33501
+    },
+    "SmallGammaGeodesics.Upper.Coupling42Path": {
+      "path": "SmallGammaGeodesics/Upper/Coupling42Path.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Upper/Coupling42Path.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "c1a3c0b12deb57055468f2ebb6d31c876306ed6774b989eba2cf0c907a136d7c",
+      "imports": [
+        "SmallGammaGeodesics.Upper.Interfaces",
+        "GaussianLQG.Field.Realization.Pairing",
+        "LQGMetric.Field.CircleAvgPairing",
+        "LQGMetric.Field.CircleAvgIntegral",
+        "LQGMetric.Field.CircleAvgAffine",
+        "LQGMetric.Field.CircleAvgLimit",
+        "LQGMetric.Field.CircleAvgVar",
+        "LQGMetric.Field.MeasurableAvg",
+        "Mathlib.MeasureTheory.Measure.HasOuterApproxClosed"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Upper.Interfaces",
+        "GaussianLQG.Field.Realization.Pairing",
+        "LQGMetric.Field.CircleAvgPairing",
+        "LQGMetric.Field.CircleAvgIntegral",
+        "LQGMetric.Field.CircleAvgAffine",
+        "LQGMetric.Field.CircleAvgLimit",
+        "LQGMetric.Field.CircleAvgVar",
+        "LQGMetric.Field.MeasurableAvg"
+      ],
+      "bytes": 27750
+    },
+    "SmallGammaGeodesics.Upper.Coupling42Sup": {
+      "path": "SmallGammaGeodesics/Upper/Coupling42Sup.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Upper/Coupling42Sup.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "01a7871bfdfbb294a6055b98b614dc8d26763ae6b41c60369cd9eb85ba577132",
+      "imports": [
+        "SmallGammaGeodesics.Upper.Interfaces",
+        "SmallGammaGeodesics.Probes.Basic",
+        "LQGMetric.Gaussian.SupTailField",
+        "LQGMetric.Gaussian.FerniqueFinite",
+        "GaussianLQG.Energy.LogPotential",
+        "Mathlib.MeasureTheory.Integral.Layercake",
+        "Mathlib.Analysis.Complex.ExponentialBounds"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Upper.Interfaces",
+        "SmallGammaGeodesics.Probes.Basic",
+        "LQGMetric.Gaussian.SupTailField",
+        "LQGMetric.Gaussian.FerniqueFinite",
+        "GaussianLQG.Energy.LogPotential"
+      ],
+      "bytes": 34939
+    },
+    "SmallGammaGeodesics.Upper.Defs": {
+      "path": "SmallGammaGeodesics/Upper/Defs.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Upper/Defs.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "fb47c8a975d6a76f937efcd1ddd3b7f6ee297ecf81fe54846eb78c5e3950b9bf",
+      "imports": [
+        "SmallGammaGeodesics.Upper.Interfaces",
+        "SmallGammaGeodesics.Core.Setup",
+        "SmallGammaGeodesics.Variance.Clock"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Upper.Interfaces",
+        "SmallGammaGeodesics.Core.Setup",
+        "SmallGammaGeodesics.Variance.Clock"
+      ],
+      "bytes": 3309
+    },
+    "SmallGammaGeodesics.Upper.Exponents": {
+      "path": "SmallGammaGeodesics/Upper/Exponents.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Upper/Exponents.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "3e7e534bee1c87bac4c55f45e621f9b0d098524b190f9e824c57c98274a052e6",
+      "imports": [
+        "SmallGammaGeodesics.Upper.Basic"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Upper.Basic"
+      ],
+      "bytes": 26932
+    },
+    "SmallGammaGeodesics.Upper.ExponentsGain": {
+      "path": "SmallGammaGeodesics/Upper/ExponentsGain.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Upper/ExponentsGain.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "f392a199f61b82943d8539f98a6455a3dc217fefcab09029901d5e3fb9d864ae",
+      "imports": [
+        "SmallGammaGeodesics.Upper.Exponents",
+        "SmallGammaGeodesics.Upper.Taylor"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Upper.Exponents",
+        "SmallGammaGeodesics.Upper.Taylor"
+      ],
+      "bytes": 10642
+    },
+    "SmallGammaGeodesics.Upper.Good": {
+      "path": "SmallGammaGeodesics/Upper/Good.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Upper/Good.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "fb5c1fc7cc3cada3509a5539f63f84cdcea8136ebef44d0cfe3b820ece1cd18f",
+      "imports": [
+        "SmallGammaGeodesics.Upper.Basic",
+        "SmallGammaGeodesics.Variance.Residual"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Upper.Basic",
+        "SmallGammaGeodesics.Variance.Residual"
+      ],
+      "bytes": 16603
+    },
+    "SmallGammaGeodesics.Upper.Interfaces": {
+      "path": "SmallGammaGeodesics/Upper/Interfaces.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Upper/Interfaces.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "025123cbffe2b3cd49e38cd30c85274c38038ae4f245882d869d0fca48131620",
+      "imports": [
+        "SmallGammaGeodesics.Probes.Defs",
+        "SmallGammaGeodesics.Core.Interfaces",
+        "GaussianLQG.Frozen.MeasPairing",
+        "GaussianLQG.Frozen.SegMeasure"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Probes.Defs",
+        "SmallGammaGeodesics.Core.Interfaces",
+        "GaussianLQG.Frozen.MeasPairing",
+        "GaussianLQG.Frozen.SegMeasure"
+      ],
+      "bytes": 2964
+    },
+    "SmallGammaGeodesics.Upper.Lemma42Holds": {
+      "path": "SmallGammaGeodesics/Upper/Lemma42Holds.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Upper/Lemma42Holds.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "2c85ffb52420f14baed942e81c1bde97d8cde6d55f07dde9ee8ceabebff89eee",
+      "imports": [
+        "SmallGammaGeodesics.Upper.Coupling42",
+        "SmallGammaGeodesics.NIC.Main"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Upper.Coupling42",
+        "SmallGammaGeodesics.NIC.Main"
+      ],
+      "bytes": 525
+    },
+    "SmallGammaGeodesics.Upper.Lemma51": {
+      "path": "SmallGammaGeodesics/Upper/Lemma51.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Upper/Lemma51.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "8ad107492f1e17a7e21987ba101a1e0a4f2293d22efaee15cb4348c9f6b03e4a",
+      "imports": [
+        "SmallGammaGeodesics.Upper.SingleProbe"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Upper.SingleProbe"
+      ],
+      "bytes": 19159
+    },
+    "SmallGammaGeodesics.Upper.Main": {
+      "path": "SmallGammaGeodesics/Upper/Main.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Upper/Main.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "53434e4a1a585d1a1676ade02d633dfd63b63ad8c7268bfc519050cf027cb0c1",
+      "imports": [
+        "SmallGammaGeodesics.Upper.MainMean",
+        "SmallGammaGeodesics.Assembly.Scalar"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Upper.MainMean",
+        "SmallGammaGeodesics.Assembly.Scalar"
+      ],
+      "bytes": 6904
+    },
+    "SmallGammaGeodesics.Upper.MainMean": {
+      "path": "SmallGammaGeodesics/Upper/MainMean.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Upper/MainMean.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "94f7397485da283ba03b11fced398eb76564b23674a0da16e782def15d29da79",
+      "imports": [
+        "SmallGammaGeodesics.Upper.Lemma51",
+        "SmallGammaGeodesics.Tight.Band"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Upper.Lemma51",
+        "SmallGammaGeodesics.Tight.Band"
+      ],
+      "bytes": 16476
+    },
+    "SmallGammaGeodesics.Upper.ProbeInv": {
+      "path": "SmallGammaGeodesics/Upper/ProbeInv.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Upper/ProbeInv.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "1d6241c5175c89680ea3a3a0a443e59a56e3e3661a842485340f0aed1e131b99",
+      "imports": [
+        "SmallGammaGeodesics.Upper.Interfaces",
+        "SmallGammaGeodesics.Probes.Bounds",
+        "SmallGammaGeodesics.CC.Pullback",
+        "Mathlib.Topology.MetricSpace.Contracting",
+        "Mathlib.MeasureTheory.Constructions.BorelSpace.Basic"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Upper.Interfaces",
+        "SmallGammaGeodesics.Probes.Bounds",
+        "SmallGammaGeodesics.CC.Pullback"
+      ],
+      "bytes": 9387
+    },
+    "SmallGammaGeodesics.Upper.ProbeInvEnergy": {
+      "path": "SmallGammaGeodesics/Upper/ProbeInvEnergy.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Upper/ProbeInvEnergy.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "bb0a62ea4ea925b6e6afd5809e995e74e1802fb432f2023127a198df658d123e",
+      "imports": [
+        "SmallGammaGeodesics.Upper.ProbeInv",
+        "SmallGammaGeodesics.Variance.FourKernel"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Upper.ProbeInv",
+        "SmallGammaGeodesics.Variance.FourKernel"
+      ],
+      "bytes": 4210
+    },
+    "SmallGammaGeodesics.Upper.ResidualField": {
+      "path": "SmallGammaGeodesics/Upper/ResidualField.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Upper/ResidualField.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "515a5d0f84e398d5bbd7be714fcb670e996b0dc5c62df7f27b65fe5d1771980a",
+      "imports": [
+        "SmallGammaGeodesics.Upper.Transfer",
+        "SmallGammaGeodesics.Variance.Residual"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Upper.Transfer",
+        "SmallGammaGeodesics.Variance.Residual"
+      ],
+      "bytes": 5393
+    },
+    "SmallGammaGeodesics.Upper.SingleProbe": {
+      "path": "SmallGammaGeodesics/Upper/SingleProbe.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Upper/SingleProbe.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "65bfb37e051dbfad272046376d117fab785b6a7f58e9808084131bd70b8f712f",
+      "imports": [
+        "SmallGammaGeodesics.Upper.Competitor",
+        "SmallGammaGeodesics.Upper.ProbeInvEnergy",
+        "SmallGammaGeodesics.Upper.ExponentsGain",
+        "SmallGammaGeodesics.Upper.ResidualField",
+        "SmallGammaGeodesics.Upper.Good"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Upper.Competitor",
+        "SmallGammaGeodesics.Upper.ProbeInvEnergy",
+        "SmallGammaGeodesics.Upper.ExponentsGain",
+        "SmallGammaGeodesics.Upper.ResidualField",
+        "SmallGammaGeodesics.Upper.Good"
+      ],
+      "bytes": 23070
+    },
+    "SmallGammaGeodesics.Upper.Taylor": {
+      "path": "SmallGammaGeodesics/Upper/Taylor.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Upper/Taylor.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "765e9cbeac6b5d4d8df3f2f7891d71ca96d1e97a18f0ed72a8c4dfce66869dc9",
+      "imports": [
+        "SmallGammaGeodesics.Upper.TaylorBasic",
+        "SmallGammaGeodesics.Upper.Defs"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Upper.TaylorBasic",
+        "SmallGammaGeodesics.Upper.Defs"
+      ],
+      "bytes": 29715
+    },
+    "SmallGammaGeodesics.Upper.TaylorBasic": {
+      "path": "SmallGammaGeodesics/Upper/TaylorBasic.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Upper/TaylorBasic.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "b07af1f402f798d7b1210321facbb2c10fa935c5a699584a6e6dbde7a0dfdacd",
+      "imports": [
+        "SmallGammaGeodesics.Probes.Bounds",
+        "SmallGammaGeodesics.Probes.Bands",
+        "Mathlib.Analysis.SpecialFunctions.Complex.LogBounds",
+        "Mathlib.Analysis.Calculus.MeanValue",
+        "Mathlib.Analysis.Complex.RealDeriv"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Probes.Bounds",
+        "SmallGammaGeodesics.Probes.Bands"
+      ],
+      "bytes": 23318
+    },
+    "SmallGammaGeodesics.Upper.Transfer": {
+      "path": "SmallGammaGeodesics/Upper/Transfer.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Upper/Transfer.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "9a5a44bda22ddd1be6cd183e48f18d805f40a7fc29a97b07356380d2cf3f177b",
+      "imports": [
+        "SmallGammaGeodesics.Upper.TransferPairing",
+        "SmallGammaGeodesics.Upper.Defs",
+        "SmallGammaGeodesics.Variance.FourKernel"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Upper.TransferPairing",
+        "SmallGammaGeodesics.Upper.Defs",
+        "SmallGammaGeodesics.Variance.FourKernel"
+      ],
+      "bytes": 16403
+    },
+    "SmallGammaGeodesics.Upper.TransferPairing": {
+      "path": "SmallGammaGeodesics/Upper/TransferPairing.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Upper/TransferPairing.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "1029f8c75ceaee5c783c8918e4fe741af2b9d0dbb3e6ff3df5208044967d57c0",
+      "imports": [
+        "SmallGammaGeodesics.Upper.Coupling42Path",
+        "LQGMetric.Field.MarkovWeylInt"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Upper.Coupling42Path",
+        "LQGMetric.Field.MarkovWeylInt"
+      ],
+      "bytes": 21542
+    },
+    "SmallGammaGeodesics.Variance.Clock": {
+      "path": "SmallGammaGeodesics/Variance/Clock.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Variance/Clock.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "e0d11ef010fb8f215a7d0f11aa7a3391fdee21a1488789ba6e81fef56f1f7dfe",
+      "imports": [
+        "SmallGammaGeodesics.Core.PathFunctionals",
+        "Mathlib.Analysis.SpecialFunctions.Sqrt",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Real",
+        "Mathlib.Topology.Order.IntermediateValue",
+        "Mathlib.Topology.UnitInterval"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Core.PathFunctionals"
+      ],
+      "bytes": 20838
+    },
+    "SmallGammaGeodesics.Variance.FourKernel": {
+      "path": "SmallGammaGeodesics/Variance/FourKernel.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Variance/FourKernel.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "12b52d6058e837ac62a40ebeb359788baabea2a5d800c8ae8415e5038412f47b",
+      "imports": [
+        "SmallGammaGeodesics.Variance.KernelBounds",
+        "GaussianLQG.Energy.SegmentsBasic"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Variance.KernelBounds",
+        "GaussianLQG.Energy.SegmentsBasic"
+      ],
+      "bytes": 30757
+    },
+    "SmallGammaGeodesics.Variance.KernelBounds": {
+      "path": "SmallGammaGeodesics/Variance/KernelBounds.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Variance/KernelBounds.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "08fb237548e871f02614134f938234badc84df6a07ab0de93cc81a85c72a788a",
+      "imports": [
+        "GaussianLQG.Energy.LogPotential",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.ArctanDeriv",
+        "Mathlib.Analysis.SpecialFunctions.Log.PosLog"
+      ],
+      "local_imports": [
+        "GaussianLQG.Energy.LogPotential"
+      ],
+      "bytes": 17787
+    },
+    "SmallGammaGeodesics.Variance.Lemma31": {
+      "path": "SmallGammaGeodesics/Variance/Lemma31.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Variance/Lemma31.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "152249c19972a0d7a7180865a0ba8a63da98f0ac28e81616a0a7745102c43aaf",
+      "imports": [
+        "SmallGammaGeodesics.Variance.FourKernel",
+        "SmallGammaGeodesics.Variance.Clock",
+        "GaussianLQG.Metric.Geodesic"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Variance.FourKernel",
+        "SmallGammaGeodesics.Variance.Clock",
+        "GaussianLQG.Metric.Geodesic"
+      ],
+      "bytes": 10970
+    },
+    "SmallGammaGeodesics.Variance.Residual": {
+      "path": "SmallGammaGeodesics/Variance/Residual.lean",
+      "source_path": "formalizations/small_gamma_geodesics/SmallGammaGeodesics/Variance/Residual.lean",
+      "source_commit": "cda0ca791aa47c86fb1f8f99835b702d17ba244b",
+      "sha256": "2a979442856d5c9d152272844fb5fe42c8ee8c214d93be1b9856ed5fac25f98c",
+      "imports": [
+        "SmallGammaGeodesics.Variance.Lemma31",
+        "SmallGammaGeodesics.Inputs.Moments",
+        "SmallGammaGeodesics.Inputs.EuclidFine",
+        "GaussianLQG.LQG.FirstOrder",
+        "Mathlib.Analysis.Complex.ExponentialBounds"
+      ],
+      "local_imports": [
+        "SmallGammaGeodesics.Variance.Lemma31",
+        "SmallGammaGeodesics.Inputs.Moments",
+        "SmallGammaGeodesics.Inputs.EuclidFine",
+        "GaussianLQG.LQG.FirstOrder"
+      ],
+      "bytes": 43242
     }
   }
 }

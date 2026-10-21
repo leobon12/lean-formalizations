@@ -1,6 +1,6 @@
 # Verification record
 
-The release contains 6,756 byte-preserved Lean modules from seven selected source snapshots:
+The release contains 6,896 byte-preserved Lean modules from eight selected source snapshots:
 
 | Source commit | Included modules | Scope |
 | --- | ---: | --- |
@@ -12,8 +12,9 @@ The release contains 6,756 byte-preserved Lean modules from seven selected sourc
 | `6eb5a29e8fb37c70823e6966d3cad60e400e874a` | 163 | 163 GaussianLQG |
 | `a69d1d3ff0550bd33713f02ebbd602ca97e98848` | 4 | 4 GaussianLQG (docstring-only updates of Core/MainDefs, Core/Setup, Assembly/Provider, Uniform/InterfacesLFPP) |
 | `ab73b5b7338fe49917894eac509a727ef7a39efc` | 160 | 160 HigherDimLFPP |
+| `cda0ca791aa47c86fb1f8f99835b702d17ba244b` | 140 | 138 SmallGammaGeodesics and `GaussianLQG`, `GaussianLQG.Uniform.RSW` (library aggregator modules) |
 
-`source-manifest.json` records the 38 selected entry modules, their exact transitive local import closure,
+`source-manifest.json` records the 41 selected entry modules, their exact transitive local import closure,
 original relative paths, direct imports, source commits and SHA-256 hashes. The original release's 1,007
 modules and the 2,866 Quantum Zipper release modules are unchanged. New module rows have an explicit `source_commit`; older rows inherit the manifest's
 original `source_commit`. Only selected proof dependencies are included, without private development history,
@@ -107,7 +108,7 @@ lake exe cache get
 python3 scripts/verify.py
 ```
 
-The default verifier compiles all 6,756 project modules from source in dependency order with at most two
+The default verifier compiles all 6,896 project modules from source in dependency order with at most two
 Lean processes, then compiles `Certificate.lean`. It stops on compilation failure. Logs and a
 machine-readable result are written under the ignored `.lake/verification/`. This mode does not use
 pre-existing project oleans. `python3 scripts/verify.py --cached` explicitly permits reuse of project
@@ -241,4 +242,60 @@ lake build HigherDimLFPP.Frozen.MainTheorem HigherDimLFPP.Frozen.DimensionCompar
   HigherDimLFPP.Frozen.LQGDimensionAsymptotics HigherDimLFPP.Frozen.GFFCircleAverage
 lake env lean results/higher-dim-lfpp/Check.lean
 lake env leanchecker --fresh HigherDimLFPP.Frozen.MainTheorem
+```
+
+## Small-parameter LQG geodesics (21 October 2026)
+
+The new entrypoints are the three frozen theorem modules `SmallGammaGeodesics.Frozen.DeviationScale`,
+`FunctionalTightness` and `GeodesicAeUnique`. `SmallGammaGeodesics.deviation_scale` and
+`SmallGammaGeodesics.functional_tightness` are Theorems 1.1 and 1.2 of the source paper, and
+`SmallGammaGeodesics.geodesic_ae_unique` is its (1.3) with a measurable choice of the geodesic; the
+[result guide](results/small-parameter-lqg-geodesics/) describes them. Their import closure has 3,710
+local modules: 138 SmallGammaGeodesics, 2,362 LQGMetric, 931 QuantumZipper, 169 GaussianLQG and 110
+LQGDimension. Of these, 3,570 were already released and are byte-identical, so the export adds 140 files
+without changing any previously released proof module. All new files are copied byte-for-byte from source
+commit `cda0ca791aa47c86fb1f8f99835b702d17ba244b`, the commit that sealed both theorems. Lean and all
+dependency revisions match the existing release.
+
+The two new GaussianLQG files are aggregator modules that declare nothing and import only released
+modules: `GaussianLQG.lean`, the root module of that library, which `SmallGammaGeodesics.Core.Setup`
+imports, and `GaussianLQG/Uniform/RSW.lean`. Because `GaussianLQG.lean` lies next to the `GaussianLQG/`
+directory, the source scan of `scripts/verify.py` now also collects the root file `<Library>.lean` of
+each library when it exists; the other checks are unchanged.
+
+In the development workspace, `lake env leanchecker --fresh SmallGammaGeodesics` re-checked, in a fresh
+environment, every declaration in the import closure of the development root module
+`SmallGammaGeodesics`, Mathlib included. That root module imports the three frozen theorem modules and is
+not part of this snapshot. The replay **exited with code 0**, with no errors, on 21 October 2026
+(11:10–11:22 CEST, 12 min 50 s), on the Lean sources of commit `cda0ca791`. This is an upstream
+verification report, distinct from a check of the exported snapshot.
+
+The public source scan passed for all 6,896 files. All 3,710 closure files, and the 2,080 further
+files in the closure of the partial certificate below, were checked byte-for-byte against the
+sources of the development build, whose compiled modules Lake reported up to date. The 140 new
+modules were then **compiled afresh from the exported files**, with the verifier's per-module
+settings (`lean -j1 -M8192`): 392 seconds of wall time with one process, at most 10.2 seconds and
+5.2 GB per module. The 3,570 previously released dependencies were reused from that build. The
+[focused certificate](results/small-parameter-lqg-geodesics/Check.lean) was compiled afresh against
+the new modules and **passed**. It restates the three theorems verbatim and checks that the frozen
+declarations prove them, derives an actual geodesic family to which Theorem 1.1 applies, prints the
+three frozen definitions, and checks the conformal covariance of the LQG metric for maps conformal
+near the closure of a bounded domain, the near-identity coupling and the section-level results. It
+rejects `sorry` and audits **55,178 project declarations and 139,923 reachable declarations**, with
+only `propext`, `Classical.choice` and `Quot.sound`. See the [machine-readable
+record](results/small-parameter-lqg-geodesics/verification.json). A copy of the combined certificate
+without the imports and checks of the five libraries that the development workspace does not build
+(MeshOnly, BouRabeeGwynne, ReflectedWalk, ReflectedGMS and MeshRates) also compiled, including the
+new section and the extended whole-declaration audit (77,000 project declarations, standard axioms
+only). These are incremental checks; the public workflow performs the fresh rebuild of all 6,896
+modules and the combined certificate.
+
+To reproduce:
+
+```sh
+lake exe cache get
+lake build SmallGammaGeodesics.Frozen.DeviationScale SmallGammaGeodesics.Frozen.FunctionalTightness \
+  SmallGammaGeodesics.Frozen.GeodesicAeUnique
+lake env lean results/small-parameter-lqg-geodesics/Check.lean
+lake env leanchecker --fresh SmallGammaGeodesics.Frozen.DeviationScale
 ```

@@ -36,6 +36,9 @@ import HigherDimLFPP.Frozen.BandVecNormSq
 import HigherDimLFPP.Frozen.FieldExists
 import HigherDimLFPP.Frozen.LQGDimensionAsymptotics
 import HigherDimLFPP.Frozen.GFFCircleAverage
+import SmallGammaGeodesics.Frozen.DeviationScale
+import SmallGammaGeodesics.Frozen.FunctionalTightness
+import SmallGammaGeodesics.Frozen.GeodesicAeUnique
 import Mathlib.Util.AssertNoSorry
 
 /-! Verification of the selected public results and every declaration in their included modules.
@@ -192,7 +195,8 @@ run_cmd do
     if (`MeshOnly).isPrefixOf m || (`BouRabeeGwynne).isPrefixOf m || (`ReflectedWalk).isPrefixOf m ||
         (`ReflectedGMS).isPrefixOf m || (`QuantumZipper).isPrefixOf m ||
         (`LQGDimension).isPrefixOf m || (`LQGMetric).isPrefixOf m || (`MeshRates).isPrefixOf m ||
-        (`GaussianLQG).isPrefixOf m || (`HigherDimLFPP).isPrefixOf m then
+        (`GaussianLQG).isPrefixOf m || (`HigherDimLFPP).isPrefixOf m ||
+        (`SmallGammaGeodesics).isPrefixOf m then
       roots := roots.push n
   if roots.isEmpty then throwError "No included declarations found"
   let mut pending := roots
@@ -402,3 +406,86 @@ assert_no_sorry HigherDimLFPP.gff_circle_average_lfpp
 #print axioms HigherDimLFPP.field_exists
 #print axioms HigherDimLFPP.lqg_dimension_asymptotics
 #print axioms HigherDimLFPP.gff_circle_average_lfpp
+
+/-! ## Small-parameter LQG geodesics: deviation and functional tightness
+
+The frozen theorems `SmallGammaGeodesics.deviation_scale` (Theorem 1.1 of the source paper, (1.4)–(1.9)),
+`SmallGammaGeodesics.functional_tightness` (Theorem 1.2) and `SmallGammaGeodesics.geodesic_ae_unique`
+(the a.s. unique constant-speed geodesic (1.3), with a measurable choice). The `example`s restate their
+types verbatim from `SmallGammaGeodesics/Frozen/`; the result guide documents the correspondence with the
+paper. -/
+
+section SmallGammaGeodesicsRelease
+open MeasureTheory Filter Topology Set
+open scoped ENNReal
+
+set_option pp.explicit false in
+set_option pp.universes false in
+#check SmallGammaGeodesics.deviation_scale
+
+namespace SmallGammaGeodesics
+open LQGMetric
+
+example :
+    ∀ (D : ℝ → DistC → ContMetric)
+    (_hD : ∀ γ, 0 < γ → γ < 2 → IsStrongLQGMetric γ (D γ))
+    {Ω : Type} [MeasurableSpace Ω] (P : Measure Ω) [IsProbabilityMeasure P]
+    (h : Ω → DistC) (_hh : IsNormalizedWPGFF h P)
+    (η : ℝ → Ω → C(unitInterval, ℂ))
+    (_hη : ∀ γ, 0 < γ → γ < 2 → ∀ᵐ ω ∂P, Blueprint.IsGeod01 (D γ (h ω)) 0 1 (η γ ω)),
+    ∃ C γ₀ : ℝ, 0 < γ₀ ∧
+      -- (1.4)
+      (∀ γ ∈ Ioo (0 : ℝ) γ₀,
+        ∫⁻ ω, ENNReal.ofReal (maxDev (η γ ω)) ∂P ≤ ENNReal.ofReal (C * γ ^ (2 / 3 : ℝ))) ∧
+      -- (1.5)
+      (∀ A : ℝ, 1 ≤ A → ∀ ε : ℝ, 0 < ε → ∀ᶠ γ in 𝓝[>] (0 : ℝ),
+        P {ω | A * γ ^ (2 / 3 : ℝ) < maxDev (η γ ω)} ≤
+          ENNReal.ofReal (C * (A ^ (-3 : ℝ) + A ^ (-4 : ℝ)) + ε)) ∧
+      -- (1.6)
+      (∀ γ ∈ Ioo (0 : ℝ) γ₀, ∀ a ∈ Ioc (0 : ℝ) 1,
+        P {ω | maxDev (η γ ω) ≤ a * γ ^ (2 / 3 : ℝ)} ≤ ENNReal.ofReal (C * a ^ (3 / 5 : ℝ))) ∧
+      -- (1.7)
+      (∀ ε : ℝ, 0 < ε → ∃ a A : ℝ, 0 < a ∧ ∀ᶠ γ in 𝓝[>] (0 : ℝ),
+        P {ω | ¬ (a ≤ maxDev (η γ ω) / γ ^ (2 / 3 : ℝ) ∧
+          maxDev (η γ ω) / γ ^ (2 / 3 : ℝ) ≤ A)} ≤ ENNReal.ofReal ε) ∧
+      -- (1.8)
+      (∀ r ∈ Ioo (0 : ℝ) (3 / 5), ∃ K : ℝ, ∀ γ ∈ Ioo (0 : ℝ) γ₀,
+        ∫⁻ ω, ENNReal.ofReal (maxDev (η γ ω) / γ ^ (2 / 3 : ℝ)) ^ (-r) ∂P ≤ ENNReal.ofReal K) ∧
+      -- (1.9)
+      (∀ ε : ℝ, 0 < ε → Tendsto (fun γ : ℝ => P {ω | ¬ (γ ^ (2 / 3 + ε) ≤ maxDev (η γ ω) ∧
+          maxDev (η γ ω) ≤ γ ^ (2 / 3 - ε))}) (𝓝[>] 0) (𝓝 0)) :=
+  deviation_scale
+
+example :
+    ∀ (D : ℝ → DistC → ContMetric)
+    (_hD : ∀ γ, 0 < γ → γ < 2 → IsStrongLQGMetric γ (D γ))
+    {Ω : Type} [MeasurableSpace Ω] (P : Measure Ω) [IsProbabilityMeasure P]
+    (h : Ω → DistC) (_hh : IsNormalizedWPGFF h P)
+    (η : ℝ → Ω → C(unitInterval, ℂ))
+    (_hη : ∀ γ, 0 < γ → γ < 2 → ∀ᵐ ω ∂P, Blueprint.IsGeod01 (D γ (h ω)) 0 1 (η γ ω)),
+    (∀ γ, 0 < γ → γ < 2 →
+      AEMeasurable (fun ω => rescaledPath (γ ^ (2 / 3 : ℝ)) (η γ ω)) P) ∧
+    (∀ ε : ℝ, 0 < ε → ∃ K : Set C(unitInterval, ℂ), IsCompact K ∧ ∀ᶠ γ in 𝓝[>] (0 : ℝ),
+      P {ω | rescaledPath (γ ^ (2 / 3 : ℝ)) (η γ ω) ∉ K} ≤ ENNReal.ofReal ε) ∧
+    TendstoInMeasure P (fun γ ω => horizDev (γ ^ (2 / 3 : ℝ)) (η γ ω)) (𝓝[>] 0) (fun _ => 0) :=
+  functional_tightness
+
+example :
+    ∀ (D : ℝ → DistC → ContMetric)
+    (_hD : ∀ γ, 0 < γ → γ < 2 → IsStrongLQGMetric γ (D γ))
+    {Ω : Type} [MeasurableSpace Ω] (P : Measure Ω) [IsProbabilityMeasure P]
+    (h : Ω → DistC) (_hh : IsNormalizedWPGFF h P),
+    (∀ γ, 0 < γ → γ < 2 → ∀ᵐ ω ∂P, ∃! η, Blueprint.IsGeod01 (D γ (h ω)) 0 1 η) ∧
+    ∃ η : ℝ → Ω → C(unitInterval, ℂ), (∀ γ, Measurable (η γ)) ∧
+      ∀ γ, 0 < γ → γ < 2 → ∀ᵐ ω ∂P, Blueprint.IsGeod01 (D γ (h ω)) 0 1 (η γ ω) :=
+  geodesic_ae_unique
+
+end SmallGammaGeodesics
+end SmallGammaGeodesicsRelease
+
+assert_no_sorry SmallGammaGeodesics.deviation_scale
+assert_no_sorry SmallGammaGeodesics.functional_tightness
+assert_no_sorry SmallGammaGeodesics.geodesic_ae_unique
+#print axioms SmallGammaGeodesics.deviation_scale
+#print axioms SmallGammaGeodesics.functional_tightness
+#print axioms SmallGammaGeodesics.geodesic_ae_unique
