@@ -1,6 +1,6 @@
 # Verification record
 
-The release contains 8,206 byte-preserved Lean modules from nine selected source snapshots:
+The release contains 8,661 byte-preserved Lean modules from ten selected source snapshots:
 
 | Source commit | Included modules | Scope |
 | --- | ---: | --- |
@@ -14,8 +14,9 @@ The release contains 8,206 byte-preserved Lean modules from nine selected source
 | `ab73b5b7338fe49917894eac509a727ef7a39efc` | 160 | 160 HigherDimLFPP |
 | `cda0ca791aa47c86fb1f8f99835b702d17ba244b` | 140 | 138 SmallGammaGeodesics and `GaussianLQG`, `GaussianLQG.Uniform.RSW` (library aggregator modules) |
 | `22770ff221dba08ca55daf25606b31f5c6b4b8cb` | 1,310 | 1,310 HigherDimLQGMetric |
+| `e673af9df85cce0c4a373317a508da7bc93dd62a` | 455 | 454 HigherDimLQGContinuity and `HigherDimLQGMetric.Sec4.Bridge` |
 
-`source-manifest.json` records the 52 selected entry modules, their exact transitive local import closure,
+`source-manifest.json` records the 57 selected entry modules, their exact transitive local import closure,
 original relative paths, direct imports, source commits and SHA-256 hashes. The original release's 1,007
 modules and the 2,866 Quantum Zipper release modules are unchanged. New module rows have an explicit `source_commit`; older rows inherit the manifest's
 original `source_commit`. Only selected proof dependencies are included, without private development history,
@@ -109,7 +110,7 @@ lake exe cache get
 python3 scripts/verify.py
 ```
 
-The default verifier compiles all 8,206 project modules from source in dependency order with at most two
+The default verifier compiles all 8,661 project modules from source in dependency order with at most two
 Lean processes, then compiles `Certificate.lean`. It stops on compilation failure. Logs and a
 machine-readable result are written under the ignored `.lake/verification/`. This mode does not use
 pre-existing project oleans. `python3 scripts/verify.py --cached` explicitly permits reuse of project
@@ -354,4 +355,57 @@ lake exe cache get
 lake build HigherDimLQGMetric.Frozen.Theorem12 HigherDimLQGMetric.Frozen.Theorem14
 lake env lean results/higher-dimensional-lqg-metric/Check.lean
 lake env leanchecker --fresh HigherDimLQGMetric.Frozen.Theorem12
+```
+
+## Higher-dimensional LQG continuity (2026-10-22)
+
+The new entrypoints are the five frozen theorem modules `HigherDimLQGContinuity.Frozen.Theorem11Metric`,
+`Theorem11`, `Theorem11Xi`, `Prop18` and `MedianOneStrongExists`.
+`HigherDimLQGContinuity.theorem11_metric` is Theorem 1.1 of the source paper; the [result
+guide](results/higher-dimensional-lqg-continuity/) describes the other four. Their import closure has
+3,339 local modules: 454 HigherDimLQGContinuity, 1,300 HigherDimLQGMetric, 734 QuantumZipper, 667
+LQGMetric, 97 HigherDimLFPP, 49 GaussianLQG and 38 LQGDimension. Of these, 2,884 were already released
+and are byte-identical, so the export adds 455 files without changing any previously released proof
+module; besides the HigherDimLQGContinuity modules it adds `HigherDimLQGMetric/Sec4/Bridge.lean`, a
+development module of an earlier library that its release did not need. All new files are copied
+byte-for-byte from source commit `e673af9df85cce0c4a373317a508da7bc93dd62a`, the release commit; the last
+three frozen theorems were sealed in `7ed6a9d94`, and the exported files are the same at both commits.
+Lean and all dependency revisions match the existing release.
+
+In the development workspace, `lake env leanchecker --fresh HigherDimLQGContinuity` re-checked, in a
+fresh environment, every declaration in the import closure of the development root module
+`HigherDimLQGContinuity`, Mathlib included. That root module imports the five frozen theorem modules and
+is not part of this snapshot. The replay **exited with code 0**, with no errors, on 22 October 2026
+(11:24–11:33 CEST, 8 min 34 s), on the Lean sources of commit `e673af9df`. This is an upstream
+verification report, distinct from a check of the exported snapshot.
+
+The public source scan passed for all 8,661 files. All 3,339 closure files, and the 4,216 further
+files in the closure of the partial certificate below, were checked byte-for-byte against the
+sources of the development build, whose compiled modules Lake reported up to date. The 455 new
+modules were then **compiled afresh from the exported files**, with the verifier's per-module
+settings (`lean -j1 -M8192`): 1,092 seconds of wall time, at most 16.1 seconds and 5.2 GB per
+module. The 2,884 previously released dependencies were reused from that build. The [focused
+certificate](results/higher-dimensional-lqg-continuity/Check.lean) was compiled afresh against the
+new modules and **passed**. It restates the five theorems verbatim and checks that the frozen
+declarations prove them, derives that the hypotheses of the version clause of Theorem 1.1 can be met
+in dimension three, prints the frozen definitions, and checks the section-level results. It rejects
+`sorry` and audits **46,485 project declarations and 131,575 reachable declarations**, with only
+`propext`, `Classical.choice` and `Quot.sound`. See the [machine-readable
+record](results/higher-dimensional-lqg-continuity/verification.json). A copy of the combined
+certificate without the imports and checks of the five libraries that the development workspace does
+not build (MeshOnly, BouRabeeGwynne, ReflectedWalk, ReflectedGMS and MeshRates) also compiled,
+including the new section and the extended whole-declaration audit (95,495 project declarations,
+standard axioms only). These are incremental checks; the public workflow performs the fresh rebuild
+of all 8,661 modules and the combined certificate.
+
+The public verifier now compiles the combined certificate, which runs alone after all modules, with a
+memory limit of 12,288 MB (`-M12288`) instead of 8,192 MB; every module is still compiled with `-M8192`.
+
+To reproduce:
+
+```sh
+lake exe cache get
+lake build HigherDimLQGContinuity.Frozen.Theorem11Metric
+lake env lean results/higher-dimensional-lqg-continuity/Check.lean
+lake env leanchecker --fresh HigherDimLQGContinuity.Frozen.Theorem11Metric
 ```

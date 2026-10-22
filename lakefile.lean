@@ -17,5 +17,6 @@ lean_lib GaussianLQG
 lean_lib HigherDimLFPP
 lean_lib SmallGammaGeodesics
 lean_lib HigherDimLQGMetric
+lean_lib HigherDimLQGContinuity
 @[default_target]
 lean_lib Certificate

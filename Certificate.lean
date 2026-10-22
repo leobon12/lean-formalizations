@@ -50,6 +50,11 @@ import HigherDimLQGMetric.Frozen.NormLGFLawSpec
 import HigherDimLQGMetric.Frozen.ConvKernelSmoothIntegral
 import HigherDimLQGMetric.Frozen.SphereAvgSpec
 import HigherDimLQGMetric.Frozen.ConvMollifySpec
+import HigherDimLQGContinuity.Frozen.Theorem11Metric
+import HigherDimLQGContinuity.Frozen.Theorem11
+import HigherDimLQGContinuity.Frozen.Theorem11Xi
+import HigherDimLQGContinuity.Frozen.Prop18
+import HigherDimLQGContinuity.Frozen.MedianOneStrongExists
 import Mathlib.Util.AssertNoSorry
 
 /-! Verification of the selected public results and every declaration in their included modules.
@@ -208,7 +213,8 @@ run_cmd do
         (`LQGDimension).isPrefixOf m || (`LQGMetric).isPrefixOf m || (`MeshRates).isPrefixOf m ||
         (`GaussianLQG).isPrefixOf m || (`HigherDimLFPP).isPrefixOf m ||
         (`SmallGammaGeodesics).isPrefixOf m ||
-        (`HigherDimLQGMetric).isPrefixOf m then
+        (`HigherDimLQGMetric).isPrefixOf m ||
+        (`HigherDimLQGContinuity).isPrefixOf m then
       roots := roots.push n
   if roots.isEmpty then throwError "No included declarations found"
   let mut pending := roots
@@ -602,3 +608,111 @@ assert_no_sorry HigherDimLQGMetric.convMollify_spec
 #print axioms HigherDimLQGMetric.convKernel_smooth_integral
 #print axioms HigherDimLQGMetric.sphereAvg_spec
 #print axioms HigherDimLQGMetric.convMollify_spec
+
+/-! ## Almost sure continuity of the higher-dimensional LQG metric
+
+The frozen theorem `HigherDimLQGContinuity.theorem11_metric` (Theorem 1.1 of the source paper: for `d ≥ 3` the
+γ-LQG metrics normalized by median one, with the Euclidean metric at `γ = 0`, admit versions on the same field that
+are almost surely continuous in `γ ∈ [0, √(2d))` for locally uniform convergence and are, on the same event, continuous
+length metrics inducing the Euclidean topology), with its forms `theorem11` and `theorem11Xi`, the parametrization
+`prop18` and the non-vacuity theorem `medianOneStrong_exists`. The `example`s restate their types verbatim from
+`HigherDimLQGContinuity/Frozen/`. The result guide documents the correspondence with the paper. -/
+
+section HigherDimLQGContinuityRelease
+open MeasureTheory Filter Topology Set
+
+set_option pp.explicit false in
+set_option pp.universes false in
+#check HigherDimLQGContinuity.theorem11_metric
+
+namespace HigherDimLQGContinuity
+open HigherDimLQGMetric
+open HigherDimLFPP (Rd)
+
+-- Theorem 1.1 with genuine metrics, `Theorem11Metric.lean`
+example :
+    ∀ d : ℕ, 3 ≤ d →
+    ∃ D : ℝ → DistRd d → C(Rd d × Rd d, ℝ),
+      Measurable (Function.uncurry D) ∧
+      (∀ g : DistRd d, D 0 g = euclidDistC d) ∧
+      (∀ γ : ℝ, 0 < γ → γ < Real.sqrt (2 * d) →
+        ∀ ξ : ℝ, 0 < ξ → distExp d ξ = (d : ℝ) / γ + γ / 2 →
+        ∀ E : DistRd d → ContMetric d, IsStrongExpMetric d ξ (distExp d ξ) E → IsMedianOne d E →
+        ∀ {Ω : Type} [MeasurableSpace Ω] (P : Measure Ω) [IsProbabilityMeasure P]
+          (h : Ω → DistRd d), IsNormalizedLGF h P → ∀ᵐ ω ∂P, D γ (h ω) = (E (h ω)).1) ∧
+      ∀ {Ω : Type} [MeasurableSpace Ω] (P : Measure Ω) [IsProbabilityMeasure P]
+        (h : Ω → DistRd d), IsNormalizedLGF h P →
+        ∀ᵐ ω ∂P, (∀ γ₀ ∈ Ico (0 : ℝ) (Real.sqrt (2 * d)), ∀ R : ℝ, 0 < R →
+            Tendsto (fun γ => supDistLU d R (D γ (h ω)) (D γ₀ (h ω)))
+              (𝓝[Ico (0 : ℝ) (Real.sqrt (2 * d))] γ₀) (𝓝 0)) ∧
+          ∀ γ ∈ Ico (0 : ℝ) (Real.sqrt (2 * d)), ∃ M : ContMetric d, M.1 = D γ (h ω) ∧ M.IsLength :=
+  theorem11_metric
+
+-- Theorem 1.1 in γ, `Theorem11.lean`
+example :
+    ∀ d : ℕ, 3 ≤ d →
+    ∃ D : ℝ → DistRd d → C(Rd d × Rd d, ℝ),
+      Measurable (Function.uncurry D) ∧
+      (∀ g : DistRd d, D 0 g = euclidDistC d) ∧
+      (∀ γ : ℝ, 0 < γ → γ < Real.sqrt (2 * d) →
+        ∀ ξ : ℝ, 0 < ξ → distExp d ξ = (d : ℝ) / γ + γ / 2 →
+        ∀ E : DistRd d → ContMetric d, IsStrongExpMetric d ξ (distExp d ξ) E → IsMedianOne d E →
+        ∀ {Ω : Type} [MeasurableSpace Ω] (P : Measure Ω) [IsProbabilityMeasure P]
+          (h : Ω → DistRd d), IsNormalizedLGF h P → ∀ᵐ ω ∂P, D γ (h ω) = (E (h ω)).1) ∧
+      ∀ {Ω : Type} [MeasurableSpace Ω] (P : Measure Ω) [IsProbabilityMeasure P]
+        (h : Ω → DistRd d), IsNormalizedLGF h P →
+        ∀ᵐ ω ∂P, ∀ γ₀ ∈ Ico (0 : ℝ) (Real.sqrt (2 * d)), ∀ R : ℝ, 0 < R →
+          Tendsto (fun γ => supDistLU d R (D γ (h ω)) (D γ₀ (h ω)))
+            (𝓝[Ico (0 : ℝ) (Real.sqrt (2 * d))] γ₀) (𝓝 0) :=
+  theorem11
+
+-- Theorem 1.1 in the Weyl parameter ξ, `Theorem11Xi.lean`
+example :
+    ∀ d : ℕ, 3 ≤ d →
+    ∃ D : ℝ → DistRd d → C(Rd d × Rd d, ℝ),
+      Measurable (Function.uncurry D) ∧
+      (∀ g : DistRd d, D 0 g = euclidDistC d) ∧
+      (∀ ξ : ℝ, 0 < ξ → Real.sqrt (2 * d) < distExp d ξ →
+        ∀ E : DistRd d → ContMetric d, IsStrongExpMetric d ξ (distExp d ξ) E → IsMedianOne d E →
+        ∀ {Ω : Type} [MeasurableSpace Ω] (P : Measure Ω) [IsProbabilityMeasure P]
+          (h : Ω → DistRd d), IsNormalizedLGF h P → ∀ᵐ ω ∂P, D ξ (h ω) = (E (h ω)).1) ∧
+      ∀ {Ω : Type} [MeasurableSpace Ω] (P : Measure Ω) [IsProbabilityMeasure P]
+        (h : Ω → DistRd d), IsNormalizedLGF h P →
+        ∀ᵐ ω ∂P, ∀ ξ₀ ∈ xiRange d, ∀ R : ℝ, 0 < R →
+          Tendsto (fun ξ => supDistLU d R (D ξ (h ω)) (D ξ₀ (h ω))) (𝓝[xiRange d] ξ₀) (𝓝 0) :=
+  theorem11Xi
+
+-- the parametrization (1.5), `Prop18.lean`
+example :
+    ∀ d : ℕ, 3 ≤ d →
+      ContinuousOn (distExp d) (Ioi 0) ∧
+      StrictAntiOn (distExp d) {ξ : ℝ | 0 < ξ ∧ Real.sqrt (2 * d) < distExp d ξ} ∧
+      Tendsto (fun ξ => ξ * distExp d ξ) (𝓝[>] 0) (𝓝 1) ∧
+      ∃ Ξ : ℝ → ℝ, Ξ 0 = 0 ∧
+        StrictMonoOn Ξ (Ico 0 (Real.sqrt (2 * d))) ∧
+        ContinuousOn Ξ (Ico 0 (Real.sqrt (2 * d))) ∧
+        Ξ '' Ico 0 (Real.sqrt (2 * d)) = xiRange d ∧
+        (∀ γ ∈ Ioo (0 : ℝ) (Real.sqrt (2 * d)), ∀ ξ : ℝ, 0 < ξ →
+          (distExp d ξ = (d : ℝ) / γ + γ / 2 ↔ ξ = Ξ γ)) ∧
+        Tendsto (fun γ => γ / Ξ γ) (𝓝[>] 0) (𝓝 (d : ℝ)) :=
+  prop18
+
+-- non-vacuity: median-one strong metrics exist, `MedianOneStrongExists.lean`
+example :
+    ∀ d : ℕ, 3 ≤ d → ∀ ξ : ℝ, 0 < ξ → Real.sqrt (2 * d) < distExp d ξ →
+      ∃ E : DistRd d → ContMetric d, IsStrongExpMetric d ξ (distExp d ξ) E ∧ IsMedianOne d E :=
+  medianOneStrong_exists
+
+end HigherDimLQGContinuity
+end HigherDimLQGContinuityRelease
+
+assert_no_sorry HigherDimLQGContinuity.theorem11_metric
+assert_no_sorry HigherDimLQGContinuity.theorem11
+assert_no_sorry HigherDimLQGContinuity.theorem11Xi
+assert_no_sorry HigherDimLQGContinuity.prop18
+assert_no_sorry HigherDimLQGContinuity.medianOneStrong_exists
+#print axioms HigherDimLQGContinuity.theorem11_metric
+#print axioms HigherDimLQGContinuity.theorem11
+#print axioms HigherDimLQGContinuity.theorem11Xi
+#print axioms HigherDimLQGContinuity.prop18
+#print axioms HigherDimLQGContinuity.medianOneStrong_exists

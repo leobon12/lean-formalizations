@@ -5,13 +5,16 @@ Default: rebuild all project modules into a separate output directory.
 --stop-after-minutes M: stop launching modules after M minutes (or when all are compiled) and record the
   fresh modules in .lake/verification/partial.json, without the certificate; --resume continues that
   build and compiles the certificate (two-job CI).
+The certificate runs alone after all modules, with a memory limit of 12288 MB (-M12288); each
+module is compiled with -M8192.
 Mathlib and its pinned dependencies must already be available: `lake exe cache get`.
 """
 from pathlib import Path
 import argparse,hashlib,json,os,re,shutil,subprocess,sys,time
 
 ROOT=Path(__file__).resolve().parents[1]
-NAMESPACES=['MeshOnly','BouRabeeGwynne','ReflectedWalk','ReflectedGMS','QuantumZipper','LQGDimension','LQGMetric','MeshRates','GaussianLQG','HigherDimLFPP','SmallGammaGeodesics','HigherDimLQGMetric']
+CERT_MEMORY_MB=12288
+NAMESPACES=['MeshOnly','BouRabeeGwynne','ReflectedWalk','ReflectedGMS','QuantumZipper','LQGDimension','LQGMetric','MeshRates','GaussianLQG','HigherDimLFPP','SmallGammaGeodesics','HigherDimLQGMetric','HigherDimLQGContinuity']
 def stripped(s):
     res=[];i=0;depth=0;string=False
     while i<len(s):
@@ -84,10 +87,10 @@ def main():
             assert (lib/Path(modules[m]['path']).with_suffix('.olean')).is_file(),f'Missing resumed olean: {m}'
             done.add(m);resumed.append(m)
     print(f'Build: {len(modules)-len(done)} project modules pending, {len(reused)} cached, {len(resumed)} resumed; max {args.jobs} compilers.',flush=True)
-    def launch(mod,path):
+    def launch(mod,path,mem=8192):
         dest=lib/Path(path).with_suffix('.olean');dest.parent.mkdir(parents=True,exist_ok=True)
         fh=(logs/(mod+'.log')).open('w')
-        p=subprocess.Popen([lean,'-j1','-M8192',path,'-o',str(dest)],cwd=ROOT,env=env,stdout=fh,stderr=subprocess.STDOUT)
+        p=subprocess.Popen([lean,'-j1',f'-M{mem}',path,'-o',str(dest)],cwd=ROOT,env=env,stdout=fh,stderr=subprocess.STDOUT)
         return p,fh,time.time()
     def save_partial(why):
         (out/'partial.json').write_text(json.dumps({'status':'partial','done':sorted(done),'sha256':{m:modules[m]['sha256'] for m in sorted(done)},'seconds':round(time.time()-start,1)},indent=2)+'\n')
@@ -113,7 +116,7 @@ def main():
             time.sleep(.25)
         if args.stop_after_minutes is not None:
             save_partial('All modules compiled before the time limit');return
-        p,fh,t=launch('Certificate','Certificate.lean');rc=p.wait(timeout=900);fh.close()
+        p,fh,t=launch('Certificate','Certificate.lean',mem=CERT_MEMORY_MB);rc=p.wait(timeout=900);fh.close()
         certificate=(logs/'Certificate.log').read_text();print(certificate,flush=True)
         if rc:raise RuntimeError('Certificate failed')
         assert 'PUBLIC_RELEASE_AUDIT' in certificate,'Whole-declaration audit did not finish'
