@@ -10,7 +10,7 @@ permissions:
   contents: read
 
 jobs:
-  verify:
+  build-part-1:
     runs-on: ubuntu-latest
     timeout-minutes: 350
     steps:
@@ -24,8 +24,36 @@ jobs:
           use-mathlib-cache: false
       - name: Download pinned Mathlib dependencies
         run: lake exe cache get
+      - name: Compile the first part of the proof closure
+        run: python3 scripts/verify.py --stop-after-minutes 170
+      - name: Pass the first part to the second job
+        uses: actions/upload-artifact@v4
+        with:
+          name: verification-part-1
+          path: .lake/verification/
+          retention-days: 3
+  verify:
+    needs: build-part-1
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install the pinned Lean toolchain
+        uses: leanprover/lean-action@v1
+        with:
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: false
+      - name: Download pinned Mathlib dependencies
+        run: lake exe cache get
+      - name: Restore the first part
+        uses: actions/download-artifact@v4
+        with:
+          name: verification-part-1
+          path: .lake/verification/
       - name: Verify the selected proof closure
-        run: python3 scripts/verify.py
+        run: python3 scripts/verify.py --resume
       - name: Preserve verification output
         if: always()
         uses: actions/upload-artifact@v4

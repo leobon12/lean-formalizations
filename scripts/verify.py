@@ -2,13 +2,16 @@
 """Verify the selective source manifest, then compile in dependency order (at most two jobs).
 Default: rebuild all project modules into a separate output directory.
 --cached: reuse available project oleans; always compile Certificate.lean afresh.
+--stop-after-minutes M: stop launching modules after M minutes (or when all are compiled) and record the
+  fresh modules in .lake/verification/partial.json, without the certificate; --resume continues that
+  build and compiles the certificate (two-job CI).
 Mathlib and its pinned dependencies must already be available: `lake exe cache get`.
 """
 from pathlib import Path
 import argparse,hashlib,json,os,re,shutil,subprocess,sys,time
 
 ROOT=Path(__file__).resolve().parents[1]
-NAMESPACES=['MeshOnly','BouRabeeGwynne','ReflectedWalk','ReflectedGMS','QuantumZipper','LQGDimension','LQGMetric','MeshRates','GaussianLQG','HigherDimLFPP','SmallGammaGeodesics']
+NAMESPACES=['MeshOnly','BouRabeeGwynne','ReflectedWalk','ReflectedGMS','QuantumZipper','LQGDimension','LQGMetric','MeshRates','GaussianLQG','HigherDimLFPP','SmallGammaGeodesics','HigherDimLQGMetric']
 def stripped(s):
     res=[];i=0;depth=0;string=False
     while i<len(s):
@@ -54,7 +57,8 @@ def scan(manifest):
     print(f'Source scan passed: {len(modules)} byte-preserved modules, exact import closure.',flush=True)
 
 def main():
-    ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--cached',action='store_true');ap.add_argument('--scan-only',action='store_true');ap.add_argument('--jobs',type=int,default=2,choices=[1,2]);args=ap.parse_args()
+    ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--cached',action='store_true');ap.add_argument('--scan-only',action='store_true');ap.add_argument('--jobs',type=int,default=2,choices=[1,2]);ap.add_argument('--stop-after-minutes',type=float);ap.add_argument('--resume',action='store_true');args=ap.parse_args()
+    assert not (args.cached and (args.resume or args.stop_after_minutes is not None)),'--resume and --stop-after-minutes are for the fresh build only'
     manifest=json.loads((ROOT/'source-manifest.json').read_text());scan(manifest)
     if args.scan_only:return
     lean=subprocess.check_output(['elan','which','lean'],cwd=ROOT,text=True).strip()
@@ -66,17 +70,28 @@ def main():
     if args.cached:paths.append(cache)
     paths += sorted(p/'.lake/build/lib/lean' for p in packages.iterdir() if (p/'.lake/build/lib/lean').is_dir())
     env=dict(os.environ,LEAN_PATH=os.pathsep.join(map(str,paths)))
-    modules=dict(manifest['modules']);done=set();running={};fresh=[];reused=[];start=time.time()
+    modules=dict(manifest['modules']);done=set();running={};fresh=[];reused=[];resumed=[];start=time.time()
     if args.cached:
         for m,row in modules.items():
             rel=Path(row['path']).with_suffix('.olean')
             if (cache/rel).exists():done.add(m);reused.append(m)
-    print(f'Build: {len(modules)-len(done)} project modules pending, {len(reused)} cached; max {args.jobs} compilers.',flush=True)
+    if args.resume:
+        assert (out/'partial.json').is_file(),'No partial build to resume'
+        part=json.loads((out/'partial.json').read_text())
+        assert part['status']=='partial','No partial build to resume'
+        for m in part['done']:
+            assert modules[m]['sha256']==part['sha256'][m],f'Resumed module changed: {m}'
+            assert (lib/Path(modules[m]['path']).with_suffix('.olean')).is_file(),f'Missing resumed olean: {m}'
+            done.add(m);resumed.append(m)
+    print(f'Build: {len(modules)-len(done)} project modules pending, {len(reused)} cached, {len(resumed)} resumed; max {args.jobs} compilers.',flush=True)
     def launch(mod,path):
         dest=lib/Path(path).with_suffix('.olean');dest.parent.mkdir(parents=True,exist_ok=True)
         fh=(logs/(mod+'.log')).open('w')
         p=subprocess.Popen([lean,'-j1','-M8192',path,'-o',str(dest)],cwd=ROOT,env=env,stdout=fh,stderr=subprocess.STDOUT)
         return p,fh,time.time()
+    def save_partial(why):
+        (out/'partial.json').write_text(json.dumps({'status':'partial','done':sorted(done),'sha256':{m:modules[m]['sha256'] for m in sorted(done)},'seconds':round(time.time()-start,1)},indent=2)+'\n')
+        print(f'{why}: {len(done)} of {len(modules)} modules compiled; continue with --resume.',flush=True)
     try:
         while len(done)<len(modules):
             for m,(p,fh,t) in list(running.items()):
@@ -88,17 +103,22 @@ def main():
                 if rc:raise RuntimeError(f'Compile failed: {m}\n'+(logs/(m+'.log')).read_text()[-12000:])
                 done.add(m);fresh.append(m)
                 print(f'[{len(done)}/{len(modules)}] {m} ({time.time()-t:.1f}s)',flush=True)
+            stopping=args.stop_after_minutes is not None and time.time()-start>args.stop_after_minutes*60
+            if stopping and not running:
+                save_partial(f'Stopped after {args.stop_after_minutes:g} minutes');return
             for m,row in modules.items():
-                if len(running)>=args.jobs:break
+                if stopping or len(running)>=args.jobs:break
                 if m not in done and m not in running and all(d in done for d in row['local_imports']):running[m]=launch(m,row['path'])
-            if not running and len(done)<len(modules):raise RuntimeError('No ready module: invalid dependency graph')
+            if not running and not stopping and len(done)<len(modules):raise RuntimeError('No ready module: invalid dependency graph')
             time.sleep(.25)
+        if args.stop_after_minutes is not None:
+            save_partial('All modules compiled before the time limit');return
         p,fh,t=launch('Certificate','Certificate.lean');rc=p.wait(timeout=900);fh.close()
         certificate=(logs/'Certificate.log').read_text();print(certificate,flush=True)
         if rc:raise RuntimeError('Certificate failed')
         assert 'PUBLIC_RELEASE_AUDIT' in certificate,'Whole-declaration audit did not finish'
         source_commits=sorted({r.get('source_commit',manifest['source_commit']) for r in modules.values()})
-        result={'status':'passed','mode':'cached dependencies with freshly compiled certificate' if args.cached else 'fresh project source rebuild and certificate','source_commits':source_commits,'source_modules':len(modules),'fresh_modules':len(fresh),'reused_modules':len(reused),'seconds':round(time.time()-start,1),'lean_version':subprocess.check_output([lean,'--version'],text=True).strip(),'axioms_allowed':['propext','Classical.choice','Quot.sound']}
+        result={'status':'passed','mode':'cached dependencies with freshly compiled certificate' if args.cached else 'fresh project source rebuild in two parts and certificate' if resumed else 'fresh project source rebuild and certificate','source_commits':source_commits,'source_modules':len(modules),'fresh_modules':len(fresh)+len(resumed),'resumed_modules':len(resumed),'reused_modules':len(reused),'seconds':round(time.time()-start,1),'lean_version':subprocess.check_output([lean,'--version'],text=True).strip(),'axioms_allowed':['propext','Classical.choice','Quot.sound']}
         (out/'result.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result),flush=True)
     finally:
         for p,fh,t in running.values():

@@ -39,6 +39,17 @@ import HigherDimLFPP.Frozen.GFFCircleAverage
 import SmallGammaGeodesics.Frozen.DeviationScale
 import SmallGammaGeodesics.Frozen.FunctionalTightness
 import SmallGammaGeodesics.Frozen.GeodesicAeUnique
+import HigherDimLQGMetric.Frozen.Theorem12
+import HigherDimLQGMetric.Frozen.Theorem14
+import HigherDimLQGMetric.Frozen.Theorem14Sharp
+import HigherDimLQGMetric.Frozen.StrongUniqueness
+import HigherDimLQGMetric.Frozen.SharpWeakNonempty
+import HigherDimLQGMetric.Frozen.DistExpSpec
+import HigherDimLQGMetric.Frozen.SubcriticalNonempty
+import HigherDimLQGMetric.Frozen.NormLGFLawSpec
+import HigherDimLQGMetric.Frozen.ConvKernelSmoothIntegral
+import HigherDimLQGMetric.Frozen.SphereAvgSpec
+import HigherDimLQGMetric.Frozen.ConvMollifySpec
 import Mathlib.Util.AssertNoSorry
 
 /-! Verification of the selected public results and every declaration in their included modules.
@@ -196,7 +207,8 @@ run_cmd do
         (`ReflectedGMS).isPrefixOf m || (`QuantumZipper).isPrefixOf m ||
         (`LQGDimension).isPrefixOf m || (`LQGMetric).isPrefixOf m || (`MeshRates).isPrefixOf m ||
         (`GaussianLQG).isPrefixOf m || (`HigherDimLFPP).isPrefixOf m ||
-        (`SmallGammaGeodesics).isPrefixOf m then
+        (`SmallGammaGeodesics).isPrefixOf m ||
+        (`HigherDimLQGMetric).isPrefixOf m then
       roots := roots.push n
   if roots.isEmpty then throwError "No included declarations found"
   let mut pending := roots
@@ -489,3 +501,104 @@ assert_no_sorry SmallGammaGeodesics.geodesic_ae_unique
 #print axioms SmallGammaGeodesics.deviation_scale
 #print axioms SmallGammaGeodesics.functional_tightness
 #print axioms SmallGammaGeodesics.geodesic_ae_unique
+
+/-! ## Higher-dimensional exponential metrics: axiomatic existence and uniqueness
+
+The frozen theorems `HigherDimLQGMetric.theorem12` (Theorem 1.2 of the source paper at `Q = Q(ξ)`: a strong
+assignment exists, normalized LFPP converges to it for every nonnegative white-noise kernel, and it is unique up to a
+deterministic constant) and `HigherDimLQGMetric.theorem14` (Theorem 1.4: uniqueness in the auxiliary weak class),
+with `theorem14Sharp`, `strongUniqueness` and the non-vacuity theorem `sharpWeak_nonempty`. The `example`s restate
+their types verbatim from `HigherDimLQGMetric/Frozen/`; the six sanity and characterization theorems are checked for
+`sorry` and axioms. The result guide documents the correspondence with the paper. -/
+
+section HigherDimLQGMetricRelease
+open MeasureTheory Filter Topology Set
+
+set_option pp.explicit false in
+set_option pp.universes false in
+#check HigherDimLQGMetric.theorem12
+
+namespace HigherDimLQGMetric
+open HigherDimLFPP (Rd)
+
+-- Theorem 1.2 at `Q = Q(ξ)`, `Theorem12.lean`
+example :
+    ∀ (d : ℕ) (ξ : ℝ), 3 ≤ d → 0 < ξ → Real.sqrt (2 * d) < distExp d ξ →
+    (∃ D : DistRd d → ContMetric d, IsStrongExpMetric d ξ (distExp d ξ) D ∧
+      ∀ κ : Rd d → ℝ, HigherDimLFPP.IsLFPPKernel κ →
+      ∀ {Ω : Type} [MeasurableSpace Ω] (P : Measure Ω) [IsProbabilityMeasure P]
+        (h : Ω → DistRd d), IsLGFPlusBddCont h P →
+        TendstoInProbLU P (fun ε ω => (aEps κ ξ ε)⁻¹ • lfppDist κ ξ ε (h ω)) (𝓝[>] 0)
+          (fun ω => (D (h ω)).1)) ∧
+    ∀ D D' : DistRd d → ContMetric d,
+      IsStrongExpMetric d ξ (distExp d ξ) D → IsStrongExpMetric d ξ (distExp d ξ) D' →
+      ∃ C : ℝ, 0 < C ∧ ∀ {Ω : Type} [MeasurableSpace Ω] (P : Measure Ω) [IsProbabilityMeasure P]
+        (h : Ω → DistRd d), IsLGFPlusCont h P →
+          ∀ᵐ ω ∂P, ∀ f : C(Rd d, ℝ), ∀ u v : Rd d,
+            (D' (addFun (h ω) f)).1 (u, v) = C * (D (addFun (h ω) f)).1 (u, v) :=
+  theorem12
+
+-- Theorem 1.4, `Theorem14.lean`
+example :
+    ∀ (d : ℕ) (ξ : ℝ), 3 ≤ d → 0 < ξ → Real.sqrt (2 * d) < distExp d ξ →
+    ∀ (D D' : DistRd d → ContMetric d) (c c' : ℝ → ℝ),
+      IsWeakExpMetric d ξ D c → IsWeakExpMetric d ξ D' c' →
+      ∃ C : ℝ, 0 < C ∧ ∀ {Ω : Type} [MeasurableSpace Ω] (P : Measure Ω) [IsProbabilityMeasure P]
+        (h : Ω → DistRd d), IsLGFPlusCont h P →
+          ∀ᵐ ω ∂P, ∀ f : C(Rd d, ℝ), ∀ u v : Rd d,
+            (D' (addFun (h ω) f)).1 (u, v) = C * (D (addFun (h ω) f)).1 (u, v) :=
+  theorem14
+
+-- Theorem 1.4 with the normalizers `r ^ (ξ Q)`, every `Q > √(2d)`, `Theorem14Sharp.lean`
+example :
+    ∀ (d : ℕ) (ξ Q : ℝ), 3 ≤ d → 0 < ξ → Real.sqrt (2 * d) < Q →
+    ∀ D D' : DistRd d → ContMetric d,
+      IsSharpWeakExpMetric d ξ Q D → IsSharpWeakExpMetric d ξ Q D' →
+      ∃ C : ℝ, 0 < C ∧ ∀ {Ω : Type} [MeasurableSpace Ω] (P : Measure Ω) [IsProbabilityMeasure P]
+        (h : Ω → DistRd d), IsLGFPlusCont h P →
+          ∀ᵐ ω ∂P, ∀ f : C(Rd d, ℝ), ∀ u v : Rd d,
+            (D' (addFun (h ω) f)).1 (u, v) = C * (D (addFun (h ω) f)).1 (u, v) :=
+  theorem14Sharp
+
+-- Uniqueness of strong assignments, every `Q > √(2d)`, `StrongUniqueness.lean`
+example :
+    ∀ (d : ℕ) (ξ Q : ℝ), 3 ≤ d → 0 < ξ → Real.sqrt (2 * d) < Q →
+    ∀ D D' : DistRd d → ContMetric d,
+      IsStrongExpMetric d ξ Q D → IsStrongExpMetric d ξ Q D' →
+      ∃ C : ℝ, 0 < C ∧ ∀ {Ω : Type} [MeasurableSpace Ω] (P : Measure Ω) [IsProbabilityMeasure P]
+        (h : Ω → DistRd d), IsLGFPlusCont h P →
+          ∀ᵐ ω ∂P, ∀ f : C(Rd d, ℝ), ∀ u v : Rd d,
+            (D' (addFun (h ω) f)).1 (u, v) = C * (D (addFun (h ω) f)).1 (u, v) :=
+  strongUniqueness
+
+-- Non-vacuity: the sharp weak class at `Q(ξ)` is nonempty, `SharpWeakNonempty.lean`
+example :
+    ∀ (d : ℕ) (ξ : ℝ), 3 ≤ d → 0 < ξ → Real.sqrt (2 * d) < distExp d ξ →
+      ∃ D : DistRd d → ContMetric d, IsSharpWeakExpMetric d ξ (distExp d ξ) D :=
+  sharpWeak_nonempty
+
+end HigherDimLQGMetric
+end HigherDimLQGMetricRelease
+
+assert_no_sorry HigherDimLQGMetric.theorem12
+assert_no_sorry HigherDimLQGMetric.theorem14
+assert_no_sorry HigherDimLQGMetric.theorem14Sharp
+assert_no_sorry HigherDimLQGMetric.strongUniqueness
+assert_no_sorry HigherDimLQGMetric.sharpWeak_nonempty
+assert_no_sorry HigherDimLQGMetric.distExp_spec
+assert_no_sorry HigherDimLQGMetric.subcritical_nonempty
+assert_no_sorry HigherDimLQGMetric.normLGFLaw_spec
+assert_no_sorry HigherDimLQGMetric.convKernel_smooth_integral
+assert_no_sorry HigherDimLQGMetric.sphereAvg_spec
+assert_no_sorry HigherDimLQGMetric.convMollify_spec
+#print axioms HigherDimLQGMetric.theorem12
+#print axioms HigherDimLQGMetric.theorem14
+#print axioms HigherDimLQGMetric.theorem14Sharp
+#print axioms HigherDimLQGMetric.strongUniqueness
+#print axioms HigherDimLQGMetric.sharpWeak_nonempty
+#print axioms HigherDimLQGMetric.distExp_spec
+#print axioms HigherDimLQGMetric.subcritical_nonempty
+#print axioms HigherDimLQGMetric.normLGFLaw_spec
+#print axioms HigherDimLQGMetric.convKernel_smooth_integral
+#print axioms HigherDimLQGMetric.sphereAvg_spec
+#print axioms HigherDimLQGMetric.convMollify_spec
