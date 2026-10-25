@@ -1,0 +1,61 @@
+import SupercriticalLQGUniqueness.Frozen.ExistsUnique_isLFPPExponent
+import SupercriticalLQGUniqueness.Frozen.WeakLQGMetric_unique
+import SupercriticalLQGUniqueness.Frozen.ExistsUnique_isLFPPNormalizer
+import SupercriticalLQGUniqueness.Frozen.StrongLQGMetric_unique
+import SupercriticalLQGUniqueness.Frozen.Lfpp_tendstoInProbability
+import SupercriticalLQGUniqueness.Frozen.Exists_strongLQGMetric_lfppLimit
+import SupercriticalLQGUniqueness.B2.LscTop.InProbability
+import Mathlib.Util.AssertNoSorry
+
+/-! Focused audit of the six sealed exports in the Ding–Gwynne release, and of the supporting
+theorems that characterize the convergence notion `LSCTendstoInProbability` of Theorem 1.3. -/
+
+#check SupercriticalLQGUniqueness.existsUnique_isLFPPExponent
+#check SupercriticalLQGUniqueness.weakLQGMetric_unique
+#check SupercriticalLQGUniqueness.existsUnique_isLFPPNormalizer
+#check SupercriticalLQGUniqueness.strongLQGMetric_unique
+#check SupercriticalLQGUniqueness.lfpp_tendstoInProbability
+#check SupercriticalLQGUniqueness.exists_strongLQGMetric_lfppLimit
+
+assert_no_sorry SupercriticalLQGUniqueness.existsUnique_isLFPPExponent
+assert_no_sorry SupercriticalLQGUniqueness.weakLQGMetric_unique
+assert_no_sorry SupercriticalLQGUniqueness.existsUnique_isLFPPNormalizer
+assert_no_sorry SupercriticalLQGUniqueness.strongLQGMetric_unique
+assert_no_sorry SupercriticalLQGUniqueness.lfpp_tendstoInProbability
+assert_no_sorry SupercriticalLQGUniqueness.exists_strongLQGMetric_lfppLimit
+
+#print axioms SupercriticalLQGUniqueness.existsUnique_isLFPPExponent
+#print axioms SupercriticalLQGUniqueness.weakLQGMetric_unique
+#print axioms SupercriticalLQGUniqueness.existsUnique_isLFPPNormalizer
+#print axioms SupercriticalLQGUniqueness.strongLQGMetric_unique
+#print axioms SupercriticalLQGUniqueness.lfpp_tendstoInProbability
+#print axioms SupercriticalLQGUniqueness.exists_strongLQGMetric_lfppLimit
+
+/-! The frozen convergence predicate is the subsequence form of convergence in probability and, for
+every compatible metric and finite measure, `TendstoInMeasure` as `ε → 0`. -/
+
+#check SupercriticalLQGUniqueness.B2.LscTop.lscTendstoInProbability_iff_subseq
+#check SupercriticalLQGUniqueness.B2.LscTop.exists_compatible_metric
+#check SupercriticalLQGUniqueness.B2.LscTop.lscTendstoInProbability_iff_tendstoInMeasure
+
+assert_no_sorry SupercriticalLQGUniqueness.B2.LscTop.lscTendstoInProbability_iff_subseq
+assert_no_sorry SupercriticalLQGUniqueness.B2.LscTop.lscTendstoInProbability_iff_subseq_tendsto
+assert_no_sorry SupercriticalLQGUniqueness.B2.LscTop.LSCTendstoInProbability.congr_limit
+assert_no_sorry SupercriticalLQGUniqueness.B2.LscTop.LSCTendstoInProbability.congr_seq
+assert_no_sorry SupercriticalLQGUniqueness.B2.LscTop.LSCTendstoInProbability.congr
+assert_no_sorry SupercriticalLQGUniqueness.B2.LscTop.lscTendstoInProbability_congr
+assert_no_sorry SupercriticalLQGUniqueness.B2.LscTop.tendsto_invSucc
+assert_no_sorry SupercriticalLQGUniqueness.B2.LscTop.LSCTendstoInProbability.ae_eq_limit
+assert_no_sorry SupercriticalLQGUniqueness.B2.LscTop.exists_compatible_metric
+assert_no_sorry SupercriticalLQGUniqueness.B2.LscTop.lscTendstoInProbability_iff_tendstoInMeasure
+
+#print axioms SupercriticalLQGUniqueness.B2.LscTop.lscTendstoInProbability_iff_subseq
+#print axioms SupercriticalLQGUniqueness.B2.LscTop.lscTendstoInProbability_iff_subseq_tendsto
+#print axioms SupercriticalLQGUniqueness.B2.LscTop.LSCTendstoInProbability.congr_limit
+#print axioms SupercriticalLQGUniqueness.B2.LscTop.LSCTendstoInProbability.congr_seq
+#print axioms SupercriticalLQGUniqueness.B2.LscTop.LSCTendstoInProbability.congr
+#print axioms SupercriticalLQGUniqueness.B2.LscTop.lscTendstoInProbability_congr
+#print axioms SupercriticalLQGUniqueness.B2.LscTop.tendsto_invSucc
+#print axioms SupercriticalLQGUniqueness.B2.LscTop.LSCTendstoInProbability.ae_eq_limit
+#print axioms SupercriticalLQGUniqueness.B2.LscTop.exists_compatible_metric
+#print axioms SupercriticalLQGUniqueness.B2.LscTop.lscTendstoInProbability_iff_tendstoInMeasure

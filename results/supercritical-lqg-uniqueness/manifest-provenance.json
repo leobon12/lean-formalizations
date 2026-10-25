@@ -1,0 +1,5 @@
+{
+  "development_manifest_sha256": "b3f38d641bb8ff93fe52085502b2f2171992b54613adf08ad46182511981d537",
+  "release_transform": "approval-reference-metadata-scrub-v1",
+  "frozen_statements_and_hashes_changed": false
+}

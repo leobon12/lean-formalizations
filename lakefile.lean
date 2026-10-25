@@ -20,3 +20,11 @@ lean_lib HigherDimLQGMetric
 lean_lib HigherDimLQGContinuity
 @[default_target]
 lean_lib Certificate
+
+lean_lib SupercriticalLQGUniqueness
+lean_lib SLUSupport
+lean_lib SLUMetricAPI
+lean_lib SLUMetricAPI2
+lean_lib SLUFieldSupport
+lean_lib BR1Bridges
+lean_lib NV1Evidence

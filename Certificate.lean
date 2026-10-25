@@ -1,3 +1,10 @@
+import SupercriticalLQGUniqueness.Frozen.ExistsUnique_isLFPPExponent
+import SupercriticalLQGUniqueness.Frozen.WeakLQGMetric_unique
+import SupercriticalLQGUniqueness.Frozen.ExistsUnique_isLFPPNormalizer
+import SupercriticalLQGUniqueness.Frozen.StrongLQGMetric_unique
+import SupercriticalLQGUniqueness.Frozen.Lfpp_tendstoInProbability
+import SupercriticalLQGUniqueness.Frozen.Exists_strongLQGMetric_lfppLimit
+import SupercriticalLQGUniqueness.B2.LscTop.InProbability
 import LQGDimension.Assembly.Theorem11
 import LQGDimension.Existence.Assembly
 import LQGDimension.Sanity
@@ -214,7 +221,11 @@ run_cmd do
         (`GaussianLQG).isPrefixOf m || (`HigherDimLFPP).isPrefixOf m ||
         (`SmallGammaGeodesics).isPrefixOf m ||
         (`HigherDimLQGMetric).isPrefixOf m ||
-        (`HigherDimLQGContinuity).isPrefixOf m then
+        (`HigherDimLQGContinuity).isPrefixOf m ||
+        (`SupercriticalLQGUniqueness).isPrefixOf m || (`SLUSupport).isPrefixOf m ||
+        (`SLUMetricAPI).isPrefixOf m || (`SLUMetricAPI2).isPrefixOf m ||
+        (`SLUFieldSupport).isPrefixOf m || (`BR1Bridges).isPrefixOf m ||
+        (`NV1Evidence).isPrefixOf m then
       roots := roots.push n
   if roots.isEmpty then throwError "No included declarations found"
   let mut pending := roots
@@ -716,3 +727,40 @@ assert_no_sorry HigherDimLQGContinuity.medianOneStrong_exists
 #print axioms HigherDimLQGContinuity.theorem11Xi
 #print axioms HigherDimLQGContinuity.prop18
 #print axioms HigherDimLQGContinuity.medianOneStrong_exists
+
+
+-- Ding–Gwynne sealed exports in this release.
+assert_no_sorry SupercriticalLQGUniqueness.existsUnique_isLFPPExponent
+#print axioms SupercriticalLQGUniqueness.existsUnique_isLFPPExponent
+assert_no_sorry SupercriticalLQGUniqueness.weakLQGMetric_unique
+#print axioms SupercriticalLQGUniqueness.weakLQGMetric_unique
+assert_no_sorry SupercriticalLQGUniqueness.existsUnique_isLFPPNormalizer
+#print axioms SupercriticalLQGUniqueness.existsUnique_isLFPPNormalizer
+assert_no_sorry SupercriticalLQGUniqueness.strongLQGMetric_unique
+#print axioms SupercriticalLQGUniqueness.strongLQGMetric_unique
+assert_no_sorry SupercriticalLQGUniqueness.lfpp_tendstoInProbability
+#print axioms SupercriticalLQGUniqueness.lfpp_tendstoInProbability
+assert_no_sorry SupercriticalLQGUniqueness.exists_strongLQGMetric_lfppLimit
+#print axioms SupercriticalLQGUniqueness.exists_strongLQGMetric_lfppLimit
+
+-- Characterization of the Theorem 1.3 convergence notion (supporting module).
+assert_no_sorry SupercriticalLQGUniqueness.B2.LscTop.lscTendstoInProbability_iff_subseq
+#print axioms SupercriticalLQGUniqueness.B2.LscTop.lscTendstoInProbability_iff_subseq
+assert_no_sorry SupercriticalLQGUniqueness.B2.LscTop.lscTendstoInProbability_iff_subseq_tendsto
+#print axioms SupercriticalLQGUniqueness.B2.LscTop.lscTendstoInProbability_iff_subseq_tendsto
+assert_no_sorry SupercriticalLQGUniqueness.B2.LscTop.LSCTendstoInProbability.congr_limit
+#print axioms SupercriticalLQGUniqueness.B2.LscTop.LSCTendstoInProbability.congr_limit
+assert_no_sorry SupercriticalLQGUniqueness.B2.LscTop.LSCTendstoInProbability.congr_seq
+#print axioms SupercriticalLQGUniqueness.B2.LscTop.LSCTendstoInProbability.congr_seq
+assert_no_sorry SupercriticalLQGUniqueness.B2.LscTop.LSCTendstoInProbability.congr
+#print axioms SupercriticalLQGUniqueness.B2.LscTop.LSCTendstoInProbability.congr
+assert_no_sorry SupercriticalLQGUniqueness.B2.LscTop.lscTendstoInProbability_congr
+#print axioms SupercriticalLQGUniqueness.B2.LscTop.lscTendstoInProbability_congr
+assert_no_sorry SupercriticalLQGUniqueness.B2.LscTop.tendsto_invSucc
+#print axioms SupercriticalLQGUniqueness.B2.LscTop.tendsto_invSucc
+assert_no_sorry SupercriticalLQGUniqueness.B2.LscTop.LSCTendstoInProbability.ae_eq_limit
+#print axioms SupercriticalLQGUniqueness.B2.LscTop.LSCTendstoInProbability.ae_eq_limit
+assert_no_sorry SupercriticalLQGUniqueness.B2.LscTop.exists_compatible_metric
+#print axioms SupercriticalLQGUniqueness.B2.LscTop.exists_compatible_metric
+assert_no_sorry SupercriticalLQGUniqueness.B2.LscTop.lscTendstoInProbability_iff_tendstoInMeasure
+#print axioms SupercriticalLQGUniqueness.B2.LscTop.lscTendstoInProbability_iff_tendstoInMeasure

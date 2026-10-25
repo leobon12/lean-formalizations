@@ -14,7 +14,7 @@ import argparse,hashlib,json,os,re,shutil,subprocess,sys,time
 
 ROOT=Path(__file__).resolve().parents[1]
 CERT_MEMORY_MB=12288
-NAMESPACES=['MeshOnly','BouRabeeGwynne','ReflectedWalk','ReflectedGMS','QuantumZipper','LQGDimension','LQGMetric','MeshRates','GaussianLQG','HigherDimLFPP','SmallGammaGeodesics','HigherDimLQGMetric','HigherDimLQGContinuity']
+NAMESPACES=['MeshOnly','BouRabeeGwynne','ReflectedWalk','ReflectedGMS','QuantumZipper','LQGDimension','LQGMetric','MeshRates','GaussianLQG','HigherDimLFPP','SmallGammaGeodesics','HigherDimLQGMetric','HigherDimLQGContinuity','SupercriticalLQGUniqueness','SLUSupport','SLUMetricAPI','SLUMetricAPI2','SLUFieldSupport','BR1Bridges','NV1Evidence']
 def stripped(s):
     res=[];i=0;depth=0;string=False
     while i<len(s):
@@ -44,7 +44,7 @@ def scan(manifest):
         text=data.decode();actual=imports(text)
         assert actual==row['imports'],f'Import mismatch: {mod}'
         assert [d for d in actual if d.split('.')[0] in NAMESPACES]==row['local_imports'],f'Local import classification mismatch: {mod}'
-        bad=re.findall(r'\b(?:sorry|admit|axiom|sorryAx|implemented_by)\b|debug\.skipKernelTC|\bunsafe\s+(?:def|theorem)\b',stripped(text))
+        bad=re.findall(r'\b(?:sorry|admit|axiom|sorryAx|implemented_by|native_decide)\b|debug\.skipKernelTC|\bunsafe\s+(?:def|theorem)\b',stripped(text))
         assert not bad,f'Forbidden proof token in {mod}: {bad}'
         assert all(d in names for d in row['local_imports']),f'Missing local import: {mod}'
     closure=set();pending=list(manifest['roots'])
@@ -57,7 +57,7 @@ def scan(manifest):
         if rel.parts[0] in ['.git','.lake']:continue
         assert not p.is_symlink(),f'Unexpected public symlink: {rel}'
         assert rel.parts[0] not in ['work','work_orders','outputs','manuscripts','paper'],f'Private directory: {rel}'
-    print(f'Source scan passed: {len(modules)} byte-preserved modules, exact import closure.',flush=True)
+    print(f'Source scan passed: {len(modules)} source-hashed modules, exact import closure.',flush=True)
 
 def main():
     ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--cached',action='store_true');ap.add_argument('--scan-only',action='store_true');ap.add_argument('--jobs',type=int,default=2,choices=[1,2]);ap.add_argument('--stop-after-minutes',type=float);ap.add_argument('--resume',action='store_true');args=ap.parse_args()
