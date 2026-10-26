@@ -28,8 +28,9 @@ worker references omitted. The original rulings remain the development authority
 - **A20.1** (after the first key-2 audit of Theorem 1.1). That audit failed on graph consumption only: nine references of the
   graph-to-Lean map did not state their nodes' content, and on the corrected map three rows were neither consumed nor covered by a record.
   The nine references were corrected, three records were added and one record text was corrected; no frozen file, manifest entry or Lean
-  declaration changed. The check then passed (241 edges consumed, 184 rows covered by records, no failure), and the auditor's re-check
-  returned `VERDICT: PASS`.
+  declaration changed. The check then passed (241 edges consumed, 184 rows covered by records, no failure). The auditor's first re-check
+  found one of the new record texts false (it named a declaration outside the proof closure) and failed again; that text and one more were
+  corrected, with no change to any graph row, and the second re-check returned `VERDICT: PASS` (development commit `523ae06cc`).
 - **A21** (Gwynne–Miller-form statements, after an independent statement audit). Axiom IV is stated almost surely on the field's own
   probability space; both measurable maps are tied to the domain metrics on every realization extension, which rules out trivial maps;
   in the countable form the maps are chosen once, before countable families of fields and of conformal maps; the hypotheses are on U
