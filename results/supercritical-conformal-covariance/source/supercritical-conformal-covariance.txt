@@ -1,0 +1,578 @@
+                    Conformal covariance of the supercritical
+                       Liouville quantum gravity metric
+
+
+                                 Revised draft — October 1, 2026
+
+
+                                                  Abstract
+         We prove conformal covariance for the canonical supercritical Liouville quantum gravity
+      metric. The replacement for uniform convergence of metrics is a local gluing argument at
+      endpoints surrounded by short loops. The proof uses lower-semicontinuous distance functions,
+      compact confinement, local annular estimates for supercritical metrics, and a countable-scale
+      endpoint regularity condition. No subcritical metric-convergence theorem is used.
+
+
+1    Statement and conventions
+Fix ξ > ξcrit and write Q = Q(ξ) ∈ (0, 2). Throughout, D denotes one fixed normalization of the
+canonical metric assignment of Ding–Gwynne [1]. Metrics are allowed to take the value +∞. If
+W ⊂ C is open, Dh (x, y; W ) denotes the intrinsic distance obtained by infimizing the Dh -length
+over paths contained in W ; the infimum over an empty family of finite-length paths is +∞.
+
+Theorem 1.1 (Conformal covariance). Let U, V ⊂ C be domains and let ϕ : U → V be a
+deterministic conformal bijection. Let h be a GFF plus a continuous function on V , in the local
+sense in which the canonical metric is defined. Then almost surely, simultaneously for all u, v ∈ U ,
+
+                             Dh (ϕ(u), ϕ(v); V ) = Dh◦ϕ+Q log |ϕ′ | (u, v; U ).                       (1)
+
+The probability-one event is allowed to depend on ϕ.
+
+   Thus the assertion includes singular endpoints and the multiplicative constant is exactly one.
+We make no assertion here about one event holding simultaneously for all conformal maps.
+   For the proof it is more convenient to use the forward convention. Thus h is a field on U and
+
+                                     hϕ = h ◦ ϕ−1 + Q log |(ϕ−1 )′ |,                                 (2)
+
+and we write
+                       d(u, v) = Dh (u, v; U ),     e(u, v) = Dhϕ (ϕ(u), ϕ(v); V ).
+We first take h to be the restriction of a whole-plane GFF to U .
+   Write Br (z) = {w : |w − z| < r} and Aa,b (z) = Bb (z) \ Ba (z). For a metric D, D(around A)
+denotes the infimum of lengths of loops in A separating its two boundary components, and D(across A)
+denotes its crossing distance. Boundary endpoints are interpreted using paths in the closed annulus.
+The internal metric on a closed set is defined using paths contained in that set.
+   We use the following established inputs.
+
+
+                                                     1
+ (I1) Locality, simultaneous continuous Weyl scaling, and covariance under complex affine maps for
+      the canonical metric; see Ding–Gwynne [1, Definition 1.7, Theorem 1.8, Proposition 1.9].
+
+ (I2) Lower semicontinuity of the weak LQG distance function, local inverse-Hölder control, and
+      existence of whole-plane geodesics between nonsingular points; see Pfeffer [2, Section 1.3,
+      Propositions 1.10 and 1.12]. In particular, every finite metric-length path is Euclidean
+      continuous.
+
+ (I3) Tight normalized annular distances, annular near-independence, and regularity estimates near
+      geodesics from Ding–Gwynne [1, Sections 2–3].
+
+ (I4) The normalized GFF change-of-coordinates limit of Gwynne–Miller [3, Lemma 2.4]. This is a
+      statement about fields and has no restriction involving ξ.
+
+No metric-convergence theorem from the subcritical conformal-covariance proof is imported.
+
+1.1   Compact path compactness
+We record one consequence that will be used repeatedly.
+
+Lemma 1.2 (Compact path compactness). Let K be a compact subset of a domain on which the
+field is locally a whole-plane GFF plus a continuous function. If Pn : [0, 1] → K are paths with
+uniformly bounded metric lengths and are parametrized at constant metric speed, then (Pn ) has a
+Euclidean-uniformly convergent subsequence. If Pn → P uniformly, then
+
+                                  len(P ; Dh ) ≤ lim inf len(Pn ; Dh ).
+                                                  n→∞
+
+Consequently the metric intrinsic to a fixed Euclidean compact set is Euclidean lower semicontinuous.
+
+Proof. Cover K by finitely many coordinate neighborhoods Wj with Wj contained in slightly larger
+neighborhoods Wj′ . On Wj′ write the field as a whole-plane GFF plus a continuous correction and
+extend the correction continuously, with a cutoff, to the plane. Locality identifies the lengths of
+subpaths contained in Wj with the corresponding ambient lengths. The inverse-Hölder estimate for
+the ambient metric gives a common Euclidean modulus of continuity for constant-speed paths of
+bounded metric length; a finite cover yields equicontinuity on [0, 1]. Arzelà–Ascoli gives a uniformly
+convergent subsequence.
+    For lower semicontinuity, subdivide [0, 1] so that each limiting subpath lies in one Wj . Uniform
+convergence puts the corresponding approximating subpaths in Wj′ for large n. Ambient lower
+semicontinuity on each piece gives the desired inequality after summing over the subdivision and
+then refining it. Applying the same argument to near-minimizing paths in a fixed compact set
+proves lower semicontinuity of its intrinsic metric.
+
+
+2     A preliminary comparison
+Lemma 2.1 (Bi-Lipschitz comparison). There exists a deterministic C = C(ξ) ≥ 1, independent of
+U and ϕ, such that almost surely
+
+                           C −1 d(u, v) ≤ e(u, v) ≤ Cd(u, v),       u, v ∈ U.                       (3)
+
+The same constant compares lengths of every path for the two metrics after the natural pullback.
+
+
+                                                   2
+Proof. Set
+                                           mz,r = rξQ eξhr (z) ,
+where hr (z) is the circle average. Fix K ⋐ U . The source quantities
+
+                      m−1
+                       z,r Dh (around Ar,2r (z)),        mz,r Dh (across Ar/2,r (z))−1
+
+are tight uniformly for z ∈ K and r small by affine covariance and the annular estimates of [1].
+   We next justify the same marginal tightness for the pulled-back metric without assuming the
+desired conformal covariance. Suppose otherwise. Then there are domains Un , conformal maps ϕn ,
+points zn ∈ Un , and radii rn with rn / dist(zn , ∂Un ) → 0 along which the normalized estimate fails.
+Consider the normalized univalent maps
+
+                                              ϕn (zn + rn w) − ϕn (zn )
+                                   Fn (w) =                             .
+                                                     rn ϕ′n (zn )
+
+By the Koebe distortion theorem, Fn → id and Fn−1 → id locally uniformly, after passage to a
+subsequence, on every fixed disk on which they are defined. The convergence is in fact C ∞ on
+compact subsets by Cauchy estimates. After subtracting a fixed smooth average from the rescaled
+field, the GFF change-of-coordinates input [3, Lemma 2.4] gives local total-variation convergence to
+the normalized GFF. The constant factor ϕ′n (zn ) is removed exactly by affine covariance, including
+the Q log |ϕ′n (zn )| term. The remaining continuous correction converges uniformly to zero on compact
+sets and hence changes all local lengths by factors tending uniformly to one by simultaneous Weyl
+scaling. Replacing the smooth normalization by the circle average costs a multiplicative log-normal
+factor with a law independent of n. This contradicts the assumed failure and proves uniform marginal
+tightness. Importantly, the compactness argument is over the normalized family of univalent maps,
+so the resulting bounds depend only on ξ.
+    Therefore, for each prescribed p < 1, there is C0 = C0 (p, ξ) such that, for all sufficiently small r
+and all z ∈ K,                                                             
+                           P e(around Ar,2r (z)) ≤ C0 Dh (across Ar/2,r (z)) ≥ p.                     (4)
+No independence of the two displayed distances is used. The same statement holds with d and e
+interchanged.
+    Choose p close enough to one that the annular near-independence estimate, applied to geometri-
+cally separated radii in [ε2 , ε], yields failure probability O(ε10 ) at each lattice center. A lattice of
+mesh ε2 /100 has OK (ε−4 ) relevant centers. Hence, with probability tending to one, every point of
+K is surrounded by a ball on which the loop-to-crossing comparison (4) holds. The events are local
+modulo an additive constant, so the annular near-independence estimate applies to the nonlinear
+pullback as well.
+    Let P be a finite d-length path. Using successive exits from the good balls and concatenating
+the corresponding e-loops gives the standard planar loop-chaining construction of [2, Lemma 2.26].
+The source crossing costs are charged to disjoint parameter intervals of P , so the total e-length is
+at most C0 len(P ; d) + o(1). The endpoints of the constructed path are only O(ε) from those of P ,
+but all paths lie in a fixed compact subset of U and have uniformly bounded e-length. Lemma 1.2
+therefore produces a limiting admissible path with the exact endpoints and no larger e-length.
+    Choose a deterministic sequence εj ↓ 0 with summable failure probabilities and a countable
+compact exhaustion of U . On the resulting single event the argument applies to every finite-length
+path. Infimizing gives e ≤ C0 d; interchanging the two metrics gives d ≤ C0 e. Increase C0 to at least
+one and call the result C.
+
+
+                                                     3
+3      The tangent limit in the lower-semicontinuous topology
+For nonnegative lower-semicontinuous functions, we use epigraph convergence: fn → f if
+
+    (i) f (x) ≤ lim inf n fn (xn ) whenever xn → x;
+
+ (ii) for each x there exists xn → x with fn (xn ) → f (x).
+
+For distance functions, x is a pair of Euclidean points. We metrize local epigraph convergence using
+closed epigraphs on a countable exhaustion of C2 × [0, ∞]. This gives a Polish realization of the
+relevant space of extended-valued lower-semicontinuous functions.
+
+Lemma 3.1 (Closed-set metric continuity under total variation). Fix closed disks K ⋐ K ′ . Let
+gn , g be random generalized functions on a neighborhood of K ′ which can be coupled so that gn = g
+on K ′ with probability tending to one. Let fn , f be continuous functions on K ′ with ∥fn − f ∥∞ → 0
+in probability. Then the intrinsic metrics on K associated with gn + fn converge jointly with the
+fields, in probability in the local epigraph topology, to the intrinsic metric associated with g + f .
+
+Proof. On the event gn = g on K ′ , locality identifies the metric functionals on K before adding the
+continuous corrections. Simultaneous Weyl scaling gives, for every path P ⊂ K,
+
+                 e−ξ∥fn −f ∥∞ len(P ; Dg+f ) ≤ len(P ; Dg+fn ) ≤ eξ∥fn −f ∥∞ len(P ; Dg+f ).
+
+After infimizing, the same comparison holds for the intrinsic distances on K. Since these intrinsic
+distance functions are lower semicontinuous by Lemma 1.2, uniform multiplicative convergence on
+finite values implies epigraph convergence, with +∞ values preserved as well.
+
+Lemma 3.2 (Expanding confinement). Let h be a whole-plane GFF. For every fixed R < ∞ and
+every δ > 0, there exists S > R such that with probability at least 1 − δ, every Dh -distance between
+points of BR is unchanged when paths are restricted to BS .
+
+Proof. Choose a large annular scale. By the short-loop barrier construction in Ding–Gwynne [1,
+Lemma 2.11 and its proof], with probability tending to one as the outer scale increases there exists
+a loop separating BR from infinity whose Dh -length is strictly less than half the cost of crossing a
+farther surrounding annulus. Any path between two points of BR that exits that outer annulus
+hits the loop before and after the excursion; replacing the excursion by the shorter arc of the loop
+strictly decreases its length. Hence no distance-minimizing sequence needs to exit the outer disk.
+The same argument is valid when one or both distances are infinite.
+
+Lemma 3.3 (Tangent limit). Suppose Un eventually contains every compact subset of C, and
+ψn : Un → Vn are conformal bijections with ψn (0) = 0 and ψn′ (0) → a =
+                                                                      ̸ 0. Choose Rn ↑ ∞ with
+B2Rn ⊂ Un , and set Kn = BRn . Let h be a whole-plane GFF and define
+
+                           dn = Dh (·, ·; Kn ),       en = ψn∗ Dhψn (·, ·; ψn (Kn )),
+
+extending each distance function by +∞ outside Kn ×Kn . Then, jointly in the distributional topology
+for fields and the local epigraph topology for distance functions,
+
+                                       (h, dn , en ) =⇒ (h, Dh , Dh ).                             (5)
+
+
+
+
+                                                       4
+Proof. Fix a smooth radial test function f of integral one and normalize h by (h, f ) = 0. Changing
+between fixed normalizations is harmless by Weyl scaling.
+   By the distortion theorem, ψn → a id and ψn−1 → a−1 id in C ∞ on compact sets. Put
+
+                                       ha = h(a−1 ·) − Q log |a|.
+
+The GFF coordinate-change lemma [3, Lemma 2.4], after subtracting the smooth average against
+fa (w) = |a|−2 f (w/a), gives local total-variation convergence of the normalized transformed fields to
+ha . The restoration of the smooth average multiplies metric lengths by a random factor tending to
+one in probability. Moreover,
+                                     Q log |(ψn−1 )′ | + Q log |a| −→ 0
+uniformly on compact sets, so the remaining Weyl correction has vanishing multiplicative effect.
+    Fix R < S. Restrict first to the metric intrinsic to BS . Under a maximal coupling of the
+normalized fields, they agree on a neighborhood of BS with probability tending to one; Lemma 3.1
+therefore gives joint convergence of the corresponding closed-disk metrics. Pullback by ψn preserves
+epigraph convergence because ψn and ψn−1 converge uniformly on compact sets: the lower-bound
+condition is transported by forward convergence of endpoints, and recovery endpoints are transported
+by the inverse maps. Affine covariance identifies the limiting pulled-back metric with Dh .
+    It remains to pass from fixed confinement to Kn . Lemma 3.2 implies that for each fixed inner
+disk BR and δ > 0 one can choose S so that, with probability at least 1 − δ, all distances between
+points of BR agree with those confined to BS . Since ψn (Kn ) eventually contains every fixed target
+disk, the same barrier event transfers to the transformed field by the preceding total-variation
+comparison. Thus fixed-confinement convergence approximates expanding-confinement convergence
+uniformly in probability on each inner disk. This proves tightness and identifies every subsequential
+marginal limit of dn and en as Dh .
+    Finally, in any subsequential joint limit the transformed field is the deterministic affine transform
+  a
+h of the original field. The metric is a measurable functional of that field. Since the affine transform
+is invertible and affine covariance identifies its pullback with Dh , both metric coordinates in the
+joint limit are the same metric associated with the same h. Hence every subsequential joint limit
+equals the law in (5).
+
+
+4     Recovery at regular endpoints
+Let
+                                          ∆ = {2−j : j ∈ N}.
+The use of a countable scale set is deliberate: it is sufficient for the endpoint gluing argument and
+makes the later failure events universally measurable without an uncountable quantifier over radii.
+
+Lemma 4.1 (Deterministic recovery lemma). Let dn , en be Euclidean-lower-semicontinuous length
+metrics on sets eventually containing every compact subset of C, extended by +∞ outside those sets.
+Assume that finite-length paths are Euclidean continuous,
+
+                                         C −1 dn ≤ en ≤ Cdn ,
+
+and both sequences converge locally in the epigraph topology to the same metric d.
+   Suppose un , vn lie in a fixed compact set, |un − vn | ≥ b > 0, and
+
+                                     Ln = dn (un , vn ) ≤ M < ∞.
+
+                                                   5
+Assume there are θ > 0 and a sequence sj ↓ 0 such that, for x = un , vn , every fixed j, and all
+sufficiently large n,
+
+                     dn (x, ∂Bsj (x)) ≤ M sθj ,     dn (around Asj ,√sj (x)) ≤ M sθj .              (6)
+
+Then there is no subsequence on which
+
+                                         en (un , vn ) ≥ (1 + η)Ln
+
+for a fixed η > 0.
+
+Proof. Pass to a subsequence with un → u, vn → v, and Ln → L. Epigraph lower semicontinuity
+gives
+                                    0 < d(u, v) ≤ L ≤ M,
+where positivity follows from |u − v| ≥ b and the fact that d is a metric on nonsingular separated
+endpoints whenever the displayed finite upper bound holds.
+    Choose recovery endpoints an → u, bn → v for en and paths Qn from an to bn whose en -lengths
+converge to d(u, v). Fix j so large that the two annuli around un and vn are disjoint. For large
+n, an ∈ Bsj (un ) and bn ∈ Bsj (vn ). Around un , choose a loop in Asj ,√sj (un ) of dn -length at most
+2M sθj and a path from un to ∂B√sj (un ) whose initial segment to ∂Bsj (un ) has dn -length at most
+2M sθj . The path crosses the loop. Hence comparison gives an en -connector from un to every point
+of the loop of cost O(CM sθj ). Do the same at vn .
+    By Euclidean continuity, Qn crosses both loops. Splice the middle part of Qn with the two
+connectors. Then
+                               lim sup en (un , vn ) ≤ d(u, v) + O(CM sθj ).
+                                  n
+
+Let j → ∞. If en (un , vn ) ≥ (1 + η)Ln along the chosen subsequence, then
+
+                                        (1 + η)L ≤ d(u, v) ≤ L,
+
+a contradiction.
+
+    Let θ > 0 be the exponent supplied by the regular-geodesic estimates of Ding–Gwynne [1, Section
+3.2]. Fix α ∈ (3/4, 1). We call u ∈ ∂Bαr (z) and v ∈ ∂Br (z) a dyadically regular pair if they are
+joined by a Dh -geodesic in Aαr,r (z),
+
+                                       Dh (u, v) ≤ (1 − α)−1 mz,r ,                                 (7)
+
+and, for x = u, v and each δ ∈ ∆ with 0 < δ ≤ (1 − α)2 ,
+                        n                                       o
+                   max Dh (x, ∂Bδr (x)), Dh (around Aδr, δr (x)) ≤ δ θ Dh (u, v).
+                                                         √                                          (8)
+
+4.1   Measurability of failing regular pairs
+Lemma 4.2 (Universal measurability). Fix a compact annulus A, constants M, b > 0, and η > 0.
+On the Polish product space consisting of two lower-semicontinuous length-distance functions on
+A, together with endpoints and a continuous path, the set of tuples for which the path witnesses a
+dyadically regular pair of source distance at most M , endpoint separation at least b, and comparison
+failure
+                                        e(u, v) ≥ (1 + η)d(u, v)
+
+                                                    6
+is Borel after the path is included as a coordinate. Its projection to the two metric coordinates
+is analytic and hence universally measurable. On that projected event there exists a universally
+measurable choice of witnessing endpoints; a witnessing path may also be selected, but it will not be
+needed in the probabilistic subsequence argument.
+
+Proof. Use C([0, 1], A) with the uniform topology. Endpoint conditions, Euclidean containment con-
+ditions, and membership in the countable family of dyadic annuli are Borel. For lower-semicontinuous
+length metrics, inequalities involving distances between specified endpoints are Borel under epigraph
+convergence. Path-length sublevel conditions are Borel after expressing length as the supremum over
+polygonal partitions with rational times; the geodesic condition is the conjunction of the endpoint
+condition with equality between path length and endpoint distance. The regularity conditions (7)–(8)
+involve only countably many dyadic scales and therefore remain Borel. Hence the full witnessing set
+is Borel.
+    A projection of a Borel subset of a product of Polish spaces is analytic. Analytic sets are
+universally measurable, and the Jankov–von Neumann selection theorem supplies a universally
+measurable selector on the projected event. Projecting the selector further gives universally
+measurable witnessing endpoints in the compact endpoint set. Completing the underlying probability
+space therefore permits these endpoint variables to be adjoined to subsequence representations
+without any separate tightness issue for the path coordinate. Equivalently, one may formulate the
+argument throughout with outer probabilities.
+
+Proposition 4.3 (Small-scale comparison at regular endpoints). For every compact K ⋐ U , fixed
+α ∈ (3/4, 1), and η > 0,
+                                                                    
+                    some dyadically regular pair at (z, r) satisfies
+            sup P                                                      −→ 0 as r ↓ 0.
+            z∈K              e(u, v) ≥ (1 + η)Dh (u, v)
+
+Proof. Suppose not. Choose a failing sequence rn ↓ 0, zn → z ∈ K. Let hf,r (z) = (h(z + r·), f ) and
+put
+                                                           ϕ(zn + rn w) − ϕ(zn )
+                hn = h(zn + rn ·) − hf,rn (zn ),
+                b                                 ψn (w) =                       .
+                                                                    rn
+           hn have the same smoothly normalized whole-plane GFF law. Affine covariance and Weyl
+The fields b
+scaling identify the rescaled source and pullback metrics with the original metrics multiplied by
+
+                                          rn−ξQ e−ξhf,rn (zn ) .
+
+The maps ψn converge locally to the affine map w 7→ ϕ′ (z)w, and their domains exhaust C.
+    Choose expanding closed disks as in Lemma 3.3 and confine both rescaled path metrics to them.
+Lemma 2.1 compares lengths, hence also confined metrics, with the same deterministic constant C.
+A comparison failure for the original e remains a failure after confinement because confinement can
+only increase the e-distance. The specified source geodesic lies in the unit annulus, so its source
+distance is unchanged by the confinement.
+    After normalization, the upper bound (7) is a tight random multiple of (1−α)−1 : the discrepancy
+between a circle average and the fixed smooth average has a fixed Gaussian law. Restrict first to
+the event that this bound is at most M and then let M ↑ ∞. Endpoint separation is at least 1 − α.
+The dyadic endpoint bounds (8) supply the sequence of scales required in Lemma 4.1. All small
+endpoint annuli are contained in the rescaled domain for large n.
+    By Lemma 4.2, on the failure event we may choose witnessing endpoints universally measurably.
+Since the rescaled endpoints lie in a fixed compact annulus, their laws are automatically tight. Apply
+
+                                                    7
+a Skorokhod subsequence representation to the joint field/metric convergence of Lemma 3.3, together
+with these selected endpoint variables on the event of failure. On any represented subsequence along
+which failure persists and the normalized source distance is at most M , compactness of endpoint
+positions gives a further subsequence to which Lemma 4.1 applies. That lemma rules out the failure.
+Therefore the failure probability tends to zero. The contradiction argument was for an arbitrary
+failing sequence zn ∈ K, so the convergence is uniform in z ∈ K.
+
+
+5      Local good annuli
+We now isolate the geometric input from Ding–Gwynne [1, Section 3.2, especially Lemmas 3.13–3.18].
+This prevents us from treating a nonlinear pullback as though it were itself an axiomatic weak LQG
+metric.
+   Fix the constant C from Lemma 2.1 and put
+                                                        1
+                                                  k=        .
+                                                       4C 2
+For A = Ar/2,2r (z) set
+                                       S = Dh (A3r/4,3r/2 (z), ∂A; A).
+Given p < 1, the source-only estimates of [1] allow us to choose a dyadic δ0 ∈ ∆ ∩ (0, 1/100), then
+α ∈ (1 − δ0 , 1), and A0 > 1 so that, with probability at least p uniformly in z, r, the following hold:
+
+(G1) For every Dh (·, ·; A)-geodesic between boundary points of A, every δ ∈ ∆ with 0 < δ ≤ δ0 ,
+     and every x ∈ A3r/4,3r/2 (z) whose δr-ball meets the geodesic,
+
+                             Dh (around Aδr,√δr (x)) ≤ δ θ Dh (across Aδr,√δr (x)).
+
+(G2)
+                          Dh (around A3r/2,2r (z)) ≤ min{(1 − α)−1 mz,r , kδ0−θ S}.
+
+(G3) Each segment of such an internal geodesic lying in Aαr,r (z) has Euclidean diameter at most
+     δ0 r.
+
+(G4)
+                                  Dh (around Aαr,r (z)) ≤ A0 Dh (across Aαr,r (z)).
+
+The restriction to dyadic δ only weakens the corresponding source event in [1]. Its verification uses
+only the source metric: regularity near geodesics, the non-tracing estimate, and annular tightness.
+No axiom of a second metric is used.
+   Add the fifth condition:
+
+(G5) Whenever a dyadically regular pair u, v at (z, r) satisfies
+
+                             |u − v| ≤ δ0 r,        Dh (around Aδ0 r,√δ0 r (v)) ≤ kS,               (9)
+
+       then
+                                            e(u, v) ≤ (1 + η)Dh (u, v).
+
+Call the resulting event Fz,r .
+
+
+                                                       8
+Lemma 5.1 (Locality and probability of good annuli). The event Fz,r is measurable from the field
+on Ar/2,2r (z) modulo an additive constant. Given p < 1, choose the source geometric parameters
+above with sufficiently smaller failure probability. Then for every compact K ⋐ U and every η > 0,
+
+                                            inf P[Fz,r ] ≥ p
+                                           z∈K
+
+for all sufficiently small r. The parameters δ0 , α, A0 can be chosen independently of η.
+
+Proof. Only (G5) requires discussion. On (9), choose a surrounding source loop of length less than
+2kS. By Lemma 2.1, its e-length is less than
+                                                        S
+                                            2CkS =        ,
+                                                       2C
+whereas an e-path escaping A from the middle region costs at least S/C. The same strict inequality
+holds for Dh . Hence a path that leaves A can be shortened after its first and last intersections with
+the loop. Therefore both distances between u and v agree with the distances intrinsic to A, and a
+source geodesic between them does not leave A. Near-minimizing paths suffice; no e-geodesic is
+needed.
+    All remaining regularity tests use endpoint balls and annuli compactly contained in A. A point-
+to-circle distance is determined by paths stopped at their first exit. Thus (G5) is a condition on the
+two internal metrics of A, both measurable functions of the annular field by locality; simultaneous
+Weyl scaling removes the additive constant. Proposition 4.3 gives the probability estimate for (G5),
+while the first four conditions come from the source estimates.
+
+   Choose p close enough to one to apply annular near-independence with failure exponent greater
+than 10. At lattice centers of mesh ε2 /100 in a neighborhood of K, test geometrically separated
+radii in [ε2 , ε]. Lemma 5.1, annular near-independence, and a union bound imply
+
+                       P ∀x ∈ K ∃(z, r) : x ∈ Br/2 (z), r ∈ [ε2 , ε], Fz,r −→ 1.
+                                                                         
+                                                                                             (10)
+
+Choose a deterministic subsequence εj ↓ 0 with summable failure probabilities, simultaneously for a
+countable compact exhaustion. Then almost surely the good covers occur along this subsequence on
+every compact set.
+
+
+6    Improving the comparison constant to one
+Proposition 6.1. Almost surely e ≤ d on U × U .
+
+Proof. Let
+                    C∗ = inf{c ≥ 1 : P[e(u, v) ≤ c d(u, v) for all u, v ∈ U ] = 1}.
+Lemma 2.1 gives C∗ < ∞, and the bound at C∗ holds by intersecting a countable decreasing sequence
+of admissible constants.
+    Suppose C∗ > 1 and fix 0 < η < C∗ − 1. Define
+                                                   A0
+                               Cnew = (1 + η) +          (C∗ − 1 − η).                           (11)
+                                                  A0 + 1
+Then
+                                                  C∗ − 1 − η
+                                   C∗ − Cnew =               > 0.
+                                                   A0 + 1
+
+                                                   9
+    Work on the probability-one event of good covers. Let P : [0, T ] → U be a finite whole-plane
+Dh -geodesic, parametrized by length, whose image is compactly contained in U . At a good-cover
+scale, start at time tj−1 and choose a good ball Brj (zj ) with P (tj−1 ) ∈ Brj /2 (zj ). Let tj be its
+next exit time and sj the last preceding time at which P lies on ∂Bαrj (zj ). Ignore the initial and
+terminal portions corresponding to balls meeting the endpoints of P ; their Euclidean diameters
+tend to zero with the cover scale.
+    Restrict P between its surrounding hits of the boundary of Arj /2,2rj (zj ). This is an internal
+geodesic to which (G1)–(G3) apply. The short outer loop from (G2) meets the extended geodesic
+on both sides. Minimality yields
+
+                                      tj − sj ≤ (1 − α)−1 mzj ,rj .
+
+Condition (G3) gives diam P ([sj , tj ]) ≤ δ0 rj . Condition (G1), applied on the dyadic scales, gives
+exactly the dyadic endpoint estimates (8); minimality of the extended geodesic converts surrounding-
+loop bounds into the required endpoint-to-circle bounds. Applying (G1) at the dyadic scale δ0 and
+then using the second bound in (G2) yields (9). Thus (G5) gives
+
+                                 e(P (sj ), P (tj )) ≤ (1 + η)(tj − sj ).                         (12)
+
+The defining bound at C∗ gives
+
+                                 e(P (tj−1 ), P (sj )) ≤ C∗ (sj − tj−1 ).                         (13)
+
+Finally, (G4) and geodesic minimality imply
+
+                                       sj − tj−1 ≤ A0 (tj − sj ).                                 (14)
+
+Combining (12)–(14) over consecutive intervals yields an e-cost at most Cnew times the retained
+source length.
+    The discarded endpoint pieces have source length tending to zero. Indeed, a nonconstant finite
+geodesic is injective and Euclidean continuous, hence a homeomorphism from each compact time
+interval onto its image. Times at which it lies in shrinking Euclidean neighborhoods of an endpoint
+must converge to the corresponding endpoint time. Their e-cost is at most C∗ times their source
+length. Sending the cover scale to zero gives
+
+                                       e(P (0), P (T )) ≤ Cnew T.                                 (15)
+
+The good-cover event did not depend on P , so (15) holds simultaneously for every such geodesic.
+    Now let Q be an arbitrary finite Dh -length path in U . Its image is compact. Choose compact K0
+with Q([0, 1]) ⊂ int K0 ⋐ U . The local inverse-Hölder estimate gives a strictly positive lower bound
+for the Dh -distance from Q([0, 1]) to ∂K0 . Partition Q into finitely many pieces whose lengths are
+smaller than this bound. Whole-plane geodesics between consecutive endpoints exist and stay inside
+K0 , because exiting K0 would already cost more than the piece they replace. Apply (15) to each
+replacement, sum, and infimize over Q. We obtain e ≤ Cnew d at every endpoint pair; when d = +∞
+the inequality is automatic. This contradicts the definition of C∗ . Hence C∗ = 1.
+
+
+7    Local field variants and the inverse map
+Lemma 7.1 (Transfer under local continuous corrections). Assume the one-sided inequality of
+Proposition 6.1 has been proved for restrictions of a whole-plane GFF. Then the same inequality
+holds for every field which is locally a GFF plus a continuous function.
+
+                                                   10
+Proof. Fix disks B ⋐ B ′ ⋐ U . Decompose the given local field on B ′ as a zero-boundary GFF plus
+its harmonic part and the prescribed continuous correction. Couple the zero-boundary component
+with the restriction of a whole-plane GFF. On the smaller disk B, the difference of the two fields
+is a random continuous function: it is the difference of their harmonic parts plus the prescribed
+continuous term.
+    The one-sided inequality for the whole-plane field holds on a probability-one event. Simultaneous
+continuous Weyl scaling holds, on another probability-one event, for every continuous correction at
+once. Hence adding the random continuous difference transfers the inequality pathwise to the given
+local field on B. Under the conformal map, the same correction is composed with the inverse map,
+so corresponding path weights agree exactly.
+    Choose a countable disk cover with rational centers and radii, each disk compactly contained in
+a slightly larger one, and intersect the corresponding probability-one events. Any finite-length path
+has compact image and can be subdivided into finitely many pieces lying in members of this cover.
+Adding the local inequalities over the subdivision and then infimizing gives the one-sided inequality
+for the intrinsic metrics of the full domain, simultaneously for all endpoint pairs.
+
+Proof of Theorem 1.1. Proposition 6.1 and Lemma 7.1 give, in the forward convention,
+
+                                               e≤d
+
+for fields locally equal to a GFF plus a continuous function. Apply the same statement on V to the
+field hϕ and the inverse conformal map ϕ−1 . By the chain rule,
+                              −1
+                        (hϕ )ϕ = h ◦ ϕ−1 + Q log |(ϕ−1 )′ | ◦ ϕ + Q log |ϕ′ | = h.
+                                                           
+
+
+The inverse-map inequality is therefore d ≤ e. Hence d = e as extended-valued metrics, simultane-
+ously for every endpoint pair. Rewriting this equality in the inverse convention gives (1).
+
+
+Self-audit note
+This revision was prepared after an adversarial review of the previous draft. In particular: (i) the
+open-domain lower-semicontinuity shortcut was replaced by compact confinement; (ii) the endpoint
+regularity condition was reduced to countably many dyadic scales; (iii) the measurable-selection
+step in the regular-pair argument was stated as an explicit analytic-set lemma; (iv) the uniformity
+in the rough comparison was tied to the normalized compact family of univalent maps; and (v) the
+local-field extension was separated into its own lemma. This note records internal verification only;
+it is not a claim of external referee certification.
+
+
+References
+[1] J. Ding and E. Gwynne, Uniqueness of the critical and supercritical Liouville quantum gravity
+    metrics, Proc. London Math. Soc. 126 (2023), 216–333. arXiv:2110.00177.
+
+[2] J. Pfeffer, Weak Liouville quantum gravity metrics with matter central charge c ∈ (−∞, 25),
+    arXiv:2104.04020.
+
+[3] E. Gwynne and J. Miller, Conformal covariance of the Liouville quantum gravity metric for
+    γ ∈ (0, 2), Ann. Inst. H. Poincaré Probab. Statist. 57 (2021), 1016–1031. arXiv:1905.00384.
+
+
+
+                                                 11
+

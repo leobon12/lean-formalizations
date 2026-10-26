@@ -1,0 +1,383 @@
+{
+  "schema_version": 1,
+  "manifest_state": "AUTHOR_APPROVED",
+  "seal_limits": {
+    "max_body_lines": 3,
+    "max_body_bytes": 240
+  },
+  "anchors": [
+    {
+      "id": "IsConformalBijection_v1",
+      "kind": "definition",
+      "author_approval": {
+        "approved_by": "author (GitHub leobon12), delegating to the orchestrator's judgement; recorded as ruling A15",
+        "approved_at": "2026-10-25T19:20Z",
+        "approval_ref": "author approval recorded 2026-10-25T19:20Z; request sha256 cbc72606a87f4769f9817cdf20299db937ccb151aab528a91145413e43c32bfe",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "P = 'Conformal covariance of the supercritical Liouville quantum gravity metric', revised draft of 2026-10-01 (AI-generated, unrefereed), github.com/leobon12/ai-generated-mathematics commit 51d7c1283f87c885c070a1a373e116af7e30b0b1, papers/supercritical-conformal-covariance.pdf (sha256 d5efcdbb7cf5ac8db89e9ecb105bca4c5d1c45ec17a0ceebb8f9feb33dbfaf9b). 'P l. N' is line N of the pinned plain-text extraction of that PDF (sha256 7780c858aae06ba251c02516164f0ea4edd3835c7aeb1fc3e8dcf375db55f603). GM = arXiv:1905.00384v2, GMU = arXiv:1905.00383v3 and DG = arXiv:2110.00177v3; their line numbers are lines of the arXiv TeX sources.",
+        "range": "P l. 22-23 (Theorem 1.1: 'let phi : U -> V be a deterministic conformal bijection')"
+      },
+      "contract": {
+        "id": "scc.def.IsConformalBijection",
+        "version": "1"
+      },
+      "path": "SupercriticalConformalCovariance/Frozen/IsConformalBijection.lean",
+      "export": "SupercriticalConformalCovariance.IsConformalBijection",
+      "split_policy": {
+        "source_group": "scc.def.IsConformalBijection",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "A1 (one declaration per frozen file); A10.2; A15 C4 (names and frozen paths of revision 2.2)"
+      },
+      "abi_sha256": "e0b0a3c263de6a58f8a859887db825fd8147a567223a46260c9d9f6f50d8d8e2",
+      "definition_closure": [],
+      "state": "SEALED",
+      "full_file_sha256": "bc16007e8b9fb0c3308690dbb5d45a48b21b24963891a5f846a81de24f65fa90"
+    },
+    {
+      "id": "confPushTest_v1",
+      "kind": "definition",
+      "author_approval": {
+        "approved_by": "author (GitHub leobon12), delegating to the orchestrator's judgement; recorded as ruling A15",
+        "approved_at": "2026-10-25T19:20Z",
+        "approval_ref": "author approval recorded 2026-10-25T19:20Z; request sha256 cbc72606a87f4769f9817cdf20299db937ccb151aab528a91145413e43c32bfe",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "P = 'Conformal covariance of the supercritical Liouville quantum gravity metric', revised draft of 2026-10-01 (AI-generated, unrefereed), github.com/leobon12/ai-generated-mathematics commit 51d7c1283f87c885c070a1a373e116af7e30b0b1, papers/supercritical-conformal-covariance.pdf (sha256 d5efcdbb7cf5ac8db89e9ecb105bca4c5d1c45ec17a0ceebb8f9feb33dbfaf9b). 'P l. N' is line N of the pinned plain-text extraction of that PDF (sha256 7780c858aae06ba251c02516164f0ea4edd3835c7aeb1fc3e8dcf375db55f603). GM = arXiv:1905.00384v2, GMU = arXiv:1905.00383v3 and DG = arXiv:2110.00177v3; their line numbers are lines of the arXiv TeX sources.",
+        "range": "P l. 26 and (2) l. 34 (test-function side of h o phi); GM l. 544"
+      },
+      "contract": {
+        "id": "scc.def.confPushTest",
+        "version": "1"
+      },
+      "path": "SupercriticalConformalCovariance/Frozen/ConfPushTest.lean",
+      "export": "SupercriticalConformalCovariance.confPushTest",
+      "split_policy": {
+        "source_group": "scc.def.confPushTest",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "A1 (one declaration per frozen file); A10.2; A15 C4 (names and frozen paths of revision 2.2); OQ6 (confPullFun body inlined, revision 2.1)"
+      },
+      "abi_sha256": "094eccb91f4d26cb1ead035b0b7740f2868c410288ba518dddd0067c5fa5fb19",
+      "definition_closure": [
+        {
+          "path": "SupercriticalConformalCovariance/Frozen/IsConformalBijection.lean",
+          "sha256": "bc16007e8b9fb0c3308690dbb5d45a48b21b24963891a5f846a81de24f65fa90"
+        }
+      ],
+      "state": "SEALED",
+      "full_file_sha256": "e736eda3f4fe7e1bfb13085c241fd69f44e55b979effb3230d2ab96782939c60"
+    },
+    {
+      "id": "confPullbackField_v1",
+      "kind": "definition",
+      "author_approval": {
+        "approved_by": "author (GitHub leobon12), delegating to the orchestrator's judgement; recorded as ruling A15",
+        "approved_at": "2026-10-25T19:20Z",
+        "approval_ref": "author approval recorded 2026-10-25T19:20Z; request sha256 cbc72606a87f4769f9817cdf20299db937ccb151aab528a91145413e43c32bfe",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "P = 'Conformal covariance of the supercritical Liouville quantum gravity metric', revised draft of 2026-10-01 (AI-generated, unrefereed), github.com/leobon12/ai-generated-mathematics commit 51d7c1283f87c885c070a1a373e116af7e30b0b1, papers/supercritical-conformal-covariance.pdf (sha256 d5efcdbb7cf5ac8db89e9ecb105bca4c5d1c45ec17a0ceebb8f9feb33dbfaf9b). 'P l. N' is line N of the pinned plain-text extraction of that PDF (sha256 7780c858aae06ba251c02516164f0ea4edd3835c7aeb1fc3e8dcf375db55f603). GM = arXiv:1905.00384v2, GMU = arXiv:1905.00383v3 and DG = arXiv:2110.00177v3; their line numbers are lines of the arXiv TeX sources.",
+        "range": "P l. 26 (the field h o phi + Q log|phi'|) and (2) l. 34; GM (1.8), (1.11), l. 356-361; DG (1.14)"
+      },
+      "contract": {
+        "id": "scc.def.confPullbackField",
+        "version": "1"
+      },
+      "path": "SupercriticalConformalCovariance/Frozen/ConfPullbackField.lean",
+      "export": "SupercriticalConformalCovariance.confPullbackField",
+      "split_policy": {
+        "source_group": "scc.def.confPullbackField",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "A1 (one declaration per frozen file); A10.2; A15 C4 (names and frozen paths of revision 2.2)"
+      },
+      "abi_sha256": "ab1641ed586211940b6a8c89409a126658d6c3e3567962c49645ccbff02e23b6",
+      "definition_closure": [
+        {
+          "path": "SupercriticalConformalCovariance/Frozen/ConfPushTest.lean",
+          "sha256": "e736eda3f4fe7e1bfb13085c241fd69f44e55b979effb3230d2ab96782939c60"
+        },
+        {
+          "path": "SupercriticalConformalCovariance/Frozen/IsConformalBijection.lean",
+          "sha256": "bc16007e8b9fb0c3308690dbb5d45a48b21b24963891a5f846a81de24f65fa90"
+        }
+      ],
+      "state": "SEALED",
+      "full_file_sha256": "2b0a32dac2b58b8fd61b7479819e08b16566b195d63f89888f04ccddcac182c4"
+    },
+    {
+      "id": "IsDomainRealization_v1",
+      "kind": "definition",
+      "author_approval": {
+        "approved_by": "author (GitHub leobon12), delegating to the orchestrator's judgement; recorded as ruling A15",
+        "approved_at": "2026-10-25T19:20Z",
+        "approval_ref": "author approval recorded 2026-10-25T19:20Z; request sha256 cbc72606a87f4769f9817cdf20299db937ccb151aab528a91145413e43c32bfe",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "P = 'Conformal covariance of the supercritical Liouville quantum gravity metric', revised draft of 2026-10-01 (AI-generated, unrefereed), github.com/leobon12/ai-generated-mathematics commit 51d7c1283f87c885c070a1a373e116af7e30b0b1, papers/supercritical-conformal-covariance.pdf (sha256 d5efcdbb7cf5ac8db89e9ecb105bca4c5d1c45ec17a0ceebb8f9feb33dbfaf9b). 'P l. N' is line N of the pinned plain-text extraction of that PDF (sha256 7780c858aae06ba251c02516164f0ea4edd3835c7aeb1fc3e8dcf375db55f603). GM = arXiv:1905.00384v2, GMU = arXiv:1905.00383v3 and DG = arXiv:2110.00177v3; their line numbers are lines of the arXiv TeX sources.",
+        "range": "P l. 23-24 ('a GFF plus a continuous function on V, in the local sense in which the canonical metric is defined'); GM l. 265, l. 310-321; GMU Remark 1.5 l. 360-378"
+      },
+      "contract": {
+        "id": "scc.def.IsDomainRealization",
+        "version": "1"
+      },
+      "path": "SupercriticalConformalCovariance/Frozen/IsDomainRealization.lean",
+      "export": "SupercriticalConformalCovariance.IsDomainRealization",
+      "split_policy": {
+        "source_group": "scc.def.IsDomainRealization",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "A1 (one declaration per frozen file); A10.2; A15 C4 (names and frozen paths of revision 2.2); A15 C3 (global realization field class)"
+      },
+      "abi_sha256": "a704b0522789ab9f121941f20cad143d321572a567fbd91201205e8b3ba1046b",
+      "definition_closure": [],
+      "state": "SEALED",
+      "full_file_sha256": "6bbce8022047673777f3e16391bb2d10cefdb042a163c89178f231b1cddf7e66"
+    },
+    {
+      "id": "weylScaleOn_v1",
+      "kind": "definition",
+      "author_approval": {
+        "approved_by": "author (GitHub leobon12), delegating to the orchestrator's judgement; recorded as ruling A15",
+        "approved_at": "2026-10-25T19:20Z",
+        "approval_ref": "author approval recorded 2026-10-25T19:20Z; request sha256 cbc72606a87f4769f9817cdf20299db937ccb151aab528a91145413e43c32bfe",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "P = 'Conformal covariance of the supercritical Liouville quantum gravity metric', revised draft of 2026-10-01 (AI-generated, unrefereed), github.com/leobon12/ai-generated-mathematics commit 51d7c1283f87c885c070a1a373e116af7e30b0b1, papers/supercritical-conformal-covariance.pdf (sha256 d5efcdbb7cf5ac8db89e9ecb105bca4c5d1c45ec17a0ceebb8f9feb33dbfaf9b). 'P l. N' is line N of the pinned plain-text extraction of that PDF (sha256 7780c858aae06ba251c02516164f0ea4edd3835c7aeb1fc3e8dcf375db55f603). GM = arXiv:1905.00384v2, GMU = arXiv:1905.00383v3 and DG = arXiv:2110.00177v3; their line numbers are lines of the arXiv TeX sources.",
+        "range": "P l. 18-20 (intrinsic distance in W, +infinity convention); GM (1.7) l. 281-286, l. 310-321; DG (1.11) l. 448-452"
+      },
+      "contract": {
+        "id": "scc.def.weylScaleOn",
+        "version": "1"
+      },
+      "path": "SupercriticalConformalCovariance/Frozen/WeylScaleOn.lean",
+      "export": "SupercriticalConformalCovariance.weylScaleOn",
+      "split_policy": {
+        "source_group": "scc.def.weylScaleOn",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "A1 (one declaration per frozen file); A10.2; A15 C4 (names and frozen paths of revision 2.2)"
+      },
+      "abi_sha256": "6e1fc647a160bc014f1698d7894b6f337fd2756ee5f9612d8f4116b1c6f71936",
+      "definition_closure": [],
+      "state": "SEALED",
+      "full_file_sha256": "30c52eb36d8d93ca43db4f9559c017516a187866e5eb150f0e67ae4edf6326e7"
+    },
+    {
+      "id": "domainMetric_v1",
+      "kind": "definition",
+      "author_approval": {
+        "approved_by": "author (GitHub leobon12), delegating to the orchestrator's judgement; recorded as ruling A15",
+        "approved_at": "2026-10-25T19:20Z",
+        "approval_ref": "author approval recorded 2026-10-25T19:20Z; request sha256 cbc72606a87f4769f9817cdf20299db937ccb151aab528a91145413e43c32bfe",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "P = 'Conformal covariance of the supercritical Liouville quantum gravity metric', revised draft of 2026-10-01 (AI-generated, unrefereed), github.com/leobon12/ai-generated-mathematics commit 51d7c1283f87c885c070a1a373e116af7e30b0b1, papers/supercritical-conformal-covariance.pdf (sha256 d5efcdbb7cf5ac8db89e9ecb105bca4c5d1c45ec17a0ceebb8f9feb33dbfaf9b). 'P l. N' is line N of the pinned plain-text extraction of that PDF (sha256 7780c858aae06ba251c02516164f0ea4edd3835c7aeb1fc3e8dcf375db55f603). GM = arXiv:1905.00384v2, GMU = arXiv:1905.00383v3 and DG = arXiv:2110.00177v3; their line numbers are lines of the arXiv TeX sources.",
+        "range": "P l. 18-20 and l. 26 (D_h(.,.;V)); GM l. 310-321; GMU Remark 1.5 l. 360-378"
+      },
+      "contract": {
+        "id": "scc.def.domainMetric",
+        "version": "1"
+      },
+      "path": "SupercriticalConformalCovariance/Frozen/DomainMetric.lean",
+      "export": "SupercriticalConformalCovariance.domainMetric",
+      "split_policy": {
+        "source_group": "scc.def.domainMetric",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "A1 (one declaration per frozen file); A10.2; A15 C4 (names and frozen paths of revision 2.2)"
+      },
+      "abi_sha256": "4a6589a66b4a8cea0eb47b8f605245c77d834ab1a8373211b6445ccb683f1644",
+      "definition_closure": [
+        {
+          "path": "SupercriticalConformalCovariance/Frozen/WeylScaleOn.lean",
+          "sha256": "30c52eb36d8d93ca43db4f9559c017516a187866e5eb150f0e67ae4edf6326e7"
+        }
+      ],
+      "state": "SEALED",
+      "full_file_sha256": "b0287530eedd7acb2b502a7cb755f9018482a0b4e84625e64c590fbec820eca1"
+    },
+    {
+      "id": "xiCrit_v1",
+      "kind": "definition",
+      "author_approval": {
+        "approved_by": "author (GitHub leobon12), delegating to the orchestrator's judgement; recorded as ruling A15",
+        "approved_at": "2026-10-25T19:20Z",
+        "approval_ref": "author approval recorded 2026-10-25T19:20Z; request sha256 cbc72606a87f4769f9817cdf20299db937ccb151aab528a91145413e43c32bfe",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "P = 'Conformal covariance of the supercritical Liouville quantum gravity metric', revised draft of 2026-10-01 (AI-generated, unrefereed), github.com/leobon12/ai-generated-mathematics commit 51d7c1283f87c885c070a1a373e116af7e30b0b1, papers/supercritical-conformal-covariance.pdf (sha256 d5efcdbb7cf5ac8db89e9ecb105bca4c5d1c45ec17a0ceebb8f9feb33dbfaf9b). 'P l. N' is line N of the pinned plain-text extraction of that PDF (sha256 7780c858aae06ba251c02516164f0ea4edd3835c7aeb1fc3e8dcf375db55f603). GM = arXiv:1905.00384v2, GMU = arXiv:1905.00383v3 and DG = arXiv:2110.00177v3; their line numbers are lines of the arXiv TeX sources.",
+        "range": "P l. 17 ('Fix xi > xi_crit'); DG (1.7) l. 345-348"
+      },
+      "contract": {
+        "id": "scc.def.xiCrit",
+        "version": "1"
+      },
+      "path": "SupercriticalConformalCovariance/Frozen/XiCrit.lean",
+      "export": "SupercriticalConformalCovariance.xiCrit",
+      "split_policy": {
+        "source_group": "scc.def.xiCrit",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "A1 (one declaration per frozen file); A10.2; A15 C4 (names and frozen paths of revision 2.2); A15 C1 (literal xi_crit)"
+      },
+      "abi_sha256": "459d69949df95e4c4ab4740077d9ffc17507ea47b4559a9f2a14cca005b11631",
+      "definition_closure": [],
+      "state": "SEALED",
+      "full_file_sha256": "4a86a72d05828107df531c2decbad2fd6408678a247859927e0f5e8ea68b6b65"
+    },
+    {
+      "id": "IsGreenian_v1",
+      "kind": "definition",
+      "author_approval": {
+        "approved_by": "author (GitHub leobon12), delegating to the orchestrator's judgement; recorded as ruling A15",
+        "approved_at": "2026-10-25T19:20Z",
+        "approval_ref": "author approval recorded 2026-10-25T19:20Z; request sha256 cbc72606a87f4769f9817cdf20299db937ccb151aab528a91145413e43c32bfe",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "P = 'Conformal covariance of the supercritical Liouville quantum gravity metric', revised draft of 2026-10-01 (AI-generated, unrefereed), github.com/leobon12/ai-generated-mathematics commit 51d7c1283f87c885c070a1a373e116af7e30b0b1, papers/supercritical-conformal-covariance.pdf (sha256 d5efcdbb7cf5ac8db89e9ecb105bca4c5d1c45ec17a0ceebb8f9feb33dbfaf9b). 'P l. N' is line N of the pinned plain-text extraction of that PDF (sha256 7780c858aae06ba251c02516164f0ea4edd3835c7aeb1fc3e8dcf375db55f603). GM = arXiv:1905.00384v2, GMU = arXiv:1905.00383v3 and DG = arXiv:2110.00177v3; their line numbers are lines of the arXiv TeX sources.",
+        "range": "Ruling A14 (author-approved restriction of P l. 22 'Let U, V be domains' to Greenian domains); body = LQGMetric.ZBAdmissible written out (lqg_metric/LQGMetric/Field/ZeroBoundary.lean l. 65-67)"
+      },
+      "contract": {
+        "id": "scc.def.IsGreenian",
+        "version": "1"
+      },
+      "path": "SupercriticalConformalCovariance/Frozen/IsGreenian.lean",
+      "export": "SupercriticalConformalCovariance.IsGreenian",
+      "split_policy": {
+        "source_group": "scc.def.IsGreenian",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "A1 (one declaration per frozen file); A10.2; A15 C4 (names and frozen paths of revision 2.2); A14; OQ10 (ZBAdmissible body inlined, revision 2.2)"
+      },
+      "abi_sha256": "19df8c476506cf3edb3f0a0ffd893ecde933301e1764903c1667adff3c385925",
+      "definition_closure": [],
+      "state": "SEALED",
+      "full_file_sha256": "3038bc6cc59bab883342338f765ab31d1774cd640d51d708922bb2ab5b07071b"
+    },
+    {
+      "id": "domainMetric_ae_eq_of_isDomainRealization_v1",
+      "kind": "theorem",
+      "author_approval": {
+        "approved_by": "author (GitHub leobon12), delegating to the orchestrator's judgement; recorded as ruling A15",
+        "approved_at": "2026-10-25T19:20Z",
+        "approval_ref": "author approval recorded 2026-10-25T19:20Z; request sha256 cbc72606a87f4769f9817cdf20299db937ccb151aab528a91145413e43c32bfe",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "P = 'Conformal covariance of the supercritical Liouville quantum gravity metric', revised draft of 2026-10-01 (AI-generated, unrefereed), github.com/leobon12/ai-generated-mathematics commit 51d7c1283f87c885c070a1a373e116af7e30b0b1, papers/supercritical-conformal-covariance.pdf (sha256 d5efcdbb7cf5ac8db89e9ecb105bca4c5d1c45ec17a0ceebb8f9feb33dbfaf9b). 'P l. N' is line N of the pinned plain-text extraction of that PDF (sha256 7780c858aae06ba251c02516164f0ea4edd3835c7aeb1fc3e8dcf375db55f603). GM = arXiv:1905.00384v2, GMU = arXiv:1905.00383v3 and DG = arXiv:2110.00177v3; their line numbers are lines of the arXiv TeX sources.",
+        "range": "P l. 23-24 ('in the local sense in which the canonical metric is defined') and Lemma 7.1 l. 519-538; GMU Remark 1.5 l. 360-374; GM l. 316-319 (well-definedness of the domain metric, ruling A10.2)"
+      },
+      "contract": {
+        "id": "scc.lemma.domainMetric_ae_eq_of_isDomainRealization",
+        "version": "1"
+      },
+      "path": "SupercriticalConformalCovariance/Frozen/DomainMetric_ae_eq_of_isDomainRealization.lean",
+      "export": "SupercriticalConformalCovariance.domainMetric_ae_eq_of_isDomainRealization",
+      "split_policy": {
+        "source_group": "scc.lemma.domainMetric_ae_eq_of_isDomainRealization",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "A10.2 (meaning-carrying realization-independence lemma, its own anchor); A15 C4"
+      },
+      "abi_sha256": "713f01adfaa1f0e3439796b22bb40c360affd740afb30b5b2e9ad34b2ddb0b83",
+      "definition_closure": [
+        {
+          "path": "SupercriticalConformalCovariance/Frozen/DomainMetric.lean",
+          "sha256": "b0287530eedd7acb2b502a7cb755f9018482a0b4e84625e64c590fbec820eca1"
+        },
+        {
+          "path": "SupercriticalConformalCovariance/Frozen/IsDomainRealization.lean",
+          "sha256": "6bbce8022047673777f3e16391bb2d10cefdb042a163c89178f231b1cddf7e66"
+        },
+        {
+          "path": "SupercriticalConformalCovariance/Frozen/WeylScaleOn.lean",
+          "sha256": "30c52eb36d8d93ca43db4f9559c017516a187866e5eb150f0e67ae4edf6326e7"
+        }
+      ],
+      "state": "SEALED",
+      "implementation": {
+        "module": "SupercriticalConformalCovariance.Implementation.DomainMetric_ae_eq_of_isDomainRealization",
+        "export": "SupercriticalConformalCovariance.Implementation.domainMetric_ae_eq_of_isDomainRealization_impl"
+      },
+      "prefix_sha256": "8aa70e3ccf48c76703d3f980d572516cbf57fb635190b32ba4e873e66d49ba14",
+      "suffix_sha256": "cb63ada74c67115ede18922b137470a9adf57ffd55b9345e75543715b4f6e14d",
+      "draft_allowlist": {
+        "frozen_paths": [],
+        "audit_paths": []
+      }
+    },
+    {
+      "id": "conformal_covariance_v1",
+      "kind": "theorem",
+      "author_approval": {
+        "approved_by": "author (GitHub leobon12), delegating to the orchestrator's judgement; recorded as ruling A15",
+        "approved_at": "2026-10-25T19:20Z",
+        "approval_ref": "author approval recorded 2026-10-25T19:20Z; request sha256 cbc72606a87f4769f9817cdf20299db937ccb151aab528a91145413e43c32bfe",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "P = 'Conformal covariance of the supercritical Liouville quantum gravity metric', revised draft of 2026-10-01 (AI-generated, unrefereed), github.com/leobon12/ai-generated-mathematics commit 51d7c1283f87c885c070a1a373e116af7e30b0b1, papers/supercritical-conformal-covariance.pdf (sha256 d5efcdbb7cf5ac8db89e9ecb105bca4c5d1c45ec17a0ceebb8f9feb33dbfaf9b). 'P l. N' is line N of the pinned plain-text extraction of that PDF (sha256 7780c858aae06ba251c02516164f0ea4edd3835c7aeb1fc3e8dcf375db55f603). GM = arXiv:1905.00384v2, GMU = arXiv:1905.00383v3 and DG = arXiv:2110.00177v3; their line numbers are lines of the arXiv TeX sources.",
+        "range": "P l. 17-28 (conventions l. 17-20; Theorem 1.1 l. 22-28, equation (1) l. 26), restricted by A14 (Greenian U, V)"
+      },
+      "contract": {
+        "id": "scc.theorem_1_1",
+        "version": "1"
+      },
+      "path": "SupercriticalConformalCovariance/Frozen/ConformalCovariance.lean",
+      "export": "SupercriticalConformalCovariance.conformal_covariance",
+      "split_policy": {
+        "source_group": "scc.theorem_1_1",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "A10.2 (paper's format); A14 (Greenian); A15 C1 (root R-A) and C2 (existence clause bundled in the root, NOT_SPLIT)"
+      },
+      "abi_sha256": "ea652aa492c33b421ab803fd0cf100d6f95d1dc9b55073cc728b30be770efd64",
+      "definition_closure": [
+        {
+          "path": "SupercriticalConformalCovariance/Frozen/ConfPullbackField.lean",
+          "sha256": "2b0a32dac2b58b8fd61b7479819e08b16566b195d63f89888f04ccddcac182c4"
+        },
+        {
+          "path": "SupercriticalConformalCovariance/Frozen/ConfPushTest.lean",
+          "sha256": "e736eda3f4fe7e1bfb13085c241fd69f44e55b979effb3230d2ab96782939c60"
+        },
+        {
+          "path": "SupercriticalConformalCovariance/Frozen/DomainMetric.lean",
+          "sha256": "b0287530eedd7acb2b502a7cb755f9018482a0b4e84625e64c590fbec820eca1"
+        },
+        {
+          "path": "SupercriticalConformalCovariance/Frozen/IsConformalBijection.lean",
+          "sha256": "bc16007e8b9fb0c3308690dbb5d45a48b21b24963891a5f846a81de24f65fa90"
+        },
+        {
+          "path": "SupercriticalConformalCovariance/Frozen/IsDomainRealization.lean",
+          "sha256": "6bbce8022047673777f3e16391bb2d10cefdb042a163c89178f231b1cddf7e66"
+        },
+        {
+          "path": "SupercriticalConformalCovariance/Frozen/IsGreenian.lean",
+          "sha256": "3038bc6cc59bab883342338f765ab31d1774cd640d51d708922bb2ab5b07071b"
+        },
+        {
+          "path": "SupercriticalConformalCovariance/Frozen/WeylScaleOn.lean",
+          "sha256": "30c52eb36d8d93ca43db4f9559c017516a187866e5eb150f0e67ae4edf6326e7"
+        },
+        {
+          "path": "SupercriticalConformalCovariance/Frozen/XiCrit.lean",
+          "sha256": "4a86a72d05828107df531c2decbad2fd6408678a247859927e0f5e8ea68b6b65"
+        }
+      ],
+      "state": "SEALED",
+      "implementation": {
+        "module": "SupercriticalConformalCovariance.Implementation.ConformalCovariance",
+        "export": "SupercriticalConformalCovariance.Implementation.conformal_covariance_impl"
+      },
+      "prefix_sha256": "d11906c67120c952bf2db663b8c54e9ffa8c7eddc1352aa1965ecff713073d35",
+      "suffix_sha256": "cb63ada74c67115ede18922b137470a9adf57ffd55b9345e75543715b4f6e14d",
+      "draft_allowlist": {
+        "frozen_paths": [],
+        "audit_paths": []
+      }
+    }
+  ]
+}

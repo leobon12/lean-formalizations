@@ -28,3 +28,4 @@ lean_lib SLUMetricAPI2
 lean_lib SLUFieldSupport
 lean_lib BR1Bridges
 lean_lib NV1Evidence
+lean_lib SupercriticalConformalCovariance

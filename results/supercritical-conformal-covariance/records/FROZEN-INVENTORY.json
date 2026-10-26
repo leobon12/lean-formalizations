@@ -1,0 +1,381 @@
+{
+ "decision": "recorded exception: frozen files ship byte-identical to the sealed commit; no comment transform",
+ "classes": {
+  "approval-locator": {
+   "resolution": "records/APPROVAL-REQUEST.md",
+   "rationale": "Path of the private approval request; the public extract carries its sha256 cbc72606… and its six disclosures."
+  },
+  "candidate-file": {
+   "resolution": "records/APPROVAL-REQUEST.md",
+   "rationale": "Name of the transient author-approved candidate file whose declaration was frozen unchanged; listed with its hash in the extract."
+  },
+  "ruling": {
+   "resolution": "records/RULINGS-EXCERPT.md",
+   "rationale": "Development ruling number; the public excerpt states each cited ruling in reader terms."
+  },
+  "literature-locator": {
+   "resolution": "records/GM-UNIQUENESS-REFERENCE.md",
+   "rationale": "Path of the private copy of the arXiv TeX source; the record gives the public arXiv identifier and the TeX lines."
+  },
+  "stale-status": {
+   "resolution": "README.md#immutable-frozen-comments",
+   "rationale": "The module comment predates the seal; the guide states the current proof status of each theorem."
+  }
+ },
+ "frozen_file_sha256": {
+  "SupercriticalConformalCovariance/Frozen/IsConformalBijection.lean": "bc16007e8b9fb0c3308690dbb5d45a48b21b24963891a5f846a81de24f65fa90",
+  "SupercriticalConformalCovariance/Frozen/ConfPushTest.lean": "e736eda3f4fe7e1bfb13085c241fd69f44e55b979effb3230d2ab96782939c60",
+  "SupercriticalConformalCovariance/Frozen/ConfPullbackField.lean": "2b0a32dac2b58b8fd61b7479819e08b16566b195d63f89888f04ccddcac182c4",
+  "SupercriticalConformalCovariance/Frozen/IsDomainRealization.lean": "6bbce8022047673777f3e16391bb2d10cefdb042a163c89178f231b1cddf7e66",
+  "SupercriticalConformalCovariance/Frozen/WeylScaleOn.lean": "30c52eb36d8d93ca43db4f9559c017516a187866e5eb150f0e67ae4edf6326e7",
+  "SupercriticalConformalCovariance/Frozen/DomainMetric.lean": "b0287530eedd7acb2b502a7cb755f9018482a0b4e84625e64c590fbec820eca1",
+  "SupercriticalConformalCovariance/Frozen/XiCrit.lean": "4a86a72d05828107df531c2decbad2fd6408678a247859927e0f5e8ea68b6b65",
+  "SupercriticalConformalCovariance/Frozen/IsGreenian.lean": "3038bc6cc59bab883342338f765ab31d1774cd640d51d708922bb2ab5b07071b",
+  "SupercriticalConformalCovariance/Frozen/DomainMetric_ae_eq_of_isDomainRealization.lean": "eac0b7a0ef6987530b0187ee631aedeedae6af94745e63a730ba07f35fc57406",
+  "SupercriticalConformalCovariance/Frozen/ConformalCovariance.lean": "f39375851e78673d110e92b8931c498d0d26ef02ce8be05788cbe4b1a95e2ca8"
+ },
+ "entries": [
+  {
+   "path": "SupercriticalConformalCovariance/Frozen/IsConformalBijection.lean",
+   "line": 4,
+   "pattern": "development reference",
+   "text": "planning/",
+   "locator": "planning/candidates/rev2.2/APPROVAL-REQUEST.md",
+   "class": "approval-locator",
+   "resolution": "records/APPROVAL-REQUEST.md"
+  },
+  {
+   "path": "SupercriticalConformalCovariance/Frozen/IsConformalBijection.lean",
+   "line": 4,
+   "pattern": "candidate file",
+   "text": "CandIsConformalBijection.lean",
+   "locator": "CandIsConformalBijection.lean",
+   "class": "candidate-file",
+   "resolution": "records/APPROVAL-REQUEST.md"
+  },
+  {
+   "path": "SupercriticalConformalCovariance/Frozen/IsConformalBijection.lean",
+   "line": 4,
+   "pattern": "ruling",
+   "text": "ruling A15",
+   "locator": "ruling A15",
+   "class": "ruling",
+   "resolution": "records/RULINGS-EXCERPT.md"
+  },
+  {
+   "path": "SupercriticalConformalCovariance/Frozen/ConfPushTest.lean",
+   "line": 4,
+   "pattern": "development reference",
+   "text": "planning/",
+   "locator": "planning/candidates/rev2.2/APPROVAL-REQUEST.md",
+   "class": "approval-locator",
+   "resolution": "records/APPROVAL-REQUEST.md"
+  },
+  {
+   "path": "SupercriticalConformalCovariance/Frozen/ConfPushTest.lean",
+   "line": 4,
+   "pattern": "candidate file",
+   "text": "CandConfPushTest.lean",
+   "locator": "CandConfPushTest.lean",
+   "class": "candidate-file",
+   "resolution": "records/APPROVAL-REQUEST.md"
+  },
+  {
+   "path": "SupercriticalConformalCovariance/Frozen/ConfPushTest.lean",
+   "line": 4,
+   "pattern": "ruling",
+   "text": "ruling A15",
+   "locator": "ruling A15",
+   "class": "ruling",
+   "resolution": "records/RULINGS-EXCERPT.md"
+  },
+  {
+   "path": "SupercriticalConformalCovariance/Frozen/ConfPullbackField.lean",
+   "line": 3,
+   "pattern": "development reference",
+   "text": "planning/",
+   "locator": "planning/candidates/rev2.2/APPROVAL-REQUEST.md",
+   "class": "approval-locator",
+   "resolution": "records/APPROVAL-REQUEST.md"
+  },
+  {
+   "path": "SupercriticalConformalCovariance/Frozen/ConfPullbackField.lean",
+   "line": 3,
+   "pattern": "candidate file",
+   "text": "CandConfPullbackField.lean",
+   "locator": "CandConfPullbackField.lean",
+   "class": "candidate-file",
+   "resolution": "records/APPROVAL-REQUEST.md"
+  },
+  {
+   "path": "SupercriticalConformalCovariance/Frozen/ConfPullbackField.lean",
+   "line": 3,
+   "pattern": "ruling",
+   "text": "ruling A15",
+   "locator": "ruling A15",
+   "class": "ruling",
+   "resolution": "records/RULINGS-EXCERPT.md"
+  },
+  {
+   "path": "SupercriticalConformalCovariance/Frozen/IsDomainRealization.lean",
+   "line": 3,
+   "pattern": "development reference",
+   "text": "planning/",
+   "locator": "planning/candidates/rev2.2/APPROVAL-REQUEST.md",
+   "class": "approval-locator",
+   "resolution": "records/APPROVAL-REQUEST.md"
+  },
+  {
+   "path": "SupercriticalConformalCovariance/Frozen/IsDomainRealization.lean",
+   "line": 3,
+   "pattern": "candidate file",
+   "text": "CandIsDomainRealization.lean",
+   "locator": "CandIsDomainRealization.lean",
+   "class": "candidate-file",
+   "resolution": "records/APPROVAL-REQUEST.md"
+  },
+  {
+   "path": "SupercriticalConformalCovariance/Frozen/IsDomainRealization.lean",
+   "line": 3,
+   "pattern": "ruling",
+   "text": "ruling A15",
+   "locator": "ruling A15",
+   "class": "ruling",
+   "resolution": "records/RULINGS-EXCERPT.md"
+  },
+  {
+   "path": "SupercriticalConformalCovariance/Frozen/IsDomainRealization.lean",
+   "line": 19,
+   "pattern": "ruling",
+   "text": "ruling A10.2",
+   "locator": "ruling A10.2",
+   "class": "ruling",
+   "resolution": "records/RULINGS-EXCERPT.md"
+  },
+  {
+   "path": "SupercriticalConformalCovariance/Frozen/WeylScaleOn.lean",
+   "line": 3,
+   "pattern": "development reference",
+   "text": "planning/",
+   "locator": "planning/candidates/rev2.2/APPROVAL-REQUEST.md",
+   "class": "approval-locator",
+   "resolution": "records/APPROVAL-REQUEST.md"
+  },
+  {
+   "path": "SupercriticalConformalCovariance/Frozen/WeylScaleOn.lean",
+   "line": 3,
+   "pattern": "candidate file",
+   "text": "CandWeylScaleOn.lean",
+   "locator": "CandWeylScaleOn.lean",
+   "class": "candidate-file",
+   "resolution": "records/APPROVAL-REQUEST.md"
+  },
+  {
+   "path": "SupercriticalConformalCovariance/Frozen/WeylScaleOn.lean",
+   "line": 3,
+   "pattern": "ruling",
+   "text": "ruling A15",
+   "locator": "ruling A15",
+   "class": "ruling",
+   "resolution": "records/RULINGS-EXCERPT.md"
+  },
+  {
+   "path": "SupercriticalConformalCovariance/Frozen/DomainMetric.lean",
+   "line": 4,
+   "pattern": "development reference",
+   "text": "planning/",
+   "locator": "planning/candidates/rev2.2/APPROVAL-REQUEST.md",
+   "class": "approval-locator",
+   "resolution": "records/APPROVAL-REQUEST.md"
+  },
+  {
+   "path": "SupercriticalConformalCovariance/Frozen/DomainMetric.lean",
+   "line": 4,
+   "pattern": "candidate file",
+   "text": "CandDomainMetric.lean",
+   "locator": "CandDomainMetric.lean",
+   "class": "candidate-file",
+   "resolution": "records/APPROVAL-REQUEST.md"
+  },
+  {
+   "path": "SupercriticalConformalCovariance/Frozen/DomainMetric.lean",
+   "line": 4,
+   "pattern": "ruling",
+   "text": "ruling A15",
+   "locator": "ruling A15",
+   "class": "ruling",
+   "resolution": "records/RULINGS-EXCERPT.md"
+  },
+  {
+   "path": "SupercriticalConformalCovariance/Frozen/XiCrit.lean",
+   "line": 3,
+   "pattern": "development reference",
+   "text": "planning/",
+   "locator": "planning/candidates/rev2.2/APPROVAL-REQUEST.md",
+   "class": "approval-locator",
+   "resolution": "records/APPROVAL-REQUEST.md"
+  },
+  {
+   "path": "SupercriticalConformalCovariance/Frozen/XiCrit.lean",
+   "line": 3,
+   "pattern": "candidate file",
+   "text": "CandXiCrit.lean",
+   "locator": "CandXiCrit.lean",
+   "class": "candidate-file",
+   "resolution": "records/APPROVAL-REQUEST.md"
+  },
+  {
+   "path": "SupercriticalConformalCovariance/Frozen/XiCrit.lean",
+   "line": 3,
+   "pattern": "ruling",
+   "text": "ruling A15",
+   "locator": "ruling A15",
+   "class": "ruling",
+   "resolution": "records/RULINGS-EXCERPT.md"
+  },
+  {
+   "path": "SupercriticalConformalCovariance/Frozen/IsGreenian.lean",
+   "line": 5,
+   "pattern": "development reference",
+   "text": "planning/",
+   "locator": "planning/candidates/rev2.2/APPROVAL-REQUEST.md",
+   "class": "approval-locator",
+   "resolution": "records/APPROVAL-REQUEST.md"
+  },
+  {
+   "path": "SupercriticalConformalCovariance/Frozen/IsGreenian.lean",
+   "line": 5,
+   "pattern": "candidate file",
+   "text": "CandIsGreenian.lean",
+   "locator": "CandIsGreenian.lean",
+   "class": "candidate-file",
+   "resolution": "records/APPROVAL-REQUEST.md"
+  },
+  {
+   "path": "SupercriticalConformalCovariance/Frozen/IsGreenian.lean",
+   "line": 5,
+   "pattern": "ruling",
+   "text": "ruling A15",
+   "locator": "ruling A15",
+   "class": "ruling",
+   "resolution": "records/RULINGS-EXCERPT.md"
+  },
+  {
+   "path": "SupercriticalConformalCovariance/Frozen/IsGreenian.lean",
+   "line": 15,
+   "pattern": "ruling",
+   "text": "A14",
+   "locator": "A14",
+   "class": "ruling",
+   "resolution": "records/RULINGS-EXCERPT.md"
+  },
+  {
+   "path": "SupercriticalConformalCovariance/Frozen/DomainMetric_ae_eq_of_isDomainRealization.lean",
+   "line": 7,
+   "pattern": "development reference",
+   "text": "planning/",
+   "locator": "planning/candidates/rev2.2/APPROVAL-REQUEST.md",
+   "class": "approval-locator",
+   "resolution": "records/APPROVAL-REQUEST.md"
+  },
+  {
+   "path": "SupercriticalConformalCovariance/Frozen/DomainMetric_ae_eq_of_isDomainRealization.lean",
+   "line": 22,
+   "pattern": "development reference",
+   "text": "source/literature/",
+   "locator": "source/literature/gm-uniqueness/tex/uniqueness-final.tex",
+   "class": "literature-locator",
+   "resolution": "records/GM-UNIQUENESS-REFERENCE.md"
+  },
+  {
+   "path": "SupercriticalConformalCovariance/Frozen/DomainMetric_ae_eq_of_isDomainRealization.lean",
+   "line": 7,
+   "pattern": "candidate file",
+   "text": "CandDomainMetricAeEq.lean",
+   "locator": "CandDomainMetricAeEq.lean",
+   "class": "candidate-file",
+   "resolution": "records/APPROVAL-REQUEST.md"
+  },
+  {
+   "path": "SupercriticalConformalCovariance/Frozen/DomainMetric_ae_eq_of_isDomainRealization.lean",
+   "line": 7,
+   "pattern": "status word",
+   "text": "DRAFT_SORRY",
+   "locator": "DRAFT_SORRY",
+   "class": "stale-status",
+   "resolution": "README.md#immutable-frozen-comments"
+  },
+  {
+   "path": "SupercriticalConformalCovariance/Frozen/DomainMetric_ae_eq_of_isDomainRealization.lean",
+   "line": 7,
+   "pattern": "ruling",
+   "text": "ruling A15",
+   "locator": "ruling A15",
+   "class": "ruling",
+   "resolution": "records/RULINGS-EXCERPT.md"
+  },
+  {
+   "path": "SupercriticalConformalCovariance/Frozen/DomainMetric_ae_eq_of_isDomainRealization.lean",
+   "line": 21,
+   "pattern": "ruling",
+   "text": "ruling A10.2",
+   "locator": "ruling A10.2",
+   "class": "ruling",
+   "resolution": "records/RULINGS-EXCERPT.md"
+  },
+  {
+   "path": "SupercriticalConformalCovariance/Frozen/ConformalCovariance.lean",
+   "line": 10,
+   "pattern": "development reference",
+   "text": "planning/",
+   "locator": "planning/candidates/rev2.2/APPROVAL-REQUEST.md",
+   "class": "approval-locator",
+   "resolution": "records/APPROVAL-REQUEST.md"
+  },
+  {
+   "path": "SupercriticalConformalCovariance/Frozen/ConformalCovariance.lean",
+   "line": 10,
+   "pattern": "candidate file",
+   "text": "CandConformalCovariance.lean",
+   "locator": "CandConformalCovariance.lean",
+   "class": "candidate-file",
+   "resolution": "records/APPROVAL-REQUEST.md"
+  },
+  {
+   "path": "SupercriticalConformalCovariance/Frozen/ConformalCovariance.lean",
+   "line": 10,
+   "pattern": "status word",
+   "text": "DRAFT_SORRY",
+   "locator": "DRAFT_SORRY",
+   "class": "stale-status",
+   "resolution": "README.md#immutable-frozen-comments"
+  },
+  {
+   "path": "SupercriticalConformalCovariance/Frozen/ConformalCovariance.lean",
+   "line": 10,
+   "pattern": "ruling",
+   "text": "ruling A15",
+   "locator": "ruling A15",
+   "class": "ruling",
+   "resolution": "records/RULINGS-EXCERPT.md"
+  },
+  {
+   "path": "SupercriticalConformalCovariance/Frozen/ConformalCovariance.lean",
+   "line": 28,
+   "pattern": "ruling",
+   "text": "ruling A14",
+   "locator": "ruling A14",
+   "class": "ruling",
+   "resolution": "records/RULINGS-EXCERPT.md"
+  },
+  {
+   "path": "SupercriticalConformalCovariance/Frozen/ConformalCovariance.lean",
+   "line": 31,
+   "pattern": "ruling",
+   "text": "ruling A10.2",
+   "locator": "ruling A10.2",
+   "class": "ruling",
+   "resolution": "records/RULINGS-EXCERPT.md"
+  }
+ ]
+}

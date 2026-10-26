@@ -1,3 +1,22 @@
+import SupercriticalConformalCovariance.Frozen.IsConformalBijection
+import SupercriticalConformalCovariance.Frozen.ConfPushTest
+import SupercriticalConformalCovariance.Frozen.ConfPullbackField
+import SupercriticalConformalCovariance.Frozen.IsDomainRealization
+import SupercriticalConformalCovariance.Frozen.WeylScaleOn
+import SupercriticalConformalCovariance.Frozen.DomainMetric
+import SupercriticalConformalCovariance.Frozen.XiCrit
+import SupercriticalConformalCovariance.Frozen.IsGreenian
+import SupercriticalConformalCovariance.Frozen.DomainMetric_ae_eq_of_isDomainRealization
+import SupercriticalConformalCovariance.Frozen.ConformalCovariance
+import SupercriticalConformalCovariance.Root.AllXi
+import SupercriticalConformalCovariance.GMForm.Base
+import SupercriticalConformalCovariance.GMForm.Countable
+import SupercriticalConformalCovariance.GMForm.Functional
+import SupercriticalConformalCovariance.GMForm.ZeroBoundaryCovariance
+import SupercriticalConformalCovariance.GMForm.Realization
+import SupercriticalConformalCovariance.GMForm.Independence
+import SupercriticalConformalCovariance.GMForm.ZeroBoundary
+import SupercriticalConformalCovariance.GMForm.ZeroBoundaryPullback
 import SupercriticalLQGUniqueness.Frozen.ExistsUnique_isLFPPExponent
 import SupercriticalLQGUniqueness.Frozen.WeakLQGMetric_unique
 import SupercriticalLQGUniqueness.Frozen.ExistsUnique_isLFPPNormalizer
@@ -225,7 +244,8 @@ run_cmd do
         (`SupercriticalLQGUniqueness).isPrefixOf m || (`SLUSupport).isPrefixOf m ||
         (`SLUMetricAPI).isPrefixOf m || (`SLUMetricAPI2).isPrefixOf m ||
         (`SLUFieldSupport).isPrefixOf m || (`BR1Bridges).isPrefixOf m ||
-        (`NV1Evidence).isPrefixOf m then
+        (`NV1Evidence).isPrefixOf m ||
+        (`SupercriticalConformalCovariance).isPrefixOf m then
       roots := roots.push n
   if roots.isEmpty then throwError "No included declarations found"
   let mut pending := roots
@@ -764,3 +784,23 @@ assert_no_sorry SupercriticalLQGUniqueness.B2.LscTop.exists_compatible_metric
 #print axioms SupercriticalLQGUniqueness.B2.LscTop.exists_compatible_metric
 assert_no_sorry SupercriticalLQGUniqueness.B2.LscTop.lscTendstoInProbability_iff_tendstoInMeasure
 #print axioms SupercriticalLQGUniqueness.B2.LscTop.lscTendstoInProbability_iff_tendstoInMeasure
+
+-- Conformal covariance of the supercritical LQG metric.
+assert_no_sorry SupercriticalConformalCovariance.domainMetric_ae_eq_of_isDomainRealization
+#print axioms SupercriticalConformalCovariance.domainMetric_ae_eq_of_isDomainRealization
+assert_no_sorry SupercriticalConformalCovariance.conformal_covariance
+#print axioms SupercriticalConformalCovariance.conformal_covariance
+assert_no_sorry SupercriticalConformalCovariance.Root.conformal_covariance_all_xi
+#print axioms SupercriticalConformalCovariance.Root.conformal_covariance_all_xi
+assert_no_sorry SupercriticalConformalCovariance.GMForm.gm_axiomIV_on_base
+#print axioms SupercriticalConformalCovariance.GMForm.gm_axiomIV_on_base
+assert_no_sorry SupercriticalConformalCovariance.GMForm.exists_countably_universal_gm_axiomIV_on_base
+#print axioms SupercriticalConformalCovariance.GMForm.exists_countably_universal_gm_axiomIV_on_base
+assert_no_sorry SupercriticalConformalCovariance.GMForm.gm_direction_of_root
+#print axioms SupercriticalConformalCovariance.GMForm.gm_direction_of_root
+assert_no_sorry SupercriticalConformalCovariance.GMForm.gm_zeroBoundary_covariance_on_extension
+#print axioms SupercriticalConformalCovariance.GMForm.gm_zeroBoundary_covariance_on_extension
+assert_no_sorry SupercriticalConformalCovariance.GMForm.exists_fieldwise_gm_axiomIV_on_extension
+#print axioms SupercriticalConformalCovariance.GMForm.exists_fieldwise_gm_axiomIV_on_extension
+assert_no_sorry SupercriticalConformalCovariance.GMForm.exists_countably_universal_gm_axiomIV_on_extensions
+#print axioms SupercriticalConformalCovariance.GMForm.exists_countably_universal_gm_axiomIV_on_extensions

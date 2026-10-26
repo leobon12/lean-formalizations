@@ -1,0 +1,19 @@
+{
+  "development_manifest_sha256": "2d2c3ddfbe8fe617e41eb8bb3228515e1200ac4e94218eac71c8e6fc8990d196",
+  "release_transform": "approval-and-private-source-reference-metadata-scrub-v1",
+  "frozen_statements_and_hashes_changed": false,
+  "development_head": "a80b9333ffd584fa8893e96b939d5295d44b5687",
+  "public_base_head": "f6a9f5804efc4a7ca8d7e69a4851527b493629cf",
+  "key2_audits": {
+    "domainMetric_ae_eq_of_isDomainRealization_v1": {
+      "verdict": "VERDICT: PASS",
+      "record_sha256": "f7bb8b3c1e7f30cd8a7d7ac133c486b15c0e73961269d49a9858da713b7b63e2"
+    },
+    "conformal_covariance_v1": {
+      "verdict": "VERDICT: PASS",
+      "record_sha256": "7429cde1a687173f5956cf97e05127388a30c4853b6bb1e97eaeb56232ffb3eb"
+    }
+  },
+  "manuscript_text_sha256": "7780c858aae06ba251c02516164f0ea4edd3835c7aeb1fc3e8dcf375db55f603",
+  "rehearsal_overlay": {}
+}
