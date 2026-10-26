@@ -1,3 +1,13 @@
+import HigherDimLFPPAS.Frozen.IsAdmissibleSeed
+import HigherDimLFPPAS.Frozen.Assumption11
+import HigherDimLFPPAS.Frozen.AsConvergence
+import HigherDimLFPPAS.Frozen.AsConvergenceNonneg
+import HigherDimLFPPAS.Frozen.AsConvergenceMedianOne
+import HigherDimLFPPAS.Frozen.Assumption11Nonvacuous
+import HigherDimLFPPAS.Frozen.AsConvergenceNonvacuous
+import HigherDimLFPPAS.Frozen.ConvKernelSeed
+import HigherDimLFPPAS.Frozen.ConvMollifySpecSeed
+import HigherDimLFPPAS.Frozen.ConvMollifyJointSeed
 import SupercriticalConformalCovariance.Frozen.IsConformalBijection
 import SupercriticalConformalCovariance.Frozen.ConfPushTest
 import SupercriticalConformalCovariance.Frozen.ConfPullbackField
@@ -245,7 +255,8 @@ run_cmd do
         (`SLUMetricAPI).isPrefixOf m || (`SLUMetricAPI2).isPrefixOf m ||
         (`SLUFieldSupport).isPrefixOf m || (`BR1Bridges).isPrefixOf m ||
         (`NV1Evidence).isPrefixOf m ||
-        (`SupercriticalConformalCovariance).isPrefixOf m then
+        (`SupercriticalConformalCovariance).isPrefixOf m ||
+        (`HigherDimLFPPAS).isPrefixOf m then
       roots := roots.push n
   if roots.isEmpty then throwError "No included declarations found"
   let mut pending := roots
@@ -804,3 +815,21 @@ assert_no_sorry SupercriticalConformalCovariance.GMForm.exists_fieldwise_gm_axio
 #print axioms SupercriticalConformalCovariance.GMForm.exists_fieldwise_gm_axiomIV_on_extension
 assert_no_sorry SupercriticalConformalCovariance.GMForm.exists_countably_universal_gm_axiomIV_on_extensions
 #print axioms SupercriticalConformalCovariance.GMForm.exists_countably_universal_gm_axiomIV_on_extensions
+
+-- Almost sure convergence of higher-dimensional LFPP (frozen theorem anchors).
+assert_no_sorry HigherDimLFPPAS.asConvergence
+#print axioms HigherDimLFPPAS.asConvergence
+assert_no_sorry HigherDimLFPPAS.asConvergence_nonneg
+#print axioms HigherDimLFPPAS.asConvergence_nonneg
+assert_no_sorry HigherDimLFPPAS.asConvergence_medianOne
+#print axioms HigherDimLFPPAS.asConvergence_medianOne
+assert_no_sorry HigherDimLFPPAS.assumption11_nonvacuous
+#print axioms HigherDimLFPPAS.assumption11_nonvacuous
+assert_no_sorry HigherDimLFPPAS.asConvergence_nonvacuous
+#print axioms HigherDimLFPPAS.asConvergence_nonvacuous
+assert_no_sorry HigherDimLFPPAS.convKernel_seed
+#print axioms HigherDimLFPPAS.convKernel_seed
+assert_no_sorry HigherDimLFPPAS.convMollify_spec_seed
+#print axioms HigherDimLFPPAS.convMollify_spec_seed
+assert_no_sorry HigherDimLFPPAS.convMollify_joint_seed
+#print axioms HigherDimLFPPAS.convMollify_joint_seed
