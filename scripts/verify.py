@@ -14,7 +14,7 @@ import argparse,hashlib,json,os,re,shutil,subprocess,sys,time
 
 ROOT=Path(__file__).resolve().parents[1]
 CERT_MEMORY_MB=12288
-NAMESPACES=['MeshOnly','BouRabeeGwynne','ReflectedWalk','ReflectedGMS','QuantumZipper','LQGDimension','LQGMetric','MeshRates','GaussianLQG','HigherDimLFPP','SmallGammaGeodesics','HigherDimLQGMetric','HigherDimLQGContinuity','SupercriticalLQGUniqueness','SLUSupport','SLUMetricAPI','SLUMetricAPI2','SLUFieldSupport','BR1Bridges','NV1Evidence','SupercriticalConformalCovariance','HigherDimLFPPAS']
+NAMESPACES=['MeshOnly','BouRabeeGwynne','ReflectedWalk','ReflectedGMS','QuantumZipper','LQGDimension','LQGMetric','MeshRates','GaussianLQG','HigherDimLFPP','SmallGammaGeodesics','HigherDimLQGMetric','HigherDimLQGContinuity','SupercriticalLQGUniqueness','SLUSupport','SLUMetricAPI','SLUMetricAPI2','SLUFieldSupport','BR1Bridges','NV1Evidence','SupercriticalConformalCovariance','HigherDimLFPPAS','SupercriticalLFPPAS']
 def stripped(s):
     res=[];i=0;depth=0;string=False
     while i<len(s):

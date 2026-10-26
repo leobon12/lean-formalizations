@@ -30,3 +30,4 @@ lean_lib BR1Bridges
 lean_lib NV1Evidence
 lean_lib SupercriticalConformalCovariance
 lean_lib HigherDimLFPPAS
+lean_lib SupercriticalLFPPAS

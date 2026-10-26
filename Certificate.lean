@@ -1,3 +1,7 @@
+import SupercriticalLFPPAS.Frozen.Lfpp_ae_lscTendsto
+import SupercriticalLFPPAS.Frozen.Exists_jointHeatVersion
+import SupercriticalLFPPAS.Assembly.AllXi
+import SupercriticalLFPPAS.Implementation.JointHeatVersion
 import HigherDimLFPPAS.Frozen.IsAdmissibleSeed
 import HigherDimLFPPAS.Frozen.Assumption11
 import HigherDimLFPPAS.Frozen.AsConvergence
@@ -255,6 +259,7 @@ run_cmd do
         (`SLUMetricAPI).isPrefixOf m || (`SLUMetricAPI2).isPrefixOf m ||
         (`SLUFieldSupport).isPrefixOf m || (`BR1Bridges).isPrefixOf m ||
         (`NV1Evidence).isPrefixOf m ||
+        (`SupercriticalLFPPAS).isPrefixOf m ||
         (`SupercriticalConformalCovariance).isPrefixOf m ||
         (`HigherDimLFPPAS).isPrefixOf m then
       roots := roots.push n
@@ -833,3 +838,17 @@ assert_no_sorry HigherDimLFPPAS.convMollify_spec_seed
 #print axioms HigherDimLFPPAS.convMollify_spec_seed
 assert_no_sorry HigherDimLFPPAS.convMollify_joint_seed
 #print axioms HigherDimLFPPAS.convMollify_joint_seed
+
+-- Almost sure convergence of supercritical LFPP.
+assert_no_sorry SupercriticalLFPPAS.lfpp_ae_lscTendsto
+#print axioms SupercriticalLFPPAS.lfpp_ae_lscTendsto
+assert_no_sorry SupercriticalLFPPAS.exists_jointHeatVersion
+#print axioms SupercriticalLFPPAS.exists_jointHeatVersion
+assert_no_sorry SupercriticalLFPPAS.Assembly.lfpp_ae_lscTendsto_allXi
+#print axioms SupercriticalLFPPAS.Assembly.lfpp_ae_lscTendsto_allXi
+assert_no_sorry SupercriticalLFPPAS.ae_eq_of_jointHeatVersions
+#print axioms SupercriticalLFPPAS.ae_eq_of_jointHeatVersions
+assert_no_sorry SupercriticalLFPPAS.Implementation.exists_jointHeatVersion_pathwise
+#print axioms SupercriticalLFPPAS.Implementation.exists_jointHeatVersion_pathwise
+assert_no_sorry SupercriticalLFPPAS.RefutedV1.not_thm11v1
+#print axioms SupercriticalLFPPAS.RefutedV1.not_thm11v1

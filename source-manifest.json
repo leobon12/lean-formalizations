@@ -145,7 +145,11 @@
     "HigherDimLFPPAS.Frozen.AsConvergenceNonvacuous",
     "HigherDimLFPPAS.Frozen.ConvKernelSeed",
     "HigherDimLFPPAS.Frozen.ConvMollifySpecSeed",
-    "HigherDimLFPPAS.Frozen.ConvMollifyJointSeed"
+    "HigherDimLFPPAS.Frozen.ConvMollifyJointSeed",
+    "SupercriticalLFPPAS.Frozen.Lfpp_ae_lscTendsto",
+    "SupercriticalLFPPAS.Frozen.Exists_jointHeatVersion",
+    "SupercriticalLFPPAS.Assembly.AllXi",
+    "SupercriticalLFPPAS.Implementation.JointHeatVersion"
   ],
   "modules": {
     "BouRabeeGwynne.AbsorbingExcursionKernel": {
@@ -192457,6 +192461,1925 @@
         "HigherDimLFPPAS.Rescale.Conv"
       ],
       "bytes": 2235
+    },
+    "SupercriticalLFPPAS.Implementation.JointHeatVersion": {
+      "path": "SupercriticalLFPPAS/Implementation/JointHeatVersion.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Implementation/JointHeatVersion.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "2cab7cbcdd649ef4b5eaed0d226c884fac49283196639a65ce6082fc2bf2c51f",
+      "imports": [
+        "SupercriticalLQGUniqueness.Frozen.IsNormalizedWholePlaneGFF",
+        "SupercriticalLQGUniqueness.Frozen.IsHeatSmoothing",
+        "SupercriticalLQGUniqueness.Frozen.IsLFPPNormalizer",
+        "SupercriticalLQGUniqueness.Frozen.RescaledLFPP",
+        "SupercriticalLQGUniqueness.Frozen.LSCMetricToLSCFun",
+        "SupercriticalLQGUniqueness.Frozen.LSCTendsto",
+        "SupercriticalLQGUniqueness.Frozen.LSCTendstoInProbability",
+        "SupercriticalConformalCovariance.Frozen.XiCrit",
+        "SupercriticalLQGUniqueness.Frozen.Lfpp_tendstoInProbability",
+        "SupercriticalLQGUniqueness.Frozen.ExistsUnique_isLFPPNormalizer",
+        "SupercriticalLQGUniqueness.B2.LscTop.InProbability",
+        "SupercriticalLQGUniqueness.B2.PfeAxioms.HeatVersionBdd",
+        "SupercriticalLQGUniqueness.Exponent.HeatVersion",
+        "NV1Evidence",
+        "LQGMetric.Papers.DFGPS.T12P0"
+      ],
+      "local_imports": [
+        "SupercriticalLQGUniqueness.Frozen.IsNormalizedWholePlaneGFF",
+        "SupercriticalLQGUniqueness.Frozen.IsHeatSmoothing",
+        "SupercriticalLQGUniqueness.Frozen.IsLFPPNormalizer",
+        "SupercriticalLQGUniqueness.Frozen.RescaledLFPP",
+        "SupercriticalLQGUniqueness.Frozen.LSCMetricToLSCFun",
+        "SupercriticalLQGUniqueness.Frozen.LSCTendsto",
+        "SupercriticalLQGUniqueness.Frozen.LSCTendstoInProbability",
+        "SupercriticalConformalCovariance.Frozen.XiCrit",
+        "SupercriticalLQGUniqueness.Frozen.Lfpp_tendstoInProbability",
+        "SupercriticalLQGUniqueness.Frozen.ExistsUnique_isLFPPNormalizer",
+        "SupercriticalLQGUniqueness.B2.LscTop.InProbability",
+        "SupercriticalLQGUniqueness.B2.PfeAxioms.HeatVersionBdd",
+        "SupercriticalLQGUniqueness.Exponent.HeatVersion",
+        "NV1Evidence",
+        "LQGMetric.Papers.DFGPS.T12P0"
+      ],
+      "bytes": 14638
+    },
+    "SupercriticalLFPPAS.Assembly.AllXi": {
+      "path": "SupercriticalLFPPAS/Assembly/AllXi.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Assembly/AllXi.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "3afde5df83ff9c831265f05e300f4c14145b1fa7db2576640040b89fe083d575",
+      "imports": [
+        "SupercriticalLFPPAS.Assembly.Adapters",
+        "SupercriticalLFPPAS.Normalizer.Window"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Assembly.Adapters",
+        "SupercriticalLFPPAS.Normalizer.Window"
+      ],
+      "bytes": 1658
+    },
+    "SupercriticalLFPPAS.Normalizer.Window": {
+      "path": "SupercriticalLFPPAS/Normalizer/Window.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Normalizer/Window.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "426715b3bb85023755ddbdda65e6ae3a61ecd5aafb7b7ae49e7befdd25a52681",
+      "imports": [
+        "SupercriticalLFPPAS.Core.Interfaces",
+        "SupercriticalLFPPAS.Field.HeatVersion",
+        "SupercriticalLFPPAS.Inputs.RationalCircles",
+        "SupercriticalLFPPAS.Inputs.RationalCirclePositive",
+        "SupercriticalLFPPAS.Inputs.RationalLFPPFinite",
+        "SupercriticalLFPPAS.Inputs.CircleSetDistance",
+        "SupercriticalLQGUniqueness.B2.Polylog.P4LFPPCompare",
+        "SupercriticalLQGUniqueness.B2.PfeWeyl.W3Circle",
+        "SupercriticalLQGUniqueness.B2.Polylog.P2HeatBasic",
+        "SupercriticalLQGUniqueness.Uniqueness.OptimalConstants.Ratios.Section3",
+        "SupercriticalLQGUniqueness.Uniqueness.Positivity.Witnesses.AX3",
+        "SupercriticalLFPPAS.Inputs.ENNRealConvergenceInMeasure",
+        "NV1Evidence"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Core.Interfaces",
+        "SupercriticalLFPPAS.Field.HeatVersion",
+        "SupercriticalLFPPAS.Inputs.RationalCircles",
+        "SupercriticalLFPPAS.Inputs.RationalCirclePositive",
+        "SupercriticalLFPPAS.Inputs.RationalLFPPFinite",
+        "SupercriticalLFPPAS.Inputs.CircleSetDistance",
+        "SupercriticalLQGUniqueness.B2.Polylog.P4LFPPCompare",
+        "SupercriticalLQGUniqueness.B2.PfeWeyl.W3Circle",
+        "SupercriticalLQGUniqueness.B2.Polylog.P2HeatBasic",
+        "SupercriticalLQGUniqueness.Uniqueness.OptimalConstants.Ratios.Section3",
+        "SupercriticalLQGUniqueness.Uniqueness.Positivity.Witnesses.AX3",
+        "SupercriticalLFPPAS.Inputs.ENNRealConvergenceInMeasure",
+        "NV1Evidence"
+      ],
+      "bytes": 46352
+    },
+    "SupercriticalLFPPAS.Inputs.ENNRealConvergenceInMeasure": {
+      "path": "SupercriticalLFPPAS/Inputs/ENNRealConvergenceInMeasure.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Inputs/ENNRealConvergenceInMeasure.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "625dca2560cd54120bf6f7eb5bc60d56f0595f416c166fb801b5e73f8a77348b",
+      "imports": [
+        "Mathlib.MeasureTheory.Function.ConvergenceInMeasure",
+        "Mathlib.Topology.EMetricSpace.Weak"
+      ],
+      "local_imports": [],
+      "bytes": 3052
+    },
+    "SupercriticalLFPPAS.Inputs.CircleSetDistance": {
+      "path": "SupercriticalLFPPAS/Inputs/CircleSetDistance.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Inputs/CircleSetDistance.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "e06685a7436f8c4ac32687e5fd2305b29181fe463b0e0a1a8a8a80056cd31381",
+      "imports": [
+        "SupercriticalLQGUniqueness.B2.Iface.Statements",
+        "SupercriticalLQGUniqueness.Uniqueness.OptimalConstants.Ratios.Section3"
+      ],
+      "local_imports": [
+        "SupercriticalLQGUniqueness.B2.Iface.Statements",
+        "SupercriticalLQGUniqueness.Uniqueness.OptimalConstants.Ratios.Section3"
+      ],
+      "bytes": 869
+    },
+    "SupercriticalLFPPAS.Inputs.RationalLFPPFinite": {
+      "path": "SupercriticalLFPPAS/Inputs/RationalLFPPFinite.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Inputs/RationalLFPPFinite.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "d0c9e58138b658cdde0a81417f0280bc22288935e0b5ef2ba0151aa3e28a4680",
+      "imports": [
+        "SupercriticalLQGUniqueness.B2.PfeLocal.L2RationalFinite"
+      ],
+      "local_imports": [
+        "SupercriticalLQGUniqueness.B2.PfeLocal.L2RationalFinite"
+      ],
+      "bytes": 1448
+    },
+    "SupercriticalLFPPAS.Inputs.RationalCirclePositive": {
+      "path": "SupercriticalLFPPAS/Inputs/RationalCirclePositive.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Inputs/RationalCirclePositive.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "48b4e11b8a6d60789c2d994defcd4035a05d4fcccd110439163d53247b2223ae",
+      "imports": [
+        "SupercriticalLFPPAS.Inputs.RationalCircleBounds"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Inputs.RationalCircleBounds"
+      ],
+      "bytes": 1915
+    },
+    "SupercriticalLFPPAS.Inputs.RationalCircleBounds": {
+      "path": "SupercriticalLFPPAS/Inputs/RationalCircleBounds.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Inputs/RationalCircleBounds.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "0c07d0953dae66b0bc6c1d6ca1ac61f3d48d8844ff8b101c9cbd07b719b3de62",
+      "imports": [
+        "SupercriticalLQGUniqueness.B2.Strong.Annulus",
+        "SupercriticalLQGUniqueness.B2.Strong.AroundFinite",
+        "SupercriticalLQGUniqueness.B2.PfeAxioms.S2GFFPlusCont",
+        "SupercriticalLQGUniqueness.Frozen.IsNormalizedWholePlaneGFF"
+      ],
+      "local_imports": [
+        "SupercriticalLQGUniqueness.B2.Strong.Annulus",
+        "SupercriticalLQGUniqueness.B2.Strong.AroundFinite",
+        "SupercriticalLQGUniqueness.B2.PfeAxioms.S2GFFPlusCont",
+        "SupercriticalLQGUniqueness.Frozen.IsNormalizedWholePlaneGFF"
+      ],
+      "bytes": 3677
+    },
+    "SupercriticalLFPPAS.Inputs.RationalCircles": {
+      "path": "SupercriticalLFPPAS/Inputs/RationalCircles.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Inputs/RationalCircles.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "d26790768fbf7e619678a72e6c00f3051465a9042b06f1d652eff5adc6b9a9f7",
+      "imports": [
+        "SupercriticalLQGUniqueness.B2.Final.Assembly7",
+        "SupercriticalLQGUniqueness.B2.PfeAxioms.R68IdBSite",
+        "SupercriticalLQGUniqueness.B2.LscTop.InProbability",
+        "SupercriticalLQGUniqueness.B2.PfeLocal.L4Main",
+        "SupercriticalLQGUniqueness.B2.PfeAxioms.LocalObservableFiniteMeasurable",
+        "SupercriticalLFPPAS.Inputs.RationalCirclePositive",
+        "SupercriticalLFPPAS.Inputs.RationalCircleDistanceFinite",
+        "SupercriticalLFPPAS.Inputs.RationalLFPPFinite",
+        "SupercriticalLFPPAS.Inputs.PositiveCutoffSeqCriterion",
+        "SupercriticalLQGUniqueness.Frozen.Exists_strongLQGMetric_lfppLimit",
+        "SupercriticalLQGUniqueness.Frozen.IsLFPPExponent",
+        "SupercriticalLQGUniqueness.Frozen.IsLFPPNormalizer",
+        "SupercriticalLQGUniqueness.Frozen.IsHeatSmoothing",
+        "SupercriticalLQGUniqueness.Frozen.IsNormalizedWholePlaneGFF",
+        "SupercriticalLQGUniqueness.Frozen.IsStrongLQGMetric",
+        "LQGMetric.Papers.DFGPS.T12P0",
+        "Mathlib.MeasureTheory.Function.ConvergenceInMeasure",
+        "SupercriticalLFPPAS.Inputs.ENNRealConvergenceInMeasure"
+      ],
+      "local_imports": [
+        "SupercriticalLQGUniqueness.B2.Final.Assembly7",
+        "SupercriticalLQGUniqueness.B2.PfeAxioms.R68IdBSite",
+        "SupercriticalLQGUniqueness.B2.LscTop.InProbability",
+        "SupercriticalLQGUniqueness.B2.PfeLocal.L4Main",
+        "SupercriticalLQGUniqueness.B2.PfeAxioms.LocalObservableFiniteMeasurable",
+        "SupercriticalLFPPAS.Inputs.RationalCirclePositive",
+        "SupercriticalLFPPAS.Inputs.RationalCircleDistanceFinite",
+        "SupercriticalLFPPAS.Inputs.RationalLFPPFinite",
+        "SupercriticalLFPPAS.Inputs.PositiveCutoffSeqCriterion",
+        "SupercriticalLQGUniqueness.Frozen.Exists_strongLQGMetric_lfppLimit",
+        "SupercriticalLQGUniqueness.Frozen.IsLFPPExponent",
+        "SupercriticalLQGUniqueness.Frozen.IsLFPPNormalizer",
+        "SupercriticalLQGUniqueness.Frozen.IsHeatSmoothing",
+        "SupercriticalLQGUniqueness.Frozen.IsNormalizedWholePlaneGFF",
+        "SupercriticalLQGUniqueness.Frozen.IsStrongLQGMetric",
+        "LQGMetric.Papers.DFGPS.T12P0",
+        "SupercriticalLFPPAS.Inputs.ENNRealConvergenceInMeasure"
+      ],
+      "bytes": 17328
+    },
+    "SupercriticalLFPPAS.Inputs.PositiveCutoffSeqCriterion": {
+      "path": "SupercriticalLFPPAS/Inputs/PositiveCutoffSeqCriterion.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Inputs/PositiveCutoffSeqCriterion.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "724d76710ff75aa03e5572c230f8b81bc46c640109d3f25670590b07a48f78f8",
+      "imports": [
+        "Mathlib.MeasureTheory.Function.ConvergenceInMeasure"
+      ],
+      "local_imports": [],
+      "bytes": 1220
+    },
+    "SupercriticalLFPPAS.Inputs.RationalCircleDistanceFinite": {
+      "path": "SupercriticalLFPPAS/Inputs/RationalCircleDistanceFinite.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Inputs/RationalCircleDistanceFinite.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "712e0ff23b9d731c480f4f46549c199f9e3c446a8a4a258e0aa16db83f9a0ad5",
+      "imports": [
+        "SupercriticalLFPPAS.Inputs.RationalCirclePositive"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Inputs.RationalCirclePositive"
+      ],
+      "bytes": 2172
+    },
+    "SupercriticalLFPPAS.Field.HeatVersion": {
+      "path": "SupercriticalLFPPAS/Field/HeatVersion.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Field/HeatVersion.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "4bb0d91b3d6f1c4fa2cdd9365a21f1a9f3c725192cbe085b3d958fadecc5802c",
+      "imports": [
+        "SupercriticalLQGUniqueness.Frozen.IsHeatSmoothing",
+        "SupercriticalLQGUniqueness.Frozen.IsNormalizedWholePlaneGFF",
+        "LQGMetric.Papers.DFGPS.L2_1PolarJoint"
+      ],
+      "local_imports": [
+        "SupercriticalLQGUniqueness.Frozen.IsHeatSmoothing",
+        "SupercriticalLQGUniqueness.Frozen.IsNormalizedWholePlaneGFF",
+        "LQGMetric.Papers.DFGPS.L2_1PolarJoint"
+      ],
+      "bytes": 3805
+    },
+    "SupercriticalLFPPAS.Core.Interfaces": {
+      "path": "SupercriticalLFPPAS/Core/Interfaces.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Core/Interfaces.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "3d832be14f41a5711770f71682f33c9762bafde7a94783270342fdf69d739322",
+      "imports": [
+        "SupercriticalLQGUniqueness.Frozen.IsStrongLQGMetric",
+        "SupercriticalLQGUniqueness.Frozen.IsLFPPExponent",
+        "SupercriticalLQGUniqueness.Frozen.IsLFPPNormalizer",
+        "SupercriticalLQGUniqueness.Frozen.IsNormalizedWholePlaneGFF",
+        "SupercriticalLQGUniqueness.Frozen.IsHeatSmoothing",
+        "SupercriticalLQGUniqueness.Frozen.RescaledLFPP",
+        "SupercriticalLQGUniqueness.Frozen.LSCMetricToLSCFun",
+        "SupercriticalLQGUniqueness.Frozen.LSCTendsto",
+        "SupercriticalLQGUniqueness.Frozen.LSCTendstoInProbability",
+        "SupercriticalLQGUniqueness.Frozen.AcrossDist",
+        "SupercriticalLQGUniqueness.Frozen.AroundDist",
+        "SupercriticalLQGUniqueness.Frozen.ScaleTranslateDist",
+        "SupercriticalConformalCovariance.Frozen.XiCrit",
+        "SupercriticalLQGUniqueness.B2.Polylog.P7Trunc",
+        "SupercriticalLQGUniqueness.B2.Polylog.P4Costs",
+        "SupercriticalLQGUniqueness.Uniqueness.OptimalConstants.Ratios.Section3",
+        "LQGMetric.Metric.Geodesic",
+        "LQGMetric.Blueprint.M2Defs",
+        "LQGMetric.Meas.UM",
+        "SupercriticalLFPPAS.Field.LocalizedApproximation",
+        "SupercriticalLFPPAS.Compare.ScaleRatio",
+        "SupercriticalLFPPAS.Iteration.Radii",
+        "SupercriticalLFPPAS.Iteration.Recursion",
+        "SupercriticalLFPPAS.Inputs.RationalCircleDistanceFinite",
+        "Mathlib.Analysis.ConstantSpeed"
+      ],
+      "local_imports": [
+        "SupercriticalLQGUniqueness.Frozen.IsStrongLQGMetric",
+        "SupercriticalLQGUniqueness.Frozen.IsLFPPExponent",
+        "SupercriticalLQGUniqueness.Frozen.IsLFPPNormalizer",
+        "SupercriticalLQGUniqueness.Frozen.IsNormalizedWholePlaneGFF",
+        "SupercriticalLQGUniqueness.Frozen.IsHeatSmoothing",
+        "SupercriticalLQGUniqueness.Frozen.RescaledLFPP",
+        "SupercriticalLQGUniqueness.Frozen.LSCMetricToLSCFun",
+        "SupercriticalLQGUniqueness.Frozen.LSCTendsto",
+        "SupercriticalLQGUniqueness.Frozen.LSCTendstoInProbability",
+        "SupercriticalLQGUniqueness.Frozen.AcrossDist",
+        "SupercriticalLQGUniqueness.Frozen.AroundDist",
+        "SupercriticalLQGUniqueness.Frozen.ScaleTranslateDist",
+        "SupercriticalConformalCovariance.Frozen.XiCrit",
+        "SupercriticalLQGUniqueness.B2.Polylog.P7Trunc",
+        "SupercriticalLQGUniqueness.B2.Polylog.P4Costs",
+        "SupercriticalLQGUniqueness.Uniqueness.OptimalConstants.Ratios.Section3",
+        "LQGMetric.Metric.Geodesic",
+        "LQGMetric.Blueprint.M2Defs",
+        "LQGMetric.Meas.UM",
+        "SupercriticalLFPPAS.Field.LocalizedApproximation",
+        "SupercriticalLFPPAS.Compare.ScaleRatio",
+        "SupercriticalLFPPAS.Iteration.Radii",
+        "SupercriticalLFPPAS.Iteration.Recursion",
+        "SupercriticalLFPPAS.Inputs.RationalCircleDistanceFinite"
+      ],
+      "bytes": 44013
+    },
+    "SupercriticalLFPPAS.Iteration.Recursion": {
+      "path": "SupercriticalLFPPAS/Iteration/Recursion.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Iteration/Recursion.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "8c0bf534e5c2b75f6fa1620f6628426bb39e4c3d04644358e255b23860b2b588",
+      "imports": [
+        "Mathlib"
+      ],
+      "local_imports": [],
+      "bytes": 8032
+    },
+    "SupercriticalLFPPAS.Iteration.Radii": {
+      "path": "SupercriticalLFPPAS/Iteration/Radii.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Iteration/Radii.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "5472fa0606a456e67093a2cc6c6ce70e702d274bcbca3dea8f38b2fa63937bb2",
+      "imports": [
+        "Mathlib"
+      ],
+      "local_imports": [],
+      "bytes": 10784
+    },
+    "SupercriticalLFPPAS.Compare.ScaleRatio": {
+      "path": "SupercriticalLFPPAS/Compare/ScaleRatio.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Compare/ScaleRatio.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "f899415b054a525f60b98c9950dde54999a4eaf6a91231330157c137f586110c",
+      "imports": [
+        "SupercriticalLQGUniqueness.B2.Strong.WeakOfStrong",
+        "SupercriticalLQGUniqueness.B2.Polylog.P8RatioUniform",
+        "SupercriticalLQGUniqueness.B2.Polylog.P2HeatAnnulusTight",
+        "SupercriticalLQGUniqueness.B2.Polylog.P6Closing",
+        "SupercriticalLQGUniqueness.B2.QPos.QPosClosure",
+        "SupercriticalLQGUniqueness.B2.Final.Assembly3",
+        "SupercriticalLQGUniqueness.Implementation.Exists_strongLQGMetric_lfppLimit"
+      ],
+      "local_imports": [
+        "SupercriticalLQGUniqueness.B2.Strong.WeakOfStrong",
+        "SupercriticalLQGUniqueness.B2.Polylog.P8RatioUniform",
+        "SupercriticalLQGUniqueness.B2.Polylog.P2HeatAnnulusTight",
+        "SupercriticalLQGUniqueness.B2.Polylog.P6Closing",
+        "SupercriticalLQGUniqueness.B2.QPos.QPosClosure",
+        "SupercriticalLQGUniqueness.B2.Final.Assembly3",
+        "SupercriticalLQGUniqueness.Implementation.Exists_strongLQGMetric_lfppLimit"
+      ],
+      "bytes": 5961
+    },
+    "SupercriticalLFPPAS.Field.LocalizedApproximation": {
+      "path": "SupercriticalLFPPAS/Field/LocalizedApproximation.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Field/LocalizedApproximation.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "b82e91b878f0c6a9b9a8436ec564e7094a398e131e57a5c96fbb9d00b437d5fa",
+      "imports": [
+        "SupercriticalLQGUniqueness.B2.Polylog.P1LocalizedApprox",
+        "SupercriticalLQGUniqueness.Frozen.IsNormalizedWholePlaneGFF"
+      ],
+      "local_imports": [
+        "SupercriticalLQGUniqueness.B2.Polylog.P1LocalizedApprox",
+        "SupercriticalLQGUniqueness.Frozen.IsNormalizedWholePlaneGFF"
+      ],
+      "bytes": 3531
+    },
+    "SupercriticalLFPPAS.Assembly.Adapters": {
+      "path": "SupercriticalLFPPAS/Assembly/Adapters.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Assembly/Adapters.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "1091b67bd4d6b1b44494cfae44d2b9809280f1b65b3847729802933818c0dd82",
+      "imports": [
+        "SupercriticalLFPPAS.Compare.LocalizedComparison",
+        "SupercriticalLFPPAS.Scaling.Dilation",
+        "SupercriticalLFPPAS.Scaling.ScalingD",
+        "SupercriticalLFPPAS.Geodesic.LFPP",
+        "SupercriticalLFPPAS.Tightness.Annular",
+        "SupercriticalLFPPAS.Separating.Lemma35Final",
+        "SupercriticalLFPPAS.Separating.UnitGood",
+        "SupercriticalLFPPAS.Local.Interface",
+        "SupercriticalLFPPAS.Contraction.Lemma41",
+        "SupercriticalLFPPAS.Main.Theorem",
+        "SupercriticalLFPPAS.GoodRoot.RootEvent",
+        "SupercriticalLFPPAS.ContractionStep.Main",
+        "SupercriticalLFPPAS.Identification.NoContract",
+        "SupercriticalLFPPAS.Proposition51.Final",
+        "SupercriticalLFPPAS.Escape.Lemma62",
+        "SupercriticalLFPPAS.Field.InterfaceForms",
+        "SupercriticalLQGUniqueness.Frozen.Exists_strongLQGMetric_lfppLimit",
+        "SupercriticalLQGUniqueness.Frozen.ExistsUnique_isLFPPExponent",
+        "SupercriticalLQGUniqueness.B2.LscTop.InProbability",
+        "LQGMetric.Papers.DFGPS.L2_1PolarJoint"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Compare.LocalizedComparison",
+        "SupercriticalLFPPAS.Scaling.Dilation",
+        "SupercriticalLFPPAS.Scaling.ScalingD",
+        "SupercriticalLFPPAS.Geodesic.LFPP",
+        "SupercriticalLFPPAS.Tightness.Annular",
+        "SupercriticalLFPPAS.Separating.Lemma35Final",
+        "SupercriticalLFPPAS.Separating.UnitGood",
+        "SupercriticalLFPPAS.Local.Interface",
+        "SupercriticalLFPPAS.Contraction.Lemma41",
+        "SupercriticalLFPPAS.Main.Theorem",
+        "SupercriticalLFPPAS.GoodRoot.RootEvent",
+        "SupercriticalLFPPAS.ContractionStep.Main",
+        "SupercriticalLFPPAS.Identification.NoContract",
+        "SupercriticalLFPPAS.Proposition51.Final",
+        "SupercriticalLFPPAS.Escape.Lemma62",
+        "SupercriticalLFPPAS.Field.InterfaceForms",
+        "SupercriticalLQGUniqueness.Frozen.Exists_strongLQGMetric_lfppLimit",
+        "SupercriticalLQGUniqueness.Frozen.ExistsUnique_isLFPPExponent",
+        "SupercriticalLQGUniqueness.B2.LscTop.InProbability",
+        "LQGMetric.Papers.DFGPS.L2_1PolarJoint"
+      ],
+      "bytes": 5379
+    },
+    "SupercriticalLFPPAS.Field.InterfaceForms": {
+      "path": "SupercriticalLFPPAS/Field/InterfaceForms.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Field/InterfaceForms.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "8f215dc32c98002a59b57fd02b9e4855a6638a7ac3e59d018ffadbcfa6852272",
+      "imports": [
+        "SupercriticalLFPPAS.Core.Interfaces",
+        "SupercriticalLFPPAS.Field.HeatLogScaleContinuity",
+        "SupercriticalLFPPAS.Field.LocalizedApproximation",
+        "SupercriticalLFPPAS.Implementation.Exists_jointHeatVersion",
+        "SupercriticalLFPPAS.Implementation.JointHeatVersion",
+        "LQGMetric.Meas.CR"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Core.Interfaces",
+        "SupercriticalLFPPAS.Field.HeatLogScaleContinuity",
+        "SupercriticalLFPPAS.Field.LocalizedApproximation",
+        "SupercriticalLFPPAS.Implementation.Exists_jointHeatVersion",
+        "SupercriticalLFPPAS.Implementation.JointHeatVersion",
+        "LQGMetric.Meas.CR"
+      ],
+      "bytes": 37431
+    },
+    "SupercriticalLFPPAS.Implementation.Exists_jointHeatVersion": {
+      "path": "SupercriticalLFPPAS/Implementation/Exists_jointHeatVersion.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Implementation/Exists_jointHeatVersion.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "68e620de1acbd79345dcfb718f06a60d24ad63183117bd44cde0aaef452b1d33",
+      "imports": [
+        "SupercriticalLQGUniqueness.Frozen.IsNormalizedWholePlaneGFF",
+        "SupercriticalLQGUniqueness.Frozen.IsHeatSmoothing",
+        "LQGMetric.Papers.DFGPS.L2_1PolarJoint"
+      ],
+      "local_imports": [
+        "SupercriticalLQGUniqueness.Frozen.IsNormalizedWholePlaneGFF",
+        "SupercriticalLQGUniqueness.Frozen.IsHeatSmoothing",
+        "LQGMetric.Papers.DFGPS.L2_1PolarJoint"
+      ],
+      "bytes": 4638
+    },
+    "SupercriticalLFPPAS.Field.HeatLogScaleContinuity": {
+      "path": "SupercriticalLFPPAS/Field/HeatLogScaleContinuity.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Field/HeatLogScaleContinuity.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "c677dbf09a5dc42c160f483f3612a702b932c450783c5f109d8d13f306d23566",
+      "imports": [
+        "SupercriticalLFPPAS.Field.RadialHeatIdentity",
+        "SupercriticalLFPPAS.Field.CircleAverageBounds",
+        "SupercriticalLFPPAS.Field.LocalizedHeatEstimates",
+        "SupercriticalLFPPAS.Field.HeatVersion",
+        "SupercriticalLFPPAS.Implementation.Exists_jointHeatVersion",
+        "SupercriticalLFPPAS.Implementation.JointHeatVersion",
+        "Mathlib.Analysis.Calculus.ParametricIntegral",
+        "Mathlib.Analysis.Calculus.Deriv.MeanValue",
+        "Mathlib.Analysis.SpecialFunctions.Gaussian.GaussianIntegral"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Field.RadialHeatIdentity",
+        "SupercriticalLFPPAS.Field.CircleAverageBounds",
+        "SupercriticalLFPPAS.Field.LocalizedHeatEstimates",
+        "SupercriticalLFPPAS.Field.HeatVersion",
+        "SupercriticalLFPPAS.Implementation.Exists_jointHeatVersion",
+        "SupercriticalLFPPAS.Implementation.JointHeatVersion"
+      ],
+      "bytes": 51333
+    },
+    "SupercriticalLFPPAS.Field.LocalizedHeatEstimates": {
+      "path": "SupercriticalLFPPAS/Field/LocalizedHeatEstimates.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Field/LocalizedHeatEstimates.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "a3d1377aa91593e1d26c01baf5b3135ec56b356630764eda7401a02f3968c773",
+      "imports": [
+        "SupercriticalLFPPAS.Field.LocalizedPolarFormula",
+        "SupercriticalLFPPAS.Field.LocalizedApproximation",
+        "SupercriticalLQGUniqueness.B2.Polylog.P1LocalizedTail"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Field.LocalizedPolarFormula",
+        "SupercriticalLFPPAS.Field.LocalizedApproximation",
+        "SupercriticalLQGUniqueness.B2.Polylog.P1LocalizedTail"
+      ],
+      "bytes": 26244
+    },
+    "SupercriticalLFPPAS.Field.LocalizedPolarFormula": {
+      "path": "SupercriticalLFPPAS/Field/LocalizedPolarFormula.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Field/LocalizedPolarFormula.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "d8f9a17755d2dbe7f0305d3efb78bcde68f6d66c9ab43d87a3303036f906ebb5",
+      "imports": [
+        "SupercriticalLFPPAS.Field.LocalizedPolarContinuity",
+        "SupercriticalLFPPAS.Field.CircleAverageBounds"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Field.LocalizedPolarContinuity",
+        "SupercriticalLFPPAS.Field.CircleAverageBounds"
+      ],
+      "bytes": 4977
+    },
+    "SupercriticalLFPPAS.Field.CircleAverageBounds": {
+      "path": "SupercriticalLFPPAS/Field/CircleAverageBounds.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Field/CircleAverageBounds.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "a50c3c12a8613cf77497ad581a18c0fc03fc44e9c0940b30aa8007f8f8ee5dac",
+      "imports": [
+        "SupercriticalLQGUniqueness.Frozen.IsNormalizedWholePlaneGFF",
+        "LQGMetric.Papers.DFGPS.L2_2"
+      ],
+      "local_imports": [
+        "SupercriticalLQGUniqueness.Frozen.IsNormalizedWholePlaneGFF",
+        "LQGMetric.Papers.DFGPS.L2_2"
+      ],
+      "bytes": 3804
+    },
+    "SupercriticalLFPPAS.Field.LocalizedPolarContinuity": {
+      "path": "SupercriticalLFPPAS/Field/LocalizedPolarContinuity.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Field/LocalizedPolarContinuity.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "e6954c1616ddfb2d9884513081e6fc9f16f10ddb0c6ac32b8a04fd6b03a01518",
+      "imports": [
+        "SupercriticalLFPPAS.Field.LocalizedExponentContinuity",
+        "SupercriticalLFPPAS.Field.RadialHeatIdentity",
+        "SupercriticalLQGUniqueness.B2.Polylog.P1LocalizedApprox"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Field.LocalizedExponentContinuity",
+        "SupercriticalLFPPAS.Field.RadialHeatIdentity",
+        "SupercriticalLQGUniqueness.B2.Polylog.P1LocalizedApprox"
+      ],
+      "bytes": 5399
+    },
+    "SupercriticalLFPPAS.Field.RadialHeatIdentity": {
+      "path": "SupercriticalLFPPAS/Field/RadialHeatIdentity.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Field/RadialHeatIdentity.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "7d74e340984b41f18692acda48d7f2a6bee28784ea629c5eb80bc9ecae308244",
+      "imports": [
+        "SupercriticalLFPPAS.Field.CircleAverageBounds",
+        "SupercriticalLQGUniqueness.B2.Polylog.P1LocalizedPolar",
+        "SupercriticalLQGUniqueness.B2.Polylog.P1LocalizedCont",
+        "LQGMetric.Papers.DFGPS.L2_1RadialMain"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Field.CircleAverageBounds",
+        "SupercriticalLQGUniqueness.B2.Polylog.P1LocalizedPolar",
+        "SupercriticalLQGUniqueness.B2.Polylog.P1LocalizedCont",
+        "LQGMetric.Papers.DFGPS.L2_1RadialMain"
+      ],
+      "bytes": 8720
+    },
+    "SupercriticalLFPPAS.Field.LocalizedExponentContinuity": {
+      "path": "SupercriticalLFPPAS/Field/LocalizedExponentContinuity.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Field/LocalizedExponentContinuity.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "4be493b2a38615afc8d380b2a95b9d30cb5def6a79de9c6871322128feab2200",
+      "imports": [
+        "SupercriticalLFPPAS.Field.LocalizedApproximation",
+        "SupercriticalLQGUniqueness.B2.Polylog.P1LocalizedCont",
+        "LQGMetric.Papers.DFGPS.L2_1Cont",
+        "LQGMetric.Field.MeasurableAvg",
+        "LQGMetric.Field.Measurable"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Field.LocalizedApproximation",
+        "SupercriticalLQGUniqueness.B2.Polylog.P1LocalizedCont",
+        "LQGMetric.Papers.DFGPS.L2_1Cont",
+        "LQGMetric.Field.MeasurableAvg",
+        "LQGMetric.Field.Measurable"
+      ],
+      "bytes": 8094
+    },
+    "SupercriticalLFPPAS.Escape.Lemma62": {
+      "path": "SupercriticalLFPPAS/Escape/Lemma62.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Escape/Lemma62.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "60e9440ce6e4d3c24deae93695400b9703f41d3507bec6f37f9387fef43acbb7",
+      "imports": [
+        "SupercriticalLFPPAS.Escape.Deterministic",
+        "SupercriticalLFPPAS.Inputs.EscapeTendsto",
+        "SupercriticalLQGUniqueness.B2.Strong.WeakOfStrong"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Escape.Deterministic",
+        "SupercriticalLFPPAS.Inputs.EscapeTendsto",
+        "SupercriticalLQGUniqueness.B2.Strong.WeakOfStrong"
+      ],
+      "bytes": 6272
+    },
+    "SupercriticalLFPPAS.Inputs.EscapeTendsto": {
+      "path": "SupercriticalLFPPAS/Inputs/EscapeTendsto.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Inputs/EscapeTendsto.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "00939c86e657067128638d65cb5f60ffeae62c28ac5b984c6aa6ee6ea82693fa",
+      "imports": [
+        "SupercriticalLFPPAS.Inputs.Escape"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Inputs.Escape"
+      ],
+      "bytes": 1261
+    },
+    "SupercriticalLFPPAS.Inputs.Escape": {
+      "path": "SupercriticalLFPPAS/Inputs/Escape.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Inputs/Escape.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "f56287c4849fbbf7a7572e8f7f41d4a0f1e7a91230e422df68172c8258a841c9",
+      "imports": [
+        "SupercriticalLQGUniqueness.Uniqueness.BiLipschitz.Barrier.Cor",
+        "SupercriticalLQGUniqueness.Uniqueness.EndSaving.InterfaceV2.QPosBridgeV2",
+        "SupercriticalLQGUniqueness.Uniqueness.OptimalConstants.Ratios.Section3"
+      ],
+      "local_imports": [
+        "SupercriticalLQGUniqueness.Uniqueness.BiLipschitz.Barrier.Cor",
+        "SupercriticalLQGUniqueness.Uniqueness.EndSaving.InterfaceV2.QPosBridgeV2",
+        "SupercriticalLQGUniqueness.Uniqueness.OptimalConstants.Ratios.Section3"
+      ],
+      "bytes": 4059
+    },
+    "SupercriticalLFPPAS.Escape.Deterministic": {
+      "path": "SupercriticalLFPPAS/Escape/Deterministic.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Escape/Deterministic.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "c73ed0242bb1f9af139f3972c8af6bd3d3d007c2d73e9a016328b97a6663efc1",
+      "imports": [
+        "SupercriticalLFPPAS.Core.Interfaces",
+        "SupercriticalLFPPAS.Main.Transfer",
+        "SupercriticalLFPPAS.Local.Confinement"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Core.Interfaces",
+        "SupercriticalLFPPAS.Main.Transfer",
+        "SupercriticalLFPPAS.Local.Confinement"
+      ],
+      "bytes": 15746
+    },
+    "SupercriticalLFPPAS.Local.Confinement": {
+      "path": "SupercriticalLFPPAS/Local/Confinement.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Local/Confinement.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "7a73cafb010055742746d1fe73f1f55c8e79371a7a243f626352a24f95059637",
+      "imports": [
+        "SupercriticalLFPPAS.Local.MetricTools",
+        "SupercriticalLFPPAS.Inputs.EscapeTendsto",
+        "SupercriticalLFPPAS.Inputs.CircleSetDistance",
+        "SupercriticalLFPPAS.Field.LocalizedApproximation",
+        "SupercriticalLQGUniqueness.B2.Polylog.P7Trunc",
+        "SupercriticalLQGUniqueness.B2.PfeLocal.L4Main",
+        "SupercriticalLQGUniqueness.B2.DG20Pt.HeatVersionPoint",
+        "SupercriticalLQGUniqueness.B2.Strong.WeakOfStrong"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Local.MetricTools",
+        "SupercriticalLFPPAS.Inputs.EscapeTendsto",
+        "SupercriticalLFPPAS.Inputs.CircleSetDistance",
+        "SupercriticalLFPPAS.Field.LocalizedApproximation",
+        "SupercriticalLQGUniqueness.B2.Polylog.P7Trunc",
+        "SupercriticalLQGUniqueness.B2.PfeLocal.L4Main",
+        "SupercriticalLQGUniqueness.B2.DG20Pt.HeatVersionPoint",
+        "SupercriticalLQGUniqueness.B2.Strong.WeakOfStrong"
+      ],
+      "bytes": 31166
+    },
+    "SupercriticalLFPPAS.Local.MetricTools": {
+      "path": "SupercriticalLFPPAS/Local/MetricTools.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Local/MetricTools.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "af52b923bf0bf1d3ff58151d257412ee5aaccbfeb9d01f8ad3fd90b5507745aa",
+      "imports": [
+        "SupercriticalLFPPAS.Local.Basic",
+        "SupercriticalLQGUniqueness.B2.PfeWeyl.W3CircleTools",
+        "SupercriticalLQGUniqueness.B2.Polylog.P4LFPPCompare",
+        "SupercriticalLQGUniqueness.B2.Polylog.P2HeatBasic",
+        "SupercriticalLQGUniqueness.Uniqueness.Toolkit.WeylLength.WeylLength",
+        "SupercriticalLQGUniqueness.B2.PfeLocal.Length",
+        "SupercriticalLQGUniqueness.B2.Median.Penalty",
+        "SupercriticalLQGUniqueness.Uniqueness.EndSaving.Choices.SampleV2"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Local.Basic",
+        "SupercriticalLQGUniqueness.B2.PfeWeyl.W3CircleTools",
+        "SupercriticalLQGUniqueness.B2.Polylog.P4LFPPCompare",
+        "SupercriticalLQGUniqueness.B2.Polylog.P2HeatBasic",
+        "SupercriticalLQGUniqueness.Uniqueness.Toolkit.WeylLength.WeylLength",
+        "SupercriticalLQGUniqueness.B2.PfeLocal.Length",
+        "SupercriticalLQGUniqueness.B2.Median.Penalty",
+        "SupercriticalLQGUniqueness.Uniqueness.EndSaving.Choices.SampleV2"
+      ],
+      "bytes": 13524
+    },
+    "SupercriticalLFPPAS.Local.Basic": {
+      "path": "SupercriticalLFPPAS/Local/Basic.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Local/Basic.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "cb0eaac84afdc602949ec3f958e41e6fb2a6ba0b01b38bbf2838f8e9ad2d7923",
+      "imports": [
+        "SupercriticalLQGUniqueness.Frozen.Exists_strongLQGMetric_lfppLimit",
+        "SupercriticalLQGUniqueness.B2.Median.LFPPMetric",
+        "SupercriticalLQGUniqueness.B2.Polylog.P4Event",
+        "SupercriticalLFPPAS.Field.LocalizedApproximation"
+      ],
+      "local_imports": [
+        "SupercriticalLQGUniqueness.Frozen.Exists_strongLQGMetric_lfppLimit",
+        "SupercriticalLQGUniqueness.B2.Median.LFPPMetric",
+        "SupercriticalLQGUniqueness.B2.Polylog.P4Event",
+        "SupercriticalLFPPAS.Field.LocalizedApproximation"
+      ],
+      "bytes": 10764
+    },
+    "SupercriticalLFPPAS.Main.Transfer": {
+      "path": "SupercriticalLFPPAS/Main/Transfer.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Main/Transfer.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "d796d32059b0c52a27cca42af39d465ee026eb037dab4880abd2d5fdb7560f10",
+      "imports": [
+        "SupercriticalLFPPAS.Core.Interfaces",
+        "SupercriticalLQGUniqueness.B2.Polylog.P7Bridge",
+        "SupercriticalLQGUniqueness.Uniqueness.Toolkit.MetricLemmas"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Core.Interfaces",
+        "SupercriticalLQGUniqueness.B2.Polylog.P7Bridge",
+        "SupercriticalLQGUniqueness.Uniqueness.Toolkit.MetricLemmas"
+      ],
+      "bytes": 13621
+    },
+    "SupercriticalLFPPAS.Proposition51.Final": {
+      "path": "SupercriticalLFPPAS/Proposition51/Final.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Proposition51/Final.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "c7270b58bc369ddbbf45a3a6f80bfae012c9694f7c64d718ef029bacdf8668eb",
+      "imports": [
+        "SupercriticalLFPPAS.Proposition51.LowQuantile"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Proposition51.LowQuantile"
+      ],
+      "bytes": 12013
+    },
+    "SupercriticalLFPPAS.Proposition51.LowQuantile": {
+      "path": "SupercriticalLFPPAS/Proposition51/LowQuantile.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Proposition51/LowQuantile.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "f0ea751b1f1e19418b1d1d435290f954e1383049e7b401816aee74be8545a83e",
+      "imports": [
+        "SupercriticalLFPPAS.Proposition51.Chain",
+        "SupercriticalLFPPAS.Iteration.Quantiles",
+        "NV1Evidence"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Proposition51.Chain",
+        "SupercriticalLFPPAS.Iteration.Quantiles",
+        "NV1Evidence"
+      ],
+      "bytes": 8621
+    },
+    "SupercriticalLFPPAS.Iteration.Quantiles": {
+      "path": "SupercriticalLFPPAS/Iteration/Quantiles.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Iteration/Quantiles.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "923384e90106ca63dfad8501abb93e0d6e4151dc6ecc04263d904a8dfe89cc6f",
+      "imports": [
+        "Mathlib"
+      ],
+      "local_imports": [],
+      "bytes": 4821
+    },
+    "SupercriticalLFPPAS.Proposition51.Chain": {
+      "path": "SupercriticalLFPPAS/Proposition51/Chain.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Proposition51/Chain.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "6f99f6358d9445cca64236e39eeec14908f88f7275f729c63632dc12be0d694d",
+      "imports": [
+        "SupercriticalLFPPAS.Proposition51.Basic"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Proposition51.Basic"
+      ],
+      "bytes": 10509
+    },
+    "SupercriticalLFPPAS.Proposition51.Basic": {
+      "path": "SupercriticalLFPPAS/Proposition51/Basic.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Proposition51/Basic.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "51614db14d8220d58f2e2a334741c67795dc8ff2ac492583f6ed0b60da15473e",
+      "imports": [
+        "SupercriticalLFPPAS.Core.Interfaces",
+        "SupercriticalLQGUniqueness.Uniqueness.Toolkit.MetricLemmas"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Core.Interfaces",
+        "SupercriticalLQGUniqueness.Uniqueness.Toolkit.MetricLemmas"
+      ],
+      "bytes": 16490
+    },
+    "SupercriticalLFPPAS.Identification.NoContract": {
+      "path": "SupercriticalLFPPAS/Identification/NoContract.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Identification/NoContract.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "7e583bec7a9ba0d8cf1d3c621a1910ab251ca10574fcc871ec6f6fa135aee29e",
+      "imports": [
+        "SupercriticalLFPPAS.Identification.Deterministic",
+        "SupercriticalLFPPAS.Inputs.EscapeTendsto",
+        "SupercriticalLFPPAS.Inputs.RationalCirclePositive",
+        "SupercriticalLFPPAS.Field.HeatVersion",
+        "SupercriticalLQGUniqueness.Uniqueness.Measurability.ClauseEvents.CompactSetDist",
+        "SupercriticalLQGUniqueness.Uniqueness.EndSaving.Choices.SampleV2",
+        "SupercriticalLQGUniqueness.B2.Strong.WeakOfStrong"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Identification.Deterministic",
+        "SupercriticalLFPPAS.Inputs.EscapeTendsto",
+        "SupercriticalLFPPAS.Inputs.RationalCirclePositive",
+        "SupercriticalLFPPAS.Field.HeatVersion",
+        "SupercriticalLQGUniqueness.Uniqueness.Measurability.ClauseEvents.CompactSetDist",
+        "SupercriticalLQGUniqueness.Uniqueness.EndSaving.Choices.SampleV2",
+        "SupercriticalLQGUniqueness.B2.Strong.WeakOfStrong"
+      ],
+      "bytes": 17294
+    },
+    "SupercriticalLFPPAS.Identification.Deterministic": {
+      "path": "SupercriticalLFPPAS/Identification/Deterministic.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Identification/Deterministic.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "49b13db90a9a7c3fae9ea8d0415e02fb4f091bd38e713c176ab7cbad920e5fdd",
+      "imports": [
+        "SupercriticalLFPPAS.Core.Interfaces",
+        "SupercriticalLFPPAS.Main.Transfer",
+        "SupercriticalLFPPAS.Main.LowerLimit",
+        "SupercriticalLQGUniqueness.Uniqueness.Objects.ProbabilityS1S2.Bridges",
+        "SupercriticalLQGUniqueness.Uniqueness.Geodesics.SetGeodesics.SetGeoExists"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Core.Interfaces",
+        "SupercriticalLFPPAS.Main.Transfer",
+        "SupercriticalLFPPAS.Main.LowerLimit",
+        "SupercriticalLQGUniqueness.Uniqueness.Objects.ProbabilityS1S2.Bridges",
+        "SupercriticalLQGUniqueness.Uniqueness.Geodesics.SetGeodesics.SetGeoExists"
+      ],
+      "bytes": 18412
+    },
+    "SupercriticalLFPPAS.Main.LowerLimit": {
+      "path": "SupercriticalLFPPAS/Main/LowerLimit.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Main/LowerLimit.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "51c3a087ba99115b60a7ada55df6f5ae1f006900231295cb891836796f2c6ac0",
+      "imports": [
+        "SupercriticalLFPPAS.Main.Event"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Main.Event"
+      ],
+      "bytes": 15406
+    },
+    "SupercriticalLFPPAS.Main.Event": {
+      "path": "SupercriticalLFPPAS/Main/Event.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Main/Event.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "3fab4b710fefd1d477180e8defcb29fb701e8486345f442e1da9f6f0604527af",
+      "imports": [
+        "SupercriticalLFPPAS.Main.Transfer",
+        "SupercriticalLFPPAS.Inputs.Geodesics",
+        "SupercriticalLFPPAS.Inputs.EuclideanRegularity"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Main.Transfer",
+        "SupercriticalLFPPAS.Inputs.Geodesics",
+        "SupercriticalLFPPAS.Inputs.EuclideanRegularity"
+      ],
+      "bytes": 10589
+    },
+    "SupercriticalLFPPAS.Inputs.EuclideanRegularity": {
+      "path": "SupercriticalLFPPAS/Inputs/EuclideanRegularity.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Inputs/EuclideanRegularity.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "85214faa74d2aca2715ece61de1c3e554d5e1371a512dafea6ed3bcbe45ea46c",
+      "imports": [
+        "SupercriticalLFPPAS.Inputs.EuclideanContinuity",
+        "SupercriticalLFPPAS.Inputs.CompactEuclideanControl"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Inputs.EuclideanContinuity",
+        "SupercriticalLFPPAS.Inputs.CompactEuclideanControl"
+      ],
+      "bytes": 1465
+    },
+    "SupercriticalLFPPAS.Inputs.CompactEuclideanControl": {
+      "path": "SupercriticalLFPPAS/Inputs/CompactEuclideanControl.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Inputs/CompactEuclideanControl.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "1857eee36624f0660c5b1c1c7180fc4d4dcffe54c38173c7b667c5a3b0f30572",
+      "imports": [
+        "SupercriticalLQGUniqueness.B2.Strong.WeakOfStrong",
+        "SupercriticalLQGUniqueness.B2.PfeWeyl.W1LocalBounds",
+        "SupercriticalLQGUniqueness.Uniqueness.EndSaving.Choices.SampleV2"
+      ],
+      "local_imports": [
+        "SupercriticalLQGUniqueness.B2.Strong.WeakOfStrong",
+        "SupercriticalLQGUniqueness.B2.PfeWeyl.W1LocalBounds",
+        "SupercriticalLQGUniqueness.Uniqueness.EndSaving.Choices.SampleV2"
+      ],
+      "bytes": 1520
+    },
+    "SupercriticalLFPPAS.Inputs.EuclideanContinuity": {
+      "path": "SupercriticalLFPPAS/Inputs/EuclideanContinuity.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Inputs/EuclideanContinuity.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "bc8ef7f5159f60f2229896c3afed521d25295bcf044670123435db3dd0d3350f",
+      "imports": [
+        "SupercriticalLQGUniqueness.B2.Strong.WeakOfStrong",
+        "SupercriticalLQGUniqueness.Uniqueness.EndSaving.Choices.SampleV2",
+        "SupercriticalLQGUniqueness.B2.PfeAxioms.RadiusBall"
+      ],
+      "local_imports": [
+        "SupercriticalLQGUniqueness.B2.Strong.WeakOfStrong",
+        "SupercriticalLQGUniqueness.Uniqueness.EndSaving.Choices.SampleV2",
+        "SupercriticalLQGUniqueness.B2.PfeAxioms.RadiusBall"
+      ],
+      "bytes": 2069
+    },
+    "SupercriticalLFPPAS.Inputs.Geodesics": {
+      "path": "SupercriticalLFPPAS/Inputs/Geodesics.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Inputs/Geodesics.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "10a7dfaf2e141ba4c8b1fbec1d81a20bcd124e32de2a5870733496328e56e33e",
+      "imports": [
+        "SupercriticalLQGUniqueness.B2.Strong.WeakOfStrong",
+        "SupercriticalLQGUniqueness.Uniqueness.EndSaving.Choices.SampleV2",
+        "SupercriticalLQGUniqueness.Uniqueness.Geodesics.SetGeodesics.SetGeoExists"
+      ],
+      "local_imports": [
+        "SupercriticalLQGUniqueness.B2.Strong.WeakOfStrong",
+        "SupercriticalLQGUniqueness.Uniqueness.EndSaving.Choices.SampleV2",
+        "SupercriticalLQGUniqueness.Uniqueness.Geodesics.SetGeodesics.SetGeoExists"
+      ],
+      "bytes": 1881
+    },
+    "SupercriticalLFPPAS.ContractionStep.Main": {
+      "path": "SupercriticalLFPPAS/ContractionStep/Main.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/ContractionStep/Main.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "451e19f395b3969295e14e3dd12e22ed46a9424a831471644d8a71ab23919dad",
+      "imports": [
+        "SupercriticalLFPPAS.ContractionStep.Probability",
+        "SupercriticalLFPPAS.ContractionStep.Deterministic",
+        "SupercriticalLFPPAS.ContractionStep.Grid"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.ContractionStep.Probability",
+        "SupercriticalLFPPAS.ContractionStep.Deterministic",
+        "SupercriticalLFPPAS.ContractionStep.Grid"
+      ],
+      "bytes": 25351
+    },
+    "SupercriticalLFPPAS.ContractionStep.Grid": {
+      "path": "SupercriticalLFPPAS/ContractionStep/Grid.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/ContractionStep/Grid.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "40b06307d472c317da1d17c96d926a29368267997afb120f52a8b88df009c8a4",
+      "imports": [
+        "Mathlib"
+      ],
+      "local_imports": [],
+      "bytes": 5526
+    },
+    "SupercriticalLFPPAS.ContractionStep.Deterministic": {
+      "path": "SupercriticalLFPPAS/ContractionStep/Deterministic.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/ContractionStep/Deterministic.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "398abd68e981ab19858b10c81a53d0841785aa426c4e64ffa887c6a44904c9e2",
+      "imports": [
+        "SupercriticalLFPPAS.ContractionStep.GoodDisk",
+        "SupercriticalLFPPAS.Iteration.Recursion"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.ContractionStep.GoodDisk",
+        "SupercriticalLFPPAS.Iteration.Recursion"
+      ],
+      "bytes": 7745
+    },
+    "SupercriticalLFPPAS.ContractionStep.GoodDisk": {
+      "path": "SupercriticalLFPPAS/ContractionStep/GoodDisk.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/ContractionStep/GoodDisk.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "e8164f6f7878bcd88335680ef9e3d99aa46ce3feceb3b532ad49e936201d01c7",
+      "imports": [
+        "SupercriticalLFPPAS.Core.Interfaces",
+        "SupercriticalLQGUniqueness.Uniqueness.Toolkit.MetricLemmas",
+        "LQGMetric.Metric.Geodesic"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Core.Interfaces",
+        "SupercriticalLQGUniqueness.Uniqueness.Toolkit.MetricLemmas",
+        "LQGMetric.Metric.Geodesic"
+      ],
+      "bytes": 8571
+    },
+    "SupercriticalLFPPAS.ContractionStep.Probability": {
+      "path": "SupercriticalLFPPAS/ContractionStep/Probability.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/ContractionStep/Probability.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "3c21601ce5a1542afb9f8c1aee7c435be0f242157caa2c5289abbcdec19c77f2",
+      "imports": [
+        "SupercriticalLFPPAS.ContractionStep.RadiusSequence",
+        "SupercriticalLFPPAS.Concentration.AnnulusConcentration"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.ContractionStep.RadiusSequence",
+        "SupercriticalLFPPAS.Concentration.AnnulusConcentration"
+      ],
+      "bytes": 5659
+    },
+    "SupercriticalLFPPAS.Concentration.AnnulusConcentration": {
+      "path": "SupercriticalLFPPAS/Concentration/AnnulusConcentration.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Concentration/AnnulusConcentration.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "060ac6656a497fd4bb62d6f8fe67735dbab581f6a463c641bcd3728821652d4c",
+      "imports": [
+        "SupercriticalLQGUniqueness.Uniqueness.EndSaving.MainExtra.OffCentre",
+        "SupercriticalLQGUniqueness.Uniqueness.Toolkit.FieldTranslations"
+      ],
+      "local_imports": [
+        "SupercriticalLQGUniqueness.Uniqueness.EndSaving.MainExtra.OffCentre",
+        "SupercriticalLQGUniqueness.Uniqueness.Toolkit.FieldTranslations"
+      ],
+      "bytes": 9373
+    },
+    "SupercriticalLFPPAS.ContractionStep.RadiusSequence": {
+      "path": "SupercriticalLFPPAS/ContractionStep/RadiusSequence.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/ContractionStep/RadiusSequence.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "0250cff00915212af11d8f60884b92ab1648410e5661ff048e819aa48fe9d4ad",
+      "imports": [
+        "SupercriticalLFPPAS.Core.Interfaces",
+        "SupercriticalLFPPAS.Iteration.Radii",
+        "Mathlib"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Core.Interfaces",
+        "SupercriticalLFPPAS.Iteration.Radii"
+      ],
+      "bytes": 5016
+    },
+    "SupercriticalLFPPAS.GoodRoot.RootEvent": {
+      "path": "SupercriticalLFPPAS/GoodRoot/RootEvent.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/GoodRoot/RootEvent.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "1458e58dbacd71abd0dfed15173fd498388ab989af7502c522490127b15e7b1f",
+      "imports": [
+        "SupercriticalLFPPAS.GoodRoot.Affine",
+        "SupercriticalLFPPAS.Concentration.AnnulusConcentration",
+        "SupercriticalLQGUniqueness.B2.Strong.Bridge",
+        "LQGMetric.Papers.CONF.S3L35B5",
+        "LQGMetric.Papers.CONF.S3D114S4"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.GoodRoot.Affine",
+        "SupercriticalLFPPAS.Concentration.AnnulusConcentration",
+        "SupercriticalLQGUniqueness.B2.Strong.Bridge",
+        "LQGMetric.Papers.CONF.S3L35B5",
+        "LQGMetric.Papers.CONF.S3D114S4"
+      ],
+      "bytes": 16611
+    },
+    "SupercriticalLFPPAS.GoodRoot.Affine": {
+      "path": "SupercriticalLFPPAS/GoodRoot/Affine.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/GoodRoot/Affine.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "bab69427a12726386577659be59dc4167c73e8ad66207d7a6ef143a5a894e0e1",
+      "imports": [
+        "SupercriticalLFPPAS.Separating.Lemma35Canonical",
+        "SupercriticalLFPPAS.Core.Interfaces"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Separating.Lemma35Canonical",
+        "SupercriticalLFPPAS.Core.Interfaces"
+      ],
+      "bytes": 20395
+    },
+    "SupercriticalLFPPAS.Separating.Lemma35Canonical": {
+      "path": "SupercriticalLFPPAS/Separating/Lemma35Canonical.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Separating/Lemma35Canonical.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "7338b81797b0905df96edf742587091a1d93d0e6bb60aa07d569c3b901735699",
+      "imports": [
+        "SupercriticalLFPPAS.Separating.Lemma35",
+        "SupercriticalLFPPAS.Core.Interfaces"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Separating.Lemma35",
+        "SupercriticalLFPPAS.Core.Interfaces"
+      ],
+      "bytes": 15024
+    },
+    "SupercriticalLFPPAS.Separating.Lemma35": {
+      "path": "SupercriticalLFPPAS/Separating/Lemma35.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Separating/Lemma35.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "6c1f24dc0d8fc8b3ac8eb035b1819a0c5cf6ab11e88e5cf7afa37d5990c24cd6",
+      "imports": [
+        "SupercriticalLFPPAS.Separating.DetSeparation",
+        "SupercriticalLFPPAS.Separating.Locality"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Separating.DetSeparation",
+        "SupercriticalLFPPAS.Separating.Locality"
+      ],
+      "bytes": 15969
+    },
+    "SupercriticalLFPPAS.Separating.Locality": {
+      "path": "SupercriticalLFPPAS/Separating/Locality.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Separating/Locality.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "031cb498835b31549db60a016260f99a0f139d60c3fd813f47f15245cef21f50",
+      "imports": [
+        "SupercriticalLQGUniqueness.B2.Polylog.P4Local"
+      ],
+      "local_imports": [
+        "SupercriticalLQGUniqueness.B2.Polylog.P4Local"
+      ],
+      "bytes": 10752
+    },
+    "SupercriticalLFPPAS.Separating.DetSeparation": {
+      "path": "SupercriticalLFPPAS/Separating/DetSeparation.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Separating/DetSeparation.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "c8fefe073a76527a2c095ceee119200a055ba8bde9316160902b878b8139ce4a",
+      "imports": [
+        "SupercriticalLFPPAS.Separating.Geometry"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Separating.Geometry"
+      ],
+      "bytes": 22528
+    },
+    "SupercriticalLFPPAS.Separating.Geometry": {
+      "path": "SupercriticalLFPPAS/Separating/Geometry.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Separating/Geometry.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "b59239798527cd48fc798b55b1c8ec2410dd6278dd548bd75ccfa54e43e9b814",
+      "imports": [
+        "SupercriticalLFPPAS.Separating.CrossingRecursion",
+        "SupercriticalLFPPAS.Compare.ScaleRatio",
+        "SupercriticalLQGUniqueness.B2.Polylog.P4Local"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Separating.CrossingRecursion",
+        "SupercriticalLFPPAS.Compare.ScaleRatio",
+        "SupercriticalLQGUniqueness.B2.Polylog.P4Local"
+      ],
+      "bytes": 22115
+    },
+    "SupercriticalLFPPAS.Separating.CrossingRecursion": {
+      "path": "SupercriticalLFPPAS/Separating/CrossingRecursion.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Separating/CrossingRecursion.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "f18e5943e1e21e6807d452452be6924a06116d0066782155b14eb693734cd7e4",
+      "imports": [
+        "SupercriticalLFPPAS.Det.SeparatingPaths",
+        "SupercriticalLQGUniqueness.B2.Polylog.P3PaidGeometry"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Det.SeparatingPaths",
+        "SupercriticalLQGUniqueness.B2.Polylog.P3PaidGeometry"
+      ],
+      "bytes": 21599
+    },
+    "SupercriticalLFPPAS.Det.SeparatingPaths": {
+      "path": "SupercriticalLFPPAS/Det/SeparatingPaths.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Det/SeparatingPaths.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "beb9b7ad925334bdcb70c92f3bf52472432a48222ac9f754a5c87459755006b0",
+      "imports": [
+        "SupercriticalLFPPAS.Det.Numerical",
+        "SupercriticalLQGUniqueness.B2.PfeLocal.Length",
+        "SupercriticalLQGUniqueness.B2.PfeWeyl.AnnularJoining",
+        "SupercriticalLQGUniqueness.B2.PfeWeyl.W1Crossing",
+        "SupercriticalLQGUniqueness.B2.PfeWeyl.W3CircleTools",
+        "SupercriticalLQGUniqueness.Uniqueness.TwoScale.OrderedCrossings.OrderedCrossings",
+        "SupercriticalLQGUniqueness.Uniqueness.TwoScale.Transfer.Transfer"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Det.Numerical",
+        "SupercriticalLQGUniqueness.B2.PfeLocal.Length",
+        "SupercriticalLQGUniqueness.B2.PfeWeyl.AnnularJoining",
+        "SupercriticalLQGUniqueness.B2.PfeWeyl.W1Crossing",
+        "SupercriticalLQGUniqueness.B2.PfeWeyl.W3CircleTools",
+        "SupercriticalLQGUniqueness.Uniqueness.TwoScale.OrderedCrossings.OrderedCrossings",
+        "SupercriticalLQGUniqueness.Uniqueness.TwoScale.Transfer.Transfer"
+      ],
+      "bytes": 28793
+    },
+    "SupercriticalLFPPAS.Det.Numerical": {
+      "path": "SupercriticalLFPPAS/Det/Numerical.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Det/Numerical.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "ad0ae2075dc38e433f9db9624d06d1c3cb05dcb8659e575e9cd6f45b83b3866f",
+      "imports": [
+        "Mathlib"
+      ],
+      "local_imports": [],
+      "bytes": 1583
+    },
+    "SupercriticalLFPPAS.Main.Theorem": {
+      "path": "SupercriticalLFPPAS/Main/Theorem.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Main/Theorem.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "b8dd0ddeb7413354cc8c4732854193e8a922ff73d076e6752b80a89857af6ad1",
+      "imports": [
+        "SupercriticalLFPPAS.Main.Recovery"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Main.Recovery"
+      ],
+      "bytes": 1756
+    },
+    "SupercriticalLFPPAS.Main.Recovery": {
+      "path": "SupercriticalLFPPAS/Main/Recovery.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Main/Recovery.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "f0fea30d2cd8f36df1a493a94f5fcecaa1fc8e6e54d2e081ae9f07991f1bcc52",
+      "imports": [
+        "SupercriticalLFPPAS.Main.LowerLimit"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Main.LowerLimit"
+      ],
+      "bytes": 12702
+    },
+    "SupercriticalLFPPAS.Contraction.Lemma41": {
+      "path": "SupercriticalLFPPAS/Contraction/Lemma41.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Contraction/Lemma41.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "a35ffaba3c863b11ee742d0d2a70708beaba5cd264303a6bcf00e64e391bddb5",
+      "imports": [
+        "SupercriticalLFPPAS.Core.Interfaces",
+        "SupercriticalLFPPAS.Contraction.GoodDisk",
+        "SupercriticalLFPPAS.Contraction.AltChain",
+        "SupercriticalLFPPAS.Contraction.Sorting",
+        "SupercriticalLFPPAS.Contraction.FiniteSubcover",
+        "SupercriticalLFPPAS.Contraction.CoveringArithmetic",
+        "SupercriticalLFPPAS.Contraction.FinalCost"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Core.Interfaces",
+        "SupercriticalLFPPAS.Contraction.GoodDisk",
+        "SupercriticalLFPPAS.Contraction.AltChain",
+        "SupercriticalLFPPAS.Contraction.Sorting",
+        "SupercriticalLFPPAS.Contraction.FiniteSubcover",
+        "SupercriticalLFPPAS.Contraction.CoveringArithmetic",
+        "SupercriticalLFPPAS.Contraction.FinalCost"
+      ],
+      "bytes": 33686
+    },
+    "SupercriticalLFPPAS.Contraction.FinalCost": {
+      "path": "SupercriticalLFPPAS/Contraction/FinalCost.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Contraction/FinalCost.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "58624a22676bb3edb564ae61a17e3512b0ed8dfe168d3a984cfa1598210406a8",
+      "imports": [
+        "SupercriticalLFPPAS.Contraction.Cost",
+        "SupercriticalLFPPAS.Contraction.CoveringArithmetic"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Contraction.Cost",
+        "SupercriticalLFPPAS.Contraction.CoveringArithmetic"
+      ],
+      "bytes": 1137
+    },
+    "SupercriticalLFPPAS.Contraction.CoveringArithmetic": {
+      "path": "SupercriticalLFPPAS/Contraction/CoveringArithmetic.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Contraction/CoveringArithmetic.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "5a13930bac8f9dbb82a87bc90432e764bf1a6544fc21cce56d67a3ab77b82e03",
+      "imports": [
+        "SupercriticalLFPPAS.Contraction.Hull"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Contraction.Hull"
+      ],
+      "bytes": 4248
+    },
+    "SupercriticalLFPPAS.Contraction.Hull": {
+      "path": "SupercriticalLFPPAS/Contraction/Hull.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Contraction/Hull.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "c52a7cc6266bb3e41a8144c74eae9352fda258399bbedb87f1442081e15361b1",
+      "imports": [
+        "SupercriticalLFPPAS.Contraction.IntervalCover"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Contraction.IntervalCover"
+      ],
+      "bytes": 8331
+    },
+    "SupercriticalLFPPAS.Contraction.IntervalCover": {
+      "path": "SupercriticalLFPPAS/Contraction/IntervalCover.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Contraction/IntervalCover.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "e9898feebc8856ea274e88e0f0b8f034b5c736f92c540ea0b2bf2f6a662429ab",
+      "imports": [
+        "Mathlib"
+      ],
+      "local_imports": [],
+      "bytes": 10784
+    },
+    "SupercriticalLFPPAS.Contraction.Cost": {
+      "path": "SupercriticalLFPPAS/Contraction/Cost.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Contraction/Cost.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "937a0d11964ebd23fa49ae0ac38eb899ed3938e71fa95a31dbfc6035ead10439",
+      "imports": [
+        "Mathlib"
+      ],
+      "local_imports": [],
+      "bytes": 3583
+    },
+    "SupercriticalLFPPAS.Contraction.FiniteSubcover": {
+      "path": "SupercriticalLFPPAS/Contraction/FiniteSubcover.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Contraction/FiniteSubcover.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "bf3ec1d6b937f6e9e2da255afe2b4bcd9ea1ebe25da9711672ea5f8ad4560e58",
+      "imports": [
+        "SupercriticalLFPPAS.Contraction.IntervalCover"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Contraction.IntervalCover"
+      ],
+      "bytes": 1948
+    },
+    "SupercriticalLFPPAS.Contraction.Sorting": {
+      "path": "SupercriticalLFPPAS/Contraction/Sorting.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Contraction/Sorting.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "685bd2da0dab7b96221bef92bee438b9e5cac546c51ad27570afd87951128eec",
+      "imports": [
+        "Mathlib.Data.Finset.Max",
+        "Mathlib.Data.Finset.Image",
+        "Mathlib.Order.Interval.Set.Basic",
+        "Mathlib.Topology.Order.Compact",
+        "Mathlib.Analysis.Complex.Basic",
+        "Mathlib.Tactic.Linarith"
+      ],
+      "local_imports": [],
+      "bytes": 4447
+    },
+    "SupercriticalLFPPAS.Contraction.AltChain": {
+      "path": "SupercriticalLFPPAS/Contraction/AltChain.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Contraction/AltChain.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "2a7d01d8ed1b08625042d6843a6d725fcc78ce61e60e05a91ca5187f29dd24a8",
+      "imports": [
+        "SupercriticalLFPPAS.Contraction.ChainJoin",
+        "SupercriticalLQGUniqueness.Uniqueness.Toolkit.PlanarSeparation.PaidTraces"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Contraction.ChainJoin",
+        "SupercriticalLQGUniqueness.Uniqueness.Toolkit.PlanarSeparation.PaidTraces"
+      ],
+      "bytes": 15072
+    },
+    "SupercriticalLFPPAS.Contraction.ChainJoin": {
+      "path": "SupercriticalLFPPAS/Contraction/ChainJoin.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Contraction/ChainJoin.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "81ef5f06901f11812e48fdffb8cb12575d23d8d1071498f758e6679a12104330",
+      "imports": [
+        "SLUMetricAPI2",
+        "SupercriticalLQGUniqueness.Frozen.LSCMetricInternalSetDist",
+        "SupercriticalLQGUniqueness.Uniqueness.Objects.Excursions.Sep",
+        "Mathlib.Topology.Connected.Basic"
+      ],
+      "local_imports": [
+        "SLUMetricAPI2",
+        "SupercriticalLQGUniqueness.Frozen.LSCMetricInternalSetDist",
+        "SupercriticalLQGUniqueness.Uniqueness.Objects.Excursions.Sep"
+      ],
+      "bytes": 17401
+    },
+    "SupercriticalLFPPAS.Contraction.GoodDisk": {
+      "path": "SupercriticalLFPPAS/Contraction/GoodDisk.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Contraction/GoodDisk.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "ba80b548223cb75e0c5ab3f83a2429aeecfeef144a9556f0dd98a5b8bbc01145",
+      "imports": [
+        "SupercriticalLFPPAS.Core.Interfaces",
+        "SupercriticalLFPPAS.Contraction.Times",
+        "SupercriticalLQGUniqueness.Uniqueness.Toolkit.PlanarSeparation.PaidTraces",
+        "SupercriticalLQGUniqueness.B2.Polylog.P3PaidGeometry"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Core.Interfaces",
+        "SupercriticalLFPPAS.Contraction.Times",
+        "SupercriticalLQGUniqueness.Uniqueness.Toolkit.PlanarSeparation.PaidTraces",
+        "SupercriticalLQGUniqueness.B2.Polylog.P3PaidGeometry"
+      ],
+      "bytes": 7604
+    },
+    "SupercriticalLFPPAS.Contraction.Times": {
+      "path": "SupercriticalLFPPAS/Contraction/Times.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Contraction/Times.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "1afbf0886b10945fa3ab30df2eaf3fdddcab4d21e4c05acb08e45760b57135cf",
+      "imports": [
+        "Mathlib.Topology.Order.Compact",
+        "Mathlib.Topology.Order.DenselyOrdered",
+        "Mathlib.Analysis.Complex.Basic"
+      ],
+      "local_imports": [],
+      "bytes": 12603
+    },
+    "SupercriticalLFPPAS.Local.Interface": {
+      "path": "SupercriticalLFPPAS/Local/Interface.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Local/Interface.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "375c38f6fcc5969e2f277061150e532a1da207407774aab7c112e2b3ed79ed01",
+      "imports": [
+        "SupercriticalLFPPAS.Core.Interfaces",
+        "SupercriticalLFPPAS.Local.CircleLocalized",
+        "SupercriticalLFPPAS.Local.Lemma32Loc",
+        "SupercriticalLFPPAS.Local.Locality",
+        "SupercriticalLFPPAS.Local.ExponentContinuity",
+        "SupercriticalLFPPAS.Field.HeatVersion",
+        "SupercriticalLQGUniqueness.Uniqueness.TwoScale.S36.LawTransport",
+        "SupercriticalLQGUniqueness.B2.PfeAxioms.HeatVersionMeasurable"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Core.Interfaces",
+        "SupercriticalLFPPAS.Local.CircleLocalized",
+        "SupercriticalLFPPAS.Local.Lemma32Loc",
+        "SupercriticalLFPPAS.Local.Locality",
+        "SupercriticalLFPPAS.Local.ExponentContinuity",
+        "SupercriticalLFPPAS.Field.HeatVersion",
+        "SupercriticalLQGUniqueness.Uniqueness.TwoScale.S36.LawTransport",
+        "SupercriticalLQGUniqueness.B2.PfeAxioms.HeatVersionMeasurable"
+      ],
+      "bytes": 19504
+    },
+    "SupercriticalLFPPAS.Local.ExponentContinuity": {
+      "path": "SupercriticalLFPPAS/Local/ExponentContinuity.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Local/ExponentContinuity.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "0b0fe4f40ea665dd7dcaad4ccdc1a09eec8625497cf371c9eaeef1c9ee4ca5db",
+      "imports": [
+        "SupercriticalLFPPAS.Field.LocalizedApproximation",
+        "SupercriticalLQGUniqueness.B2.Polylog.P1LocalizedCont",
+        "LQGMetric.Papers.DFGPS.L2_1Cont",
+        "LQGMetric.Field.MeasurableAvg",
+        "LQGMetric.Field.Measurable"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Field.LocalizedApproximation",
+        "SupercriticalLQGUniqueness.B2.Polylog.P1LocalizedCont",
+        "LQGMetric.Papers.DFGPS.L2_1Cont",
+        "LQGMetric.Field.MeasurableAvg",
+        "LQGMetric.Field.Measurable"
+      ],
+      "bytes": 7067
+    },
+    "SupercriticalLFPPAS.Local.Locality": {
+      "path": "SupercriticalLFPPAS/Local/Locality.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Local/Locality.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "ce6763d1e94aa4dc8ae2d55115836f691ba8374790b6019e082f55f8e52e3a8b",
+      "imports": [
+        "SupercriticalLFPPAS.Local.Measurability",
+        "SupercriticalLFPPAS.Local.Transfer",
+        "SupercriticalLQGUniqueness.Uniqueness.Toolkit.InternalMetrics.ClosedEventToolkit",
+        "SupercriticalLQGUniqueness.Uniqueness.Positivity.Witnesses.AX3",
+        "SupercriticalLQGUniqueness.B2.Strong.WeakOfStrong",
+        "LQGMetric.Field.CircleAvgGauss",
+        "LQGMetric.Papers.CONF.S3D114S4"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Local.Measurability",
+        "SupercriticalLFPPAS.Local.Transfer",
+        "SupercriticalLQGUniqueness.Uniqueness.Toolkit.InternalMetrics.ClosedEventToolkit",
+        "SupercriticalLQGUniqueness.Uniqueness.Positivity.Witnesses.AX3",
+        "SupercriticalLQGUniqueness.B2.Strong.WeakOfStrong",
+        "LQGMetric.Field.CircleAvgGauss",
+        "LQGMetric.Papers.CONF.S3D114S4"
+      ],
+      "bytes": 26772
+    },
+    "SupercriticalLFPPAS.Local.Transfer": {
+      "path": "SupercriticalLFPPAS/Local/Transfer.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Local/Transfer.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "9c38f51de21f1001bad64896383ea68861b1ddf3a5ed25094093a49eff5f0ba9",
+      "imports": [
+        "SupercriticalLFPPAS.Local.MetricTools"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Local.MetricTools"
+      ],
+      "bytes": 7747
+    },
+    "SupercriticalLFPPAS.Local.Measurability": {
+      "path": "SupercriticalLFPPAS/Local/Measurability.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Local/Measurability.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "23f9e532aa848d0587eccc7aad8df19351d893ce1b34a6502703148bc067cbc3",
+      "imports": [
+        "SupercriticalLFPPAS.Local.Basic",
+        "SupercriticalLQGUniqueness.Uniqueness.Toolkit.MovingEndpoints.JointCompact",
+        "SupercriticalLQGUniqueness.Uniqueness.Toolkit.CountableBase.FellBase",
+        "SupercriticalLQGUniqueness.B2.LscTop.Limits",
+        "LQGMetric.Meas.UM",
+        "LQGMetric.Field.StandardBorelRange"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Local.Basic",
+        "SupercriticalLQGUniqueness.Uniqueness.Toolkit.MovingEndpoints.JointCompact",
+        "SupercriticalLQGUniqueness.Uniqueness.Toolkit.CountableBase.FellBase",
+        "SupercriticalLQGUniqueness.B2.LscTop.Limits",
+        "LQGMetric.Meas.UM",
+        "LQGMetric.Field.StandardBorelRange"
+      ],
+      "bytes": 15344
+    },
+    "SupercriticalLFPPAS.Local.Lemma32Loc": {
+      "path": "SupercriticalLFPPAS/Local/Lemma32Loc.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Local/Lemma32Loc.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "2c45cae6bf1aa1f180492b0e8d3169f8ba7e3b8b769700f62c520f4a7f2eeea5",
+      "imports": [
+        "SupercriticalLFPPAS.Local.Lemma32",
+        "SupercriticalLFPPAS.Local.Transfer",
+        "NV1Evidence"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Local.Lemma32",
+        "SupercriticalLFPPAS.Local.Transfer",
+        "NV1Evidence"
+      ],
+      "bytes": 12948
+    },
+    "SupercriticalLFPPAS.Local.Lemma32": {
+      "path": "SupercriticalLFPPAS/Local/Lemma32.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Local/Lemma32.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "8b450bb65f8f25cd0c526417c7c5760de3c433144b99e178dcef23bc0ad56706",
+      "imports": [
+        "SupercriticalLFPPAS.Local.Lemma32Det",
+        "SupercriticalLFPPAS.Inputs.EuclideanRegularity",
+        "SupercriticalLQGUniqueness.B2.PfeAxioms.S2GFFPlusCont",
+        "SupercriticalLQGUniqueness.B2.PfeAxioms.BoundedShiftField",
+        "SupercriticalLQGUniqueness.B2.Final.Assembly3",
+        "SupercriticalLQGUniqueness.B2.Polylog.P2HeatAnnulusTight",
+        "SupercriticalLQGUniqueness.B2.Strong.Annulus"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Local.Lemma32Det",
+        "SupercriticalLFPPAS.Inputs.EuclideanRegularity",
+        "SupercriticalLQGUniqueness.B2.PfeAxioms.S2GFFPlusCont",
+        "SupercriticalLQGUniqueness.B2.PfeAxioms.BoundedShiftField",
+        "SupercriticalLQGUniqueness.B2.Final.Assembly3",
+        "SupercriticalLQGUniqueness.B2.Polylog.P2HeatAnnulusTight",
+        "SupercriticalLQGUniqueness.B2.Strong.Annulus"
+      ],
+      "bytes": 16778
+    },
+    "SupercriticalLFPPAS.Local.Lemma32Det": {
+      "path": "SupercriticalLFPPAS/Local/Lemma32Det.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Local/Lemma32Det.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "73eb1cf4a94a2c4a4e436187dffbd94b211e362bb1eac9edc3111b90aa9480fe",
+      "imports": [
+        "SupercriticalLFPPAS.Local.OneWay",
+        "SupercriticalLFPPAS.Local.Collar"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Local.OneWay",
+        "SupercriticalLFPPAS.Local.Collar"
+      ],
+      "bytes": 13050
+    },
+    "SupercriticalLFPPAS.Local.Collar": {
+      "path": "SupercriticalLFPPAS/Local/Collar.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Local/Collar.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "1ca45302d9f2e9ff021ba33c117520691f17b24213f9461ce3a24d2063857daa",
+      "imports": [
+        "SupercriticalLQGUniqueness.B2.Median.HeatShift"
+      ],
+      "local_imports": [
+        "SupercriticalLQGUniqueness.B2.Median.HeatShift"
+      ],
+      "bytes": 6110
+    },
+    "SupercriticalLFPPAS.Local.OneWay": {
+      "path": "SupercriticalLFPPAS/Local/OneWay.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Local/OneWay.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "8f5cda14bfc5950662b81d91ac5de38687f8882cb7033ba9443625565983f97c",
+      "imports": [
+        "SupercriticalLFPPAS.Local.NearCompare",
+        "SupercriticalLFPPAS.Local.MetricTools"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Local.NearCompare",
+        "SupercriticalLFPPAS.Local.MetricTools"
+      ],
+      "bytes": 6849
+    },
+    "SupercriticalLFPPAS.Local.NearCompare": {
+      "path": "SupercriticalLFPPAS/Local/NearCompare.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Local/NearCompare.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "8ed58e7fd932b745e14f671a73e6e49cccd2f0ad0f93715578b13e33065c89d3",
+      "imports": [
+        "SupercriticalLFPPAS.Det.LSCConvergence",
+        "SupercriticalLFPPAS.Local.Basic",
+        "SupercriticalLQGUniqueness.Uniqueness.Toolkit.MovingEndpoints.MovingSetDist",
+        "SupercriticalLQGUniqueness.Uniqueness.Toolkit.CountableBase.FellBase",
+        "SupercriticalLQGUniqueness.B2.LscTop.Limits"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Det.LSCConvergence",
+        "SupercriticalLFPPAS.Local.Basic",
+        "SupercriticalLQGUniqueness.Uniqueness.Toolkit.MovingEndpoints.MovingSetDist",
+        "SupercriticalLQGUniqueness.Uniqueness.Toolkit.CountableBase.FellBase",
+        "SupercriticalLQGUniqueness.B2.LscTop.Limits"
+      ],
+      "bytes": 13565
+    },
+    "SupercriticalLFPPAS.Det.LSCConvergence": {
+      "path": "SupercriticalLFPPAS/Det/LSCConvergence.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Det/LSCConvergence.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "92e1ba9621f918482620453ab46d3c4ce55cd1c1167b602e37f586fb0a9582d3",
+      "imports": [
+        "Mathlib",
+        "SupercriticalLQGUniqueness.Frozen.LSCTendsto"
+      ],
+      "local_imports": [
+        "SupercriticalLQGUniqueness.Frozen.LSCTendsto"
+      ],
+      "bytes": 17571
+    },
+    "SupercriticalLFPPAS.Local.CircleLocalized": {
+      "path": "SupercriticalLFPPAS/Local/CircleLocalized.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Local/CircleLocalized.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "96a37124af30c59337453ecb8c4db2233c912f89f7ec859c1417c34afd240ea0",
+      "imports": [
+        "SupercriticalLFPPAS.Local.Confinement",
+        "SupercriticalLFPPAS.Inputs.RationalCircles",
+        "SupercriticalLFPPAS.Inputs.RationalCirclePositive",
+        "NV1Evidence"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Local.Confinement",
+        "SupercriticalLFPPAS.Inputs.RationalCircles",
+        "SupercriticalLFPPAS.Inputs.RationalCirclePositive",
+        "NV1Evidence"
+      ],
+      "bytes": 29105
+    },
+    "SupercriticalLFPPAS.Separating.UnitGood": {
+      "path": "SupercriticalLFPPAS/Separating/UnitGood.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Separating/UnitGood.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "92f456ee48417a566f88b34ffbf34925bf022872779a2ec76ec84e2c941677eb",
+      "imports": [
+        "SupercriticalLFPPAS.Separating.Lemma35Final",
+        "SupercriticalLFPPAS.Separating.EventAB",
+        "LQGMetric.Papers.CONF.S3D114S4"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Separating.Lemma35Final",
+        "SupercriticalLFPPAS.Separating.EventAB",
+        "LQGMetric.Papers.CONF.S3D114S4"
+      ],
+      "bytes": 23821
+    },
+    "SupercriticalLFPPAS.Separating.EventAB": {
+      "path": "SupercriticalLFPPAS/Separating/EventAB.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Separating/EventAB.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "47eb29ecf488672af989715038d1d3ba2030cd4384669a73c7bb169c40cee891",
+      "imports": [
+        "SupercriticalLFPPAS.Separating.Locality"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Separating.Locality"
+      ],
+      "bytes": 16686
+    },
+    "SupercriticalLFPPAS.Separating.Lemma35Final": {
+      "path": "SupercriticalLFPPAS/Separating/Lemma35Final.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Separating/Lemma35Final.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "1b8d61eebb522061f78488aaa2c44aca371494c758fdb1054f9a586462a9e443",
+      "imports": [
+        "SupercriticalLFPPAS.Separating.Lemma35Canonical",
+        "SupercriticalLQGUniqueness.Uniqueness.Toolkit.LocalEvents.LocalEventToolkit",
+        "SupercriticalLQGUniqueness.Uniqueness.Toolkit.AnnulusIteration.Bridge"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Separating.Lemma35Canonical",
+        "SupercriticalLQGUniqueness.Uniqueness.Toolkit.LocalEvents.LocalEventToolkit",
+        "SupercriticalLQGUniqueness.Uniqueness.Toolkit.AnnulusIteration.Bridge"
+      ],
+      "bytes": 23245
+    },
+    "SupercriticalLFPPAS.Tightness.Annular": {
+      "path": "SupercriticalLFPPAS/Tightness/Annular.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Tightness/Annular.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "7655dc248f97195c0283afc02987d363900ca311a2106e1c3150d2d775357543",
+      "imports": [
+        "SupercriticalLFPPAS.Core.Interfaces",
+        "SupercriticalLFPPAS.Field.HeatVersion",
+        "SupercriticalLQGUniqueness.B2.Strong.WeakOfStrong",
+        "SupercriticalLQGUniqueness.B2.Polylog.P2HeatAnnulusTight",
+        "SupercriticalLQGUniqueness.B2.Polylog.P4LFPPCompare",
+        "SupercriticalLQGUniqueness.B2.PfeWeyl.W1Crossing",
+        "SupercriticalLQGUniqueness.B2.Median.PathSelection",
+        "SupercriticalLQGUniqueness.Uniqueness.TwoScale.S36.LawTransport",
+        "SupercriticalLQGUniqueness.Uniqueness.Positivity.Witnesses.AX9",
+        "SupercriticalLQGUniqueness.Uniqueness.Toolkit.AnnulusIteration.Bridge"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Core.Interfaces",
+        "SupercriticalLFPPAS.Field.HeatVersion",
+        "SupercriticalLQGUniqueness.B2.Strong.WeakOfStrong",
+        "SupercriticalLQGUniqueness.B2.Polylog.P2HeatAnnulusTight",
+        "SupercriticalLQGUniqueness.B2.Polylog.P4LFPPCompare",
+        "SupercriticalLQGUniqueness.B2.PfeWeyl.W1Crossing",
+        "SupercriticalLQGUniqueness.B2.Median.PathSelection",
+        "SupercriticalLQGUniqueness.Uniqueness.TwoScale.S36.LawTransport",
+        "SupercriticalLQGUniqueness.Uniqueness.Positivity.Witnesses.AX9",
+        "SupercriticalLQGUniqueness.Uniqueness.Toolkit.AnnulusIteration.Bridge"
+      ],
+      "bytes": 25208
+    },
+    "SupercriticalLFPPAS.Geodesic.LFPP": {
+      "path": "SupercriticalLFPPAS/Geodesic/LFPP.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Geodesic/LFPP.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "012f08a6c1cca363e6e01526fa57a969d58607310b93d0002c6b4ef8d0b2f5fd",
+      "imports": [
+        "SupercriticalLFPPAS.Core.Interfaces",
+        "SupercriticalLQGUniqueness.Uniqueness.Toolkit.PathInfimum.PathInf",
+        "LQGMetric.Metric.WeylBasic"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Core.Interfaces",
+        "SupercriticalLQGUniqueness.Uniqueness.Toolkit.PathInfimum.PathInf",
+        "LQGMetric.Metric.WeylBasic"
+      ],
+      "bytes": 16047
+    },
+    "SupercriticalLFPPAS.Scaling.ScalingD": {
+      "path": "SupercriticalLFPPAS/Scaling/ScalingD.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Scaling/ScalingD.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "8bc66b1cd2b2130a5cc5404a4e7e1205d988e4561db74418f5ea4cbc846fedac",
+      "imports": [
+        "SupercriticalLFPPAS.Core.Interfaces",
+        "SupercriticalLQGUniqueness.B2.Strong.Bridge",
+        "SupercriticalLQGUniqueness.B2.Strong.WeakOfStrong",
+        "SupercriticalLQGUniqueness.Uniqueness.Positivity.Witnesses.AX3",
+        "LQGMetric.Field.CircleAvgAffine",
+        "LQGMetric.Field.GFFLaw"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Core.Interfaces",
+        "SupercriticalLQGUniqueness.B2.Strong.Bridge",
+        "SupercriticalLQGUniqueness.B2.Strong.WeakOfStrong",
+        "SupercriticalLQGUniqueness.Uniqueness.Positivity.Witnesses.AX3",
+        "LQGMetric.Field.CircleAvgAffine",
+        "LQGMetric.Field.GFFLaw"
+      ],
+      "bytes": 4117
+    },
+    "SupercriticalLFPPAS.Scaling.Dilation": {
+      "path": "SupercriticalLFPPAS/Scaling/Dilation.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Scaling/Dilation.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "191fa89dd5e67a6141b64135cd9a8b07713ce97f418536e708bcf1cf1c99bb69",
+      "imports": [
+        "SupercriticalLFPPAS.Core.Interfaces",
+        "SupercriticalLQGUniqueness.B2.Polylog.P1LocalizedCont",
+        "SupercriticalLQGUniqueness.B2.Polylog.P4Event",
+        "SupercriticalLQGUniqueness.B2.Strong.Bridge",
+        "LQGMetric.Field.CircleAvgAffine"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Core.Interfaces",
+        "SupercriticalLQGUniqueness.B2.Polylog.P1LocalizedCont",
+        "SupercriticalLQGUniqueness.B2.Polylog.P4Event",
+        "SupercriticalLQGUniqueness.B2.Strong.Bridge",
+        "LQGMetric.Field.CircleAvgAffine"
+      ],
+      "bytes": 10850
+    },
+    "SupercriticalLFPPAS.Compare.LocalizedComparison": {
+      "path": "SupercriticalLFPPAS/Compare/LocalizedComparison.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Compare/LocalizedComparison.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "5e322b0394d2af57e06a3b51694d07a20512df84ed8a646474996f5badaded6e",
+      "imports": [
+        "SupercriticalLFPPAS.Compare.ScaleRatio",
+        "SupercriticalLFPPAS.Field.LocalizedApproximation",
+        "SupercriticalLQGUniqueness.B2.Polylog.P7Trunc"
+      ],
+      "local_imports": [
+        "SupercriticalLFPPAS.Compare.ScaleRatio",
+        "SupercriticalLFPPAS.Field.LocalizedApproximation",
+        "SupercriticalLQGUniqueness.B2.Polylog.P7Trunc"
+      ],
+      "bytes": 2440
+    },
+    "SupercriticalLFPPAS.Frozen.Exists_jointHeatVersion": {
+      "path": "SupercriticalLFPPAS/Frozen/Exists_jointHeatVersion.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Frozen/Exists_jointHeatVersion.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "56c9b3251b828803a165145c33fcbe6d815ff741ff5bbb4dcdbb04bbffe4c1ba",
+      "imports": [
+        "SupercriticalLQGUniqueness.Frozen.IsNormalizedWholePlaneGFF",
+        "SupercriticalLQGUniqueness.Frozen.IsHeatSmoothing",
+        "SupercriticalLFPPAS.Implementation.Exists_jointHeatVersion"
+      ],
+      "local_imports": [
+        "SupercriticalLQGUniqueness.Frozen.IsNormalizedWholePlaneGFF",
+        "SupercriticalLQGUniqueness.Frozen.IsHeatSmoothing",
+        "SupercriticalLFPPAS.Implementation.Exists_jointHeatVersion"
+      ],
+      "bytes": 2577
+    },
+    "SupercriticalLFPPAS.Frozen.Lfpp_ae_lscTendsto": {
+      "path": "SupercriticalLFPPAS/Frozen/Lfpp_ae_lscTendsto.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Frozen/Lfpp_ae_lscTendsto.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "a95e0ac65f713af2d9a3dd75f72496b1d60549b8c495c35af37631a5ca0cbf58",
+      "imports": [
+        "SupercriticalLQGUniqueness.Frozen.IsNormalizedWholePlaneGFF",
+        "SupercriticalLQGUniqueness.Frozen.IsHeatSmoothing",
+        "SupercriticalLQGUniqueness.Frozen.IsLFPPNormalizer",
+        "SupercriticalLQGUniqueness.Frozen.RescaledLFPP",
+        "SupercriticalLQGUniqueness.Frozen.LSCMetricToLSCFun",
+        "SupercriticalLQGUniqueness.Frozen.LSCTendsto",
+        "SupercriticalLQGUniqueness.Frozen.LSCTendstoInProbability",
+        "SupercriticalConformalCovariance.Frozen.XiCrit",
+        "SupercriticalLFPPAS.Implementation.Lfpp_ae_lscTendsto"
+      ],
+      "local_imports": [
+        "SupercriticalLQGUniqueness.Frozen.IsNormalizedWholePlaneGFF",
+        "SupercriticalLQGUniqueness.Frozen.IsHeatSmoothing",
+        "SupercriticalLQGUniqueness.Frozen.IsLFPPNormalizer",
+        "SupercriticalLQGUniqueness.Frozen.RescaledLFPP",
+        "SupercriticalLQGUniqueness.Frozen.LSCMetricToLSCFun",
+        "SupercriticalLQGUniqueness.Frozen.LSCTendsto",
+        "SupercriticalLQGUniqueness.Frozen.LSCTendstoInProbability",
+        "SupercriticalConformalCovariance.Frozen.XiCrit",
+        "SupercriticalLFPPAS.Implementation.Lfpp_ae_lscTendsto"
+      ],
+      "bytes": 4943
+    },
+    "SupercriticalLFPPAS.Implementation.Lfpp_ae_lscTendsto": {
+      "path": "SupercriticalLFPPAS/Implementation/Lfpp_ae_lscTendsto.lean",
+      "source_path": "formalizations/supercritical_lfpp_as/SupercriticalLFPPAS/Implementation/Lfpp_ae_lscTendsto.lean",
+      "source_commit": "04dc90bf49ec0bb0ed5e179460cb1612579fb361",
+      "sha256": "9a910cd3b7e2ec74abc7712eab988612e71cbb9765f51e549bacd8e3e05e4332",
+      "imports": [
+        "SupercriticalLQGUniqueness.Frozen.IsNormalizedWholePlaneGFF",
+        "SupercriticalLQGUniqueness.Frozen.IsHeatSmoothing",
+        "SupercriticalLQGUniqueness.Frozen.IsLFPPNormalizer",
+        "SupercriticalLQGUniqueness.Frozen.RescaledLFPP",
+        "SupercriticalLQGUniqueness.Frozen.LSCMetricToLSCFun",
+        "SupercriticalLQGUniqueness.Frozen.LSCTendsto",
+        "SupercriticalLQGUniqueness.Frozen.LSCTendstoInProbability",
+        "SupercriticalConformalCovariance.Frozen.XiCrit",
+        "SupercriticalLFPPAS.Assembly.Adapters",
+        "SupercriticalLFPPAS.Local.Interface",
+        "SupercriticalLFPPAS.Field.InterfaceForms",
+        "SupercriticalLFPPAS.Normalizer.Window"
+      ],
+      "local_imports": [
+        "SupercriticalLQGUniqueness.Frozen.IsNormalizedWholePlaneGFF",
+        "SupercriticalLQGUniqueness.Frozen.IsHeatSmoothing",
+        "SupercriticalLQGUniqueness.Frozen.IsLFPPNormalizer",
+        "SupercriticalLQGUniqueness.Frozen.RescaledLFPP",
+        "SupercriticalLQGUniqueness.Frozen.LSCMetricToLSCFun",
+        "SupercriticalLQGUniqueness.Frozen.LSCTendsto",
+        "SupercriticalLQGUniqueness.Frozen.LSCTendstoInProbability",
+        "SupercriticalConformalCovariance.Frozen.XiCrit",
+        "SupercriticalLFPPAS.Assembly.Adapters",
+        "SupercriticalLFPPAS.Local.Interface",
+        "SupercriticalLFPPAS.Field.InterfaceForms",
+        "SupercriticalLFPPAS.Normalizer.Window"
+      ],
+      "bytes": 3680
     }
   }
 }

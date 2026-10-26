@@ -1,0 +1,737 @@
+               Almost sure convergence of supercritical
+                      Liouville first passage percolation
+                                          Research manuscript
+
+                                             October 1, 2026
+
+
+                                                 Abstract
+          We prove almost sure convergence of heat-kernel Liouville first passage percolation in the
+      supercritical phase, in the topology on lower semicontinuous metrics and with the usual median
+      crossing normalization. The main estimate compares distances between shrinking endpoint
+      neighborhoods with a multiplicative constant arbitrarily close to one and polynomially small
+      failure probability. To improve the comparison constant, we use separating paths whose lengths
+      are measured in the other metric, together with a covering argument in the time parameter of a
+      geodesic. The estimate is uniform over geodesics contained in a fixed Euclidean ball. Rational-
+      circle distances identify the constant and provide the normalizer control needed to pass from a
+      polynomial mesh to all positive real cutoffs.
+
+
+1   Introduction
+Let h be a whole-plane Gaussian free field with the additive constant fixed so that h1 (0) = 0, where
+hr (z) is its circle average over ∂Br (z). Fix ξ > ξcrit . Set
+                                                                                  Z 1
+                                   1 −|z|2 /(2t)                                            ∗
+    h∗ε = h ∗ pε2 /2 ,   pt (z) =     e          ,        Dhε (z, w) =    inf           eξhε (P (t)) |P ′ (t)| dt.   (1.1)
+                                  2πt                                    P :z→w    0
+
+The infimum is over piecewise continuously differentiable paths. Let aε be the median of the
+left-right crossing distance of [0, 1]2 , with paths restricted to the square, and write Xε = a−1 ε
+                                                                                               ε Dh .
+Let D = Dh be the limit in probability constructed in [1, Theorems 1.3 and 1.8], with this same
+normalization. Write Q = Q(ξ) for the exponent determined by aε = ε1−ξQ+o(1) .
+
+Theorem 1.1. For each fixed ξ > ξcrit , almost surely,
+
+                                        a−1
+                                         ε Dh −→ Dh
+                                            ε
+                                                             as ε → 0
+
+in the topology on lower semicontinuous functions on C × C. The limit is through all positive real
+values of ε, on the probability space carrying the original field h.
+
+     Precisely, the topology in Theorem 1.1 requires the following two properties. If εn → 0 and
+(zn , wn ) → (z, w), then
+                                   D(z, w) ≤ lim inf Xεn (zn , wn ).                        (1.2)
+                                                     n→∞
+
+For each (z, w) and each sequence εn → 0, there must also be (zn , wn ) → (z, w) for which the
+corresponding distances converge to D(z, w). These statements are to hold on one probability-one
+event. Distances equal to ∞ are allowed. No assertion simultaneously for every value of ξ is made.
+
+                                                      1
+    The diﬀicult step is the improvement of the fixed comparison constant in [2, Proposition 3.6].
+The proof below is organized around this step. We first localize convergence in probability without
+assuming convergence of internal metrics. We then construct short separating paths in one metric
+near geodesics of the other metric. A deterministic interval-covering argument gives a contraction
+of the comparison constant. Finally, we use rational-circle distances to identify the constant and
+to control the normalizers between successive cutoffs of a polynomial mesh.
+
+1.1   Notation and imported results
+Write Br (z) for an open Euclidean ball and Ar,R (z) = BR (z) \ B r (z). A path around an annulus is
+a continuous path in the annulus whose image disconnects its boundary components. It need not
+be simple. The distance around an annulus is the infimum of the lengths of such paths. Distances
+across annuli have the usual crossing meaning. For a closed set V , d(u, v; V ) is the infimum of the
+d-lengths of continuous paths contained in V with endpoints u, v. For open sets we use the same
+convention.
+    Throughout, “with polynomially high probability” means with probability at least 1 − O(εβ )
+for some β > 0. The exponent and the implicit constant may depend on fixed parameters. They
+need not be uniform as those parameters approach a boundary of their permitted range.
+    We use the following results, all valid for the fixed supercritical parameter considered here.
+  (i) Xε → Dh in probability in the lower semicontinuous topology, also with h replaced by h + f
+      for a bounded continuous f . The metric is a measurable function of the field, is local, satisfies
+      Weyl scaling, and for deterministic r > 0, z ∈ C satisfies
+
+                    Dh (z + r·, z + r·) = rξQ eξhr (z) Dhz,r ,     hz,r = h(z + r·) − hr (z).     (1.3)
+
+      See [1, Theorems 1.3 and 1.8, Definition 1.7].
+
+ (ii) Finite-distance pairs admit D-geodesics. Finite-length paths are Euclidean continuous; on
+      Euclidean compact sets the Euclidean metric is bounded by a random constant times a
+      positive power of D. Furthermore,
+
+                                   D(B k (0), ∂BR (0)) −→ ∞        as R → ∞                       (1.4)
+
+      almost surely, for each k. See [4, Propositions 1.10 and 1.12, Lemma 3.12].
+
+ (iii) For two fixed disjoint rational circles O, O ′ , 0 < D(O, O ′ ) < ∞ almost surely and
+
+                                  Xε (O, O ′ ) −→ D(O, O ′ )     in probability.                  (1.5)
+
+      Indeed, [4, Theorem 1.7] gives almost sure convergence of these distances along an extracted
+      subsequence of every sequence. Its metric limit agrees with D by (i), so the subsequence
+      criterion gives (1.5).
+
+ (iv) We use the localized LFPP comparison and scaling-ratio estimates in [2, Proposition 3.6,
+      Lemma 3.7 and Theorem 1.9]. These are stated explicitly below. Tightness of annular
+      crossing distances and their reciprocals, and of annular separating-path lengths, follows from
+      [2, Lemma 3.1 and its proof]. For LFPP in an arbitrary fixed annulus, one can use [6,
+      Proposition 4.1]: lower bounds follow from distances between its boundary components in a
+      larger domain, and upper bounds around the annulus follow by joining finitely many fixed
+      points using internal paths in angular sectors. The resulting concatenation has winding
+      number one and its normalized length is bounded by a finite sum of tight random variables.
+
+                                                     2
+    (v) We use the following annulus concentration estimate [3, Lemma 2.12]. If the events Ej
+        are measurable from the field in suﬀiciently separated concentric annuli, modulo additive
+        constants, then, given a > 0 and b ∈ (0, 1), there is p < 1 such that
+
+                      P[Ej ] ≥ p for every j        =⇒       P[#{j ≤ n : Ej } < bn] ≤ Ce−an .   (1.6)
+
+       The separation ratio is fixed before p is chosen. In particular, the rate a can be made
+       arbitrarily large by raising the required marginal probability.
+
+No estimate which bounds D(u, v) uniformly over all suﬀiciently close u, v is used. Such an estimate
+would be false in the present setting.
+
+
+2     Localization and preliminary consequences
+2.1     The localized field
+Choose a smooth radial cutoff χ : [0, ∞) → [0, 1] which is one on [0, 1/2] and zero on [1, ∞). For
+0 < ε < e−1 , let bhε be the convolution obtained by multiplying pε2 /2 by χ(| · |/(ε log ε−1 )) and
+                                b ε for its path metric and X
+dividing by its integral. Write D                           bε = a−1 bε
+                                                                  ε Dh . Its internal metric on U is
+                                  h
+measurable from h on Bε log ε−1 (U ).
+
+Lemma 2.1. Almost surely, for every compact K,
+
+                                           sup |b
+                                                hε − h∗ε | −→ 0.                                (2.1)
+                                            K
+
+For every a > 0, almost surely,
+
+                                        sup          sup |h∗ε − h∗δ | −→ 0.                     (2.2)
+                                  ε,δ∈[(n+1)−a ,n−a ] K
+
+The following uniform version of (2.1) also holds. If Hδ,L uses the cutoff radius δL, then, for
+L ≥ log δ −1 ,
+                                                                        −1 2
+                        sup |Hδ,L − h∗δ | ≤ CK (1 + log δ −1 )3 e−(log δ ) /8             (2.3)
+                            K
+
+for all suﬀiciently small δ, with a finite random CK .
+
+Proof. The circle-average bound [2, Lemma 2.3], with its parameter ζ = 1/2, gives |hs (z)| ≤
+CK (1 + | log s|) for z ∈ K, s > 0. Radial integration expresses a heat-kernel convolution as
+                                             Z ∞
+                                     ∗           2s −s2 /δ2
+                                    hδ (z) =        e       hs (z) ds.
+                                              0  δ2
+
+The omitted mass for Hδ,L is at most e−L /4 . Integrating the circle-average bound over s ≥ δL/2,
+                                                2
+
+
+and including the normalization error, gives a constant times (1+log δ −1 +L)3 e−L /4 . Its supremum
+                                                                                    2
+
+
+over L ≥ log δ −1 is bounded by the right side of (2.3). This proves (2.1) as well.
+   Differentiating the radial kernel with respect to log δ, the same bound gives supK |∂log δ h∗δ | ≤
+CK (1 + log δ −1 ) for small δ. The logarithmic width of [(n + 1)−a , n−a ] is a log(1 + 1/n). Their
+product tends to zero, proving (2.2). This is also the field-only content of [5, Lemma 4.2]; no
+subcritical metric estimate is involved.
+
+
+
+                                                         3
+    Under the change of coordinates w = z + ru, the localized field becomes Hδ,L for hz,r , up to
+hr (z), where
+                                   δ = ε/r,    L = log ε−1 .                                 (2.4)
+For r ≤ 1 we have L ≥ log δ −1 . For r ≥ εt with fixed t < 1, δL → 0 uniformly. Thus we may use
+fixed-scale statements uniformly for the dilated localized metrics. Define the deterministic ratio
+                                                        raε/r
+                                           κε (r) =            .                                (2.5)
+                                                        rξQ aε
+By [2, Lemma 3.7 and Theorem 1.9], for each ζ ∈ (0, 1) there is Cζ such that
+
+                             Cζ−1 ≤ κε (r) ≤ Cζ ,          100ε1−ζ ≤ r ≤ 1,                     (2.6)
+
+for all suﬀiciently small ε. The constant in (2.6) does not depend on r or ε.
+
+2.2   Fixed-constant comparison and confinement
+We record [2, Proposition 3.6] in the form we need: for each ζ ∈ (0, 1) there is C0 such that for
+every deterministic bounded connected open U , with polynomially high probability,
+                            bε (Bρ (z), Bρ (w); Bρ (U )) ≤ C0 D(z, w; U ),
+                            X                                                                   (2.7)
+                            D(Bρ (z), Bρ (w); Bρ (U )) ≤ C0 X bε (z, w; U ),                    (2.8)
+
+simultaneously for z, w ∈ U , where ρ = ε1−ζ . The constant C0 depends on ζ and the metric law
+but not on U . Our cutoff is exactly an allowed choice in [2, Section 2.3], with its parameter q = 1.
+
+Lemma 2.2. For each compact K and M < ∞, the probability that an X    bε -path of length at most
+M starting in K exits BR (0) tends to zero as first ε → 0 and then R → ∞. The same holds for
+Xε . Moreover, for two fixed disjoint rational circles,
+                              bε (O, O ′ ) −→ D(O, O ′ )
+                              X                               in probability.                   (2.9)
+
+Proof. Take U = BR+1 (0) in (2.8). Stop a path on its first hit of ∂BR (0). If such a path has length
+at most M , then
+                                D(Bρ (K), Bρ (∂BR (0))) ≤ C0 M.
+By lower semicontinuity and compactness, the left side has lower limit at least D(K, ∂BR (0)). Now
+use (1.4), with K contained in a fixed disk. The argument for ordinary LFPP follows from (2.1)
+on BR+1 (0).
+    The ordinary circle distance is tight by (1.5). Its nearly minimizing paths are confined to
+a fixed compact set with probability arbitrarily close to one. Comparing their lengths by (2.1)
+gives tightness of the localized circle distance and one inequality between the two distances, up
+to a factor tending to one in probability. The confinement just proved for localized LFPP gives
+the reverse inequality. Hence their ratio tends to one in probability, and (2.9) follows. On these
+confinement events the minimizing paths can be taken to be actual geodesics: paths below a fixed
+length threshold are confined to a compact set, on which the smooth positive Riemannian density
+gives existence by the usual compactness argument.
+
+
+
+
+                                                    4
+3     Local comparisons and separating paths
+3.1   A consequence of lower semicontinuous convergence
+For a function f on a Euclidean space put f [η] (p) = inf |q−p|<η f (q); for pairs of points use the
+maximum product distance.
+
+Lemma 3.1. Suppose that nonnegative lower semicontinuous functions fn converge to f in the
+lower semicontinuous topology. For each compact K, M < ∞, and η, ν > 0, eventually
+
+                    fn[η] (p) ≤ f (p) + ν                        if p ∈ K, f (p) ≤ M,
+                    f   [η]
+                              (p) ≤ fn (p) + ν                   if p ∈ K, fn (p) ≤ M.
+
+The corresponding events have probability tending to one if convergence holds in probability.
+
+Proof. The truncated epigraph {(p, t) : p ∈ K, f (p) ≤ t ≤ M } is compact. Cover it by finitely many
+product neighborhoods of spatial radius less than η/3 and height radius less than ν/3, centered at
+(pi , ti ) in this epigraph. Take a recovery sequence at each pi . Eventually its points lie within η/3
+of pi and their values are at most f (pi ) + ν/3 ≤ ti + ν/3. Applying the cover at (p, f (p)) proves
+the first inequality.
+     If the second fails along a subsequence, take pn ∈ K with fn (pn ) ≤ M and f [η] (pn ) > fn (pn )+ν.
+Extract a further subsequence on which pn → p and fn (pn ) → t ≤ M . The lower-limit property
+gives f (p) ≤ t. For large n, p is in the η-ball of pn , a contradiction. The in-probability statement
+follows by extracting an almost surely convergent subsequence from any sequence along which the
+failure probability were bounded away from zero.
+
+Lemma 3.2. Let
+                                V = {1/2 ≤ |z| ≤ 3},       U = {1/8 ≤ |z| ≤ 16}.
+For each M < ∞ and η, ν > 0, with probability tending to one as δ → 0, simultaneously for
+|u| = 1, |v| = 2,
+
+              Xδ (Bη (u), Bη (v); U ) ≤ D(u, v; V ) + ν                 if D(u, v; V ) ≤ M,        (3.1)
+               D(Bη (u), Bη (v); U ) ≤ Xδ (u, v; V ) + ν                if Xδ (u, v; V ) ≤ M.      (3.2)
+
+The same holds for Xδ constructed from Hδ,L , uniformly over L ≥ log δ −1 . If δL → 0, the latter
+event is measurable from the field in A1/16,32 (0) modulo its additive constant, when all lengths and
+additive errors are expressed in units eξh1 (0) .
+
+Proof. We may decrease η so that η < 1/10. Fix a smooth nonnegative function f which is zero on
+a neighborhood of V and equals a constant B on two closed annular collars separating V from the
+two boundary components of U . Use narrower collars inside the constant regions to accommodate
+mollification. Positivity of D-crossings and tightness away from zero of normalized LFPP crossings
+imply that, by taking B large, the probability that every (h+f )-path from Bη (V ) to the complement
+of U costs more than M + 3 can be made arbitrarily close to one, in both metrics, uniformly for
+small δ.
+    Apply Lemma 3.1 to the convergence in probability for h + f , with height cutoff M + 1, on the
+compact product of the two endpoint circles. A D-path in V has unchanged length after adding f .
+An LFPP path in V changes its length by a factor eo(1) , since supV |fδ∗ | → 0. Choose the error in
+Lemma 3.1 smaller than ν/4. The resulting target paths of length at most M + 2 are confined to U
+by the collars. Removing the nonnegative f decreases their lengths. This proves both inequalities,
+
+                                                       5
+with arbitrarily high limiting probability. Since B was only used to prove the probability bound
+and does not occur in the asserted event, its probability tends to one.
+    Lemma 2.1 transfers this conclusion to Hδ,L uniformly in L, by first using cutoff 2M and a
+smaller additive error. Both source and target paths in the resulting event stay in fixed closed
+annuli. Locality of D and the support of the localized convolution give the final measurability
+statement. The additive error rescales together with the two metrics under addition of a field
+constant.
+
+Remark 3.3. The universal endpoint statements above can be treated as measurable events, without
+a separability assumption in the Euclidean topology for the metric itself. Here are details. On a
+fixed closed annulus, the internal metrics are lower semicontinuous: parameterize paths of bounded
+length at constant speed, use the local inverse Hölder bound to obtain Euclidean equicontinuity,
+and pass to a subsequence. Lower semicontinuity bounds the length of the limit by the lower limit
+of the lengths. More precisely, for a length bound T , use the compact family of paths on [0, 1]
+satisfying d(P (s), P (t)) ≤ T |s − t|. These conditions are closed by lower semicontinuity and can be
+checked at rational times. Every path of length at most T has such a parameterization. Evaluation
+of path length is the supremum over rational partitions, hence is jointly measurable. Projection
+over the compact path families gives a measurable random internal lower semicontinuous metric;
+one may localize on countably many bounds for the inverse Hölder constants. For smooth LFPP
+the same argument uses bounds on its positive density on the annulus. Locality on a closed annulus
+follows by computing path lengths with the internal metric on a slightly larger open annulus: its
+boundary is at positive D-distance from the smaller annulus, so suﬀiciently short pieces of any
+rectifiable path have the same internal and ambient distance.
+    For any lower semicontinuous g, g [η] is upper semicontinuous: any point witnessing a strict
+upper bound continues to witness it after a suﬀiciently small change of the center. The inequalities
+of Lemma 3.2 are therefore measurable maximum conditions on a compact truncated epigraph of
+the source internal metric. Alternatively, their failure sets are projections of jointly Borel sets with
+compact sections after specifying a positive rational strict gap. These observations also justify the
+probabilistic use of Lemma 3.1. Locality can be taken with respect to the completed field sigma
+algebra.
+
+3.2   Short paths measured in the other metric
+Lemma 3.4. Let d, d′ be planar length metrics with Euclidean-continuous rectifiable paths. Let
+r1 > 4r2 > · · · > 4n−1 rn and put
+
+        Yi = d(acrossAri ,2ri (c)),    Wi = d(aroundA2ri ,3ri (c)),   Zi = d′ (aroundA2ri ,3ri (c)).
+
+Suppose 0 < Yi < ∞, Wi ≤ CYi , and Zi ≤ CYi . If a d-geodesic segment I has endpoints outside
+B3r1 (c) and visits Brn (c), then
+
+                                             C
+                                      Zn ≤     (1 + 2/C)−(n−1) len(I; d).                              (3.3)
+                                             2
+Proof. A separating path in the ith outer annulus is hit by I before and after its visit to the
+innermost disk. The intervening geodesic segment crosses each inner crossing annulus twice. It can
+be replaced by the portion of the separating path between these two intersection points. Taking
+infima gives                            X
+                                      2    Yj ≤ Wi ≤ CYi .
+                                              j>i
+
+
+                                                       6
+             P
+Writing Si = j≥i Yj , we get Si ≥ (1 + 2/C)Si+1 . Also 2S1 ≤ len(I; d) by the disjoint crossings.
+Thus Yn ≤ (1 + 2/C)−(n−1) len(I; d)/2, proving the claim.
+
+    Write Yδ,L for the LFPP metric built from Hδ,L and divided by aδ . This notation keeps track
+of the localization window after dilation.
+
+Lemma 3.5. Fix a compact K ⊂ A3/4,5/2 (0) and q > 0. There are θ > 0, C < ∞ such that for every
+suﬀiciently small η > 0 there are δ0 , ℓ0 > 0 with the following property. If 0 < δ < δ0 , L ≥ log δ −1 ,
+and δL < ℓ0 , the following holds on an event of probability at least 1 − Cη q . Simultaneously for
+(d, d′ ) = (D, Yδ,L ) and (Yδ,L , D), for every p ∈ K on a d-geodesic segment I whose endpoints
+lie outside B2η1/2 (p), there is a d′ -rectifiable separating path whose image disconnects Bη (p) from
+infinity, is contained in B2η1/2 (p), and has length at most
+
+                                             Cη θ len(I; d).                                       (3.4)
+
+The event is measurable from the field in A1/2,3 (0) modulo additive constants. No locality assertion
+is made here for the untruncated heat-kernel metric.
+
+Proof. Use a lattice of mesh η/10 covering K, and around each lattice point take concentric annuli
+at a fixed suﬀiciently large geometric separation, with crossing radii between 4η and η 1/2 /4. For
+every such radius s, annular tightness and (2.6), used with ζ = 1/2 and δ small enough that
+s ≥ 100δ 1/2 , give the required upper and lower bounds for the ordinary LFPP annular quantities.
+The rescaled cutoff is Hδ/s,L ; since L ≥ log(s/δ), (2.3) transfers these bounds to Yδ,L with uniformly
+high marginal probability. Thus the hypotheses of Lemma 3.4 hold in both directions with a single
+constant C1 and marginal probability as close to one as desired. This uses only tightness, not
+convergence of annular distances. The constant C1 is independent of η, δ, L.
+    The dependence neighborhoods of the localized field fit inside slightly enlarged, still separated
+annuli once δL ≪ η. Apply (1.6), choosing its exponential rate large enough to absorb a union
+bound over the O(η −2 ) lattice points. Except on an event of probability O(η q ), each point has
+at least c log η −1 successful annuli. Lemma 3.4 then gives (3.4), including a factor of two for a
+nearly minimizing separating path. If p is replaced by a lattice point within η/10, the innermost
+disk still contains Bη (p) and the outermost annulus remains inside B2η1/2 (p). The segment I
+enters the innermost disk and its endpoints remain outside the outermost annulus. This proves the
+simultaneous assertion.
+    All events just used are finite annular comparisons. Their supports lie inside A1/2,3 (0) when η
+is small. The uniform cutoff statement follows from (2.3) and the same annular tightness argument
+after rescaling. Ratios of annular distances are invariant under addition of a constant to the
+field.
+
+3.3   Good root scales
+Choose a probability p0 < 1, suﬀiciently close to one for the application of (1.6) in Section 4. This
+choice is fixed for the rest of the argument. By annular tightness, choose A ≥ 1, m > 0 and M < ∞
+such that with probability at least 1 − (1 − p0 )/4, in each of the two canonically normalized metrics,
+
+           d(aroundA7,8 ) ≤ A d(acrossA1,2 ),    d(acrossA1,2 ) ≥ m,    d(aroundA7,8 ) ≤ M.        (3.5)
+
+Here the two canonically normalized metrics are D and Yδ,L , and all annuli without a specified
+center are centered at zero. Uniform tightness for Yδ,L follows from Lemma 2.1. Fix d0 > 0.
+Choose η > 0 so small that Lemma 3.5 fails with probability at most (1 − p0 )/4 and its bound is at
+
+                                                   7
+most (d0 /10) len(I; d), and also 2η 1/2 < 1/10. The localized version of Lemma 3.2, with endpoint
+radius η/2 and additive error smaller than d0 m/20, fails with probability at most (1 − p0 )/4 for all
+suﬀiciently small cutoffs and dependence radii.
+    Intersect these events. After allowing smaller preliminary errors for nearly minimizing paths,
+the resulting event has probability at least p0 and the following consequences in each direction: a
+source geodesic crossing segment in A1,2 of length at most M has a target path between its η/2
+endpoint balls of length at most (1 + d0 /10) times its source length; and the endpoints of such a
+segment can be surrounded by the paths from Lemma 3.5. The source internal metric in Lemma 3.2
+is evaluated on V , so there is no boundary ambiguity.
+    At center z and physical radius r, define the event Eε,r (z) by this construction in coordinates
+                                            bε by raε/r a−1
+z + r·. Divide D by rξQ eξhr (z) and divide X            ε e
+                                                             ξhr (z) . These are the two canonical units.
+
+Consequently target costs in physical units acquire the factor κε (r) in the D-source direction and
+κε (r)−1 in the other direction. The event is measurable from h in Ar/16,32r (z) modulo constants.
+In every fixed exponent band εt ≤ r ≤ εs , 0 < s < t < 1, its marginal probability is at least p0 for
+all suﬀiciently small ε, uniformly in r, z.
+    The constants A, m, M were chosen before d0 . In particular,
+                                                       1
+                                                 λ=      >0                                            (3.6)
+                                                      5A
+is independent of d0 and of every exponent band. This independence is needed for the iteration.
+
+
+4      Contraction of the comparison constant
+4.1     A deterministic covering and joining argument
+Lemma 4.1. Let P : [0, L] → BR (0) be a source geodesic parameterized by source length, with
+endpoints z, w. Suppose that for each point of P there is a center c within rmin /10 and a good radius
+r ∈ [rmin , rmax ]. Suppose a prior comparison with constant C0 and endpoint radius ρold < ηrmin /4
+applies to every subsegment of P . Let K bound the target scaling factor at all the chosen good radii.
+Then
+
+    d′ (B513rmax (z), B513rmax (w)) ≤ F (C0 , K)L,   F (C, K) = (1 − λ) max{C, K} + (λ + 3d0 )K. (4.1)
+
+Proof. The conclusion is immediate if |z − w| ≤ 1024rmax , since the two open output balls, each of
+radius 513rmax , overlap.
+     Otherwise, let b0 be the first hit of B 64rmax (w) and let a0 be the last visit to B 64rmax (z) before
+b0 . Put J = [a0 , b0 ]. For each τ ∈ J choose a good disk Br (c) containing P (τ ) in Br/2 (c). The
+global endpoints lie outside B32r (c). Let Iτ be the time interval from the last visit to ∂B6r (c) before
+τ to the first such visit after τ . Its interior contains τ , and its image is in B 6r (c). By using a source
+separating path in A7r,8r (c) as a shortcut, as in Lemma 3.4,
+
+                                         |Iτ | ≤ d(aroundA7r,8r (c)).
+
+Let tτ be the first hit after τ of ∂B2r (c), and let sτ be the last hit of ∂Br (c) before tτ . Then
+Gτ = [sτ , tτ ] ⊂ Iτ , its image lies in Ar,2r (c), and
+
+                                     |Gτ | ≥ d(acrossAr,2r (c)) ≥ |Iτ |/A.                             (4.2)
+
+This also shows that the crossing segment has normalized source length at least m, whereas its
+length is at most the normalized bound M for |Iτ |.
+
+                                                      8
+    Take a finite subcover of J by the interiors of Iτ . Greedily select disjoint intervals from this
+finite family in decreasing order of length. Every discarded interval meets a selected interval of
+at least its length,Pand hence is contained in that interval’s threefold dilation. If I1 , . . . , Ik are
+selected and S = i |Ii |, then |J| ≤ 3S. Let [a, b] be the hull of J and all selected intervals, and
+put ℓ = b − a. At most two selected intervals extend beyond J, so
+                                                         X
+                       S ≤ ℓ ≤ |J| + S ≤ 4S,      G :=     |Gi | ≥ S/A ≥ λℓ.
+                                                            i
+
+The endpoints P (a) and P (b) are within 76rmax of z and w, respectively. For example, if a < a0 ,
+its selected interval contains a0 and is mapped into a disk of radius 6r, so |P (a) − P (a0 )| ≤ 12r.
+    Replace each Gi by its good-scale target path. Replace the complementary subsegments of [a, b]
+using the prior comparison. At either endpoint p of Gi , both endpoints of Ii are at least 4r away.
+The cross-metric separating-path estimate, applied to Ii , therefore gives a target path surrounding
+the whole ball Bηr (p), lying in Br/10 (p), of length at most (d0 /10)K|Ii |. The endpoints of the two
+adjacent replacement paths lie in this enclosed ball because ρold < ηr/4.
+    For completeness, the following joining argument does not use a triangle inequality for distances
+between sets. Initially join each pair of unmatched endpoints by a Euclidean arc in its enclosed
+ball. Consider one of these possibly nonrectifiable arcs and its separating path. If the chain starts
+and ends outside the bounded complementary component containing the arc, replace the portion
+of the chain between its first and last intersections with the separating path by the corresponding
+portion of that path. If an endpoint of the chain is inside the component, move that endpoint
+to an intersection of the separating path with the appropriate output ball, and perform the same
+replacement. Such an intersection exists: the output ball contains the endpoint, is connected,
+and has radius much larger than the diameter of the separating path, so it cannot lie entirely
+inside that bounded component. If both endpoints are inside, use the separating path between its
+intersections with the two output balls. Repeat for each remaining bad joining arc. This removes
+all such arcs, introduces only rectifiable pieces, and adds at most the sum of the separating-path
+lengths. Subsequent replacements cannot reintroduce a bad arc.
+    The resulting endpoints lie in the output balls. In this argument no length is assigned to the
+auxiliary Euclidean joining arcs: one tracks only the sum of the lengths of the rectifiable pieces,
+which can increase by at most the length of each inserted separating path. Taking infima over the
+finitely many nearly minimizing replacement paths, the final total cost is at most
+
+                                  C0 (ℓ − G) + (1 + d0 )KG + 2d0 Kℓ.
+
+We have enlarged the actual preliminary errors d0 /10 to allow all approximations. If C0 ≥ K, use
+G ≥ λℓ; if C0 < K, use G ≤ ℓ. In both cases the last display is at most F (C0 , K)ℓ ≤ F (C0 , K)L,
+as required.
+
+   Henceforth write c∗ = 513 for the output constant.
+
+4.2   Polynomial probability of the contraction
+Fix a suﬀiciently large base B, say B = 4096. For 0 < s < t < 1 with s ≤ t/4, let
+
+                                Rε (s, t) = {B j : j ∈ Z, εt < B j < εs }.
+
+Let Sε be any deterministic subset containing at least one third of these radii. The supports
+Ar/16,32r (c) are separated at successive radii. More precisely, take the outer scale 64r, so the
+
+                                                    9
+supporting annulus has relative radii 1/1024 and 1/2, whereas successive outer scales have ratio at
+most 1/4096.
+   For a fixed center, apply (1.6) to the root good events. The number of available radii is at least
+                                                t
+                                    #Sε ≥           log ε−1 − O(1).
+                                            4 log B
+
+Choose the exponential rate in (1.6) larger than 16 log B, and fix p0 accordingly. A lattice of mesh
+εt /100 covering BR+1 (0) has OR (ε−2t ) points. A union bound shows that, with polynomially high
+probability, each of its points has a good radius in Sε . Every point of BR (0) then satisfies the
+hypothesis of Lemma 4.1.
+     Consequently a comparison with constant C and radius c∗ εtold , where told > t, improves with
+polynomially high probability to constant F (C, K) and radius c∗ εs , where
+
+                               K = sup κε (r)    or K = sup κε (r)−1 ,                             (4.3)
+                                    r∈Sε                    r∈Sε
+
+according to the direction. The comparison is simultaneous for all source geodesics contained in
+BR (0). The prior comparison event is intersected with the new event. Constants and positive
+failure exponents can depend on the finitely many bands under consideration. The contraction
+fraction λ does not.
+
+
+5   Identification and improvement of the constant
+Proposition 5.1. For every u > 0 and R < ∞ there exist s > 0 and β > 0 such that with
+probability at least 1 − OR (εβ ),
+                             bε (Bc∗ εs (z), Bc∗ εs (w)) ≤ (1 + u)D(z, w),
+                             X                                                                     (5.1)
+                             D(Bc∗ εs (z), Bc∗ εs (w)) ≤ (1 + u)X bε (z, w),                       (5.2)
+
+                                           bε -geodesic from z to w is contained in BR (0).
+whenever, respectively, a D-geodesic or an X
+
+Proof. Use (2.7)–(2.8) with ζ = 1/2 to obtain an initial constant Cinit , enlarged if necessary to
+exceed one, and initial endpoint radius c∗ ε1/2 . This is valid for every source geodesic in BR (0) and
+every subsegment thereof.
+   Fix v > 0 and put k = (1 + v)−1 < 1. Choose d0 so that
+
+                                       Tk := (1 + 3d0 /λ)k < 1.                                    (5.3)
+
+For the eventual upper comparison also require (1 + 3d0 /λ)(1 + v) < 1 + u/2, choosing v suﬀiciently
+small first. Choose N large enough that
+
+                               (1 − λ)N Cinit < min{(1 − Tk )/2, u/2}.                             (5.4)
+
+Take 3N disjoint ordered bands with tj = 8−j and sj = tj /4, 1 ≤ j ≤ 3N . They obey sj > tj+1 .
+    For each band let nε,j = #Rε (sj , tj ) and mε,j = ⌈nε,j /3⌉. Define qε,j to be the mε,j th smallest
+                                     ′ similarly for κ (r)−1 . These numbers are deterministic.
+value of κε (r) over its radii, and qε,j              ε
+    We claim that for every suﬀiciently small ε, fewer than N bands have qε,j ≤ k. Otherwise
+choose a sequence of cutoffs and, by passing to a subsequence, a fixed set of N such bands. In each
+select mε,j radii with κε (r) ≤ k. Iterate the contraction through those bands. Skipping bands is
+
+                                                   10
+harmless since the preceding endpoint radius is still of smaller order than the next smallest root
+radius. The recursion satisfies
+
+                        Cn+1 = F (Cn , k),      CN ≤ Tk + (1 − λ)N Cinit < 1.                      (5.5)
+
+For the inequality, note that Tk ≥ k is a fixed point of the aﬀine part of F (·, k), and if C ≤ Tk then
+F (C, k) ≤ Tk .
+    This gives, with probability tending to one, a comparison with a fixed constant c < 1. Apply it
+to a D-geodesic realizing D(O, O ′ ) for two disjoint rational circles. Such a geodesic exists by com-
+pactness of the endpoint circles, lower semicontinuity, and the geodesic property. With probability
+arbitrarily close to one it is contained in BR (0) for large deterministic R. We claim that for every
+deterministic ρε → 0 and every c < 1,
+                               h                                      i
+                              P Xbε (Bρε (O), Bρε (O′ )) ≤ cD(O, O ′ ) −→ 0.                       (5.6)
+
+For ordinary LFPP this follows from convergence in probability in the lower semicontinuous topol-
+ogy: along an almost surely convergent extracted subsequence, compactness of the endpoint neigh-
+borhoods and the moving-endpoint lower bound rule out such an undershoot. For the localized
+metric, first restrict to M −1 ≤ D(O, O ′ ) ≤ M . Confine localized paths of length at most M + 1
+to a large deterministic disk using Lemma 2.2. On this disk, compact field comparison transfers
+their lengths to ordinary LFPP by a factor tending to one. Apply the ordinary assertion with any
+constant strictly between c and one, then let the confinement error tend to zero and M → ∞. This
+proves (5.6). It contradicts the comparison by cD(O, O ′ ) on the event that the source geodesic is
+contained in BR (0).
+    The same argument shows that fewer than N bands have qε,j      ′  ≤ k. For this direction use an
+ b
+Xε -geodesic realizing the distance between the circles. Lemma 2.2 supplies its containment in a
+large fixed ball with probability arbitrarily close to one, and (2.9) gives convergence of its length.
+The target distances satisfy
+
+                             D(Bρ (O), Bρ (O′ )) −→ D(O, O ′ )      as ρ ↓ 0
+
+by compactness and lower semicontinuity. Again a constant below one is impossible.
+    Thus at least N of the 3N bands have both quantiles greater than k. In each of these bands,
+at most mε,j − 1 radii satisfy κε (r) ≤ k, and at most mε,j − 1 satisfy κε (r) ≥ k −1 . At least
+nε,j − 2(mε,j − 1) ≥ mε,j radii therefore satisfy
+
+                                      (1 + v)−1 < κε (r) < 1 + v.                                  (5.7)
+
+Iterate the contraction in any N such bands using these radii. Both directions have K ≤ 1 + v, so
+their final constants are at most
+
+                             (1 + 3d0 /λ)(1 + v) + (1 − λ)N Cinit < 1 + u.
+
+There are only finitely many choices of bands; take the minimum of their positive probability
+exponents. Enlarging every final endpoint radius to c∗ εs3N gives a common s = s3N . This proves
+the proposition.
+
+
+
+
+                                                  11
+6    Interpolation between cutoff values
+Lemma 6.1. For every a > 0,
+
+                                                                aε
+                                           sup           log          −→ 0.                           (6.1)
+                                     ε∈[(n+1)−a ,n−a ]         an−a
+
+Proof. Let εn be any deterministic choice in the displayed intervals and let δn = n−a . For fixed
+disjoint rational circles, both Xεn (O, O ′ ) and Xδn (O, O ′ ) converge in probability to the same positive
+finite variable D(O, O ′ ) by (1.5). Their ratio therefore tends to one.
+    The ratio of the corresponding unnormalized distances also tends to one in probability. Indeed,
+by Lemma 2.2, nearly minimizing paths at both cutoffs lie in a fixed compact set with probability
+arbitrarily close to one. On that compact set, (2.2) compares every path length by a factor tending
+to one almost surely. Comparing the two infima gives the assertion. Dividing the two ratios shows
+that the deterministic ratio aεn /aδn tends to one. If (6.1) failed, a deterministic choice of εn along
+a subsequence witnessing failure would contradict this conclusion.
+
+Lemma 6.2. Almost surely, for every compact disk K and every M < ∞, there exist a finite
+random R and a positive random cutoff ε0 such that every ordinary or localized normalized LFPP
+path of length at most M starting in K is contained in BR (0) whenever ε < ε0 .
+
+Proof. Fix integer disks K = B k (0) and R > k + 1. Use (2.8) on BR+1 (0) with ζ = 1/2. Choose a
+suﬀiciently large that its failure probability is summable on the mesh n−a . Borel–Cantelli, stopping
+paths on their first hit of ∂BR (0), and lower semicontinuity give
+                                    bn−a (K, ∂BR (0)) ≥ C −1 D(K, ∂BR (0)).
+                            lim inf X                                                                 (6.2)
+                             n→∞                         0
+
+
+The constant C0 is independent of k, R. A path from K to ∂BR (0) can always be stopped at its
+first hit, so the escape distance can be computed using paths contained in B R (0). Lemmas 2.1 and
+6.1 therefore transfer (6.2) to all real cutoffs, both ordinary and localized, without assuming any
+global confinement at this stage. Take a countable intersection over k, R. By (1.4), choose R with
+C0−1 D(K, ∂BR ) > 2M . The escape distances then exceed M for all suﬀiciently small cutoffs. This
+proves the lemma.
+
+
+7    Proof of the main theorem
+Proof of Theorem 1.1. For each integer j ≥ 1 and integer R ≥ 1, apply Proposition 5.1 with
+u = 1/j. Choose a polynomial mesh n−a(j,R) on which the failure probabilities are summable.
+There is one probability-one event on which all these mesh comparisons hold eventually, all compact
+field comparisons in Lemma 2.1 hold, and Lemma 6.2 holds. Work on this event. Lemma 6.1 is
+deterministic and is available for each of the countably many mesh exponents.
+    We first prove (1.2). Take arbitrary εn → 0 and (zn , wn ) → (z, w). If the lower limit of
+their distances is infinite there is nothing to prove. Otherwise pass to a subsequence on which
+the distances are bounded and converge to their finite lower limit. The relevant ordinary LFPP
+geodesics exist and are confined to a random compact set by Lemma 6.2. For a fixed j, choose a
+large integer R which also contains all bounded-cost localized paths starting near these endpoints;
+this is possible by the same lemma. Transfer the ordinary geodesic paths to the adjacent cutoff of
+the mesh for (j, R) using compact field comparison and Lemma 6.1. Their localized mesh lengths
+
+
+                                                         12
+are at most (1 + o(1))Xεn (zn , wn ). The localized mesh minimizing geodesics also lie in BR (0). The
+reverse comparison (5.2) gives radii ρn → 0 such that
+
+                       D(Bρn (zn ), Bρn (wn )) ≤ (1 + 1/j)(1 + o(1))Xεn (zn , wn ).
+
+Lower semicontinuity implies that the lower limit of the left side is at least D(z, w). Now let j → ∞.
+Since the probability-one event did not depend on the endpoint sequences, this proves the required
+lower-limit assertion simultaneously for all such sequences.
+    For recovery, fix (z, w) with D(z, w) < ∞. The diagonal case z = w is immediate. Otherwise
+choose a D-geodesic in some BR (0). For each j, the forward comparison on the mesh for (j, R)
+provides endpoints approaching z, w whose localized distances are at most (1 + 1/j)D(z, w) + o(1).
+Bounded-cost minimizing paths between these endpoints are confined to a fixed larger compact
+set by Lemma 6.2. Compact field comparison and Lemma 6.1 transfer them to every intervening
+ordinary cutoff. Thus, for each j, choose bj > 0 so that at every real cutoff ε < bj there are
+endpoints within 1/j of z, w whose ordinary normalized distance is at most (1 + 2/j)D(z, w) + 1/j.
+Decrease these thresholds so that bj ↓ 0. For small ε, let j(ε) be the largest j such that ε < bj ,
+and choose the corresponding endpoints. Then j(ε) → ∞, giving recovery through all cutoffs.
+No intersection over uncountably many endpoint-dependent probability-one events is taken: these
+choices are deterministic arguments on the one event fixed at the start of the proof. The already
+proved lower bound gives the matching lower limit of the recovery values.
+    If D(z, w) = ∞, the lower-limit assertion applied to the constant pair forces Xε (z, w) → ∞,
+so that pair itself is a recovery pair. These are exactly the two defining conditions of the lower
+semicontinuous topology. The coupling and normalization have remained those of (1.1) throughout.
+
+
+
+A Audit record
+This appendix records sequential self-audits, not independent referee reports. It concerns the
+argument in this manuscript, including the new deterministic contraction, rather than an attempted
+direct application of a subcritical theorem.
+
+Round 1: source scope and deterministic geometry
+The initial draft used an open source annulus whose boundary contained the selected endpoints.
+It was replaced by V = {1/2 ≤ |z| ≤ 3}. An unnecessary claim that a separating path could
+be made simple was removed; the joining argument uses its parametrized image directly. The
+distinction between ordinary and localized rational-circle convergence was repaired by Lemma 2.2.
+Root-scale units are now explicit, and A is chosen before the error tolerance. The cited annulus
+concentration, fixed-constant comparison, geodesic existence, and scaling statements were checked
+in their supercritical scope.
+
+Round 2: locality, dependencies, and constants
+The localized field was checked against the precise cutoff definition in [2, Section 2.3]: it is the choice
+q = 1, so Proposition 3.6 applies directly. The source domains, target domains, and convolution
+dependence neighborhoods all lie inside the root annulus Ar/16,32r . Measurability of the uncountable
+endpoint comparisons is addressed in Remark 3.3; no density of finite-distance points in the metric
+is assumed. The annulus separation ratio and lattice union bound were checked explicitly. The
+fraction λ is fixed before the error tolerance, and every iteration uses only finitely many exponent
+
+                                                    13
+bands. The output-ball constant was made uniformly 513 to remove a strict-boundary ambiguity.
+The dependency chain is fixed-constant comparison, confinement in probability, localized circle
+convergence, contraction, near-one comparison, normalizer interpolation, and finally almost sure
+confinement. In particular, the normalizer argument does not use almost sure metric convergence.
+
+Round 3: exact conclusion and source recheck
+The final pass checked the proof backwards from the two defining conditions of the lower semi-
+continuous topology. Bounded-cost paths are confined before any compact field interpolation is
+used. The escape proof stops paths at their first exit and therefore does not assume the confine-
+ment it proves. The final probability-one event involves only countably many mesh exponents and
+Euclidean disks; the endpoint sequences are arbitrary after that event is fixed. Recovery through
+every real cutoff is now given by an explicit diagonal choice. Infinite distances are handled by the
+lower-limit condition, with no subtraction of infinities. The normalizer is the same unit-square
+crossing median at every step. The fixed-annulus LFPP tightness input was checked directly in [6,
+Proposition 4.1], and the field bound was attributed directly to [2, Lemma 2.3]. A locality over-
+statement in the separating-path lemma was corrected: its event is asserted only for the truncated
+metric Yδ,L , with the dependence-radius condition stated explicitly. Ordinary LFPP is used there
+only to bound marginal probabilities. This pass also made explicit why the closed-domain path
+lengths remain local and why the joining argument never assigns a finite metric cost to an arbitrary
+Euclidean arc. No unresolved step was identified in these three self-audits; they are not a substitute
+for independent mathematical review.
+
+
+References
+ [1] J. Ding and E. Gwynne. Uniqueness of the critical and supercritical Liouville quantum gravity
+     metrics. arXiv:2110.00177, version 3. Theorems 1.3 and 1.8, Definition 1.7.
+
+ [2] J. Ding and E. Gwynne. Up-to-constants comparison of Liouville first passage percolation and
+     Liouville quantum gravity. arXiv:2108.12060, version 1. Lemmas 2.2, 3.1 and 3.7, Proposition
+     3.6, Theorem 1.9.
+
+ [3] J. Ding and E. Gwynne. Regularity and confluence of geodesics for the supercritical Liouville
+     quantum gravity metric. arXiv:2104.06502, version 4. Lemma 2.12.
+
+ [4] J. Pfeffer. Weak Liouville quantum gravity metrics with matter central charge c ∈ (−∞, 25).
+     arXiv:2104.04020. Theorem 1.7, Propositions 1.10 and 1.12, Lemma 3.12.
+
+ [5] C. Devlin VI. Almost sure convergence of Liouville first passage percolation. arXiv:2309.08001,
+     version 2. Lemma 4.2 is cited for comparison with the field interpolation estimate; no subcritical
+     metric estimate is imported.
+
+ [6] J. Ding and E. Gwynne. Tightness of supercritical Liouville first passage percolation.
+     arXiv:2005.13576. Proposition 4.1.
+
+
+
+
+                                                  14
+
