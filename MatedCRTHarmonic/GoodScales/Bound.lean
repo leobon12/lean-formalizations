@@ -10,7 +10,7 @@ import MatedCRTHarmonic.Frozen.StateMeasurableSpace
 import MatedCRTHarmonic.Frozen.WalkLaw
 
 /-!
-# the good-scales estimate: good scales bound the conditioned harmonic measure (the strong Markov induction)
+# Good scales: the strong Markov induction
 
 The strong Markov induction of the strong Markov induction, conditioned version. Writing `E` for the paths from
 `x` that first enter `A` at `v` (and are admissible), `F_j = reach j ∩ D_j` (first success at scale
@@ -22,8 +22,7 @@ The strong Markov induction of the strong Markov induction, conditioned version.
 * `p · P(reach j) ≤ P(F_j)` (strong Markov property at `sig j` on `{sig j < ⊤}`, no finiteness);
 
 hence `Φ_{j+1} ≤ (1 - p) Φ_j`, so `P(E) = Φ_K ≤ (1 - p)^K Φ_0 ≤ (1 - p)^K P(τ_A < ⊤)`
-(`walkLaw_entryAt_le`). Dividing by `P(τ_A < ⊤)` gives the bound for the conditioned harmonic
-measure `harm`: `harm_le_of_isGoodScales_holds` (the frozen statement `harm_le_of_isGoodScales`).
+for the walk events used here.
 -/
 
 set_option autoImplicit false

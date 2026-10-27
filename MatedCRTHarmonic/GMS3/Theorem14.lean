@@ -21,7 +21,7 @@ packages the Borel–Cantelli step.
 * `tendsto_lemma34Bound`: the error term of `lemma34` tends to `0` when `3β < q`, `2β < β'`, `2β < α`;
 * `theorem14_recurrent` (**[18] Theorem 1.4, recurrence, conditional form**);
 * `ae_recurrent_of_summable` (the Borel–Cantelli step: summable failure probabilities give a.s. recurrence);
-* `matedCRT_adj_succ`, `matedCRT_connected` (the mated-CRT map of Definition 1.12 is connected; proved
+* `matedCRT_adj_succ`, `matedCRT_connected` (the mated-CRT map of [18] (1.1) is connected; proved
   here, the frozen anchor `matedCRT_graph_connected` is not imported) and `theorem14_matedCRT_recurrent`
   (the conditional statement for the frozen `MatedCRT.graph ε ω h`).
 -/
@@ -220,7 +220,7 @@ theorem ae_recurrent_of_summable {Ω : Type*} [MeasurableSpace Ω] (P : Measure 
 
 /-! ### The mated-CRT map -/
 
-/-- Consecutive vertices of the mated-CRT map are adjacent (Definition 1.12: the edge `(x, x + 1)`). -/
+/-- Consecutive vertices of the mated-CRT map are adjacent ([18] (1.1): the edge `(x, x + 1)`). -/
 theorem matedCRT_adj_succ (ε : ℝ) (ω : MatedCRT.Path2) (h : MatedCRT.IsLocallyFinite ε ω)
     (x : ℤ) : (MatedCRT.graph ε ω h).adj.Adj x (x + 1) := by
   refine adj_of_edge (MatedCRT.graph ε ω h) (e := ⟨(x, x + 1, false), lt_add_one x,

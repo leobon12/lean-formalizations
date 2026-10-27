@@ -196,7 +196,7 @@ with every other input produced above or by the waypoint construction. -/
 theorem final_cellModelExists_of_coupling
     (D : MatedCRT.IsMatingOfTreesCoupling γ P X X₀ hIG₀ B B' B₀ B₀' U ηL η η₀ bm)
     (hstd : StandardBorelSpace Ω) (hγ : γ ∈ Ioo 0 2)
-    (h23 : CellScaling.Prop23JointScaling (MoTInput.coneRealizationOfCoupling D hstd hγ))
+    (h23 : CellScaling.ConeJointScaling (MoTInput.coneRealizationOfCoupling D hstd hγ))
     (hAnnulus38 : Annulus38OneScaleBadBound (MoTInput.unitMesoModelOfCoupling D hstd hγ).coupled.family
       (MoTInput.unitMesoModelOfCoupling D hstd hγ).ρ)
     (hREC : MatedCRTRecurrencePathScaleInput γ) :
@@ -229,7 +229,7 @@ theorem exists_cellModel_of_matingOfTrees_of_remaining
   rintro γ hγ0 hγ2 ⟨Ω, mΩ, hstd, P, X, X₀, hIG₀, B, B', B₀, B₀', U, ηL, η, η₀, bm, D⟩
   have hγ : γ ∈ Ioo 0 2 := ⟨hγ0, hγ2⟩
   exact final_cellModelExists_of_coupling D hstd hγ
-    (CellScaling.JointScalingO.prop23JointScaling_forAllCouplings γ hγ Ω mΩ hstd P X X₀ hIG₀ B B' B₀ B₀' U ηL η η₀ bm D)
+    (CellScaling.JointScalingO.coneJointScaling_forAllCouplings γ hγ Ω mΩ hstd P X X₀ hIG₀ B B' B₀ B₀' U ηL η η₀ bm D)
     (hAnnulus38 γ hγ Ω mΩ hstd P X X₀ hIG₀ B B' B₀ B₀' U ηL η η₀ bm D)
     (hREC γ hγ Ω mΩ hstd P X X₀ hIG₀ B B' B₀ B₀' U ηL η η₀ bm D)
 

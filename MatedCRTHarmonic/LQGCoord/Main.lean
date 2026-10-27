@@ -13,7 +13,7 @@ set `A ⊆ ℂ`**,
 
 (`ae_lqgArea_affine_coneField_holds`; the γ-cone of the cell model is `α = γ`,
 `ae_lqgArea_affine_coneFieldOf_holds`). In particular, for the random dilation `R_b` of
-Proposition 2.3 (any `R > 0`, chosen after `ω`), `μ_{h_b}(A) = b⁻¹ μ_h(R_b A)`
+the cone scaling identity (any `R > 0`, chosen after `ω`), `μ_{h_b}(A) = b⁻¹ μ_h(R_b A)`
 (`ae_lqgArea_coneRescaleField_holds`; [17] gives the inverse form).
 
 Literature: Sheffield–Wang arXiv:1605.06171 Thm 1.1 (a.s. convergence along all ε → 0) and Thm 1.4
@@ -149,7 +149,7 @@ theorem ae_lqgArea_affine_coneFieldOf_holds {X : Ω → DistC} {B B' : ℝ≥0 �
             ((fun w => (r : ℂ) * w + z) '' A) :=
   ae_lqgArea_affine_coneField_holds hγ hγ2 (lt_lqgQ hγ hγ2) hX hB hB'
 
-/-- **The area at the random scale** (Proposition 2.3′(i)): almost surely,
+/-- **The area at the random scale** (the cone scaling identity, area part): almost surely,
 for every `R > 0` (in particular `R = R_b(ω)`), every `b > 0` and every set `A`,
 `μ_{h_b}(A) = b⁻¹ μ_h(R A)` where `h_b = h(R ·) + Q log R − γ⁻¹ log b`
 (`CellScaling.coneRescaleField`). -/

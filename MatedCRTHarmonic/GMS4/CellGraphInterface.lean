@@ -79,7 +79,7 @@ namespace CellModelGraphCoupling
 
 variable {gamma : ℝ} {M : GMSLemma27.CellModel gamma}
 
-/-- The full multigraph identification implies the adjacency-only view used by Proposition 2.6. -/
+/-- The full multigraph identification implies the adjacency-only view used by the annulus-disconnection estimate. -/
 theorem graphIdentification (S : CellModelGraphCoupling M) :
     CellFamily.MatedCRTGraphIdentification S.family S.bm :=
   S.meshGraph_eq.graphIdentification

@@ -837,7 +837,7 @@ theorem prop48_zeroCone_unit_uStar_moment
       (ENNReal.rpow_lt_top_of_nonneg (by positivity) hSfin.ne)
       (ENNReal.rpow_lt_top_of_nonneg (by positivity) hAfin.ne)
 
-/-- The one P23Z scaling input needed here: the zero-cone root cell's actual
+/-- The one zero-cone scaling input needed here: the zero-cone root cell's actual
 area-ratio/inner-degree/outer-degree triple has its unit-scale law at every
 positive quantum-time mesh. This is a law statement about the frozen `η₀`,
 not a moment bound. -/
@@ -850,7 +850,7 @@ def Prop48ZeroConeLocalTripleScaleInput
     P.map (fun ω => GMS4b.localTriple ε (η₀ ω)) =
       P.map (fun ω => GMS4b.localTriple 1 (η₀ ω))
 
-/-- P23Z proves the required local-triple law for the actual zero-cone curve. -/
+/-- The zero-cone scaling law gives the required local-triple law for the actual zero-cone curve. -/
 theorem prop48_zeroCone_localTriple_scaleInput
     {γ : ℝ} {Ω : Type} [MeasurableSpace Ω] {P : Measure Ω}
     {X X₀ hIG₀ : Ω → MatedCRT.Field} {B B' B₀ B₀' : ℝ≥0 → Ω → ℝ}
@@ -861,7 +861,7 @@ theorem prop48_zeroCone_localTriple_scaleInput
   intro ε hε
   exact CellScaling.ZeroConeScaling.cellLaw_holds D hγ hε
 
-/-- P23Z's local-triple law transports the already proved unit-scale moment
+/-- The zero-cone local-triple law transports the already proved unit-scale moment
 uniformly to all positive meshes. -/
 theorem prop48_zeroCone_uniform_uStar_moment_of_scaleInput
     {γ : ℝ} {Ω : Type} [MeasurableSpace Ω] {P : Measure Ω}

@@ -13,7 +13,7 @@ For plane data `J`, a centre `z` and radii `r`, with `C_j = V_K(∂B_{r_j}(z))` 
 * `sig j`: `sig 0` is the first visit to `C_0`; `sig (j+1)` is the first visit to `C_{j+1}` at or
   after `exitAfter j`;
 * `exitAfter j`: the first exit from `W_j` at or after `sig j`;
-* `scaleSuccess j = {sig j < ⊤, θ_{sig j} ω ∈ succEvent j}`: the annular event of Definition 3.1(4)
+* `scaleSuccess j = {sig j < ⊤, θ_{sig j} ω ∈ succEvent j}`: the annular event
   for the path restarted at `sig j`;
 * `reach j = {sig j < ⊤} ∩ ⋂_{i<j} (scaleSuccess i)ᶜ` (0-indexed).
 
@@ -128,7 +128,7 @@ def sig : ℕ → (ℕ → G.State) → ℕ∞
 def exitAfter (j : ℕ) : (ℕ → G.State) → ℕ∞ :=
   thenTime (sig G J z r j) (hitTime (vset G ((bandSet J z r j)ᶜ)))
 
-/-- The success event of Definition 3.1(4) at scale `j`, for a path started at `C_j`. -/
+/-- The success event at scale `j`, for a path started at `C_j`. -/
 def succEvent (j : ℕ) : Set (ℕ → G.State) := {ω | G.AnnularEvent J z (r j) (G.vertexPath ω)}
 
 /-- `D_j`: success at scale `j` for the path restarted at `sig j`. -/

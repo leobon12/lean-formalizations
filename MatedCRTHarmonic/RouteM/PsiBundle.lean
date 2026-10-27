@@ -46,7 +46,7 @@ structure Peanosphere (ω : MatedCRT.Path2) (η : ℝ → ℂ) : Prop where
     IsLocalMin (MatedCRT.lrCoord i · ω) a → IsLocalMin (MatedCRT.lrCoord i · ω) b →
     MatedCRT.lrCoord i a ω ≠ MatedCRT.lrCoord i b ω
 
-/-- The strict form of Definition 1.12's side condition, used to choose distinct chord heights. -/
+/-- The strict form of the side condition (1.1) of [18], used to choose distinct chord heights. -/
 def SideStrict (ε : ℝ) (ω : MatedCRT.Path2) : Prop :=
   ∀ (b : Bool) (x y : ℤ), x + 1 < y →
     MatedCRT.SideCond ε (fun t => if b then (ω t).2 else (ω t).1) x y →

@@ -13,7 +13,7 @@ parametrized by the γ-LQG area of the `0`-quantum cone `h₀ = coneField X₀ (
 
 `IsMatingOfTreesCoupling.curveScaleInvariant hC hγ` proves it from the mating-of-trees bundle alone (no hypothesis
 beyond `γ ∈ (0, 2)`), with `R = R_ε` the `0`-cone mass scale in lateral/radial coordinates. The proof is [18]'s, written as
-proof of Proposition 2.3 (`CellScaling/JointScalingOMain.lean`) at `α = 0`:
+proof of the cone scaling identity (`CellScaling/JointScalingOMain.lean`) at `α = 0`:
 
 * **field** (DMS Prop 4.13(i) at `α = 0`): `h₀ = fieldOf (lateralPart X₀) W` and
   `h₀^ε = fieldOf (lateralPart X₀ (R_ε ·)) (radShift W)` have the same law (`map_radShift_coneRadial_alpha`,

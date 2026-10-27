@@ -21,7 +21,7 @@ namespace LFMultigraph
 
 variable {V E : Type*} (G : LFMultigraph V E)
 
-/-- `A` is connected: its induced subgraph is connected (DA3 N1). -/
+/-- `A` is connected: its induced subgraph is connected. -/
 def IsConnectedSet (A : Set V) : Prop := (G.adj.induce A).Connected
 
 end LFMultigraph

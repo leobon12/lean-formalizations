@@ -195032,7 +195032,7 @@
     "MatedCRTHarmonic.CellFamily.Interfaces": {
       "path": "MatedCRTHarmonic/CellFamily/Interfaces.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "1875e401ff7275f51ecafcf447ba1c5a12f462e3b33f554982a0aaa573c99ade",
+      "sha256": "9eaa36e0cccc691bcd54daac37d83ac18a2a77556212c2a632d610a6070d3062",
       "imports": [
         "Mathlib",
         "MatedCRTHarmonic.Frozen.AnnularEvent",
@@ -195056,7 +195056,7 @@
         "MatedCRTHarmonic.Frozen.MatedCRTGraph",
         "MatedCRTHarmonic.Frozen.MatedCRTIsLocallyFinite"
       ],
-      "bytes": 14732,
+      "bytes": 14727,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "7f17b700183e44b7325da4e6dc08c03f2c2656b2d581d43abb6ad46318804c2b"
     },
@@ -195098,7 +195098,7 @@
     "MatedCRTHarmonic.CellFamily.ProducersCellCoupling": {
       "path": "MatedCRTHarmonic/CellFamily/ProducersCellCoupling.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "d4629826d7987ee79aeddc853489d02c3532e9bebd5f97534aa18a5a2fed50e7",
+      "sha256": "8510dc8b51d5ce24d8e3d2cab4cb65d6d13952e126af92bbda5b06b4b6ee27f3",
       "imports": [
         "MatedCRTHarmonic.CellFamily.Interfaces",
         "MatedCRTHarmonic.Frozen.IsCellCoupling",
@@ -195109,7 +195109,7 @@
         "MatedCRTHarmonic.Frozen.IsCellCoupling",
         "MatedCRTHarmonic.Implementation.MatedCRTGraphConnected"
       ],
-      "bytes": 5265,
+      "bytes": 5260,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "8bcc861e05b34d8c278d8efa05666bda56c9ed4d508c93d4d52d3617a7608dd3"
     },
@@ -195310,7 +195310,7 @@
     "MatedCRTHarmonic.CellScaling.AreaGrowth": {
       "path": "MatedCRTHarmonic/CellScaling/AreaGrowth.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "ac8788af87abe9a78680ea989a0514c5bafc29023642eb4cdd6f522108d6d2a4",
+      "sha256": "0295c0f9bfd193bacd00094b213212880b0320d9c0eb0e1ceb83d532fad27e02",
       "imports": [
         "Mathlib",
         "MatedCRTHarmonic.Growth.ChainRates",
@@ -195320,14 +195320,14 @@
         "MatedCRTHarmonic.Growth.ChainRates",
         "MatedCRTHarmonic.CellScaling.Model"
       ],
-      "bytes": 6605,
+      "bytes": 6592,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "0472beccdb82a0f9998a19aaf307dfdc9a7e7219378cb66ef65dc1ed5f3b9256"
     },
     "MatedCRTHarmonic.CellScaling.Assembly": {
       "path": "MatedCRTHarmonic/CellScaling/Assembly.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "39987f7be9839f160b2d50449cf6cc8e76113e736f3b7a043b9ae5365339dcbd",
+      "sha256": "6c6814ddffb9e1896112a0beb6ae5d7239d06a6175359c8e92f70165b09d9f98",
       "imports": [
         "Mathlib",
         "MatedCRTHarmonic.MesoModel.Meso",
@@ -195339,7 +195339,7 @@
         "MatedCRTHarmonic.CellScaling.CellCount",
         "MatedCRTHarmonic.CellScaling.Scaling"
       ],
-      "bytes": 7924,
+      "bytes": 7938,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "f451c7f9bdae1b45b00fef653866a5318e89b963c066b84f8e44ce9eb4f3bfdd"
     },
@@ -195432,7 +195432,7 @@
     "MatedCRTHarmonic.CellScaling.JointScalingOFinal": {
       "path": "MatedCRTHarmonic/CellScaling/JointScalingOFinal.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "a8cb89dd80dbd12d7e26c0f3824f9e22b1afdb2e9be60026377b52c8b7edd357",
+      "sha256": "10838d6531099d1fc8e6ff11c1c395caf72def06fec0fe9a3b11d10e0587694d",
       "imports": [
         "MatedCRTHarmonic.CellScaling.JointScalingOMain",
         "MatedCRTHarmonic.IGLaw.OPositiveRadii"
@@ -195441,7 +195441,7 @@
         "MatedCRTHarmonic.CellScaling.JointScalingOMain",
         "MatedCRTHarmonic.IGLaw.OPositiveRadii"
       ],
-      "bytes": 3996,
+      "bytes": 3964,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "cd879756d6ad1657bc0d9f55d0a521f67715c9df4a0baf5a9eea9013e69f6433"
     },
@@ -195466,7 +195466,7 @@
     "MatedCRTHarmonic.CellScaling.JointScalingOMain": {
       "path": "MatedCRTHarmonic/CellScaling/JointScalingOMain.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "c2e2c9b0e617d2963f13506203f4aee35990037ec0fb7211e9eca6792133770e",
+      "sha256": "707babf677bdff8de17e7bdf753cdca6e8e6c31ad01ee43504aee264e83c5128",
       "imports": [
         "MatedCRTHarmonic.CellScaling.JointScalingOPath",
         "MatedCRTHarmonic.ConeScaling.FieldLaw",
@@ -195489,7 +195489,7 @@
         "MatedCRTHarmonic.CellScaling.Scaling",
         "MatedCRTHarmonic.CellScaling.MeshMeasurableEvent"
       ],
-      "bytes": 22738,
+      "bytes": 22722,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "cae76949063657ca1bf5cbc57d8f1d321b8564480eb0c782d170c676c3d229f7"
     },
@@ -195643,7 +195643,7 @@
     "MatedCRTHarmonic.CellScaling.Model": {
       "path": "MatedCRTHarmonic/CellScaling/Model.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "d4d2af903e68b2a0d21ea043bc66ca86c8231ab86c333db20775da30519429df",
+      "sha256": "aa5e18fafe72e5c8a052fc44e324fec7814c529cac6eaa1cad12947fc9690483",
       "imports": [
         "Mathlib",
         "LQGMetric.Statement.GFF",
@@ -195655,7 +195655,7 @@
         "MatedCRTHarmonic.MesoModel.MesoInterfaces",
         "MatedCRTHarmonic.CellScaling.ConeDefs"
       ],
-      "bytes": 13392,
+      "bytes": 13370,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "f58604e0943cd79480a63a52e2a15e778d7d7695b02e5caa1e673c883b69239b"
     },
@@ -195679,7 +195679,7 @@
     "MatedCRTHarmonic.CellScaling.Scaling": {
       "path": "MatedCRTHarmonic/CellScaling/Scaling.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "f169e3439b2083d971037ebe36b239c9e4c47f383f6aa04474fa48f1fa07179f",
+      "sha256": "3e69bfa15ef78bb3d158ea4c4d93c40124ac32e6638b803be39fc7b64195800d",
       "imports": [
         "Mathlib",
         "MatedCRTHarmonic.MesoModel.TransferScaling",
@@ -195689,7 +195689,7 @@
         "MatedCRTHarmonic.MesoModel.TransferScaling",
         "MatedCRTHarmonic.CellScaling.Model"
       ],
-      "bytes": 17154,
+      "bytes": 17141,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "26a0be0f28c4b03e3032962ee75fb5797869d5468fe0177c32851523419e6521"
     },
@@ -195716,7 +195716,7 @@
     "MatedCRTHarmonic.CellularFacts.Basic": {
       "path": "MatedCRTHarmonic/CellularFacts/Basic.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "145609a6fe9f40d6361aeeb1731d7025b0fc8c8d1c8144e2e447718656efcb4b",
+      "sha256": "541c9ca61c25cbe7c993905fe636f219d75f8cd096ba5275cd4832def42a7b95",
       "imports": [
         "MatedCRTHarmonic.Frozen.LFMultigraph",
         "MatedCRTHarmonic.Frozen.Adj",
@@ -195736,7 +195736,7 @@
         "MatedCRTHarmonic.Frozen.IsPlaneData",
         "MatedCRTHarmonic.Frozen.CellularEmbedding"
       ],
-      "bytes": 6373,
+      "bytes": 6387,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "8fd1491e8ff5a19640b2b47c992bb8a2ff6daf9d3f57bdfc6d8d0b083a03c35a"
     },
@@ -196479,7 +196479,7 @@
     "MatedCRTHarmonic.ConeScaling.FieldLaw": {
       "path": "MatedCRTHarmonic/ConeScaling/FieldLaw.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "7aa6d249d741f929c555e706810cf6a7aba0daa5cb2bda98253e212b8d2b5d09",
+      "sha256": "ef04ce596c27f8a03517ed4522c97b560257dcfd1023abd55d0f5420d8a19fed",
       "imports": [
         "MatedCRTHarmonic.ConeScaling.RadialPath",
         "MatedCRTHarmonic.ConeScaling.Lateral",
@@ -196496,7 +196496,7 @@
         "MatedCRTHarmonic.CellScaling.Model",
         "QuantumZipper.Proofs.Zipper.WedgeAddConstLat"
       ],
-      "bytes": 10461,
+      "bytes": 10472,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "d69f558151b8d1fe863264858b5941c31f0316f17bdb44e5cac24cb4ab5c5d41"
     },
@@ -196582,7 +196582,7 @@
     "MatedCRTHarmonic.Core.CellInterfaces": {
       "path": "MatedCRTHarmonic/Core/CellInterfaces.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "6755a657d42199e7ed0c4d051990f0715b7ac12bcc3ec8ccad40ca889831a01f",
+      "sha256": "f8e40205ce9c6c53834802979db23ac05afe71f68e5355f0e1f65a06a182fb37",
       "imports": [
         "MatedCRTHarmonic.Frozen.CellularEmbedding",
         "MatedCRTHarmonic.Frozen.Disconnects",
@@ -196595,7 +196595,7 @@
         "MatedCRTHarmonic.Frozen.VerticesMeeting",
         "MatedCRTHarmonic.Topology.PolarTemplate"
       ],
-      "bytes": 4217,
+      "bytes": 4255,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "cafbf5d27d078ef87a4b0b387b3d1fa78b9448fa7a4ab60f8fb7edabb8a2b01d"
     },
@@ -196617,7 +196617,7 @@
     "MatedCRTHarmonic.Frozen.AnnularEvent": {
       "path": "MatedCRTHarmonic/Frozen/AnnularEvent.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "3ae1441b3fc89e8f42e09bf8e676708d1cba8e91f6c19770ab637cc332da5ab9",
+      "sha256": "616eb62972e7510ba7f43c7f767302b8520b56c025667d8246b415f31dd7d415",
       "imports": [
         "Mathlib",
         "MatedCRTHarmonic.Frozen.LFMultigraph",
@@ -196633,7 +196633,7 @@
         "MatedCRTHarmonic.Frozen.VerticesMeeting",
         "MatedCRTHarmonic.Frozen.Disconnects"
       ],
-      "bytes": 1376,
+      "bytes": 1332,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "5162d3d318243b74e9de455605e8cafba34094600b44d6b94854816bf4ec4ce0"
     },
@@ -196652,7 +196652,7 @@
     "MatedCRTHarmonic.Frozen.CellModelExists": {
       "path": "MatedCRTHarmonic/Frozen/CellModelExists.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "07d381e09b84d85d909f6bcaad910c5dba486ee9b535b13c18433e51f8d7d5f5",
+      "sha256": "00275f4c5aa8353671ad211992a1d8325d069d3397361dc14c6695b3e0fdc319",
       "imports": [
         "Mathlib",
         "MatedCRTHarmonic.Frozen.CellularEmbedding",
@@ -196674,14 +196674,14 @@
         "MatedCRTHarmonic.Frozen.MatedCRTGraph",
         "MatedCRTHarmonic.Frozen.IsCellCoupling"
       ],
-      "bytes": 1612,
+      "bytes": 1585,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "d9ef33c24c17cd9a1da817b79209a075d99e60e0d774727724f13e4ea6922cb3"
     },
     "MatedCRTHarmonic.Frozen.CellularEmbedding": {
       "path": "MatedCRTHarmonic/Frozen/CellularEmbedding.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "f0c7b9eacdccc24afb138f4662398abcc103dc2967872af2cb109f6a1951b26b",
+      "sha256": "832eb1c4133fa7800c7be996294a795f09b5d61a5e9c88077de6fc29741d065c",
       "imports": [
         "Mathlib",
         "MatedCRTHarmonic.Frozen.LFMultigraph",
@@ -196691,7 +196691,7 @@
         "MatedCRTHarmonic.Frozen.LFMultigraph",
         "MatedCRTHarmonic.Frozen.Adj"
       ],
-      "bytes": 1362,
+      "bytes": 1319,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "e14b31410c9d81b2a4cc3ca32cec002fb2b1049c3591e7e531ae353d9c2d62b1"
     },
@@ -196714,7 +196714,7 @@
     },
     "MatedCRTHarmonic.Frozen.Corollary1_6": {
       "path": "MatedCRTHarmonic/Frozen/Corollary1_6.lean",
-      "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
+      "source_commit": "0bf2cb648e1e613441fa951920466081197858d3",
       "sha256": "4f82042394665c4a8993fc6232bcb8204f1751dc6d910481c97819d110951d4f",
       "imports": [
         "Mathlib",
@@ -196774,11 +196774,12 @@
         "MatedCRTHarmonic.GMSMain.MainResultsWiring"
       ],
       "bytes": 5343,
-      "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited"
+      "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
+      "development_sha256": "014c974d583533f08067c7e06e06f22a8b97e0782d6c3968d833dd08ca68ed52"
     },
     "MatedCRTHarmonic.Frozen.Corollary1_6SimplyConnected": {
       "path": "MatedCRTHarmonic/Frozen/Corollary1_6SimplyConnected.lean",
-      "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
+      "source_commit": "0bf2cb648e1e613441fa951920466081197858d3",
       "sha256": "3c8922bacabea7ee6cbfb94b0c109987d73996da530d579cd3e3faa71f9c11ee",
       "imports": [
         "Mathlib",
@@ -196838,7 +196839,8 @@
         "MatedCRTHarmonic.GMSMain.MainResultsWiring"
       ],
       "bytes": 4910,
-      "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited"
+      "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
+      "development_sha256": "7e936cb6b50fb103a3795c29f87b8e65695bfa8f7eb4c26c6685c39425275abf"
     },
     "MatedCRTHarmonic.Frozen.Dart": {
       "path": "MatedCRTHarmonic/Frozen/Dart.lean",
@@ -196876,7 +196878,7 @@
     },
     "MatedCRTHarmonic.Frozen.DirichletEnergy": {
       "path": "MatedCRTHarmonic/Frozen/DirichletEnergy.lean",
-      "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
+      "source_commit": "0bf2cb648e1e613441fa951920466081197858d3",
       "sha256": "c015edb02aadd9d2a790a543f0fffdedb4b4aee8ceecb09bdd906d9b39b9351c",
       "imports": [
         "Mathlib",
@@ -196920,7 +196922,8 @@
         "MatedCRTHarmonic.Frozen.IsMatingOfTreesCoupling"
       ],
       "bytes": 1949,
-      "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited"
+      "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
+      "development_sha256": "630287f2fee1b22dd8f53b1040c338d97c21d4b927d2d3e081fbff3005a6ce5d"
     },
     "MatedCRTHarmonic.Frozen.Disconnects": {
       "path": "MatedCRTHarmonic/Frozen/Disconnects.lean",
@@ -196975,7 +196978,7 @@
     },
     "MatedCRTHarmonic.Frozen.EnergyOn": {
       "path": "MatedCRTHarmonic/Frozen/EnergyOn.lean",
-      "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
+      "source_commit": "0bf2cb648e1e613441fa951920466081197858d3",
       "sha256": "e6c5898c6e3806ed3c4c4de9dbaf185f3b078e46af40b4b470a37fb455b9276c",
       "imports": [
         "Mathlib",
@@ -197019,11 +197022,12 @@
         "MatedCRTHarmonic.Frozen.IsMatingOfTreesCoupling"
       ],
       "bytes": 1939,
-      "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited"
+      "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
+      "development_sha256": "5455a82f804f9efb72f073300b8bd61ebae97b10d7af20957e2a2d444400e829"
     },
     "MatedCRTHarmonic.Frozen.ExitGreen": {
       "path": "MatedCRTHarmonic/Frozen/ExitGreen.lean",
-      "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
+      "source_commit": "0bf2cb648e1e613441fa951920466081197858d3",
       "sha256": "faa449bdaea3fa85f0c6236a665eaa4bd2b9ae7827a1183d2d48c9082bf21e5e",
       "imports": [
         "Mathlib",
@@ -197067,11 +197071,12 @@
         "MatedCRTHarmonic.Frozen.IsMatingOfTreesCoupling"
       ],
       "bytes": 1853,
-      "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited"
+      "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
+      "development_sha256": "811b9bd4160efc65f2858af73e8ddb14e3b6f89b53d62cbfbd0ef01fbf36ccd8"
     },
     "MatedCRTHarmonic.Frozen.HasBoundedConvexity": {
       "path": "MatedCRTHarmonic/Frozen/HasBoundedConvexity.lean",
-      "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
+      "source_commit": "0bf2cb648e1e613441fa951920466081197858d3",
       "sha256": "15deeb03186528dabd890a43061919253900ca6aad1dd7e8006c946e59fe25e4",
       "imports": [
         "Mathlib",
@@ -197115,7 +197120,8 @@
         "MatedCRTHarmonic.Frozen.IsMatingOfTreesCoupling"
       ],
       "bytes": 1882,
-      "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited"
+      "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
+      "development_sha256": "7f6d8b1a5fff338e52aaaaa624ef1a0812a4d655d5633b4f424c4db6eb6f4630"
     },
     "MatedCRTHarmonic.Frozen.HistKernel": {
       "path": "MatedCRTHarmonic/Frozen/HistKernel.lean",
@@ -197159,7 +197165,7 @@
     "MatedCRTHarmonic.Frozen.IsCellCoupling": {
       "path": "MatedCRTHarmonic/Frozen/IsCellCoupling.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "47a89c69f84c7552a2db5328ae949d42e7ccf9451f0320485106e1c36f6daf5b",
+      "sha256": "3dd4a09905c5ef4042008106d5802942b070f5f05244f101ed668d95a314cf9b",
       "imports": [
         "Mathlib",
         "MatedCRTHarmonic.Frozen.CellularEmbedding",
@@ -197177,14 +197183,14 @@
         "MatedCRTHarmonic.Frozen.MatedCRTIsLocallyFinite",
         "MatedCRTHarmonic.Frozen.MatedCRTGraph"
       ],
-      "bytes": 1460,
+      "bytes": 1448,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "848c7a5702d825f2c3b582bba28789c65f5b4a0a4fb29d381d29b19455e88191"
     },
     "MatedCRTHarmonic.Frozen.IsConnectedSet": {
       "path": "MatedCRTHarmonic/Frozen/IsConnectedSet.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "246e2eb4b8126b2e90845d5091d709c4e59948690b9b542a79a3c567482a5fbf",
+      "sha256": "f9ec8cc68afcdcae2a095d1a70f20c25b7da3b37b3756c189fa0469a5120da86",
       "imports": [
         "Mathlib",
         "MatedCRTHarmonic.Frozen.LFMultigraph",
@@ -197194,14 +197200,14 @@
         "MatedCRTHarmonic.Frozen.LFMultigraph",
         "MatedCRTHarmonic.Frozen.Adj"
       ],
-      "bytes": 619,
+      "bytes": 610,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "39b8f84d787c13e9a9a4eca1e94a42801c88dc94d7318f4683f3dfd7cde49df9"
     },
     "MatedCRTHarmonic.Frozen.IsCorrelatedBM2": {
       "path": "MatedCRTHarmonic/Frozen/IsCorrelatedBM2.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "845b7835ad8c3a2601d65d1a3ae266122820819e8106ce971de3f620cb5f33f6",
+      "sha256": "3759a31dd01ed88093f6eafd086297c680a50b7069d9b4b667d393442f8da6b2",
       "imports": [
         "Mathlib",
         "MatedCRTHarmonic.Frozen.MatedCRTPath2",
@@ -197215,13 +197221,13 @@
         "MatedCRTHarmonic.Frozen.MatedCRTLrCov",
         "MatedCRTHarmonic.Frozen.MatedCRTTwoSidedMin"
       ],
-      "bytes": 1577,
+      "bytes": 1574,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "9bbddf879db9c27fed7738a228af947bd562dc612b267522cacf266071c88c4d"
     },
     "MatedCRTHarmonic.Frozen.IsHarmonicExtension": {
       "path": "MatedCRTHarmonic/Frozen/IsHarmonicExtension.lean",
-      "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
+      "source_commit": "0bf2cb648e1e613441fa951920466081197858d3",
       "sha256": "c6839222eaecc8a0ca33880d152da42323db6bd56d76703cca33e1245777b1d5",
       "imports": [
         "Mathlib",
@@ -197265,12 +197271,13 @@
         "MatedCRTHarmonic.Frozen.IsMatingOfTreesCoupling"
       ],
       "bytes": 2387,
-      "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited"
+      "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
+      "development_sha256": "c2073193f19c3d9075ec08c4b0d8014f93838a8a84213d12e2653e8271d682a8"
     },
     "MatedCRTHarmonic.Frozen.IsMatingOfTreesCoupling": {
       "path": "MatedCRTHarmonic/Frozen/IsMatingOfTreesCoupling.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "990de9aae00345a7e18aee139af6acccc7c3310ed75f98f10d0e4596823f367f",
+      "sha256": "dd0e7bd3ba14268b3536b3608c34f7702b0b3293a501b64afe6544278e9f5f1f",
       "imports": [
         "Mathlib",
         "LQGMetric.Statement.GFF",
@@ -197322,7 +197329,7 @@
         "MatedCRTHarmonic.Frozen.MatedCRTDegInner",
         "MatedCRTHarmonic.Frozen.MatedCRTDegOuter"
       ],
-      "bytes": 10803,
+      "bytes": 10794,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "5c57d4909ab2162c849e13951e043f69f7769751da2e19f8a3f87e7c3146c878"
     },
@@ -197345,7 +197352,7 @@
     },
     "MatedCRTHarmonic.Frozen.IsTutteEmbedding": {
       "path": "MatedCRTHarmonic/Frozen/IsTutteEmbedding.lean",
-      "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
+      "source_commit": "0bf2cb648e1e613441fa951920466081197858d3",
       "sha256": "526458a79063aedef79ca938d274f4cf1179f88f80ec63167ad02ad0208e9ec7",
       "imports": [
         "Mathlib",
@@ -197391,7 +197398,8 @@
         "MatedCRTHarmonic.Frozen.IsHarmonicExtension"
       ],
       "bytes": 2018,
-      "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited"
+      "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
+      "development_sha256": "bc5890be9f70179e4f01409ff049f09b9d9f029ec58e2b62d20bde71691505ab"
     },
     "MatedCRTHarmonic.Frozen.LFMultigraph": {
       "path": "MatedCRTHarmonic/Frozen/LFMultigraph.lean",
@@ -197437,7 +197445,7 @@
     },
     "MatedCRTHarmonic.Frozen.MatedCRTCell": {
       "path": "MatedCRTHarmonic/Frozen/MatedCRTCell.lean",
-      "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
+      "source_commit": "0bf2cb648e1e613441fa951920466081197858d3",
       "sha256": "f62738029ae92d753714bf791ed327061310f95ffc9e7932178b041c026f0bf2",
       "imports": [
         "Mathlib",
@@ -197481,7 +197489,8 @@
         "MatedCRTHarmonic.Frozen.IsMatingOfTreesCoupling"
       ],
       "bytes": 1604,
-      "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited"
+      "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
+      "development_sha256": "00ed1815e210456b53cda845490b3ddafea6d4526f3312590300c728f5b45758"
     },
     "MatedCRTHarmonic.Frozen.MatedCRTConeField": {
       "path": "MatedCRTHarmonic/Frozen/MatedCRTConeField.lean",
@@ -197754,7 +197763,7 @@
     "MatedCRTHarmonic.Frozen.MatedCRTGraph": {
       "path": "MatedCRTHarmonic/Frozen/MatedCRTGraph.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "733ba70d146a17597d81be526460e787f969a2010639b72a2f95cd0fe4c12c87",
+      "sha256": "9bc8a671500998b291bfa05337a4dab4ae45f10a270f24ffd1f978da67087b67",
       "imports": [
         "Mathlib",
         "MatedCRTHarmonic.Frozen.LFMultigraph",
@@ -197772,7 +197781,7 @@
         "MatedCRTHarmonic.Frozen.MatedCRTEdge",
         "MatedCRTHarmonic.Frozen.MatedCRTIsLocallyFinite"
       ],
-      "bytes": 1179,
+      "bytes": 1176,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "f1505419ae12d9d015b625629609aeeb73ca7cdcc2b96fd5690ad74804b00b0d"
     },
@@ -197818,7 +197827,7 @@
     "MatedCRTHarmonic.Frozen.MatedCRTIsEdge": {
       "path": "MatedCRTHarmonic/Frozen/MatedCRTIsEdge.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "a9ff33664e999c5f6d774389c107ece284c1155d53e06293236c36314816d142",
+      "sha256": "63484007021735d23a9d7fda27bb6cee243cd97a83262bca73e520208623899d",
       "imports": [
         "Mathlib",
         "MatedCRTHarmonic.Frozen.MatedCRTPath2",
@@ -197828,7 +197837,7 @@
         "MatedCRTHarmonic.Frozen.MatedCRTPath2",
         "MatedCRTHarmonic.Frozen.MatedCRTSideCond"
       ],
-      "bytes": 1253,
+      "bytes": 1248,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "30a3e105954d747810c674986d7194d74ff3058b91f0cb2326835ae57775cbe2"
     },
@@ -197943,12 +197952,12 @@
     "MatedCRTHarmonic.Frozen.MatedCRTLrCov": {
       "path": "MatedCRTHarmonic/Frozen/MatedCRTLrCov.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "d5c860794273ef74f3c17cd0456c2cb6b662cfd17d73863cee8afe61318accdf",
+      "sha256": "1649a6c4789497eb162f1e800fae05a3e42f42ee622ac4f4c605ce1dab8fb6d1",
       "imports": [
         "Mathlib"
       ],
       "local_imports": [],
-      "bytes": 590,
+      "bytes": 606,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "df723a689df84b80c4e461ed12a0242062d5e42b815fb37f843d5439855af27d"
     },
@@ -198023,7 +198032,7 @@
     "MatedCRTHarmonic.Frozen.MatedCRTSideCond": {
       "path": "MatedCRTHarmonic/Frozen/MatedCRTSideCond.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "3877604c791d1155e9d504f2f045b1d312bc92e013d34f9abeac64498700408d",
+      "sha256": "42fb5eb772ab174f4b09fb47f04bfc9470fdcabbb3fea816dbff163e44026bd2",
       "imports": [
         "Mathlib",
         "MatedCRTHarmonic.Frozen.MatedCRTIntervalInf"
@@ -198031,7 +198040,7 @@
       "local_imports": [
         "MatedCRTHarmonic.Frozen.MatedCRTIntervalInf"
       ],
-      "bytes": 856,
+      "bytes": 845,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "d6580ab5dd69762f3f0394628b16ead0eb732db14bdafd6c502d155b05ee107f"
     },
@@ -198069,7 +198078,7 @@
     "MatedCRTHarmonic.Frozen.MesoscopicControlWith": {
       "path": "MatedCRTHarmonic/Frozen/MesoscopicControlWith.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "53952a540aa5036488db8fa9f8c23606d2bd80bd413f6710d44ad98f04c7d527",
+      "sha256": "58e5907f6808db4790a995ff5d20ceb5cb8e2c0595d082ff09651adfe319e1a7",
       "imports": [
         "Mathlib",
         "MatedCRTHarmonic.Frozen.LFMultigraph",
@@ -198095,7 +198104,7 @@
         "MatedCRTHarmonic.Frozen.AnnularEvent",
         "MatedCRTHarmonic.Frozen.CellularEmbedding"
       ],
-      "bytes": 2754,
+      "bytes": 2716,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "47e3a8b2be7c0e31de726a7ea1975a41bb20cb4b577716aa649e1f9b3537daeb"
     },
@@ -198133,7 +198142,7 @@
     "MatedCRTHarmonic.Frozen.Recurrent": {
       "path": "MatedCRTHarmonic/Frozen/Recurrent.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "5891b73ba75b9b8b7b0553fe120101e13b097c998437bf87497f24096fb5e2ff",
+      "sha256": "c09e300eb67bc7a7aa01eb5cfddc4127ddde03f6964fe97150ac1a08d2a613df",
       "imports": [
         "Mathlib",
         "MatedCRTHarmonic.Frozen.LFMultigraph",
@@ -198151,14 +198160,14 @@
         "MatedCRTHarmonic.Frozen.WalkLaw",
         "MatedCRTHarmonic.Frozen.VertexPath"
       ],
-      "bytes": 1169,
+      "bytes": 1134,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "91239889f2928dbbbb0428bb6536d5662cf224365c6045cb24e00ee7994012be"
     },
     "MatedCRTHarmonic.Frozen.ScaledGridControl": {
       "path": "MatedCRTHarmonic/Frozen/ScaledGridControl.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "25b5d1030c9798a8850719ab1b1503ca8edec519bf3c872243f3872831ec961e",
+      "sha256": "6a80689703158e4f07d6774b5c15ff5d4824dab2d709876922722f85df18f9c7",
       "imports": [
         "Mathlib",
         "MatedCRTHarmonic.Frozen.LFMultigraph",
@@ -198180,7 +198189,7 @@
         "MatedCRTHarmonic.Frozen.AnnularEvent",
         "MatedCRTHarmonic.Frozen.CellularEmbedding"
       ],
-      "bytes": 2255,
+      "bytes": 2225,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "9304559ae45cab6bb7b87bf4a5f762d5789a4dc4c0858a7eaf7cc0235d76c9b2"
     },
@@ -198293,7 +198302,7 @@
     },
     "MatedCRTHarmonic.Frozen.Theorem1_3": {
       "path": "MatedCRTHarmonic/Frozen/Theorem1_3.lean",
-      "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
+      "source_commit": "0bf2cb648e1e613441fa951920466081197858d3",
       "sha256": "43184a88cdbfabb9a83c0c3cc309091cc2438df99e43a2e27176cdabfee11434",
       "imports": [
         "Mathlib",
@@ -198353,11 +198362,12 @@
         "MatedCRTHarmonic.GMSMain.MainResultsFinal"
       ],
       "bytes": 5612,
-      "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited"
+      "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
+      "development_sha256": "4ec82530f3331c2b0bb90bb6debbd823bf7aa71af1fe84d2b21144b7989e1a8b"
     },
     "MatedCRTHarmonic.Frozen.Theorem1_4": {
       "path": "MatedCRTHarmonic/Frozen/Theorem1_4.lean",
-      "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
+      "source_commit": "0bf2cb648e1e613441fa951920466081197858d3",
       "sha256": "e1e0b00f1df3e188a637120b5c6091c877a839063d69e6e2cfa5054adcfa23e0",
       "imports": [
         "Mathlib",
@@ -198417,11 +198427,12 @@
         "MatedCRTHarmonic.GMSMain.MainResultsFinal"
       ],
       "bytes": 4916,
-      "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited"
+      "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
+      "development_sha256": "61e1e177c8eec6b79c369e47d9304f478611aab0d937dadec491ca17a2787c4d"
     },
     "MatedCRTHarmonic.Frozen.Theorem1_5": {
       "path": "MatedCRTHarmonic/Frozen/Theorem1_5.lean",
-      "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
+      "source_commit": "0bf2cb648e1e613441fa951920466081197858d3",
       "sha256": "cc2c62d1bff0dd9270ed301274cbd533fc7739a34848efed65f424f82fbe125c",
       "imports": [
         "Mathlib",
@@ -198481,11 +198492,12 @@
         "MatedCRTHarmonic.GMSMain.MainResultsFinal"
       ],
       "bytes": 5490,
-      "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited"
+      "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
+      "development_sha256": "4c42a27243903d4c826edca2dce1ed67aafc8e012cfe06a9fce4e828070fd30d"
     },
     "MatedCRTHarmonic.Frozen.Theorem1_5SimplyConnected": {
       "path": "MatedCRTHarmonic/Frozen/Theorem1_5SimplyConnected.lean",
-      "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
+      "source_commit": "0bf2cb648e1e613441fa951920466081197858d3",
       "sha256": "2735a7f5e8048da2024efe7ef42831b8bd7711216d899d667cee5497d47b0482",
       "imports": [
         "Mathlib",
@@ -198545,11 +198557,12 @@
         "MatedCRTHarmonic.GMSMain.MainResultsFinal"
       ],
       "bytes": 5052,
-      "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited"
+      "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
+      "development_sha256": "d17af904b743c61cec5a0d1af673da89b0f9df18015bf292e6ba5604e09bc86f"
     },
     "MatedCRTHarmonic.Frozen.Theorem3_2": {
       "path": "MatedCRTHarmonic/Frozen/Theorem3_2.lean",
-      "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
+      "source_commit": "0bf2cb648e1e613441fa951920466081197858d3",
       "sha256": "7ca886f499106cd2ca8cc45219950babe11f921d87d0bc5e1db4ee3958805efb",
       "imports": [
         "Mathlib",
@@ -198609,7 +198622,8 @@
         "MatedCRTHarmonic.GMSMain.MainResultsFinal"
       ],
       "bytes": 5676,
-      "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited"
+      "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
+      "development_sha256": "1a12391fde53b223a5082d49d24c5945000af99db9786575ff05a271cdeeb3cd"
     },
     "MatedCRTHarmonic.Frozen.VertexPath": {
       "path": "MatedCRTHarmonic/Frozen/VertexPath.lean",
@@ -199436,7 +199450,7 @@
     "MatedCRTHarmonic.GMS3.Theorem14": {
       "path": "MatedCRTHarmonic/GMS3/Theorem14.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "63cf3d5afe2d1ef07fb975833102805f716cf81921ee1f52fecd04b2d06e6d05",
+      "sha256": "086436480bd081039ac4e8e7ac6764e18bfe30f07c6b4f758946254ceb65072e",
       "imports": [
         "MatedCRTHarmonic.GMS3.Lemma34",
         "MatedCRTHarmonic.GMS3.Green",
@@ -199447,7 +199461,7 @@
         "MatedCRTHarmonic.GMS3.Green",
         "MatedCRTHarmonic.Frozen.MatedCRTGraph"
       ],
-      "bytes": 16027,
+      "bytes": 16017,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "7c6cdc28737472a3b4e32a20c12f16425fe1a68465a4cb1c248a8e86a89e91cd"
     },
@@ -199470,7 +199484,7 @@
     "MatedCRTHarmonic.GMS4.CellGraphInterface": {
       "path": "MatedCRTHarmonic/GMS4/CellGraphInterface.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "5087ab460ed42621533f439d061b7f21cfa8f39d549e46a36cd4e932071ecdf2",
+      "sha256": "3ed07488b7c7861856d4c86a11b6ed81243a1dacbff6800b000c654ee6cec685",
       "imports": [
         "MatedCRTHarmonic.GMSLemma27.CellModel",
         "MatedCRTHarmonic.CellFamily.ProducersCellCoupling"
@@ -199479,14 +199493,14 @@
         "MatedCRTHarmonic.GMSLemma27.CellModel",
         "MatedCRTHarmonic.CellFamily.ProducersCellCoupling"
       ],
-      "bytes": 6935,
+      "bytes": 6954,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "8b4702ba130ad6d975e8d8a6d5058073fb6a9ba863faf6f2ea348d9fcf545b1d"
     },
     "MatedCRTHarmonic.GMS4.CellScalingCellModelCoupling": {
       "path": "MatedCRTHarmonic/GMS4/CellScalingCellModelCoupling.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "c0e8b9c68ef14cd7cb3a0e3c3c42f3dc98f505e9e7ce3c0bbbc067e92921dd23",
+      "sha256": "05eea46529b7f7d3a3eb7de4759ac74832070e99b8cc4dfe6da5f858313e0055",
       "imports": [
         "MatedCRTHarmonic.GMS4.CellGraphInterface",
         "MatedCRTHarmonic.CellScaling.L27Bridge"
@@ -199495,7 +199509,7 @@
         "MatedCRTHarmonic.GMS4.CellGraphInterface",
         "MatedCRTHarmonic.CellScaling.L27Bridge"
       ],
-      "bytes": 1917,
+      "bytes": 1903,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "c7c76b5f199cd31e03272f037f61c5f71c357cf3d8bba8d218d7e920d117aaf0"
     },
@@ -199582,7 +199596,7 @@
     "MatedCRTHarmonic.GMS4.Prop48": {
       "path": "MatedCRTHarmonic/GMS4/Prop48.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "86243d4b9c26999e1b4439984b7a30224d108a884e5062999c010fa8a4929571",
+      "sha256": "6975cb0f42551bab0c34c3af2ac108b3097c9a2c7dfd5a5797484987eb5bcdfc",
       "imports": [
         "MatedCRTHarmonic.GMSLemma27.CellModel",
         "MatedCRTHarmonic.GMSLemma27.SLEInterfaces",
@@ -199621,7 +199635,7 @@
         "MatedCRTHarmonic.MoTPort.Foundations.ConeMeas2",
         "MatedCRTHarmonic.MesoModel.FrozenIdentities"
       ],
-      "bytes": 51167,
+      "bytes": 51199,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "847ab6284ccddd13237c1d3692232c15e753735d37b8d82afdb7473ec7c83410"
     },
@@ -201229,14 +201243,14 @@
     "MatedCRTHarmonic.GMS4b.Theorem44": {
       "path": "MatedCRTHarmonic/GMS4b/Theorem44.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "0a99805ce1cbef1d2a8388289e23afc8e035aba76536fa90c27d640b4a71b21d",
+      "sha256": "0f325ed0e4ebe7bc0eae33f9b7726fe13369db20ca54325125c9b59474db667d",
       "imports": [
         "MatedCRTHarmonic.GMS4b.DegOutMeasurable"
       ],
       "local_imports": [
         "MatedCRTHarmonic.GMS4b.DegOutMeasurable"
       ],
-      "bytes": 12129,
+      "bytes": 12130,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "03027929627c81381f536c37e7a5ef2973fc31c0d100e49d6a426736ddff52e8"
     },
@@ -202144,7 +202158,7 @@
     "MatedCRTHarmonic.GMS4cO.Lemma49": {
       "path": "MatedCRTHarmonic/GMS4cO/Lemma49.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "75f92ed68f5f84b598905b496699ea24527a29ef25070145fb493d7923acf428",
+      "sha256": "74fefc8fae061d508e3d52a5aec68b82e220bc4c50e8add46002bb0c965b53b5",
       "imports": [
         "MatedCRTHarmonic.GMS4cO.Lemma49Core",
         "MatedCRTHarmonic.CellScaling.ZeroConeScalingCells"
@@ -202153,7 +202167,7 @@
         "MatedCRTHarmonic.GMS4cO.Lemma49Core",
         "MatedCRTHarmonic.CellScaling.ZeroConeScalingCells"
       ],
-      "bytes": 14646,
+      "bytes": 14643,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "a8c8a6956975862a19aeb52ffbc2c112b669a639a97b058a2322309b261a8b19"
     },
@@ -204034,14 +204048,14 @@
     "MatedCRTHarmonic.GMSMain.EpsALemma27": {
       "path": "MatedCRTHarmonic/GMSMain/EpsALemma27.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "0f5ec8c78c50942271041efae4932b648070349e9fef17c0c99bb5a39133534b",
+      "sha256": "a05f44ca931259baf5077e0cc632011cd0de16dfc494be875e77cfb7dd3a2c12",
       "imports": [
         "MatedCRTHarmonic.GMSMain.EpsAProp210"
       ],
       "local_imports": [
         "MatedCRTHarmonic.GMSMain.EpsAProp210"
       ],
-      "bytes": 21573,
+      "bytes": 21567,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "635631366c7a8bd81c5d1c765aa8d002250b0bc36843dcba724e6a146c602d8d"
     },
@@ -204120,14 +204134,14 @@
     "MatedCRTHarmonic.GMSMain.EpsBDiagonal": {
       "path": "MatedCRTHarmonic/GMSMain/EpsBDiagonal.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "f0c9ffee47a573ba87788d2b3c6d2d90fbc6f29eb35f3b9c75abb24444626d8c",
+      "sha256": "31e7cc7f222bc45fdd013b47c479465572f994d67a694db4daa82ac0fceefde5",
       "imports": [
         "MatedCRTHarmonic.CellFamily.Interfaces"
       ],
       "local_imports": [
         "MatedCRTHarmonic.CellFamily.Interfaces"
       ],
-      "bytes": 12354,
+      "bytes": 12376,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "ca41b3984079671fa230bb10dad7258529d5d83023c68cbcbe6fc8dceb82c93e"
     },
@@ -204204,14 +204218,14 @@
     "MatedCRTHarmonic.GMSMain.EpsBRateCellFamily": {
       "path": "MatedCRTHarmonic/GMSMain/EpsBRateCellFamily.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "c585387cc99e9b4879875535cd00505050d4cab13cceac5f696c1332b2b8f597",
+      "sha256": "fb109df874d148a1ea64cd70b3fd5444d69d9a42d094258916d05e958bbfb161",
       "imports": [
         "MatedCRTHarmonic.GMSMain.EpsBRateAnnulus38"
       ],
       "local_imports": [
         "MatedCRTHarmonic.GMSMain.EpsBRateAnnulus38"
       ],
-      "bytes": 26190,
+      "bytes": 26211,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "ec7c853e41a37ce73b83594d09b1c8d08cd6776115ba0aa5f8ffa68b06ca920b"
     },
@@ -204569,7 +204583,7 @@
     "MatedCRTHarmonic.GMSMain.T15ACore": {
       "path": "MatedCRTHarmonic/GMSMain/T15ACore.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "91138ea32b99b644df1f28a8dbdb2763c962bad94cec39afc2bb8ac89de76f2b",
+      "sha256": "df9ab5fcb126645463890ab60680922f69b3721318dc7f23a6b2f78e6061ad99",
       "imports": [
         "MatedCRTHarmonic.HarmonicInfinity.Mesoscopic",
         "MatedCRTHarmonic.CellFamily.Core",
@@ -204582,14 +204596,14 @@
         "MatedCRTHarmonic.CellFamily.Exit",
         "MatedCRTHarmonic.Frozen.ScaledGridControl"
       ],
-      "bytes": 29669,
+      "bytes": 29575,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "cb2c98fb25539a12b4d2760d320cbf366c122fe9eb7039ae0d337a76de161789"
     },
     "MatedCRTHarmonic.GMSMain.T15AModel": {
       "path": "MatedCRTHarmonic/GMSMain/T15AModel.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "9d75c5389c995442b7871127d5e04356dae4fab66b32770406ffb7f72ba93ea2",
+      "sha256": "274bb8e70dcd39c611d3e6dbc5ac44c0eb7a8efd6cad10e7801369f7c3e4d852",
       "imports": [
         "MatedCRTHarmonic.GMSMain.T15ACore",
         "MatedCRTHarmonic.BundleSec4.MesoModelFinal",
@@ -204600,7 +204614,7 @@
         "MatedCRTHarmonic.BundleSec4.MesoModelFinal",
         "MatedCRTHarmonic.MesoModel.Annulus38Bad"
       ],
-      "bytes": 16163,
+      "bytes": 16253,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "1e243f26b08e22c89d821204dd9c2fcfd7e9a9c1076855d6eb9cebed2944a5e5"
     },
@@ -204791,7 +204805,7 @@
     "MatedCRTHarmonic.GMSMain.T15CHitting": {
       "path": "MatedCRTHarmonic/GMSMain/T15CHitting.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "1ccde697603215d0b2a7edd0ff7c879da325c87f56a5b7c570d3bab835646fb8",
+      "sha256": "63471cd0baf05860478c53eed2d84afff13aa11e5f80cf9e286b812fb9baeb11",
       "imports": [
         "MatedCRTHarmonic.GMSMain.T15CGeometry",
         "MatedCRTHarmonic.GoodScales.Bound",
@@ -204802,7 +204816,7 @@
         "MatedCRTHarmonic.GoodScales.Bound",
         "MatedCRTHarmonic.HarmonicInfinity.Walk"
       ],
-      "bytes": 29705,
+      "bytes": 29699,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "b621493f51c7f9169e10d852fd7c2261063a6a8442af17cc8ab41f4255b8d2d6"
     },
@@ -204893,14 +204907,14 @@
     "MatedCRTHarmonic.GMSMain.T16DSurface": {
       "path": "MatedCRTHarmonic/GMSMain/T16DSurface.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "d40d954a2787066d613eaa031dafc0184b59ddee11420697d326a5f1471a8ca3",
+      "sha256": "b26a18b5b064aca254cf5570b15393337160fdf3d5cdbea21d7abffd2378d256",
       "imports": [
         "MatedCRTHarmonic.GMSMain.T16DTutte"
       ],
       "local_imports": [
         "MatedCRTHarmonic.GMSMain.T16DTutte"
       ],
-      "bytes": 10409,
+      "bytes": 10416,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "845e80bd97856bdb8893637b8cd8faa1275d1ea54582ecf5f1e7f7836b07d701"
     },
@@ -204964,7 +204978,7 @@
     "MatedCRTHarmonic.GoodScales.Bound": {
       "path": "MatedCRTHarmonic/GoodScales/Bound.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "af5826532b34f3154dffbd8eafaa0e7ddf2ea5ed2d285dc9fb33aa5fdbbd58fa",
+      "sha256": "55bf16450fe37de05afaf12cd8fb0825d16410b2d562dfe7576713b4d5441f49",
       "imports": [
         "MatedCRTHarmonic.GoodScales.Times",
         "Mathlib",
@@ -204988,14 +205002,14 @@
         "MatedCRTHarmonic.Frozen.StateMeasurableSpace",
         "MatedCRTHarmonic.Frozen.WalkLaw"
       ],
-      "bytes": 2671,
+      "bytes": 2441,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "3c4d3d136e68069cac8656da44473a09614f7410a42464d048d7bba2dd0379c0"
     },
     "MatedCRTHarmonic.GoodScales.Geometry": {
       "path": "MatedCRTHarmonic/GoodScales/Geometry.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "12cb7b4e2aced16bfd360a142c2e68d670d6e5256f396e3ea73c983ade749eb1",
+      "sha256": "fe8df850f4d28d87c2368c64672e3bade443960b32a5e471ff6fa76f936ef573",
       "imports": [
         "MatedCRTHarmonic.GoodScales.Walk",
         "Mathlib",
@@ -205021,14 +205035,14 @@
         "MatedCRTHarmonic.Frozen.VertexPath",
         "MatedCRTHarmonic.Frozen.AnnularEvent"
       ],
-      "bytes": 4028,
+      "bytes": 4050,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "51efc30095cfd81cd1a3274921b0a5d3302e24cc13d2dc8546180ae41d529e11"
     },
     "MatedCRTHarmonic.GoodScales.Times": {
       "path": "MatedCRTHarmonic/GoodScales/Times.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "46939a561f2e239553286dfd1ad7fcca7d86de04e4f8909d731087804ec827b3",
+      "sha256": "28bb72e05e88b066e3cd4730411589c45f96c3aefce7730ba60344540a7f9f4b",
       "imports": [
         "MatedCRTHarmonic.GoodScales.Geometry",
         "MatedCRTHarmonic.Markov.StrongMarkov",
@@ -205043,7 +205057,7 @@
         "MatedCRTHarmonic.Frozen.Disconnects",
         "MatedCRTHarmonic.Frozen.AnnularEvent"
       ],
-      "bytes": 13995,
+      "bytes": 13953,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "1b68fb526cd4116e914b988b99365272bbad11ac786f169b5ea145c4b12587c8"
     },
@@ -205154,7 +205168,7 @@
     "MatedCRTHarmonic.Harmonic.Harm": {
       "path": "MatedCRTHarmonic/Harmonic/Harm.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "43df7401ab4e7439044ca37b73612322adc35fe5dfe257e281521b6696a8b558",
+      "sha256": "410e9abb70d8bf4856feb7fa544babb7c698c43c819a9d149596de64fc7ade37",
       "imports": [
         "Mathlib",
         "MatedCRTHarmonic.Frozen.LFMultigraph",
@@ -205178,7 +205192,7 @@
         "MatedCRTHarmonic.Frozen.Adj",
         "MatedCRTHarmonic.Harmonic.Walk"
       ],
-      "bytes": 1929,
+      "bytes": 1299,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "ba268ed49b91da197926363f21c45391ea821c862de92185ee3700cdca021774"
     },
@@ -205221,7 +205235,7 @@
     "MatedCRTHarmonic.HarmonicInfinity.Chain": {
       "path": "MatedCRTHarmonic/HarmonicInfinity/Chain.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "6963cd0b70b43173838807ca10ffe8f5ccbb8a5636f487499de774f87796886a",
+      "sha256": "d3c92ac603ef44fbdc56e5bb39f3767a4a3e9770c2161f8b12eabed69c58ed21",
       "imports": [
         "MatedCRTHarmonic.Markov.StrongMarkov",
         "MatedCRTHarmonic.Harmonic.Walk"
@@ -205230,28 +205244,28 @@
         "MatedCRTHarmonic.Markov.StrongMarkov",
         "MatedCRTHarmonic.Harmonic.Walk"
       ],
-      "bytes": 24568,
+      "bytes": 24517,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "52d33f71b0a79af33512fb97f92234658d3630a4c656b3d30df53e9fd1a4af73"
     },
     "MatedCRTHarmonic.HarmonicInfinity.Entrance": {
       "path": "MatedCRTHarmonic/HarmonicInfinity/Entrance.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "3ee3f1538206634d12847b1d1ec7ec6a3484c997d01938a305066a5f0ee0c50e",
+      "sha256": "20250a4b4b071708d54f5489014fd072f3f1b897a6630dd7b8c53d4c899d78e3",
       "imports": [
         "MatedCRTHarmonic.HarmonicInfinity.Chain"
       ],
       "local_imports": [
         "MatedCRTHarmonic.HarmonicInfinity.Chain"
       ],
-      "bytes": 7074,
+      "bytes": 7034,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "1662c1a7c3690026857f83a61189eaa02ea2043a132ad8e67ae2a1d76e2e0c79"
     },
     "MatedCRTHarmonic.HarmonicInfinity.Mesoscopic": {
       "path": "MatedCRTHarmonic/HarmonicInfinity/Mesoscopic.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "a5c819c43660c07fc9be2e5a9cfe33eb6f1fa148185f9d22900a4f1b3a2b969a",
+      "sha256": "48f23490bc2ae0691c25829d77b27d242183d8f14d7aca82b684870735c4b65a",
       "imports": [
         "MatedCRTHarmonic.HarmonicInfinity.Walk",
         "MatedCRTHarmonic.GoodScales.Bound",
@@ -205287,14 +205301,14 @@
         "MatedCRTHarmonic.Frozen.CellularEmbedding",
         "MatedCRTHarmonic.Frozen.IsConnectedSet"
       ],
-      "bytes": 15916,
+      "bytes": 2562,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "a7faf92fa8804ff333f4713a9c5e096512b58644d99d681cfb3cd5f9741205e7"
     },
     "MatedCRTHarmonic.HarmonicInfinity.Walk": {
       "path": "MatedCRTHarmonic/HarmonicInfinity/Walk.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "d82ed2cd86d26b2c9fa60e9ad963a44d18f73e61320c6b9e0938a64b4e4e24ab",
+      "sha256": "ee4c10a0881f8f6c0927445255520e704540fde7dd2a88e64874528b40dfb9a3",
       "imports": [
         "MatedCRTHarmonic.HarmonicInfinity.Entrance",
         "MatedCRTHarmonic.Harmonic.Harm",
@@ -205309,7 +205323,7 @@
         "MatedCRTHarmonic.Frozen.Disconnects",
         "MatedCRTHarmonic.Frozen.Recurrent"
       ],
-      "bytes": 8662,
+      "bytes": 7736,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "81fe9c53951442ad400b04ba27513b426958a8a75a34942682622d78daa33cf0"
     },
@@ -205416,7 +205430,7 @@
     "MatedCRTHarmonic.IGLaw.OCurveScale": {
       "path": "MatedCRTHarmonic/IGLaw/OCurveScale.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "bfd0e846c7948d047b541d2352ec606b38f39d23c75c522ad8b60074b816ab45",
+      "sha256": "3938e52af7584f5d014c829ef7fa95efa52e9381af5a380647cc3822cf96716c",
       "imports": [
         "MatedCRTHarmonic.IGLaw.OPositiveRadii",
         "MatedCRTHarmonic.IGLaw.OConeZero",
@@ -205431,7 +205445,7 @@
         "MatedCRTHarmonic.CellScaling.JointScalingOLaw",
         "MatedCRTHarmonic.CellScaling.JointScalingOClock"
       ],
-      "bytes": 12072,
+      "bytes": 12082,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "d307cd024657fd35a7036c1486377ebcb24eb6b4503f00a2e634a8e9dc9f0ac0"
     },
@@ -205479,7 +205493,7 @@
     "MatedCRTHarmonic.IGLaw.OPositiveRadii": {
       "path": "MatedCRTHarmonic/IGLaw/OPositiveRadii.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "3ab8233d78159777f5a2e81a65fdfce1eacf1bf468150751444bed98f6048d42",
+      "sha256": "5738c5e4c5348ee5aecea1639e20b3bb819f698520a7d1d7b794b26af7a02428",
       "imports": [
         "MatedCRTHarmonic.IGLaw.OAffinePos",
         "MatedCRTHarmonic.IGLaw.CurveLaws",
@@ -205492,7 +205506,7 @@
         "MatedCRTHarmonic.MoTInput.ConeRealization",
         "MatedCRTHarmonic.GMS4b.Theorem44"
       ],
-      "bytes": 15323,
+      "bytes": 15340,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "b91c2f8a11fcd85de331da91ba173023fd2ba9ef1f8d6541a08708295a4e316e"
     },
@@ -205551,7 +205565,7 @@
     "MatedCRTHarmonic.Implementation.MatedCRTGraphConnected": {
       "path": "MatedCRTHarmonic/Implementation/MatedCRTGraphConnected.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "8510482f4161c4f1fa0d9e970fe05085f2dda84d86e7c90116ed57aca2aaafbb",
+      "sha256": "6f55438346b9cf8c55867904b4587565309b0340d496ad11f23ad3886798a4bd",
       "imports": [
         "Mathlib",
         "MatedCRTHarmonic.Frozen.Adj",
@@ -205567,7 +205581,7 @@
         "MatedCRTHarmonic.Frozen.MatedCRTIsLocallyFinite",
         "MatedCRTHarmonic.Frozen.MatedCRTGraph"
       ],
-      "bytes": 2189,
+      "bytes": 2184,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "456ab16a21f479d1f958089df25d59f5445d51318aa911d2d015e7c32091a540"
     },
@@ -205692,14 +205706,14 @@
     "MatedCRTHarmonic.LQGCoord.Main": {
       "path": "MatedCRTHarmonic/LQGCoord/Main.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "81ae94010c54bbea18b4df92a7245a3263ace712c7d684bd96c181ba6e59c3c1",
+      "sha256": "71678cbc4271968b9c92ff58b998a06970546baa5d19e284667343d60568c346",
       "imports": [
         "MatedCRTHarmonic.LQGCoord.ConeRadial"
       ],
       "local_imports": [
         "MatedCRTHarmonic.LQGCoord.ConeRadial"
       ],
-      "bytes": 9489,
+      "bytes": 9514,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "d6ea7b8f476c0f0211b23e4af8160d3f5741a7f60846b4c0942c851abe061b78"
     },
@@ -206027,14 +206041,14 @@
     "MatedCRTHarmonic.Markov.StrongMarkov": {
       "path": "MatedCRTHarmonic/Markov/StrongMarkov.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "c518601ba6ff62d617697cbc8327cd75dc5555a84c25f455c639fa0528beda06",
+      "sha256": "01f2d7e35b887e2e3a399a302f836131d8a5a3fb0d802578db017aea4aad469a",
       "imports": [
         "MatedCRTHarmonic.Markov.HitTime"
       ],
       "local_imports": [
         "MatedCRTHarmonic.Markov.HitTime"
       ],
-      "bytes": 25042,
+      "bytes": 25030,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "d10edcea479f7dcfe676fdbe65922eba883cd75989449f4683150f4324329de3"
     },
@@ -206092,7 +206106,7 @@
     "MatedCRTHarmonic.MatedCRT.BrownianLaw": {
       "path": "MatedCRTHarmonic/MatedCRT/BrownianLaw.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "16bed1b006cd313911f7d8108dd12271753471fbb06c79a6884af8aff4772a12",
+      "sha256": "710b25cc565b89bfcca40766881b26d721e02d539fe154fe89f1c31b31397b08",
       "imports": [
         "Mathlib",
         "QuantumZipper.Proofs.RS.TransienceCanon",
@@ -206104,14 +206118,14 @@
         "QuantumZipper.Proofs.Probability.BMExistence",
         "MatedCRTHarmonic.Frozen.IsCorrelatedBM2"
       ],
-      "bytes": 2383,
+      "bytes": 2378,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "8b734f7762542eea6f1572c740b235a4ea403cf197964672d318b378b5faa1a1"
     },
     "MatedCRTHarmonic.MatedCRT.BrownianPathFacts": {
       "path": "MatedCRTHarmonic/MatedCRT/BrownianPathFacts.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "72998435d0c8093edb39d61ea4504636faad99fa8ae448bb0b02a8138adaeb86",
+      "sha256": "8870325d773a48ca2cd13bb4af34c8ddb8712ab9e2314a297dff0c927c2ebc1b",
       "imports": [
         "MatedCRTHarmonic.MatedCRT.BrownianLaw",
         "QuantumZipper.Proofs.Probability.TailTrivial",
@@ -206122,7 +206136,7 @@
         "QuantumZipper.Proofs.Probability.TailTrivial",
         "QuantumZipper.Proofs.Probability.Williams.OccupationHit2"
       ],
-      "bytes": 11618,
+      "bytes": 11613,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "a0a56d6ef34d8948fb08c58234788efaf80d3c6468d9410c116e844dd2d197e8"
     },
@@ -206145,7 +206159,7 @@
     "MatedCRTHarmonic.MatedCRT.IsCorrelatedBM2Unique": {
       "path": "MatedCRTHarmonic/MatedCRT/IsCorrelatedBM2Unique.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "1399c6f8cebf52e32a657b43a49106c2278de60639be532b2c900c540ecd1a14",
+      "sha256": "3184eabbe4e253a8d6a995fb6fb4a88f69dd2babfeafe6b2d8c81bc083b11c82",
       "imports": [
         "MatedCRTHarmonic.MatedCRT.BrownianLaw",
         "Mathlib.Probability.Distributions.Gaussian.Multivariate",
@@ -206155,7 +206169,7 @@
       "local_imports": [
         "MatedCRTHarmonic.MatedCRT.BrownianLaw"
       ],
-      "bytes": 10930,
+      "bytes": 10925,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "d3bda316ffebf791d23b40c59158e3891c51577126885260dbd30e16a0056517"
     },
@@ -206194,7 +206208,7 @@
     "MatedCRTHarmonic.MatedCRT.Lemma25Tail": {
       "path": "MatedCRTHarmonic/MatedCRT/Lemma25Tail.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "b23083635e74a23a7f24663591ffa2d495ac34bf62abfdb3a6ec252b48336aab",
+      "sha256": "68c9fab42998c4891479b24effec0fc0d5520e36987d95c6a5c8f908f518dc39",
       "imports": [
         "MatedCRTHarmonic.MatedCRT.Lemma25TailCore",
         "MatedCRTHarmonic.MatedCRT.Lemma25"
@@ -206203,14 +206217,14 @@
         "MatedCRTHarmonic.MatedCRT.Lemma25TailCore",
         "MatedCRTHarmonic.MatedCRT.Lemma25"
       ],
-      "bytes": 32426,
+      "bytes": 32416,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "cb3cf8e2ceb4fb36a8fc1f9499e26c5c2c6622bdaefda3c9250070593a34df2f"
     },
     "MatedCRTHarmonic.MatedCRT.Lemma25TailCore": {
       "path": "MatedCRTHarmonic/MatedCRT/Lemma25TailCore.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "9ac2796c62a2f2f9ce9d448ead76671df7c0c00b88b68a23b7ddd1e468b15110",
+      "sha256": "e6cfefdea39b0114bc20ff6a9de882274280d229fc5eb11948933e3c5c269c7c",
       "imports": [
         "MatedCRTHarmonic.MatedCRT.Lemma25TailStopping",
         "MatedCRTHarmonic.Brownian.OneStep",
@@ -206223,7 +206237,7 @@
         "LQGMetric.Prob.BinomialDomination",
         "QuantumZipper.Proofs.ItoLite.Oscillation"
       ],
-      "bytes": 25336,
+      "bytes": 25325,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "653d241e5e2831852c8ab20eeabd9643e33aaf50628f02dc35ad6ce3caaeb674"
     },
@@ -206357,21 +206371,21 @@
     "MatedCRTHarmonic.MesoModel.Annulus38Bad": {
       "path": "MatedCRTHarmonic/MesoModel/Annulus38Bad.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "37b0f6c622205227c924a40ed4441b569a3f315174dc71b8c8b205e54d055c6f",
+      "sha256": "8f5520a4b1d70f8a4e0b0b2e2b21255e70eae6cf967dbe75ae57bd6606efd2bb",
       "imports": [
         "MatedCRTHarmonic.MesoModel.Annulus38"
       ],
       "local_imports": [
         "MatedCRTHarmonic.MesoModel.Annulus38"
       ],
-      "bytes": 693,
+      "bytes": 688,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "ceb3a82f0c0d37b77fff0ebeedc4bb36f6895e2d7801f9a17686e90b91e6f403"
     },
     "MatedCRTHarmonic.MesoModel.AssemblyInterfaces": {
       "path": "MatedCRTHarmonic/MesoModel/AssemblyInterfaces.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "ff2716ac00ea3cad8906f9ff514df328efd5add3c7df6440145c290fc21d959b",
+      "sha256": "f60cd904303b9321e890bf493ec2fa59acbaa4d596885ef9852ae9e50d32892b",
       "imports": [
         "Mathlib",
         "MatedCRTHarmonic.Frozen.CellModelExists",
@@ -206389,7 +206403,7 @@
         "MatedCRTHarmonic.Frozen.MatedCRTIsLocallyFinite",
         "MatedCRTHarmonic.Frozen.MesoscopicControlWith"
       ],
-      "bytes": 1674,
+      "bytes": 1682,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "1e1958c64177411137008240ad81fcf5d482ec17a0445c93d650b60becae2981"
     },
@@ -206501,7 +206515,7 @@
     "MatedCRTHarmonic.MesoModel.FinalAssembly": {
       "path": "MatedCRTHarmonic/MesoModel/FinalAssembly.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "7b185bd0c135ba539f46bf9e519a2999acd1e2a0d977d6b1780e77ff7aafeed9",
+      "sha256": "b9ed092418433504b4e9164e2d1df10654407c9b93e693b2f4f1fca01585bebc",
       "imports": [
         "Mathlib",
         "MatedCRTHarmonic.Frozen.MatingOfTreesInput",
@@ -206543,7 +206557,7 @@
         "MatedCRTHarmonic.MesoModel.Annulus38",
         "MatedCRTHarmonic.MesoModel.CloseCellModel"
       ],
-      "bytes": 14447,
+      "bytes": 14443,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "5adc24727ec7ec99907b58ac52f362d0ef9196fd9a5b4ffc3816f2c1a18e3325"
     },
@@ -206566,7 +206580,7 @@
     "MatedCRTHarmonic.MesoModel.Meso": {
       "path": "MatedCRTHarmonic/MesoModel/Meso.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "ea5bb9ef5636f1e8968df66e98ab10ad83573e296ddcb6b1c9e4bd5751af9ec3",
+      "sha256": "6b1147217b152eb52069b2052760dfce48d54b6f001b1a4d408d7676c215cd20",
       "imports": [
         "MatedCRTHarmonic.Growth.ChainRates",
         "MatedCRTHarmonic.CellFamily.BadEventProposition",
@@ -206583,7 +206597,7 @@
         "MatedCRTHarmonic.MesoModel.MesoInterfaces",
         "MatedCRTHarmonic.MesoModel.MesoSkeleton"
       ],
-      "bytes": 14000,
+      "bytes": 14020,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "3f079bf02751c99d10f9147d922fba7458a07661a67402f7a45bb211df898783"
     },
@@ -206647,7 +206661,7 @@
     "MatedCRTHarmonic.MesoModel.Rec": {
       "path": "MatedCRTHarmonic/MesoModel/Rec.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "d8dad7768f1c6910c9bd47e49f0f31a1a12663b0127b7e5170747e5fd341870c",
+      "sha256": "acd888edd2061b3316442a4999cf4129c89e326fa68f4c1acfc671a163e1a954",
       "imports": [
         "MatedCRTHarmonic.GMS3.Theorem14",
         "MatedCRTHarmonic.CellFamily.Interfaces",
@@ -206662,7 +206676,7 @@
         "MatedCRTHarmonic.MesoModel.AssemblyInterfaces",
         "MatedCRTHarmonic.MesoModel.CloseCellModel"
       ],
-      "bytes": 15808,
+      "bytes": 15788,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "193c7d21241f3d8ab53f2e331a332aa5f027f54f0cc1dd786f0c4bb1d748b26e"
     },
@@ -207927,7 +207941,7 @@
     "MatedCRTHarmonic.RouteM.BPointConnected": {
       "path": "MatedCRTHarmonic/RouteM/BPointConnected.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "20143f52f76931baf3ccec56f335c950eadfe5aff58a731ef08b8ad70e98d287",
+      "sha256": "02cf8312652fa8f4b4a3268fb0a147639bf3bbb52cdc2c7e8c423900f20ee6c9",
       "imports": [
         "MatedCRTHarmonic.Core.CellInterfaces",
         "MatedCRTHarmonic.Frozen.MatedCRTGraph",
@@ -207940,7 +207954,7 @@
         "MatedCRTHarmonic.RouteM.PsiBundle",
         "MatedCRTHarmonic.RouteM.RCorollaryB"
       ],
-      "bytes": 15412,
+      "bytes": 15402,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "996c1897876096df88aaf4aa0367734769f92445f40108ba83deb36605872c6b"
     },
@@ -207965,7 +207979,7 @@
     "MatedCRTHarmonic.RouteM.DDrawing": {
       "path": "MatedCRTHarmonic/RouteM/DDrawing.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "876bf801ddc440a84c27f865d4cbb6646853607305182ad47f8bd3dfb78ce22e",
+      "sha256": "c5bb6f1a67b37dafea3cb32bd4fdd87ecd4488eac9bbdc028a2129f1a21b275c",
       "imports": [
         "MatedCRTHarmonic.RouteM.DLevels",
         "MatedCRTHarmonic.Frozen.MatedCRTGraph",
@@ -207976,7 +207990,7 @@
         "MatedCRTHarmonic.Frozen.MatedCRTGraph",
         "MatedCRTHarmonic.Frozen.Adj"
       ],
-      "bytes": 24199,
+      "bytes": 24194,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "69ca5b85801a7fc107f946d17b2d7188a60e7f62daf9c475fad9d6aa9d77e050"
     },
@@ -208017,14 +208031,14 @@
     "MatedCRTHarmonic.RouteM.DLevels": {
       "path": "MatedCRTHarmonic/RouteM/DLevels.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "e6523af17f638bf34bbedf49f1e875757b9a713ad1ec74e574ef801a320cd509",
+      "sha256": "8feb784eefc57aed8bc231413296eaecfec4f89e942b76309afa4a82f631d308",
       "imports": [
         "MatedCRTHarmonic.RouteM.DGeometry"
       ],
       "local_imports": [
         "MatedCRTHarmonic.RouteM.DGeometry"
       ],
-      "bytes": 10307,
+      "bytes": 10285,
       "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited",
       "development_sha256": "d74a087a1701b5c175abaa1df3a7fff9a36aa2cfbd29954f402103ae25e714b2"
     },
@@ -208097,7 +208111,7 @@
     "MatedCRTHarmonic.RouteM.PsiBundle": {
       "path": "MatedCRTHarmonic/RouteM/PsiBundle.lean",
       "source_commit": "ea91ba8237fe5fb063f4ad5ad18b0a3eefc9d9be",
-      "sha256": "d5e9ec8c6659404d34c84d6d0bdd0bb221226eb7475b1ecfef9872df7263147b",
+      "sha256": "92e1fc9492fae40d7c530394c4d45e4104a6330265b53bd2b73f31fd71b55da3",
       "imports": [
         "Mathlib",
         "MatedCRTHarmonic.Frozen.MatedCRTPath2",
@@ -208353,7 +208367,7 @@
         "MatedCRTHarmonic.Frozen.MatingOfTreesInput"
       ],
       "bytes": 779,
-      "release_transform": "extracted from a private development: namespace renamed, declarations outside the scope of this release removed, comments edited"
+      "release_transform": "library root written for this release"
     }
   }
 }

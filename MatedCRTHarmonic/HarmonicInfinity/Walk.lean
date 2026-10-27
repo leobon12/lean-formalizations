@@ -5,25 +5,20 @@ import MatedCRTHarmonic.Frozen.Disconnects
 import MatedCRTHarmonic.Frozen.Recurrent
 
 /-!
-# Simple random walk as a nearest-neighbour chain; recurrence and uniform disconnection
+# Simple random walk as a nearest-neighbour chain; recurrence
 
-Source: §4 (Route C): definitions, C0, C3 for the
-frozen edge-end walk `G.walkLaw`, and the uniform disconnection property `UD(p)`.
+Facts for the frozen edge-end walk `G.walkLaw`.
 
-* `G.Recurrent` (the recurrence argument; the frozen v2 anchor `LFMultigraph.Recurrent`, re-based by T0 c3, (4)):
+* `G.Recurrent` (the frozen definition `LFMultigraph.Recurrent`):
   from every vertex, simple random walk hits every vertex almost surely
   (hitting form of the recurrence result; it gives a.s. hitting of every nonempty set,
   `walkLaw_hitTime_ne_top`, also from dart states, `chainLaw_hitTime_ne_top`).
 * `walkTrace G F ω`: the vertices visited strictly before the first visit to `F`.
-* `UniformDisconnection G p` (the recurrence argument, "uniform disconnection"): for every finite `F` there is a
-  finite `F'` such that from every `x ∉ F'`, with probability at least `p`, the vertices visited
-  before `T_F` disconnect every `y ∉ F'` from `F`.
 * `hitDist G I x W`: the hitting distribution of `I` from `x`.
 * `isNNChain_walk`: the edge-end walk is a nearest-neighbour chain on `G.adj`, so the general
   results of `HarmonicInfinity/Chain.lean` and `HarmonicInfinity/Entrance.lean` apply;
-  `hitDist_le_add`, `abs_hitDist_sub_le` are C3 for the walk.
-* `harm_eq_entryProb` (**C0**): on a recurrent graph, `harm^x_A` is the unconditioned entry-edge law
-  `entryProb A e (start x)`; `harm_empty`: `harm^x_∅ = 0`.
+  `hitDist_le_add`, `abs_hitDist_sub_le` are the hitting-distribution bounds for the walk.
+* `entryProb A e s`: the probability that the walk from `s` visits `A` and enters it through `e`.
 -/
 
 set_option autoImplicit false
@@ -43,13 +38,6 @@ variable {V E : Type*} (G : LFMultigraph V E)
 all visited vertices if `F` is never visited). -/
 def walkTrace (F : Set V) (ω : ℕ → G.State) : Set V :=
   {v | ∃ m : ℕ, (m : ℕ∞) < hitTime F (G.vertexPath ω) ∧ G.vertexPath ω m = v}
-
-/-- **Uniform disconnection** with probability `p` (the recurrence argument, `UD(p)`): for every finite `F`
-there is a finite `F'` such that for all `x, y ∉ F'`, with probability at least `p` the walk from
-`x` disconnects `y` from `F` before hitting `F`. -/
-def UniformDisconnection (p : ℝ) : Prop :=
-  ∀ F : Finset V, ∃ F' : Finset V, ∀ x ∉ F', ∀ y ∉ F',
-    ENNReal.ofReal p ≤ G.walkLaw x {ω | G.Disconnects (walkTrace G F ω) {y} F}
 
 /-- The hitting distribution of `I` from `x`: the probability that the walk visits `I` and first
 does so at a vertex of `W`. -/
@@ -91,7 +79,7 @@ theorem disconnects_iff_graphSeparates (U A B : Set V) :
     G.Disconnects U A B ↔ GraphSeparates G.adj U A B :=
   Iff.rfl
 
-/-! ### C3 for the walk -/
+/-! ### Hitting-distribution bounds for the walk -/
 
 /-- **C3 for simple random walk** ([18, Lemma 3.10]; the recurrence argument): for all `I, W, x, y`,
 `P_y(X_{T_I} ∈ W) ≤ P_x(X_{T_I} ∈ W) + (1 - P_x(walk before T_I disconnects y from I))`. -/
@@ -138,7 +126,7 @@ theorem abs_hitDist_sub_le [Countable V] {G : LFMultigraph V E} (hrec : G.Recurr
   exact abs_hitLaw_sub_le (isNNChain_walk G) I W (chainLaw_hitTime_ne_top hrec hI _)
     (chainLaw_hitTime_ne_top hrec hI _)
 
-/-! ### C0: harmonic measure from a point on a recurrent graph -/
+/-! ### The entry-edge law -/
 
 theorem entryProb_le_one (A : Set V) (e : E) (s : G.State) : entryProb G A e s ≤ 1 :=
   prob_le_one

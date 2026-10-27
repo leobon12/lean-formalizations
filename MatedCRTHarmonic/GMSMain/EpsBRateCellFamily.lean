@@ -183,7 +183,7 @@ theorem itinRate_of_l38Rate (F : RandomCellFamily) (q ρ : ℝ) {a27 C27 a8 : �
       _ = ENNReal.ofReal 1 := ENNReal.ofReal_one.symm
       _ ≤ ENNReal.ofReal (C * mesh k ^ aᵢ) := ENNReal.ofReal_le_ofReal hone
 
-/-- **The corrected Proposition 2.6 with its rate `min a27 ai / 4` exposed** (body of
+/-- **The grid annulus-disconnection estimate with its rate `min a27 ai / 4` exposed** (body of
 `CellFamily.cellFamily_compl_of_interfaces_bad`). -/
 theorem sgcRate_of_itinRate (F : RandomCellFamily) (γ ρ q : ℝ)
     (_hγ : γ ∈ Set.Ioo 0 2) (_hρ : ρ ∈ Set.Ioo 0 1)
@@ -440,7 +440,7 @@ theorem lemma311Rate_of_sgc (F : CellFamily.RandomCellFamily) (hconn : CellFamil
     calc F.P (T15A.Lemma311Good F k ρ β p)ᶜ ≤ 1 := prob_le_one
       _ = ENNReal.ofReal 1 := ENNReal.ofReal_one.symm
       _ ≤ _ := ENNReal.ofReal_le_ofReal hone
-  · -- fine meshes: (3.35) holds on the Proposition 2.6 event of a connected graph
+  · -- fine meshes: (3.35) holds on the grid annulus-disconnection event of a connected graph
     obtain ⟨h1, h2, h3, h4⟩ := hK k hkK
     have hs : 0 < CellFamily.mesh k ^ χ := Real.rpow_pos_of_pos hm0 _
     have hd : 0 ≤ CellFamily.mesh k ^ q := Real.rpow_nonneg hm0.le _

@@ -4,8 +4,7 @@ import MatedCRTHarmonic.Harmonic.Walk
 /-!
 # Hitting distributions of nearest-neighbour chains and separation
 
-Source: §4 (Route C), steps (M1), C2, C3: a
-maximum-principle proof of [18, Lemma 3.10] = [19, Lemma 3.12] that avoids Wilson's algorithm.
+A maximum-principle proof of [18, Lemma 3.10] = [19, Lemma 3.12] that avoids Wilson's algorithm.
 
 Setting (`IsNNChain κ π start Γ`): a Markov chain with kernel `κ` on a countable discrete state
 space `S`, a vertex map `π : S → V`, a section `start : V → S` of `π` (the chain "started at the
@@ -267,7 +266,7 @@ theorem hitLaw_eq_setLIntegral (hc : IsNNChain κ π start Γ) {I B : Set V} (hI
 
 end Markov
 
-/-! ### C2: a superlevel path to `I` -/
+/-! ### A superlevel path to `I` -/
 
 section Superlevel
 
@@ -356,7 +355,7 @@ theorem exists_walk_hitLaw_le (hc : IsNNChain κ π start Γ) (I W : Set V) (y :
 
 end Superlevel
 
-/-! ### C3: the total-variation bound by the separation probability -/
+/-! ### The total-variation bound by the separation probability -/
 
 section Separation
 

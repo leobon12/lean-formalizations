@@ -76,8 +76,7 @@ positive random scale `R_ε` with `law(t ↦ R_ε⁻¹ η(εt)) = law(η)` on `C
 `h^ε =ᵈ h`. By the γ-LQG coordinate change formula (2.6), `μ_h(X) = ε μ_{h^ε}(X/R_ε)` …, hence `η^ε` is parameterized by
 γ-quantum mass with respect to `h^ε`. From this and the scale invariance of the law of space-filling SLE_{κ'}, we get
 `(h^ε, η^ε) =ᵈ (h, η)`" (the curve marginal is stated here, with `R_ε` any positive measurable scale; the curve-space formulation: the curve
-space is `C(ℝ, ℂ)`, not paths modulo reparametrization). Producers: DMS Prop 4.13(i) for the `0`-cone (SLE-free; constructions
-LC/P235), the coordinate change (SLE-free; LR1), the scale invariance of whole-plane space-filling SLE and its
+space is `C(ℝ, ℂ)`, not paths modulo reparametrization). Producers: DMS Prop 4.13(i) for the `0`-cone (SLE-free; proved in this library), the coordinate change (SLE-free; LR1), the scale invariance of whole-plane space-filling SLE and its
 independence from the field (IGC from the bundle fields `igMap`, `indep_curve`), and `areaParam₀`. -/
 def CurveScaleInvariant {Ω : Type*} [MeasurableSpace Ω] (P : Measure Ω) (η : Ω → C(ℝ, ℂ)) : Prop :=
   ∀ ε : ℝ, 0 < ε → ∃ R : Ω → ℝ, Measurable R ∧ (∀ ω, 0 < R ω) ∧

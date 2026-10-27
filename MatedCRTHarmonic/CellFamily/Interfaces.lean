@@ -81,7 +81,7 @@ mesh-`2⁻ᵏ` edge type is `MatedCRT.Edge (mesh k) (bm ω)` and the family mult
 Unlike the adjacency identification it determines the walk
 laws ([18] Lemma 3.8, the itinerary, `ScaledGridControl`, the joint-scaling event identity), `deg` (`uDens` in
 Proposition 2.10) and looplessness (`MatedCRTMultigraphIdentification.loopless`). The cell-model instance
-defines its mesh graphs as the mated-CRT multigraphs of Definition 1.12,
+defines its mesh graphs as the mated-CRT multigraphs of [18] (1.1),
 so that the identity holds by construction; the unit-to-mesh transport of the multigraph is
 `MesoModel.graphCast_eq_unitRescalePath`. -/
 def MatedCRTMultigraphIdentification (F : RandomCellFamily) (bm : F.Ω → MatedCRT.Path2) : Prop :=

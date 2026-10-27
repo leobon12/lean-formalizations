@@ -19,7 +19,7 @@ assumed**: the identity is restricted to `{τ < ⊤}`, as needed on transient gr
 property at the deterministic time `j` on each slice (the architecture of
 `ReflectedWalk.MarkovChain.chainLaw_map_walkShift_hitIndex`, which assumes `τ < ⊤` a.s.).
 
-For successive stopping times (e.g. the scale-hitting times of Proposition 3.2) we define
+For successive stopping times (e.g. successive scale-hitting times) we define
 `thenTime σ τ = σ + τ ∘ θ_σ` (the first time `τ` occurs for the path restarted at `σ`;
 `thenTime σ (hitTime A)` is the first visit to `A` at or after `σ`) and prove:
 

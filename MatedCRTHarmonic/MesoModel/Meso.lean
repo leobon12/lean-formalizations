@@ -64,7 +64,7 @@ private theorem summable_const_mul_mesh_rpow {a C : ℝ} (ha : 0 < a) :
 /-- the joint-scaling identity (event transfer) + the bad-event mesh scaled-grid estimate + Borel–Cantelli: almost
 surely the unit-scale scaled-grid event holds for all large `k`. No measurability of the mesh
 events is used: the failure bound is an outer-measure bound (the outer-measure interface). -/
-private theorem unitScaledGridControl_ae_of_prop23
+private theorem unitScaledGridControl_ae_of_jointScaling
     {γ : ℝ} (M : MatedCRTUnitMesoModel γ)
     (h23 : MatedCRTProposition23GridScalingInput M)
     (χ β α p₀ C : ℝ) (hα : 0 < α)
@@ -123,7 +123,7 @@ private theorem unitVertexCount_ae_of_prop25
   rw [hk.1.encard_eq_coe]
   exact_mod_cast hnat
 
-private theorem p61MesoscopicWitness
+private theorem mesoscopicControlWitness
     (a ρ p χ β q : ℝ)
     (ha : 0 < a) (hρ : 0 < ρ) (hρone : ρ < 1) (hp : 0 < p)
     (hβ : 0 < β) (hβχ : β < χ) (hβq : β < q) (hβa : β < a) :
@@ -221,7 +221,7 @@ private theorem unitMesoscopicWitness_of_interfaces
   have hβq : β < M.q := lt_of_lt_of_le hβmin (min_le_right χ M.q)
   have hβa : β < matedCRTUnitRadiusExponent γ := lt_trans hβq hq_lt_a
   obtain ⟨σ, ν, hσ, hν, hCore⟩ :=
-    p61MesoscopicWitness (matedCRTUnitRadiusExponent γ) M.ρ p₀ χ β M.q ha
+    mesoscopicControlWitness (matedCRTUnitRadiusExponent γ) M.ρ p₀ χ β M.q ha
       M.hρ.1 M.hρ.2 hp₀ hβ hβχ hβq hβa
   exact ⟨χ, β, α, p₀, C, σ, ν,
     hχ, hβ, hβmin, hα, hp₀, hScaled, hσ, hν, hCore⟩
@@ -236,7 +236,7 @@ private theorem unitEmbeddingMeso_ae_of_witness
     ∀ᵐ ω ∂M.coupled.family.P,
       (M.unitEmbedding ω).MesoscopicControlWith (min p₀ (1 / 2)) σ ν := by
   rcases hW with ⟨_hχ, _hβ, _hβmin, hα, _hp₀, hScaled, _hσ, _hν, hCore⟩
-  have hEventuallyScaled := unitScaledGridControl_ae_of_prop23 M h23
+  have hEventuallyScaled := unitScaledGridControl_ae_of_jointScaling M h23
     χ β α p₀ C hα hScaled
   have hEventuallyScaled' : ∀ᵐ ω ∂M.coupled.family.P, ∀ᶠ k : ℕ in atTop,
       (M.unitEmbedding ω).ScaledGridControl (M.radius ω k)

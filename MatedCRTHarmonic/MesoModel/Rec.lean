@@ -9,8 +9,8 @@ import MatedCRTHarmonic.MesoModel.CloseCellModel
 
 This is the scale-free route (the scale-free argument). A high-probability application of G3's one-scale
 Theorem 1.4 estimate on `graph (2⁻ᵏ) bm`, followed by Brownian scaling, supplies arbitrarily small
-effective conductances for the unit graph. G3's energy criterion then gives recurrence. Proposition
-2.4 and the random radii `R_{2^k}` are not used on this route.
+effective conductances for the unit graph. G3's energy criterion then gives recurrence. The random
+radii `R_{2^k}` are not used on this route.
 
 The producer input below records an outer-measure bound on failure of the polynomially likely G3
 event (Lemma 2.7 and Proposition 2.10) at each dyadic mesh. The scale map is a measurable

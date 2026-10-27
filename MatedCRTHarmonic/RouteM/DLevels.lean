@@ -7,7 +7,7 @@ The drawing construction and Details (d2). For a non-consecutive pair
 `x < y` and a continuous coordinate `X` (`X = L` or `X = R`):
 
 * the level window `(dWinLo, dWinHi) = (max(inf_{I_x} X, inf_{I_y} X), inf_{[εx, ε(y−1)]} X)`; condition (1.1) of
-  Definition 1.12 is `dWinLo ≤ dWinHi` (`sideCond_iff_dWin`), and G0 (`SideStrict`) makes it strict;
+  [18] is `dWinLo ≤ dWinHi` (`sideCond_iff_dWin`), and G0 (`SideStrict`) makes it strict;
 * `dLevel ε X x y`, a level in the window when it is non-empty (`dLevel_mem`), of the form `q + n√2` with `q ∈ ℚ` and
   `n` the code of the pair `(x, y)`; hence **distinct pairs have distinct levels** (`dLevel_injective`, Details (d2):
   "all L-levels are chosen pairwise distinct");
@@ -35,7 +35,7 @@ def dWinLo (X : ℝ → ℝ) (x y : ℤ) : ℝ :=
 /-- Upper end of the level window of the pair `x < y` for the coordinate `X`: `inf_{[εx, ε(y−1)]} X`. -/
 def dWinHi (X : ℝ → ℝ) (x y : ℤ) : ℝ := MatedCRT.intervalInf X (ε * x) (ε * ((y : ℝ) - 1))
 
-/-- Condition (1.1) of Definition 1.12 says that the level window is non-empty or a point. -/
+/-- Condition (1.1) of [18] says that the level window is non-empty or a point. -/
 theorem sideCond_iff_dWin (X : ℝ → ℝ) (x y : ℤ) :
     MatedCRT.SideCond ε X x y ↔ dWinLo ε X x y ≤ dWinHi ε X x y := Iff.rfl
 

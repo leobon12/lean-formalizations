@@ -3,7 +3,7 @@ import MatedCRTHarmonic.CellFamily.Interfaces
 /-!
 # From dyadic band sequences to every real mesh
 
-[18] states its estimates "for each `ε ∈ (0, 1)`" . The landed [18] layer (Proposition 2.6's
+[18] states its estimates "for each `ε ∈ (0, 1)`" . The landed [18] layer (the grid annulus-disconnection estimate
 `ScaledGridControl`, Lemma 3.8, Lemma 3.11) runs on a `CellFamily.RandomCellFamily` whose `k`-th member is measured
 against the dyadic scale `CellFamily.mesh k = 2⁻ᵏ`. re-uses it for a real mesh `θₖ` in the *band*
 `(2⁻ᵏ⁻¹, 2⁻ᵏ]`: the `k`-th member of the family is the mesh-`θₖ` map, and every polynomial statement at scale `2⁻ᵏ`

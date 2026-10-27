@@ -44,17 +44,17 @@ theorem matedCRTProposition24RadiusInput_of_cone {γ : ℝ} {M : MesoModel.Mated
   rw [hfun]
   exact h
 
-private theorem p235_mesh_eq_rpow (k : ℕ) : CellFamily.mesh k = (2 : ℝ) ^ (-(k : ℝ)) := by
+private theorem assembly_mesh_eq_rpow (k : ℕ) : CellFamily.mesh k = (2 : ℝ) ^ (-(k : ℝ)) := by
   simp [CellFamily.mesh, zpow_neg, zpow_natCast, Real.rpow_neg, Real.rpow_natCast]
 
-private theorem p235_summable_mesh_rpow {α C : ℝ} (hα : 0 < α) :
+private theorem assembly_summable_mesh_rpow {α C : ℝ} (hα : 0 < α) :
     Summable (fun k : ℕ => C * (CellFamily.mesh k) ^ α) := by
   have hr0 : 0 ≤ (2 : ℝ) ^ (-α) := by positivity
   have hr1 : (2 : ℝ) ^ (-α) < 1 := by
     calc (2 : ℝ) ^ (-α) < (2 : ℝ) ^ (0 : ℝ) := Real.rpow_lt_rpow_of_exponent_lt (by norm_num) (by linarith)
       _ = 1 := by simp
   refine ((summable_geometric_of_lt_one hr0 hr1).mul_left C).congr (fun k => ?_)
-  rw [p235_mesh_eq_rpow, ← Real.rpow_mul (by norm_num), ← Real.rpow_natCast, ← Real.rpow_mul (by norm_num)]
+  rw [assembly_mesh_eq_rpow, ← Real.rpow_mul (by norm_num), ← Real.rpow_natCast, ← Real.rpow_mul (by norm_num)]
   congr 2
   ring
 
@@ -93,21 +93,21 @@ theorem unitCellDiamEventually_of_cellFamily {γ : ℝ} (M : MesoModel.MatedCRTU
   have hae := Growth.ae_eventually_notMem_of_real_summable_bound M.coupled.family.P BadUnit
     (fun k => max 0 C * (CellFamily.mesh k) ^ α)
     (fun k => mul_nonneg (le_max_left 0 C) (Real.rpow_nonneg (by unfold CellFamily.mesh; positivity) α))
-    (p235_summable_mesh_rpow hα) hbound
+    (assembly_summable_mesh_rpow hα) hbound
   apply unitCellDiamEventually_of_scaledGrid M (χ := χ) (β := β) (p₀ := p₀)
   filter_upwards [hae] with ω hω
   filter_upwards [hω] with k hk
   simp only [BadUnit, mem_ofPred_eq, not_not] at hk
-  rw [← p235_mesh_eq_rpow]
+  rw [← assembly_mesh_eq_rpow]
   exact hk
 
 /-- **The unit-mesh mesoscopic output conditional on the named inputs.**
 `unitMesoscopicOutput_of_interfaces` uses `h23, h24, h25` produced here. Inputs are the
-SLE-dependent bundle inputs `Prop23JointScaling`, `BoundaryLengthCovariance`, `AreaParametrization`; the SLE-free
+SLE-dependent bundle inputs `ConeJointScaling`, `BoundaryLengthCovariance`, `AreaParametrization`; the SLE-free
 inputs to prove `AreaScalingLaw`, `AreaBallMoment`, `MeshGridEventMeasurable`; and the corrected scaled-grid estimate
 interfaces. No Borel premise on the unit event. -/
 theorem unitMesoscopicOutput_of_cone {γ : ℝ} (M : MesoModel.MatedCRTUnitMesoModel γ)
-    (D : ConeRealization M) (h23 : Prop23JointScaling D) (hBL : BoundaryLengthCovariance D)
+    (D : ConeRealization M) (h23 : ConeJointScaling D) (hBL : BoundaryLengthCovariance D)
     (hpar : AreaParametrization D) (hscale : AreaScalingLaw D) (hmom : AreaBallMoment D)
     (hmeas : MeshGridEventMeasurable) (h26 : MesoModel.MatedCRTCellFamilyInterfaces M) :
     MesoModel.UnitMesoscopicOutput M := by
@@ -120,7 +120,7 @@ theorem unitMesoscopicOutput_of_cone {γ : ℝ} (M : MesoModel.MatedCRTUnitMesoM
 /-- **`CellModelExists γ`, conditional on the named inputs:** compose `unitMesoscopicOutput_of_cone`
 with `MesoModel.cellModelExists_of_inputs` and the recurrence input. -/
 theorem cellModelExists_of_cone {γ : ℝ} (M : MesoModel.MatedCRTUnitMesoModel γ)
-    (D : ConeRealization M) (h23 : Prop23JointScaling D) (hBL : BoundaryLengthCovariance D)
+    (D : ConeRealization M) (h23 : ConeJointScaling D) (hBL : BoundaryLengthCovariance D)
     (hpar : AreaParametrization D) (hscale : AreaScalingLaw D) (hmom : AreaBallMoment D)
     (hmeas : MeshGridEventMeasurable) (h26 : MesoModel.MatedCRTCellFamilyInterfaces M)
     (hrec : MesoModel.MatedCRTRecurrenceInput γ) : MatedCRT.CellModelExists γ :=

@@ -18,7 +18,7 @@ namespace MatedCRTHarmonic
 
 namespace MatedCRT
 
-/-- Condition (1.1) of Definition 1.12 for one coordinate `X ∈ {L, R}` and the vertices `εx < εy`
+/-- Condition (1.1) of [18] for one coordinate `X ∈ {L, R}` and the vertices `εx < εy`
 (vertex `x : ℤ` stands for the point `εx ∈ εℤ`):
 `inf_{[εx−ε, εx]} X ∨ inf_{[εy−ε, εy]} X ≤ inf_{[εx, εy−ε]} X`. -/
 def SideCond (ε : ℝ) (X : ℝ → ℝ) (x y : ℤ) : Prop :=

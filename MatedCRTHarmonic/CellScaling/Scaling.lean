@@ -8,14 +8,14 @@ import MatedCRTHarmonic.CellScaling.Model
 In the joint-scaling identity, dilation by `R_b` identifies the `1/b`-cell configuration
 for `(h_b, η^b)` with the unit-cell configuration for `(h, η)`. The cell identity is **deterministic**:
 `H^{1/b}_x(h_b, η^b) = R_b⁻¹ H^1_x(h, η)` (ℤ-indexing), and `x ↦ x` is a multigraph identity
-`G^{1/b}(b^{-1/2} bm(b ·)) = G^1(bm)` (Brownian scaling of Definition 1.12; `MesoModel.graphCast_eq_unitRescalePath`).
+`G^{1/b}(b^{-1/2} bm(b ·)) = G^1(bm)` (Brownian scaling of [18] (1.1); `MesoModel.graphCast_eq_unitRescalePath`).
 The law identity (the joint-scaling identity as printed, plus the boundary-length covariance) then transfers probabilities.
 
 Main results:
 * `rawScaledGridControl_smul_iff`: dilation covariance of the scaled-grid estimate event (deterministic);
 * `rawScaledGridControl_unit_iff_meshGridGood`: the unit-mesh event of `(bm, η)` at radius `c` is the mesh-`2^{-k}`
   event of `(b^{-1/2} bm(b ·), c⁻¹ η(b ·))`, `b = 2^k` (deterministic);
-* `configScalingLaw`: `(b^{-1/2} bm(b ·), η^b) =d (bm, η)` from `Prop23JointScaling` and `BoundaryLengthCovariance`;
+* `configScalingLaw`: `(b^{-1/2} bm(b ·), η^b) =d (bm, η)` from `ConeJointScaling` and `BoundaryLengthCovariance`;
 * `matedCRTProposition23GridScalingInput_of_cone`: `MesoModel.MatedCRTProposition23GridScalingInput`.
 -/
 
@@ -249,7 +249,7 @@ theorem rawScaledGridControl_unit_iff_meshGridGood (k : ℕ) (Z : MatedCRT.Path2
 /-- **`(b^{-1/2} bm(b ·), η^b) =d (bm, η)`** for every `b > 0` (from the joint-scaling identity as printed and the
 boundary-length covariance): equality of probabilities of every measurable set of `(path, curve)` pairs. -/
 theorem configScalingLaw {γ : ℝ} {M : MesoModel.MatedCRTUnitMesoModel γ} (D : ConeRealization M)
-    (h23 : Prop23JointScaling D) (hBL : BoundaryLengthCovariance D) {b : ℝ} (hb : 0 < b)
+    (h23 : ConeJointScaling D) (hBL : BoundaryLengthCovariance D) {b : ℝ} (hb : 0 < b)
     {S : Set (MatedCRT.Path2 × C(ℝ, ℂ))} (hS : MeasurableSet S) :
     M.coupled.family.P {ω | (brownRescale b (M.coupled.bm ω),
         coneRescaleCurve (D.scale b ω) b (D.curve ω)) ∈ S} =
@@ -274,9 +274,9 @@ theorem configScalingLaw {γ : ℝ} {M : MesoModel.MatedCRTUnitMesoModel γ} (D 
 
 /-- **the joint-scaling identity, §6 event-transfer form** : the mesoscopic construction's
 `MesoModel.MatedCRTProposition23GridScalingInput`, for the SLE/LQG cone realization, from the joint-scaling identity as printed
-(`Prop23JointScaling`), the boundary-length covariance and the measurability of the mesh event. -/
+(`ConeJointScaling`), the boundary-length covariance and the measurability of the mesh event. -/
 theorem matedCRTProposition23GridScalingInput_of_cone {γ : ℝ} {M : MesoModel.MatedCRTUnitMesoModel γ}
-    (D : ConeRealization M) (h23 : Prop23JointScaling D) (hBL : BoundaryLengthCovariance D)
+    (D : ConeRealization M) (h23 : ConeJointScaling D) (hBL : BoundaryLengthCovariance D)
     (hmeas : MeshGridEventMeasurable) :
     MesoModel.MatedCRTProposition23GridScalingInput M := by
   intro k χ β p

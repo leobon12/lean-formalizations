@@ -6,7 +6,7 @@ import MatedCRTHarmonic.Frozen.IsCorrelatedBM2
 /-!
 # Correlated two-sided Brownian law for the mated-CRT map
 
-This module constructs a continuous-path law with the covariance specified in Definition 1.12.
+This module constructs a continuous-path law with the covariance specified in [18] §1.1.
 -/
 
 set_option autoImplicit false

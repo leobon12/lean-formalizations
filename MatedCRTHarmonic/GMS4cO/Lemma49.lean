@@ -25,7 +25,7 @@ measurable set `A ⊆ ℝ²` of circle-average values, `∫_{a ∈ A} Y ≤ C ·
 (`L43O.condExp_le_of_setIntegral_le` converts it to a `condExp` bound). The bound is proved for the larger observable
 `1{diam η₀([τ_z − ε, τ_z + ε]) ≤ ε^q} · X`, hence for `1_{F^ε(z)} X` with any version of the remaining two conditions
 of `F^ε(z)` (degree cap; circle averages, with or without the IG phase `U`). The constant `C` depends only on
-`p` (and the coupling); it is uniform in `ρ`, `z` and `ε`, because P23Z's `ε`-uniform moments of [18] Theorem 4.4
+`p` (and the coupling); it is uniform in `ρ`, `z` and `ε`, because the `ε`-uniform moments of [18] Theorem 4.4
 hold at every mesh. `ε_*` depends on `ρ`, `q`, `ζ` only through `ε_*^{q−4ζ} < 1 − ρ` and `8 ε_*^{4ζ} ≤ 1`.
 
 **Conditioning variables.** The pair `(h₀,r(z), hIG₀,r(z))` of the source (the normalized IG field, [18]),

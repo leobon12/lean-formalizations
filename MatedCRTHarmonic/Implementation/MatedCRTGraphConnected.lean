@@ -9,7 +9,7 @@ import MatedCRTHarmonic.Frozen.MatedCRTGraph
 # Provider of the frozen theorem `matedCRT_graph_connected`
 
 Proof of the theorem `MatedCRTHarmonic/Frozen/MatedCRTGraphConnected.lean`, connectivity of the ε-mated-CRT map
-(Definition 1.12). This module states `MatedCRTHarmonic.Implementation.matedCRT_graph_connected_impl` with the
+([18] (1.1)). This module states `MatedCRTHarmonic.Implementation.matedCRT_graph_connected_impl` with the
 frozen statement verbatim (the anchor's ∀-form; same imports of frozen definition files, `open`s,
 `noncomputable section` and `variable {V E : Type*}`) and proves it by a direct proof : consecutive vertices are adjacent. The theorem follows by `by exact MatedCRTHarmonic.Implementation.matedCRT_graph_connected_impl`. 
 -/

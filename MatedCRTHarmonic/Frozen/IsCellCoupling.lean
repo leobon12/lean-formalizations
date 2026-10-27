@@ -23,8 +23,8 @@ namespace MatedCRTHarmonic
 
 namespace MatedCRT
 
-/-- A **mated-CRT cell coupling**: on `(Ω, P)`, `bm` is measurable with the law of Definition 1.12, and
-almost surely `cell ω` are the cells of a cellular embedding (Definition 1.8, frozen `CellularEmbedding`) of the
+/-- A **mated-CRT cell coupling**: on `(Ω, P)`, `bm` is measurable with the Brownian law of [18] §1.1, and
+almost surely `cell ω` are the cells of a cellular embedding (frozen `CellularEmbedding`) of the
 unit-mesh mated-CRT map of `bm ω`, rooted at `0`. (The SLE/LQG realization `cell ω x = η([x − 1, x])` is one such coupling; only "adjacent ⇒ intersecting" and Euclidean-null overlaps are required.) -/
 structure IsCellCoupling (γ : ℝ) {Ω : Type*} [MeasurableSpace Ω] (P : Measure Ω) (bm : Ω → Path2)
     (cell : Ω → ℤ → Set ℂ) : Prop where

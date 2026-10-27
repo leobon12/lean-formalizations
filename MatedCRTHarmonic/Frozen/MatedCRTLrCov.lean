@@ -17,7 +17,7 @@ namespace MatedCRTHarmonic
 
 namespace MatedCRT
 
-/-- The covariance matrix per unit time of Definition 1.12 : `Var(L_1) = Var(R_1) = 1`,
+/-- The covariance matrix per unit time of the Brownian pair of [18] §1.1 : `Var(L_1) = Var(R_1) = 1`,
 `Cov(L_1, R_1) = −cos(πγ²/4)`. -/
 def lrCov (γ : ℝ) (i j : Fin 2) : ℝ := if i = j then 1 else -Real.cos (Real.pi * γ ^ 2 / 4)
 

@@ -18,10 +18,10 @@ open scoped ENNReal NNReal
 
 namespace MatedCRTHarmonic
 
-/-- Definition 1.8 (corrected per DA3 D1 / DA1 item 9): cells `H_x` indexed by vertices (the
+/-- A cellular embedding: cells `H_x` indexed by vertices (the
 bijection `ϕ`), compact, connected, with nonempty interior, locally finite, covering `ℂ`, with Lebesgue-null
 pairwise intersections; adjacent vertices have intersecting cells; `0 ∈ H_o`. Finite multiplicities and local
-finiteness are part of `LFMultigraph`; planarity of `G` is not used (DA3 D1(iv)). -/
+finiteness are part of `LFMultigraph`; planarity of `G` is not used. -/
 structure CellularEmbedding {V E : Type*} (G : LFMultigraph V E) (o : V) where
   cell : V → Set ℂ
   isCompact_cell : ∀ x, IsCompact (cell x)

@@ -5,7 +5,7 @@ import QuantumZipper.Proofs.Probability.Williams.OccupationHit2
 /-!
 # One-sided Brownian coordinates of the mated-CRT path law
 
-The covariance specification in Definition 1.12 restricts on each half-line to standard Brownian
+The covariance specification of [18] §1.1 restricts on each half-line to standard Brownian
 motion. These facts are the probability input for local finiteness of the graph.
 -/
 

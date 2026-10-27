@@ -58,7 +58,7 @@ theorem measure_lt_le_lintegral_rpow_div {Ω : Type*} [MeasurableSpace Ω] {P : 
         rw [mul_comm]; gcongr
     _ ≤ _ := hmarkov
 
-/-- **the area-growth bound** (the cell-counting argument, Details D.2): for every `δ > 0`, almost surely
+/-- **the area-growth bound** (the cell-counting argument): for every `δ > 0`, almost surely
 `μ_h(B_{R_{2^k}}(0)) ≤ 2^{(1+δ)k}` for all sufficiently large `k`. From `AreaScalingLaw` ([14, Prop 4.13(i)] +
 [SW]) and `AreaBallMoment` ([16, Lemma A.3]) by Markov's inequality and Borel–Cantelli. -/
 theorem ae_eventually_area_ball_le {γ : ℝ} (hγ : 0 < γ) (hγ2 : γ < 2) {M : MesoModel.MatedCRTUnitMesoModel γ}

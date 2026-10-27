@@ -11,10 +11,10 @@ the frozen bundle `MatedCRT.MatingOfTreesInput γ` : stated for the mesh family
 multigraph *is* the mated-CRT multigraph `MatedCRT.graph (2⁻ᵏ) (bm ω)` (`coupled.meshGraph_eq`) and its cells are the
 SLE/LQG cells `η([ε(x−1), εx])`, so `walkLaw` is the simple random walk `P^ε_x` of [18].
 
-* `lemma311Bad_of_cellFamily` — abstract: the corrected Proposition 2.6 bad-event bound (frozen `ScaledGridControl` at
+* `lemma311Bad_of_cellFamily` — abstract: the grid annulus-disconnection bad-event bound (frozen `ScaledGridControl` at
   ambient radius `ρ₂`) and almost-sure connectivity give `Lemma311Bad F ρ` for every `ρ < ρ₂` (grid approximation,
   `T15ACore.lemma311Holds_of_scaledGridControl`, plus the coarse meshes absorbed into the constant).
-* `cellFamilyCompl_at` — the corrected Proposition 2.6 on the bundle's family at any ambient radius `ρ₂ < ρ'`, given
+* `cellFamilyCompl_at` — the grid annulus-disconnection estimate on the bundle's family at any ambient radius `ρ₂ < ρ'`, given
   [18] Proposition 2.10 at `(ρ', 100)` (`BundleSec4.Prop210At`): every interface is produced from the preceding estimates
   (L27 at `ρ₂` and `ρ'`, the one-scale Lemma 3.8 at `ρ₂`, WSMP's waypoint input, Route M separation, the lattice
   count, connectivity and looplessness), with the radii as parameters instead of MTC's fixed `ρ = 1/2`.
@@ -61,10 +61,10 @@ private theorem eventually_mesh_rpow_lt {a c : ℝ} (ha : 0 < a) (hc : 0 < c) :
     simpa [Function.comp_def, Real.zero_rpow ha.ne'] using hcont.tendsto.comp hm
   exact ht.eventually (Iio_mem_nhds hc)
 
-/-! ### From the corrected Proposition 2.6 to [18] Lemma 3.11 -/
+/-! ### From the grid annulus-disconnection estimate to [18] Lemma 3.11 -/
 
-/-- **[18] Lemma 3.11 from the corrected Proposition 2.6.** If almost every mesh graph of `F` is connected and the
-frozen Proposition 2.6 event `ScaledGridControl 1 (2⁻ᵏ) χ β q ρ₂ p` fails with outer probability `≤ C 2^{−kα}`, with
+/-- **[18] Lemma 3.11 from the grid annulus-disconnection estimate.** If almost every mesh graph of `F` is connected and the
+frozen grid annulus-disconnection event `ScaledGridControl 1 (2⁻ᵏ) χ β q ρ₂ p` fails with outer probability `≤ C 2^{−kα}`, with
 `0 < β < min χ q`, then `Lemma311Bad F ρ` holds for every `ρ < ρ₂` (with the same `α, β, p`). -/
 theorem lemma311Bad_of_cellFamily (F : CellFamily.RandomCellFamily) (hconn : CellFamily.GraphConnected F)
     {χ β α p C q ρ₂ ρ : ℝ} (hβ : 0 < β) (hβχ : β < χ) (hβq : β < q) (hα : 0 < α) (hp : 0 < p)
@@ -98,7 +98,7 @@ theorem lemma311Bad_of_cellFamily (F : CellFamily.RandomCellFamily) (hconn : Cel
     calc F.P (Lemma311Good F k ρ β p)ᶜ ≤ 1 := prob_le_one
       _ = ENNReal.ofReal 1 := ENNReal.ofReal_one.symm
       _ ≤ _ := ENNReal.ofReal_le_ofReal hone
-  · -- fine meshes: (3.35) holds on the Proposition 2.6 event of a connected graph
+  · -- fine meshes: (3.35) holds on the grid annulus-disconnection event of a connected graph
     obtain ⟨h1, h2, h3, h4⟩ := hK k hkK
     have hs : 0 < CellFamily.mesh k ^ χ := Real.rpow_pos_of_pos hm0 _
     have hd : 0 ≤ CellFamily.mesh k ^ q := Real.rpow_nonneg hm0.le _
@@ -141,7 +141,7 @@ variable {γ : ℝ} {Ω : Type} [MeasurableSpace Ω] {P : Measure Ω}
   {X X₀ hIG₀ : Ω → MatedCRT.Field} {B B' B₀ B₀' : ℝ≥0 → Ω → ℝ} {U : Ω → ℝ}
   {ηL η η₀ : Ω → C(ℝ, ℂ)} {bm : Ω → MatedCRT.Path2}
 
-/-- **The corrected Proposition 2.6 on the bundle's mesh family at ambient radius `ρ₂`**, from [18]
+/-- **The grid annulus-disconnection estimate on the bundle's mesh family at ambient radius `ρ₂`**, from [18]
 Proposition 2.10 at `(ρ', 100)` with `ρ₂ < ρ' < 1`. The interfaces are produced from the preceding estimates
 (`MesoModel.cellFamilyCompl_of_interfaces`, `Lemma38Source.annulus38OneScaleBadBound_of_proposition210_at_mtc`), with the two radii as
 parameters. -/
@@ -171,7 +171,7 @@ theorem cellFamilyCompl_at
   have hq1 : M.q < 1 := by
     have hfrac : 2 / (2 + γ) ^ 2 < 1 := (div_lt_iff₀ hden).mpr (by nlinarith [sq_nonneg γ, hγ.1])
     exact M.hq.2.trans hfrac
-  -- [18] Lemma 2.7 at the Proposition 2.6 radius `ρ₂`
+  -- [18] Lemma 2.7 at the radius of the grid annulus-disconnection estimate `ρ₂`
   have h27 : CellFamily.Lemma27CellDiamBad F M.q ρ₂ :=
     CellScaling.lemma27CellDiamBad_of_cellModel hSLE hGMC hdom hγ.1 F id (MeasurePreserving.id _)
       (C.ae_familyCell_eq_toCellModel hpar) hq M.hq.2 hρ₂.le (hρ₂ρ'.trans hρ')

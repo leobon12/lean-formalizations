@@ -95,7 +95,7 @@ theorem dArc_swap {x y : ℤ} (hne : x ≠ y) : dArc ε ω y x = (dArc ε ω x y
 
 /-! ### Adjacency in the mated-CRT map -/
 
-/-- The kinds of the adjacent ordered pairs `x < y` of the mated-CRT map (Definition 1.12): consecutive, an L-edge,
+/-- The kinds of the adjacent ordered pairs `x < y` of the mated-CRT map ([18] (1.1)): consecutive, an L-edge,
 or an R-edge that is not also an L-edge. -/
 theorem matedCRT_adj_cases {h : MatedCRT.IsLocallyFinite ε ω} {x y : ℤ} (hxy : x < y)
     (hadj : (MatedCRT.graph ε ω h).adj.Adj x y) :

@@ -154,7 +154,7 @@ namespace ConeRealization
 
 variable {γ : ℝ} {M : MesoModel.MatedCRTUnitMesoModel γ} (D : ConeRealization M)
 
-/-- **DMS Proposition 4.13(i) for the cell model** (paper Prop 2.3, field part): for
+/-- **DMS Proposition 4.13(i) for the cell model** (the cone scaling identity, field part): for
 every `b > 0`, `h_b = h(R_b ·) + Q log R_b − γ⁻¹ log b` has the law of the cone field `h`, and both
 are a.e.-measurable. -/
 theorem map_rescaledField_eq (b : ℝ) :

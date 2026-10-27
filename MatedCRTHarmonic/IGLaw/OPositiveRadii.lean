@@ -24,7 +24,7 @@ From the frozen bundle plus this one hypothesis:
   `CellScaling.IGCFixedAffineRerootInvariant P ηL` (replacing the refuted full-input route);
 * `IsMatingOfTreesCoupling.map_prod_curveRescale_sq_cones_of_igMapPositiveRadii`: for every measurable positive
   scale `S` of the complete cone tuple `V = (X, B, B', X₀, B₀, B₀')`,
-  `law(V, S(V)⁻¹ ηL(S(V)² ·)) = law(V, ηL)` (the random-scale curve law of Prop 2.3 and [18] Thm 4.4).
+  `law(V, S(V)⁻¹ ηL(S(V)² ·)) = law(V, ηL)` (the random-scale curve law of the cone scaling identity and [18] Thm 4.4).
 -/
 
 set_option autoImplicit false

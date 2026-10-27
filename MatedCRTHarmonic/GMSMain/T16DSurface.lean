@@ -5,7 +5,7 @@ import MatedCRTHarmonic.GMSMain.T16DTutte
 
 The draft frozen surface v5 does not
 define `f_ε` or `Φ^ε` as objects; its good events assert that a function with the defining properties of [18] (1.6)
-exists and that every such function satisfies the bound (S0V disclosure R11). This file mirrors its two predicates
+exists and that every such function satisfies the bound (disclosure 9 of the guide). This file mirrors its two predicates
 with the **same bodies and argument order** (local copies in the namespace `GMSMain.T16D`, to be replaced by the frozen
 names `LFMultigraph.IsHarmonicExtension`, `LFMultigraph.IsTutteEmbedding` once frozen, by `rfl`):
 

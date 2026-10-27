@@ -9,9 +9,9 @@ import MatedCRTHarmonic.CellScaling.Scaling
 import MatedCRTHarmonic.CellScaling.MeshMeasurableEvent
 
 /-!
-#  the joint-scaling identity (`Prop23JointScaling`) for the realization of a mating-of-trees coupling
+#  the joint-scaling identity (`ConeJointScaling`) for the realization of a mating-of-trees coupling
 
-Target: the exact `CellScaling.Prop23JointScaling C` (paper, as printed:
+Target: the exact `CellScaling.ConeJointScaling C` (paper, as printed:
 `(h_b, η^b) =d (h, η)` for every `b > 0`, as equality of the probabilities of every Borel set of
 (field, curve) pairs), at the realization `C = MoTInput.coneRealizationOfCoupling D hstd hγ` of a
 frozen `MatedCRT.IsMatingOfTreesCoupling` `D` — exactly the form `MesoModel/FinalAssembly.lean`
@@ -37,7 +37,7 @@ Proof (the scaling argument steps 1–4):
 **Named input** `CurveDilationLaw P ηL` (`∀ s > 0, law(affineReroot 0 s 0 ηL) = law(ηL)`): the
 dilation invariance of whole-plane space-filling SLE (IG4; DMS §1.4.1). Producer:,
 `IGLaw.IsMatingOfTreesCoupling.map_affineReroot_ηL` (all `z₀`, `s > 0`, `φ`) at `z₀ = 0`, `φ = 0`,
-for the frozen bundle version 2. It is discharged in `JointScalingOFinal` (`prop23JointScaling_holds`); this
+for the frozen bundle version 2. It is discharged in `JointScalingOFinal` (`coneJointScaling_holds`); this
 file keeps it as a hypothesis so that it depends on landed modules only. No full-input law equality
 is used here.
 -/
@@ -214,15 +214,15 @@ theorem exists_radialPath_indepFun_curve
     rw [ConeScaling.radMap_apply, ite_eq_left hmem]
     simp only [e1, e2]
 
-/-- **the joint-scaling identity (`Prop23JointScaling`, as printed) for the cone realization of a
+/-- **the joint-scaling identity (`ConeJointScaling`, as printed) for the cone realization of a
 mating-of-trees coupling**, from the curve-law dilation invariance `CurveDilationLaw P ηL` (named
 input, producer IGCO). All other ingredients are landed theorems: ASL (field law), LR1 (area
 covariance at the random dilation), LC/GMCF (cone area existence, positivity), IGLaw (independence
 and root of `η_L`), and the bundle's `areaParam`. -/
-theorem prop23JointScaling_of_coupling
+theorem coneJointScaling_of_coupling
     (D : MatedCRT.IsMatingOfTreesCoupling γ P X X₀ hIG₀ B B' B₀ B₀' U ηL η η₀ bm)
     (hstd : StandardBorelSpace Ω) (hγ : γ ∈ Ioo 0 2) (hdil : CurveDilationLaw P ηL) :
-    Prop23JointScaling (MoTInput.coneRealizationOfCoupling D hstd hγ) := by
+    ConeJointScaling (MoTInput.coneRealizationOfCoupling D hstd hγ) := by
   intro b hb S hS
   have : IsProbabilityMeasure P := D.isProbabilityMeasure
   obtain ⟨hγ0, hγ2⟩ := hγ
@@ -365,14 +365,14 @@ theorem boundaryLengthCovariance_of_coupling
 
 /-- **the joint-scaling identity event-transfer input at the coupling** (the mesoscopic construction's
 `MesoModel.MatedCRTProposition23GridScalingInput`): `CellScaling.matedCRTProposition23GridScalingInput_of_cone`
-with `prop23JointScaling_of_coupling`, the bundle's boundary-length covariance and MGEM's landed
+with `coneJointScaling_of_coupling`, the bundle's boundary-length covariance and MGEM's landed
 `MeshGridEventMeasurable_holds`. -/
 theorem matedCRTProposition23GridScalingInput_of_coupling
     (D : MatedCRT.IsMatingOfTreesCoupling γ P X X₀ hIG₀ B B' B₀ B₀' U ηL η η₀ bm)
     (hstd : StandardBorelSpace Ω) (hγ : γ ∈ Ioo 0 2) (hdil : CurveDilationLaw P ηL) :
     MesoModel.MatedCRTProposition23GridScalingInput (MoTInput.unitMesoModelOfCoupling D hstd hγ) :=
   matedCRTProposition23GridScalingInput_of_cone (MoTInput.coneRealizationOfCoupling D hstd hγ)
-    (prop23JointScaling_of_coupling D hstd hγ hdil) (boundaryLengthCovariance_of_coupling D hstd hγ)
+    (coneJointScaling_of_coupling D hstd hγ hdil) (boundaryLengthCovariance_of_coupling D hstd hγ)
     MeshGridEventMeasurable_holds
 
 end Coupling

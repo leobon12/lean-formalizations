@@ -15,7 +15,7 @@ namespace MatedCRTHarmonic.MesoModel
 
 open MatedCRTHarmonic
 
-/-- Corrected [18] Lemma 3.8, exported as FIX13's outer-measure failure-event interface. -/
+/-- Corrected [18] Lemma 3.8, exported as an outer-measure failure-event interface. -/
 theorem lemma38AnnulusHitBad_of_oneScaleBadBound
     (F : CellFamily.RandomCellFamily) (ρ : ℝ)
     (hinput : Annulus38OneScaleBadBound F ρ) : CellFamily.Lemma38AnnulusHitBad F ρ :=

@@ -239,7 +239,7 @@ theorem lemma25Tail_intervalInf_bwd {i : Fin 2} {ε : ℝ} (hε : 0 < ε) (c : �
 
 /-! ### The side condition as a counted block -/
 
-/-- The coordinate of the `side`-edges of Definition 1.12 (`false ↦ L`, `true ↦ R`). -/
+/-- The coordinate of the `side`-edges of [18] (1.1) (`false ↦ L`, `true ↦ R`). -/
 def lemma25TailSide (s : Bool) : Fin 2 := if s then 1 else 0
 
 theorem lemma25TailSide_coord (s : Bool) (ω : Path2) :
@@ -523,7 +523,7 @@ theorem lemma25Tail_degree_tail {γ : ℝ} {μ : Measure Path2} (hμ : IsCorrela
 
 /-- **[18] Lemma 2.5** (Gwynne--Miller, *Harmonic functions on mated-CRT maps*). Let `γ ∈ (0, 2)`. There are constants
 `c₀, c₁ > 0`, depending only on `γ`, such that for the law `μ` of the correlated two-sided
-Brownian motion of Definition 1.12, every `n ∈ ℕ`, `ε > 0` and `x ∈ εℤ` (the vertex `x : ℤ`),
+Brownian motion of [18] §1.1, every `n ∈ ℕ`, `ε > 0` and `x ∈ εℤ` (the vertex `x : ℤ`),
 `P[deg(x; G^ε) > n] ≤ c₀ e^{-c₁ n}`. The ε-mated-CRT map `G^ε = graph ε ω h` exists on the
 almost sure event `h : IsLocallyFinite ε ω` (`ae_isLocallyFinite`). (The constants are in fact
 absolute: `lemma25Tail_degree_tail`.) -/

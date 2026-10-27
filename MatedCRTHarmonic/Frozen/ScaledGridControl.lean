@@ -28,10 +28,10 @@ namespace CellularEmbedding
 variable {V E : Type*} {G : LFMultigraph V E} {o : V} (H : CellularEmbedding G o)
 
 /-- **The annulus-disconnection event on a grid** transported to the unit-mesh
-configuration at scale `R` by Proposition 2.3 (the mesh-`ε` configuration of `(h_b, η^b)` is the
+configuration at scale `R` by the cone scaling identity (the mesh-`ε` configuration of `(h_b, η^b)` is the
 unit configuration scaled by `R_b⁻¹`): (1) every cell meeting `B_{ρR}(0)` has diameter `≤ R ε^q`; (2) for every grid
 centre `z ∈ R (ε^χ ℤ²) ∩ B_{ρR}(0)` and radius `r ∈ R ((ε^χ ℤ) ∩ [ε^β, ρ])` with `B_{2r}(z) ⊆ B_{ρR}(0)`, from every
-vertex whose cell meets `∂B_r(z)` the annular event (frozen `AnnularEvent` = Assumption 1.9(3) = items (2a)–(2c)) has
+vertex whose cell meets `∂B_r(z)` the annular event (frozen `AnnularEvent`) has
 probability `≥ p`. -/
 def ScaledGridControl (R ε χ β q ρ p : ℝ) : Prop :=
   (∀ x, (H.cell x ∩ ball 0 (ρ * R)).Nonempty → diam (H.cell x) ≤ R * ε ^ q) ∧

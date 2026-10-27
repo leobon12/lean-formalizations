@@ -15,7 +15,7 @@ import MatedCRTHarmonic.Frozen.CellularEmbedding
   cannot cover `ℂ`).
 * `isCompact_cellUnion`, `isConnected_cellUnion`: `U_A^ℋ` is compact for finite `A` and connected for connected `A`.
 * `norm_le_planeDiam`: if `o ∈ A` then `U_A^ℋ ⊆ B̄_{D_ℋ(A)}(0)` (because `0 ∈ H_o`).
-* `nbhd_subset_closedBall` (**Lemma 5.1**) and `exists_walk_between_spheres` (**the sphere-crossing lemma**, corrected form: the
+* `nbhd_subset_closedBall` (**the neighbourhood bound**) and `exists_walk_between_spheres` (**the sphere-crossing lemma**, corrected form: the
   hypotheses `a > 0`, `a < b` are unnecessary; the proof uses compactness of `U_A^ℋ`).
 -/
 

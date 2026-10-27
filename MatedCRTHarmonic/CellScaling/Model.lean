@@ -18,7 +18,7 @@ This also identifies the data needed for Lemma 2.7 with the coupling `MatingOfTr
 The named inputs have the following sources:
 * **Coupling fields (SLE-dependent):** `BoundaryLengthCovariance` (field `boundaryLength`),
   `AreaParametrization` (bundle field `areaParam`, with `η(0) = 0`).
-* **Composite:** `Prop23JointScaling` (the joint-scaling identity as printed), from the SLE-free
+* **Composite:** `ConeJointScaling` (the joint-scaling identity as printed), from the SLE-free
   [14, Prop 4.13(i)], random-dilation area covariance, and the coupling fields
   `igMap`, `indep_curve`, and `areaParam`.
 * **SLE-free, to prove:** `AreaScalingLaw` ([14, Prop 4.13(i)] + [SW, Thm 1.4]; CS1 + LR1), `AreaBallMoment`
@@ -47,7 +47,7 @@ open MatedCRTHarmonic
   cells of `M`'s random family are `η([2^{-k}(x − 1), 2^{-k}x])`, almost surely.
 
 The identification of the mesh-`2^{-k}` graphs of the family with the mated-CRT multigraphs `G^{2^{-k}}` of
-`M.coupled.bm` (Definition 1.12; multiplicities matter for the walk) was this
+`M.coupled.bm` ([18] (1.1); multiplicities matter for the walk) was this
 structure's field `meshGraph_eq`; since it is carried by the model's family itself,
 `M.coupled.meshGraph_eq` (`CellFamily.MultigraphCoupledRandomFamily`). -/
 structure ConeRealization {γ : ℝ} (M : MesoModel.MatedCRTUnitMesoModel γ) where
@@ -97,7 +97,7 @@ Sources: [14, Prop 4.13(i)] for the field and [18, §3.3] for the joint law.
 The proof combines dilation invariance of whole-plane space-filling SLE (`igMap`),
 independence from `h` (`indep_curve`), area parametrization (`areaParam`), and
 the SLE-free area-scaling law `AreaScalingLaw`. -/
-def Prop23JointScaling {γ : ℝ} {M : MesoModel.MatedCRTUnitMesoModel γ} (D : ConeRealization M) : Prop :=
+def ConeJointScaling {γ : ℝ} {M : MesoModel.MatedCRTUnitMesoModel γ} (D : ConeRealization M) : Prop :=
   ∀ b : ℝ, 0 < b → ∀ S : Set (LQGMetric.DistC × C(ℝ, ℂ)), MeasurableSet S →
     M.coupled.family.P {ω | (coneRescaleField γ (D.scale b ω) b (D.field ω),
         coneRescaleCurve (D.scale b ω) b (D.curve ω)) ∈ S} =
@@ -183,7 +183,7 @@ def MeshGridEventMeasurable : Prop :=
 for all large `k`, every unit cell meeting `B_{ρR_{2^k}}(0)` has diameter at most `R_{2^k} 2^{-qk}`. Producer: the mesoscopic construction's
 `matedCRTUnitMesoscopicInput_of_interfaces` (its `hEventuallyScaled`, from `MatedCRTProposition23GridScalingInput`,
 the scaled-grid estimate and Borel–Cantelli; `unitCellDiamEventually_of_scaledGrid` converts it). Needed for the cell-count bound
-as printed (cells meeting the ball may protrude; the cell-counting argument, Details D.3). -/
+as printed (cells meeting the ball may protrude; the cell-counting argument). -/
 def UnitCellDiamEventually {γ : ℝ} (M : MesoModel.MatedCRTUnitMesoModel γ) : Prop :=
   ∀ᵐ ω ∂M.coupled.family.P, ∀ᶠ k : ℕ in atTop, ∀ x : ℤ,
     ((M.unitEmbedding ω).cell x ∩ ball 0 (M.ρ * M.radius ω k)).Nonempty →

@@ -58,9 +58,12 @@ statements of the development up to comments and the renaming of the module root
 outside comments, each of the 76 frozen files taken from the development (the map, the multigraphs, the walk and the
 bundle) has the same token stream as its development file after the renaming, and the elaborated type of each of the
 seven theorems, and the elaborated type and value of each of the seven definitions of the paper above, is `==` (Lean
-`Expr` equality) to that of the frozen statement text with the same renaming. The proof body of each theorem is `by exact` its provider theorem, which states the same type: the theorems
+`Expr` equality) to that of the frozen statement text with the same renaming. The proof body of each theorem is `by exact` its provider theorem: the theorems
 `MatedCRTHarmonic.GMSMain.MainResults.…_holds` in `GMSMain/MainResultsFinal.lean` and
-`GMSMain/MainResultsWiring.lean`, which the theorem files import. The files are in `namespace MatedCRTHarmonic` and open
+`GMSMain/MainResultsWiring.lean`, which the theorem files import. The providers are stated with library-local copies
+(`GMSMain.MainResults.energyOn`, `IsHarmonicExtension`, `IsTutteEmbedding`, `exitGreen`, `dirichletEnergy`,
+`HasBoundedConvexity`, `cell`) of the seven definitions above, with the same bodies, so each provider's type is
+definitionally equal, not syntactically equal, to the frozen type; the kernel checks this. The files are in `namespace MatedCRTHarmonic` and open
 `MeasureTheory`, `ProbabilityTheory`, `Filter`, `Topology`, `Set` and `Metric`, with the scopes `ENNReal` and
 `NNReal`.
 
@@ -797,8 +800,8 @@ workflow.
    the map, the multigraphs and the walk) and the bundle were frozen one declaration per file, pinned
    by a hash manifest (the bytes around each proof body and the elaborated types), after the independent statement
    audit of disclosure 14.
-3. **Proof.** Each frozen theorem has a provider theorem with exactly its type; the frozen body is `by exact` the
-   provider.
+3. **Proof.** Each frozen theorem has a provider theorem whose type is definitionally equal to it; the frozen body
+   is `by exact` the provider.
 4. **Two-key seal.** A theorem is `PROVED` only after both keys.
    - Key 1: the frozen-anchor checker, the build, unchanged elaborated types and statement-closure fingerprint, and
      `#print axioms` with standard axioms only.
@@ -809,7 +812,10 @@ workflow.
    of `MatedCRTHarmonic` were compiled from empty project artifacts against 3,346 released upstream modules
    whose compiled files are trace-linked to the public source bytes, with no error and no `sorry`; the statement
    comparison above was run on the compiled library; `Check.lean` reports only `propext`, `Classical.choice` and
-   `Quot.sound` for each of the seven theorems; and the public source scan passes.
+   `Quot.sound` for each of the seven theorems; and the public source scan passes. The released proof chain differs
+   from the sealed development chain of key 2 in three modules (`GMSMain/MainResultsDraft`, `GMSMain/T16DModel`,
+   `GMSMain/T16DSurface`), which come from an earlier commit of the development and introduce the local copies
+   described above; these release checks were run on the released chain.
 
 ## What is in the library
 
@@ -819,17 +825,17 @@ lines; *code lines* are neither blank nor entirely inside comments.
 
 | Part | Directories | Modules | Lines | Code lines |
 | --- | --- | ---: | ---: | ---: |
-| Graphs, random walk, harmonic functions, the discrete Dirichlet problem, Green's functions | `Markov`, `Harmonic`, `HarmonicInfinity`, `GoodScales`, `Growth`, `WalkSteps` | 18 | 4,298 | 2,994 |
+| Graphs, random walk, harmonic functions, the discrete Dirichlet problem, Green's functions | `Markov`, `Harmonic`, `HarmonicInfinity`, `GoodScales`, `Growth`, `WalkSteps` | 18 | 4,037 | 2,796 |
 | Mated-CRT maps, cells, cellular embeddings, planar topology and graph separation | `MatedCRT`, `CellularFacts`, `Infinite`, `Implementation`, `Core`, `Topology`, `Planar`, `RouteM`, `CellFamily`, `MesoGrid` | 78 | 20,278 | 16,444 |
 | Gaussian free field, quantum cones, LQG area measures and their scaling | `MoTPort`, `GMCFacts`, `GMCUpper`, `ConeLemmaA10`, `ConeScaling`, `LQGCone`, `LQGCoord`, `IGLaw`, `Brownian` | 151 | 29,393 | 22,848 |
 | Consequences of the bundle: the cell model and the identification of the map | `MoTInput`, `MesoModel`, `GMSCM` | 48 | 7,559 | 6,080 |
 | §2 of the paper: degrees and cell diameters | `GMSLemma27`, `CellScaling` | 32 | 5,715 | 4,260 |
-| §3: energy bounds, Green's function, recurrence, Hölder continuity, the Tutte embedding | `GMS3`, `GMSMain`, `Lemma38Source` | 77 | 20,228 | 15,531 |
-| §4 and Appendix A: localized estimates and Propositions 2.10 and 4.1–4.10 | `GMS4`, `GMS4b`, `GMS4c`, `GMS4cM`, `GMS4cO`, `GMS4cP`, `GMS4cQ`, `GMS4cS`, `GMS4F`, `GMS4FO`, `GMS4O`, `GMSAppA`, `GMSCase`, `GMSCase1`, `BundleSec4`, `Canon` | 257 | 51,398 | 40,409 |
-| **Proof modules** | | **661** | **138,869** | **108,566** |
+| §3: energy bounds, Green's function, recurrence, Hölder continuity, the Tutte embedding | `GMS3`, `GMSMain`, `Lemma38Source` | 77 | 20,227 | 15,531 |
+| §4 and Appendix A: localized estimates and Propositions 2.10 and 4.1–4.10 | `GMS4`, `GMS4b`, `GMS4c`, `GMS4cM`, `GMS4cO`, `GMS4cP`, `GMS4cQ`, `GMS4cS`, `GMS4F`, `GMS4FO`, `GMS4O`, `GMSAppA`, `GMSCase`, `GMSCase1`, `BundleSec4`, `Canon` | 257 | 51,397 | 40,409 |
+| **Proof modules** | | **661** | **138,606** | **108,368** |
 | Frozen statements (the definitions, the bundle, the 7 theorems) | `Frozen` | 90 | 3,377 | 1,744 |
 | Library root (imports the seven theorems and the bundle) | `MatedCRTHarmonic.lean` | 1 | 16 | 8 |
-| **Total shipped** | | **752** | **142,262** | **110,318** |
+| **Total shipped** | | **752** | **141,999** | **110,120** |
 
 The import closure of the shipped files also contains 3,346 modules of already released libraries,
 unchanged: `QuantumZipper` (2,186), `LQGMetric` (1,030), `LQGDimension` (107) and `BouRabeeGwynne` (23).
@@ -839,9 +845,11 @@ theorems.
 
 ## About the source files
 
-All files are derived from the development commit recorded in `source-manifest.json` (`source_commit`), with
-these changes: the module root and namespace are renamed to `MatedCRTHarmonic`, and folders and declarations with
-internal working names are renamed to descriptive names; the seven main theorems are named after the paper's
+Each file except the library root is derived from the development commit recorded in its `source-manifest.json` row
+(`source_commit`: the statement files of the seven theorems and seven definitions above come from the sealed commit, the
+other files from an earlier commit of the same development), with these changes: the module root and namespace are
+renamed to `MatedCRTHarmonic`, and several folders and declarations with internal working names are renamed to
+descriptive names (others keep short working labels, for example `GMSMain/T15ACore`); the seven main theorems are named after the paper's
 numbering; declarations that lie outside the scope of this release (those depending on development material that is
 not shipped) are removed from the shipped modules; and comments and docstrings that referred to the development were
 shortened or removed. Each module's manifest row records its SHA-256 and `release_transform`, and, for modules taken

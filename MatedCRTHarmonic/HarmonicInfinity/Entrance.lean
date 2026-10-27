@@ -3,7 +3,6 @@ import MatedCRTHarmonic.HarmonicInfinity.Chain
 /-!
 # Entrance decompositions for nearest-neighbour chains
 
-Source: §4, (M1)/(M2) and C4 step (i).
 For a nearest-neighbour chain (`IsNNChain`) on a countable vertex set:
 
 * `setLIntegral_hitTime_eq_tsum`: integrating a function of the vertex `X_{T_B}` over `{T_B < ⊤}` is

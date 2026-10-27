@@ -26,8 +26,8 @@ namespace MatedCRTHarmonic
 namespace MatedCRT
 
 /-- **Existence of a recurrent mated-CRT cellular model with mesoscopic control** (a proposition discharged by `exists_cellModel`): there is a cell coupling on a
-standard Borel probability space whose unit-mesh map is almost surely recurrent (Proposition 2.1) and whose cells
-almost surely satisfy Assumption 1.9 with deterministic constants `p, σ, ν` (Proposition 6.1). -/
+standard Borel probability space whose unit-mesh map is almost surely recurrent and whose cells
+almost surely satisfy `MesoscopicControlWith` with deterministic constants `p, σ, ν`. -/
 def CellModelExists (γ : ℝ) : Prop :=
   ∃ (Ω : Type) (_ : MeasurableSpace Ω) (_ : StandardBorelSpace Ω) (P : Measure Ω) (bm : Ω → Path2)
     (cell : Ω → ℤ → Set ℂ) (p σ ν : ℝ),

@@ -27,7 +27,7 @@ namespace MatedCRTHarmonic.CellFamily
 open MatedCRTHarmonic
 
 /-- A random-cell family packaged with its frozen unit-mesh coupling and the graph identifications at all dyadic
-meshes. The latter are the cell-model version of Definition 1.12, transported from unit mesh
+meshes. The latter are the cell-model version of [18] (1.1), transported from unit mesh
 by `MesoModel.TransferScaling`; the cell model provider is responsible for the a.e.-to-version choice. The identification
 here is adjacency-only (enough for connectivity, (CAL) and template separation); walk- and degree-dependent consumers
 use `MultigraphCoupledRandomFamily`. -/

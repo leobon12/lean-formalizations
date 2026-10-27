@@ -22,7 +22,7 @@ namespace MatedCRTHarmonic
 
 namespace MatedCRT
 
-/-- **Definition 1.12, the Brownian pair** : `μ` is the law of a two-sided two-dimensional Brownian
+/-- **The Brownian pair of [18] §1.1** : `μ` is the law of a two-sided two-dimensional Brownian
 motion `(L, R)` with `Var(L_t) = Var(R_t) = |t|`, `Cov(L_t, R_t) = −|t| cos(πγ²/4)`: the coordinate process
 `(i, t) ↦ lrCoord i t` is a centred Gaussian process with covariance `lrCov γ i j · twoSidedMin s t` (so the forward
 and backward halves are independent correlated Brownian motions, as in MatingOfTrees' `IsTwoSidedCorrelatedBM`).

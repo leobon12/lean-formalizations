@@ -10,7 +10,7 @@ import MatedCRTHarmonic.RouteM.RCorollaryB
 
 Let `ω` be a path of `(L, R)` and `η : ℝ → ℂ` a curve forming a `Peanosphere ω η` (the deterministic bundle of
 `RouteM/PsiBundle.lean`, TF2 Details (a)). For a mesh `ε`, vertex `x : ℤ` of the ε-mated-CRT map `G^ε` (frozen
-`MatedCRT.graph`, Definition 1.12) has the time interval `I_x = [ε(x − 1), εx]` and the cell `H_x = η(I_x)`.
+`MatedCRT.graph`, [18] (1.1)) has the time interval `I_x = [ε(x − 1), εx]` and the cell `H_x = η(I_x)`.
 
 **Theorem B** (`pointConnected_of_peanosphere_holds`): if `H` is a cellular embedding of `G^ε` with
 `H.cell x = η '' [ε(x − 1), εx]`, then `H.PointConnected` (the Core interface (LC)): for every `q ∈ ℂ` the vertices
@@ -25,7 +25,7 @@ holds (`thmB_sideCond_of_directRel`). A grid time lies in two consecutive interv
 met along the chain has a cell containing `q`.
 
 Only the fields `merge`, `onlyMerge` (and `surj`, for nonemptiness) of `Peanosphere` are used, together with the
-continuity of `ω` and Definition 1.12. The positivity of `ε` is not a hypothesis: it follows from the nonempty
+continuity of `ω` and [18] (1.1). The positivity of `ε` is not a hypothesis: it follows from the nonempty
 interior of the cell `H_0` (`thmB_pos_of_cellularEmbedding`).
 
 Also: the hypothesis-free core `thmB_induce_connected` (no cellular embedding; `0 < ε`), Corollary B′ for these cells

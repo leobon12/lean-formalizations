@@ -4,7 +4,7 @@ import MatedCRTHarmonic.Frozen.VerticesMeeting
 import MatedCRTHarmonic.Topology.PolarTemplate
 
 /-!
-# Core cell-topology interfaces for Route M (graph separation for Proposition 2.6)
+# Core cell-topology interfaces for Route M (graph separation for the annulus-disconnection estimate)
 
 Core interfaces for graph separation in cell configurations:
 
@@ -13,7 +13,7 @@ Core interfaces for graph separation in cell configurations:
   (vertex points `pt`, edge arcs `arc`) carried by `Ψ` into the cells;
 * `CellularEmbedding.movedTemplate`: the sealed polar template moved by a similarity, extended to `ℝ` by clamping;
 * `CellularEmbedding.TemplateSeparation`: graph separation by walks whose cells follow the moved polar template
-  (TF3 §2, the conclusion of Lemma D″); Proposition 2.6 consumes it, and the mated-CRT layer discharges it;
+  (TF3 §2, the conclusion of Lemma D″); the annulus-disconnection estimate consumes it, and the mated-CRT layer discharges it;
 * `CellularEmbedding.PointConnected`: the cell-topology property (LC): the cells through any point induce a connected subgraph (TF2's Theorem B proves it for the
   mated-CRT map); TF3's Lemma D″ uses it through Corollary B′.
 

@@ -23,7 +23,7 @@ namespace MatedCRTHarmonic
 
 namespace MatedCRT
 
-/-- **Definition 1.12, the ε-mated-CRT map** `G^ε` of the path `ω`, as a locally finite multigraph on
+/-- **The ε-mated-CRT map of [18] (1.1)** `G^ε` of the path `ω`, as a locally finite multigraph on
 `ℤ ≅ εℤ` with the explicit edge type `Edge ε ω`, built from a proof of local finiteness (no junk branch). Root: the
 vertex `0` (`o := 0`). -/
 def graph (ε : ℝ) (ω : Path2) (h : IsLocallyFinite ε ω) : LFMultigraph ℤ (Edge ε ω) where

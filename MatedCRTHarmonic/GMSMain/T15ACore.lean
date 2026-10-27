@@ -30,8 +30,7 @@ under the explicit small-mesh margins `5 ε^q + 13 ε^χ ≤ ε^β` and `2 ε^q 
 `x` first hits `V(∂B_{r'}(z'))` while its cells stay in `B_{r'}(z') ⊂ B_{2r}(z)` (it exits the finite set
 `V(B_{r'}(z'))` and cells cross circles); by the strong Markov property the annular event at `(z', r')` follows with
 probability `≥ p`; its cells stay in `A_{r'/3,5r'/3}(z') ⊂ B_{2r}(z)`; and disconnecting the `3r'/4`- and
-`5r'/4`-circles of `z'` disconnects `V(∂B_{r/2}(z))` from `V(∂B_{2r}(z))` (crossing lemma). The probabilistic template
-is `HarmonicInfinity.uniformDisconnection_of_mesoscopicControlWith`.
+`5r'/4`-circles of `z'` disconnects `V(∂B_{r/2}(z))` from `V(∂B_{2r}(z))` (crossing lemma).
 -/
 
 set_option autoImplicit false
@@ -281,8 +280,8 @@ theorem verticesMeeting_ball_finite {G : LFMultigraph ℤ E} {o : ℤ} (H : Cell
   (H.locallyFinite_cell.finite_nonempty_inter_compact (isCompact_closedBall c a)).subset
     (fun _ ⟨w, hw, hwb⟩ => ⟨w, hw, ball_subset_closedBall hwb⟩)
 
-/-- **[18] (3.35) at one annulus from the grid annular events.** On an environment where the corrected
-Proposition 2.6 event `ScaledGridControl 1 ε χ β q ρ₂ p` holds and the graph is connected, for every `(z, r)` with
+/-- **[18] (3.35) at one annulus from the grid annular events.** On an environment where the grid
+annulus-disconnection event `ScaledGridControl 1 ε χ β q ρ₂ p` holds and the graph is connected, for every `(z, r)` with
 `ε^β ≤ r`, `5 ε^q + 13 ε^χ ≤ r`, `B_{2r}(z) ⊂ B_ρ(0)` and `2 ε^q + 5 ε^χ < ρ₂ − ρ`, and every `x ∈ V(B_r(z))`, the walk
 from `x` disconnects `V(∂B_{r/2}(z))` from `V(∂B_{2r}(z))` before hitting `V(∂B_{2r}(z))` with probability `≥ p`. -/
 theorem walkLaw_lemma311Event_ge {G : LFMultigraph ℤ E} {o : ℤ} (H : CellularEmbedding G o)
@@ -496,7 +495,7 @@ theorem walkLaw_lemma311Event_ge {G : LFMultigraph ℤ E} {o : ℤ} (H : Cellula
     have huz : dist u z = 2 * r := mem_sphere.mp hus
     linarith [dist_triangle u z' z, dist_comm z z']
 
-/-- **[18] (3.35) on one environment** (`Lemma311Holds`), from the corrected Proposition 2.6 event and graph
+/-- **[18] (3.35) on one environment** (`Lemma311Holds`), from the grid annulus-disconnection event and graph
 connectivity, under the small-mesh margins `5 ε^q + 13 ε^χ ≤ ε^β` and `2 ε^q + 5 ε^χ < ρ₂ − ρ`. -/
 theorem lemma311Holds_of_scaledGridControl {G : LFMultigraph ℤ E} {o : ℤ} (H : CellularEmbedding G o)
     (hconn : G.adj.Connected) {ε χ β q ρ₂ p ρ : ℝ} (hgrid : H.ScaledGridControl 1 ε χ β q ρ₂ p)

@@ -25,7 +25,7 @@ namespace LFMultigraph
 
 variable {V E : Type*} (G : LFMultigraph V E)
 
-/-- The annular event of Definition 3.1(4) and Assumption 1.9(3) : the exit time `τ`
+/-- The annular event: the exit time `τ`
 from `V_K(A_{r/2,3r/2}(z))` is finite, the visited set `{X_m : m < τ}` disconnects `V_K(∂B_{3r/4}(z))` from
 `V_K(∂B_{5r/4}(z))`, and `⋃_{m ≤ τ} J_{X_m} ⊆ A_{r/3,5r/3}(z)`. -/
 def AnnularEvent (J : V → Set ℂ) (z : ℂ) (r : ℝ) (X : ℕ → V) : Prop :=

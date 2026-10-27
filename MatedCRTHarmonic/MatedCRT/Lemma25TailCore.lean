@@ -44,7 +44,7 @@ variable {Ω : Type*} [mΩ : MeasurableSpace Ω] {B : ℝ≥0 → Ω → ℝ}
 /-! ### Counted blocks -/
 
 /-- The block `[b, b + 1]` is *counted*: `inf_{[0,1]} B ∨ inf_{[b, b+1]} B ≤ inf_{[1, b]} B`
-(the side condition (1.1) of Definition 1.12 after an affine change of time). -/
+(the side condition (1.1) of [18] after an affine change of time). -/
 def lemma25TailCounted (B : ℝ≥0 → Ω → ℝ) (b : ℕ) (ω : Ω) : Prop :=
   max (lemma25TailInf B 0 1 ω) (lemma25TailInf B b (b + 1) ω) ≤ lemma25TailInf B 1 b ω
 

@@ -13,7 +13,7 @@ Deterministic layer, for a cellular embedding `H` of `G` with (LC) (`H.PointConn
 
 * `t15cDisconnectionAt G H p z r`: [18] (3.35) at one centre `z` and one radius `r` — from every vertex of
   `V(B_r(z))`, with probability `≥ p` the vertices visited before the first visit to `V(∂B_{2r}(z))` graph-disconnect
-  `V(∂B_{r/2}(z))` from `V(∂B_{2r}(z))` (frozen `LFMultigraph.Disconnects`, P22's `walkTrace`).
+  `V(∂B_{r/2}(z))` from `V(∂B_{2r}(z))` (frozen `LFMultigraph.Disconnects`, `walkTrace`).
 * `t15cExitBefore G H D z b`: the walk visits a cell not contained in `D` strictly before its first visit to
   `V(∂B_b(z))`; `t15c_disconnects_subset_exitBefore`: by the key geometric step (`T15CGeometry`), the event of (3.35)
   is contained in it as soon as `ℂ \ D` is preconnected, unbounded and comes within `r/2` of `z`.

@@ -137,7 +137,7 @@ structure IsMatingOfTreesCoupling (γ : ℝ) {Ω : Type} [MeasurableSpace Ω] (P
   functional `BL` of `(h, η)`; and, for each `b > 0`, the boundary-length pair of `(h_b, η^b)` is
   `b^{-1/2} bm(b·)`: the coordinate-change rule `f_* ν_{h̃} = ν_h` ([20]; DMS) at the dilation
   `z ↦ R_b z` and `ν_{h+c} = e^{γc/2} ν_h` (DMS (1.2), DMS); the pathwise random-dilation covariance of quantum
-  length (DB2 R3), used implicitly at DMS. Not a numbered theorem: README disclosure C30 (S1Y R2). -/
+  length, used implicitly at DMS. Not a numbered theorem (see disclosure 3 of the guide). -/
   boundaryLength : ∃ BL : Field × C(ℝ, ℂ) → Path2, Measurable BL ∧
     (∀ᵐ ω ∂P, bm ω = BL (coneField (X ω) (coneRadial γ γ (fun u => B u ω) (fun u => B' u ω)), η ω)) ∧
     ∀ b₀ : ℝ, 0 < b₀ → ∀ᵐ ω ∂P,

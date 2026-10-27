@@ -9,8 +9,8 @@ import MatedCRTHarmonic.Frozen.VertexPath
 /-!
 # Frozen definition: `LFMultigraph.Recurrent`
 
-Hitting form: from every vertex the walk visits every vertex a.s. `rfl`-equal to P22's
-`HarmonicInfinity.Recurrent`, which T0 c3 re-based onto this file ((4)).
+Hitting form: from every vertex the walk visits every vertex a.s. This is the
+recurrence notion used throughout the library.
 -/
 
 set_option autoImplicit false

@@ -2,14 +2,14 @@ import MatedCRTHarmonic.GMS4.CellGraphInterface
 import MatedCRTHarmonic.CellScaling.L27Bridge
 
 /-!
-# P235 cone realization to the G4 cell-graph coupling interface
+# Cone realization to the cell-graph coupling interface
 
 The cone realization already has the cell model structure, the coupled Brownian path, and the
 all-mesh multigraph identity. This adapter packages those existing fields in
 `GMS4..CellModelGraphCoupling`; the only transport is the unit-cell equality needed to restate
 The frozen coupling for L27's cell function. It consumes no Proposition 2.10 or Proposition 4.10
 probability estimate: `coupling`, `meshGraph_eq`, `cell_eq`, and `meshCell_eq` are structural fields
-of the existing P235 model and cone realization.
+of the existing cell model and cone realization.
 -/
 
 set_option autoImplicit false
@@ -23,7 +23,7 @@ open MeasureTheory
 
 variable {γ : ℝ} {M : MesoModel.MatedCRTUnitMesoModel γ}
 
-/-- Package a P235 cone realization as G4's cell-model graph coupling, using the identity map on
+/-- Package a cone realization as the cell-model graph coupling, using the identity map on
 The shared sample space. -/
 def ConeRealization.toCellModelGraphCoupling (D : ConeRealization M)
     (hpar : AreaParametrization D) :

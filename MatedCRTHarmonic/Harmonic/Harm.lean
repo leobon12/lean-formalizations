@@ -10,17 +10,10 @@ import MatedCRTHarmonic.Frozen.Adj
 import MatedCRTHarmonic.Harmonic.Walk
 
 /-!
-# Harmonic measure from a point and from infinity
+# Entry states and hitting events of the walk
 
-* `harm_isProbability_holds`: on a connected locally finite multigraph, for nonempty `A` and
-  `x ∉ A`, `harm^x_A` is a probability vector carried by the edge boundary of `A` (the entry-edge argument).
-  The walk from `x` hits `A` with positive probability (`hitProb_pos`); almost surely its entry
-  state is a dart from outside `A` into `A` (`exists_entryEdge`), whose edge is a boundary edge.
-* `harmInf_eq_of_hasHarmInf_holds`: `harmInf A` is the limit whenever one exists (the filter
-  `awayFrom A` is proper on infinite graphs).
-* `hasHarmInf_isProbability`: every limit `harm^∞_A` is a probability vector carried by the
-  (finite) edge boundary (the harmonic-measure argument).
-* `not_halfLine_hasHarmInf_zero_holds`: the non-junk check of.
+* `stateEdge`: the edge of a dart state; `measurableSet_hitTime_ne_top`: the event that the walk
+  hits a set is measurable.
 -/
 
 set_option autoImplicit false

@@ -14,7 +14,7 @@ Borel–Cantelli sum `Σ_k 2^{-kα} < ∞`, which has no real-`ε` analogue. Her
 
 * `epsA_lemma27_cells_transfer` — Lemma 2.7 at every real mesh for cell maps `J ε ω x` identified a.s. with the
   model's cells along a measure-preserving map (the real-mesh `lemma27_cells_transfer`);
-* `epsA_lemma27_closedBall_transfer` — the closed-disk form (P26's `Lemma27CellDiam` shape, at `ρ' = (1+ρ)/2`);
+* `epsA_lemma27_closedBall_transfer` — the closed-disk form (the `Lemma27CellDiam` shape, at `ρ' = (1+ρ)/2`);
 * **`epsA_lemma27_segments_coupling`**, **`epsA_lemma27_coupling`** — for the γ-cone curve `η` of every frozen coupling:
   all segments `η([a, b])`, `b − a ≤ ε` (resp. all cells `η([ε(x−1), εx])`) meeting `B_ρ(0)` have diameter `≤ ε^q`,
   outer failure probability `≤ C ε^α` for every `α < α(q, γ)`; `epsA_lemma27_closedBall_coupling` (closed disk);
@@ -81,7 +81,7 @@ theorem epsA_closedBall_good_of_ball_good {ι : Type*} {J : ι → Set ℂ} {ρ 
   rw [mem_ball, dist_zero_right]
   linarith
 
-/-- **The closed-disk form at every real mesh** (P26's `Lemma27CellDiam` shape, [18] Lemma 2.7 applied at
+/-- **The closed-disk form at every real mesh** (the `Lemma27CellDiam` shape, [18] Lemma 2.7 applied at
 `ρ' = (1+ρ)/2 ∈ (ρ, 1)`; IA1 note N1), for every `ρ ∈ [0, 1)` and every `α < α(q, γ)` (independent of `ρ`). -/
 theorem epsA_lemma27_closedBall_transfer (M : CellModel γ) (hSLE : SegmentsContainBalls M)
     (hGMC : GMCLowerTail γ) (hdom : AreaDominatesWholePlaneGFF M) (hγ : 0 < γ)
@@ -157,7 +157,7 @@ theorem epsA_lemma27_coupling
   intro ω hω x hx
   exact hω _ _ (le_of_eq (by ring)) hx
 
-/-- **The closed-disk form for the γ-cone curve** (P26's `Lemma27CellDiam` shape) at every real mesh, every
+/-- **The closed-disk form for the γ-cone curve** (the `Lemma27CellDiam` shape) at every real mesh, every
 `ρ ∈ [0, 1)`, every `α < α(q, γ)`. -/
 theorem epsA_lemma27_closedBall_coupling
     (D : MatedCRT.IsMatingOfTreesCoupling γ P X X₀ hIG₀ B B' B₀ B₀' U ηL η η₀ bm)

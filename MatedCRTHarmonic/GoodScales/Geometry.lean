@@ -17,7 +17,7 @@ import MatedCRTHarmonic.Frozen.AnnularEvent
   connected sets with consecutive members intersecting; if the chain starts with a point at distance
   `≥ ρ` from `z` and ends with a point at distance `≤ ρ`, some member meets the circle `∂B_ρ(z)`
   (`exists_mem_sphere_of_cross`);
-* elementary consequences of Definition 3.1 for the radii and the plane sets near `z`.
+* elementary consequences of the good-scale conditions for the radii and the plane sets near `z`.
 -/
 
 set_option autoImplicit false
@@ -79,7 +79,7 @@ theorem exists_mem_sphere_of_cross (hJ : G.IsPlaneData J) {X : ℕ → V}
       obtain ⟨m, hm1, hm2, hm⟩ := ih (a + 1) hfar hend'
       exact ⟨m, by omega, by omega, hm⟩
 
-/-! ### Consequences of Definition 3.1 -/
+/-! ### Consequences of the good-scale conditions -/
 
 variable {A : Finset V} {v : V} {K : ℕ} {p : ℝ} {z : ℂ} {r : ℕ → ℝ}
 

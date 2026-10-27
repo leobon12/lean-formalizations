@@ -13,8 +13,8 @@ import MatedCRTHarmonic.Frozen.CellularEmbedding
 /-!
 # Frozen definition: `CellularEmbedding.MesoscopicControlWith`
 
-Constants `p, σ, ν` exposed; corrections DA3 A2 (`∀ R ≥ R₀` in item 2) and A3 (nets of `B_{2R}(0)` and
-`[m(R), R/100]`, containment inside the probability-`p` event).
+Constants `p, σ, ν` exposed; item 2 holds for every `R ≥ R₀`, and item 3 uses nets of `B_{2R}(0)` and
+`[m(R), R/100]` inside the probability-`p` event.
 -/
 
 set_option autoImplicit false
@@ -30,7 +30,7 @@ namespace CellularEmbedding
 
 variable {V E : Type*} {G : LFMultigraph V E} {o : V} (H : CellularEmbedding G o)
 
-/-- **Assumption 1.9** with constants `p, σ, ν` (corrections DA3 A2, A3): `p ∈ (0,1)`, `σ, ν > 0`,
+/-- **Mesoscopic control** with constants `p, σ, ν`: `p ∈ (0,1)`, `σ, ν > 0`,
 and there are `R₀`, `m, e, d > 0` on `[R₀, ∞)` with (1) `m(R) ≤ R^{1-σ}`, `(e+d)/m → 0`; (2) for `R ≥ R₀`, cells
 meeting `B_{4R}(0)` have diameter `≤ d(R)`; (3) for `R ≥ R₀` there are finite `e(R)`-nets `Z_R ⊂ B_{2R}(0)` of
 `B_{2R}(0)` and `Q_R ⊂ [m(R), R/100]` of `[m(R), R/100]` such that the annular event at every `(z, r) ∈ Z_R × Q_R`

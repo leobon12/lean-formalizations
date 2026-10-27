@@ -20,7 +20,7 @@ namespace MatedCRTHarmonic
 
 namespace MatedCRT
 
-/-- The edges of the ε-mated-CRT map of the path `ω` (Definition 1.12), as labelled triples
+/-- The edges of the ε-mated-CRT map of the path `ω` ([18] (1.1)), as labelled triples
 `(x, y, side)` with `x < y` (`side = false` is the `L`-edge, `true` the `R`-edge): consecutive vertices carry exactly
 one edge (`(x, x + 1, false)`; (1.1) always holds for them, `sideCond_succ`); a non-consecutive pair carries its
 `L`-edge iff (1.1) holds for `L` and its `R`-edge iff (1.1) holds for `R` (two parallel edges when both hold). -/
