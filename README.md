@@ -1,5 +1,8 @@
 # Lean formalizations
 
+[![Verify Lean proofs](https://github.com/leobon12/lean-formalizations/actions/workflows/verify.yml/badge.svg)](https://github.com/leobon12/lean-formalizations/actions/workflows/verify.yml)
+[![Replay MatedCRTHarmonic kernel](https://github.com/leobon12/lean-formalizations/actions/workflows/replay.yml/badge.svg)](https://github.com/leobon12/lean-formalizations/actions/workflows/replay.yml)
+
 Selected Lean 4 formalizations developed under the direction of Leonardo Bonanno, with AI assistance.
 
 Each result below has a short guide to its mathematical scope, the exact Lean statement and proof, and the differences from the source paper. The source files needed by these proofs are included so that the checks can be reproduced.
@@ -9,6 +12,7 @@ Each result below has a short guide to its mathematical scope, the exact Lean st
 | Ahmed Bou-Rabee and Ewain Gwynne, *Random walk on sphere packings and Delaunay triangulations in arbitrary dimension* | Theorems A and B(a), with the documented ambient-domain correction | [README](results/bou-rabee-gwynne/) |
 | Ewain Gwynne and Jinwoo Sung, *Random walk reflected off of infinity, with applications to uniform spanning forests and supercritical Liouville quantum gravity* | Theorem 1.6 with right continuity at infinity included | [README](results/gwynne-sung/) |
 | Ewain Gwynne, Jason Miller, and Scott Sheffield, *An invariance principle for ergodic scale-free random environments* | Theorem 1.16 in the documented interpolated-path formulation | [README](results/gwynne-miller-sheffield/) |
+| Ewain Gwynne, Jason Miller, and Scott Sheffield, *Harmonic functions on mated-CRT maps* | Theorems 3.2 and 1.3–1.5, and Corollary 1.6, including the simply connected forms, under the documented mating-of-trees bundle and statement corrections | [README](results/harmonic-functions-mated-crt-maps/) |
 | Scott Sheffield, *Conformal weldings of random surfaces: SLE and the quantum gravity zipper* | The eight Section 1 results and three companions, with documented statement conventions | [README](results/quantum-zipper/) |
 | Ewain Gwynne and Jason Miller, *Existence and uniqueness of the Liouville quantum gravity metric for γ ∈ (0,2)* | Theorems 1.1 and 1.2, with a normalized-GFF existence witness and documented statement conventions | [README](results/lqg-metric/) |
 | Jian Ding and Ewain Gwynne, *Uniqueness of the critical and supercritical Liouville quantum gravity metrics* | Theorems 1.3, 1.8 and 1.13, and equations (1.4)–(1.5): convergence of LFPP for every ξ > 0, existence and uniqueness of the strong LQG metric, and uniqueness of weak LQG metrics, under the documented predicate-form conventions | [README](results/supercritical-lqg-uniqueness/) |

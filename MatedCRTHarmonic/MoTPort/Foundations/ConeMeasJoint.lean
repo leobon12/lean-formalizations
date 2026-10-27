@@ -1,0 +1,271 @@
+/- Provenance: ported from an earlier mating-of-trees formalization; only imports and namespace names were changed. -/
+import MatedCRTHarmonic.MoTPort.Foundations.ConeMeas
+import LQGMetric.Field.MeasurableAvg
+import LQGMetric.Field.GFFInvariance
+
+/-!
+# C.meas (part 2): joint measurability of rotation and dilation; `surfMapC` is a.e.-measurable
+
+* `measurable_rotateField_joint`: `(θ, h) ↦ rotateField θ h` is measurable on `ℝ × Field`;
+* `measurable_affineComp_joint`: `(s, h) ↦ affineComp s 0 h` is measurable on `ℝ × Field`;
+* `aemeasurable_canonicalC`, `aemeasurable_surfMapC`: for an a.e.-measurable random field `Y`
+  whose whole-plane area approximations a.s. have a vague limit (node C.area-exist for `Y`), the
+  canonical representative and the law map of `surfLawC` are a.e.-measurable;
+* `coneRefMeas_of`: node C.meas (`ConeRefMeas`, Cone.lean) follows from a.e.-measurability of the
+  cone field and C.area-exist for it.
+
+Proofs: Carathéodory (mathlib `measurable_uncurry_of_continuous_of_measurable`) with the
+continuity of the test-function families `θ ↦ φ(e^{-iθ}·)` and `u ↦ φ(e^{-u}·)` into `𝓓(ℂ)`,
+obtained exactly as LQGMetric's `continuous_bumpTest` (LQGMetric/Field/MeasurableAvg.lean) from
+`LQGMetric.continuous_testFamK`; `continuous_iteratedFDeriv_snd_real` is a copy of LQGMetric's
+`continuous_iteratedFDeriv_snd` (LQGMetric/Field/Measurable.lean) with a real parameter. Negative
+dilations are reduced to positive ones through `φ ↦ φ(−·)`. Own bookkeeping only.
+-/
+
+set_option autoImplicit false
+set_option relaxedAutoImplicit false
+
+noncomputable section
+
+open MeasureTheory ProbabilityTheory Filter Set Metric TopologicalSpace
+open scoped NNReal ENNReal Topology
+
+namespace MatedCRTHarmonic.MoTPort
+
+open QuantumZipper LQGMetric FieldOps
+
+namespace ConeMeas
+
+/-- copy of LQGMetric `continuous_iteratedFDeriv_snd` with a real parameter -/
+theorem continuous_iteratedFDeriv_snd_real {Ψ : ℝ → ℂ → ℝ}
+    (hΨ : ContDiff ℝ ((⊤ : ℕ∞) : WithTop ℕ∞) (Function.uncurry Ψ)) (i : ℕ) :
+    Continuous fun p : ℝ × ℂ => iteratedFDeriv ℝ i (Ψ p.1) p.2 := by
+  let ι : ℂ →L[ℝ] ℝ × ℂ := ContinuousLinearMap.inr ℝ ℝ ℂ
+  have key : ∀ p : ℝ × ℂ, iteratedFDeriv ℝ i (Ψ p.1) p.2 =
+      (iteratedFDeriv ℝ i (Function.uncurry Ψ) p).compContinuousLinearMap fun _ => ι := by
+    intro p
+    have h1 : Ψ p.1 = (fun w => Function.uncurry Ψ (w + (p.1, 0))) ∘ ι := by
+      funext y; simp [ι]
+    have hg : ContDiff ℝ ((⊤ : ℕ∞) : WithTop ℕ∞) fun w => Function.uncurry Ψ (w + (p.1, 0)) :=
+      hΨ.comp (contDiff_id.add contDiff_const)
+    rw [h1, ι.iteratedFDeriv_comp_right hg _ (by exact_mod_cast le_top),
+      iteratedFDeriv_comp_add_right]
+    congr 2
+    simp [ι]
+  simp_rw [key]
+  let L := ContinuousMultilinearMap.compContinuousLinearMapL (𝕜 := ℝ)
+    (E := fun _ : Fin i => ℂ) (E₁ := fun _ : Fin i => ℝ × ℂ) (F := ℝ) (fun _ => ι)
+  exact L.continuous.comp (hΨ.continuous_iteratedFDeriv (by exact_mod_cast le_top))
+
+/-- the pairing with a continuous family of test functions is jointly measurable (Carathéodory) -/
+theorem measurable_apply_family {ψ : ℝ → TestC} (hψ : Continuous ψ) :
+    Measurable fun p : ℝ × Field => p.2 (ψ p.1) :=
+  measurable_uncurry_of_continuous_of_measurable (u := fun (x : ℝ) (h : Field) => h (ψ x))
+    (fun h => (map_continuous h).comp hψ) (fun x => measurable_distOn_apply _)
+
+/-- `(θ, y) ↦ φ(e^{-iθ} y)` is smooth -/
+theorem contDiff_rotPsi (φ : TestC) : ContDiff ℝ ((⊤ : ℕ∞) : WithTop ℕ∞) (fun p : ℝ × ℂ =>
+    φ (Complex.exp (Complex.ofRealCLM (-p.1) * Complex.I) * p.2)) := by
+  refine φ.contDiff.comp (ContDiff.mul ?_ contDiff_snd)
+  exact (ContDiff.restrict_scalars ℝ (𝕜' := ℂ) Complex.contDiff_exp).comp
+    ((Complex.ofRealCLM.contDiff.comp contDiff_fst.neg).mul contDiff_const)
+
+/-- the rotated test function as a function of `(θ, y)` -/
+def rotPsi (φ : TestC) (θ : ℝ) (y : ℂ) : ℝ :=
+  φ (Complex.exp (Complex.ofRealCLM (-θ) * Complex.I) * y)
+
+theorem contDiff_uncurry_rotPsi (φ : TestC) :
+    ContDiff ℝ ((⊤ : ℕ∞) : WithTop ℕ∞) (Function.uncurry (rotPsi φ)) := by
+  rw [Function.uncurry_def]
+  unfold rotPsi
+  exact contDiff_rotPsi φ
+
+theorem contDiff_rotPsi_apply (φ : TestC) (θ : ℝ) :
+    ContDiff ℝ ((⊤ : ℕ∞) : WithTop ℕ∞) (rotPsi φ θ) := by
+  have h := (contDiff_uncurry_rotPsi φ).comp ((contDiff_const (c := θ)).prodMk contDiff_id)
+  simpa only [Function.comp_def, Function.uncurry_apply_pair, id_eq] using h
+
+/-- **`θ ↦ φ(e^{-iθ} ·)` is continuous into `𝓓(ℂ)`** -/
+theorem continuous_rotTest (φ : TestC) :
+    Continuous fun θ : ℝ =>
+      testPullCLE (rotation (Circle.exp (-θ))).toContinuousLinearEquiv φ := by
+  obtain ⟨R, hR⟩ := φ.hasCompactSupport.isCompact.isBounded.subset_closedBall (0 : ℂ)
+  let K : Compacts ℂ := ⟨closedBall 0 R, isCompact_closedBall _ _⟩
+  have hK : ∀ θ, ∀ y ∉ (K : Set ℂ), rotPsi φ θ y = 0 := by
+    intro θ y hy
+    simp only [K, TopologicalSpace.Compacts.coe_mk, mem_closedBall, dist_zero_right] at hy
+    have hn : Complex.exp (Complex.ofRealCLM (-θ) * Complex.I) * y ∉ tsupport φ := by
+      intro h
+      have := hR h
+      rw [mem_closedBall, dist_zero_right, norm_mul, Complex.ofRealCLM_apply,
+        Complex.norm_exp_ofReal_mul_I, one_mul] at this
+      exact hy this
+    unfold rotPsi
+    exact image_eq_zero_of_notMem_tsupport (f := φ) hn
+  have hc := continuous_testFamK K (rotPsi φ) (contDiff_rotPsi_apply φ) hK
+    (continuous_iteratedFDeriv_snd_real (contDiff_uncurry_rotPsi φ))
+  have hval : ∀ θ y, testPullCLE (rotation (Circle.exp (-θ))).toContinuousLinearEquiv φ y =
+      rotPsi φ θ y := by
+    intro θ y
+    rw [testPullCLE_rotation_apply]
+    simp only [rotPsi, Circle.coe_exp, Complex.ofRealCLM_apply, Complex.ofReal_neg, neg_mul]
+  have e : (fun θ : ℝ => testPullCLE (rotation (Circle.exp (-θ))).toContinuousLinearEquiv φ) =
+      ofSuppC K ∘ testFamK K (rotPsi φ) (contDiff_rotPsi_apply φ) hK := by
+    funext θ
+    ext y
+    exact hval θ y
+  rw [e]
+  exact (ofSuppC K).continuous.comp hc
+
+/-- **rotation is jointly measurable** -/
+theorem measurable_rotateField_joint : Measurable fun p : ℝ × Field => rotateField p.1 p.2 :=
+  measurable_distOn_iff.2 fun φ => measurable_apply_family (continuous_rotTest φ)
+
+/-- **`u ↦ φ(e^{-u} ·)` is continuous into `𝓓(ℂ)`** (dilation by `e^u`) -/
+theorem continuous_dilTest (φ : TestC) :
+    Continuous fun u : ℝ => testAffinePull (Real.exp u) 0 φ := by
+  obtain ⟨R, hR⟩ := φ.hasCompactSupport.isCompact.isBounded.subset_closedBall (0 : ℂ)
+  let Ψ' : ℝ → ℂ → ℝ := fun u y => φ (Complex.ofRealCLM (Real.exp (-u)) * y)
+  have hΨ' : ContDiff ℝ ((⊤ : ℕ∞) : WithTop ℕ∞) (Function.uncurry Ψ') := by
+    show ContDiff ℝ _ fun p : ℝ × ℂ => φ (Complex.ofRealCLM (Real.exp (-p.1)) * p.2)
+    exact φ.contDiff.comp ((Complex.ofRealCLM.contDiff.comp
+      (Real.contDiff_exp.comp contDiff_fst.neg)).mul contDiff_snd)
+  have hval : ∀ u y, testAffinePull (Real.exp u) 0 φ y = Ψ' u y := by
+    intro u y
+    rw [testAffinePull_apply _ _ (Real.exp_pos u).ne']
+    show φ ((y - 0) / (Real.exp u : ℂ)) = φ (Complex.ofRealCLM (Real.exp (-u)) * y)
+    rw [Complex.ofRealCLM_apply, Real.exp_neg, Complex.ofReal_inv, sub_zero, div_eq_inv_mul]
+  rw [continuous_iff_continuousAt]
+  intro u₀
+  let S := closedBall u₀ 1
+  have : CompactSpace S := isCompact_iff_compactSpace.mp (isCompact_closedBall _ _)
+  let K : Compacts ℂ := ⟨closedBall 0 (Real.exp (u₀ + 1) * |R|), isCompact_closedBall _ _⟩
+  let Ψ : S → ℂ → ℝ := fun u y => Ψ' u.1 y
+  have hs : ∀ u : S, ContDiff ℝ ((⊤ : ℕ∞) : WithTop ℕ∞) (Ψ u) := fun u =>
+    hΨ'.comp (contDiff_const.prodMk contDiff_id)
+  have hK : ∀ u : S, ∀ y ∉ (K : Set ℂ), Ψ u y = 0 := by
+    intro u y hy
+    refine image_eq_zero_of_notMem_tsupport (f := φ) fun h => hy ?_
+    have h1 := hR h
+    rw [mem_closedBall, dist_zero_right, norm_mul, Complex.ofRealCLM_apply, Complex.norm_real,
+      Real.norm_eq_abs, abs_of_pos (Real.exp_pos _)] at h1
+    have hu : u.1 ≤ u₀ + 1 := by
+      have := u.2
+      rw [mem_closedBall, Real.dist_eq] at this
+      linarith [le_abs_self (u.1 - u₀)]
+    show y ∈ closedBall (0 : ℂ) (Real.exp (u₀ + 1) * |R|)
+    rw [mem_closedBall, dist_zero_right]
+    have h2 : ‖y‖ ≤ Real.exp u.1 * R := by
+      have hpos := Real.exp_pos u.1
+      rw [Real.exp_neg] at h1
+      rw [inv_mul_le_iff₀ hpos] at h1
+      linarith
+    calc ‖y‖ ≤ Real.exp u.1 * R := h2
+      _ ≤ Real.exp u.1 * |R| := mul_le_mul_of_nonneg_left (le_abs_self R) (Real.exp_pos _).le
+      _ ≤ Real.exp (u₀ + 1) * |R| :=
+        mul_le_mul_of_nonneg_right (Real.exp_le_exp.2 hu) (abs_nonneg R)
+  have hD : ∀ i : ℕ, Continuous fun p : S × ℂ => iteratedFDeriv ℝ i (Ψ p.1) p.2 := fun i =>
+    (continuous_iteratedFDeriv_snd_real hΨ' i).comp
+      ((continuous_subtype_val.comp continuous_fst).prodMk continuous_snd)
+  have hc := continuous_testFamK K Ψ hs hK hD
+  have e : (fun u : S => testAffinePull (Real.exp u.1) 0 φ) = ofSuppC K ∘ testFamK K Ψ hs hK := by
+    funext u
+    ext y
+    exact hval u.1 y
+  have h2 : Continuous fun u : S => testAffinePull (Real.exp u.1) 0 φ := by
+    rw [e]; exact (ofSuppC K).continuous.comp hc
+  exact (continuousOn_iff_continuous_domRestrict.2 h2).continuousAt
+    (closedBall_mem_nhds _ one_pos)
+
+/-- `φ(−·)` -/
+def negTest (φ : TestC) : TestC := testPullCLE (ContinuousLinearEquiv.neg ℝ) φ
+
+/-- **dilation is jointly measurable**: `(s, h) ↦ affineComp s 0 h` -/
+theorem measurable_affineComp_joint : Measurable fun p : ℝ × Field => LQGMetric.affineComp p.1 0 p.2 := by
+  refine measurable_distOn_iff.2 fun φ => ?_
+  show Measurable fun p : ℝ × Field => (p.1 ^ 2)⁻¹ * p.2 (testAffinePull p.1 0 φ)
+  refine (measurable_fst.pow_const 2).inv.mul ?_
+  have hpos := (measurable_apply_family (continuous_dilTest φ)).comp
+    (Real.measurable_log.comp measurable_fst |>.prodMk measurable_snd)
+  have hneg := (measurable_apply_family (continuous_dilTest (negTest φ))).comp
+    ((Real.measurable_log.comp measurable_fst.neg).prodMk measurable_snd)
+  have e : (fun p : ℝ × Field => p.2 (testAffinePull p.1 0 φ)) = fun p =>
+      if 0 < p.1 then p.2 (testAffinePull (Real.exp (Real.log p.1)) 0 φ)
+      else if p.1 < 0 then p.2 (testAffinePull (Real.exp (Real.log (-p.1))) 0 (negTest φ))
+      else 0 := by
+    funext p
+    by_cases h1 : 0 < p.1
+    · rw [if_pos h1, Real.exp_log h1]
+    · rw [if_neg h1]
+      by_cases h2 : p.1 < 0
+      · rw [if_pos h2, Real.exp_log (neg_pos.2 h2)]
+        congr 1
+        ext x
+        rw [testAffinePull_apply _ _ h2.ne, testAffinePull_apply _ _ (neg_pos.2 h2).ne']
+        simp only [negTest, testPullCLE_apply, ContinuousLinearEquiv.coe_neg, sub_zero]
+        congr 1
+        simp [div_neg]
+      · rw [if_neg h2]
+        have h0 : p.1 = 0 := by linarith [not_lt.1 h1, not_lt.1 h2]
+        rw [h0]
+        simp [testAffinePull]
+  rw [e]
+  exact Measurable.ite (measurableSet_lt measurable_const measurable_fst) hpos
+    (Measurable.ite (measurableSet_lt measurable_fst measurable_const) hneg measurable_const)
+
+/-- `(h, c) ↦ addConst h c` is jointly measurable -/
+theorem measurable_addConst_joint : Measurable fun p : Field × ℝ => LQGMetric.addConst p.1 p.2 := by
+  refine measurable_distOn_iff.2 fun φ => ?_
+  simp_rw [GFFInv.addConst_apply]
+  exact ((measurable_distOn_apply φ).comp measurable_fst).add (measurable_snd.const_mul _)
+
+variable {γ : ℝ} {Ω : Type*} [MeasurableSpace Ω] {P : Measure Ω}
+
+/-- **the canonical representative is a.e.-measurable** given a.e.-measurability of the field and
+a.s. existence of its whole-plane area measure -/
+theorem aemeasurable_canonicalC {Y : Ω → Field} (hY : AEMeasurable Y P)
+    (hv : ∀ᵐ ω ∂P, ∃ μ, QuantumZipper.IsVagueLimitOn univ (areaApproxC γ (Y ω)) μ) :
+    AEMeasurable (fun ω => canonicalC γ (Y ω)) P := by
+  have hs := aemeasurable_scaleC hY hv
+  have h1 : AEMeasurable (fun ω => LQGMetric.affineComp (scaleC γ (Y ω)) 0 (Y ω)) P :=
+    measurable_affineComp_joint.comp_aemeasurable (hs.prodMk hY)
+  have h2 : AEMeasurable (fun ω => QuantumZipper.Qc γ * Real.log (scaleC γ (Y ω))) P :=
+    (Real.measurable_log.comp_aemeasurable hs).const_mul (QuantumZipper.Qc γ)
+  have h3 := measurable_addConst_joint.comp_aemeasurable (h1.prodMk h2)
+  have e : (fun ω => canonicalC γ (Y ω)) = (fun p : Field × ℝ => LQGMetric.addConst p.1 p.2) ∘
+      (fun ω => (LQGMetric.affineComp (scaleC γ (Y ω)) 0 (Y ω),
+        QuantumZipper.Qc γ * Real.log (scaleC γ (Y ω)))) := by
+    funext ω
+    unfold canonicalC
+    rfl
+  rw [e]
+  exact h3
+
+/-- **the law map of `surfLawC` is a.e.-measurable** given a.e.-measurability of the field and
+a.s. existence of its whole-plane area measure (reduces C.meas to C.area-exist) -/
+theorem aemeasurable_surfMapC [SFinite P] {Y : Ω → Field} (hY : AEMeasurable Y P)
+    (hv : ∀ᵐ ω ∂P, ∃ μ, QuantumZipper.IsVagueLimitOn univ (areaApproxC γ (Y ω)) μ) :
+    AEMeasurable (surfMapC γ Y) (P.prod unifAngle) := by
+  have hc := (aemeasurable_canonicalC hY hv).comp_quasiMeasurePreserving
+    (Measure.quasiMeasurePreserving_fst (μ := P) (ν := unifAngle))
+  exact measurable_rotateField_joint.comp_aemeasurable (measurable_snd.aemeasurable.prodMk hc)
+
+/-- **C.meas reduced to two inputs**: `ConeRefMeas γ W` follows from a.e.-measurability of the
+cone field and the a.s. existence of its whole-plane area measure (node C.area-exist for the cone
+field) -/
+theorem coneRefMeas_of {γ W : ℝ}
+    (hF : ∀ (Ω' : Type) (_ : MeasurableSpace Ω') (P' : Measure Ω') (X : Ω' → Field)
+      (A : ℝ → Ω' → ℝ), IsProbabilityMeasure P' → IsWholePlaneGFF X P' →
+      IsConeProcess (coneAlpha γ W) (QuantumZipper.Qc γ) A P' → IndepFun X (fun ω t => A t ω) P' →
+      AEMeasurable (fun ω => coneField (lateralPartC (X ω)) (fun t => A t ω) (QuantumZipper.Qc γ))
+        P' ∧
+      ∀ᵐ ω ∂P', ∃ μ, QuantumZipper.IsVagueLimitOn univ
+        (areaApproxC γ (coneField (lateralPartC (X ω)) (fun t => A t ω) (QuantumZipper.Qc γ))) μ) :
+    ConeRefMeas γ W := by
+  intro Ω' _ P' X A hP hX hA hI
+  obtain ⟨h1, h2⟩ := hF Ω' _ P' X A hP hX hA hI
+  exact aemeasurable_surfMapC h1 h2
+
+end ConeMeas
+
+end MatedCRTHarmonic.MoTPort

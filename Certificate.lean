@@ -1,3 +1,4 @@
+import MatedCRTHarmonic
 import SupercriticalLFPPAS.Frozen.Lfpp_ae_lscTendsto
 import SupercriticalLFPPAS.Frozen.Exists_jointHeatVersion
 import SupercriticalLFPPAS.Assembly.AllXi
@@ -261,7 +262,7 @@ run_cmd do
         (`NV1Evidence).isPrefixOf m ||
         (`SupercriticalLFPPAS).isPrefixOf m ||
         (`SupercriticalConformalCovariance).isPrefixOf m ||
-        (`HigherDimLFPPAS).isPrefixOf m then
+        (`HigherDimLFPPAS).isPrefixOf m || (`MatedCRTHarmonic).isPrefixOf m then
       roots := roots.push n
   if roots.isEmpty then throwError "No included declarations found"
   let mut pending := roots
@@ -852,3 +853,19 @@ assert_no_sorry SupercriticalLFPPAS.Implementation.exists_jointHeatVersion_pathw
 #print axioms SupercriticalLFPPAS.Implementation.exists_jointHeatVersion_pathwise
 assert_no_sorry SupercriticalLFPPAS.RefutedV1.not_thm11v1
 #print axioms SupercriticalLFPPAS.RefutedV1.not_thm11v1
+
+-- Harmonic functions on mated-CRT maps: seven advertised results.
+assert_no_sorry MatedCRTHarmonic.theorem3_2
+#print axioms MatedCRTHarmonic.theorem3_2
+assert_no_sorry MatedCRTHarmonic.theorem1_3
+#print axioms MatedCRTHarmonic.theorem1_3
+assert_no_sorry MatedCRTHarmonic.theorem1_4
+#print axioms MatedCRTHarmonic.theorem1_4
+assert_no_sorry MatedCRTHarmonic.theorem1_5
+#print axioms MatedCRTHarmonic.theorem1_5
+assert_no_sorry MatedCRTHarmonic.theorem1_5_simplyConnected
+#print axioms MatedCRTHarmonic.theorem1_5_simplyConnected
+assert_no_sorry MatedCRTHarmonic.corollary1_6
+#print axioms MatedCRTHarmonic.corollary1_6
+assert_no_sorry MatedCRTHarmonic.corollary1_6_simplyConnected
+#print axioms MatedCRTHarmonic.corollary1_6_simplyConnected

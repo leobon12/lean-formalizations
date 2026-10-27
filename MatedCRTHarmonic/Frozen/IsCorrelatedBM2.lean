@@ -1,0 +1,38 @@
+import Mathlib
+import MatedCRTHarmonic.Frozen.MatedCRTPath2
+import MatedCRTHarmonic.Frozen.MatedCRTLrCoord
+import MatedCRTHarmonic.Frozen.MatedCRTLrCov
+import MatedCRTHarmonic.Frozen.MatedCRTTwoSidedMin
+
+/-!
+# Frozen definition: `MatedCRT.IsCorrelatedBM2`
+
+Centred Gaussian coordinate process with covariance `lrCov γ i j · twoSidedMin s t` (.1); one semantic unit
+with `exists_isCorrelatedBM2` and `isCorrelatedBM2_unique`.
+-/
+
+set_option autoImplicit false
+
+noncomputable section
+
+open MeasureTheory ProbabilityTheory Filter Topology Set Metric
+open scoped ENNReal NNReal
+
+namespace MatedCRTHarmonic
+
+namespace MatedCRT
+
+/-- **Definition 1.12, the Brownian pair** : `μ` is the law of a two-sided two-dimensional Brownian
+motion `(L, R)` with `Var(L_t) = Var(R_t) = |t|`, `Cov(L_t, R_t) = −|t| cos(πγ²/4)`: the coordinate process
+`(i, t) ↦ lrCoord i t` is a centred Gaussian process with covariance `lrCov γ i j · twoSidedMin s t` (so the forward
+and backward halves are independent correlated Brownian motions, as in MatingOfTrees' `IsTwoSidedCorrelatedBM`).
+Paths are continuous by the choice of `Path2`; `L_0 = R_0 = 0` holds almost surely (variance `0`). -/
+structure IsCorrelatedBM2 (γ : ℝ) (μ : Measure Path2) : Prop where
+  isProbabilityMeasure : IsProbabilityMeasure μ
+  isGaussianProcess : IsGaussianProcess (fun p : Fin 2 × ℝ => lrCoord p.1 p.2) μ
+  integral_eq_zero : ∀ i t, ∫ ω, lrCoord i t ω ∂μ = 0
+  covariance_eq : ∀ i j s t, cov[lrCoord i s, lrCoord j t; μ] = lrCov γ i j * twoSidedMin s t
+
+end MatedCRT
+
+end MatedCRTHarmonic
