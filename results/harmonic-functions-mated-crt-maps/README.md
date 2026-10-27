@@ -822,14 +822,14 @@ lines; *code lines* are neither blank nor entirely inside comments.
 | Graphs, random walk, harmonic functions, the discrete Dirichlet problem, Green's functions | `Markov`, `Harmonic`, `HarmonicInfinity`, `GoodScales`, `Growth`, `WalkSteps` | 18 | 4,298 | 2,994 |
 | Mated-CRT maps, cells, cellular embeddings, planar topology and graph separation | `MatedCRT`, `CellularFacts`, `Infinite`, `Implementation`, `Core`, `Topology`, `Planar`, `RouteM`, `CellFamily`, `MesoGrid` | 78 | 20,278 | 16,444 |
 | Gaussian free field, quantum cones, LQG area measures and their scaling | `MoTPort`, `GMCFacts`, `GMCUpper`, `ConeLemmaA10`, `ConeScaling`, `LQGCone`, `LQGCoord`, `IGLaw`, `Brownian` | 151 | 29,393 | 22,848 |
-| Consequences of the bundle: the cell model and the identification of the map | `MoTInput`, `MesoModel`, `GMSCM` | 48 | 7,565 | 6,080 |
+| Consequences of the bundle: the cell model and the identification of the map | `MoTInput`, `MesoModel`, `GMSCM` | 48 | 7,559 | 6,080 |
 | §2 of the paper: degrees and cell diameters | `GMSLemma27`, `CellScaling` | 32 | 5,715 | 4,260 |
 | §3: energy bounds, Green's function, recurrence, Hölder continuity, the Tutte embedding | `GMS3`, `GMSMain`, `Lemma38Source` | 77 | 20,228 | 15,531 |
 | §4 and Appendix A: localized estimates and Propositions 2.10 and 4.1–4.10 | `GMS4`, `GMS4b`, `GMS4c`, `GMS4cM`, `GMS4cO`, `GMS4cP`, `GMS4cQ`, `GMS4cS`, `GMS4F`, `GMS4FO`, `GMS4O`, `GMSAppA`, `GMSCase`, `GMSCase1`, `BundleSec4`, `Canon` | 257 | 51,398 | 40,409 |
-| **Proof modules** | | **661** | **138,875** | **108,566** |
+| **Proof modules** | | **661** | **138,869** | **108,566** |
 | Frozen statements (the definitions, the bundle, the 7 theorems) | `Frozen` | 90 | 3,377 | 1,744 |
 | Library root (imports the seven theorems and the bundle) | `MatedCRTHarmonic.lean` | 1 | 16 | 8 |
-| **Total shipped** | | **752** | **142,268** | **110,318** |
+| **Total shipped** | | **752** | **142,262** | **110,318** |
 
 The import closure of the shipped files also contains 3,346 modules of already released libraries,
 unchanged: `QuantumZipper` (2,186), `LQGMetric` (1,030), `LQGDimension` (107) and `BouRabeeGwynne` (23).
