@@ -551,8 +551,8 @@ These points are part of the approved statements and matter when the Lean statem
    library, `MatedCRTHarmonic.isConnected_compl_of_simplyConnected`: a bounded, simply connected, open `D ⊂ ℂ` has
    connected complement. Discs satisfy both sets of hypotheses.
 9. **Boundary data.** (1.6) evaluates `f` on `∂D`. So in Theorems 1.3 and 3.2, `f` is a real function that is
-   continuous on the closure of `D` (`ContinuousOn f (closure D)`). The paper writes "f : D → ℂ continuous" (l. 447),
-   but `f^ε` is real-valued and (1.6) needs the boundary values. In Theorem 1.5 only the restriction of `f` to `∂D`
+   continuous on the closure of `D` (`ContinuousOn f (closure D)`). This matches the paper, which writes
+   "f : D̄ → ℂ continuous" (p. 10); `f` is taken real-valued because `f^ε` is real-valued. In Theorem 1.5 only the restriction of `f` to `∂D`
    enters, as a χ-Hölder function on `∂D`. The functions `f^ε` and `Φ^ε` are not defined as objects: each good event
    says that a function with the defining properties exists and that every such function satisfies the bound.
    Existence and uniqueness on `V(D)` hold almost surely and are proved.
