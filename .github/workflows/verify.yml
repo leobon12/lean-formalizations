@@ -42,7 +42,7 @@ jobs:
       - name: Download pinned Mathlib dependencies
         run: lake exe cache get
       - name: Compile the first part of the proof closure
-        run: python3 scripts/verify.py --stop-after-minutes 170
+        run: python3 scripts/verify.py --stop-after-minutes 230
       - name: Pass the first part to the second job
         uses: actions/upload-artifact@v4
         with:
