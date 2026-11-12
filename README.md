@@ -34,6 +34,9 @@ The [Bertacco–Gwynne result guide](results/liouville-brownian-motion/) covers 
 | Conformal covariance of the supercritical Liouville quantum gravity metric | Theorem 1.1 for connected Greenian domains and globally realized fields, with no further assumption, and for every ξ > 0; Gwynne–Miller's Axiom IV form for countably many field laws | [README](results/supercritical-conformal-covariance/) |
 | Almost sure convergence of higher-dimensional LFPP: an upgrade from convergence in probability | Theorem 1.2 in every dimension d ≥ 3 under the paper's Assumption 1.1, for every admissible seed (sign-changing seeds included): almost surely, the median-normalized convolution LFPP converges to the limiting metric uniformly on compact sets along all ε → 0; for nonnegative seeds with no assumptions (Assumption 1.1 is proved by the higher-dimensional exponential metrics release), the limit being every median-one strong metric; and the non-vacuity of the hypotheses | [README](results/almost-sure-higher-dimensional-lfpp/) |
 | Almost sure convergence of supercritical Liouville first passage percolation | Theorem 1.1 with no assumptions, for heat-kernel versions that are almost surely jointly continuous in the cutoff and the point (such versions exist and are almost surely unique, both proved), and for every ξ > 0 | [README](results/almost-sure-supercritical-lfpp/) |
+| Quenched convergence of GMC-sampled tilings in every dimension $d\ge3$ | Theorem 1.1, including both conditional laws and both path topologies, over the full parameter range (1.1). The guide identifies the private proof dependencies. | [README](results/gmc-sampled-tilings-quenched-convergence/) |
+
+The [odd-dimensional fields and quantum cones coverage note](results/odd-dimensional-fields-and-quantum-cones/) records the proved moving-average identity and cone limits, and the parts of the consolidated manuscript still unverified in Lean.
 
 ## Verify the proofs
 
