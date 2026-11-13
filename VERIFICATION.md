@@ -409,3 +409,40 @@ lake build HigherDimLQGContinuity.Frozen.Theorem11Metric
 lake env lean results/higher-dimensional-lqg-continuity/Check.lean
 lake env leanchecker --fresh HigherDimLQGContinuity.Frozen.Theorem11Metric
 ```
+
+## Elementary SLE₈ continuity (2026-11-13)
+
+The new entrypoint is the frozen theorem module `InteractingSLE.Frozen.SLE8.ContinuousTrace`;
+`InteractingSLE.SLE8.ae_exists_continuous_trace` is Theorem 1.1 of the note (see the [result
+guide](results/elementary-sle8-continuity/)). Its import closure has 197 local modules: 29 InteractingSLE, 5 MathFin,
+25 BrownianMotion, 129 QuantumZipper and 9 LQGDimension. The 138 QuantumZipper and LQGDimension modules were already
+released and are byte-identical, so the export adds 59 files without changing any previously released proof module.
+All new files are copied byte-for-byte from source commit `05c010b59c39acb1122b8813b2e80044f253772d`. `MathFin` and
+`BrownianMotion` are third-party Apache-2.0 libraries ported to this toolchain; their licenses and the list of
+modifications are in [`vendor/NOTICE.md`](vendor/NOTICE.md). Lean and all dependency revisions match the existing
+release.
+
+The vendored `BrownianMotion` modules declare the same names as the older copy in `BouRabeeGwynne/Upstream/BrownianMotion`,
+so the two libraries cannot be imported into one environment. The theorem is therefore not imported by
+`Certificate.lean`; `scripts/verify.py` instead compiles the [focused
+certificate](results/elementary-sle8-continuity/Check.lean) after all modules and before `Certificate.lean`, and
+requires its whole-declaration audit (`ELEMENTARY_SLE8_AUDIT`, over every declaration of the InteractingSLE, MathFin,
+BrownianMotion, QuantumZipper and LQGDimension modules) to finish.
+
+Before export, the theorem was sealed with two keys; the independent seal audit replayed the frozen module and its 31
+project modules in the kernel. On the staged tree, the public source scan passed for all 12,673 files; the 59 new
+modules were compiled afresh from the exported files with the verifier's per-module settings (`lean -j1 -M8192`), one
+process, against the byte-identical released dependencies (194 seconds of wall time, at most 15.6 seconds and 3.9 GB
+per module); the focused certificate then compiled and **passed**: 14 axiom reports and the audit of 5,914 project
+declarations (86,449 reachable declarations), with only `propext`, `Classical.choice` and `Quot.sound`. These are
+incremental checks; the public workflow performs the fresh rebuild of all 12,673 modules, the focused certificates and
+the combined certificate.
+
+To reproduce:
+
+```sh
+lake exe cache get
+lake build InteractingSLE.Frozen.SLE8.ContinuousTrace
+lake env lean results/elementary-sle8-continuity/Check.lean
+lake env leanchecker --fresh InteractingSLE.Frozen.SLE8.ContinuousTrace
+```

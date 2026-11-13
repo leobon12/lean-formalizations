@@ -32,3 +32,6 @@ lean_lib SupercriticalConformalCovariance
 lean_lib HigherDimLFPPAS
 lean_lib SupercriticalLFPPAS
 lean_lib MatedCRTHarmonic
+lean_lib InteractingSLE
+lean_lib MathFin
+lean_lib BrownianMotion

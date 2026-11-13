@@ -869,3 +869,8 @@ assert_no_sorry MatedCRTHarmonic.corollary1_6
 #print axioms MatedCRTHarmonic.corollary1_6
 assert_no_sorry MatedCRTHarmonic.corollary1_6_simplyConnected
 #print axioms MatedCRTHarmonic.corollary1_6_simplyConnected
+
+-- Elementary proof that SLE₈ is continuous (InteractingSLE): audited separately by
+-- results/elementary-sle8-continuity/Check.lean, which scripts/verify.py compiles before this certificate. Its vendored
+-- BrownianMotion modules declare the same names as BouRabeeGwynne/Upstream/BrownianMotion, so the two libraries cannot
+-- be imported into one environment.

@@ -158,7 +158,8 @@
     "MatedCRTHarmonic.Frozen.Theorem1_5SimplyConnected",
     "MatedCRTHarmonic.Frozen.Corollary1_6",
     "MatedCRTHarmonic.Frozen.Corollary1_6SimplyConnected",
-    "MatedCRTHarmonic.Frozen.MatingOfTreesInput"
+    "MatedCRTHarmonic.Frozen.MatingOfTreesInput",
+    "InteractingSLE.Frozen.SLE8.ContinuousTrace"
   ],
   "modules": {
     "BouRabeeGwynne.AbsorbingExcursionKernel": {
@@ -208368,6 +208369,974 @@
       ],
       "bytes": 779,
       "release_transform": "library root written for this release"
+    },
+    "BrownianMotion.Auxiliary.Algebra": {
+      "path": "BrownianMotion/Auxiliary/Algebra.lean",
+      "source_path": "formalizations/interacting_sle/vendor/brownian-motion/BrownianMotion/Auxiliary/Algebra.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "3e1e65d99878490cd6d19ef113a1cbb1c3952d45f329448c1fac3175d6e13cf4",
+      "imports": [
+        "Mathlib.LinearAlgebra.Dimension.Finite"
+      ],
+      "local_imports": [],
+      "bytes": 1505
+    },
+    "BrownianMotion.Auxiliary.ContinuousBilinForm": {
+      "path": "BrownianMotion/Auxiliary/ContinuousBilinForm.lean",
+      "source_path": "formalizations/interacting_sle/vendor/brownian-motion/BrownianMotion/Auxiliary/ContinuousBilinForm.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "818fa61a0925c606e0479ff98fa52be0c3dc3eccfc5d0075655833790dcaaf6a",
+      "imports": [
+        "BrownianMotion.Auxiliary.LinearAlgebra",
+        "Mathlib.LinearAlgebra.Matrix.BilinearForm",
+        "Mathlib.LinearAlgebra.SesquilinearForm.Star"
+      ],
+      "local_imports": [
+        "BrownianMotion.Auxiliary.LinearAlgebra"
+      ],
+      "bytes": 12088
+    },
+    "BrownianMotion.Auxiliary.DenseCountable": {
+      "path": "BrownianMotion/Auxiliary/DenseCountable.lean",
+      "source_path": "formalizations/interacting_sle/vendor/brownian-motion/BrownianMotion/Auxiliary/DenseCountable.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "f5376b746a397efbb035c612933bc680127a337305dfc329d4c2fc121c9814b8",
+      "imports": [
+        "Mathlib.Topology.Bases"
+      ],
+      "local_imports": [],
+      "bytes": 1059
+    },
+    "BrownianMotion.Auxiliary.ENNReal": {
+      "path": "BrownianMotion/Auxiliary/ENNReal.lean",
+      "source_path": "formalizations/interacting_sle/vendor/brownian-motion/BrownianMotion/Auxiliary/ENNReal.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "52d172c162b0b2d289564618366d8bd6a9f08a1e335cc1f63cfa3cd387aea93f",
+      "imports": [
+        "Mathlib.Analysis.SpecialFunctions.Pow.NNReal"
+      ],
+      "local_imports": [],
+      "bytes": 1970
+    },
+    "BrownianMotion.Auxiliary.FiniteInf": {
+      "path": "BrownianMotion/Auxiliary/FiniteInf.lean",
+      "source_path": "formalizations/interacting_sle/vendor/brownian-motion/BrownianMotion/Auxiliary/FiniteInf.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "8bbe49746998ea4a18b6fb0b34e568305ed31d17038b37b6c140e8cf13a292a1",
+      "imports": [
+        "Mathlib.Data.Finset.Max",
+        "Mathlib.Data.Set.Finite.Lattice",
+        "Mathlib.Order.CompletePartialOrder",
+        "Mathlib.Order.ConditionallyCompletePartialOrder.Indexed",
+        "Mathlib.Order.ConditionallyCompleteLattice.Finset"
+      ],
+      "local_imports": [],
+      "bytes": 2474
+    },
+    "BrownianMotion.Auxiliary.HasLaw": {
+      "path": "BrownianMotion/Auxiliary/HasLaw.lean",
+      "source_path": "formalizations/interacting_sle/vendor/brownian-motion/BrownianMotion/Auxiliary/HasLaw.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "dcaca01991685145081363a8854950cd864923d0a020b28ea413b7d2c3477851",
+      "imports": [
+        "Mathlib.Probability.Distributions.Gaussian.Real"
+      ],
+      "local_imports": [],
+      "bytes": 817
+    },
+    "BrownianMotion.Auxiliary.LinearAlgebra": {
+      "path": "BrownianMotion/Auxiliary/LinearAlgebra.lean",
+      "source_path": "formalizations/interacting_sle/vendor/brownian-motion/BrownianMotion/Auxiliary/LinearAlgebra.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "b5df6ad65eae6a2a67bf6f12c05f649fea2829cbcf86f008551b4f7edb2e2cf9",
+      "imports": [
+        "Mathlib.Analysis.InnerProductSpace.Dual",
+        "Mathlib.LinearAlgebra.Matrix.PosDef"
+      ],
+      "local_imports": [],
+      "bytes": 3244
+    },
+    "BrownianMotion.Auxiliary.MeanInequalities": {
+      "path": "BrownianMotion/Auxiliary/MeanInequalities.lean",
+      "source_path": "formalizations/interacting_sle/vendor/brownian-motion/BrownianMotion/Auxiliary/MeanInequalities.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "08503671a5531fb55fead2604433301a3e62b44a083b1bf5fcaede0bdb3351a8",
+      "imports": [
+        "Mathlib.MeasureTheory.Integral.MeanInequalities",
+        "Mathlib.Analysis.Convex.Integral"
+      ],
+      "local_imports": [],
+      "bytes": 2508
+    },
+    "BrownianMotion.Auxiliary.MeasureTheory": {
+      "path": "BrownianMotion/Auxiliary/MeasureTheory.lean",
+      "source_path": "formalizations/interacting_sle/vendor/brownian-motion/BrownianMotion/Auxiliary/MeasureTheory.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "5668a259d2b49f9be1a08e4f8263650d6ca571aae91a27f3c395ffdc174b2211",
+      "imports": [
+        "BrownianMotion.Auxiliary.Algebra",
+        "BrownianMotion.Auxiliary.ENNReal",
+        "BrownianMotion.Auxiliary.Metric",
+        "Mathlib.MeasureTheory.Measure.Lebesgue.VolumeOfBalls",
+        "Mathlib.Probability.Distributions.Gaussian.Real",
+        "Mathlib.Probability.Independence.Integration",
+        "Mathlib.Probability.Independence.ZeroOne",
+        "Mathlib.MeasureTheory.Function.Holder"
+      ],
+      "local_imports": [
+        "BrownianMotion.Auxiliary.Algebra",
+        "BrownianMotion.Auxiliary.ENNReal",
+        "BrownianMotion.Auxiliary.Metric"
+      ],
+      "bytes": 16368
+    },
+    "BrownianMotion.Auxiliary.Metric": {
+      "path": "BrownianMotion/Auxiliary/Metric.lean",
+      "source_path": "formalizations/interacting_sle/vendor/brownian-motion/BrownianMotion/Auxiliary/Metric.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "1f9ca581c1a1338a99188e27d7af25a13998dae2fe5e2449b657424d5610f862",
+      "imports": [
+        "Mathlib.Analysis.Normed.Module.Ball.Pointwise",
+        "Mathlib.Order.CompletePartialOrder",
+        "Mathlib.Topology.MetricSpace.MetricSeparated"
+      ],
+      "local_imports": [],
+      "bytes": 2303
+    },
+    "BrownianMotion.Auxiliary.NNReal": {
+      "path": "BrownianMotion/Auxiliary/NNReal.lean",
+      "source_path": "formalizations/interacting_sle/vendor/brownian-motion/BrownianMotion/Auxiliary/NNReal.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "3a2267e264d282e98b43fd5123de8f81619d95bfdc31dfcd46e33fa90574a0f8",
+      "imports": [
+        "Mathlib.Basic.NNReal.Basic"
+      ],
+      "local_imports": [],
+      "bytes": 562
+    },
+    "BrownianMotion.Auxiliary.Topology": {
+      "path": "BrownianMotion/Auxiliary/Topology.lean",
+      "source_path": "formalizations/interacting_sle/vendor/brownian-motion/BrownianMotion/Auxiliary/Topology.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "35e8d725d2d447b7627647772252308311bb8ec161939ff44371a7097e86a4de",
+      "imports": [
+        "Mathlib.Topology.MetricSpace.HolderNorm"
+      ],
+      "local_imports": [],
+      "bytes": 5656
+    },
+    "BrownianMotion.Continuity.Chaining": {
+      "path": "BrownianMotion/Continuity/Chaining.lean",
+      "source_path": "formalizations/interacting_sle/vendor/brownian-motion/BrownianMotion/Continuity/Chaining.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "c7f52431d18e001d8847e4745f66c7d091ea3965769d8ad36a67d6a67d22e2c7",
+      "imports": [
+        "BrownianMotion.Auxiliary.ENNReal",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Continuity",
+        "Mathlib.Order.CompletePartialOrder",
+        "Mathlib.Topology.MetricSpace.Cover"
+      ],
+      "local_imports": [
+        "BrownianMotion.Auxiliary.ENNReal"
+      ],
+      "bytes": 15500
+    },
+    "BrownianMotion.Continuity.CoveringNumber": {
+      "path": "BrownianMotion/Continuity/CoveringNumber.lean",
+      "source_path": "formalizations/interacting_sle/vendor/brownian-motion/BrownianMotion/Continuity/CoveringNumber.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "01f75f9e202ca7b79f29693816adf56a7c6ff4fb0095220335bd8b8936c07826",
+      "imports": [
+        "BrownianMotion.Auxiliary.ENNReal",
+        "BrownianMotion.Auxiliary.MeasureTheory",
+        "Mathlib.Algebra.Order.Floor.Semiring",
+        "Mathlib.Algebra.Order.Ring.Abs",
+        "Mathlib.Algebra.Order.Floor.Extended",
+        "Mathlib.Algebra.Order.Ring.Star",
+        "Mathlib.Topology.MetricSpace.CoveringNumbers"
+      ],
+      "local_imports": [
+        "BrownianMotion.Auxiliary.ENNReal",
+        "BrownianMotion.Auxiliary.MeasureTheory"
+      ],
+      "bytes": 15746
+    },
+    "BrownianMotion.Continuity.HasBoundedInternalCoveringNumber": {
+      "path": "BrownianMotion/Continuity/HasBoundedInternalCoveringNumber.lean",
+      "source_path": "formalizations/interacting_sle/vendor/brownian-motion/BrownianMotion/Continuity/HasBoundedInternalCoveringNumber.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "c5ac36f6e56741b2d273b9b232758bb03cbcec858166fe7bd8d76994ced567d9",
+      "imports": [
+        "BrownianMotion.Continuity.CoveringNumber",
+        "Mathlib.Topology.MetricSpace.CoveringExponent"
+      ],
+      "local_imports": [
+        "BrownianMotion.Continuity.CoveringNumber"
+      ],
+      "bytes": 5499
+    },
+    "BrownianMotion.Continuity.IsKolmogorovProcess": {
+      "path": "BrownianMotion/Continuity/IsKolmogorovProcess.lean",
+      "source_path": "formalizations/interacting_sle/vendor/brownian-motion/BrownianMotion/Continuity/IsKolmogorovProcess.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "88df45a1ddc7ed54d79e10ba034cc66a1e032ef3107fabecd62a4eae30f98739",
+      "imports": [
+        "BrownianMotion.Auxiliary.FiniteInf",
+        "BrownianMotion.Auxiliary.MeanInequalities",
+        "BrownianMotion.Continuity.Chaining",
+        "BrownianMotion.Continuity.HasBoundedInternalCoveringNumber",
+        "Mathlib.Analysis.SpecialFunctions.Log.Base",
+        "Mathlib.Order.CompleteLattice.Group",
+        "Mathlib.Probability.Process.Kolmogorov",
+        "Mathlib.Topology.EMetricSpace.PairReduction"
+      ],
+      "local_imports": [
+        "BrownianMotion.Auxiliary.FiniteInf",
+        "BrownianMotion.Auxiliary.MeanInequalities",
+        "BrownianMotion.Continuity.Chaining",
+        "BrownianMotion.Continuity.HasBoundedInternalCoveringNumber"
+      ],
+      "bytes": 54080
+    },
+    "BrownianMotion.Continuity.KolmogorovChentsov": {
+      "path": "BrownianMotion/Continuity/KolmogorovChentsov.lean",
+      "source_path": "formalizations/interacting_sle/vendor/brownian-motion/BrownianMotion/Continuity/KolmogorovChentsov.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "0dffaf92d27f3d5a960e1c2a26dda00f4f27c8e3b5630c96afd9be1c2fcef4bc",
+      "imports": [
+        "BrownianMotion.Auxiliary.Topology",
+        "BrownianMotion.Continuity.LimitModification",
+        "BrownianMotion.Continuity.KolmogorovChentsovInequality",
+        "BrownianMotion.Gaussian.StochasticProcesses"
+      ],
+      "local_imports": [
+        "BrownianMotion.Auxiliary.Topology",
+        "BrownianMotion.Continuity.LimitModification",
+        "BrownianMotion.Continuity.KolmogorovChentsovInequality",
+        "BrownianMotion.Gaussian.StochasticProcesses"
+      ],
+      "bytes": 63046
+    },
+    "BrownianMotion.Continuity.KolmogorovChentsovInequality": {
+      "path": "BrownianMotion/Continuity/KolmogorovChentsovInequality.lean",
+      "source_path": "formalizations/interacting_sle/vendor/brownian-motion/BrownianMotion/Continuity/KolmogorovChentsovInequality.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "20646e1c39ebfd098d567a4ced1a66553df8aa7701a150124496e8b16aa0fca2",
+      "imports": [
+        "BrownianMotion.Continuity.IsKolmogorovProcess",
+        "Mathlib.Data.Set.FiniteExhaustion"
+      ],
+      "local_imports": [
+        "BrownianMotion.Continuity.IsKolmogorovProcess"
+      ],
+      "bytes": 18709
+    },
+    "BrownianMotion.Continuity.LimitModification": {
+      "path": "BrownianMotion/Continuity/LimitModification.lean",
+      "source_path": "formalizations/interacting_sle/vendor/brownian-motion/BrownianMotion/Continuity/LimitModification.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "1579098a289b15b9d43f8f2076ecd2c77976d40480998b6a6b3d6468c921be0f",
+      "imports": [
+        "BrownianMotion.Auxiliary.DenseCountable",
+        "Mathlib.MeasureTheory.Constructions.Polish.StronglyMeasurable",
+        "Mathlib.MeasureTheory.Function.StronglyMeasurable.Basic"
+      ],
+      "local_imports": [
+        "BrownianMotion.Auxiliary.DenseCountable"
+      ],
+      "bytes": 18371
+    },
+    "BrownianMotion.Gaussian.BrownianMotion": {
+      "path": "BrownianMotion/Gaussian/BrownianMotion.lean",
+      "source_path": "formalizations/interacting_sle/vendor/brownian-motion/BrownianMotion/Gaussian/BrownianMotion.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "b5f41ce0a6f98fb3da6eeea1a1b27269517326d5efb0d134632a60875e84df4f",
+      "imports": [
+        "BrownianMotion.Auxiliary.HasLaw",
+        "BrownianMotion.Continuity.KolmogorovChentsov",
+        "BrownianMotion.Gaussian.CovMatrix",
+        "BrownianMotion.Gaussian.GaussianProcess",
+        "BrownianMotion.Gaussian.Moment",
+        "BrownianMotion.Auxiliary.MeasureTheory",
+        "BrownianMotion.Auxiliary.NNReal",
+        "BrownianMotion.Gaussian.Gaussian",
+        "Mathlib.Analysis.InnerProductSpace.GramMatrix",
+        "Mathlib.Probability.Distributions.Gaussian.Fernique",
+        "Mathlib.Probability.Distributions.Gaussian.Multivariate",
+        "Mathlib.Probability.ConditionalExpectation",
+        "Mathlib.Probability.Distributions.Gaussian.HasGaussianLaw.Independence",
+        "Mathlib.Probability.Distributions.Gaussian.IsGaussianProcess.Basic",
+        "Mathlib.Probability.Independence.BoundedContinuousFunction",
+        "Mathlib.Probability.Independence.Process.HasIndepIncrements.IsGaussianProcess",
+        "Mathlib.MeasureTheory.Constructions.BorelSpace.ContinuousMap",
+        "Mathlib.Topology.ContinuousMap.SecondCountableSpace",
+        "Mathlib.Probability.BrownianMotion.Basic"
+      ],
+      "local_imports": [
+        "BrownianMotion.Auxiliary.HasLaw",
+        "BrownianMotion.Continuity.KolmogorovChentsov",
+        "BrownianMotion.Gaussian.CovMatrix",
+        "BrownianMotion.Gaussian.GaussianProcess",
+        "BrownianMotion.Gaussian.Moment",
+        "BrownianMotion.Auxiliary.MeasureTheory",
+        "BrownianMotion.Auxiliary.NNReal",
+        "BrownianMotion.Gaussian.Gaussian"
+      ],
+      "bytes": 19271
+    },
+    "BrownianMotion.Gaussian.CovMatrix": {
+      "path": "BrownianMotion/Gaussian/CovMatrix.lean",
+      "source_path": "formalizations/interacting_sle/vendor/brownian-motion/BrownianMotion/Gaussian/CovMatrix.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "75734bfc17c2a970eccca0b8843fcb491571c290fe590b4c359f323879badf46",
+      "imports": [
+        "BrownianMotion.Auxiliary.ContinuousBilinForm",
+        "BrownianMotion.Auxiliary.MeasureTheory",
+        "Mathlib.Probability.Distributions.Gaussian.Fernique",
+        "Mathlib.Probability.Moments.CovarianceBilin"
+      ],
+      "local_imports": [
+        "BrownianMotion.Auxiliary.ContinuousBilinForm",
+        "BrownianMotion.Auxiliary.MeasureTheory"
+      ],
+      "bytes": 4761
+    },
+    "BrownianMotion.Gaussian.Gaussian": {
+      "path": "BrownianMotion/Gaussian/Gaussian.lean",
+      "source_path": "formalizations/interacting_sle/vendor/brownian-motion/BrownianMotion/Gaussian/Gaussian.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "86659a905ae8e6d85e7bb993508f60d3d909c451c3e2d15a8d43630d53e34295",
+      "imports": [
+        "Mathlib.Probability.Distributions.Gaussian.CharFun",
+        "Mathlib.Probability.Distributions.Gaussian.HasGaussianLaw.Basic"
+      ],
+      "local_imports": [],
+      "bytes": 1084
+    },
+    "BrownianMotion.Gaussian.GaussianProcess": {
+      "path": "BrownianMotion/Gaussian/GaussianProcess.lean",
+      "source_path": "formalizations/interacting_sle/vendor/brownian-motion/BrownianMotion/Gaussian/GaussianProcess.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "268b822385289ae80eac655460e7e84e6cba4a0db6ffd841b8cebb70252feab0",
+      "imports": [
+        "Mathlib.Probability.Distributions.Gaussian.IsGaussianProcess.Independence"
+      ],
+      "local_imports": [],
+      "bytes": 1904
+    },
+    "BrownianMotion.Gaussian.Moment": {
+      "path": "BrownianMotion/Gaussian/Moment.lean",
+      "source_path": "formalizations/interacting_sle/vendor/brownian-motion/BrownianMotion/Gaussian/Moment.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "705a2db03e8b2f51c10cae57a2c77502831c1ba1c10101ff2b3466df2e9b7055",
+      "imports": [
+        "Mathlib.Analysis.SpecialFunctions.Sqrt",
+        "Mathlib.Probability.Distributions.Gaussian.Real"
+      ],
+      "local_imports": [],
+      "bytes": 6940
+    },
+    "BrownianMotion.Gaussian.StochasticProcesses": {
+      "path": "BrownianMotion/Gaussian/StochasticProcesses.lean",
+      "source_path": "formalizations/interacting_sle/vendor/brownian-motion/BrownianMotion/Gaussian/StochasticProcesses.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "a5e0432bfcc751365286b0a0d84e0b5f46a70849512ce198408cb83988694ab2",
+      "imports": [
+        "Mathlib.MeasureTheory.Measure.MeasureSpaceDef"
+      ],
+      "local_imports": [],
+      "bytes": 2549
+    },
+    "InteractingSLE.Frozen.SLE8.ContinuousTrace": {
+      "path": "InteractingSLE/Frozen/SLE8/ContinuousTrace.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Frozen/SLE8/ContinuousTrace.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "d55f8c305e813ef2ec640c16af9fe0f5b716cdb2200e98133e3e9b4075e1ec00",
+      "imports": [
+        "QuantumZipper.SLE.Defs",
+        "Mathlib.Probability.BrownianMotion.Basic",
+        "Mathlib.Topology.UniformSpace.LocallyUniformConvergence",
+        "Mathlib.Topology.Connected.Clopen",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Real",
+        "InteractingSLE.SLE8.Provider.ContinuousTrace"
+      ],
+      "local_imports": [
+        "QuantumZipper.SLE.Defs",
+        "InteractingSLE.SLE8.Provider.ContinuousTrace"
+      ],
+      "bytes": 2162
+    },
+    "InteractingSLE.SLE8.AL14.Corollary1": {
+      "path": "InteractingSLE/SLE8/AL14/Corollary1.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/SLE8/AL14/Corollary1.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "f439e84de6396e7ba657a83bc2998812bc704717bafb6340540bcb69663ef301",
+      "imports": [
+        "InteractingSLE.SLE8.AL14.Theorem4",
+        "InteractingSLE.SLE8.AL14.DerivComparison",
+        "QuantumZipper.Proofs.RS.TraceShift",
+        "Mathlib.Analysis.PSeries",
+        "Mathlib.Analysis.SpecificLimits.Basic"
+      ],
+      "local_imports": [
+        "InteractingSLE.SLE8.AL14.Theorem4",
+        "InteractingSLE.SLE8.AL14.DerivComparison",
+        "QuantumZipper.Proofs.RS.TraceShift"
+      ],
+      "bytes": 39469
+    },
+    "InteractingSLE.SLE8.AL14.DerivComparison": {
+      "path": "InteractingSLE/SLE8/AL14/DerivComparison.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/SLE8/AL14/DerivComparison.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "65cc72ab67299ad1d58e53fb11cca9c5a5b4a04b7d7d346017ce51a23efa52fb",
+      "imports": [
+        "QuantumZipper.Proofs.RS.KoebeLoewnerTime"
+      ],
+      "local_imports": [
+        "QuantumZipper.Proofs.RS.KoebeLoewnerTime"
+      ],
+      "bytes": 25979
+    },
+    "InteractingSLE.SLE8.AL14.Theorem2": {
+      "path": "InteractingSLE/SLE8/AL14/Theorem2.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/SLE8/AL14/Theorem2.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "b1726d84da704b3ac57838aea933cb1383748af4e2b53599ced0d7e432145930",
+      "imports": [
+        "InteractingSLE.SLE8.AL14.DerivComparison",
+        "QuantumZipper.Proofs.RS.TraceGrid",
+        "QuantumZipper.Proofs.RS.TransienceCanon",
+        "QuantumZipper.Proofs.ItoLite.Oscillation",
+        "Mathlib.Analysis.PSeries"
+      ],
+      "local_imports": [
+        "InteractingSLE.SLE8.AL14.DerivComparison",
+        "QuantumZipper.Proofs.RS.TraceGrid",
+        "QuantumZipper.Proofs.RS.TransienceCanon",
+        "QuantumZipper.Proofs.ItoLite.Oscillation"
+      ],
+      "bytes": 36450
+    },
+    "InteractingSLE.SLE8.AL14.Theorem4": {
+      "path": "InteractingSLE/SLE8/AL14/Theorem4.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/SLE8/AL14/Theorem4.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "8f4387cd6d4ec5fae061a6edc2f36335fec75b564a197e076bf830874a36a7ea",
+      "imports": [
+        "QuantumZipper.Proofs.RS.MartingaleBound",
+        "QuantumZipper.Proofs.RS.LocalDynkinSuper",
+        "QuantumZipper.Proofs.RS.OnePointState",
+        "QuantumZipper.Proofs.ItoLite.Oscillation",
+        "QuantumZipper.Proofs.RS.BMModulus",
+        "QuantumZipper.Proofs.RS.TransienceCanon",
+        "InteractingSLE.SLE8.ReverseFlow"
+      ],
+      "local_imports": [
+        "QuantumZipper.Proofs.RS.MartingaleBound",
+        "QuantumZipper.Proofs.RS.LocalDynkinSuper",
+        "QuantumZipper.Proofs.RS.OnePointState",
+        "QuantumZipper.Proofs.ItoLite.Oscillation",
+        "QuantumZipper.Proofs.RS.BMModulus",
+        "QuantumZipper.Proofs.RS.TransienceCanon",
+        "InteractingSLE.SLE8.ReverseFlow"
+      ],
+      "bytes": 68401
+    },
+    "InteractingSLE.SLE8.Assembly": {
+      "path": "InteractingSLE/SLE8/Assembly.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/SLE8/Assembly.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "5992c18018471f152db62fee1ae427befacea48f8d8110f9fc43915527cbcc22",
+      "imports": [
+        "InteractingSLE.SLE8.Radial",
+        "InteractingSLE.SLE8.Lemma21",
+        "InteractingSLE.SLE8.AL14.Theorem2"
+      ],
+      "local_imports": [
+        "InteractingSLE.SLE8.Radial",
+        "InteractingSLE.SLE8.Lemma21",
+        "InteractingSLE.SLE8.AL14.Theorem2"
+      ],
+      "bytes": 4733
+    },
+    "InteractingSLE.SLE8.ChangeOfMeasure": {
+      "path": "InteractingSLE/SLE8/ChangeOfMeasure.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/SLE8/ChangeOfMeasure.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "931a7e111ab9624ed8408b673efabf3f18aa4f8f84372a96c5f70e5df8d5e164",
+      "imports": [
+        "InteractingSLE.SLE8.ChangeOfMeasure.Tilt",
+        "QuantumZipper.Proofs.RS.TransienceCanon",
+        "QuantumZipper.Proofs.Zipper.UnzipInvariance"
+      ],
+      "local_imports": [
+        "InteractingSLE.SLE8.ChangeOfMeasure.Tilt",
+        "QuantumZipper.Proofs.RS.TransienceCanon",
+        "QuantumZipper.Proofs.Zipper.UnzipInvariance"
+      ],
+      "bytes": 24947
+    },
+    "InteractingSLE.SLE8.ChangeOfMeasure.Clock": {
+      "path": "InteractingSLE/SLE8/ChangeOfMeasure/Clock.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/SLE8/ChangeOfMeasure/Clock.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "37f56b23a9bc89d17e6455ca3aefc1ec3dd16a1ede3907006df50803b93086cf",
+      "imports": [
+        "InteractingSLE.SLE8.ReverseFlow",
+        "QuantumZipper.Proofs.Loewner.Algebra",
+        "Mathlib.MeasureTheory.Function.JacobianOneDim",
+        "Mathlib.Analysis.SpecialFunctions.Arsinh"
+      ],
+      "local_imports": [
+        "InteractingSLE.SLE8.ReverseFlow",
+        "QuantumZipper.Proofs.Loewner.Algebra"
+      ],
+      "bytes": 23758
+    },
+    "InteractingSLE.SLE8.ChangeOfMeasure.Core": {
+      "path": "InteractingSLE/SLE8/ChangeOfMeasure/Core.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/SLE8/ChangeOfMeasure/Core.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "05892b3488feecb14d8d93944173f0be5a41fd5f3b8233ccdd8d735ca787e6e8",
+      "imports": [
+        "InteractingSLE.SLE8.ChangeOfMeasure.TestFunction",
+        "InteractingSLE.SLE8.ChangeOfMeasure.Clock",
+        "QuantumZipper.Proofs.RS.MartingaleBound",
+        "QuantumZipper.Proofs.Probability.Girsanov.DynkinStop",
+        "QuantumZipper.Proofs.ItoLite.OptionalStopping",
+        "QuantumZipper.Proofs.Probability.Williams.MarkovHit",
+        "MathFin.Probability.Martingales.UnifIntegrableL2"
+      ],
+      "local_imports": [
+        "InteractingSLE.SLE8.ChangeOfMeasure.TestFunction",
+        "InteractingSLE.SLE8.ChangeOfMeasure.Clock",
+        "QuantumZipper.Proofs.RS.MartingaleBound",
+        "QuantumZipper.Proofs.Probability.Girsanov.DynkinStop",
+        "QuantumZipper.Proofs.ItoLite.OptionalStopping",
+        "QuantumZipper.Proofs.Probability.Williams.MarkovHit",
+        "MathFin.Probability.Martingales.UnifIntegrableL2"
+      ],
+      "bytes": 41194
+    },
+    "InteractingSLE.SLE8.ChangeOfMeasure.TestFunction": {
+      "path": "InteractingSLE/SLE8/ChangeOfMeasure/TestFunction.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/SLE8/ChangeOfMeasure/TestFunction.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "2b9dabd2410fa96b5bb0f0db505e633fe341c8d9706825e1649901487f67427a",
+      "imports": [
+        "QuantumZipper.Proofs.RS.MartingaleBoundGen",
+        "Mathlib.Analysis.SpecialFunctions.Arsinh"
+      ],
+      "local_imports": [
+        "QuantumZipper.Proofs.RS.MartingaleBoundGen"
+      ],
+      "bytes": 17786
+    },
+    "InteractingSLE.SLE8.ChangeOfMeasure.Tilt": {
+      "path": "InteractingSLE/SLE8/ChangeOfMeasure/Tilt.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/SLE8/ChangeOfMeasure/Tilt.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "011aa971da33897aa44305f476a74041733a4f75dbc7034934e3073addaebd64",
+      "imports": [
+        "InteractingSLE.SLE8.ChangeOfMeasure.Core",
+        "InteractingSLE.Stochastic.Martingale.OptionalSampling",
+        "QuantumZipper.Proofs.Probability.StrongMarkov",
+        "MathFin.Probability.Brownian.ExpMartingaleBrownian"
+      ],
+      "local_imports": [
+        "InteractingSLE.SLE8.ChangeOfMeasure.Core",
+        "InteractingSLE.Stochastic.Martingale.OptionalSampling",
+        "QuantumZipper.Proofs.Probability.StrongMarkov",
+        "MathFin.Probability.Brownian.ExpMartingaleBrownian"
+      ],
+      "bytes": 44046
+    },
+    "InteractingSLE.SLE8.Counting": {
+      "path": "InteractingSLE/SLE8/Counting.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/SLE8/Counting.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "e5097947cc6b0164009744cfdcc19948e2529ee3ca0a1a6557f9a5bfaf167659",
+      "imports": [
+        "InteractingSLE.SLE8.Counting.Sums",
+        "InteractingSLE.SLE8.Counting.DriverBound",
+        "InteractingSLE.SLE8.TwoPoint",
+        "InteractingSLE.SLE8.Occupation"
+      ],
+      "local_imports": [
+        "InteractingSLE.SLE8.Counting.Sums",
+        "InteractingSLE.SLE8.Counting.DriverBound",
+        "InteractingSLE.SLE8.TwoPoint",
+        "InteractingSLE.SLE8.Occupation"
+      ],
+      "bytes": 37823
+    },
+    "InteractingSLE.SLE8.Counting.ChangeOfMeasure": {
+      "path": "InteractingSLE/SLE8/Counting/ChangeOfMeasure.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/SLE8/Counting/ChangeOfMeasure.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "d42e2e0d5a6f91c80f797a05d0c51541cb3e516d14851b39111eaa0edb05425e",
+      "imports": [
+        "InteractingSLE.SLE8.Counting.Height",
+        "QuantumZipper.Proofs.RS.TransienceCanon"
+      ],
+      "local_imports": [
+        "InteractingSLE.SLE8.Counting.Height",
+        "QuantumZipper.Proofs.RS.TransienceCanon"
+      ],
+      "bytes": 9432
+    },
+    "InteractingSLE.SLE8.Counting.DriverBound": {
+      "path": "InteractingSLE/SLE8/Counting/DriverBound.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/SLE8/Counting/DriverBound.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "a14707fcb7a7599c9fa422cc27aebf68073dbc8bc1b88c308fdcdb752b2cdc95",
+      "imports": [
+        "InteractingSLE.SLE8.TimeGrid",
+        "QuantumZipper.Proofs.RS.BMModulus"
+      ],
+      "local_imports": [
+        "InteractingSLE.SLE8.TimeGrid",
+        "QuantumZipper.Proofs.RS.BMModulus"
+      ],
+      "bytes": 3859
+    },
+    "InteractingSLE.SLE8.Counting.Height": {
+      "path": "InteractingSLE/SLE8/Counting/Height.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/SLE8/Counting/Height.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "595c97d35554922b7547fe0a962ba225b0d17bc7bffa7d744c643875e199d7af",
+      "imports": [
+        "InteractingSLE.SLE8.TimeGrid",
+        "InteractingSLE.SLE8.Counting.TrialBM",
+        "QuantumZipper.Proofs.Loewner.Algebra",
+        "QuantumZipper.Proofs.RS.TraceGrid",
+        "Mathlib.Analysis.SpecialFunctions.Arsinh"
+      ],
+      "local_imports": [
+        "InteractingSLE.SLE8.TimeGrid",
+        "InteractingSLE.SLE8.Counting.TrialBM",
+        "QuantumZipper.Proofs.Loewner.Algebra",
+        "QuantumZipper.Proofs.RS.TraceGrid"
+      ],
+      "bytes": 12096
+    },
+    "InteractingSLE.SLE8.Counting.Selection": {
+      "path": "InteractingSLE/SLE8/Counting/Selection.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/SLE8/Counting/Selection.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "77c5b3f2e0c74faf93131a93fa690295b5d7e500fd34bedd23b964fabeb9021b",
+      "imports": [
+        "InteractingSLE.SLE8.Counting.ChangeOfMeasure",
+        "QuantumZipper.Proofs.Zipper.UnzipInvariance"
+      ],
+      "local_imports": [
+        "InteractingSLE.SLE8.Counting.ChangeOfMeasure",
+        "QuantumZipper.Proofs.Zipper.UnzipInvariance"
+      ],
+      "bytes": 36940
+    },
+    "InteractingSLE.SLE8.Counting.Sums": {
+      "path": "InteractingSLE/SLE8/Counting/Sums.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/SLE8/Counting/Sums.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "b3171bb1338bf877f635e1c622e72766acda5e5c9645977af24d30c39f9c4458",
+      "imports": [
+        "InteractingSLE.SLE8.Counting.Selection"
+      ],
+      "local_imports": [
+        "InteractingSLE.SLE8.Counting.Selection"
+      ],
+      "bytes": 13121
+    },
+    "InteractingSLE.SLE8.Counting.Trial": {
+      "path": "InteractingSLE/SLE8/Counting/Trial.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/SLE8/Counting/Trial.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "936df31b271b7734c18dee00ebfbe64088cdc38a2ccfdeabf24a54cd592aaca1",
+      "imports": [
+        "Mathlib.MeasureTheory.Constructions.BorelSpace.Real",
+        "Mathlib.MeasureTheory.Measure.Lebesgue.Basic",
+        "Mathlib.MeasureTheory.Measure.Prod",
+        "Mathlib.MeasureTheory.Function.StronglyMeasurable.Basic",
+        "Mathlib.Topology.Order.Compact"
+      ],
+      "local_imports": [],
+      "bytes": 25893
+    },
+    "InteractingSLE.SLE8.Counting.TrialBM": {
+      "path": "InteractingSLE/SLE8/Counting/TrialBM.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/SLE8/Counting/TrialBM.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "d0df2ebce39d1e8ed0f1611835d70349dd5a24aeaac17c7dfb8a308ae0bd06da",
+      "imports": [
+        "InteractingSLE.SLE8.Counting.Trial",
+        "QuantumZipper.Proofs.Probability.StrongMarkov",
+        "QuantumZipper.Proofs.Probability.Williams.Markov",
+        "Mathlib.MeasureTheory.Function.Floor",
+        "Mathlib.MeasureTheory.Group.Measure"
+      ],
+      "local_imports": [
+        "InteractingSLE.SLE8.Counting.Trial",
+        "QuantumZipper.Proofs.Probability.StrongMarkov",
+        "QuantumZipper.Proofs.Probability.Williams.Markov"
+      ],
+      "bytes": 25233
+    },
+    "InteractingSLE.SLE8.Final": {
+      "path": "InteractingSLE/SLE8/Final.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/SLE8/Final.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "6bf977ea4143a7a346dc3a6a879a92b2930e2b1c628696e5f8e8610db1212b84",
+      "imports": [
+        "InteractingSLE.SLE8.Assembly",
+        "InteractingSLE.SLE8.Counting",
+        "InteractingSLE.SLE8.ChangeOfMeasure",
+        "InteractingSLE.SLE8.AL14.Corollary1"
+      ],
+      "local_imports": [
+        "InteractingSLE.SLE8.Assembly",
+        "InteractingSLE.SLE8.Counting",
+        "InteractingSLE.SLE8.ChangeOfMeasure",
+        "InteractingSLE.SLE8.AL14.Corollary1"
+      ],
+      "bytes": 17936
+    },
+    "InteractingSLE.SLE8.Lemma21": {
+      "path": "InteractingSLE/SLE8/Lemma21.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/SLE8/Lemma21.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "52f440cc71076c9bc493249278b225009e221290716012b84872a13cb1771442",
+      "imports": [
+        "InteractingSLE.SLE8.AL14.DerivComparison",
+        "InteractingSLE.SLE8.TimeGrid",
+        "QuantumZipper.Proofs.RS.TransienceCanon",
+        "Mathlib.Probability.BrownianMotion.Basic",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics"
+      ],
+      "local_imports": [
+        "InteractingSLE.SLE8.AL14.DerivComparison",
+        "InteractingSLE.SLE8.TimeGrid",
+        "QuantumZipper.Proofs.RS.TransienceCanon"
+      ],
+      "bytes": 20926
+    },
+    "InteractingSLE.SLE8.Occupation": {
+      "path": "InteractingSLE/SLE8/Occupation.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/SLE8/Occupation.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "e965f9422893093a3377c5f5709533d991057880756fda5208c557a57e20ca7c",
+      "imports": [
+        "QuantumZipper.Proofs.RS.LocalDynkinSuper",
+        "QuantumZipper.Proofs.Thm11.NonSwallowing",
+        "QuantumZipper.Proofs.ItoLite.OptionalStopping",
+        "QuantumZipper.Proofs.RS.TransienceCanon",
+        "Mathlib.Analysis.Real.Pi.Bounds",
+        "Mathlib.Analysis.Complex.ExponentialBounds"
+      ],
+      "local_imports": [
+        "QuantumZipper.Proofs.RS.LocalDynkinSuper",
+        "QuantumZipper.Proofs.Thm11.NonSwallowing",
+        "QuantumZipper.Proofs.ItoLite.OptionalStopping",
+        "QuantumZipper.Proofs.RS.TransienceCanon"
+      ],
+      "bytes": 36028
+    },
+    "InteractingSLE.SLE8.Provider.ContinuousTrace": {
+      "path": "InteractingSLE/SLE8/Provider/ContinuousTrace.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/SLE8/Provider/ContinuousTrace.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "73c91df475e327a3fed79aac063491f075741465c227b47346f07ca078136144",
+      "imports": [
+        "QuantumZipper.SLE.Defs",
+        "InteractingSLE.SLE8.Final"
+      ],
+      "local_imports": [
+        "QuantumZipper.SLE.Defs",
+        "InteractingSLE.SLE8.Final"
+      ],
+      "bytes": 2182
+    },
+    "InteractingSLE.SLE8.Radial": {
+      "path": "InteractingSLE/SLE8/Radial.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/SLE8/Radial.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "8dcf7eb528e3adec5f0c9dc0f3b5ae0de5add3190b501c5bfe7d1da9056e6d0e",
+      "imports": [
+        "InteractingSLE.SLE8.TraceBridge",
+        "InteractingSLE.SLE8.TimeGrid",
+        "QuantumZipper.Proofs.RS.KoebeLoewner",
+        "QuantumZipper.Proofs.RS.BMModulus",
+        "Mathlib.Probability.BrownianMotion.Basic"
+      ],
+      "local_imports": [
+        "InteractingSLE.SLE8.TraceBridge",
+        "InteractingSLE.SLE8.TimeGrid",
+        "QuantumZipper.Proofs.RS.KoebeLoewner",
+        "QuantumZipper.Proofs.RS.BMModulus"
+      ],
+      "bytes": 43746
+    },
+    "InteractingSLE.SLE8.ReverseFlow": {
+      "path": "InteractingSLE/SLE8/ReverseFlow.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/SLE8/ReverseFlow.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "692e942ceda1f645c3ecd8b939caea2352573e1928f99177d721d371c1263442",
+      "imports": [
+        "QuantumZipper.Proofs.RS.TraceShift",
+        "QuantumZipper.Proofs.RS.TraceRadial",
+        "Mathlib.Analysis.Calculus.MeanValue",
+        "Mathlib.Analysis.Convex.Hull"
+      ],
+      "local_imports": [
+        "QuantumZipper.Proofs.RS.TraceShift",
+        "QuantumZipper.Proofs.RS.TraceRadial"
+      ],
+      "bytes": 18477
+    },
+    "InteractingSLE.SLE8.TimeGrid": {
+      "path": "InteractingSLE/SLE8/TimeGrid.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/SLE8/TimeGrid.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "a598dd8041d5f4ebc58b32d098723e1cb942be41fb771cba226b68a235a6f34b",
+      "imports": [
+        "InteractingSLE.SLE8.ReverseFlow",
+        "QuantumZipper.Proofs.RS.KoebeLoewnerTime"
+      ],
+      "local_imports": [
+        "InteractingSLE.SLE8.ReverseFlow",
+        "QuantumZipper.Proofs.RS.KoebeLoewnerTime"
+      ],
+      "bytes": 12425
+    },
+    "InteractingSLE.SLE8.TraceBridge": {
+      "path": "InteractingSLE/SLE8/TraceBridge.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/SLE8/TraceBridge.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "d2845177a6843cd480ebdf3aaca1310a5e97aab830197905a5001cb0de622299",
+      "imports": [
+        "QuantumZipper.Proofs.RS.TraceGen",
+        "QuantumZipper.Proofs.RS.KoebeLoewnerTime",
+        "QuantumZipper.Proofs.RS.HullBasics",
+        "QuantumZipper.Proofs.RS.TraceShift"
+      ],
+      "local_imports": [
+        "QuantumZipper.Proofs.RS.TraceGen",
+        "QuantumZipper.Proofs.RS.KoebeLoewnerTime",
+        "QuantumZipper.Proofs.RS.HullBasics",
+        "QuantumZipper.Proofs.RS.TraceShift"
+      ],
+      "bytes": 21119
+    },
+    "InteractingSLE.SLE8.TwoPoint": {
+      "path": "InteractingSLE/SLE8/TwoPoint.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/SLE8/TwoPoint.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "9f25d2968f358ca27dd0ca9ff163b449009fd9b8806e9a38e78933cb3476a76c",
+      "imports": [
+        "QuantumZipper.Proofs.RS.MartingaleBound",
+        "QuantumZipper.Proofs.Probability.Girsanov.Generator",
+        "QuantumZipper.Proofs.RS.TransienceCanon",
+        "InteractingSLE.SLE8.TimeGrid"
+      ],
+      "local_imports": [
+        "QuantumZipper.Proofs.RS.MartingaleBound",
+        "QuantumZipper.Proofs.Probability.Girsanov.Generator",
+        "QuantumZipper.Proofs.RS.TransienceCanon",
+        "InteractingSLE.SLE8.TimeGrid"
+      ],
+      "bytes": 62056
+    },
+    "InteractingSLE.Stochastic.Martingale.OptionalSampling": {
+      "path": "InteractingSLE/Stochastic/Martingale/OptionalSampling.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Stochastic/Martingale/OptionalSampling.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "301da79052d21c474ef9c7f8014eec7aa86c641e0830108470963d85c902d904",
+      "imports": [
+        "Mathlib.Probability.Martingale.OptionalSampling",
+        "Mathlib.Probability.Martingale.OptionalStopping",
+        "Mathlib.MeasureTheory.Function.Floor",
+        "Mathlib.MeasureTheory.Function.UniformIntegrable"
+      ],
+      "local_imports": [],
+      "bytes": 37534
+    },
+    "MathFin.Init": {
+      "path": "MathFin/Init.lean",
+      "source_path": "formalizations/interacting_sle/vendor/formal-mathfin/MathFin/Init.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "43d9faf5d7addad605fabc3ae62e3990d89daf3eb2419ed7505748742067dec8",
+      "imports": [
+        "Lean.Meta.Tactic.Grind.RegisterCommand"
+      ],
+      "local_imports": [],
+      "bytes": 1794
+    },
+    "MathFin.Probability.Brownian.ExpMartingaleBrownian": {
+      "path": "MathFin/Probability/Brownian/ExpMartingaleBrownian.lean",
+      "source_path": "formalizations/interacting_sle/vendor/formal-mathfin/MathFin/Probability/Brownian/ExpMartingaleBrownian.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "dd0a3669cef6acdebba9eabacc2f2cd5f0730ae736fa6ec8411867b55bab8c99",
+      "imports": [
+        "MathFin.Probability.Brownian.ExpMartingaleQBrownian",
+        "BrownianMotion.Gaussian.BrownianMotion"
+      ],
+      "local_imports": [
+        "MathFin.Probability.Brownian.ExpMartingaleQBrownian",
+        "BrownianMotion.Gaussian.BrownianMotion"
+      ],
+      "bytes": 7803
+    },
+    "MathFin.Probability.Brownian.ExpMartingaleQBrownian": {
+      "path": "MathFin/Probability/Brownian/ExpMartingaleQBrownian.lean",
+      "source_path": "formalizations/interacting_sle/vendor/formal-mathfin/MathFin/Probability/Brownian/ExpMartingaleQBrownian.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "bc13359599884a7b45163704abf75af2a94d17d7e66d78555b5497d0aa02a080",
+      "imports": [
+        "MathFin.Probability.Laws.Esscher",
+        "Mathlib.Algebra.Order.Star.Real",
+        "Mathlib.MeasureTheory.Function.ConditionalExpectation.PullOut",
+        "Mathlib.Probability.Independence.CharacteristicFunction",
+        "Mathlib.Probability.Independence.Process.HasIndepIncrements.Basic",
+        "Mathlib.Probability.Process.Adapted"
+      ],
+      "local_imports": [
+        "MathFin.Probability.Laws.Esscher"
+      ],
+      "bytes": 29736
+    },
+    "MathFin.Probability.Laws.Esscher": {
+      "path": "MathFin/Probability/Laws/Esscher.lean",
+      "source_path": "formalizations/interacting_sle/vendor/formal-mathfin/MathFin/Probability/Laws/Esscher.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "4efb59b6c549478129b37718c16f839df5e4b06247ff7a59183bd807a84b4042",
+      "imports": [
+        "MathFin.Init",
+        "Mathlib.Analysis.Analytic.IsolatedZeros",
+        "Mathlib.Analysis.CStarAlgebra.Classes",
+        "Mathlib.MeasureTheory.Measure.Tilted",
+        "Mathlib.Probability.Distributions.Gaussian.Real"
+      ],
+      "local_imports": [
+        "MathFin.Init"
+      ],
+      "bytes": 12286
+    },
+    "MathFin.Probability.Martingales.UnifIntegrableL2": {
+      "path": "MathFin/Probability/Martingales/UnifIntegrableL2.lean",
+      "source_path": "formalizations/interacting_sle/vendor/formal-mathfin/MathFin/Probability/Martingales/UnifIntegrableL2.lean",
+      "source_commit": "05c010b59c39acb1122b8813b2e80044f253772d",
+      "sha256": "537cab8383f7ad70b15b30eb4b393e9342a5e2658868106b1e38fdb8fe368791",
+      "imports": [
+        "MathFin.Init",
+        "Mathlib.Algebra.Order.Star.Real",
+        "Mathlib.MeasureTheory.Function.L2Space",
+        "Mathlib.MeasureTheory.Function.UniformIntegrable"
+      ],
+      "local_imports": [
+        "MathFin.Init"
+      ],
+      "bytes": 12776
     }
   }
 }

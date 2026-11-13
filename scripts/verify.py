@@ -14,7 +14,7 @@ import argparse,hashlib,json,os,re,shutil,subprocess,sys,time
 
 ROOT=Path(__file__).resolve().parents[1]
 CERT_MEMORY_MB=12288
-NAMESPACES=['MeshOnly','BouRabeeGwynne','ReflectedWalk','ReflectedGMS','QuantumZipper','LQGDimension','LQGMetric','MeshRates','GaussianLQG','HigherDimLFPP','SmallGammaGeodesics','HigherDimLQGMetric','HigherDimLQGContinuity','SupercriticalLQGUniqueness','SLUSupport','SLUMetricAPI','SLUMetricAPI2','SLUFieldSupport','BR1Bridges','NV1Evidence','SupercriticalConformalCovariance','HigherDimLFPPAS','SupercriticalLFPPAS','MatedCRTHarmonic']
+NAMESPACES=['MeshOnly','BouRabeeGwynne','ReflectedWalk','ReflectedGMS','QuantumZipper','LQGDimension','LQGMetric','MeshRates','GaussianLQG','HigherDimLFPP','SmallGammaGeodesics','HigherDimLQGMetric','HigherDimLQGContinuity','SupercriticalLQGUniqueness','SLUSupport','SLUMetricAPI','SLUMetricAPI2','SLUFieldSupport','BR1Bridges','NV1Evidence','SupercriticalConformalCovariance','HigherDimLFPPAS','SupercriticalLFPPAS','MatedCRTHarmonic','InteractingSLE','MathFin','BrownianMotion']
 def stripped(s):
     res=[];i=0;depth=0;string=False
     while i<len(s):
@@ -121,12 +121,18 @@ def main():
         p,fh,t=launch('MatedCRTHarmonic.Check',audit_path);rc=p.wait(timeout=900);fh.close()
         audit=(logs/'MatedCRTHarmonic.Check.log').read_text();print(audit,flush=True)
         if rc:raise RuntimeError('MatedCRTHarmonic focused audit failed')
+        sle8_audit_path='results/elementary-sle8-continuity/Check.lean'
+        assert (ROOT/sle8_audit_path).is_file(),f'Missing focused audit: {sle8_audit_path}'
+        p,fh,t=launch('InteractingSLE.Check',sle8_audit_path);rc=p.wait(timeout=900);fh.close()
+        sle8_audit=(logs/'InteractingSLE.Check.log').read_text();print(sle8_audit,flush=True)
+        if rc:raise RuntimeError('Elementary SLE8 focused audit failed')
+        assert 'ELEMENTARY_SLE8_AUDIT' in sle8_audit,'Elementary SLE8 whole-declaration audit did not finish'
         p,fh,t=launch('Certificate','Certificate.lean',mem=CERT_MEMORY_MB);rc=p.wait(timeout=900);fh.close()
         certificate=(logs/'Certificate.log').read_text();print(certificate,flush=True)
         if rc:raise RuntimeError('Certificate failed')
         assert 'PUBLIC_RELEASE_AUDIT' in certificate,'Whole-declaration audit did not finish'
         source_commits=sorted({r.get('source_commit',manifest['source_commit']) for r in modules.values()})
-        result={'status':'passed','mode':'cached dependencies with freshly compiled certificate' if args.cached else 'fresh project source rebuild in two parts and certificate' if resumed else 'fresh project source rebuild and certificate','source_commits':source_commits,'source_modules':len(modules),'fresh_modules':len(fresh)+len(resumed),'resumed_modules':len(resumed),'reused_modules':len(reused),'seconds':round(time.time()-start,1),'lean_version':subprocess.check_output([lean,'--version'],text=True).strip(),'axioms_allowed':['propext','Classical.choice','Quot.sound'],'focused_audit':audit_path}
+        result={'status':'passed','mode':'cached dependencies with freshly compiled certificate' if args.cached else 'fresh project source rebuild in two parts and certificate' if resumed else 'fresh project source rebuild and certificate','source_commits':source_commits,'source_modules':len(modules),'fresh_modules':len(fresh)+len(resumed),'resumed_modules':len(resumed),'reused_modules':len(reused),'seconds':round(time.time()-start,1),'lean_version':subprocess.check_output([lean,'--version'],text=True).strip(),'axioms_allowed':['propext','Classical.choice','Quot.sound'],'focused_audit':audit_path,'focused_audits':[audit_path,sle8_audit_path]}
         (out/'result.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result),flush=True)
     finally:
         for p,fh,t in running.values():
