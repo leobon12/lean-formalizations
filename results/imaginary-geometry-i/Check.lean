@@ -15,10 +15,21 @@ import InteractingSLE.Frozen.Spec.exists_isIntegratedSLEEvolution_eqOn_of_isCont
 import InteractingSLE.Frozen.Spec.IsPiecewiseConstantBoundaryData_existsUnique_isBoundedHarmonicExtension
 import InteractingSLE.Frozen.Spec.exists_isFlowLine
 import InteractingSLE.Frozen.Spec.exists_isStagedHistory
+import InteractingSLE.Frozen.Spec.IsFlowLine_merges_of_contact
+import InteractingSLE.Frozen.Spec.IsFlowLine_crosses_of_lt_of_contact
+import InteractingSLE.Frozen.Spec.exists_strongMarkovKernel_isIntegratedSLEEvolution
+import InteractingSLE.Frozen.Spec.IsCenteredCounterflowDriver_boundaryWalks_outerBoundaries
+import InteractingSLE.Spec.AuditFix.LiteralCounterflow
+import InteractingSLE.Spec.AuditFix.FrontierBridge
+import InteractingSLE.Spec.AuditFix.Markov
+import InteractingSLE.Spec.AuditFix.BoundaryContact
+import InteractingSLE.Spec.AuditFix.BoundaryContactStrong
+import InteractingSLE.Spec.AuditFix.StrongCross
 import Mathlib.Util.AssertNoSorry
 
-/-! Release audit of the advertised theorems of *Imaginary geometry I* (Miller–Sheffield): the 17 frozen theorems
-(Theorems 1.1–1.5, 2.2, 2.4, 2.6 and four companions). Every `#print axioms` report must list only axioms among
+/-! Release audit of the advertised theorems of *Imaginary geometry I* (Miller–Sheffield): the 21 frozen theorems
+(Theorems 1.1–1.5, 2.2, 2.4, 2.6, four companions, and four statements added after the external audit of
+2026-11-15), then the supplementary theorems of that audit response. Every `#print axioms` report must list only axioms among
 `propext`, `Classical.choice` and `Quot.sound` (any subset). -/
 set_option autoImplicit false
 
@@ -73,6 +84,64 @@ assert_no_sorry InteractingSLE.exists_isFlowLine
 -- Companion: existence of staged histories.
 assert_no_sorry InteractingSLE.exists_isStagedHistory
 #print axioms InteractingSLE.exists_isStagedHistory
+
+-- Added after the external audit of 2026-11-15 (ruling R122): frozen and sealed.
+-- Theorem 1.5 (ii) at every contact.
+assert_no_sorry InteractingSLE.IsFlowLine.merges_of_contact
+#print axioms InteractingSLE.IsFlowLine.merges_of_contact
+-- Theorem 1.5 (iii) at every available contact, with no common outgoing arc.
+assert_no_sorry InteractingSLE.IsFlowLine.crosses_of_lt_of_contact
+#print axioms InteractingSLE.IsFlowLine.crosses_of_lt_of_contact
+-- Theorem 2.2, the Markov sentence (strong Markov property).
+assert_no_sorry InteractingSLE.exists_strongMarkovKernel_isIntegratedSLEEvolution
+#print axioms InteractingSLE.exists_strongMarkovKernel_isIntegratedSLEEvolution
+-- Theorem 1.4, the walks are the left and right boundaries (nowhere boundary filling).
+assert_no_sorry InteractingSLE.IsCenteredCounterflowDriver.boundaryWalks_outerBoundaries
+#print axioms InteractingSLE.IsCenteredCounterflowDriver.boundaryWalks_outerBoundaries
+
+-- Supplementary theorems of the audit response (statement-audited, not frozen).
+assert_no_sorry InteractingSLE.AuditFix.literalCounterflowBridge_holds
+#print axioms InteractingSLE.AuditFix.literalCounterflowBridge_holds
+assert_no_sorry InteractingSLE.AuditFix.literalCounterflowWord_holds
+#print axioms InteractingSLE.AuditFix.literalCounterflowWord_holds
+assert_no_sorry InteractingSLE.AuditFix.literalCounterflowParamField_holds
+#print axioms InteractingSLE.AuditFix.literalCounterflowParamField_holds
+assert_no_sorry InteractingSLE.AuditFix.literalCounterflowBranch_holds
+#print axioms InteractingSLE.AuditFix.literalCounterflowBranch_holds
+assert_no_sorry InteractingSLE.AuditFix.shiftedField_holds
+#print axioms InteractingSLE.AuditFix.shiftedField_holds
+assert_no_sorry InteractingSLE.AuditFix.flowLineAngleShift_holds
+#print axioms InteractingSLE.AuditFix.flowLineAngleShift_holds
+assert_no_sorry InteractingSLE.AuditFix.literalCounterflowLightCone_holds
+#print axioms InteractingSLE.AuditFix.literalCounterflowLightCone_holds
+assert_no_sorry InteractingSLE.AuditFix.literalCounterflowFrontiers_holds
+#print axioms InteractingSLE.AuditFix.literalCounterflowFrontiers_holds
+assert_no_sorry InteractingSLE.AuditFix.literalCounterflowComponentKernels_holds
+#print axioms InteractingSLE.AuditFix.literalCounterflowComponentKernels_holds
+assert_no_sorry InteractingSLE.AuditFix.frontierBridge_holds
+#print axioms InteractingSLE.AuditFix.frontierBridge_holds
+assert_no_sorry InteractingSLE.AuditFix.frontierNowhereFilling_holds
+#print axioms InteractingSLE.AuditFix.frontierNowhereFilling_holds
+assert_no_sorry InteractingSLE.AuditFix.integratedSLEStrongMarkov_holds
+#print axioms InteractingSLE.AuditFix.integratedSLEStrongMarkov_holds
+assert_no_sorry InteractingSLE.AuditFix.integratedSLEMarkov_holds
+#print axioms InteractingSLE.AuditFix.integratedSLEMarkov_holds
+assert_no_sorry InteractingSLE.AuditFix.integratedSLEIncrementStrongMarkov_holds
+#print axioms InteractingSLE.AuditFix.integratedSLEIncrementStrongMarkov_holds
+assert_no_sorry InteractingSLE.AuditFix.mergesUponContact_holds
+#print axioms InteractingSLE.AuditFix.mergesUponContact_holds
+assert_no_sorry InteractingSLE.AuditFix.crossesUponContact_holds
+#print axioms InteractingSLE.AuditFix.crossesUponContact_holds
+assert_no_sorry InteractingSLE.AuditFix.crossesUponAvailableContact_holds
+#print axioms InteractingSLE.AuditFix.crossesUponAvailableContact_holds
+assert_no_sorry InteractingSLE.AuditFix.strongCrossesUponAvailableContact_holds
+#print axioms InteractingSLE.AuditFix.strongCrossesUponAvailableContact_holds
+assert_no_sorry InteractingSLE.AuditFix.criticalOrderedNoInteriorPoint_holds
+#print axioms InteractingSLE.AuditFix.criticalOrderedNoInteriorPoint_holds
+assert_no_sorry InteractingSLE.AuditFix.criticalCrossingNoLaterInteriorPoint_holds
+#print axioms InteractingSLE.AuditFix.criticalCrossingNoLaterInteriorPoint_holds
+assert_no_sorry InteractingSLE.AuditFix.strongCrossStatement_holds
+#print axioms InteractingSLE.AuditFix.strongCrossStatement_holds
 
 /-! Every declaration of the included project modules (the `InteractingSLE`, `MathFin` and `BrownianMotion` modules
 and the released `QuantumZipper`, `LQGMetric`, `LQGDimension`, `SupercriticalConformalCovariance`,

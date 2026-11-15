@@ -1,6 +1,6 @@
 # Imaginary geometry I: interacting SLEs
 
-**Status.** Theorems 1.1–1.5, 2.2, 2.4 and 2.6 are `PROVED` in Lean with no assumptions. So are four companion statements. Each of these 17 frozen theorems is sealed. It depends only on Lean's standard axioms `propext`, `Classical.choice` and `Quot.sound`, as does every declaration of the released library.
+**Status.** Theorems 1.1–1.5, 2.2, 2.4 and 2.6 are `PROVED` in Lean with no assumptions. So are four companion statements and four statements added after an [external audit](AUDIT-RESPONSE.md) of the first publication. Each of these 21 frozen theorems is sealed. It depends only on Lean's standard axioms `propext`, `Classical.choice` and `Quot.sound`, as does every declaration of the released library.
 
 This Lean 4 project formalizes the main theorems of Jason Miller and Scott Sheffield, *Imaginary geometry I: interacting SLEs*, Probability Theory and Related Fields 164 (2016), 553–705, [arXiv:1201.1496](https://arxiv.org/abs/1201.1496).
 
@@ -15,6 +15,7 @@ The edition is included in this release, in [`specification/`](specification/), 
 - [Errata](ERRATA.md): the errors in Miller and Sheffield's paper that the formalization uncovered, each checked against arXiv v2. It also covers errors of the specification and gaps in cited works.
 - [Correspondence](CORRESPONDENCE.md): every difference between the Lean statements and the paper, theorem by theorem and definition by definition.
 - [The specification](specification/): the 671-page edition the statements were frozen from, as a PDF with its transcription.
+- [Response to the external audit](AUDIT-RESPONSE.md): an independent audit of the first publication and, item by item, how it was answered: four new frozen theorems, supplementary bridge theorems, and one disclosed restriction.
 
 **What the theorems say.** The theorems construct and characterize the flow lines of the Gaussian free field (GFF):
 - Theorem 1.1: SLE_κ(ρ) processes couple with the GFF as flow lines.
@@ -43,18 +44,27 @@ The edition is included in this release, in [`specification/`](specification/), 
 | Companion: piecewise-constant boundary data (p. 5) | `IsPiecewiseConstantBoundaryData.existsUnique_isBoundedHarmonicExtension` | **PROVED**, two keys (`AUD-4b`) |
 | Companion: existence of flow lines (p. 5) | `exists_isFlowLine` | **PROVED**, two keys (`AUD-SEAL7`) |
 | Companion: existence of staged histories (p. 618) | `exists_isStagedHistory` | **PROVED**, two keys (`AUD-SEAL7`) |
+| *Added after the external audit:* Theorem 1.5 (ii) at every contact, real contacts included (paper pp. 30, 137, 141) | `IsFlowLine.merges_of_contact` | **PROVED**, two keys (`AUD-SEAL-AF`); statement audited (`AUD-AF-T15`) |
+| *Added:* Theorem 1.5 (iii) at every available contact, with no common outgoing arc (paper pp. 30, 141) | `IsFlowLine.crosses_of_lt_of_contact` | **PROVED**, two keys (`AUD-SEAL-AF`); `AUD-AF-T15` |
+| *Added:* Theorem 2.2's Markov sentence, as a strong Markov property (paper p. 40) | `exists_strongMarkovKernel_isIntegratedSLEEvolution` | **PROVED**, two keys (`AUD-SEAL-AF`); `AUD-AF-T22` |
+| *Added:* Theorem 1.4, the walks are the left and right boundaries when η′ is nowhere boundary filling (paper p. 22) | `IsCenteredCounterflowDriver.boundaryWalks_outerBoundaries` | **PROVED**, two keys (`AUD-SEAL-AF`); `AUD-AF-T14` |
 
 **The two keys.**
 - *First key:* only the frozen proof body changes, from `by sorry` to `by exact InteractingSLE.Spec.Provider.<name>`. Here `<name>` is a provider theorem with exactly the frozen statement. The frozen-anchor checker, the build, an unchanged statement hash and `#print axioms` must pass. The seals of Theorems 1.4, 2.4 and 2.6 also replayed the anchor modules in the kernel and checked the constant closure of the proof.
 - *Second key:* an independent seal audit repeats these checks. It also reads the provider chain for hypotheses that encode proof steps.
 
-All 17 theorems have both keys. The last five, Theorems 1.4 (three statements), 2.4 and 2.6, received their second keys after the first publication of this release, from the seal audits `AUD-SEAL-T14` and `AUD-SEAL-T2426`. No proof or statement changed. The [focused certificate](Check.lean) and the public workflow check every theorem's axioms again.
+All 21 theorems have both keys.
+- The last five of the original 17, Theorems 1.4 (three statements), 2.4 and 2.6, received their second keys after the first publication of this release, from the seal audits `AUD-SEAL-T14` and `AUD-SEAL-T2426`. No proof or statement changed.
+- The four statements added after the external audit were frozen and sealed in one commit, so there is no `by sorry` stage to compare. Their second key, `AUD-SEAL-AF`, compared the frozen statements with the texts approved by their statement audits instead, and replayed their modules in the kernel.
 
-The 96 frozen definitions that these statements use are part of the release, in the same folder [`InteractingSLE/Frozen/Spec/`](../../InteractingSLE/Frozen/Spec/). This folder also holds the 17 frozen theorem files. The released SLE₈ theorem of the same development is described in [its own guide](../elementary-sle8-continuity/).
+The [focused certificate](Check.lean) and the public workflow check every theorem's axioms again.
 
-**Scope.** The formal statements cover Theorems 1.1–1.5, 2.2, 2.4 and 2.6. Two parts of the paper's statements are left out (rulings R16 and R17):
-- the "fan statements" after Theorem 1.5, that is, the specification's Proposition 7.33 and Theorem OT1;
-- the last sentence of Theorem 2.2, which says that the joint process is Markov. It is used inside the proofs but is not stated.
+The 96 frozen definitions that these statements use are part of the release, in the same folder [`InteractingSLE/Frozen/Spec/`](../../InteractingSLE/Frozen/Spec/). This folder also holds the 21 frozen theorem files. The released SLE₈ theorem of the same development is described in [its own guide](../elementary-sle8-continuity/).
+
+**Scope.** The formal statements cover Theorems 1.1–1.5, 2.2, 2.4 and 2.6.
+- **Left out:** the "fan statements" after Theorem 1.5, that is, the specification's Proposition 7.33 and Theorem OT1 (rulings R16 and R17).
+- **Added after the external audit:** Theorem 2.2's last sentence (the joint process is Markov), as a strong Markov property; Theorem 1.5 (ii) and (iii) for contacts on the real line; and the exclusion of a common outgoing arc in the crossing. See the [audit response](AUDIT-RESPONSE.md).
+- **Disclosed restriction:** the critical-angle clauses of Theorem 1.5 (i) and (iii) ("the paths almost surely do not intersect, except possibly at their starting point") are proved for contacts in the open half-plane only. The specification states them that way (pp. 5, 543–544); the paper's claim at real points is not proved.
 
 **One correction to a main theorem.** Theorem 2.4 is formalized in a corrected form. As printed in the specification, it asks for the martingale property only until z is absorbed. Read that way, its forward direction is false, by an explicit counterexample with an inadmissible seed. The formal statement stops the martingale condition at min(τ_z, T_*), which is the horizon of the specification's own proof and of Theorem 2.6 (item 33 below). The paper prints the same horizon (its p. 43). This and the other errors the project found in the paper are listed in the [errata](ERRATA.md).
 
@@ -784,6 +794,172 @@ theorem exists_isStagedHistory {κ : ℝ} (hκ : 0 < κ) (hκ4 : κ < 4)
 
 </details>
 
+<details><summary>Added after the external audit: Theorem 1.5 (ii) at every contact: <code>IsFlowLine_merges_of_contact.lean</code></summary>
+
+File: [`InteractingSLE/Frozen/Spec/IsFlowLine_merges_of_contact.lean`](../../InteractingSLE/Frozen/Spec/IsFlowLine_merges_of_contact.lean). It opens:
+
+```lean
+open MeasureTheory ProbabilityTheory Filter Set Topology TopologicalSpace
+open scoped NNReal ENNReal
+```
+
+```lean
+theorem IsFlowLine.merges_of_contact {κ : ℝ} (hκ : 0 < κ) (hκ4 : κ < 4)
+    (b : ℝ → ℝ) (jumps : Finset ℝ) (hb : IsPiecewiseConstantBoundaryData b jumps)
+    {x₁ x₂ θ : ℝ} (hx : x₂ ≤ x₁)
+    {Ω : Type u} [MeasurableSpace Ω] {P : Measure Ω} [IsProbabilityMeasure P]
+    {h : Ω → LQGMetric.DistOn upperHalfPlaneOpens} (hh : IsGFFWithBoundaryData P h b jumps)
+    {η₁ η₂ : Ω → ℝ≥0 → ℂ} {ζ₁ ζ₂ : Ω → ℝ≥0∞}
+    (hη₁ : IsFlowLine κ b jumps x₁ θ P h η₁ ζ₁) (hη₂ : IsFlowLine κ b jumps x₂ θ P h η₂ ζ₂) :
+    ∀ᵐ ω ∂P, ∀ s t : ℝ≥0, (s : ℝ≥0∞) ≤ ζ₁ ω → (t : ℝ≥0∞) ≤ ζ₂ ω → η₁ ω s = η₂ ω t →
+      AgreeAsCurvesAfter (η₁ ω) (ζ₁ ω) s (η₂ ω) (ζ₂ ω) t :=
+```
+
+</details>
+
+<details><summary>Added: Theorem 1.5 (iii) at every available contact, no common outgoing arc: <code>IsFlowLine_crosses_of_lt_of_contact.lean</code></summary>
+
+File: [`InteractingSLE/Frozen/Spec/IsFlowLine_crosses_of_lt_of_contact.lean`](../../InteractingSLE/Frozen/Spec/IsFlowLine_crosses_of_lt_of_contact.lean). It opens:
+
+```lean
+open MeasureTheory ProbabilityTheory Filter Set Topology TopologicalSpace
+open scoped NNReal ENNReal
+```
+
+```lean
+theorem IsFlowLine.crosses_of_lt_of_contact {κ : ℝ} (hκ : 0 < κ) (hκ4 : κ < 4)
+    (b : ℝ → ℝ) (jumps : Finset ℝ) (hb : IsPiecewiseConstantBoundaryData b jumps)
+    {x₁ x₂ θ₁ θ₂ : ℝ} (hx : x₂ < x₁) (hθ : θ₂ < θ₁) (hθπ : θ₁ < θ₂ + Real.pi)
+    {Ω : Type u} [MeasurableSpace Ω] {P : Measure Ω} [IsProbabilityMeasure P]
+    {h : Ω → LQGMetric.DistOn upperHalfPlaneOpens} (hh : IsGFFWithBoundaryData P h b jumps)
+    {η₁ η₂ : Ω → ℝ≥0 → ℂ} {ζ₁ ζ₂ : Ω → ℝ≥0∞}
+    (hη₁ : IsFlowLine κ b jumps x₁ θ₁ P h η₁ ζ₁) (hη₂ : IsFlowLine κ b jumps x₂ θ₂ P h η₂ ζ₂) :
+    (∀ᵐ ω ∂P, ∀ s t : ℝ≥0, (s : ℝ≥0∞) < ζ₁ ω → (t : ℝ≥0∞) < ζ₂ ω → η₁ ω s = η₂ ω t →
+        ∃ s₀ t₀ : ℝ≥0, IsFirstContact (η₁ ω) (ζ₁ ω) (η₂ ω) (ζ₂ ω) s₀ t₀ ∧
+          CrossesFromRightAt (η₁ ω) (ζ₁ ω) s₀ (η₂ ω) (ζ₂ ω) t₀ ∧
+          (∀ a a' : ℝ≥0, s₀ ≤ a → a < a' → (a' : ℝ≥0∞) ≤ ζ₁ ω →
+            ¬ η₁ ω '' Set.Ioo a a' ⊆ η₂ ω '' {t : ℝ≥0 | t₀ ≤ t ∧ (t : ℝ≥0∞) < ζ₂ ω}) ∧
+          ∀ c c' : ℝ≥0, t₀ ≤ c → c < c' → (c' : ℝ≥0∞) ≤ ζ₂ ω →
+            ¬ η₂ ω '' Set.Ioo c c' ⊆ η₁ ω '' {s : ℝ≥0 | s₀ ≤ s ∧ (s : ℝ≥0∞) < ζ₁ ω}) ∧
+      (Real.pi * κ / (4 - κ) ≤ θ₁ - θ₂ → ∀ᵐ ω ∂P, ∀ s t : ℝ≥0,
+        (s : ℝ≥0∞) ≤ ζ₁ ω → (t : ℝ≥0∞) ≤ ζ₂ ω → η₁ ω s = η₂ ω t → η₁ ω s ∈ QuantumZipper.H →
+          IsFirstContact (η₁ ω) (ζ₁ ω) (η₂ ω) (ζ₂ ω) s t) :=
+```
+
+</details>
+
+<details><summary>Added: Theorem 2.2's Markov sentence: <code>exists_strongMarkovKernel_isIntegratedSLEEvolution.lean</code></summary>
+
+File: [`InteractingSLE/Frozen/Spec/exists_strongMarkovKernel_isIntegratedSLEEvolution.lean`](../../InteractingSLE/Frozen/Spec/exists_strongMarkovKernel_isIntegratedSLEEvolution.lean). It opens:
+
+```lean
+open MeasureTheory ProbabilityTheory Filter Set Topology TopologicalSpace
+open scoped NNReal ENNReal
+```
+
+```lean
+theorem exists_strongMarkovKernel_isIntegratedSLEEvolution :
+    ∀ (a : ℝ), 0 < a → ∀ (nL nR : ℕ) (ρL : Fin nL → ℝ) (ρR : Fin nR → ℝ),
+      ∃ Q : ∀ n : ℕ, (Fin n → ℝ≥0) → (Fin n → Set (ℝ × (Fin nL → ℝ) × (Fin nR → ℝ) × ℝ)) →
+          ℝ × (Fin nL → ℝ) × (Fin nR → ℝ) × ℝ → ℝ≥0∞,
+        -- (law)
+        (∀ (xL : Fin nL → ℝ) (xR : Fin nR → ℝ), IsOrderedForceWord xL xR → ∀ (w b : ℝ)
+          {Ω : Type u} {mΩ : MeasurableSpace Ω} {P : Measure Ω} {𝓕 : Filtration ℝ≥0 mΩ}
+          {W : ℝ≥0 → Ω → ℝ} {VL : Fin nL → ℝ≥0 → Ω → ℝ} {VR : Fin nR → ℝ≥0 → Ω → ℝ}
+          {B : ℝ≥0 → Ω → ℝ} {ζ : Ω → ℝ≥0∞},
+          IsIntegratedSLEEvolution a xL xR ρL ρR P 𝓕 W VL VR B ζ →
+          ∀ (n : ℕ) (ts : Fin n → ℝ≥0) (K : Fin n → Set (ℝ × (Fin nL → ℝ) × (Fin nR → ℝ) × ℝ)),
+            (∀ j, MeasurableSet (K j)) →
+            Q n ts K (w, (fun i => w + xL i), (fun j => w + xR j), b) =
+              P {ω | ∀ j, (ts j : ℝ≥0∞) < ζ ω ∧
+                (w + W (ts j) ω, (fun i => w + VL i (ts j) ω), (fun i => w + VR i (ts j) ω),
+                  b + B (ts j) ω) ∈ K j}) ∧
+        -- (measurable)
+        (∀ (n : ℕ) (ts : Fin n → ℝ≥0) (K : Fin n → Set (ℝ × (Fin nL → ℝ) × (Fin nR → ℝ) × ℝ)),
+          (∀ j, MeasurableSet (K j)) →
+          Measurable fun x : {x : ℝ × (Fin nL → ℝ) × (Fin nR → ℝ) × ℝ // ∀ i j, x.2.1 i < x.2.2.1 j} =>
+            Q n ts K x.1) ∧
+        -- (continuous)
+        (∀ {xL : Fin nL → ℝ} {xR : Fin nR → ℝ} {Ω : Type u} {mΩ : MeasurableSpace Ω} {P : Measure Ω}
+          {𝓕 : Filtration ℝ≥0 mΩ} {W : ℝ≥0 → Ω → ℝ} {VL : Fin nL → ℝ≥0 → Ω → ℝ}
+          {VR : Fin nR → ℝ≥0 → Ω → ℝ} {B : ℝ≥0 → Ω → ℝ} {ζ : Ω → ℝ≥0∞},
+          IsIntegratedSLEEvolution a xL xR ρL ρR P 𝓕 W VL VR B ζ →
+          ∀ᵐ ω ∂P, ContinuousOn (fun t => (W t ω, (fun i => VL i t ω), (fun i => VR i t ω), B t ω))
+            {t | (t : ℝ≥0∞) < ζ ω}) ∧
+        -- (strong Markov)
+        (∀ {xL : Fin nL → ℝ} {xR : Fin nR → ℝ} {Ω : Type u} {mΩ : MeasurableSpace Ω} {P : Measure Ω}
+          {𝓕 : Filtration ℝ≥0 mΩ} {W : ℝ≥0 → Ω → ℝ} {VL : Fin nL → ℝ≥0 → Ω → ℝ}
+          {VR : Fin nR → ℝ≥0 → Ω → ℝ} {B : ℝ≥0 → Ω → ℝ} {ζ : Ω → ℝ≥0∞},
+          IsIntegratedSLEEvolution a xL xR ρL ρR P 𝓕 W VL VR B ζ →
+          ∀ (T : Ω → ℝ≥0) (hT : IsStoppingTime 𝓕 fun ω => (T ω : WithTop ℝ≥0)) (A : Set Ω),
+            MeasurableSet[hT.measurableSpace] A → (∀ ω ∈ A, (T ω : ℝ≥0∞) < ζ ω) →
+            ∀ (n : ℕ) (ts : Fin n → ℝ≥0) (K : Fin n → Set (ℝ × (Fin nL → ℝ) × (Fin nR → ℝ) × ℝ)),
+              (∀ j, MeasurableSet (K j)) →
+              P (A ∩ {ω | ∀ j, (ts j : ℝ≥0∞) < ζ ω - T ω ∧
+                  (W (T ω + ts j) ω, (fun i => VL i (T ω + ts j) ω), (fun i => VR i (T ω + ts j) ω),
+                    B (T ω + ts j) ω) ∈ K j}) =
+                ∫⁻ ω in A, Q n ts K (W (T ω) ω, (fun i => VL i (T ω) ω), (fun i => VR i (T ω) ω),
+                  B (T ω) ω) ∂P) ∧
+        -- (strong Markov, every event of `𝓕_T`: the killed state is the cemetery from `ζ` on)
+        ∀ {xL : Fin nL → ℝ} {xR : Fin nR → ℝ} {Ω : Type u} {mΩ : MeasurableSpace Ω} {P : Measure Ω}
+          {𝓕 : Filtration ℝ≥0 mΩ} {W : ℝ≥0 → Ω → ℝ} {VL : Fin nL → ℝ≥0 → Ω → ℝ}
+          {VR : Fin nR → ℝ≥0 → Ω → ℝ} {B : ℝ≥0 → Ω → ℝ} {ζ : Ω → ℝ≥0∞},
+          IsIntegratedSLEEvolution a xL xR ρL ρR P 𝓕 W VL VR B ζ →
+          ∀ (T : Ω → ℝ≥0) (hT : IsStoppingTime 𝓕 fun ω => (T ω : WithTop ℝ≥0)) (A : Set Ω),
+            MeasurableSet[hT.measurableSpace] A →
+            ∀ (n : ℕ), 0 < n →
+            ∀ (ts : Fin n → ℝ≥0) (K : Fin n → Set (ℝ × (Fin nL → ℝ) × (Fin nR → ℝ) × ℝ)),
+              (∀ j, MeasurableSet (K j)) →
+              P (A ∩ {ω | ∀ j, (ts j : ℝ≥0∞) < ζ ω - T ω ∧
+                  (W (T ω + ts j) ω, (fun i => VL i (T ω + ts j) ω), (fun i => VR i (T ω + ts j) ω),
+                    B (T ω + ts j) ω) ∈ K j}) =
+                ∫⁻ ω in A ∩ {ω | (T ω : ℝ≥0∞) < ζ ω}, Q n ts K (W (T ω) ω, (fun i => VL i (T ω) ω),
+                  (fun i => VR i (T ω) ω), B (T ω) ω) ∂P :=
+```
+
+</details>
+
+<details><summary>Added: Theorem 1.4, the walks are the boundaries: <code>IsCenteredCounterflowDriver_boundaryWalks_outerBoundaries.lean</code></summary>
+
+File: [`InteractingSLE/Frozen/Spec/IsCenteredCounterflowDriver_boundaryWalks_outerBoundaries.lean`](../../InteractingSLE/Frozen/Spec/IsCenteredCounterflowDriver_boundaryWalks_outerBoundaries.lean). It opens:
+
+```lean
+open MeasureTheory ProbabilityTheory Filter Set Topology TopologicalSpace
+open scoped NNReal ENNReal
+```
+
+```lean
+theorem IsCenteredCounterflowDriver.boundaryWalks_outerBoundaries :
+    ∀ κ : ℝ, 0 < κ → κ < 4 → ∀ (b : ℝ → ℝ) (jumps : Finset ℝ), IsPiecewiseConstantBoundaryData b jumps →
+      ∀ {Ω : Type u} [MeasurableSpace Ω] [StandardBorelSpace Ω] (P : Measure Ω) [IsProbabilityMeasure P]
+        (h : Ω → LQGMetric.DistOn upperHalfPlaneOpens), IsGFFWithBoundaryData P h b jumps →
+      ∀ (W' : ℝ≥0 → Ω → ℝ) (ζ' : Ω → ℝ≥0∞), IsCenteredCounterflowDriver κ P h W' ζ' →
+        (∀ᵐ ω ∂P, ζ' ω = ⊤) →
+      ∀ E : ExplSpec → ℕ → Ω → (ℝ≥0 → ℝ) × ℝ≥0∞,
+        (∀ spec : ExplSpec, IsBoundaryContinuedProgram spec.2.2 →
+          IsStagedHistory κ b jumps P h spec (E spec)) →
+        (∀ spec : ExplSpec, IsBoundaryContinuedProgram spec.2.2 →
+          StagedPiecesRegular κ b jumps P spec (E spec)) →
+        ∀ᵐ ω ∂P,
+          let K := counterflowCompletedRange (fun t => W' t ω)
+          let R := ExplState.physSet κ b jumps (boundaryWalkSpec b jumps (-(Real.pi / 2)) true)
+            (fun k => E (boundaryWalkSpec b jumps (-(Real.pi / 2)) true) k ω)
+          let L := ExplState.physSet κ b jumps (boundaryWalkSpec b jumps (Real.pi / 2) false)
+            (fun k => E (boundaryWalkSpec b jumps (Real.pi / 2) false) k ω)
+          interior (((↑) : ℝ → ℂ) ⁻¹' K) = ∅ →
+            ((E (boundaryWalkSpec b jumps (-(Real.pi / 2)) true) 0 ω).2 = ⊤ ∧
+              (E (boundaryWalkSpec b jumps (Real.pi / 2) false) 0 ω).2 = ⊤) ∧
+            (R = {0} ∪ Chart.id.tipSet (E (boundaryWalkSpec b jumps (-(Real.pi / 2)) true) 0 ω).1 ⊤ ∧
+              L = {0} ∪ Chart.id.tipSet (E (boundaryWalkSpec b jumps (Real.pi / 2) false) 0 ω).1 ⊤) ∧
+            (R = frontier (rightSideOf K) ∩ K ∧ L = frontier (leftSideOf K) ∩ K) ∧
+            (R = closure (frontier (rightSideOf K) ∩ QuantumZipper.H) ∧
+              L = closure (frontier (leftSideOf K) ∩ QuantumZipper.H)) ∧
+            (R ∪ L = frontier (rightSideOf K ∪ leftSideOf K) ∩ K ∧
+              R ∪ L = closure (frontier (rightSideOf K ∪ leftSideOf K) ∩ QuantumZipper.H)) :=
+```
+
+</details>
+
 ## How the formal statements read the paper
 
 Every frozen statement went through an independent statement audit that sorts each hypothesis as a source premise, a
@@ -837,7 +1013,8 @@ records that are not part of this release; they are given so that each reading c
 14. "The canonical integrated evolution" is read as every integrated evolution, a stronger statement; all of them
     share the canonical law by Theorem 2.2 (R15 Q4; errata ledger E4; AUD-1b §5.1).
 15. Theorem 2.2 is frozen as two statements, existence and uniqueness in law. Its last sentence, that the joint
-    process is Markov, is not part of the frozen statements; it is used inside proofs only (R15 Q4; R17). Uniqueness
+    process is Markov, was not part of the original frozen statements (R15 Q4; R17). It is now the frozen theorem
+    `exists_strongMarkovKernel_isIntegratedSLEEvolution`, added after the external audit (R122; AUD-AF-T22). Uniqueness
     in law is stated through finite-dimensional events of the state killed at the threshold, which determine the killed
     law and the law of the threshold (AUD-1b §5.3). Existence produces a probability space in the lowest universe
     (AUD-1a §4.2).
@@ -886,7 +1063,9 @@ records that are not part of this release; they are given so that each reading c
 29. Contacts are interior available contacts: a common point of the open half-plane at parameters strictly before both
     lifetimes, so common real starting points and terminal points are excluded, as the source requires (AUD-3 §2.1,
     §3.9). The sentences allowing bouncing, and the remark that contact is not asserted, are non-assertions and are
-    not formalized (AUD-3 §1, B11).
+    not formalized (AUD-3 §1, B11). After the external audit, the merging and crossing clauses also hold at every
+    contact, real ones included (`IsFlowLine.merges_of_contact`, `IsFlowLine.crosses_of_lt_of_contact`, R122,
+    AUD-AF-T15). The critical-angle clauses remain interior-only.
 30. Merging in (ii) is agreement as ordered unparametrized curves via an increasing bijection, one of whose end
     parameters is the whole available lifetime (AUD-3 §2.2, §8).
 31. In (iii) the crossing is asserted at the first contact, which may be a real point before the given interior
@@ -929,8 +1108,8 @@ records that are not part of this release; they are given so that each reading c
 
 **Scope**
 
-41. Not formalized: the paragraph "Fan statements" after Theorem 1.5 (Proposition 7.33 and Theorem OT1) (R16, R17),
-    and the Markov sentence of Theorem 2.2 (item 15).
+41. Not formalized: the paragraph "Fan statements" after Theorem 1.5 (Proposition 7.33 and Theorem OT1) (R16, R17).
+    The Markov sentence of Theorem 2.2 was added after the external audit (item 15).
 
 ## The inputs are proved, not assumed
 
@@ -1019,6 +1198,7 @@ The project follows Scott Armstrong's [LeanAutoformalizationSkills](https://gith
    - **Kernel replay from an empty environment:** `leanchecker --fresh` of a root module importing all 114 frozen modules passed in 22.5 minutes. It replayed in Lean's kernel the whole import closure, from an empty environment: Mathlib, the released libraries and every module of this release.
    - **Exact per-module replay:** each of the 8,618 compiled modules was replayed on its own by `leanchecker`, against the environment of its imports, by the alias method of the development's `tools/replay.sh`. All passed (in about 80 minutes on up to 10 processes).
    - **Public workflow:** it rebuilds every module from the released sources and then compiles `Check.lean`.
+6. **Response to the external audit.** The four statements added after the audit passed independent statement audits (`AUD-AF-T15`, `AUD-AF-T14`, `AUD-AF-T22`) and were sealed with both keys (`AUD-SEAL-AF`). The seal-closure check now covers 68 roots, including Theorems 2.4 and 2.6. The 26 new modules were compiled afresh from the exported files and replayed exactly, and the focused certificate on the fresh build reports only the three standard axioms for all 42 advertised theorems. See the [audit response](AUDIT-RESPONSE.md).
 
 ## Comments in the source files
 

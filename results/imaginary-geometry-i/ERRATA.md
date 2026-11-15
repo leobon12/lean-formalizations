@@ -54,7 +54,7 @@ swallowed, and C(z; D) the conformal radius of D seen from z.
 |---|---|---|---|
 | A1 | Theorem 2.4, p. 43 | the martingale side must stop at T∗ | false as stated |
 | A2 | Definition of counterflow lines, pp. 19–20; Theorem 1.4, p. 22 | the conformal definition is off by πχ from the normalization of the paper's figures and of Theorem 1.4 | imprecise statement (normalization) |
-| A3 | Theorem 2.6, pp. 52–53 | spurious factor √κ | typo (wrong constant) |
+| A3 | Theorem 2.6, pp. 52–53 | the factor √κ belongs to the rescaled function (2.12), not to h_t | inconsistent normalization |
 | A4 | Definition 2.1, p. 35; Theorem 2.2, p. 40 | circular threshold; unspecified Markov property | imprecise statement |
 | A5 | Theorem 1.1, p. 17 | uncentred force points in the boundary data | typo |
 | A6 | Proposition 5.1, p. 99 | the no-wrap step misses two endings | gap in a proof |
@@ -141,7 +141,7 @@ swallowed, and C(z; D) the conformal radius of D seen from z.
   checked this transport, including its boundary values b′(0⁺) = −b(−∞) + πχ and b′(0⁻) = −b(+∞) − πχ.
 - **Records.** AUD-4 §1 and §4.1; AUD-4b; AUD-T14-R51; ARCH-4 (D5). No ruling or errata-ledger entry; the symmetry check and the comparison with Figures 1.12, 5.1 and 7.23 were made for this note.
 
-### A3. Theorem 2.6: there is no factor √κ
+### A3. Theorem 2.6: the factor √κ belongs to a rescaled function, not to h_t
 
 - **Where.** §2.3, Theorem 2.6, pp. 52–53.
 - **Printed.** "… for some fixed z ∈ H the correspondingly defined h_t(z) is given by √κ times a Brownian motion when
@@ -152,13 +152,21 @@ swallowed, and C(z; D) the conformal radius of D seen from z.
   Theorem 1.1: dh_t(z) = Im(2/f_t(z)) dB_t and "d⟨h_t(z), h_t(z)⟩ = −dC_t(z)", where C_t(z) is "(up to an additive
   constant) the log of the conformal radius of H ∖ K_t viewed from z" (pp. 74–75). Lemma 6.4 (p. 113) has the same
   normalization for the variance of a conditional mean. With the printed factor the bracket would be κ times as large,
-  so for κ ≠ 1 the hypothesis is not met by SLE_κ(ρ) itself, and the theorem does not characterize it. 
-- **Kind.** Typo (wrong constant).
+  so for κ ≠ 1 the hypothesis is not met by SLE_κ(ρ) itself, and the theorem does not characterize it.
+  The factor does fit another function. In the proof of Theorem 2.4 the paper writes h∗_t := −h̃_t + i h_t "as
+  follows" (2.12), p. 43, but the displayed analytic function has imaginary part (π/λ) h_t = √κ h_t, not h_t. For
+  example, with no force points it is −2 log f_t(z) + iπ − (πχ/λ) log f_t′(z). That rescaled function is √κ times a
+  Brownian motion in the time −log C(z; H ∖ K_t), as Theorem 2.6 says. The statement, however, refers to "the
+  correspondingly defined h_t(z)", the harmonic function of Theorem 1.1, as Theorem 2.4 does. So the statement mixes
+  two normalizations. 
+- **Kind.** Inconsistent normalization: the factor √κ belongs to the √κ-rescaled function of (2.12), and is wrong for the h_t that the statement names.
 - **Correction and formal treatment.** The specification's Theorem 2.6 (spec p. 40) has
   ⟨h(z)⟩_t = log(C(z; H)/C(z; H ∖ K_t)), remarks that "no factor √κ occurs", and works up to min(τ_z, T∗). The paper's statement does not say until when the hypothesis is assumed; the specification
   assumes it, and concludes, only before min(τ_z, T∗). The frozen
   Theorem 2.6 states the bracket by its defining property (with A_t this log ratio, h_t(z)² − A_t is a continuous local
-  martingale before σ = min(τ_z, T∗)) and is proved.
+  martingale before σ = min(τ_z, T∗)) and is proved. Equivalently, the rescaled function √κ h_t(z) has bracket κ times
+  that log ratio. An independent audit of the release made the same reconciliation of the paper's pp. 43, 52–53 and
+  74–75.
 - **Records.** AUD-T2426A §7 (c) (normalization checked, "with no √κ factor"); AUD-T2426B F5; AUD-T2426C F5. No ruling
   or errata-ledger entry.
 
@@ -398,8 +406,8 @@ typos. Records: E7–E11, R24; SRC-EXT-S8, SRC-JVL.
   an item, its page-addressed transcription was checked as well.
 - **Evidence.** A1: an explicit computation, found by the drafter of the statement (PROVE-T2426-STMT, D1), recomputed
   independently by two statement audits (AUD-T2426A §7 (a), AUD-T2426B F1), and rechecked here. A2: the symmetry computation given there, consistent with the specification's remark that a change
-  of branch moves heights only by multiples of 2πχ (FD11.2) and with the audit of the formal frame (AUD-4 §4.1), and with the heights drawn in Figures 1.12, 5.1 and 7.23. A3:
-  the paper's own computation on pp. 74–75 and the audits' check of the normalization. A4: the project's example
+  of branch moves heights only by multiples of 2πχ (FD11.2) and with the audit of the formal frame (AUD-4 §4.1), and with the heights drawn in Figures 1.12, 5.1 and 7.23. A3: the paper's own computation on pp. 74–75, the rescaling visible in (2.12) on p. 43, and the
+  audits' check of the normalization. A4: the project's example
   (ARCH-1), adapted here to continuous processes. A5 and A8: comparison of statement, figure and proof. A6:
   deterministic configurations recorded in PROVE-SEC5-K and PROVE-SEC5-P. A7: the counterexample to the step recorded
   in PROVE-SEC6-A3. B1: a Lean disproof. C1: the explicit statement in Astra (R39) §4 that the endpoint step is not

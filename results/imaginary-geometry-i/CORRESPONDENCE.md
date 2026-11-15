@@ -5,6 +5,20 @@ This document compares the formal statements of the Lean 4 formalization of Jaso
 (arXiv:1201.1496), with the paper. For each main theorem and each main definition it lists every difference between
 the Lean statement and the paper's text, so that a reader can see exactly what the formal theorems say.
 
+**Update after the external audit (15 November 2026).** An independent audit of the first publication led to four
+more frozen theorems; see the [audit response](AUDIT-RESPONSE.md). They narrow these differences:
+- **Theorem 1.5 (ii) and (iii)** now hold at every contact, real contacts included (`IsFlowLine.merges_of_contact`,
+  `IsFlowLine.crosses_of_lt_of_contact`). The crossing excludes a common outgoing arc, so it no longer permits merging.
+  The critical-angle non-intersection clauses remain interior-only.
+- **Theorem 2.2's Markov sentence** is now stated, as a strong Markov property
+  (`exists_strongMarkovKernel_isIntegratedSLEEvolution`).
+- **Theorem 1.4's** "the left and right boundaries of η′" is now stated literally in the nowhere-boundary-filling case
+  (`IsCenteredCounterflowDriver.boundaryWalks_outerBoundaries`). A bridge to the paper's literal counterflow
+  definition is proved as a supplementary theorem.
+
+The theorem-by-theorem entries below describe the original 17 statements, with a note where an added theorem changes
+the comparison.
+
 ## How to read this document
 
 **Sources.**
@@ -276,7 +290,9 @@ only together with `exists_isFlowLine` (R26).
   in the closed left side of the first. The closed relation between the terminal limits is not included. (spec W0,
   p. 528, W5, p. 533; AUD-3 §1, §2.1, note N4)
 - **made precise.** "Intersecting" is an interior available contact: η₁(s) = η₂(t) ∈ ℍ with s < ζ₁ and t < ζ₂. Merging
-  in (ii) and crossing in (iii) are asserted after such contacts. (spec p. 5; AUD-3 §2.1, §3.9)
+  in (ii) and crossing in (iii) are asserted after such contacts. (spec p. 5; AUD-3 §2.1, §3.9) *Added after the
+  external audit:* `IsFlowLine.merges_of_contact` and `IsFlowLine.crosses_of_lt_of_contact` assert them after every
+  contact, real ones included, as in the paper's Proposition 7.12 (p. 141). (R122; AUD-AF-T15)
 - **weaker in Lean.** The non-intersection clauses of (i) and (iii) exclude only interior available contacts: common
   real points and common terminal points are not covered, where the paper says that the paths do not intersect
   except possibly at their starting point. (spec p. 5: "Common terminal points are excluded from nonintersection
@@ -289,7 +305,9 @@ only together with `exists_isFlowLine` (R26).
   to left and never back: in a conformal chart of the unbounded component left by both incoming prefixes, sending the
   contact point to 0 and ∞ to ∞, every pair of strict outgoing prefixes has ordered completions with the image of η₁
   on the left. Only the outgoing order is encoded; the incoming order follows from x₂ < x₁. (spec Theorem 7.12C,
-  pp. 461, 542; AUD-3 note N5, §3.14)
+  pp. 461, 542; AUD-3 note N5, §3.14) This weak order alone permits merging. *Added after the external audit:*
+  `IsFlowLine.crosses_of_lt_of_contact` adds that no open arc of either outgoing path lies on the other, which is
+  Theorem 7.12C's "no common open outgoing arc". (R122; AUD-AF-T15)
 - **made precise.** "Do not subsequently intersect" in (iii) is "every interior available contact is the first
   contact". (AUD-3 §2.3)
 - **made precise.** (iii) assumes x₂ < x₁, as the specification does; for x₁ = x₂ the pair is covered by (i) with the
@@ -320,8 +338,10 @@ B_t, and V_t^{i,q} taken together are a continuous multidimensional Markovian pr
   (AUD-1b §5.3, §6.6)
 - **made precise.** The law also depends on κ, which the paper's sentence does not list; the statement fixes it.
   (errata ledger E6)
-- **scope.** The last sentence, the Markov property, is not formalized; it is used inside the proofs only. (R15 Q4;
-  R17)
+- **scope.** The last sentence, the Markov property, was not part of the original frozen statements (R15 Q4; R17).
+  *Added after the external audit:* `exists_strongMarkovKernel_isIntegratedSLEEvolution` states it as a strong Markov
+  property, with one time-homogeneous kernel at every finite stopping time. Time zero and entrance words are included.
+  The kernel is measurable on separated states, and future events are finite-time cylinders. (R122; AUD-AF-T22)
 
 ### Theorem 2.4: martingale characterization (paper p. 43; spec pp. 34–35)
 
@@ -370,7 +390,9 @@ the proof: "Although we will not use it in this paper, we remark (and sketch a p
 **Lean.** `InteractingSLE.exists_isIntegratedSLEEvolution_eqOn_of_isContLocalMartingaleBefore_conformalRadius`.
 
 **Differences** (besides the setting items of Theorem 2.4).
-- **correction.** There is no factor √κ: the hypothesis is the bracket identity
+- **correction.** There is no factor √κ for the harmonic function 𝔥_t of Theorem 1.1, which the statement names. The
+  printed factor belongs to the √κ-rescaled analytic function (2.12) of the proof of Theorem 2.4, whose imaginary part
+  is √κ 𝔥_t (errata A3). The formal hypothesis is the bracket identity
   ⟨𝔥(z)⟩_t = log(crad(ℍ, z)/crad(ℍ ∖ K_t, z)), so that 𝔥_t(z) − 𝔥₀(z) is a standard Brownian motion in the time
   −log crad (spec p. 40: "no factor √κ occurs in that parameterization"). (AUD-T2426A §7; AUD-T2426C F5)
 - **made precise.** The hypothesis is stated through its defining property: for every choice of extensions, 𝔥_t(z) is
@@ -425,7 +447,8 @@ Geometry IV), and R17 limited the targets to the main theorems, leaving out Prop
 ### 3.2 The Markov sentence of Theorem 2.2
 
 "Under this law, the values W_t, B_t, and V_t^{i,q} taken together are a continuous multidimensional Markovian process
-indexed by t" (p. 40) is not part of the frozen statements; existence and uniqueness in law are. (R15 Q4; R17)
+indexed by t" (p. 40) was not part of the original frozen statements. It was added after the external audit as
+`exists_strongMarkovKernel_isIntegratedSLEEvolution`. (R15 Q4; R17; R122)
 
 ### 3.3 Other claims of Sections 1 and 2
 
@@ -472,12 +495,12 @@ Lean names are in the namespace `InteractingSLE`; "spec" pages refer to the spec
 | Theorem 1.1 | 17–18 | 9 | `exists_isOptionalHullCoupling`; companion `existsUnique_isBoundedHarmonicExtension_forceBoundaryData` (spec p. 9) |
 | Theorem 1.2 | 20 | 4 | `exists_measurable_lifetime_trace_eq_comp_field` |
 | Theorem 1.3 | 22 | 4 | `IsIntegratedSLEEvolution.ae_exists_isGeneratingTrace` |
-| Theorem 1.4 | 22 | 4–5; GW1 618, GW2 621, GW2a 623, GW3 636, GW4 637, GW6 643 | `IsCenteredCounterflowDriver.completedRange_eq_closure_lightCone`, `IsCenteredCounterflowDriver.boundaryWalks_frontiers`, `IsCenteredCounterflowDriver.componentKernels`; companion `exists_isStagedHistory` (spec p. 618) |
-| Theorem 1.5 | 30 | 5; W0 528, W5 533, Theorem 7.12C 461 and 542 | `IsFlowLine.stays_right_of_lt` (i), `IsFlowLine.merges` (ii), `IsFlowLine.crosses_of_lt` (iii); companions `exists_isFlowLine`, `IsPiecewiseConstantBoundaryData.existsUnique_isBoundedHarmonicExtension` (spec p. 5) |
+| Theorem 1.4 | 22 | 4–5; GW1 618, GW2 621, GW2a 623, GW3 636, GW4 637, GW6 643 | `IsCenteredCounterflowDriver.completedRange_eq_closure_lightCone`, `IsCenteredCounterflowDriver.boundaryWalks_frontiers`, `IsCenteredCounterflowDriver.componentKernels`, `IsCenteredCounterflowDriver.boundaryWalks_outerBoundaries` (added after the external audit); companion `exists_isStagedHistory` (spec p. 618) |
+| Theorem 1.5 | 30 | 5; W0 528, W5 533, Theorem 7.12C 461 and 542 | `IsFlowLine.stays_right_of_lt` (i), `IsFlowLine.merges` (ii), `IsFlowLine.crosses_of_lt` (iii); at every contact: `IsFlowLine.merges_of_contact`, `IsFlowLine.crosses_of_lt_of_contact` (added after the external audit); companions `exists_isFlowLine`, `IsPiecewiseConstantBoundaryData.existsUnique_isBoundedHarmonicExtension` (spec p. 5) |
 | Definition of a flow line | 18–19 | 10–11 | `IsFlowLine`, `IsFlowLineDriver` |
-| Definition of a counterflow line | 19–20 | 11–12; frames FD11.1–FD12.5, 12–17 | `IsCenteredCounterflowDriver` |
+| Definition of a counterflow line | 19–20 | 11–12; frames FD11.1–FD12.5, 12–17 | `IsCenteredCounterflowDriver`; the paper's literal definition: `IsLiteralCounterflowDriver`, with the bridge `AuditFix.literalCounterflowBridge_holds` (supplementary) |
 | Definition 2.1 and the continuation threshold | 35 | 20, 3 | `IsIntegratedSLEEvolution`, `IsIntegratedSLEPath`, `ForceWord.ThresholdCondition`, `continuationThreshold` |
-| Theorem 2.2 | 40 | 21 | `exists_isIntegratedSLEEvolution`, `IsIntegratedSLEEvolution.measure_killedState_eq`; the Markov sentence is not formalized |
+| Theorem 2.2 | 40 | 21 | `exists_isIntegratedSLEEvolution`, `IsIntegratedSLEEvolution.measure_killedState_eq`; the Markov sentence: `exists_strongMarkovKernel_isIntegratedSLEEvolution` (added after the external audit) |
 | Remark 2.3 | 42 | 32 | not formalized |
 | Theorem 2.4 | 43 | 34–35 | `exists_isIntegratedSLEEvolution_iff_forall_isContLocalMartingaleBefore` |
 | Lemma 2.5 | 50 | 38 | not among the frozen statements |

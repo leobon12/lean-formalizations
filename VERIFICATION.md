@@ -495,3 +495,35 @@ lake build InteractingSLE.Frozen.Spec.IsCenteredCounterflowDriver_componentKerne
 lake env lean results/imaginary-geometry-i/Check.lean
 python3 -I scripts/verify.py --scan-only
 ```
+
+## Imaginary geometry I: response to the external audit (2026-11-15)
+
+**What prompted it.** An independent audit of the first publication (commit `94b0484`) raised six items. Its findings
+and the answers are in the [audit response](results/imaginary-geometry-i/AUDIT-RESPONSE.md).
+
+**What was added.** 26 new files, copied byte-for-byte from source commit
+`c7b7283b037e7b46155232103ea03c72ba22f4bb`:
+- four new frozen theorem anchors, sealed with two keys:
+  - `IsFlowLine.merges_of_contact` (Theorem 1.5 (ii) at every contact);
+  - `IsFlowLine.crosses_of_lt_of_contact` (Theorem 1.5 (iii) at every available contact, with no common outgoing arc);
+  - `exists_strongMarkovKernel_isIntegratedSLEEvolution` (Theorem 2.2's Markov sentence);
+  - `IsCenteredCounterflowDriver.boundaryWalks_outerBoundaries` (Theorem 1.4's "left and right boundaries");
+- their four providers;
+- 18 proof modules under `InteractingSLE/Spec/AuditFix/`, which also contain the supplementary theorems.
+
+The new files import only modules that were already released. The manifest gains ten roots. No previously released
+file changed.
+
+**Checks.**
+- **Statement audits:** AUD-AF-T15, AUD-AF-T14 and AUD-AF-T22, with no failures.
+- **Seals:** frozen-anchor checker OK; the second-key seal audit AUD-SEAL-AF passed for all four anchors.
+- **Seal-closure check:** `SEAL_CLOSURE_OK roots=68`, now including Theorems 2.4, 2.6 and the new anchors. A first
+  run failed on a misnamed root and on a named corollary of the already closed Theorems 1.2–1.3, which the tool's
+  circularity test counts as a proof of them. The root was renamed and the corollary taken from an existing closed
+  theorem instead; the rerun passed.
+- **Source scan:** passed for all 21,224 files.
+- **Fresh compile and replay:** the 26 new modules compiled afresh from the exported files with `lean -j1 -M8192` (no
+  errors, no `sorry`, at most 7.4 GB) and were replayed exactly in the kernel.
+- **Focused certificate:** compiled against the fresh build and passed. All 42 axiom reports (the 21 frozen theorems
+  and 21 supplementary theorems) list only `propext`, `Classical.choice` and `Quot.sound`. Its audit covered 149,327
+  project declarations, with 245,319 reachable.
