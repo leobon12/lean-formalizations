@@ -874,3 +874,6 @@ assert_no_sorry MatedCRTHarmonic.corollary1_6_simplyConnected
 -- results/elementary-sle8-continuity/Check.lean, which scripts/verify.py compiles before this certificate. Its vendored
 -- BrownianMotion modules declare the same names as BouRabeeGwynne/Upstream/BrownianMotion, so the two libraries cannot
 -- be imported into one environment.
+
+-- Imaginary geometry I (InteractingSLE): audited separately, for the same reason, by
+-- results/imaginary-geometry-i/Check.lean, which scripts/verify.py compiles after the SLE₈ certificate.

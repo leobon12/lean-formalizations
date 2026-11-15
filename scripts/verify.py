@@ -4,9 +4,11 @@ Default: rebuild all project modules into a separate output directory.
 --cached: reuse available project oleans; always compile Certificate.lean afresh.
 --stop-after-minutes M: stop launching modules after M minutes (or when all are compiled) and record the
   fresh modules in .lake/verification/partial.json, without the certificate; --resume continues that
-  build and compiles the certificate (two-job CI).
+  build and compiles the certificate (multi-job CI). --resume with --stop-after-minutes continues the build
+  and records it again, for the middle jobs.
 The certificate runs alone after all modules, with a memory limit of 12288 MB (-M12288); each
-module is compiled with -M8192.
+module is compiled with -M8192, and a module that stops at that limit is compiled once more, alone, with -M12288.
+Each module has 1800 seconds.
 Mathlib and its pinned dependencies must already be available: `lake exe cache get`.
 """
 from pathlib import Path
@@ -14,6 +16,7 @@ import argparse,hashlib,json,os,re,shutil,subprocess,sys,time
 
 ROOT=Path(__file__).resolve().parents[1]
 CERT_MEMORY_MB=12288
+MODULE_TIMEOUT=1800
 NAMESPACES=['MeshOnly','BouRabeeGwynne','ReflectedWalk','ReflectedGMS','QuantumZipper','LQGDimension','LQGMetric','MeshRates','GaussianLQG','HigherDimLFPP','SmallGammaGeodesics','HigherDimLQGMetric','HigherDimLQGContinuity','SupercriticalLQGUniqueness','SLUSupport','SLUMetricAPI','SLUMetricAPI2','SLUFieldSupport','BR1Bridges','NV1Evidence','SupercriticalConformalCovariance','HigherDimLFPPAS','SupercriticalLFPPAS','MatedCRTHarmonic','InteractingSLE','MathFin','BrownianMotion']
 def stripped(s):
     res=[];i=0;depth=0;string=False
@@ -95,24 +98,34 @@ def main():
     def save_partial(why):
         (out/'partial.json').write_text(json.dumps({'status':'partial','done':sorted(done),'sha256':{m:modules[m]['sha256'] for m in sorted(done)},'seconds':round(time.time()-start,1)},indent=2)+'\n')
         print(f'{why}: {len(done)} of {len(modules)} modules compiled; continue with --resume.',flush=True)
+    retry=[];retried=set();alone=None
     try:
         while len(done)<len(modules):
             for m,(p,fh,t) in list(running.items()):
                 rc=p.poll()
                 if rc is None:
-                    if time.time()-t>900:raise RuntimeError(f'Module timed out after 900 seconds: {m}')
+                    if time.time()-t>MODULE_TIMEOUT:raise RuntimeError(f'Module timed out after {MODULE_TIMEOUT} seconds: {m}')
                     continue
                 fh.close();del running[m]
-                if rc:raise RuntimeError(f'Compile failed: {m}\n'+(logs/(m+'.log')).read_text()[-12000:])
+                if m==alone:alone=None
+                if rc:
+                    log=(logs/(m+'.log')).read_text()
+                    if m not in retried and 'excessive memory consumption' in log:
+                        retry.append(m);print(f'{m}: memory limit reached at -M8192; compiling it again alone with -M{CERT_MEMORY_MB}',flush=True);continue
+                    raise RuntimeError(f'Compile failed: {m}\n'+log[-12000:])
                 done.add(m);fresh.append(m)
                 print(f'[{len(done)}/{len(modules)}] {m} ({time.time()-t:.1f}s)',flush=True)
             stopping=args.stop_after_minutes is not None and time.time()-start>args.stop_after_minutes*60
-            if stopping and not running:
+            if stopping and not running and not retry:
                 save_partial(f'Stopped after {args.stop_after_minutes:g} minutes');return
-            for m,row in modules.items():
-                if stopping or len(running)>=args.jobs:break
-                if m not in done and m not in running and all(d in done for d in row['local_imports']):running[m]=launch(m,row['path'])
-            if not running and not stopping and len(done)<len(modules):raise RuntimeError('No ready module: invalid dependency graph')
+            if retry:
+                if not running:
+                    alone=retry.pop(0);retried.add(alone);running[alone]=launch(alone,modules[alone]['path'],mem=CERT_MEMORY_MB)
+            elif alone is None:
+                for m,row in modules.items():
+                    if stopping or len(running)>=args.jobs:break
+                    if m not in done and m not in running and all(d in done for d in row['local_imports']):running[m]=launch(m,row['path'])
+            if not running and not retry and not stopping and len(done)<len(modules):raise RuntimeError('No ready module: invalid dependency graph')
             time.sleep(.25)
         if args.stop_after_minutes is not None:
             save_partial('All modules compiled before the time limit');return
@@ -127,12 +140,18 @@ def main():
         sle8_audit=(logs/'InteractingSLE.Check.log').read_text();print(sle8_audit,flush=True)
         if rc:raise RuntimeError('Elementary SLE8 focused audit failed')
         assert 'ELEMENTARY_SLE8_AUDIT' in sle8_audit,'Elementary SLE8 whole-declaration audit did not finish'
+        ig1_audit_path='results/imaginary-geometry-i/Check.lean'
+        assert (ROOT/ig1_audit_path).is_file(),f'Missing focused audit: {ig1_audit_path}'
+        p,fh,t=launch('InteractingSLE.IG1Check',ig1_audit_path,mem=CERT_MEMORY_MB);rc=p.wait(timeout=3600);fh.close()
+        ig1_audit=(logs/'InteractingSLE.IG1Check.log').read_text();print(ig1_audit,flush=True)
+        if rc:raise RuntimeError('Imaginary geometry I focused audit failed')
+        assert 'IMAGINARY_GEOMETRY_I_AUDIT' in ig1_audit,'Imaginary geometry I whole-declaration audit did not finish'
         p,fh,t=launch('Certificate','Certificate.lean',mem=CERT_MEMORY_MB);rc=p.wait(timeout=900);fh.close()
         certificate=(logs/'Certificate.log').read_text();print(certificate,flush=True)
         if rc:raise RuntimeError('Certificate failed')
         assert 'PUBLIC_RELEASE_AUDIT' in certificate,'Whole-declaration audit did not finish'
         source_commits=sorted({r.get('source_commit',manifest['source_commit']) for r in modules.values()})
-        result={'status':'passed','mode':'cached dependencies with freshly compiled certificate' if args.cached else 'fresh project source rebuild in two parts and certificate' if resumed else 'fresh project source rebuild and certificate','source_commits':source_commits,'source_modules':len(modules),'fresh_modules':len(fresh)+len(resumed),'resumed_modules':len(resumed),'reused_modules':len(reused),'seconds':round(time.time()-start,1),'lean_version':subprocess.check_output([lean,'--version'],text=True).strip(),'axioms_allowed':['propext','Classical.choice','Quot.sound'],'focused_audit':audit_path,'focused_audits':[audit_path,sle8_audit_path]}
+        result={'status':'passed','mode':'cached dependencies with freshly compiled certificate' if args.cached else 'fresh project source rebuild in several parts and certificate' if resumed else 'fresh project source rebuild and certificate','source_commits':source_commits,'source_modules':len(modules),'fresh_modules':len(fresh)+len(resumed),'resumed_modules':len(resumed),'reused_modules':len(reused),'seconds':round(time.time()-start,1),'lean_version':subprocess.check_output([lean,'--version'],text=True).strip(),'axioms_allowed':['propext','Classical.choice','Quot.sound'],'focused_audit':audit_path,'focused_audits':[audit_path,sle8_audit_path,ig1_audit_path]}
         (out/'result.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result),flush=True)
     finally:
         for p,fh,t in running.values():

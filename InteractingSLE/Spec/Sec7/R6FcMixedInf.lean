@@ -1,0 +1,437 @@
+/-
+Copyright (c) 2026 InteractingSLE contributors. All rights reserved.
+-/
+import InteractingSLE.Spec.Sec7.R6FcMixed
+import InteractingSLE.Spec.Sec7.R6FcJordanInf
+import InteractingSLE.Spec.Sec7.R6SafeMeetInf
+
+/-!
+# R.6's face for the mixed shape with the outer pocket opening at the flow seed
+
+Packet PROVE-R6-FACE2. The port of `R6FcMixed.face_package` to an outer pocket `C` opening at the flow seed
+(`IsOuterCfgInf`, Jordan coordinate `Sec6.IsJordanCoordInf`, traversal `travAllInf`, fibre end `outerFibreEndInf`) and a
+bounded contained pocket `U`: `chart_factsInf`, `outer_dom_physInf` (the current domain misses the physical hull at the
+fibre end, `HOuter.mem_domain_of_not_mem_fillH_inf`), the abbreviations `curChartInf`, `seedRInf`, `seedLInf`, and
+**`face_packageInf`**. The unbounded-domain Jordan lemmas are in `R6FcJordanInf`. Deterministic.
+-/
+
+set_option autoImplicit false
+set_option relaxedAutoImplicit false
+
+noncomputable section
+
+open Set Filter Topology Metric
+open QuantumZipper (H Hbar fwdMap fwdMapInv fwdHull)
+open scoped NNReal ENNReal
+
+namespace InteractingSLE.Sec7.R6Fc
+
+open Sec6 PocketTraversal Lemma71C PocketJordan PocketCoord PocketCoupling PocketStop PocketStopField HOuter
+  PocketWordAssembly PocketSeedOpen R6Safe
+open WangWu (chartAL chartAR)
+open SupercriticalConformalCovariance (IsConformalBijection)
+
+variable {Ω : Type*}
+
+section Chart
+
+variable {A : Set Ω} {C : Ω → Set ℂ} {ψ : Ω → ℂ → ℂ} {n : Ω → ℤ} {γ : Ω → ℝ → ℂ} {ω : Ω}
+
+/-- **One current pocket chart in explicit Loewner form**, pocket opening at the flow seed (`chart_facts`). -/
+theorem chart_factsInf (hCo : ∀ ω ∈ A, IsOpen (C ω)) (hCH : ∀ ω ∈ A, C ω ⊆ H)
+    (hψc : ∀ ω ∈ A, IsConformalBijection (ψ ω) (C ω) H) {y₀ : ℂ}
+    (hψ : Sec6.IsJordanCoordInf (C ω) y₀ (ψ ω)) (hω : ω ∈ A) (hγ : IsDrivenCurve (γ ω))
+    {t₁ : ℝ≥0} (ht₁ : (t₁ : ℝ≥0∞) < capLife (γ ω)) :
+    ∃ E₀ : ℂ → ℂ, EqOn E₀ (Function.invFunOn (ψ ω) (C ω)) H ∧ ContinuousOn E₀ Hbar ∧
+      MapsTo E₀ Hbar (closure (C ω)) ∧
+    ∃ W : ℝ → ℝ, Continuous W ∧ W 0 = 0 ∧ (∀ r ∈ Icc (0 : ℝ) t₁, segDriver (γ ω) r.toNNReal = W r) ∧
+    ∃ η : ℝ → ℂ, IsLoewnerTrace W η ∧ (∀ s : ℝ, 0 ≤ s → s ≤ t₁ → η s = γ ω (capInv (γ ω) s)) ∧
+    ∀ q : ℝ≥0, q < t₁ →
+      (relChart (fun ω => shiftChart (pChart A C ψ ω) (n ω)) γ q ω).IsConformal ∧
+      ((relChart (fun ω => shiftChart (pChart A C ψ ω) (n ω)) γ q ω).dom : Set ℂ) =
+        C ω ∩ ψ ω ⁻¹' (H \ fwdHull W q) ∧
+      (∀ w ∈ C ω, (relChart (fun ω => shiftChart (pChart A C ψ ω) (n ω)) γ q ω).1 w = fwdMap W q (ψ ω w)) ∧
+      EqOn (fun z => E₀ (extendFrom H (fwdMapInv W q) z))
+        (relChart (fun ω => shiftChart (pChart A C ψ ω) (n ω)) γ q ω).2.1 H ∧
+      ContinuousOn (fun z => E₀ (extendFrom H (fwdMapInv W q) z)) Hbar := by
+  obtain ⟨hc, hdom, hfwd⟩ := R5Phase.shiftChart_dom_facts hCo hCH hψc n ω hω
+  have hinv : (shiftChart (pChart A C ψ ω) (n ω)).2.1 = Function.invFunOn (ψ ω) (C ω) := pInv_of_mem hω
+  obtain ⟨E₀, hE₀, hE₀c, hE₀m⟩ := PocketStopSide.exists_inverse_extension_of_jordan_coordInf hψ hc hdom hfwd
+  rw [hinv] at hE₀
+  obtain ⟨W, hWc, hW0, hWeq, η, hη, hηeq⟩ := exists_loewnerTrace_of_driven hγ ht₁
+  have hWeq' : ∀ r ∈ Icc (0 : ℝ) t₁, segDriver (γ ω) r.toNNReal = W r := fun r hr => (hWeq hr).symm
+  refine ⟨E₀, hE₀, hE₀c, hE₀m, W, hWc, hW0, hWeq', η, hη, hηeq, fun q hq => ?_⟩
+  have hq' : (q : ℝ) < t₁ := by exact_mod_cast hq
+  have hlive : (q : ℝ≥0∞) < capLife (γ ω) := lt_trans (by exact_mod_cast hq) ht₁
+  have hrel : relChart (fun ω => shiftChart (pChart A C ψ ω) (n ω)) γ q ω =
+      (shiftChart (pChart A C ψ ω) (n ω)).loewner W q :=
+    loewner_congr _ q.coe_nonneg hq' hWeq'
+  have hK : fwdHull (fun s : ℝ => segDriver (γ ω) s.toNNReal) q = fwdHull W q :=
+    fwdHull_eq_of_eqOn q.coe_nonneg hq' fun r hr => hWeq' r hr
+  obtain ⟨hFc, hFeq, hFm⟩ := extendFrom_props hη hWc hW0 q.coe_nonneg
+  refine ⟨PocketStopSide.isConformal_relChart_of_driven hγ hlive hc, ?_, fun w hw => ?_, fun z hz => ?_,
+    hE₀c.comp hFc hFm⟩
+  · rw [R6Safe.relChart_dom_eq_inter (n := n) hCo hCH hψc hω hγ hlive, hK]
+  · rw [hrel]
+    show fwdMap W q ((shiftChart (pChart A C ψ ω) (n ω)).1 w) = _
+    rw [hfwd hw]
+  · rw [hrel]
+    show E₀ (extendFrom H (fwdMapInv W q) z) = (shiftChart (pChart A C ψ ω) (n ω)).2.1 (fwdMapInv W q z)
+    rw [hFeq hz, hinv]
+    exact hE₀ (QuantumZipper.RS.fwdMapInv_mem_H hWc hW0 q.coe_nonneg hz)
+
+end Chart
+
+/-- The current chart of the change pocket of `(R, L)` at `r` opening at the flow seed. -/
+abbrev curChartInf (A : Set Ω) (R L : Ω → ℝ≥0 → ℂ) (r : ℝ≥0) (η : Ω → ℝ → ℂ) (ψ : Ω → ℂ → ℂ) (n : Ω → ℤ)
+    (q : ℝ≥0) (ω : Ω) : Chart :=
+  relChart (fun ω => shiftChart (pChart A (fun ω => cfPocket (R ω) (L ω) r) ψ ω) (n ω)) (travAllInf R L r η ψ) q ω
+
+/-- The centred right seed coordinate of the traversal opening at the flow seed. -/
+abbrev seedRInf (R L : Ω → ℝ≥0 → ℂ) (r : ℝ≥0) (η : Ω → ℝ → ℂ) (ψ : Ω → ℂ → ℂ) (q : ℝ≥0) (ω : Ω) : ℝ :=
+  geomRW (fun t ω => segDriver (travAllInf R L r η ψ ω) t) (fun _ => LP.twoSeedXR) 0 q ω -
+    segDriver (travAllInf R L r η ψ ω) q
+
+/-- The centred left seed coordinate of the traversal opening at the flow seed. -/
+abbrev seedLInf (R L : Ω → ℝ≥0 → ℂ) (r : ℝ≥0) (η : Ω → ℝ → ℂ) (ψ : Ω → ℂ → ℂ) (q : ℝ≥0) (ω : Ω) : ℝ :=
+  geomLW (fun t ω => segDriver (travAllInf R L r η ψ ω) t) (fun _ => LP.twoSeedXL) 0 q ω -
+    segDriver (travAllInf R L r η ψ ω) q
+
+/-- **The current domain of a pocket opening at the flow seed misses the physical hull at the fibre end.** -/
+theorem outer_dom_physInf {A : Set Ω} {R L : Ω → ℝ≥0 → ℂ} {r : ℝ≥0} {W : Ω → ℝ → ℝ} {η : Ω → ℝ → ℂ}
+    {ψ : Ω → ℂ → ℂ} {ω : Ω} {q : ℝ≥0} (hcfg : ∀ ω ∈ A, IsOuterCfgInf (R ω) (L ω) r (W ω) (η ω))
+    (hψ : ∀ ω ∈ A, IsCfJordanInf (R ω) (L ω) r (ψ ω)) (hω : ω ∈ A)
+    (hq : (q : ℝ≥0∞) < capLife (travAllInf R L r η ψ ω)) {w : ℂ}
+    (hzD : w ∈ cfPocket (R ω) (L ω) r ∩
+      ψ ω ⁻¹' (H \ fwdHull (fun s : ℝ => segDriver (travAllInf R L r η ψ ω) s.toNNReal) q)) :
+    w ∈ H \ fwdHull (W ω) (outerFibreEndInf R L r η ψ q ω) := by
+  have hG : IsChangeConfigInc (R ω) (L ω) r := (hcfg ω hω).conf
+  have hCH : cfPocket (R ω) (L ω) r ⊆ H := PocketJordan.image_negInv_subset_H hG.changePocket_subset_H
+  have hγ : IsDrivenCurve (travAllInf R L r η ψ ω) := ((hcfg ω hω).props (hψ ω hω)).1
+  have hP := (hcfg ω hω).erase
+  have hL := hP.clockEnd_pos
+  have hu0 : 0 ≤ capInv (travAllInf R L r η ψ ω) q := capInv_nonneg _ _
+  have hv := clockOf_mem_Ico hL hu0
+  have hψ' : IsJordanCoordInf (cfPocket (R ω) (L ω) r) (cfArcRInf (R ω) (L ω) r 0) (ψ ω) := by
+    rw [IsChangeConfigInc.cfArcRInf_zero]
+    exact hψ ω hω
+  refine mem_domain_of_not_mem_fillH_inf (W := W ω) hP (hcfg ω hω).trace hCH hψ' hv hzD.1 fun hK => hzD.2.2 ?_
+  have himg : travAllInf R L r η ψ ω '' Icc 0 (capInv (travAllInf R L r η ψ ω) q) =
+      (fun v => ψ ω (erasedPathInf (η ω) (cfPocket (R ω) (L ω) r) (firstHit (η ω) (cfArcRInf (R ω) (L ω) r 0)) v)) ''
+        Icc 0 (clockOf (clockEnd (η ω) (cfPocket (R ω) (L ω) r) (firstHit (η ω) (cfArcRInf (R ω) (L ω) r 0)))
+          (capInv (travAllInf R L r η ψ ω) q)) := by
+    change relCurve (fun v => ψ ω (erasedPathInf (η ω) (cfPocket (R ω) (L ω) r)
+      (firstHit (η ω) (cfArcRInf (R ω) (L ω) r 0)) v))
+      (clockEnd (η ω) (cfPocket (R ω) (L ω) r) (firstHit (η ω) (cfArcRInf (R ω) (L ω) r 0))) '' _ = _
+    rw [image_relCurve_Icc _ hL hu0]
+  rw [hγ.fwdHull_segDriver q.coe_nonneg (by rw [ENNReal.ofReal_coe_nnreal]; exact hq), himg]
+  exact hK
+
+/-- **The face package** for the mixed shape with the outer pocket opening at the flow seed (`face_package`). -/
+theorem face_packageInf {A A' : Set Ω} {R L R' L' : Ω → ℝ≥0 → ℂ} {r r' : ℝ≥0} {W : Ω → ℝ → ℝ}
+    {η : Ω → ℝ → ℂ} {ψ ψ' : Ω → ℂ → ℂ} {n n' : Ω → ℤ} {ω : Ω}
+    (hcfg : ∀ ω ∈ A, IsOuterCfgInf (R ω) (L ω) r (W ω) (η ω)) (hψ : ∀ ω ∈ A, IsCfJordanInf (R ω) (L ω) r (ψ ω))
+    (hcfg' : ∀ ω ∈ A', IsCfPocketConfig (R' ω) (L' ω) r' (W ω) (η ω))
+    (hψ' : ∀ ω ∈ A', IsCfJordan (R' ω) (L' ω) r' (ψ' ω)) (hω : ω ∈ A) (hω' : ω ∈ A')
+    {q : ℝ≥0} (hq0 : 0 < q) (hq : (q : ℝ≥0∞) < capLife (travAllInf R L r η ψ ω))
+    (hsub : cfPocket (R' ω) (L' ω) r' ⊆ cfPocket (R ω) (L ω) r)
+    (hT0 : 0 ≤ outerFibreEndInf R L r η ψ q ω)
+    (htip : η ω (outerFibreEndInf R L r η ψ q ω) ∈ cfPocket (R' ω) (L' ω) r') {v : ℝ}
+    (hgen : extendFrom H (curChartInf A R L r η ψ n q ω).2.1 v ∈ frontier (cfPocket (R' ω) (L' ω) r') ∧
+      extendFrom H (curChartInf A R L r η ψ n q ω).2.1 v ∉
+        closure (frontier (cfPocket (R' ω) (L' ω) r') ∩ cfPocket (R ω) (L ω) r) ∧
+      extendFrom H (curChartInf A R L r η ψ n q ω).2.1 v ≠ cfPt (openPt (R' ω) (L' ω) r')) :
+    ∃ εW > 0, ∀ q' : ℝ≥0, innerRelCap R' L' r' η ψ' (outerFibreEndInf R L r η ψ q ω) ω < q' →
+      (q' : ℝ) < innerRelCap R' L' r' η ψ' (outerFibreEndInf R L r η ψ q ω) ω + εW →
+      ((curChart A' R' L' r' η ψ' n' q' ω).dom : Set ℂ) ⊆ (curChartInf A R L r η ψ n q ω).dom →
+      (curChartInf A R L r η ψ n q ω).IsConformal ∧ (curChart A' R' L' r' η ψ' n' q' ω).IsConformal ∧
+      ∃ EO EI : ℂ → ℂ, EqOn EO (curChartInf A R L r η ψ n q ω).2.1 H ∧ ContinuousOn EO Hbar ∧
+        EqOn EI (curChart A' R' L' r' η ψ' n' q' ω).2.1 H ∧ ContinuousOn EI Hbar ∧
+        seedLInf R L r η ψ q ω < 0 ∧ 0 < seedRInf R L r η ψ q ω ∧
+        seedL R' L' r' η ψ' q' ω < 0 ∧ 0 < seedR R' L' r' η ψ' q' ω ∧
+        ∃ ε > 0, ((curChartInf A R L r η ψ n q ω).dom : Set ℂ) ∩ ball (EO v) ε ⊆
+            (curChart A' R' L' r' η ψ' n' q' ω).dom ∧
+          (∃ M : ℝ, ∀ w ∈ ((curChart A' R' L' r' η ψ' n' q' ω).dom : Set ℂ) ∩ ball (EO v) ε,
+            ‖(curChart A' R' L' r' η ψ' n' q' ω).1 w‖ ≤ M) ∧
+          (∀ ξ : ℝ, ξ ∈ Icc (seedLInf R L r η ψ q ω) (seedRInf R L r η ψ q ω) → EO ξ ∈ ball (EO v) (ε / 2) →
+            ∀ x : ℝ, EI x = EO ξ → x ∈ Icc (seedL R' L' r' η ψ' q' ω) (seedR R' L' r' η ψ' q' ω)) ∧
+          (∀ y : ℝ, y ∉ Icc (seedLInf R L r η ψ q ω) (seedRInf R L r η ψ q ω) → EO y ∈ ball (EO v) (ε / 2) →
+            ∀ x : ℝ, EI x = EO y → x ∉ Icc (seedL R' L' r' η ψ' q' ω) (seedR R' L' r' η ψ' q' ω)) := by
+  classical
+  -- the outer pocket
+  have hcf := hcfg ω hω
+  have hG : ∀ ω ∈ A, IsChangeConfigInc (R ω) (L ω) r := fun ω hω => (hcfg ω hω).conf
+  have hCo : ∀ ω ∈ A, IsOpen (cfPocket (R ω) (L ω) r) := fun ω hω =>
+    isOpen_image_negInv' (hG ω hω).isOpen_changePocket (hG ω hω).changePocket_subset_H
+  have hCH : ∀ ω ∈ A, cfPocket (R ω) (L ω) r ⊆ H := fun ω hω =>
+    PocketJordan.image_negInv_subset_H (hG ω hω).changePocket_subset_H
+  have hψc : ∀ ω ∈ A, IsConformalBijection (ψ ω) (cfPocket (R ω) (L ω) r) H := fun ω hω => (hψ ω hω).2.2.2.1
+  have hJ : Sec6.IsJordanCoordInf (cfPocket (R ω) (L ω) r) (cfPt (closePt (R ω) (L ω) r)) (ψ ω) := hψ ω hω
+  have hγ : IsDrivenCurve (travAllInf R L r η ψ ω) := (hcf.props (hψ ω hω)).1
+  obtain ⟨t₁, hqt₁, ht₁⟩ := ENNReal.lt_iff_exists_nnreal_btwn.1 hq
+  have hqt₁' : q < t₁ := by exact_mod_cast hqt₁
+  obtain ⟨E₀, hE₀, hE₀c, hE₀m, WC, hWC, hWC0, hWCeq, ηC, hηC, hηCeq, hCf⟩ :=
+    chart_factsInf (n := n) hCo hCH hψc hJ hω hγ ht₁
+  obtain ⟨hOc, hOdom, -, hOE, hOEc⟩ := hCf q hqt₁'
+  have hq0' : (0 : ℝ) < q := by exact_mod_cast hq0
+  have hWCq : ∀ s ∈ Icc (0 : ℝ) q, segDriver (travAllInf R L r η ψ ω) s.toNNReal = WC s := fun s hs =>
+    hWCeq s ⟨hs.1, hs.2.trans (by exact_mod_cast hqt₁'.le)⟩
+  have hvR : seedRInf R L r η ψ q ω = chartAR WC q := seedR_eq hWC hWCq
+  have hvL : seedLInf R L r η ψ q ω = chartAL WC q := seedL_eq hWC hWCq
+  obtain ⟨hFc, hFeq, hFm⟩ := extendFrom_props hηC hWC hWC0 q.coe_nonneg
+  -- the outer tip
+  have hTC : η ω (outerFibreEndInf R L r η ψ q ω) ∈ cfPocket (R ω) (L ω) r := hsub htip
+  have htrace : capTrace (travAllInf R L r η ψ ω) q = ψ ω (η ω (outerFibreEndInf R L r η ψ q ω)) := rfl
+  have h0cl : ((0 : ℝ) : ℂ) ∈ closure H := by
+    rw [QuantumZipper.CA.Car.closure_H_eq_Hbar]; exact real_mem_Hbar 0
+  have htipC : extendFrom H (fwdMapInv WC q) ((0 : ℝ) : ℂ) ∈ H := by
+    have h1 := hηC.tendsto_fwdMapInv_tip hWC hWC0 q.coe_nonneg
+    rw [← Complex.ofReal_zero] at h1
+    rw [extendFrom_eq h0cl h1, hηCeq q q.coe_nonneg (by exact_mod_cast hqt₁'.le)]
+    change capTrace (travAllInf R L r η ψ ω) q ∈ H
+    rw [htrace]
+    exact (hψc ω hω).2.mapsTo hTC
+  have hvR0 : 0 < chartAR WC q := chartAR_pos_of_tip hηC hWC hWC0 q.coe_nonneg htipC
+  have hvL0 : chartAL WC q < 0 := chartAL_neg_of_tip hηC hWC hWC0 q.coe_nonneg htipC
+  -- the inner pocket
+  have hcf' := hcfg' ω hω'
+  have hG' : ∀ ω ∈ A', IsChangeConfigInc (R' ω) (L' ω) r' := fun ω hω => (hcfg' ω hω).conf
+  have hCo' : ∀ ω ∈ A', IsOpen (cfPocket (R' ω) (L' ω) r') := fun ω hω =>
+    isOpen_image_negInv' (hG' ω hω).isOpen_changePocket (hG' ω hω).changePocket_subset_H
+  have hCH' : ∀ ω ∈ A', cfPocket (R' ω) (L' ω) r' ⊆ H := fun ω hω =>
+    PocketJordan.image_negInv_subset_H (hG' ω hω).changePocket_subset_H
+  have hψc' : ∀ ω ∈ A', IsConformalBijection (ψ' ω) (cfPocket (R' ω) (L' ω) r') H := fun ω hω =>
+    (hψ' ω hω).2.2.2.1
+  have hUb : Bornology.IsBounded (cfPocket (R' ω) (L' ω) r') :=
+    isBounded_image_negInv (PocketMarks.zero_notMem_closure_of_rightLo_pos hcf'.conf hcf'.bounded)
+  have hx₀' : cfPt (openPt (R' ω) (L' ω) r') ∉ cfPocket (R' ω) (L' ω) r' := hcf'.conf.cfPt_openPt_notMem
+  have hJ' : Sec6.IsJordanCoord (cfPocket (R' ω) (L' ω) r') (cfPt (openPt (R' ω) (L' ω) r'))
+      (cfPt (closePt (R' ω) (L' ω) r')) (ψ' ω) := hψ' ω hω'
+  have hγ' : IsDrivenCurve (travAll R' L' r' η ψ' ω) := (hcf'.isDrivenCurve (hψ' ω hω')).1
+  obtain ⟨hc', hdom', hfwd'⟩ := R5Phase.shiftChart_dom_facts hCo' hCH' hψc' n' ω hω'
+  obtain ⟨hqTpos, hqTlive, hqTdom⟩ := R5Phase.visitCap_spec
+    (c := fun ω => shiftChart (pChart A' (fun ω => cfPocket (R' ω) (L' ω) r') ψ' ω) (n' ω)) hω' hcf' (hψ' ω hω')
+    hc' hdom' hfwd' hT0 htip
+  set qT := R5Phase.visitCap R' L' r' η ψ' ω (outerFibreEndInf R L r η ψ q ω) with hqTdef
+  have hqT0 : (0 : ℝ) ≤ qT := hqTpos.le
+  have hqTc : ((qT.toNNReal : ℝ≥0) : ℝ) = qT := Real.coe_toNNReal _ hqT0
+  obtain ⟨t₁', hqTt₁', ht₁'⟩ := ENNReal.lt_iff_exists_nnreal_btwn.1 hqTlive
+  have hqTt : qT.toNNReal < t₁' := by exact_mod_cast hqTt₁'
+  have hqTt' : qT < t₁' := by rw [← hqTc]; exact_mod_cast hqTt
+  obtain ⟨E₀', hE₀', hE₀'c, hE₀'m, WU, hWU, hWU0, hWUeq, ηU, hηU, hηUeq, hUf⟩ :=
+    chart_facts (n := n') hCo' hCH' hψc' hUb hx₀' hJ' hω' hγ' ht₁'
+  obtain ⟨-, hITdom, -, -, -⟩ := hUf qT.toNNReal hqTt
+  rw [hqTc] at hITdom
+  -- the inner tip at the visit time
+  obtain ⟨hP', hJ'arc⟩ := R5Ref.pocket_of_cfg hcf' (hψ' ω hω')
+  have hvisit : outerFibreEndInf R L r η ψ q ω ∈ visitSet (η ω) (cfPocket (R' ω) (L' ω) r')
+      (firstHit (η ω) (cfArcR (R' ω) (L' ω) r' 1)) (firstHit (η ω) (cfArcR (R' ω) (L' ω) r' 0)) :=
+    ⟨hP'.mem_Ioo_of_mem hT0 htip, htip⟩
+  have htrU : capTrace (travAll R' L' r' η ψ' ω) qT.toNNReal = ψ' ω (η ω (outerFibreEndInf R L r η ψ q ω)) :=
+    PocketStopSide.capTrace_relCap_of_visit hP' hcf'.attach hJ'arc hvisit
+  have hψ'T : ψ' ω (η ω (outerFibreEndInf R L r η ψ q ω)) ∈ H := (hψc' ω hω').2.mapsTo htip
+  have htipU : extendFrom H (fwdMapInv WU qT) ((0 : ℝ) : ℂ) = ψ' ω (η ω (outerFibreEndInf R L r η ψ q ω)) := by
+    have h1 := hηU.tendsto_fwdMapInv_tip hWU hWU0 hqT0
+    rw [← Complex.ofReal_zero] at h1
+    rw [extendFrom_eq h0cl h1, hηUeq qT hqT0 hqTt'.le, ← htrU]
+    simp only [capTrace, hqTc]
+  have hwR0 : 0 < chartAR WU qT := chartAR_pos_of_tip hηU hWU hWU0 hqT0 (htipU ▸ hψ'T)
+  have hwL0 : chartAL WU qT < 0 := chartAL_neg_of_tip hηU hWU hWU0 hqT0 (htipU ▸ hψ'T)
+  obtain ⟨hFTc, hFTeq, hFTm⟩ := extendFrom_props hηU hWU hWU0 hqT0
+  set ET : ℂ → ℂ := fun z => E₀' (extendFrom H (fwdMapInv WU qT) z) with hETdef
+  have hETc : ContinuousOn ET Hbar := hE₀'c.comp hFTc hFTm
+  have hET0 : ET ((0 : ℝ) : ℂ) = η ω (outerFibreEndInf R L r η ψ q ω) := by
+    simp only [hETdef, htipU]
+    rw [hE₀' hψ'T]
+    exact (hψc' ω hω').2.injOn.leftInvOn_invFunOn htip
+  -- continuity in time of the inner force coordinates
+  have hARc : ContinuousAt (fun t => chartAR WU t) qT := by
+    have h1 := (MartChar.RealFlow.continuousOn_rightImg hWU 0).continuousAt (Ici_mem_nhds hqTpos)
+    exact h1.sub hWU.continuousAt
+  have hALc : ContinuousAt (fun t => chartAL WU t) qT := by
+    have h1 := (MartChar.RealFlow.continuousOn_rightImg hWU.neg 0).continuousAt (Ici_mem_nhds hqTpos)
+    exact h1.neg.sub hWU.continuousAt
+  obtain ⟨θa, hθa, hθaR⟩ := Metric.continuousAt_iff.1 hARc (chartAR WU qT) hwR0
+  obtain ⟨θb, hθb, hθbL⟩ := Metric.continuousAt_iff.1 hALc (-chartAL WU qT) (by linarith)
+  -- the landing
+  set pF := extendFrom H (curChartInf A R L r η ψ n q ω).2.1 v with hpFdef
+  set EO : ℂ → ℂ := fun z => E₀ (extendFrom H (fwdMapInv WC q) z) with hEOdef
+  have hvcl : (v : ℂ) ∈ closure H := by rw [QuantumZipper.CA.Car.closure_H_eq_Hbar]; exact real_mem_Hbar v
+  have hEOv : EO v = pF := (extendFrom_eq hvcl (tendsto_of_extension hOE hOEc v)).symm
+  have hpFC : pF ∈ closure (cfPocket (R ω) (L ω) r) :=
+    hEOv ▸ hE₀m (hFm (real_mem_Hbar v))
+  have hpFne : pF ≠ η ω (outerFibreEndInf R L r η ψ q ω) := fun h =>
+    hgen.1.2 (by rw [h, (hCo' ω hω').interior_eq]; exact htip)
+  set d := dist pF (η ω (outerFibreEndInf R L r η ψ q ω)) with hd
+  have hdpos : 0 < d := dist_pos.2 hpFne
+  obtain ⟨ρ₀, hρ₀, hρ₀ET⟩ := Metric.continuousWithinAt_iff.1 (hETc _ (real_mem_Hbar 0)) (d / 2) (half_pos hdpos)
+  have hB : ∀ z ∈ H, ‖z‖ ≤ ρ₀ / 2 →
+      E₀' (fwdMapInv WU qT z) ∈ ball (η ω (outerFibreEndInf R L r η ψ q ω)) (d / 2) := by
+    intro z hz hzn
+    have hzd : dist z ((0 : ℝ) : ℂ) < ρ₀ := by
+      rw [Complex.ofReal_zero, dist_zero_right]; linarith
+    have h := hρ₀ET (QuantumZipper.H_subset_Hbar hz) hzd
+    rw [hET0] at h
+    have hEz : ET z = E₀' (fwdMapInv WU qT z) := by simp only [hETdef, hFTeq hz]
+    rw [hEz] at h
+    exact h
+  obtain ⟨θ₁, hθ₁, hθ₁K⟩ := exists_shift_hull_small hWU qT hρ₀
+  set εW := min (min θ₁ (min θa θb)) (t₁' - qT) with hεWdef
+  have hεW : 0 < εW := lt_min (lt_min hθ₁ (lt_min hθa hθb)) (by linarith)
+  refine ⟨εW, hεW, fun q' hq'lo hq'hi hIncl => ?_⟩
+  have hq'lo' : qT < q' := hq'lo
+  have hq'hi' : (q' : ℝ) < qT + εW := hq'hi
+  have hq't : q' < t₁' := by
+    have : (q' : ℝ) < t₁' := by linarith [min_le_right (min θ₁ (min θa θb)) (t₁' - qT)]
+    exact_mod_cast this
+  have hq'pos : (0 : ℝ) < q' := hqTpos.trans hq'lo'
+  obtain ⟨hIc, hIdom, -, hIE, hIEc⟩ := hUf q' hq't
+  have hWUq : ∀ s ∈ Icc (0 : ℝ) q', segDriver (travAll R' L' r' η ψ' ω) s.toNNReal = WU s := fun s hs =>
+    hWUeq s ⟨hs.1, hs.2.trans (by exact_mod_cast hq't.le)⟩
+  have hwR : seedR R' L' r' η ψ' q' ω = chartAR WU q' := seedR_eq hWU hWUq
+  have hwL : seedL R' L' r' η ψ' q' ω = chartAL WU q' := seedL_eq hWU hWUq
+  have hdq : dist (q' : ℝ) qT < min θa θb := by
+    rw [Real.dist_eq, abs_of_pos (by linarith)]
+    linarith [min_le_left (min θ₁ (min θa θb)) (t₁' - qT), min_le_right θ₁ (min θa θb)]
+  have hwR0' : 0 < chartAR WU q' := by
+    have h := hθaR (hdq.trans_le (min_le_left _ _))
+    rw [Real.dist_eq, abs_sub_lt_iff] at h
+    linarith [h.2]
+  have hwL0' : chartAL WU q' < 0 := by
+    have h := hθbL (hdq.trans_le (min_le_right _ _))
+    rw [Real.dist_eq, abs_sub_lt_iff] at h
+    linarith [h.1]
+  obtain ⟨hF'c, hF'eq, hF'm⟩ := extendFrom_props hηU hWU hWU0 q'.coe_nonneg
+  set EI : ℂ → ℂ := fun z => E₀' (extendFrom H (fwdMapInv WU q') z) with hEIdef
+  -- local containment and the radius
+  obtain ⟨εa, hεa, hΛa⟩ := inter_ball_subset_of_noncornerInf hJ (hCo' ω hω') hsub
+    (frontier_subset_closure hgen.1) hpFC hgen.2.1
+  have hpFU : pF ∈ closure (cfPocket (R' ω) (L' ω) r') \ {cfPt (openPt (R' ω) (L' ω) r')} :=
+    ⟨frontier_subset_closure hgen.1, hgen.2.2⟩
+  obtain ⟨ε₂, hε₂, hε₂ψ⟩ := Metric.continuousWithinAt_iff.1 (hJ'.1 pF hpFU) 1 one_pos
+  set ε := min (min εa (d / 2)) ε₂ with hεdef
+  have hε : 0 < ε := lt_min (lt_min hεa (half_pos hdpos)) hε₂
+  have hεa' : ε ≤ εa := (min_le_left _ _).trans (min_le_left _ _)
+  have hεd : ε ≤ d / 2 := (min_le_left _ _).trans (min_le_right _ _)
+  have hε2 : ε ≤ ε₂ := min_le_right _ _
+  have hΛa' : cfPocket (R ω) (L ω) r ∩ ball pF ε ⊆ cfPocket (R' ω) (L' ω) r' := fun w hw =>
+    hΛa ⟨hw.1, ball_subset_ball hεa' hw.2⟩
+  -- the local inclusion
+  have hΛ : ((curChartInf A R L r η ψ n q ω).dom : Set ℂ) ∩ ball pF ε ⊆
+      (curChart A' R' L' r' η ψ' n' q' ω).dom := by
+    rintro w ⟨hwO, hwb⟩
+    have hwU : w ∈ cfPocket (R' ω) (L' ω) r' := hΛa' ⟨hOc.dom_subset hwO |> fun _ => (by
+      rw [hOdom] at hwO; exact hwO.1), hwb⟩
+    have hzD : w ∈ cfPocket (R ω) (L ω) r ∩
+        ψ ω ⁻¹' (H \ fwdHull (fun s : ℝ => segDriver (travAllInf R L r η ψ ω) s.toNNReal) q) := by
+      rw [← relChart_dom_eq_inter (n := n) hCo hCH hψc hω hγ hq]; exact hwO
+    have hwphys : w ∈ H \ fwdHull (W ω) (outerFibreEndInf R L r η ψ q ω) :=
+      outer_dom_physInf hcfg hψ hω hq hzD
+    have hwT : ψ' ω w ∉ fwdHull WU qT := by
+      have hmem : w ∈ ((relChart (fun ω => shiftChart (pChart A' (fun ω => cfPocket (R' ω) (L' ω) r') ψ' ω)
+          (n' ω)) (travAll R' L' r' η ψ') qT.toNNReal ω).dom : Set ℂ) := by
+        rw [hqTdom]; exact ⟨hwU, hwphys⟩
+      rw [hITdom] at hmem
+      exact hmem.2.2
+    have hwB : w ∉ ball (η ω (outerFibreEndInf R L r η ψ q ω)) (d / 2) := by
+      intro hwB'
+      have h1 := mem_ball.1 hwB'
+      have h2 : dist w pF < d / 2 := (mem_ball.1 hwb).trans_le hεd
+      have h3 := dist_triangle pF w (η ω (outerFibreEndInf R L r η ψ q ω))
+      rw [dist_comm pF w] at h3
+      linarith
+    have hm1 : εW ≤ θ₁ := (min_le_left _ _).trans (min_le_left _ _)
+    have hsmall : fwdHull (QuantumZipper.RS.shiftDrive WU qT) ((q' : ℝ) - qT) ⊆ closedBall 0 (ρ₀ / 2) :=
+      hθ₁K _ (by linarith) (by linarith)
+    have hwq := mem_of_increment hE₀' (hψc' ω hω') hWU hWU0 hqT0 hB hq'lo'.le hsmall hwU hwT hwB
+    rw [hIdom]
+    exact ⟨hwU, (hψc' ω hω').2.mapsTo hwU, hwq⟩
+  -- the bound of the inner coordinate near the landing
+  have hbdd : ∃ M : ℝ, ∀ w ∈ ((curChart A' R' L' r' η ψ' n' q' ω).dom : Set ℂ) ∩ ball (EO v) ε,
+      ‖(curChart A' R' L' r' η ψ' n' q' ω).1 w‖ ≤ M := by
+    obtain ⟨Cq, hCq⟩ := exists_norm_fwdMapInv_sub_le hWU hWU0 q'.coe_nonneg
+    refine ⟨‖ψ' ω pF‖ + 1 + Cq, fun w hw => ?_⟩
+    rw [hEOv] at hw
+    have hwI := hw.1
+    have hwU : w ∈ cfPocket (R' ω) (L' ω) r' := by rw [hIdom] at hwI; exact hwI.1
+    set z := (curChart A' R' L' r' η ψ' n' q' ω).1 w with hz
+    have hzH : z ∈ H := hIc.fwd_mem hwI
+    have hzw : (curChart A' R' L' r' η ψ' n' q' ω).2.1 z = w := hIc.inv_fwd hwI
+    have hψw : ψ' ω w = fwdMapInv WU q' z := by
+      rw [← hzw, ← hIE hzH]
+      have h := jordan_comp_ext hJ' hE₀' hE₀'c hE₀'m (hF'm (QuantumZipper.H_subset_Hbar hzH))
+      rw [h, hF'eq hzH]
+    have hwx : w ∈ closure (cfPocket (R' ω) (L' ω) r') \ {cfPt (openPt (R' ω) (L' ω) r')} :=
+      ⟨subset_closure hwU, fun h => hx₀' (h ▸ hwU)⟩
+    have h1 := hε₂ψ hwx ((mem_ball.1 hw.2).trans_le hε2)
+    have h2 := hCq z hzH
+    rw [← hψw] at h2
+    have h3 : ‖ψ' ω w‖ ≤ ‖ψ' ω pF‖ + 1 := by
+      have := norm_le_norm_add_norm_sub' (ψ' ω w) (ψ' ω pF)
+      rw [dist_eq_norm] at h1
+      linarith
+    have h4 : ‖z‖ ≤ ‖ψ' ω w‖ + ‖ψ' ω w - z‖ := by
+      have := norm_sub_norm_le z (ψ' ω w)
+      rw [norm_sub_rev] at this
+      linarith [norm_sub_rev z (ψ' ω w)]
+    linarith
+  -- aliveness in the two charts near the landing
+  have hKH : fwdHull WC q ⊆ H := fun z hz => hz.1
+  have hK'H : fwdHull WU q' ⊆ H := fun z hz => hz.1
+  have hIncl' : cfPocket (R' ω) (L' ω) r' ∩ ψ' ω ⁻¹' (H \ fwdHull WU q') ⊆
+      cfPocket (R ω) (L ω) r ∩ ψ ω ⁻¹' (H \ fwdHull WC q) := by
+    rw [← hIdom, ← hOdom]; exact hIncl
+  have hΛ' : cfPocket (R ω) (L ω) r ∩ ψ ω ⁻¹' (H \ fwdHull WC q) ∩ ball pF ε ⊆
+      cfPocket (R' ω) (L' ω) r' ∩ ψ' ω ⁻¹' (H \ fwdHull WU q') := by
+    rw [← hIdom, ← hOdom]; exact hΛ
+  have halive : ∀ p : ℂ, p ∈ ball pF (ε / 2) →
+      p ∈ closure (cfPocket (R ω) (L ω) r) →
+      p ∈ closure (cfPocket (R' ω) (L' ω) r') \ {cfPt (openPt (R' ω) (L' ω) r')} →
+      (ψ ω p ∉ closure (fwdHull WC q) ↔ ψ' ω p ∉ closure (fwdHull WU q')) := fun p hp hpC hpU =>
+    alive_iff_of hsub hIncl' hΛa' hΛ' hp (exists_ball_subset_of_aliveInf hJ hpC)
+      (fun ρ hρ h => notMem_closure_of_ball_subsetInf hJ hKH hpC hρ h) (exists_ball_subset_of_alive hJ' hx₀' hpU)
+      (fun ρ hρ h => notMem_closure_of_ball_subset hJ' hUb hx₀' hK'H hpU hρ h)
+  have hlt : chartAL WU q' < chartAR WU q' := hwL0'.trans hwR0'
+  refine ⟨hOc, hIc, EO, EI, hOE, hOEc, hIE, hIEc, by rw [hvL]; exact hvL0, by rw [hvR]; exact hvR0,
+    by rw [hwL]; exact hwL0', by rw [hwR]; exact hwR0', ε, hε, by rw [hEOv]; exact hΛ, hbdd,
+    fun ξ hξ hξb x hx => ?_, fun y hy hyb x hx => ?_⟩
+  · rw [hvL, hvR] at hξ
+    rw [hwL, hwR]
+    by_contra hxI
+    have hdeadC := dead_of_mem_Icc hηC hWC hWC0 hq0' (hvL0.trans hvR0) hξ
+    have haliveU : extendFrom H (fwdMapInv WU q') (x : ℂ) ∉ closure (fwdHull WU q') := by
+      refine alive_of_not_mem_Icc hηU hWU hWU0 q'.coe_nonneg ?_
+      simp only [mem_Icc, not_and_or, not_le] at hxI
+      exact hxI
+    have hpC : EO ξ ∈ closure (cfPocket (R ω) (L ω) r) :=
+      hE₀m (hFm (real_mem_Hbar ξ))
+    have hpU : EO ξ ∈ closure (cfPocket (R' ω) (L' ω) r') \ {cfPt (openPt (R' ω) (L' ω) r')} :=
+      hx ▸ hE₀'m (hF'm (real_mem_Hbar x))
+    have hψp : ψ ω (EO ξ) = extendFrom H (fwdMapInv WC q) ξ :=
+      jordan_comp_extInf hJ hE₀ hE₀c hE₀m (hFm (real_mem_Hbar ξ))
+    have hψ'p : ψ' ω (EO ξ) = extendFrom H (fwdMapInv WU q') x := by
+      rw [← hx]; exact jordan_comp_ext hJ' hE₀' hE₀'c hE₀'m (hF'm (real_mem_Hbar x))
+    rw [hEOv] at hξb
+    have h := (halive (EO ξ) hξb hpC hpU).2 (by rw [hψ'p]; exact haliveU)
+    exact h (by rw [hψp]; exact hdeadC)
+  · rw [hvL, hvR] at hy
+    rw [hwL, hwR]
+    intro hxI
+    have haliveC : extendFrom H (fwdMapInv WC q) (y : ℂ) ∉ closure (fwdHull WC q) := by
+      refine alive_of_not_mem_Icc hηC hWC hWC0 q.coe_nonneg ?_
+      simp only [mem_Icc, not_and_or, not_le] at hy
+      exact hy
+    have hdeadU := dead_of_mem_Icc hηU hWU hWU0 hq'pos hlt hxI
+    have hpC : EO y ∈ closure (cfPocket (R ω) (L ω) r) :=
+      hE₀m (hFm (real_mem_Hbar y))
+    have hpU : EO y ∈ closure (cfPocket (R' ω) (L' ω) r') \ {cfPt (openPt (R' ω) (L' ω) r')} :=
+      hx ▸ hE₀'m (hF'm (real_mem_Hbar x))
+    have hψp : ψ ω (EO y) = extendFrom H (fwdMapInv WC q) y :=
+      jordan_comp_extInf hJ hE₀ hE₀c hE₀m (hFm (real_mem_Hbar y))
+    have hψ'p : ψ' ω (EO y) = extendFrom H (fwdMapInv WU q') x := by
+      rw [← hx]; exact jordan_comp_ext hJ' hE₀' hE₀'c hE₀'m (hF'm (real_mem_Hbar x))
+    rw [hEOv] at hyb
+    have h := (halive (EO y) hyb hpC hpU).1 (by rw [hψp]; exact haliveC)
+    exact h (by rw [hψ'p]; exact hdeadU)
+
+end InteractingSLE.Sec7.R6Fc

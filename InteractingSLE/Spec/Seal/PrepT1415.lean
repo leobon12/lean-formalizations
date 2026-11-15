@@ -1,0 +1,317 @@
+/-
+Copyright (c) 2026 InteractingSLE contributors. All rights reserved.
+-/
+import InteractingSLE.Spec.Seal.PrepT12
+import InteractingSLE.Spec.Wire.T14Asm5
+import InteractingSLE.Spec.Wire.T1415Asm2Thm15
+
+/-!
+# Seal preparation, stage 3: conditional providers of the Theorem 1.4 and 1.5 anchors
+
+Packet PROVE-SEAL-PREP. Theorems 1.2–1.3 enter through stage 2 (`theorem12Statement_of_covers`,
+`theorem13Statement_of_covers`: the fibre covers `hDy`/`hDy₀` and R.6's common-time two-outer faces `hR6Same`), at
+universes `u` and `0`. Every provider below has exactly its anchor's type after its open inputs (the seal form for
+`crosses_of_lt`, `hx` last, see `PrepStatements`). Open inputs per anchor (all as section variables):
+
+| anchor | open inputs |
+|---|---|
+| `exists_isStagedHistory` | `hDy hDy₀ hR6Same` (Theorems 1.2–1.3 only: `Wire.exists_isStagedHistory_of_wire6`) |
+| `completedRange_eq_closure_lightCone` | `hDy hDy₀ hR6Same` + ROOT2's `D hCover hGeometry hNear hSlow` |
+| `boundaryWalks_frontiers`, `componentKernels` | the above + `hSB2 hDS hIA` (`Wire.theorem14Statement_assembled5`) |
+| Theorem 1.5's three clauses and `exists_isFlowLine` | `hDy hDy₀ hR6Same` (`Wire.theorem15Statement_assembled2`) |
+
+R48 does not restrict these: Theorems 1.2–1.3 are permitted inputs of Theorems 1.4–1.5.
+-/
+
+set_option autoImplicit false
+
+noncomputable section
+
+open MeasureTheory ProbabilityTheory Filter Set Topology TopologicalSpace
+open scoped NNReal ENNReal Real
+open QuantumZipper (chiC)
+
+universe u
+
+namespace InteractingSLE.Seal.Prep
+
+open Wire Theorem14
+
+/-! ### Theorem 1.4's light cone from Theorems 1.2–1.3 and GW2's root tests -/
+
+/-- **Theorem 1.4's light-cone clause from Theorems 1.2–1.3 and GW2's root tests**: the `hCone` step of
+`Wire.theorem14Statement_of_sb4Reg_arcData` (no SB, walk or GW4 input). -/
+theorem lightCone14Statement_of_thm12_thm13_tests
+    (h12 : Exist.Theorem12Statement.{u}) (h13 : Exist.Theorem13Statement.{u})
+    (h12₀ : Exist.Theorem12Statement.{0}) (h13₀ : Exist.Theorem13Statement.{0})
+    (hTests : GW2TipSystem.GW2RootTestStatement.{u}) : LightCone14Statement.{u} := by
+  have hBR4a := BR4aIn.br4aStatement_of_thm12_thm13 h12 h13 h12₀ h13₀
+  have hD := Supp8.GB6LMean.gb6HullDetStatement_of_thm12_thm13 h12 h13
+  have h12p := Exist.Param12.theorem12ParamStatement_of_thm12_thm13 h12 h13
+  have h12p₀ := Exist.Param12.theorem12ParamStatement_of_thm12_thm13 h12₀ h13₀
+  have hBW1 := BW1LMean.bw1Statement_of_thm12_thm13 h12p h12 h13 h13₀
+    (Restart.canonicalDriverCodeStatement_of_param h12p₀ h13₀)
+  have hFix := GW2aForce.flowFixedTimeInteriorStatement_of_thm13 h13
+  have hForce := GW2aConn.gw2aConnectorForcingStatement_of_theorem13 h13 h13₀
+  have hA := GW2aStep.gw2aContainmentRegStatement_of_bw1 hD h12 h13 h12₀ h13₀ hBW1 hFix hForce hBR4a
+  have hGB6 := gb6RestartStatement_of_hullDet_now h12₀ h13₀ hD
+  have hG := BRLeaf.gb6PrefixPairStatement_of_hullDet hD h12 h13 h12₀ h13₀
+  have hU := GW2TipSystem.gw2TipJointUnboundedStatement_of_candR
+    (GW2TipSystem.gw2RootCandRStatement_of_test hTests)
+  have hEx := GW2Tip.gw2TipExhaustionAllQStatement_of_canonAllQ h12 h13
+    (GW2Tip.gw2TipExhaustionCanonAllQStatement_of_jointUnbounded hU)
+  have hCone : LightCone14Statement.{u} :=
+    lightCone14Statement_of_inputs_late h13 h13₀ hBR4a hGB6 hG h12p hEx hA
+  exact @hCone
+
+/-! ### Providers needing only Theorems 1.2–1.3 (the fibre covers and `hR6Same`) -/
+
+section Covers
+
+variable (hDy : Sec5.Aux61Act.DyActFibreCoverOn.{u} (fun κ θ₁ θ₂ => ¬ Sec5.Prop51G.IsLargeGap κ θ₁ θ₂)
+  Sec5.Aux61Cov.RefWin)
+variable (hDy₀ : Sec5.Aux61Act.DyActFibreCoverOn.{0} (fun κ θ₁ θ₂ => ¬ Sec5.Prop51G.IsLargeGap κ θ₁ θ₂)
+  Sec5.Aux61Cov.RefWin)
+variable (hR6Same : ∀ k : ℝ, 4 < k → ∀ rL rR : ℝ, -2 < rL → -2 < rR → ¬ (rL < k - 6 ∧ rR < k - 6) →
+  Sec7.R6Tr.R6SameTimeTwoRemaining.{0} k rL rR (π * chiC (16 / k)) 0 ∧
+    Sec7.R6Tr.R6SameTimeTwoInfRemaining.{0} k rL rR (π * chiC (16 / k)) 0 ∧
+    Sec7.R6Tr.R6SameTimeTwoInfInfRemaining.{0} k rL rR (π * chiC (16 / k)) 0)
+
+include hDy hDy₀ hR6Same
+
+/-- **Theorem 1.5, all five clauses**, from the fibre covers and `hR6Same` (`Wire.theorem15Statement_assembled2` with
+Theorems 1.2–1.3 from stage 2). -/
+theorem theorem15Statement_of_covers : Theorem15Statement.{u} :=
+  theorem15Statement_assembled2
+    (theorem12Statement_of_covers.{u} hDy hDy₀ hR6Same)
+    (theorem13Statement_of_covers.{u} hDy₀ hR6Same)
+    (theorem12Statement_of_covers.{0} hDy₀ hDy₀ hR6Same)
+    (theorem13Statement_of_covers.{0} hDy₀ hR6Same)
+    hDy hDy₀
+
+/-- **Theorem 1.4's companion `exists_isStagedHistory`, conditional provider**: Theorems 1.2–1.3 only. -/
+theorem exists_isStagedHistory_of_covers
+    {κ : ℝ} (hκ : 0 < κ := by assumption) (hκ4 : κ < 4 := by assumption)
+    {b : ℝ → ℝ} {jumps : Finset ℝ} (hb : IsPiecewiseConstantBoundaryData b jumps := by assumption)
+    {Ω : Type u} [MeasurableSpace Ω] [StandardBorelSpace Ω] {P : Measure Ω} [IsProbabilityMeasure P]
+    {h : Ω → LQGMetric.DistOn upperHalfPlaneOpens}
+    (hh : IsGFFWithBoundaryData P h b jumps := by assumption) :
+    ∃ E : ExplSpec → ℕ → Ω → (ℝ≥0 → ℝ) × ℝ≥0∞, ∀ spec : ExplSpec, IsBoundaryContinuedProgram spec.2.2 →
+      IsStagedHistory κ b jumps P h spec (E spec) ∧ StagedPiecesRegular κ b jumps P spec (E spec) :=
+  by exact exists_isStagedHistory_of_statement (fun {κ} hκ hκ4 {b jumps} hb {Ω} _ _ {P} _ {h} hh =>
+      exists_isStagedHistory_of_wire6 (theorem12Statement_of_covers.{u} hDy hDy₀ hR6Same)
+        (theorem13Statement_of_covers.{u} hDy₀ hR6Same) hκ hκ4 hb hh)
+
+/-- **Theorem 1.5's `IsFlowLine.stays_right_of_lt`, conditional provider.** -/
+theorem stays_right_of_lt_of_covers
+    {κ : ℝ} (hκ : 0 < κ := by assumption) (hκ4 : κ < 4 := by assumption)
+    {b : ℝ → ℝ} {jumps : Finset ℝ} (hb : IsPiecewiseConstantBoundaryData b jumps := by assumption)
+    {x₁ x₂ θ₁ θ₂ : ℝ} (hx : x₂ ≤ x₁ := by assumption) (hθ : θ₁ < θ₂ := by assumption)
+    {Ω : Type u} [MeasurableSpace Ω] {P : Measure Ω} [IsProbabilityMeasure P]
+    {h : Ω → LQGMetric.DistOn upperHalfPlaneOpens} (hh : IsGFFWithBoundaryData P h b jumps := by assumption)
+    {η₁ η₂ : Ω → ℝ≥0 → ℂ} {ζ₁ ζ₂ : Ω → ℝ≥0∞}
+    (hη₁ : IsFlowLine κ b jumps x₁ θ₁ P h η₁ ζ₁ := by assumption)
+    (hη₂ : IsFlowLine κ b jumps x₂ θ₂ P h η₂ ζ₂ := by assumption) :
+    (∀ᵐ ω ∂P, ∀ a c : ℝ≥0, (a : ℝ≥0∞) < ζ₁ ω → (c : ℝ≥0∞) < ζ₂ ω →
+        HasOrderedProperCompletions (η₁ ω) a (η₂ ω) c) ∧
+      (Real.pi * κ / (4 - κ) ≤ θ₂ - θ₁ → ∀ᵐ ω ∂P, ∀ s t : ℝ≥0,
+        ¬ IsInteriorAvailableContact (η₁ ω) (ζ₁ ω) (η₂ ω) (ζ₂ ω) s t) :=
+  by exact stays_right_of_lt_of_statement (theorem15Statement_of_covers hDy hDy₀ hR6Same).1
+
+/-- **Theorem 1.5's `IsFlowLine.merges`, conditional provider.** -/
+theorem merges_of_covers
+    {κ : ℝ} (hκ : 0 < κ := by assumption) (hκ4 : κ < 4 := by assumption)
+    {b : ℝ → ℝ} {jumps : Finset ℝ} (hb : IsPiecewiseConstantBoundaryData b jumps := by assumption)
+    {x₁ x₂ θ : ℝ} (hx : x₂ ≤ x₁ := by assumption)
+    {Ω : Type u} [MeasurableSpace Ω] {P : Measure Ω} [IsProbabilityMeasure P]
+    {h : Ω → LQGMetric.DistOn upperHalfPlaneOpens} (hh : IsGFFWithBoundaryData P h b jumps := by assumption)
+    {η₁ η₂ : Ω → ℝ≥0 → ℂ} {ζ₁ ζ₂ : Ω → ℝ≥0∞}
+    (hη₁ : IsFlowLine κ b jumps x₁ θ P h η₁ ζ₁ := by assumption)
+    (hη₂ : IsFlowLine κ b jumps x₂ θ P h η₂ ζ₂ := by assumption) :
+    ∀ᵐ ω ∂P, ∀ s t : ℝ≥0, IsInteriorAvailableContact (η₁ ω) (ζ₁ ω) (η₂ ω) (ζ₂ ω) s t →
+      AgreeAsCurvesAfter (η₁ ω) (ζ₁ ω) s (η₂ ω) (ζ₂ ω) t :=
+  by exact merges_of_statement (theorem15Statement_of_covers hDy hDy₀ hR6Same).2.1
+
+/-- **Theorem 1.5's `IsFlowLine.crosses_of_lt`, conditional provider** (seal form: `hx` last). -/
+theorem crosses_of_lt_of_covers
+    {κ : ℝ} (hκ : 0 < κ := by assumption) (hκ4 : κ < 4 := by assumption)
+    {b : ℝ → ℝ} {jumps : Finset ℝ} (hb : IsPiecewiseConstantBoundaryData b jumps := by assumption)
+    {x₁ x₂ θ₁ θ₂ : ℝ} (hθ : θ₂ < θ₁ := by assumption)
+    (hθπ : θ₁ < θ₂ + Real.pi := by assumption)
+    {Ω : Type u} [MeasurableSpace Ω] {P : Measure Ω} [IsProbabilityMeasure P]
+    {h : Ω → LQGMetric.DistOn upperHalfPlaneOpens} (hh : IsGFFWithBoundaryData P h b jumps := by assumption)
+    {η₁ η₂ : Ω → ℝ≥0 → ℂ} {ζ₁ ζ₂ : Ω → ℝ≥0∞}
+    (hη₁ : IsFlowLine κ b jumps x₁ θ₁ P h η₁ ζ₁ := by assumption)
+    (hη₂ : IsFlowLine κ b jumps x₂ θ₂ P h η₂ ζ₂ := by assumption)
+    (hx : x₂ < x₁ := by assumption) :
+    (∀ᵐ ω ∂P, ∀ s t : ℝ≥0, IsInteriorAvailableContact (η₁ ω) (ζ₁ ω) (η₂ ω) (ζ₂ ω) s t →
+        ∃ s₀ t₀ : ℝ≥0, IsFirstContact (η₁ ω) (ζ₁ ω) (η₂ ω) (ζ₂ ω) s₀ t₀ ∧
+          CrossesFromRightAt (η₁ ω) (ζ₁ ω) s₀ (η₂ ω) (ζ₂ ω) t₀) ∧
+      (Real.pi * κ / (4 - κ) ≤ θ₁ - θ₂ → ∀ᵐ ω ∂P, ∀ s t : ℝ≥0,
+        IsInteriorAvailableContact (η₁ ω) (ζ₁ ω) (η₂ ω) (ζ₂ ω) s t →
+          IsFirstContact (η₁ ω) (ζ₁ ω) (η₂ ω) (ζ₂ ω) s t) :=
+  by exact crosses_of_lt_of_statement (theorem15Statement_of_covers hDy hDy₀ hR6Same).2.2.1
+
+/-- **Theorem 1.5's companion `exists_isFlowLine`, conditional provider.** -/
+theorem exists_isFlowLine_of_covers
+    {κ : ℝ} (hκ : 0 < κ := by assumption) (hκ4 : κ < 4 := by assumption)
+    {b : ℝ → ℝ} {jumps : Finset ℝ} (hb : IsPiecewiseConstantBoundaryData b jumps := by assumption) {x θ : ℝ}
+    {Ω : Type u} [MeasurableSpace Ω] {P : Measure Ω} [IsProbabilityMeasure P]
+    {h : Ω → LQGMetric.DistOn upperHalfPlaneOpens}
+    (hh : IsGFFWithBoundaryData P h b jumps := by assumption) :
+    ∃ (η : Ω → ℝ≥0 → ℂ) (ζ : Ω → ℝ≥0∞), IsFlowLine κ b jumps x θ P h η ζ :=
+  by exact exists_isFlowLine_of_statement (theorem15Statement_of_covers hDy hDy₀ hR6Same).2.2.2.1
+
+/-! ### Providers also needing GW2's root construction (ROOT2's four assertions) -/
+
+section Root
+
+variable (D : GW2TipSystem.RootC24.ConstructionFamily.{u})
+variable (hCover : GW2TipSystem.RootC24.RootCoverStatement D)
+variable (hGeometry : GW2TipSystem.RootC24.RootGeometryStatement D)
+variable (hNear : GW2TipSystem.RootC24.RetainedNearModelsStatement D)
+variable (hSlow : GW2TipSystem.RootC24.RetainedSlowComparisonsStatement D)
+
+include D hCover hGeometry hNear hSlow
+
+/-- **Theorem 1.4's light-cone clause** from the fibre covers, `hR6Same` and ROOT2's construction with its four open
+assertions (`GW2TipSystem.RootC24.gw2RootTestStatement_of_oneSided_comparisons`). -/
+theorem lightCone14Statement_of_covers_root : LightCone14Statement.{u} :=
+  lightCone14Statement_of_thm12_thm13_tests
+    (theorem12Statement_of_covers.{u} hDy hDy₀ hR6Same)
+    (theorem13Statement_of_covers.{u} hDy₀ hR6Same)
+    (theorem12Statement_of_covers.{0} hDy₀ hDy₀ hR6Same)
+    (theorem13Statement_of_covers.{0} hDy₀ hR6Same)
+    (GW2TipSystem.RootC24.gw2RootTestStatement_of_oneSided_comparisons
+      (theorem13Statement_of_covers.{u} hDy₀ hR6Same) D hCover hGeometry hNear hSlow)
+
+/-- **Theorem 1.4's light cone `IsCenteredCounterflowDriver.completedRange_eq_closure_lightCone`, conditional
+provider.** -/
+theorem completedRange_eq_closure_lightCone_of_covers_root
+    {κ : ℝ} (hκ : 0 < κ := by assumption)
+    (hκ4 : κ < 4 := by assumption) {b : ℝ → ℝ} {jumps : Finset ℝ}
+    (hb : IsPiecewiseConstantBoundaryData b jumps := by assumption)
+    {Ω : Type u} [MeasurableSpace Ω] [StandardBorelSpace Ω] {P : Measure Ω} [IsProbabilityMeasure P]
+    {h : Ω → LQGMetric.DistOn upperHalfPlaneOpens} (hh : IsGFFWithBoundaryData P h b jumps := by assumption)
+    {W' : ℝ≥0 → Ω → ℝ} {ζ' : Ω → ℝ≥0∞}
+    (hcf : IsCenteredCounterflowDriver κ P h W' ζ' := by assumption)
+    (hζ' : ∀ᵐ ω ∂P, ζ' ω = ⊤ := by assumption)
+    {Θ : Set ℝ} (hΘ : Θ ⊆ Ioo (-(Real.pi / 2)) (Real.pi / 2) := by assumption)
+    (hΘc : Θ.Countable := by assumption)
+    (hΘd : Ioo (-(Real.pi / 2)) (Real.pi / 2) ⊆ closure Θ := by assumption) :
+    ∃ Q : Set ℝ≥0, Q.Countable ∧ Dense Q ∧ (∀ q ∈ Q, 0 < q) ∧
+      ∀ E : ExplSpec → ℕ → Ω → (ℝ≥0 → ℝ) × ℝ≥0∞,
+        (∀ spec : ExplSpec, IsBoundaryContinuedProgram spec.2.2 →
+          IsStagedHistory κ b jumps P h spec (E spec)) →
+        (∀ spec : ExplSpec, IsBoundaryContinuedProgram spec.2.2 →
+          StagedPiecesRegular κ b jumps P spec (E spec)) →
+        (∀ᵐ ω ∂P, closure (boundaryLightConeFamily κ b jumps Θ Q (fun spec k => E spec k ω) ∪ {0}) =
+            counterflowCompletedRange (fun t => W' t ω)) ∧
+        ∀ 𝒞 : Set (List Instr), 𝒞.Countable → (∀ p ∈ 𝒞, IsBoundaryContinuedProgram p) →
+          ∀ᵐ ω ∂P, closure (boundaryLightConeFamily κ b jumps Θ Q (fun spec k => E spec k ω) ∪
+              (⋃ p ∈ 𝒞, ExplState.physSet κ b jumps ⟨0, false, p⟩ (fun k => E ⟨0, false, p⟩ k ω)) ∪
+              {0}) =
+            counterflowCompletedRange (fun t => W' t ω) :=
+  by exact completedRange_eq_closure_lightCone_of_statement
+      (lightCone14Statement_of_covers_root hDy hDy₀ hR6Same D hCover hGeometry hNear hSlow)
+
+/-! ### Providers needing the whole Theorem 1.4 top (also SB2(1) and SB4's two launch-tail leaves) -/
+
+section SB
+
+variable (hSB2 : SB.Ly.SB2UpperLaunchEntryLAmbStatement.{u})
+variable (hDS : SB.Ly.SB4DistinctSeedLaunchTailRStatement.{u})
+variable (hIA : SB.Ly.SB4InitialArcLaunchTailRStatement.{u})
+
+include hSB2 hDS hIA
+
+/-- **Theorem 1.4, all four clauses**, from the fibre covers, `hR6Same`, ROOT2's construction with its four open
+assertions, SB2(1) and SB4's two launch-tail leaves (`Wire.theorem14Statement_assembled5`). -/
+theorem theorem14Statement_of_covers : Theorem14Statement.{u} :=
+  theorem14Statement_assembled5
+    (theorem12Statement_of_covers.{u} hDy hDy₀ hR6Same)
+    (theorem13Statement_of_covers.{u} hDy₀ hR6Same)
+    (theorem12Statement_of_covers.{0} hDy₀ hDy₀ hR6Same)
+    (theorem13Statement_of_covers.{0} hDy₀ hR6Same)
+    D hCover hGeometry hNear hSlow hSB2 hDy hDy₀ hDS hIA
+
+/-- **Theorem 1.4's `IsCenteredCounterflowDriver.boundaryWalks_frontiers`, conditional provider.** -/
+theorem boundaryWalks_frontiers_of_covers
+    {κ : ℝ} (hκ : 0 < κ := by assumption) (hκ4 : κ < 4 := by assumption)
+    {b : ℝ → ℝ} {jumps : Finset ℝ} (hb : IsPiecewiseConstantBoundaryData b jumps := by assumption)
+    {Ω : Type u} [MeasurableSpace Ω] [StandardBorelSpace Ω] {P : Measure Ω} [IsProbabilityMeasure P]
+    {h : Ω → LQGMetric.DistOn upperHalfPlaneOpens} (hh : IsGFFWithBoundaryData P h b jumps := by assumption)
+    {W' : ℝ≥0 → Ω → ℝ} {ζ' : Ω → ℝ≥0∞}
+    (hcf : IsCenteredCounterflowDriver κ P h W' ζ' := by assumption)
+    (hζ' : ∀ᵐ ω ∂P, ζ' ω = ⊤ := by assumption)
+    {E : ExplSpec → ℕ → Ω → (ℝ≥0 → ℝ) × ℝ≥0∞}
+    (hE : ∀ spec : ExplSpec, IsBoundaryContinuedProgram spec.2.2 →
+      IsStagedHistory κ b jumps P h spec (E spec) := by assumption)
+    (hreg : ∀ spec : ExplSpec, IsBoundaryContinuedProgram spec.2.2 →
+      StagedPiecesRegular κ b jumps P spec (E spec) := by assumption) :
+    ∀ᵐ ω ∂P,
+      (ExplState.physSet κ b jumps (boundaryWalkSpec b jumps (-(Real.pi / 2)) true)
+          (fun k => E (boundaryWalkSpec b jumps (-(Real.pi / 2)) true) k ω) ⊆
+          counterflowCompletedRange (fun t => W' t ω) ∧
+        counterflowCompletedRange (fun t => W' t ω) ∩
+          rightSideOf (ExplState.physSet κ b jumps (boundaryWalkSpec b jumps (-(Real.pi / 2)) true)
+            (fun k => E (boundaryWalkSpec b jumps (-(Real.pi / 2)) true) k ω)) = ∅) ∧
+      (ExplState.physSet κ b jumps (boundaryWalkSpec b jumps (Real.pi / 2) false)
+          (fun k => E (boundaryWalkSpec b jumps (Real.pi / 2) false) k ω) ⊆
+          counterflowCompletedRange (fun t => W' t ω) ∧
+        counterflowCompletedRange (fun t => W' t ω) ∩
+          leftSideOf (ExplState.physSet κ b jumps (boundaryWalkSpec b jumps (Real.pi / 2) false)
+            (fun k => E (boundaryWalkSpec b jumps (Real.pi / 2) false) k ω)) = ∅) ∧
+      (interior (((↑) : ℝ → ℂ) ⁻¹' counterflowCompletedRange (fun t => W' t ω)) = ∅ →
+        (E (boundaryWalkSpec b jumps (-(Real.pi / 2)) true) 0 ω).2 = ⊤ ∧
+          (E (boundaryWalkSpec b jumps (Real.pi / 2) false) 0 ω).2 = ⊤) :=
+  by exact boundaryWalks_frontiers_of_statement
+      (theorem14Statement_of_covers hDy hDy₀ hR6Same D hCover hGeometry hNear hSlow hSB2 hDS hIA).2.1
+
+/-- **Theorem 1.4's `IsCenteredCounterflowDriver.componentKernels`, conditional provider.** -/
+theorem componentKernels_of_covers
+    {κ : ℝ} (hκ : 0 < κ := by assumption) (hκ4 : κ < 4 := by assumption)
+    {b : ℝ → ℝ} {jumps : Finset ℝ} (hb : IsPiecewiseConstantBoundaryData b jumps := by assumption)
+    {Ω : Type u} [MeasurableSpace Ω] [StandardBorelSpace Ω] {P : Measure Ω} [IsProbabilityMeasure P]
+    {h : Ω → LQGMetric.DistOn upperHalfPlaneOpens} (hh : IsGFFWithBoundaryData P h b jumps := by assumption)
+    {W' : ℝ≥0 → Ω → ℝ} {ζ' : Ω → ℝ≥0∞}
+    (hcf : IsCenteredCounterflowDriver κ P h W' ζ' := by assumption)
+    (hζ' : ∀ᵐ ω ∂P, ζ' ω = ⊤ := by assumption)
+    {E : ExplSpec → ℕ → Ω → (ℝ≥0 → ℝ) × ℝ≥0∞}
+    (hE : ∀ spec : ExplSpec, IsBoundaryContinuedProgram spec.2.2 →
+      IsStagedHistory κ b jumps P h spec (E spec) := by assumption)
+    (hreg : ∀ spec : ExplSpec, IsBoundaryContinuedProgram spec.2.2 →
+      StagedPiecesRegular κ b jumps P spec (E spec) := by assumption) :
+    let wR := boundaryWalkSpec b jumps (-(Real.pi / 2)) true
+    let wL := boundaryWalkSpec b jumps (Real.pi / 2) false
+    ∀ᵐ ω₀ ∂P,
+      let R := ExplState.physSet κ b jumps wR (fun k => E wR k ω₀)
+      let L := ExplState.physSet κ b jumps wL (fun k => E wL k ω₀)
+      let ν := condExpKernel P
+        (pastSigma κ b jumps wR (E wR) wR.2.2.length ⊔ pastSigma κ b jumps wL (E wL) wL.2.2.length) ω₀
+      (∀ C ∈ betweenComponents R L, ∃ c : Chart, IsComponentChart R L C c) ∧
+      ∀ cs : Set ℂ → Chart, (∀ C ∈ betweenComponents R L, IsComponentChart R L C (cs C)) →
+        ∃ (ℓ : Set ℂ → ℂ → ℝ) (hC : Set ℂ → Ω → LQGMetric.DistOn upperHalfPlaneOpens)
+          (WC : Set ℂ → ℝ≥0 → Ω → ℝ) (ζC : Set ℂ → Ω → ℝ≥0∞),
+          (∀ C ∈ betweenComponents R L,
+            IsComponentChart R L C ((cs C).1, (cs C).2.1, ℓ C) ∧
+            (∀ ω, IsChartTransport ((cs C).1, (cs C).2.1, ℓ C) 1 0 (QuantumZipper.chiC κ) (h ω)
+              (hC C ω)) ∧
+            (∃ (bC : ℝ → ℝ) (jumpsC : Finset ℝ), IsPiecewiseConstantBoundaryData bC jumpsC ∧
+              IsComponentBoundaryData κ b (ExplState.ordinarySet κ b jumps wR (fun k => E wR k ω₀))
+                (ExplState.ordinarySet κ b jumps wL (fun k => E wL k ω₀)) (cs C).2.1 bC jumpsC ∧
+              IsGFFWithBoundaryData ν (hC C) bC jumpsC) ∧
+            IsCenteredCounterflowDriver κ ν (hC C) (WC C) (ζC C) ∧
+            ∀ᵐ ω ∂ν, ζC C ω = ⊤ ∧
+              IsComponentTraversal (cs C).2.1 (fun t => W' t ω) (fun t => WC C t ω)) ∧
+          iIndepFun (fun (C : betweenComponents R L) ω => (hC C ω, fun t => WC C t ω)) ν :=
+  by exact componentKernels_of_statement
+      (theorem14Statement_of_covers hDy hDy₀ hR6Same D hCover hGeometry hNear hSlow hSB2 hDS hIA).2.2.1
+
+end SB
+
+end Root
+
+end Covers
+
+end InteractingSLE.Seal.Prep

@@ -446,3 +446,52 @@ lake build InteractingSLE.Frozen.SLE8.ContinuousTrace
 lake env lean results/elementary-sle8-continuity/Check.lean
 lake env leanchecker --fresh InteractingSLE.Frozen.SLE8.ContinuousTrace
 ```
+
+## Imaginary geometry I (2026-11-15)
+
+The new entry points are the 113 frozen anchor modules `InteractingSLE.Frozen.Spec.*`: 17 theorems (Theorems 1.1–1.5,
+2.2, 2.4 and 2.6 of Miller–Sheffield, *Imaginary geometry I: interacting SLEs*, and three companions) and the 96
+definitions their statements use (see the [result guide](results/imaginary-geometry-i/)). Their import closure has
+8,584 local modules — 8,470 `InteractingSLE`, 67 `MathFin` and 47 `BrownianMotion` — of which 59 (the SLE₈ release)
+were already public and are unchanged, so the export adds 8,525 files. The closure also imports 2,458 released modules,
+unchanged: 2,059 `QuantumZipper`, 324 `LQGMetric`, 34 `SupercriticalConformalCovariance`, 23 `LQGDimension`,
+17 `SmallGammaGeodesics` and 1 `GaussianLQG`. All new files are copied byte-for-byte from source commit
+`616603f37b7910dec390917372e2347e8c744e93`. In the development tree, 32 of the 34 `SupercriticalConformalCovariance`
+files differ from their released copies only in comments, so the released copies are used. Lean and all dependency
+revisions match the existing release.
+
+For the same reason as the SLE₈ theorem (the vendored `BrownianMotion` names), the theorems are not imported by
+`Certificate.lean`. `scripts/verify.py` instead compiles the [focused certificate](results/imaginary-geometry-i/Check.lean)
+after the SLE₈ certificate and before `Certificate.lean`, with the certificate's memory limit (`-M12288`). It requires the
+certificate's whole-declaration audit (`IMAGINARY_GEOMETRY_I_AUDIT`) to finish. That audit runs over every declaration
+of the `InteractingSLE`, `MathFin`, `BrownianMotion`, `QuantumZipper`, `LQGMetric`, `LQGDimension`,
+`SupercriticalConformalCovariance`, `SmallGammaGeodesics` and `GaussianLQG` modules.
+
+**Verifier and workflow changes in this release:**
+- The workflow compiles the closure in five chained jobs of at most 270 minutes each (the first stops after 230),
+  before the verifying job. Each job resumes the previous job's partial build.
+- A module that stops at the per-module memory limit (`-M8192`) is compiled once more, alone, with `-M12288`.
+- A module now has 1800 seconds instead of 900.
+
+The verifying job of the three previous pushes failed. In each, one module, compiled in earlier passing runs, stopped
+at the memory limit (`SupercriticalLFPPAS.Implementation.JointHeatVersion` twice, then
+`SupercriticalLQGUniqueness.B2.Final.Assembly6`). The retry addresses this. No released proof changed.
+
+**Checks before export.**
+- Each theorem was sealed: only its frozen body changed, to `by exact` its provider, and it passed the frozen-anchor
+  checker, an unchanged statement hash, `#print axioms` and a kernel replay of the anchor modules.
+- On the staged tree, the public source scan passed for all 21,198 files.
+- The focused certificate compiled against the development build of the same sources and passed. Each of its 17
+  axiom reports lists only `propext`, `Classical.choice` and `Quot.sound`. Its audit covered 149,042 project
+  declarations and reached 245,033 declarations, with the same three axioms only.
+- The public workflow performs the fresh rebuild of all 21,198 modules, the three focused certificates and the combined
+  certificate.
+
+To reproduce:
+
+```sh
+lake exe cache get
+lake build InteractingSLE.Frozen.Spec.IsCenteredCounterflowDriver_componentKernels
+lake env lean results/imaginary-geometry-i/Check.lean
+python3 -I scripts/verify.py --scan-only
+```

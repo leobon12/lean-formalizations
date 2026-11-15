@@ -1,0 +1,119 @@
+/-
+Copyright (c) 2026 InteractingSLE contributors. All rights reserved.
+-/
+import InteractingSLE.Spec.Sec7.PocketSideInPatchCurrent
+
+/-!
+# Actual current germ comparisons at inner initial-domain landings
+
+PROVE-POCKET-SIDEIN. The original-time marked law and local mean uniqueness
+are already available. The actual common-hull identities and canonical
+landing now discharge their shared-neighborhood and collar geometry at
+any outer current access landing inside the initial inner pocket.
+-/
+
+set_option autoImplicit false
+noncomputable section
+
+open MeasureTheory ProbabilityTheory Set Filter Topology Metric Bornology
+open QuantumZipper (H chiC)
+open LQGMetric (DistOn TestOn IsZeroBoundaryGFF)
+open scoped NNReal ENNReal
+
+namespace InteractingSLE.Wire.Current.SideTest
+
+open Sec7 Sec7.PocketStopSide Sec7.PocketStopWalls Sec7.PocketStopWallsFin
+  Sec7.PocketWordPerQ Sec7.PocketStop LocalSets WholeField WangWu
+
+/-- For prescribed actual local means, every outer current access landing
+inside the initial inner pocket has zero physical mean-difference germ,
+and zero corrected coordinate-difference germ. All accesses share one event. -/
+theorem ae_germ_comparison_at_inner_landing {Ω : Type} [mΩ : MeasurableSpace Ω]
+    {outer inner : SideTest Ω} {i : BothLow} {d : WordObjects Ω}
+    [IsProbabilityMeasure d.measure] (hOuter : outer.Ready d) (hInner : inner.Ready d)
+    (hTransport : ∀ ω, IsChartTransport infinitySourceChart (-1) d.scale d.chartConstant
+      (d.field ω) (d.chartField ω))
+    (hTranslate : ∀ ω, IsTranslateAddConst 0 d.translateConstant (d.chartField ω) (d.translatedField ω))
+    (hu : InnerProductSpace.HarmonicOnNhd d.originalMean H)
+    (hh : IsZeroBoundaryGFF upperHalfPlaneOpens (centredField d.field d.originalMean) d.measure)
+    (hCoupling : IsOptionalHullCoupling i.kappa d.xL d.xR d.rhoL d.rhoR d.measure d.filtration
+      d.driver d.forceL d.forceR d.brownian d.lifetime d.translatedField)
+    (hu' : IsBoundedHarmonicExtension (forceBoundaryData i.kappa d.rhoL d.rhoR d.xL d.xR)
+      (forceJumpSet d.xL d.xR) d.coupledMean)
+    (hKilled : IsMeasurableKilledDriving d.driver d.forceL d.forceR d.lifetime)
+    (hLife : ∀ᵐ ω ∂d.measure, d.lifetime ω = ⊤)
+    (hCont : ∀ j ω, Continuous (pairWallFamily outer inner d j ω))
+    (hStart : ∀ j ω, pairWallFamily outer inner d j ω 0 = 0)
+    (hMeas : ∀ j t, Measurable fun ω => pairWallFamily outer inner d j ω t)
+    (hDetermined : ∀ j t, ∃ f : DistOn upperHalfPlaneOpens → ℂ, Measurable f ∧
+      (fun ω => pairWallFamily outer inner d j ω t) =ᵐ[d.measure]
+        fun ω => f (centredField d.field d.originalMean ω))
+    (hLocal : ∀ j, Sec6.IsEntranceHistoryLocal (pairWallFamily outer inner d j)
+      (centredField d.field d.originalMean) d.measure) (q : ℝ≥0)
+    {gC gU : Ω → DistOn upperHalfPlaneOpens}
+    (hgC : IsLocalSetMean (eventFilled outer.event (outer.target i d).domain
+      (fun ω => regHull d.driver d.lifetime q ω))
+      (centredField d.translatedField d.coupledMean) d.measure gC)
+    (hgU : IsLocalSetMean (eventFilled inner.event (inner.target i d).domain
+      (fun ω => regHull d.driver d.lifetime q ω))
+      (centredField d.translatedField d.coupledMean) d.measure gU) :
+    let F := fun ω => regHull d.driver d.lifetime q ω
+    let C := (outer.target i d).domain
+    let U := (inner.target i d).domain
+    let EC := eventFilled outer.event C F
+    let EU := eventFilled inner.event U F
+    ∀ᵐ ω ∂d.measure, ω ∈ outer.event → ω ∈ inner.event → ∀ vC vU : ℂ → ℝ,
+      InnerProductSpace.HarmonicOnNhd vC (H \ EC ω) →
+      (∀ φ : TestOn upperHalfPlaneOpens, tsupport φ ⊆ H \ EC ω →
+        gC ω φ = ∫ z, vC z * φ z) →
+      InnerProductSpace.HarmonicOnNhd vU (H \ EU ω) →
+      (∀ φ : TestOn upperHalfPlaneOpens, tsupport φ ⊆ H \ EU ω →
+        gU ω φ = ∫ z, vU z * φ z) → U ω ⊆ C ω → d.curve ω q ∈ U ω →
+      let O := relChart (outer.target i d).baseChart (outer.target i d).curve
+        (outer.visitCapacity d ω q).toNNReal ω
+      let I := relChart (inner.target i d).baseChart (inner.target i d).curve
+        (inner.visitCapacity d ω q).toNNReal ω
+      ∀ ξ : ℝ, outer.currentVisitLanding i d ω q ξ ∈ U ω →
+        Tendsto (fun z => vU (O.2.1 z) - vC (O.2.1 z)) (𝓝[H] (ξ : ℂ)) (𝓝 0) ∧
+        Tendsto (fun z => sideMean i.kappa I d.coupledMean vU ((pocketTransitionChart O I).1 z) -
+          sideMean i.kappa O d.coupledMean vC z - chiC i.kappa * (pocketTransitionChart O I).2.2 z)
+          (𝓝[H] (ξ : ℂ)) (𝓝 0) := by
+  obtain ⟨gC', gU', hgC', hgU', hGood⟩ := exists_original_time_germ_comparison hOuter hInner
+    hTransport hTranslate hu hh hCoupling hu' hKilled hLife hCont hStart hMeas hDetermined hLocal q
+  have hh' := Restart.isZeroBoundaryGFF_centredField_of_isGFFWithBoundaryData
+    ⟨hCoupling.2.1, hCoupling.2.2.1⟩ hu'
+  have hEqC := ae_mean_apply_eq_on_compl
+    (measurable_original_filling hOuter (hCont 0) (hCont 1) (hMeas 0) (hMeas 1) hKilled q)
+    hh'.measurable (fun ω => (original_filling_regular hOuter q ω).2) hgC hgC'
+  have hEqU := ae_mean_apply_eq_on_compl
+    (measurable_original_filling hInner (hCont 0) (hCont 2) (hMeas 0) (hMeas 2) hKilled q)
+    hh'.measurable (fun ω => (original_filling_regular hInner q ω).2) hgU hgU'
+  filter_upwards [hGood, hEqC, hEqU, ae_regHull_eq hCoupling hLife]
+    with ω hGerm hEqC hEqU hHull hωC hωU vC vU hvC hRepC hvU hRepU hUC hvisit _O _I ξ hp
+  have hEventO : ω ∈ (outer.target i d).event := by rwa [target_event]
+  have hEventI : ω ∈ (inner.target i d).event := by rwa [target_event]
+  have hO := (isDomainChart_relChart_visitCapacity hOuter (hCont 0) (hCont 1)
+    hEventO q.coe_nonneg (hUC hvisit)).1
+  have hI := (isDomainChart_relChart_visitCapacity hInner (hCont 0) (hCont 2)
+    hEventI q.coe_nonneg hvisit).1
+  have hIncl := current_domain_inclusion_at_visit hOuter hInner (hCont 0) (hCont 1) (hCont 2)
+    hEventO hEventI hUC q.coe_nonneg hvisit
+  have hDomO := relChart_dom_visitCapacity hOuter (hCont 0) (hCont 1)
+    hEventO q.coe_nonneg (hUC hvisit)
+  have hDomI := relChart_dom_visitCapacity hInner (hCont 0) (hCont 2)
+    hEventI q.coe_nonneg hvisit
+  rw [← hHull q] at hDomO hDomI
+  obtain ⟨r, hr, hCollar⟩ := current_collar_at_inner_landing hOuter hInner
+    (hCont 0) (hCont 1) (hCont 2) hEventO hEventI hUC q.coe_nonneg hvisit hp
+  have hShared := initial_neighborhood_of_inner_mem (isOpen_domain hInner ω hEventI) hUC hp
+  have hPhysical := hGerm hωC hωU vC vU hvC
+    (fun φ hφ => (hEqC φ hφ).symm.trans (hRepC φ hφ)) hvU
+    (fun φ hφ => (hEqU φ hφ).symm.trans (hRepU φ hφ)) _ _ hO hI hIncl hDomO hDomI
+    _ ξ r hShared hr hCollar
+    (tendsto_currentVisitLanding hOuter (hCont 0) (hCont 1) hEventO q.coe_nonneg (hUC hvisit) ξ)
+  refine ⟨hPhysical, hPhysical.congr' ?_⟩
+  filter_upwards [eventually_sideMean_transition_sub (κ := i.kappa)
+    hO hI hIncl d.coupledMean vC vU hr hCollar] with z hz
+  exact hz.symm
+
+end InteractingSLE.Wire.Current.SideTest

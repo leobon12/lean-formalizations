@@ -1,0 +1,329 @@
+/-
+Copyright (c) 2026 InteractingSLE contributors. All rights reserved.
+-/
+import InteractingSLE.Spec.Sec5.Aux61MarksRule
+import InteractingSLE.Spec.Sec5.Aux61FibKCode
+
+/-!
+# Null-completed marks
+
+Packet PROVE-AUX61-MARKS. The selected-access restart code `Aux61GInst.accessExitCode` lives on the event `exitEv` of a
+**finite** window exit (`exitTime < ⊤`), an event of the whole future of the restarted path; off it the code is dead.
+So `{r < life}` separates two samples whose records agree up to every finite rule stop, and the raw code σ-algebra at
+`r` is **not** contained in UNIONLOC's rule marks (exactly). It is contained in them only up to null sets (on the
+history event the exit happens almost surely, GLUEINST's `physical_stop`). The physical marks of the assembly are
+therefore the **null completion** of the rule marks inside the ambient σ-algebra:
+
+* `nullMarks ℋ μ` — the measurable sets almost surely equal to a set of `ℋ` (a σ-algebra, `≤ mX`, containing
+  `ℋ ⊓ mX`, monotone in `ℋ`);
+* measurability for it from almost sure equality with an `ℋ`-measurable map (`measurable_nullMarks_of_ae_eq`,
+  `comap_le_nullMarks_of_ae_eq`), sets of full measure (`measurableSet_nullMarks_of_ae`), generators
+  (`generateFrom_le_nullMarks`) and the code filtration (`codeFiltration_comap_le_nullMarks`);
+* **history-marked locality passes to the null completion** (`IsHistoryAvoidanceLocal.nullMarks`) and to almost
+  surely equal sets (`IsHistoryAvoidanceLocal.congr_set`);
+* the rule-marks facts of `ruleMarksFacts_gluedQ` for the completed rule marks (`nullRuleMarksFacts_gluedQ`): every
+  set measurable for the completed marks containing `ℍ ∩ (K_s ∪ K̃_T)` almost surely is marked local.
+-/
+
+set_option autoImplicit false
+
+noncomputable section
+
+open MeasureTheory ProbabilityTheory Set Filter Topology
+open QuantumZipper (H fwdHull chiC)
+open LQGMetric (DistOn)
+open scoped NNReal ENNReal Real
+
+universe u
+
+namespace InteractingSLE.Sec5.Aux61Marks
+
+open Aux61ULoc
+open WholeField (IsHistoryAvoidanceLocal centredField)
+
+section Null
+
+variable {X : Type*} {ℋ ℋ' : MeasurableSpace X} [mX : MeasurableSpace X] {μ : Measure X}
+
+/-- **The null completion of `ℋ` inside the ambient σ-algebra**: the measurable sets almost surely equal to a set of
+`ℋ`. -/
+@[instance_reducible]
+def nullMarks (ℋ : MeasurableSpace X) (μ : @Measure X mX) : MeasurableSpace X where
+  MeasurableSet' s := MeasurableSet[mX] s ∧ ∃ J, MeasurableSet[ℋ] J ∧ s =ᵐ[μ] J
+  measurableSet_empty := ⟨@MeasurableSet.empty X mX, ∅, @MeasurableSet.empty X ℋ, EventuallyEq.rfl⟩
+  measurableSet_compl := fun _ ⟨hs, J, hJ, hsJ⟩ => ⟨hs.compl, Jᶜ, hJ.compl, hsJ.compl⟩
+  measurableSet_iUnion := fun f hf => by
+    choose hfm J hJ hfJ using hf
+    exact ⟨MeasurableSet.iUnion hfm, ⋃ i, J i, MeasurableSet.iUnion hJ, EventuallyEqSet.countable_iUnion hfJ⟩
+
+theorem measurableSet_nullMarks_iff {s : Set X} :
+    MeasurableSet[nullMarks ℋ μ] s ↔ MeasurableSet s ∧ ∃ J, MeasurableSet[ℋ] J ∧ s =ᵐ[μ] J := Iff.rfl
+
+/-- The null completion lies in the ambient σ-algebra. -/
+theorem nullMarks_le : nullMarks ℋ μ ≤ mX := fun _ hs => hs.1
+
+/-- The null completion contains every ambient-measurable set of `ℋ`. -/
+theorem le_nullMarks (hℋ : ℋ ≤ mX) : ℋ ≤ nullMarks ℋ μ := fun s hs => ⟨hℋ s hs, s, hs, EventuallyEq.rfl⟩
+
+/-- The null completion is monotone. -/
+theorem nullMarks_mono (h : ℋ ≤ ℋ') : nullMarks ℋ μ ≤ nullMarks ℋ' μ :=
+  fun _ ⟨hs, J, hJ, hsJ⟩ => ⟨hs, J, h J hJ, hsJ⟩
+
+/-- A measurable set almost surely equal to a set of `ℋ` is in the null completion. -/
+theorem measurableSet_nullMarks_of_ae_eq {s J : Set X} (hs : MeasurableSet s) (hJ : MeasurableSet[ℋ] J)
+    (h : s =ᵐ[μ] J) : MeasurableSet[nullMarks ℋ μ] s := ⟨hs, J, hJ, h⟩
+
+/-- A measurable set of full measure is in every null completion. -/
+theorem measurableSet_nullMarks_of_ae {s : Set X} (hs : MeasurableSet s) (h : ∀ᵐ x ∂μ, x ∈ s) :
+    MeasurableSet[nullMarks ℋ μ] s :=
+  ⟨hs, univ, @MeasurableSet.univ X ℋ, by
+    filter_upwards [h] with x hx
+    exact propext ⟨fun _ => mem_univ x, fun _ => hx⟩⟩
+
+/-- **Measurability for the null completion**: an ambient-measurable map almost surely equal to an
+`ℋ`-measurable one. -/
+theorem measurable_nullMarks_of_ae_eq {δ : Type*} {mδ : MeasurableSpace δ} {f g : X → δ}
+    (hf : Measurable[mX, mδ] f) (hg : Measurable[ℋ, mδ] g) (hfg : f =ᵐ[μ] g) :
+    Measurable[nullMarks ℋ μ, mδ] f := fun B hB =>
+  ⟨hf hB, g ⁻¹' B, hg hB, by
+    filter_upwards [hfg] with x hx
+    exact propext (by simp only [mem_preimage, hx])⟩
+
+/-- The σ-algebra of an ambient-measurable map almost surely equal to an `ℋ`-measurable one is in the null
+completion. -/
+theorem comap_le_nullMarks_of_ae_eq {δ : Type*} {mδ : MeasurableSpace δ} {f g : X → δ}
+    (hf : Measurable[mX, mδ] f) (hg : Measurable[ℋ, mδ] g) (hfg : f =ᵐ[μ] g) :
+    mδ.comap f ≤ nullMarks ℋ μ :=
+  (measurable_nullMarks_of_ae_eq hf hg hfg).comap_le
+
+/-- A σ-algebra generated by sets whose preimages are in the null completion pulls back into it. -/
+theorem comap_generateFrom_le_nullMarks {δ : Type*} {f : X → δ} {S : Set (Set δ)}
+    (hS : ∀ B ∈ S, MeasurableSet[nullMarks ℋ μ] (f ⁻¹' B)) :
+    (MeasurableSpace.generateFrom S).comap f ≤ nullMarks ℋ μ := by
+  rw [MeasurableSpace.comap_generateFrom]
+  exact MeasurableSpace.generateFrom_le fun _ ⟨B, hB, e⟩ => e ▸ hS B hB
+
+/-- **Locality passes to the null completion of the marks.** A mark of the completion is almost surely a mark of `ℋ`,
+and the conditional probabilities agree almost surely. -/
+theorem _root_.InteractingSLE.WholeField.IsHistoryAvoidanceLocal.nullMarks {A : X → Set ℂ}
+    {h : X → DistOn upperHalfPlaneOpens} (hloc : IsHistoryAvoidanceLocal ℋ A h μ) :
+    IsHistoryAvoidanceLocal (nullMarks ℋ μ) A h μ := by
+  intro U G hUH hG hd F hF
+  obtain ⟨-, J, hJ, hFJ⟩ := hF
+  obtain ⟨g, hg, hgeq⟩ := hloc U G hUH hG hd J hJ
+  refine ⟨g, hg, EventuallyEq.trans ?_ hgeq⟩
+  refine condExp_congr_ae (indicator_ae_eq_of_ae_eq_set ?_)
+  exact EventuallyEqSet.inter (EventuallyEq.rfl : {ω | Disjoint (A ω) (U : Set ℂ)} =ᵐ[μ] _) hFJ
+
+/-- **Locality passes to almost surely equal sets.** -/
+theorem _root_.InteractingSLE.WholeField.IsHistoryAvoidanceLocal.congr_set {A A' : X → Set ℂ}
+    {h : X → DistOn upperHalfPlaneOpens} (hloc : IsHistoryAvoidanceLocal ℋ A h μ) (he : ∀ᵐ x ∂μ, A x = A' x) :
+    IsHistoryAvoidanceLocal ℋ A' h μ := by
+  intro U G hUH hG hd F hF
+  obtain ⟨g, hg, hgeq⟩ := hloc U G hUH hG hd F hF
+  refine ⟨g, hg, EventuallyEq.trans ?_ hgeq⟩
+  refine condExp_congr_ae (indicator_ae_eq_of_ae_eq_set ?_)
+  have hd : {ω | Disjoint (A' ω) (U : Set ℂ)} =ᵐ[μ] {ω | Disjoint (A ω) (U : Set ℂ)} := by
+    filter_upwards [he] with x hx
+    simp only [hx]
+  exact EventuallyEqSet.inter hd EventuallyEq.rfl
+
+end Null
+
+/-! ### The code filtration in the null completion -/
+
+section Code
+
+variable {X : Type u} {ℋ : MeasurableSpace X} [mX : MeasurableSpace X] {μ : Measure X}
+
+/-- **The raw code σ-algebra at `r` in the null completion** from its generators: if, for every time `r' ≤ r` and every
+Borel set of driving values, the event "alive at `r'` with driving value in the set" of the code is in the null
+completion, then so is the raw code σ-algebra at `r`. -/
+theorem codeFiltration_comap_le_nullMarks {Y : X → Aux61Fib.FibCode} {r : ℝ≥0}
+    (hgen : ∀ r' ≤ r, ∀ A : Set (ℝ × (Fin 0 → ℝ) × (Fin 0 → ℝ)), MeasurableSet A →
+      MeasurableSet[nullMarks ℋ μ] {x | ((r' : ℝ≥0) : ℝ≥0∞) < (Y x).life ∧
+        (Aux61Fib.FibCode.driver r' (Y x), (fun _ : Fin 0 => (0 : ℝ)), fun _ : Fin 0 => (0 : ℝ)) ∈ A}) :
+    (Aux61FibK.codeFiltration.{u} r).comap (fun x => ULift.up.{u} (Y x)) ≤ nullMarks ℋ μ := by
+  refine comap_generateFrom_le_nullMarks fun B hB => ?_
+  obtain ⟨r', hr', A, hA, rfl⟩ := hB
+  exact hgen r' hr' A hA
+
+end Code
+
+/-! ### Locality at the glued stop for the completed rule marks -/
+
+section GluedNull
+
+open WangWu hiding ratPt exists_ratPt_dist_lt
+open LawUnique GlueCond Cond44Ref CfRegQ WholeField LocalSets CrossCond.Theta Coupling
+open Sec7.PocketStopWallsFin (regHull ae_regHull_eq)
+
+/-- **History-marked locality at the glued stop for the null-completed rule marks.** As
+`isHistoryAvoidanceLocal_ruleSet_gluedQ`, for every set `A` measurable for the **null completion** of the rule marks
+containing `ℍ ∩ (K_s ∪ K̃_T)` almost surely. -/
+theorem isHistoryAvoidanceLocal_nullRuleSet_gluedQ {κ : ℝ} (hκ : 0 < κ) (hκ4 : κ < 4) {a b θ₁ θ₂ : ℝ}
+    (h12 : θ₁ < θ₂) (hb : sleLambda κ - θ₁ * chiC κ ≤ b) (ha : sleLambda κ - π * chiC κ + θ₂ * chiC κ ≤ a)
+    {Ω : Type u} {mΩ : MeasurableSpace Ω} (P : Measure Ω) [IsProbabilityMeasure P]
+    (h : Ω → DistOn upperHalfPlaneOpens) (ζ : Ω → ℝ≥0∞)
+    (hh : IsGFFWithBoundaryData P h (Sec7.prop74Data a b) (({0} : Finset ℝ) : Set ℝ))
+    {𝓕 : Filtration ℝ≥0 mΩ} {W : ℝ≥0 → Ω → ℝ} {VL : Fin (flowLineNL (Sec7.prop74Data a b) {0} 0) → ℝ≥0 → Ω → ℝ}
+    {VR : Fin (flowLineNR (Sec7.prop74Data a b) {0} 0) → ℝ≥0 → Ω → ℝ} {Bm : ℝ≥0 → Ω → ℝ}
+    (hC : IsOptionalHullCoupling κ (flowLineXL (Sec7.prop74Data a b) {0} 0) (flowLineXR (Sec7.prop74Data a b) {0} 0)
+      (flowLineRhoL κ (Sec7.prop74Data a b) {0} 0 θ₂) (flowLineRhoR κ (Sec7.prop74Data a b) {0} 0 θ₂) P 𝓕 W VL VR Bm
+      ζ (fun ω => Exist.flowField 0 (θ₂ * chiC κ) (h ω)))
+    {u₀ : ℂ → ℝ}
+    (hu₀ : IsBoundedHarmonicExtension
+      (forceBoundaryData κ (flowLineRhoL κ (Sec7.prop74Data a b) {0} 0 θ₂)
+        (flowLineRhoR κ (Sec7.prop74Data a b) {0} 0 θ₂) (flowLineXL (Sec7.prop74Data a b) {0} 0)
+        (flowLineXR (Sec7.prop74Data a b) {0} 0))
+      (forceJumpSet (flowLineXL (Sec7.prop74Data a b) {0} 0) (flowLineXR (Sec7.prop74Data a b) {0} 0)) u₀)
+    {Ω₂ : Type u} {mΩ₂ : MeasurableSpace Ω₂} (P₂ : Measure Ω₂) [IsProbabilityMeasure P₂]
+    (h₂ : Ω₂ → DistOn upperHalfPlaneOpens) (W₂ : ℝ≥0 → Ω₂ → ℝ) (ζ₂ : Ω₂ → ℝ≥0∞)
+    (hcf : IsCenteredCounterflowDriver κ P₂ h₂ W₂ ζ₂)
+    (hlaw : P.map (fun ω => cfField κ (Exist.flowField 0 (θ₁ * chiC κ) (h ω))) = P₂.map h₂)
+    (k : Kernel (DistOn upperHalfPlaneOpens) (HistorySpace 0 0)) [IsMarkovKernel k]
+    (hk : P₂.map (fun ω => (h₂ ω, cfHistory W₂ ζ₂ ω)) = P₂.map h₂ ⊗ₘ k) (s : ℝ≥0)
+    {ρ : HistorySpace 0 0 × HistorySpace (flowLineNL (Sec7.prop74Data a b) {0} 0)
+      (flowLineNR (Sec7.prop74Data a b) {0} 0) → ℝ≥0∞}
+    (hρ : Measurable ρ) (hG : IsGalmarinoRule stopRec ρ) {A : Ω × HistorySpace 0 0 → Set ℂ}
+    (hAm : Measurable[nullMarks (ruleMarks stopRec ρ (fun p : Ω × HistorySpace 0 0 => stopRec s p.2)
+        fun p => killedHistory W VL VR ζ p.1)
+      (glueMeasure P k (fun ω => cfField κ (Exist.flowField 0 (θ₁ * chiC κ) (h ω)))
+        ((measurable_cfField κ).comp ((Exist.measurable_flowField 0 _).comp hh.1))), hittingSigma] A)
+    (hsub : ∀ᵐ p ∂(glueMeasure P k (fun ω => cfField κ (Exist.flowField 0 (θ₁ * chiC κ) (h ω)))
+        ((measurable_cfField κ).comp ((Exist.measurable_flowField 0 _).comp hh.1))),
+      unionAt (fun p => cfHullQ s p.2) (fun r p => fwdHull (fun t : ℝ => W t.toNNReal p.1) (r : ℝ))
+        (fun p => ρ (stopRec s p.2, killedHistory W VL VR ζ p.1)) p ⊆ A p) :
+    @IsHistoryAvoidanceLocal (Ω × HistorySpace 0 0)
+      (nullMarks (ruleMarks stopRec ρ (fun p : Ω × HistorySpace 0 0 => stopRec s p.2)
+        fun p => killedHistory W VL VR ζ p.1)
+        (glueMeasure P k (fun ω => cfField κ (Exist.flowField 0 (θ₁ * chiC κ) (h ω)))
+        ((measurable_cfField κ).comp ((Exist.measurable_flowField 0 _).comp hh.1))))
+      Prod.instMeasurableSpace A
+      (fun p => centredField (fun ω => Exist.flowField 0 (θ₂ * chiC κ) (h ω)) u₀ p.1)
+      (glueMeasure P k (fun ω => cfField κ (Exist.flowField 0 (θ₁ * chiC κ) (h ω)))
+        ((measurable_cfField κ).comp ((Exist.measurable_flowField 0 _).comp hh.1))) := by
+  have hF := Theorem15.isOrderedForceWord_flowLine (Sec7.prop74Data a b) {0} 0
+  have h44 := Sec7.Lemma71H.cond44_flowLine_prop74Data (θ := θ₂) hκ (a := a) (b := b) ha (by
+    have hχ := Sec4.chiC_pos hκ hκ4
+    have hθχ : θ₁ * chiC κ ≤ θ₂ * chiC κ := mul_le_mul_of_nonneg_right h12.le hχ.le
+    linarith)
+  have hadm := Sec4.hasAdmissiblePartialSums_of_cond44 hκ4 hF h44
+  set θ := θ₂ - θ₁ + π / 2 with hθdef
+  have hXeq : (fun ω => cfField κ (Exist.flowField 0 (θ₁ * chiC κ) (h ω))) =
+      fun ω => cfFieldT κ θ (Exist.flowField 0 (θ₂ * chiC κ) (h ω)) := by
+    funext ω
+    rw [Prop51G.cfField_flowField_eq_cfFieldT κ θ₁ θ₂]
+  have hμ : glueMeasure P k (fun ω => cfField κ (Exist.flowField 0 (θ₁ * chiC κ) (h ω)))
+      ((measurable_cfField κ).comp ((Exist.measurable_flowField 0 _).comp hh.1)) =
+      glueMeasure P k (fun ω => cfFieldT κ θ (Exist.flowField 0 (θ₂ * chiC κ) (h ω)))
+        ((measurable_cfFieldT κ θ).comp hC.2.1) := by
+    congr 1
+  have hlaw' : P.map (fun ω => cfFieldT κ θ (Exist.flowField 0 (θ₂ * chiC κ) (h ω))) = P₂.map h₂ := by
+    rw [← hXeq]
+    exact hlaw
+  have hθb := Prop51G.cfThetaBounds_prop74 (a := a) (b := b) (θ₁ := θ₁) (θ₂ := θ₂) hκ hb (by
+    have hχ := Sec4.chiC_pos hκ hκ4
+    have hθχ : θ₁ * chiC κ ≤ θ₂ * chiC κ := mul_le_mul_of_nonneg_right h12.le hχ.le
+    linarith)
+  have hseed := ae_seedLine_of_admissible hκ hκ4.le hF hadm hC.1
+  have hζ : ∀ᵐ ω ∂P, ζ ω = ⊤ := hseed.mono fun _ hω => hω.1
+  have hloc := isHistoryAvoidanceLocal_unionAt_rule_cfGlueT hC hκ hζ hθb hcf hlaw' hk hu₀ s hρ hG
+  rw [← hμ] at hloc
+  refine Sec7.Lemma72C.isHistoryAvoidanceLocal_mono_set hloc.nullMarks hAm ?_
+  have hreg : ∀ᵐ p ∂(glueMeasure P k (fun ω => cfField κ (Exist.flowField 0 (θ₁ * chiC κ) (h ω)))
+      ((measurable_cfField κ).comp ((Exist.measurable_flowField 0 _).comp hh.1))),
+      ∀ t : ℝ≥0, regHull W ζ t p.1 = fwdHull (fun s : ℝ => W s.toNNReal p.1) (t : ℝ) := by
+    have h1 : ∀ᵐ ω ∂((glueMeasure P k (fun ω => cfField κ (Exist.flowField 0 (θ₁ * chiC κ) (h ω)))
+        ((measurable_cfField κ).comp ((Exist.measurable_flowField 0 _).comp hh.1))).map Prod.fst),
+        ∀ t : ℝ≥0, regHull W ζ t ω = fwdHull (fun s : ℝ => W s.toNNReal ω) (t : ℝ) := by
+      rw [glueMeasure_fst]
+      exact ae_regHull_eq hC hζ
+    exact ae_of_ae_map measurable_fst.aemeasurable h1
+  filter_upwards [hsub, hreg] with p hp hr
+  have e : unionAt (fun p => cfHullQ s p.2) (fun r p => regHull W ζ r p.1)
+      (fun p => ρ (stopRec s p.2, killedHistory W VL VR ζ p.1)) p =
+      unionAt (fun p => cfHullQ s p.2) (fun r p => fwdHull (fun t : ℝ => W t.toNNReal p.1) (r : ℝ))
+        (fun p => ρ (stopRec s p.2, killedHistory W VL VR ζ p.1)) p := by
+    simp only [unionAt, hr]
+  rw [e]
+  exact hp
+
+
+/-- **The completed rule marks' facts for the assembly** (the `MarksFacts` fields `harmonic_originalMean`,
+`zero_field`, `baseMarks_le`, `baseMarks_mono`, `locality` for `baseMarks i r := nullMarks (ruleMarks …) μ`), as
+`ruleMarksFacts_gluedQ`, with sets measurable only for the completed marks. -/
+theorem nullRuleMarksFacts_gluedQ {κ : ℝ} (hκ : 0 < κ) (hκ4 : κ < 4) {a b θ₁ θ₂ : ℝ}
+    (h12 : θ₁ < θ₂) (hb : sleLambda κ - θ₁ * chiC κ ≤ b) (ha : sleLambda κ - π * chiC κ + θ₂ * chiC κ ≤ a)
+    {Ω : Type u} {mΩ : MeasurableSpace Ω} (P : Measure Ω) [IsProbabilityMeasure P]
+    (h : Ω → DistOn upperHalfPlaneOpens) (ζ : Ω → ℝ≥0∞)
+    (hh : IsGFFWithBoundaryData P h (Sec7.prop74Data a b) (({0} : Finset ℝ) : Set ℝ))
+    {𝓕 : Filtration ℝ≥0 mΩ} {W : ℝ≥0 → Ω → ℝ} {VL : Fin (flowLineNL (Sec7.prop74Data a b) {0} 0) → ℝ≥0 → Ω → ℝ}
+    {VR : Fin (flowLineNR (Sec7.prop74Data a b) {0} 0) → ℝ≥0 → Ω → ℝ} {Bm : ℝ≥0 → Ω → ℝ}
+    (hC : IsOptionalHullCoupling κ (flowLineXL (Sec7.prop74Data a b) {0} 0) (flowLineXR (Sec7.prop74Data a b) {0} 0)
+      (flowLineRhoL κ (Sec7.prop74Data a b) {0} 0 θ₂) (flowLineRhoR κ (Sec7.prop74Data a b) {0} 0 θ₂) P 𝓕 W VL VR Bm
+      ζ (fun ω => Exist.flowField 0 (θ₂ * chiC κ) (h ω)))
+    {u₀ : ℂ → ℝ}
+    (hu₀ : IsBoundedHarmonicExtension
+      (forceBoundaryData κ (flowLineRhoL κ (Sec7.prop74Data a b) {0} 0 θ₂)
+        (flowLineRhoR κ (Sec7.prop74Data a b) {0} 0 θ₂) (flowLineXL (Sec7.prop74Data a b) {0} 0)
+        (flowLineXR (Sec7.prop74Data a b) {0} 0))
+      (forceJumpSet (flowLineXL (Sec7.prop74Data a b) {0} 0) (flowLineXR (Sec7.prop74Data a b) {0} 0)) u₀)
+    {Ω₂ : Type u} {mΩ₂ : MeasurableSpace Ω₂} (P₂ : Measure Ω₂) [IsProbabilityMeasure P₂]
+    (h₂ : Ω₂ → DistOn upperHalfPlaneOpens) (W₂ : ℝ≥0 → Ω₂ → ℝ) (ζ₂ : Ω₂ → ℝ≥0∞)
+    (hcf : IsCenteredCounterflowDriver κ P₂ h₂ W₂ ζ₂)
+    (hlaw : P.map (fun ω => cfField κ (Exist.flowField 0 (θ₁ * chiC κ) (h ω))) = P₂.map h₂)
+    (k : Kernel (DistOn upperHalfPlaneOpens) (HistorySpace 0 0)) [IsMarkovKernel k]
+    (hk : P₂.map (fun ω => (h₂ ω, cfHistory W₂ ζ₂ ω)) = P₂.map h₂ ⊗ₘ k) (s : ℝ≥0) {ι : Type*}
+    (ρ : ι → ℝ≥0 → HistorySpace 0 0 × HistorySpace (flowLineNL (Sec7.prop74Data a b) {0} 0)
+      (flowLineNR (Sec7.prop74Data a b) {0} 0) → ℝ≥0∞)
+    (hρm : ∀ i r, Measurable (ρ i r)) (hρG : ∀ i r, IsGalmarinoRule stopRec (ρ i r))
+    (hρle : ∀ i r y g, ρ i 0 (y, g) ≤ ρ i r (y, g)) (A : ι → ℝ≥0 → Ω × HistorySpace 0 0 → Set ℂ)
+    (hAm : ∀ i r, Measurable[nullMarks (ruleMarks stopRec (ρ i r) (fun p : Ω × HistorySpace 0 0 => stopRec s p.2)
+      (fun p => killedHistory W VL VR ζ p.1))
+        (glueMeasure P k (fun ω => cfField κ (Exist.flowField 0 (θ₁ * chiC κ) (h ω)))
+        ((measurable_cfField κ).comp ((Exist.measurable_flowField 0 _).comp hh.1))), hittingSigma] (A i r))
+    (hsub : ∀ i r, ∀ᵐ p ∂(glueMeasure P k (fun ω => cfField κ (Exist.flowField 0 (θ₁ * chiC κ) (h ω)))
+        ((measurable_cfField κ).comp ((Exist.measurable_flowField 0 _).comp hh.1))),
+      unionAt (fun p => cfHullQ s p.2) (fun r p => fwdHull (fun t : ℝ => W t.toNNReal p.1) (r : ℝ))
+        (fun p => ρ i r (stopRec s p.2, killedHistory W VL VR ζ p.1)) p ⊆ A i r p) :
+    InnerProductSpace.HarmonicOnNhd u₀ H ∧
+    LQGMetric.IsZeroBoundaryGFF upperHalfPlaneOpens
+      (centredField (fun p : Ω × HistorySpace 0 0 => Exist.flowField 0 (θ₂ * chiC κ) (h p.1)) u₀)
+      (glueMeasure P k (fun ω => cfField κ (Exist.flowField 0 (θ₁ * chiC κ) (h ω)))
+        ((measurable_cfField κ).comp ((Exist.measurable_flowField 0 _).comp hh.1))) ∧
+    (∀ i r, nullMarks (ruleMarks stopRec (ρ i r) (fun p : Ω × HistorySpace 0 0 => stopRec s p.2)
+      (fun p => killedHistory W VL VR ζ p.1))
+        (glueMeasure P k (fun ω => cfField κ (Exist.flowField 0 (θ₁ * chiC κ) (h ω)))
+        ((measurable_cfField κ).comp ((Exist.measurable_flowField 0 _).comp hh.1))) ≤
+        (Prod.instMeasurableSpace : MeasurableSpace (Ω × HistorySpace 0 0))) ∧
+    (∀ i r, nullMarks (ruleMarks stopRec (ρ i 0) (fun p : Ω × HistorySpace 0 0 => stopRec s p.2)
+      (fun p => killedHistory W VL VR ζ p.1))
+        (glueMeasure P k (fun ω => cfField κ (Exist.flowField 0 (θ₁ * chiC κ) (h ω)))
+        ((measurable_cfField κ).comp ((Exist.measurable_flowField 0 _).comp hh.1))) ≤
+      nullMarks (ruleMarks stopRec (ρ i r) (fun p : Ω × HistorySpace 0 0 => stopRec s p.2)
+        (fun p => killedHistory W VL VR ζ p.1))
+          (glueMeasure P k (fun ω => cfField κ (Exist.flowField 0 (θ₁ * chiC κ) (h ω)))
+        ((measurable_cfField κ).comp ((Exist.measurable_flowField 0 _).comp hh.1)))) ∧
+    ∀ i r, @IsHistoryAvoidanceLocal (Ω × HistorySpace 0 0)
+      (nullMarks (ruleMarks stopRec (ρ i r) (fun p : Ω × HistorySpace 0 0 => stopRec s p.2)
+        fun p => killedHistory W VL VR ζ p.1)
+          (glueMeasure P k (fun ω => cfField κ (Exist.flowField 0 (θ₁ * chiC κ) (h ω)))
+        ((measurable_cfField κ).comp ((Exist.measurable_flowField 0 _).comp hh.1))))
+      Prod.instMeasurableSpace (A i r)
+      (centredField (fun p : Ω × HistorySpace 0 0 => Exist.flowField 0 (θ₂ * chiC κ) (h p.1)) u₀)
+      (glueMeasure P k (fun ω => cfField κ (Exist.flowField 0 (θ₁ * chiC κ) (h ω)))
+        ((measurable_cfField κ).comp ((Exist.measurable_flowField 0 _).comp hh.1))) := by
+  have hY : Measurable fun p : Ω × HistorySpace 0 0 => stopRec s p.2 :=
+    (isRecordStop_stopRec (nL := 0) (nR := 0)).measurable.comp (measurable_const.prodMk measurable_snd)
+  have hR : Measurable fun p : Ω × HistorySpace 0 0 => killedHistory W VL VR ζ p.1 :=
+    (LawUnique.measurable_killedHistory hC.2.2.2.1).comp measurable_fst
+  refine ⟨hu₀.1, isZeroBoundaryGFF_glued hC hu₀ k _, fun i r => nullMarks_le,
+    fun i r => nullMarks_mono (Aux61Nest.ruleMarks_mono isRecordStop_stopRec (hρm i 0) (hρG i 0) (hρle i r) _ _),
+    fun i r => ?_⟩
+  exact isHistoryAvoidanceLocal_nullRuleSet_gluedQ hκ hκ4 h12 hb ha P h ζ hh hC hu₀ P₂ h₂ W₂ ζ₂ hcf hlaw k hk s
+    (hρm i r) (hρG i r) (hAm i r) (hsub i r)
+
+end GluedNull
+
+end InteractingSLE.Sec5.Aux61Marks
