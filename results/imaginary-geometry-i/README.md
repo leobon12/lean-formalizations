@@ -1,6 +1,6 @@
 # Imaginary geometry I: interacting SLEs
 
-**Status.** Theorems 1.1–1.5, 2.2, 2.4 and 2.6 are `PROVED` in Lean with no assumptions. So are three companion statements. Each of these 17 frozen theorems is sealed. It depends only on Lean's standard axioms `propext`, `Classical.choice` and `Quot.sound`, as does every declaration of the released library.
+**Status.** Theorems 1.1–1.5, 2.2, 2.4 and 2.6 are `PROVED` in Lean with no assumptions. So are four companion statements. Each of these 17 frozen theorems is sealed. It depends only on Lean's standard axioms `propext`, `Classical.choice` and `Quot.sound`, as does every declaration of the released library.
 
 This Lean 4 project formalizes the main theorems of Jason Miller and Scott Sheffield, *Imaginary geometry I: interacting SLEs*, Probability Theory and Related Fields 164 (2016), 553–705, [arXiv:1201.1496](https://arxiv.org/abs/1201.1496).
 
@@ -9,7 +9,12 @@ This Lean 4 project formalizes the main theorems of Jason Miller and Scott Sheff
 - it writes the definitions, statements and proofs out in full detail, including the hypotheses on domains, force points, lifetimes, filtrations and field frames;
 - it adds supplementary arguments.
 
-The edition is not part of this release. The page numbers below and in the source comments refer to it.
+The edition is included in this release, in [`specification/`](specification/), with the page-anchored transcription that the source comments cite. The page numbers below refer to it.
+
+**Companion documents.**
+- [Errata](ERRATA.md): the errors in Miller and Sheffield's paper that the formalization uncovered, each checked against arXiv v2. It also covers errors of the specification and gaps in cited works.
+- [Correspondence](CORRESPONDENCE.md): every difference between the Lean statements and the paper, theorem by theorem and definition by definition.
+- [The specification](specification/): the 671-page edition the statements were frozen from, as a PDF with its transcription.
 
 **What the theorems say.** The theorems construct and characterize the flow lines of the Gaussian free field (GFF):
 - Theorem 1.1: SLE_κ(ρ) processes couple with the GFF as flow lines.
@@ -25,16 +30,16 @@ The edition is not part of this release. The page numbers below and in the sourc
 | Theorem 1.1, the force-point boundary data (companion, p. 9) | `existsUnique_isBoundedHarmonicExtension_forceBoundaryData` | **PROVED**, two keys (`AUD-SEAL-COMP`) |
 | Theorem 1.2, the curve is determined by the field (p. 4) | `exists_measurable_lifetime_trace_eq_comp_field` | **PROVED**, two keys (`AUD-SEAL7`) |
 | Theorem 1.3, continuity of the generating curve (p. 4) | `IsIntegratedSLEEvolution.ae_exists_isGeneratingTrace` | **PROVED**, two keys (`AUD-SEAL7`) |
-| Theorem 1.4, the light cone (p. 5) | `IsCenteredCounterflowDriver.completedRange_eq_closure_lightCone` | **PROVED**, first key; statement version 2 independently audited (`AUD-T14-R51`) |
-| Theorem 1.4, the boundary walks and their frontiers (p. 5) | `IsCenteredCounterflowDriver.boundaryWalks_frontiers` | **PROVED**, first key; `AUD-T14-R51` |
-| Theorem 1.4, the component kernels (p. 5) | `IsCenteredCounterflowDriver.componentKernels` | **PROVED**, first key; `AUD-T14-R51` |
+| Theorem 1.4, the light cone (p. 5) | `IsCenteredCounterflowDriver.completedRange_eq_closure_lightCone` | **PROVED**, two keys (`AUD-SEAL-T14`); statement version 2 audited (`AUD-T14-R51`) |
+| Theorem 1.4, the boundary walks and their frontiers (p. 5) | `IsCenteredCounterflowDriver.boundaryWalks_frontiers` | **PROVED**, two keys (`AUD-SEAL-T14`) |
+| Theorem 1.4, the component kernels (p. 5) | `IsCenteredCounterflowDriver.componentKernels` | **PROVED**, two keys (`AUD-SEAL-T14`) |
 | Theorem 1.5 (i), monotonicity (p. 5) | `IsFlowLine.stays_right_of_lt` | **PROVED**, two keys (`AUD-SEAL7`) |
 | Theorem 1.5 (ii), merging (p. 5) | `IsFlowLine.merges` | **PROVED**, two keys (`AUD-SEAL7`) |
 | Theorem 1.5 (iii), crossing (p. 5) | `IsFlowLine.crosses_of_lt` | **PROVED**, two keys (`AUD-SEAL7`) |
 | Theorem 2.2, existence (p. 21) | `exists_isIntegratedSLEEvolution` | **PROVED**, two keys (`AUD-SEAL-1`) |
 | Theorem 2.2, uniqueness in law (p. 21) | `IsIntegratedSLEEvolution.measure_killedState_eq` | **PROVED**, two keys (`AUD-SEAL-2`) |
-| Theorem 2.4, martingale characterization (pp. 34–35) | `exists_isIntegratedSLEEvolution_iff_forall_isContLocalMartingaleBefore` | **PROVED**, first key; statement version 2 independently audited (`AUD-T2426C`) |
-| Theorem 2.6, conformal-radius martingales (p. 40) | `exists_isIntegratedSLEEvolution_eqOn_of_isContLocalMartingaleBefore_conformalRadius` | **PROVED**, first key; `AUD-T2426C` |
+| Theorem 2.4, martingale characterization (pp. 34–35) | `exists_isIntegratedSLEEvolution_iff_forall_isContLocalMartingaleBefore` | **PROVED**, two keys (`AUD-SEAL-T2426`); statement audited (`AUD-T2426C`) |
+| Theorem 2.6, conformal-radius martingales (p. 40) | `exists_isIntegratedSLEEvolution_eqOn_of_isContLocalMartingaleBefore_conformalRadius` | **PROVED**, two keys (`AUD-SEAL-T2426`) |
 | Companion: piecewise-constant boundary data (p. 5) | `IsPiecewiseConstantBoundaryData.existsUnique_isBoundedHarmonicExtension` | **PROVED**, two keys (`AUD-4b`) |
 | Companion: existence of flow lines (p. 5) | `exists_isFlowLine` | **PROVED**, two keys (`AUD-SEAL7`) |
 | Companion: existence of staged histories (p. 618) | `exists_isStagedHistory` | **PROVED**, two keys (`AUD-SEAL7`) |
@@ -43,7 +48,7 @@ The edition is not part of this release. The page numbers below and in the sourc
 - *First key:* only the frozen proof body changes, from `by sorry` to `by exact InteractingSLE.Spec.Provider.<name>`. Here `<name>` is a provider theorem with exactly the frozen statement. The frozen-anchor checker, the build, an unchanged statement hash and `#print axioms` must pass. The seals of Theorems 1.4, 2.4 and 2.6 also replayed the anchor modules in the kernel and checked the constant closure of the proof.
 - *Second key:* an independent seal audit repeats these checks. It also reads the provider chain for hypotheses that encode proof steps.
 
-Theorems 1.4, 2.4 and 2.6 were sealed last, with the first key. Their final statements were audited independently before sealing. The [focused certificate](Check.lean) and the public workflow then check every theorem's axioms again.
+All 17 theorems have both keys. The last five, Theorems 1.4 (three statements), 2.4 and 2.6, received their second keys after the first publication of this release, from the seal audits `AUD-SEAL-T14` and `AUD-SEAL-T2426`. No proof or statement changed. The [focused certificate](Check.lean) and the public workflow check every theorem's axioms again.
 
 The 96 frozen definitions that these statements use are part of the release, in the same folder [`InteractingSLE/Frozen/Spec/`](../../InteractingSLE/Frozen/Spec/). This folder also holds the 17 frozen theorem files. The released SLE₈ theorem of the same development is described in [its own guide](../elementary-sle8-continuity/).
 
@@ -51,7 +56,7 @@ The 96 frozen definitions that these statements use are part of the release, in 
 - the "fan statements" after Theorem 1.5, that is, the specification's Proposition 7.33 and Theorem OT1;
 - the last sentence of Theorem 2.2, which says that the joint process is Markov. It is used inside the proofs but is not stated.
 
-**One correction.** Theorem 2.4 is formalized in a corrected form. As printed in the specification, it asks for the martingale property only until z is absorbed. Read that way, its forward direction is false, by an explicit counterexample with an inadmissible seed. The formal statement stops the martingale condition at min(τ_z, T_*), which is the horizon of the specification's own proof and of Theorem 2.6 (item 33 below).
+**One correction to a main theorem.** Theorem 2.4 is formalized in a corrected form. As printed in the specification, it asks for the martingale property only until z is absorbed. Read that way, its forward direction is false, by an explicit counterexample with an inadmissible seed. The formal statement stops the martingale condition at min(τ_z, T_*), which is the horizon of the specification's own proof and of Theorem 2.6 (item 33 below). The paper prints the same horizon (its p. 43). This and the other errors the project found in the paper are listed in the [errata](ERRATA.md).
 
 ## The results in words
 
@@ -995,10 +1000,25 @@ The project follows Scott Armstrong's [LeanAutoformalizationSkills](https://gith
    The statement was then approved under the author's delegation and frozen in a one-declaration file, whose bytes and elaborated type are pinned by a hash manifest. Three statements were revised after freezing, as new versions with their own audits: the Theorem 1.4 surface, Theorems 2.4 and 2.6, and the staged-history companion. They are described below.
 2. **Proofs.** Each frozen theorem has a provider theorem with exactly the frozen statement. Intermediate theorems that take a later result as a hypothesis state it as a named proposition, and each of these is proved. Before each of the last seals, a constant-level check confirmed that the provider's proof uses no such hypothesis, no unproved named statement, and no axiom beyond the three standard ones.
 3. **Seals.** See the table and "The two keys" above.
-4. **Release checks**, on the staged public tree, development commit `616603f37`:
-   - The public source scan passed for all 21,198 files (`scripts/verify.py --scan-only`): exact import closure, source hashes, and no `sorry`, `admit`, `axiom`, `native_decide` or `implemented_by` tokens.
-   - [`Check.lean`](Check.lean) compiled against the development build of the same sources. Each of its 17 axiom reports lists only `propext`, `Classical.choice` and `Quot.sound`. Its whole-declaration audit reached only these three axioms: 149,042 declarations, 245,033 reachable.
-   - The public workflow rebuilds every module from the released sources and then compiles `Check.lean`.
+4. **Seal audits, second key.** Seven independent audits re-ran the seal checks for all 17 theorems:
+   - `AUD-SEAL-1` (Theorems 1.1 and 2.2, existence), `AUD-SEAL-2` (Theorem 2.2, uniqueness), `AUD-SEAL-COMP` (the Theorem 1.1 companion), `AUD-4b` (the boundary-data companion), `AUD-SEAL7` (Theorems 1.2, 1.3 and 1.5 and the flow-line and staged-history companions);
+   - `AUD-SEAL-T14` (Theorem 1.4) and `AUD-SEAL-T2426` (Theorems 2.4 and 2.6), done after the first publication.
+
+   Each audit checked:
+   - the statement bytes against the manifest;
+   - that each provider has exactly the frozen statement;
+   - that every hypothesis of the proof chain is discharged by a closed theorem;
+   - the axioms;
+   - an exact kernel replay of the anchor, provider and wiring modules.
+
+   `AUD-SEAL-T2426` found that the constant-closure check cited at the seals of Theorems 2.4 and 2.6 had not included them among its roots. It re-ran the check with both proof chains added (`SEAL_CLOSURE_OK roots=56`), and the check passes.
+5. **Release checks.** These ran on the staged public tree, development commit `616603f37`, which is byte-identical to this release.
+   - **Source scan:** `scripts/verify.py --scan-only` passed for all 21,198 files: exact import closure, source hashes, and no `sorry`, `admit`, `axiom`, `native_decide` or `implemented_by` tokens.
+   - **Fresh compile:** all 8,618 modules were compiled afresh from the exported files, with the verifier's per-module settings (`lean -j1 -M8192`). These are the 8,584 modules of the closure and the 34 released `SupercriticalConformalCovariance` modules they import. The other released dependencies are byte-identical and were taken from their up-to-date builds. The compile took 57 minutes of wall time on up to 10 processes, with no errors and no `sorry`; the slowest module took 77 seconds and the largest used 7.4 GB.
+   - **[`Check.lean`](Check.lean):** compiled against these fresh files and passed. Each of its 17 axiom reports lists only `propext`, `Classical.choice` and `Quot.sound`. Its whole-declaration audit reached only these three axioms: 149,042 declarations, 245,033 reachable.
+   - **Kernel replay from an empty environment:** `leanchecker --fresh` of a root module importing all 114 frozen modules passed in 22.5 minutes. It replayed in Lean's kernel the whole import closure, from an empty environment: Mathlib, the released libraries and every module of this release.
+   - **Exact per-module replay:** each of the 8,618 compiled modules was replayed on its own by `leanchecker`, against the environment of its imports, by the alias method of the development's `tools/replay.sh`. All passed (in about 80 minutes on up to 10 processes).
+   - **Public workflow:** it rebuilds every module from the released sources and then compiles `Check.lean`.
 
 ## Comments in the source files
 
@@ -1024,6 +1044,7 @@ lake exe cache get
 lake build InteractingSLE.Frozen.Spec.IsCenteredCounterflowDriver_componentKernels
 lake env lean results/imaginary-geometry-i/Check.lean
 python3 -I scripts/verify.py --scan-only
+lake env leanchecker --fresh InteractingSLE.Frozen.Spec.IsCenteredCounterflowDriver_componentKernels
 ```
 
 `lake build` of one of the Theorem 1.4 files compiles most of the closure. To build all of it, add the other frozen modules to the command, or run `python3 scripts/verify.py`, which rebuilds the whole release from source.
@@ -1032,7 +1053,7 @@ python3 -I scripts/verify.py --scan-only
 - it runs `assert_no_sorry` and `#print axioms` on each of the 17 theorems; every reported axiom must be one of `propext`, `Classical.choice` and `Quot.sound`;
 - it audits every declaration of the included `InteractingSLE`, `MathFin`, `BrownianMotion`, `QuantumZipper`, `LQGMetric`, `LQGDimension`, `SupercriticalConformalCovariance`, `SmallGammaGeodesics` and `GaussianLQG` modules (`IMAGINARY_GEOMETRY_I_AUDIT`).
 
-It needs about 9 GB of memory.
+It needs about 9 GB of memory. `leanchecker --fresh` replays the named module, with its whole import closure, in an independent kernel; it needs about 9 GB and, for the module above, roughly 20 minutes.
 
 ## Credits
 

@@ -450,7 +450,7 @@ lake env leanchecker --fresh InteractingSLE.Frozen.SLE8.ContinuousTrace
 ## Imaginary geometry I (2026-11-15)
 
 The new entry points are the 113 frozen anchor modules `InteractingSLE.Frozen.Spec.*`: 17 theorems (Theorems 1.1–1.5,
-2.2, 2.4 and 2.6 of Miller–Sheffield, *Imaginary geometry I: interacting SLEs*, and three companions) and the 96
+2.2, 2.4 and 2.6 of Miller–Sheffield, *Imaginary geometry I: interacting SLEs*, and four companions) and the 96
 definitions their statements use (see the [result guide](results/imaginary-geometry-i/)). Their import closure has
 8,584 local modules — 8,470 `InteractingSLE`, 67 `MathFin` and 47 `BrownianMotion` — of which 59 (the SLE₈ release)
 were already public and are unchanged, so the export adds 8,525 files. The closure also imports 2,458 released modules,
@@ -477,15 +477,15 @@ The verifying job of the three previous pushes failed. In each, one module, comp
 at the memory limit (`SupercriticalLFPPAS.Implementation.JointHeatVersion` twice, then
 `SupercriticalLQGUniqueness.B2.Final.Assembly6`). The retry addresses this. No released proof changed.
 
-**Checks before export.**
-- Each theorem was sealed: only its frozen body changed, to `by exact` its provider, and it passed the frozen-anchor
-  checker, an unchanged statement hash, `#print axioms` and a kernel replay of the anchor modules.
-- On the staged tree, the public source scan passed for all 21,198 files.
-- The focused certificate compiled against the development build of the same sources and passed. Each of its 17
-  axiom reports lists only `propext`, `Classical.choice` and `Quot.sound`. Its audit covered 149,042 project
-  declarations and reached 245,033 declarations, with the same three axioms only.
-- The public workflow performs the fresh rebuild of all 21,198 modules, the three focused certificates and the combined
-  certificate.
+**Checks.**
+- **Seals:** each theorem was sealed. Only its frozen body changed, to `by exact` its provider. Each seal passed the frozen-anchor checker, an unchanged statement hash, `#print axioms` and a kernel replay of the anchor modules.
+- **Second keys:** independent seal audits gave all 17 theorems their second keys. Those for Theorems 1.4, 2.4 and 2.6 (`AUD-SEAL-T14`, `AUD-SEAL-T2426`) came after the first publication of this release; no proof or statement changed.
+- **Source scan:** on the staged tree, the public source scan passed for all 21,198 files.
+- **Fresh compile:** all 8,618 modules (the 8,584 of the closure and the 34 `SupercriticalConformalCovariance` modules) were compiled afresh from the exported files with `lean -j1 -M8192`. The compile took 57 minutes of wall time on up to 10 processes, with no errors and no `sorry`; the slowest module took 77 seconds and the largest used 7.4 GB.
+- **Focused certificate:** compiled against those fresh files and **passed**. Each of its 17 axiom reports lists only `propext`, `Classical.choice` and `Quot.sound`. Its audit covered 149,042 project declarations and reached 245,033 declarations, with the same three axioms only.
+- **Replay from an empty environment:** `leanchecker --fresh` of a root module importing all 114 frozen modules passed in 22.5 minutes, with at most 9.1 GB. This replays the whole import closure in the kernel from an empty environment, Mathlib included.
+- **Per-module replay:** each of the 8,618 compiled modules was replayed exactly, on its own, against the environment of its imports. All passed.
+- **Public workflow:** it performs the fresh rebuild of all 21,198 modules, the three focused certificates and the combined certificate.
 
 To reproduce:
 

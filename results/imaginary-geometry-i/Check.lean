@@ -18,7 +18,7 @@ import InteractingSLE.Frozen.Spec.exists_isStagedHistory
 import Mathlib.Util.AssertNoSorry
 
 /-! Release audit of the advertised theorems of *Imaginary geometry I* (Miller–Sheffield): the 17 frozen theorems
-(Theorems 1.1–1.5, 2.2, 2.4, 2.6 and three companions). Every `#print axioms` report must list only axioms among
+(Theorems 1.1–1.5, 2.2, 2.4, 2.6 and four companions). Every `#print axioms` report must list only axioms among
 `propext`, `Classical.choice` and `Quot.sound` (any subset). -/
 set_option autoImplicit false
 
