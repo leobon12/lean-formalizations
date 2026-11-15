@@ -47,55 +47,232 @@ Theorems 1.4, 2.4 and 2.6 were sealed last, with the first key. Their final stat
 
 The 96 frozen definitions that these statements use are part of the release, in the same folder [`InteractingSLE/Frozen/Spec/`](../../InteractingSLE/Frozen/Spec/). This folder also holds the 17 frozen theorem files. The released SLE₈ theorem of the same development is described in [its own guide](../elementary-sle8-continuity/).
 
+**Scope.** The formal statements cover Theorems 1.1–1.5, 2.2, 2.4 and 2.6. Two parts of the paper's statements are left out (rulings R16 and R17):
+- the "fan statements" after Theorem 1.5, that is, the specification's Proposition 7.33 and Theorem OT1;
+- the last sentence of Theorem 2.2, which says that the joint process is Markov. It is used inside the proofs but is not stated.
+
+**One correction.** Theorem 2.4 is formalized in a corrected form. As printed in the specification, it asks for the martingale property only until z is absorbed. Read that way, its forward direction is false, by an explicit counterexample with an inadmissible seed. The formal statement stops the martingale condition at min(τ_z, T_*), which is the horizon of the specification's own proof and of Theorem 2.6 (item 33 below).
+
 ## The results in words
 
-These summaries follow the frozen statements, including their hypotheses. Throughout, ℍ is the upper half-plane. A GFF with boundary data is a zero-boundary Gaussian free field on ℍ plus the bounded harmonic extension of the data. Fields are random distributions (`LQGMetric.DistOn`). An "ordered force word" is a finite list of force points x^{L} on the left of 0 and x^{R} on the right, with weights ρ.
+### Notation and objects used throughout
 
-**Theorem 1.1 (coupling with the GFF).** Fix κ > 0 and an ordered force word. There is a probability space carrying:
-- an integrated SLE_κ(ρ) driving process, with its force-point processes and Brownian motion, defined up to its continuation threshold T_*;
-- a field h = h⁰ + 𝔥₀, where h⁰ is a zero-boundary GFF and 𝔥₀ is the harmonic function of the force-point boundary data.
+- ℍ = {z : Im z > 0}. For κ > 0, λ = π/√κ and χ = 2/√κ − √κ/2. For flow and counterflow lines 0 < κ < 4,
+  κ′ = 16/κ, and Λ = λ − (π/2)χ = π√κ/4 (the paper's λ′).
+- **Ordered force word.** Left marks at x_{n,L} ≤ … ≤ x_{1,L} ≤ 0 and right marks at 0 ≤ x_{1,R} ≤ … ≤ x_{m,R},
+  each with an arbitrary real weight ρ. The side belongs to the data, so a left mark at 0 is 0⁻ and a right mark at 0
+  is 0⁺. Coincident marks are separate entries; their weights add in every sum.
+- **Integrated SLE_κ(ρ) evolution with lifetime ζ** (Definition 2.1; `IsIntegratedSLEEvolution`). On a filtered
+  probability space: a Brownian motion B of the filtration, and a driver W and force points V^L, V^R adapted before
+  ζ, such that almost surely W₀ = 0 and V₀ = x; the paths are continuous on [0, ζ); the side order V^L ≤ W ≤ V^R
+  (with the mark order) holds; each 1/(W − V) is integrable on compact intervals before ζ;
+  W_t = √κ B_t + Σ ∫₀ᵗ ρ/(W_s − V_s) ds and V_t = x + ∫₀ᵗ 2/(V_s − W_s) ds; and collision times have measure zero.
+  The lifetime is the continuation threshold T∗, read as the maximal lifetime. Call a state admissible if on neither
+  side the marks that coincide with W have total weight ≤ −2. Then the state is admissible before ζ, ζ = 0 exactly
+  when the seed (W = 0, V = x) is inadmissible, and if 0 < ζ < ∞, no limit of the state at ζ from below is admissible.
+- **Loewner chain and trace.** g_t solves ∂_t g_t(z) = 2/(g_t(z) − W_t); the hull K_t is the set of points of ℍ
+  swallowed by time t; f_t = g_t − W_t. A continuous generating trace of W on [0, T] is a curve η with η(0) = 0,
+  continuous on [0, T] (on [0, ∞) if T = ∞), such that for every t < T, ℍ ∖ K_t is the unbounded component of
+  ℍ ∖ η([0, t]).
+- **GFF with boundary data b** (`IsGFFWithBoundaryData`). h is a measurable random distribution on ℍ (cylinder
+  σ-algebra) such that h − m is a zero-boundary GFF for every bounded harmonic extension m of b. A zero-boundary GFF
+  is a centred Gaussian process on test functions whose covariance is the Dirichlet Green form for the inner product
+  (2π)⁻¹ ∫ ∇f · ∇g. Finite piecewise-constant data means that b is locally constant off a finite set.
+- **Flow line of angle θ from x ∈ ℝ** (`IsFlowLine`, 0 < κ < 4). There is an integrated SLE_κ(ρ) evolution of the
+  flow-line force word of (b, x, θ), coupled as in Theorem 1.1 with the field h(· + x) + θχ, whose continuous
+  generating trace on [0, ζ] is almost surely η − x; ζ is the available lifetime. The word has seed marks 0⁻ and 0⁺
+  of weights −(b(x⁻) + θχ)/λ − 1 and (b(x⁺) + θχ)/λ − 1, and a mark at y − x of weight (b(y⁺) − b(y⁻))/λ for each
+  genuine jump y of b, so that its Theorem 1.1 boundary data is b(· + x) + θχ.
+- **Centred counterflow line η′ = CF_d(h) from ∞ to 0** (`IsCenteredCounterflowDriver`). In the chart R(z) = −1/z
+  with derivative lift −2 Log z, the field −h∘R + πχ − 2χ arg w (rule FD12.5) has finite piecewise-constant boundary
+  data, and W′, with lifetime ζ′, drives its angle-0 flow line from 0 at parameter κ′. The completed range of η′ is
+  the set of its physical tip points R(γ(t)), t ≥ 0 (γ the trace of W′, read through radial limits), together with
+  the terminal point 0. The initial point ∞ is left out of every set compared with it.
 
-These satisfy the *optional hull coupling*: for every stopping time τ < T_* of the usual augmentation of the driving filtration, the hull K_τ is a local set of h, and given 𝓕_τ the field restricted to ℍ \ K_τ has the law of 𝔥_τ + h̃⁰ ∘ f_τ. Here f_τ is the centred Loewner map and h̃⁰ is a fresh zero-boundary GFF. The companion theorem shows that the bounded harmonic extensions in this definition exist and are unique, so the definition does not depend on their choice.
+### Theorem 1.1: coupling of SLE_κ(ρ) with the Gaussian free field
 
-**Theorem 1.2 (the curve is determined by the field).** Fix κ > 0 and an ordered force word. In every coupling satisfying the optional hull specification of Theorem 1.1, the following is almost surely a Borel function Φ of the field h:
-- the lifetime T_*;
-- the whole capacity-parametrized curve η, frozen after a finite lifetime at its available endpoint.
+`exists_isOptionalHullCoupling`, specification p. 9.
 
-That is, almost surely Φ(h) = (T_*, η(· ∧ T_*)), where η is the continuous generating curve of the Loewner chain on [0, T_*].
+Fix κ > 0 and an ordered force word with arbitrary real weights. There exist a probability space, a filtration, an
+integrated SLE_κ(ρ) evolution (W, V^L, V^R, B) with lifetime ζ, and a random distribution h on ℍ satisfying the
+optional hull specification (`IsOptionalHullCoupling`):
 
-**Theorem 1.3 (continuity).** Let a > 0 and let (W, V, B, ζ) be an integrated SLE_a(ρ) evolution for an ordered force word. Almost surely:
-- if the starting configuration is inadmissible, then T_* = 0;
-- otherwise the Loewner chain driven by W is generated by a continuous curve η on [0, T_*] (on every finite interval when T_* = ∞), and |η(t)| → ∞ on the event {T_* = ∞}.
+1. h is measurable, and h − 𝔥₀ is a zero-boundary GFF on ℍ for every bounded harmonic extension 𝔥₀ of the time-0
+   force data. At a state with centred positions V̂ = V − W the force data are −λ(1 + the sum of the weights of the
+   left marks lying to the right of x) at x < 0, and λ(1 + the sum of the weights of the right marks at or to the left
+   of x) at x ≥ 0.
+2. The driving process (W, V) killed at ζ is measurable. Let (𝓕_t) be the usual augmentation of the filtration it
+   generates. For every stopping time τ of (𝓕_t) with τ < ζ almost surely:
+   - the hull K_τ is a local set of h in the two-step sense of Schramm and Sheffield: (K_τ, h) has the law of
+     (A, h₁ + h₂), where h₁ is harmonic off A and, given (A, h₁), h₂ is a zero-boundary GFF on ℍ ∖ A;
+   - for every bounded harmonic extension 𝔥⁰_τ of the force data at V̂_τ and every test function φ, almost surely on
+     the event that the support of φ misses K_τ, E[exp(i(h, φ)) | 𝓕_τ] = exp(i(𝔥_τ, φ) − ½ E_τ(φ)). Here
+     𝔥_τ(z) = 𝔥⁰_τ(f_τ(z)) − χ arg f_τ′(z), with the branch of log f_τ′ that vanishes at time 0, and
+     E_τ(φ) = ∬ φ(y) G(f_τ(y), f_τ(z)) φ(z) dy dz with G(y, z) = log|y − z̄| − log|y − z|. So, given 𝓕_τ, h on
+     ℍ ∖ K_τ has the law of 𝔥_τ + h̃⁰∘f_τ, h̃⁰ a fresh zero-boundary GFF.
 
-**Theorem 1.4 (light cones and frontiers of counterflow lines).** Let 0 < κ < 4. Let h be a GFF on ℍ with finite piecewise-constant boundary data, and let η′ be its counterflow line from ∞ to 0 (κ′ = 16/κ). Suppose η′ almost surely never reaches its continuation threshold. The theorem uses *staged histories*: curves built from pieces, each piece a flow line of the conditional field given the earlier pieces, with angles in [−π/2, π/2]. They are realized on the same space as h; the companion `exists_isStagedHistory` shows that such realizations exist. Every launched piece is assumed to be almost surely a continuous curve (statement version 2). Then:
-- **Light cone.** Fix a countable dense set Θ of angles in (−π/2, π/2). There is a deterministic countable dense set Q of times such that, almost surely, the range of η′ is the closure of:
-  - the point 0;
-  - the finite staged flow-line histories with angles in Θ and switching times in Q, each run through its actual lifetime;
-  - when the lowest seed is inadmissible, certain boundary connectors and the histories started from them.
+Companion `existsUnique_isBoundedHarmonicExtension_forceBoundaryData` (p. 9; R19 (1)): for every real κ, all weights
+and all centred positions, in any order, the force data have a bounded harmonic extension to ℍ (with these boundary
+values off 0 and the marks), and any two such extensions agree on ℍ. So the "for every extension" clauses are neither
+vacuous nor dependent on a choice.
 
-  Adding any fixed countable family of further admissible histories gives the same closed set.
-- **Frontiers.** Almost surely, the right and left frontiers of η′ are the angle −π/2 and +π/2 boundary walks. These are staged flow lines which, at a continuation threshold, follow the boundary to the next admissible seed. Each walk lies in the range of η′, and the range has no point strictly to the right of the right walk, nor strictly to the left of the left walk. If η′ meets the real line in a set with empty interior, both walks are complete flow lines of angle ∓π/2.
-- **Component kernels.** Condition on the two walks. Each component of the region between them has a conformal chart to (ℍ; 0, ∞) with a common lift of the boundary argument. In that chart:
-  - the field is a GFF whose boundary data is an explicit word: the heights −Λ and +Λ on the right and left walk pieces (specification GW3.1), and the actual boundary heights on the real connectors;
-  - η′ traverses the component as the counterflow line of that field, after an increasing time change;
-  - the field–path pairs of distinct components are conditionally independent, with the canonical laws.
+### Theorem 1.2: the field determines the curve
 
-**Theorem 1.5 (interaction of flow lines).** Let 0 < κ < 4 and let h be a GFF on ℍ with finite piecewise-constant boundary data. Let η₁ and η₂ be the flow lines of h from x₁ ≥ x₂ with angles θ₁ and θ₂, each up to its available lifetime.
-- **(i) Monotonicity.** If θ₁ < θ₂, then almost surely η₁ stays to the right of η₂. If moreover θ₂ − θ₁ ≥ πκ/(4 − κ), they almost surely do not meet in the interior.
-- **(ii) Merging.** If θ₁ = θ₂, then almost surely, whenever they meet at an interior point, they agree after it as unparametrized curves until the shorter one ends.
-- **(iii) Crossing.** If x₂ < x₁ and θ₂ < θ₁ < θ₂ + π, then almost surely, if they meet in the interior, at their first contact η₁ crosses η₂ from right to left and never crosses back. If moreover θ₁ − θ₂ ≥ πκ/(4 − κ), there is no later interior contact.
+`exists_measurable_lifetime_trace_eq_comp_field`, specification p. 4.
 
-Two companions support these statements. `exists_isFlowLine` shows that flow lines of every angle from every boundary point exist on the same probability space, so the hypotheses of Theorem 1.5 can be met. `IsPiecewiseConstantBoundaryData.existsUnique_isBoundedHarmonicExtension` shows that piecewise-constant boundary data has a unique bounded harmonic extension.
+Fix κ > 0 and an ordered force word. For every coupling (W, V, B, ζ, h), on any probability space, satisfying the
+optional hull specification of Theorem 1.1, there is a measurable map Φ from distributions on ℍ to [0, ∞] × (paths
+[0, ∞) → ℂ) such that, almost surely, the first component of Φ(h) is ζ and the second is t ↦ η(min(t, ζ)) for every
+continuous generating trace η of W on [0, ζ] (one exists almost surely, by Theorem 1.3).
 
-**Theorem 2.2 (existence and uniqueness of SLE_κ(ρ) with many force points).** Let a > 0 and fix an ordered force word.
-- *Existence:* there is an integrated SLE_a(ρ) evolution, defined up to its continuation threshold.
-- *Uniqueness in law:* any two such evolutions, on any two filtered probability spaces, have the same finite-dimensional laws of the state (W, V^{L}, V^{R}, B) killed at the continuation threshold, which determines the law.
+### Theorem 1.3: continuity and transience of the trace
 
-**Theorem 2.4 (martingale characterization).** Let κ > 0 and fix an ordered force word. Let η be a random continuous curve from 0 to ∞ in the closed half-plane, generated by an almost surely continuous Loewner driving function W with W₀ = 0 and |η(t)| → ∞. Let V be the images of the force points. Then the following are equivalent:
-- W and V can be coupled with a Brownian motion, on an extension of the probability space, to form an integrated SLE_κ(ρ) evolution up to the continuation threshold;
-- for every z ∈ ℍ, the harmonic function 𝔥_t(z) of Theorem 1.1 is a continuous local martingale for the curve's filtration, before z is swallowed and before the continuation threshold.
+`IsIntegratedSLEEvolution.ae_exists_isGeneratingTrace`, specification p. 4.
 
-**Theorem 2.6 (one-point characterization).** In the setting of Theorem 2.4, fix one z ∈ ℍ and let σ = min(τ_z, T_*). Suppose 𝔥_t(z) is a continuous local martingale before σ with quadratic variation log(crad(ℍ, z)/crad(ℍ \ K_t, z)). Then on an extension of the probability space there is an integrated SLE_κ(ρ) evolution whose driver and force points agree with W and V before σ.
+Let a > 0 and fix an ordered force word. For every integrated SLE_a(ρ) evolution (W, V, B) with lifetime ζ, on any
+filtered probability space, almost surely: if the seed is inadmissible (the marks at 0⁻, or those at 0⁺, have total
+weight ≤ −2), then ζ = 0; and W has a continuous generating trace η on [0, ζ], continuous up to and including a finite
+ζ and on every finite interval when ζ = ∞, with |η(t)| → ∞ when ζ = ∞. When ζ = 0 the trace is the single point 0.
+
+### Theorem 1.4: light cone, frontiers and component laws of the counterflow line
+
+Three statements, specification p. 5 (the theorem begins on p. 4), in version 2 (R51):
+`IsCenteredCounterflowDriver.completedRange_eq_closure_lightCone`, `IsCenteredCounterflowDriver.boundaryWalks_frontiers`
+and `IsCenteredCounterflowDriver.componentKernels`.
+
+**Common setting.** 0 < κ < 4; b finite piecewise-constant boundary data; a standard Borel probability space carrying
+a GFF h with data b; W′ and ζ′ the driver and lifetime of the centred counterflow line η′ = CF_d(h) from ∞ to 0; and
+the hypothesis that ζ′ = ∞ almost surely (η′ never hits its continuation threshold).
+
+**Staged histories.** A prescribed history is a root on ℝ and a finite program of instructions: flow at angle θ for
+own capacity time t (t = ∞: through the available lifetime), or continue along the untouched original boundary by the
+rule of GW2a (outward to the first later original jump whose height is admissible for the current angle), possibly
+stopping at a chosen point. Its physical set consists of its root, the points of its launched pieces up to their
+stops, and its boundary connectors. The statements quantify over every realization E (a driver and a lifetime for
+each history and instruction) such that, for every history whose angles lie in [−π/2, π/2]:
+
+- `IsStagedHistory`: the drivers are measurable; the retained histories are events; the value at a finite positive
+  lifetime is the continuous limit; and, under the regular conditional law given the retained history before it,
+  each launched piece is a flow line of the conditional field: h written in the chart of the current domain is a GFF
+  with some finite piecewise-constant data, and the piece's driver is the driver of its angle-θ flow line;
+- `StagedPiecesRegular`: almost surely the driver of each launched piece starts at 0, is continuous up to the piece's
+  stop, and has a continuous generating trace up to the stop, which tends to ∞ if the piece never stops.
+
+Such an E exists (`exists_isStagedHistory`, below). The right walk R is the history from 0 at angle −π/2 of GW1: flow
+through the available lifetime, and at a finite threshold follow ℝ to the right to the next admissible original jump
+and relaunch; repeat. The left walk L is the mirror history at angle +π/2.
+
+**Light cone.** For every countable Θ ⊂ (−π/2, π/2) dense in that interval there is a countable dense set Q of
+positive times such that, for every such E, almost surely the completed range of η′ is the closure of the union of
+{0} and the GW2 family: the physical sets of all finite Θ-schedules from 0 with strictly increasing switch and
+terminal times in Q, each kept only through its first threshold; and, if the angle −π/2 seed at 0 is inadmissible on
+the right (b(0⁺) − πχ/2 ≤ −λ), for every rational v in the first low right boundary arc, the segment [0, v] and the
+physical sets of all such schedules from v. Adding the physical sets of any fixed countable collection of histories
+from 0 with angles in [−π/2, π/2] gives, almost surely, the same closed set.
+
+**Frontiers.** For every such E, almost surely: R lies in the completed range of η′ and no point of the range lies
+strictly to the right of R; L lies in the range and no point of the range lies strictly to the left of L; and if the
+range meets ℝ in a set with empty interior, the first piece of each walk has infinite lifetime, so each walk is one
+complete extreme flow line. A point z is strictly to the right of a set A if z ∈ ℍ ∖ A and the closure of the
+component of ℍ ∖ A containing z contains a positive real point outside A (to the left: a negative one).
+
+**Component kernels.** For every such E and almost every ω₀, let R and L be the walks of ω₀ and ν the regular
+conditional law given the retained data of both walk histories, at ω₀. Every component C of ℍ ∖ (R ∪ L) lying neither
+to the right of R nor to the left of L has a component chart: a conformal bijection C → ℍ whose inverse has boundary
+limits on R at positive reals and on L at negative reals, with a continuous branch of the argument of its derivative.
+For every choice of such charts there are lifts, fields h_C, drivers W_C and lifetimes ζ_C such that for every such C:
+h_C is h written in the chart of C (coefficient χ); under ν, h_C is a GFF whose finite piecewise-constant boundary word
+is −Λ along the ordinary pieces of R, +Λ along the ordinary pieces of L, and the actual original boundary value along
+the boundary connectors (GW3.1); under ν, W_C drives the centred counterflow line of h_C with ν-a.s. infinite lifetime,
+and η′ runs through C as this relative counterflow: for a continuous strictly increasing clock T, η′ does not meet the
+closure of C before time T(0), and for every s > 0 its tip at time T(s) is the tip of the relative counterflow at time
+s, read in C; and the pairs (h_C, W_C) are independent under ν. So the conditional law of the component field–path
+pairs is the product of the canonical finite-word kernels.
+
+### Theorem 1.5: interaction of flow lines
+
+Three statements, specification p. 5: `IsFlowLine.stays_right_of_lt` (i), `IsFlowLine.merges` (ii) and
+`IsFlowLine.crosses_of_lt` (iii).
+
+**Common setting.** 0 < κ < 4; b finite piecewise-constant boundary data; a probability space carrying a GFF h with
+data b; η₁ a flow line of h of angle θ₁ from x₁ with available lifetime ζ₁, and η₂ one of angle θ₂ from x₂ with
+lifetime ζ₂. An interior available contact is a pair (s, t) with s < ζ₁, t < ζ₂ and η₁(s) = η₂(t) ∈ ℍ.
+
+(i) If x₂ ≤ x₁ and θ₁ < θ₂, then almost surely η₁ stays to the right of η₂: for all a < ζ₁ and c < ζ₂ the prefixes
+η₁([0, a]) and η₂([0, c]) have ordered proper completions, that is, continuous injective curves to ∞ in the closed
+upper half-plane extending them, the second lying in the closed left side of the first (Convention W0). If moreover
+θ₂ − θ₁ ≥ πκ/(4 − κ), almost surely there is no interior available contact.
+
+(ii) If x₂ ≤ x₁ and θ₁ = θ₂, then almost surely, after every interior available contact η₁(s) = η₂(t), the curves
+agree as ordered unparametrized curves until the shorter available portion ends: an increasing bijection from [s, a]
+onto [t, c], with a = ζ₁ or c = ζ₂, carries η₁ to η₂.
+
+(iii) If x₂ < x₁ and θ₂ < θ₁ < θ₂ + π, then almost surely, if there is an interior available contact, there is a first
+contact (s₀, t₀), attained at one common point (every contact (s, t) up to the lifetimes has s ≥ s₀ and t ≥ t₀), and
+there η₁ crosses η₂ from right to left and never crosses back: in a conformal chart of the unbounded component of ℍ
+minus both incoming prefixes that sends the contact point to 0 and ∞ to ∞, every pair of strict outgoing prefixes has
+ordered proper completions with the image of η₁ on the left. If moreover θ₁ − θ₂ ≥ πκ/(4 − κ), almost surely every
+interior available contact is the first contact, so there is no later one.
+
+### Theorem 2.2: existence and uniqueness in law of SLE_κ(ρ)
+
+`exists_isIntegratedSLEEvolution` (existence) and `IsIntegratedSLEEvolution.measure_killedState_eq` (uniqueness in
+law), specification p. 21.
+
+Existence: for a > 0 and every ordered force word there are a probability space, a filtration and an integrated
+SLE_a(ρ) evolution (W, V^L, V^R, B) with its lifetime, defined up to the continuation threshold.
+
+Uniqueness in law: for a > 0 and an ordered force word, any two integrated SLE_a(ρ) evolutions, on any two filtered
+probability spaces, give the same probability to every event "t_j < ζ and (W, V^L, V^R, B)(t_j) ∈ A_j for
+j = 1, …, n" (all times t_j, all Borel sets A_j). These events determine the law of the state killed at the
+threshold, so the two killed laws, including the law of the threshold itself, coincide.
+
+### Theorem 2.4: martingale characterization of SLE_κ(ρ)
+
+`exists_isIntegratedSLEEvolution_iff_forall_isContLocalMartingaleBefore`, specification pp. 34–35.
+
+**Setting.** κ > 0 and an ordered force word. On a probability space: a random curve η, a measurable driving process W
+and measurable processes V^L, V^R such that, almost surely, W is continuous with W₀ = 0, η is a continuous generating
+trace of W on [0, ∞), η stays in the closed upper half-plane, and |η(t)| → ∞; and, almost surely, each force point is
+the geometric image of its mark x: g_t(x) while x is not swallowed, and afterwards the image under g_t of the left end
+(left marks) or the right end (right marks) of ℝ ∩ K_t. T∗ is the continuation threshold of (W, V), the infimum of the
+times at which the state is not admissible; τ_z is the swallowing time of z.
+
+**Statement.** The following are equivalent.
+- (A) On some extension of the probability space (a measure-preserving map Ω′ → Ω) there are a filtration and a
+  Brownian motion B such that W, V^L, V^R and B form an integrated SLE_κ(ρ) evolution with lifetime T∗.
+- (B) For every choice of bounded harmonic extensions 𝔥⁰_t of the force data at V_t − W_t (for each sample and time)
+  and every z ∈ ℍ, the process 𝔥_t(z) = 𝔥⁰_t(f_t(z)) − χ arg f_t′(z) is a continuous local martingale before
+  min(τ_z, T∗), in the usual augmentation of the filtration of η.
+
+A process X is a continuous local martingale before σ if it is almost surely continuous on [0, σ) and there are
+stopping times σ_n, each 0 or strictly below σ, which almost surely eventually exceed every time before σ, such that
+each process 1_{σ_n > 0} X_{t∧σ_n} is a martingale.
+
+### Theorem 2.6: one-point martingale characterization
+
+`exists_isIntegratedSLEEvolution_eqOn_of_isContLocalMartingaleBefore_conformalRadius`, specification p. 40.
+
+Same setting as Theorem 2.4; fix one z ∈ ℍ and let σ = min(τ_z, T∗). Suppose that, for every choice of bounded
+harmonic extensions, 𝔥_t(z) is a continuous local martingale before σ (same filtration), and that there is a process A
+with A_t = log(crad(ℍ, z)/crad(ℍ ∖ K_t, z)) almost surely for all t < σ such that 𝔥_t(z)² − A_t is also a continuous
+local martingale before σ; that is, ⟨𝔥(z)⟩_t = A_t. Here crad(D, z) = |φ′(0)| for a conformal bijection φ of the unit
+disc onto D with φ(0) = z, and the radius of ℍ ∖ K_t is taken in the component containing z. Then, on some extension
+of the probability space, there are a filtration and an integrated SLE_κ(ρ) evolution whose driver and force points
+agree almost surely with W and V at all times before σ.
+
+### Companion statements: the hypotheses above can be met, and the definitions are free of choices
+
+- `IsPiecewiseConstantBoundaryData.existsUnique_isBoundedHarmonicExtension`, specification p. 5. If b is locally
+  constant off a finite set S, it has a bounded harmonic extension to ℍ (harmonic and bounded on ℍ, with boundary
+  limit b(x) at every real x ∉ S), and any two agree on ℍ.
+- `exists_isFlowLine`, specification p. 5. For 0 < κ < 4, finite piecewise-constant b, x ∈ ℝ and θ ∈ ℝ, every
+  probability space carrying a GFF h with data b carries an angle-θ flow line of h from x with its available lifetime.
+  Applied twice it gives two flow lines of one field, so the hypotheses of Theorem 1.5 can be met.
+- `exists_isStagedHistory`, specification p. 618 (GW1). For 0 < κ < 4 and finite piecewise-constant b, every standard
+  Borel probability space carrying a GFF h with data b carries one realization E of all histories with angles in
+  [−π/2, π/2] that satisfies both `IsStagedHistory` and `StagedPiecesRegular`. So the three Theorem 1.4 statements are
+  not vacuous.
 
 ## Exact frozen statements
 
@@ -604,34 +781,174 @@ theorem exists_isStagedHistory {κ : ℝ} (hκ : 0 < κ) (hκ4 : κ < 4)
 
 ## How the formal statements read the paper
 
-The statements follow the specification's theorem signatures. These keep explicit the hypotheses the paper leaves to context: domains, force words, lifetimes, filtrations and field frames. The independent statement audits checked each statement against the specification. The main readings are:
+Every frozen statement went through an independent statement audit that sorts each hypothesis as a source premise, a
+standing convention, typing data, a ruled reading, or an excess hypothesis. No frozen statement has an excess
+hypothesis (AUD-1a, AUD-1b, AUD-2, AUD-3 §8, AUD-3c, AUD-4, AUD-4b, AUD-T14-R51, AUD-T2426A-v2, AUD-T2426C). The
+readings, conventions and changes are these. Ruling (R…), audit (AUD-…) and errata (E…) labels refer to development
+records that are not part of this release; they are given so that each reading can be traced.
 
-1. **Existence statements are existential.** Theorems 1.1 and 2.2 (existence) assert that a probability space carrying the objects exists. Theorems 2.4 and 2.6 construct the SLE_κ(ρ) evolution on an extension of the given probability space; this is the usual reading of "can be coupled with a Brownian motion".
-2. **"Almost surely" is one event.** Each almost-sure conclusion holds on one event of probability one, for all times and contacts at once, as printed.
-3. **Stopping times and filtrations.** "Stopping time" means a stopping time of the usual augmentation of the driving filtration (Theorem 1.1) or of the curve's filtration (Theorems 2.4 and 2.6).
-4. **Lifetimes.** Statements about a finite lifetime refer to the curve frozen at its available endpoint (Theorem 1.2), and conclusions stop at the continuation threshold T_*.
-5. **Theorem 2.4's horizon.** The martingale condition is required before z is swallowed and before the continuation threshold, that is, up to min(τ_z, T_*) (rulings R1 and R109, audit `AUD-T2426C`).
-6. **Theorem 2.6's quadratic variation.** The bracket identity ⟨𝔥(z)⟩_t = log(crad(ℍ, z)/crad(ℍ \ K_t, z)) is stated by its defining property: 𝔥_t(z)² minus that process is a continuous local martingale before σ.
-7. **Theorem 2.2's uniqueness.** Uniqueness in law is stated as equality of all finite-dimensional laws of the state killed at the continuation threshold. These events form a generating π-system, so this is equality of the laws.
-8. **Theorem 1.4, version 2.** The frozen surface of Theorem 1.4 was revised once (ruling R51). It adds the hypothesis that every launched piece of a staged history is almost surely a continuous curve with a continuous generating trace (`StagedPiecesRegular`). The version-2 statements passed an independent audit (`AUD-T14-R51`). The theorem also assumes, as the specification does, that the counterflow line almost surely never reaches its continuation threshold. The light cone is read with a fixed countable dense set of angles and a deterministic countable dense set of switching times.
-9. **Theorem 1.5's setting.** Theorem 1.5 is stated for 0 < κ < 4 and finite piecewise-constant boundary data, for flow lines up to their available lifetimes. "Hitting" is read as an interior contact of the available curves.
-10. **Non-vacuity.** Several definitions quantify over objects whose existence is a separate fact: bounded harmonic extensions, flow lines, and realizations of staged histories. The three companions prove these exist, so the hypotheses of the main theorems can be met.
+**All statements**
+
+1. Force words are plain data (positions and real weights) with the ordering as a separate hypothesis. Coincident
+   marks stay separate and their weights add in every sum, which is the source's amalgamation (R22; AUD-1b §4.1).
+2. κ is an arbitrary real in the definitions; κ > 0, and κ < 4 where the source requires it, is a hypothesis of each
+   theorem (R15 Q5; R19 (2)). The force-data harmonic-extension companion holds for every real κ (AUD-2 §5.1).
+3. The continuation threshold is read as the maximal lifetime. Read literally, the printed formula evaluates the state
+   at and after the time where the evolution stops being defined, and it admits fake short lifetimes (R15 Q1; errata
+   ledger E1; AUD-1b §6.1). Explosion at a finite lifetime is excluded almost surely by the specification's Aux.
+   lemma 3, which the proofs establish, not by the definition (AUD-1b N1).
+4. An evolution may use any filtration in which B is a Brownian motion and W, V are adapted before the lifetime,
+   instead of the usual augmentation of the joint filtration; both classes give the same theorems (R15 Q2;
+   AUD-1b §6.2). B is a Brownian motion for all times, extended independently after the lifetime as the source's
+   proofs do (AUD-1b §4.6).
+5. A continuous generating trace on [0, T] starts at 0 and is continuous on the closed interval; the hull identity is
+   asserted only before T, and the endpoint is the continuous limit (the source's convention on p. 9) (AUD-1b §4.8).
+6. Where the source says "the bounded harmonic extension", the statements say "every bounded harmonic extension", and
+   companion theorems prove that one exists and that it is unique on ℍ (R19 (1); AUD-2 §5.1; AUD-3c §5).
+7. A GFF is a measurable random distribution on ℍ for the cylinder σ-algebra; the zero-boundary GFF predicate is
+   reused from the LQGMetric library, with the Dirichlet normalization (2π)⁻¹ ∫ ∇f · ∇g (R19 (6), (7); AUD-2 §3).
+8. The driving equation (1.10) and the chart rule (1.4) are version 2 of their frozen definitions: version 1 had an
+   integral absorbing the next term and was replaced before any proof used it (R28, R32; AUD-4b §2).
+
+**Theorems 1.1 and 1.2**
+
+9. "Let (W, V) be the driving process … There is a coupling" is stated as the existence of a driving process and a
+   field on one probability space; this is equivalent by Theorem 2.2's uniqueness in law (AUD-2 N2).
+10. (𝓕_t) is the usual augmentation of the filtration generated by (W, V) killed at T∗, without B, as Theorem 1.1
+    states (R19 (3)). A formal filtration can adjoin only the measurable null sets, which changes no statement
+    (AUD-2 N1).
+11. The conditional law given 𝓕_τ is stated, as in the source's proof (p. 82), by conditional characteristic
+    functions of single test functions supported off K_τ; the null set may depend on τ and on the test function
+    (AUD-2 §4.13, §5.2).
+12. Local sets are defined on ℍ by the two-step Schramm–Sheffield construction, with the σ-algebra on closed sets
+    generated by hitting events of open sets (R19 (5); AUD-2 §4.9, §4.12).
+13. Theorem 1.2 determines the lifetime and every continuous generating trace stopped at the lifetime; existence of the
+    trace is Theorem 1.3 (R19 (4); AUD-2 N3). "Borel function of the field" means measurable for the cylinder
+    σ-algebra; paths carry the product σ-algebra, equivalent for continuous traces (R19 (7); AUD-2 N4). The map may be
+    chosen after the coupling (AUD-2 §5.3).
+
+**Theorems 1.3 and 2.2**
+
+14. "The canonical integrated evolution" is read as every integrated evolution, a stronger statement; all of them
+    share the canonical law by Theorem 2.2 (R15 Q4; errata ledger E4; AUD-1b §5.1).
+15. Theorem 2.2 is frozen as two statements, existence and uniqueness in law. Its last sentence, that the joint
+    process is Markov, is not part of the frozen statements; it is used inside proofs only (R15 Q4; R17). Uniqueness
+    in law is stated through finite-dimensional events of the state killed at the threshold, which determine the killed
+    law and the law of the threshold (AUD-1b §5.3). Existence produces a probability space in the lowest universe
+    (AUD-1a §4.2).
+
+**Theorem 1.4**
+
+16. The theorem is split into the light-cone, frontier and component-kernel statements plus the existence companion.
+    Nothing is dropped: the sentence on the component field–path laws of GW4 has its own statement (R25, R29;
+    AUD-4 D1; AUD-4b §1.4). Theorem 1.4 counts as proved only with all four sealed (R29).
+17. The probability space is standard Borel, which regular conditional laws require (R25; AUD-4 N2).
+18. The staged histories are a universally quantified realization E whose hypotheses characterize each launched piece
+    as a conditional flow line; the companion supplies such an E, so the statements are not vacuous (AUD-4 N5). E is
+    required only for histories with angles in [−π/2, π/2], the ones the source uses (R25; AUD-4b §1.5), but for every
+    root (R29; AUD-4b Q3). The retained histories must be events, so that conditioning is on exactly them (R25;
+    AUD-4b §1.3).
+19. Version 2 adds the hypothesis `StagedPiecesRegular`: almost surely every launched piece is a continuous curve with
+    a continuous generating trace. Version 1 constrained later pieces only through conditional laws, which cannot see
+    path regularity, so it admitted realizations with irregular pieces. The source's pieces are curves and the
+    strengthened companion supplies such realizations, so the statement is not weaker than the paper (R51;
+    AUD-T14-R51 §1, §6). The hypothesis also covers histories that the conclusions never read (AUD-T14-R51 B8).
+20. η′ = CF_d(h) is encoded in the chart R(z) = −1/z with lift −2 Log z, as the angle-0 flow line at κ′ of the field
+    −h∘R + πχ − 2χ arg w (FD12.5), whose boundary data are existential, being fixed by its law (AUD-4 §4.1). The
+    initial point ∞ of η′ is left out of both sides of each set equality, which are equalities in ℂ (AUD-4 N4).
+21. The schedule set Q is chosen after Θ and before E, and it is positive; it may depend on the probability space and
+    the field, not only on κ, b and Θ, which is equivalent in substance (AUD-4 N3, §8).
+22. "The actual frontiers are the walks" is read in GW4's side-boundary sense: each walk lies in the completed range
+    and the range has no point strictly on its exterior side (AUD-4 §1, §4.4).
+23. "Both walks are complete ordinary extreme flow lines" is read as: the first piece of each walk has infinite
+    lifetime, on the event that the range meets ℝ in a set with empty interior (AUD-4 §1).
+24. The forced boundary roots of GW2 are used only when the lower extreme seed is inadmissible on the right; under the
+    no-threshold hypothesis the left case cannot occur (AUD-4 N9).
+25. The GW2a additions are any fixed countable collection of histories from 0 with angles in [−π/2, π/2], with one null
+    set per collection, as GW2a requires (AUD-4 §1, §3).
+26. The component-kernel statement holds for every choice of component charts. The lift is existential but unique,
+    since another branch would shift the pinned boundary word (R29; AUD-4b Q1). The exit of the traversal is implied,
+    not stated (R29; AUD-4b Q2). The joint law is stated as canonical marginal kernels plus independence (AUD-4b N2).
+    GW3's inequalities on connector heights are consequences and are not restated (AUD-4b §1.2).
+
+**Theorem 1.5**
+
+27. A flow line is any curve satisfying `IsFlowLine` (translated field, flow-line force word, Theorem 1.1 coupling,
+    trace), rather than "the" flow line; this is faithful because such curves are almost surely functions of the field
+    by Theorem 1.2 (AUD-3 §3.6). The seed marks 0⁻ and 0⁺ are kept even with weight zero (AUD-3 §3.5).
+28. "Stays to the right" is Convention W0, required for every pair of prefixes strictly before the lifetimes; the
+    closed relation of the terminal limits (Theorem 7.12C) is not part of the statement (AUD-3 §1, §2.1, N4).
+29. Contacts are interior available contacts: a common point of the open half-plane at parameters strictly before both
+    lifetimes, so common real starting points and terminal points are excluded, as the source requires (AUD-3 §2.1,
+    §3.9). The sentences allowing bouncing, and the remark that contact is not asserted, are non-assertions and are
+    not formalized (AUD-3 §1, B11).
+30. Merging in (ii) is agreement as ordered unparametrized curves via an increasing bijection, one of whose end
+    parameters is the whole available lifetime (AUD-3 §2.2, §8).
+31. In (iii) the crossing is asserted at the first contact, which may be a real point before the given interior
+    contact; this is Theorem 7.12C and implies the printed sentence (AUD-3 N5). Only the outgoing order is encoded; the
+    incoming order follows from x₂ < x₁ (AUD-3 §3.14). Theorem 7.12C's extra "no common open outgoing arc" is not part
+    of Theorem 1.5 and is omitted (AUD-3 §8). "No subsequent contact" is stated as "every interior available contact is
+    the first contact" (AUD-3 §2.3).
+32. The three clauses are separate statements, and Theorem 1.5 counts as proved only together with `exists_isFlowLine`,
+    which keeps 0 < κ < 4 and works on the field's own probability space (R26; AUD-3c N2).
+
+**Theorems 2.4 and 2.6**
+
+33. Erratum: the martingale side of Theorem 2.4 is stopped at min(τ_z, T∗), not at τ_z. As printed, the forward
+    direction is false: for κ = 4, W ≡ 0 (the vertical slit), and one right mark at 0⁺ of weight −3, the seed is
+    inadmissible, T∗ = 0 and the SLE side holds, while 𝔥_t(iy) is strictly increasing. The stopped form is the horizon
+    of the source's own proof and of Theorem 2.6 (R109; AUD-T2426A §7; AUD-T2426B F1; AUD-T2426C N1).
+34. "Can be coupled with a standard Brownian motion" means a measure-preserving extension of the probability space
+    carrying a filtration and a Brownian motion; after T∗ the Brownian motion needs fresh randomness (AUD-T2426A §7;
+    AUD-T2426C §4.2). The filtration on the extension is arbitrary (R15 Q2).
+35. The force-point processes are measurable inputs that are almost surely the geometric images. The images are one
+    infimum or supremum formula on the source's carrier (continuous drivers from 0, marks on the correct side); proved
+    lemmas show that the image is unique, equals g_t(x) before x is swallowed, and is the image of the extreme
+    endpoint of ℝ ∩ K_t afterwards (AUD-T2426A-v2 §4.1, §5.1; AUD-T2426C §3.1).
+36. The curve hypotheses hold almost surely, in capacity parametrization on [0, ∞): W continuous with W₀ = 0, η a
+    continuous generating trace of W, η in the closed half-plane, |η(t)| → ∞ (AUD-T2426C §4.1, §6). The closed
+    half-plane condition matters: a curve allowed into the lower half-plane is not determined by its hulls
+    (AUD-T2426A B9).
+37. The martingale side uses the usual augmentation of the natural filtration of the curve, which the source names only
+    in its proof (AUD-T2426C §4.2).
+38. In "continuous local martingale before σ" the localizing times are 0 or strictly below σ, and only values before σ
+    enter (proved). The horizon must therefore be announceable; this is a proof obligation that the proofs discharge,
+    not a hypothesis (AUD-T2426C §3.3, N-M1; AUD-T2426A-v2 §4.4).
+39. Theorem 2.6's bracket identity is stated by its defining property: a process A equal almost surely before σ to the
+    log-ratio of conformal radii, with 𝔥_t(z)² − A_t a continuous local martingale before σ. This is proved equivalent
+    to the explicit Loewner form (AUD-T2426A-v2 §5.2; AUD-T2426C §4.3, F5). The conformal radius is the relation
+    r = |φ′(0)|, proved to be single-valued, and the component of ℍ ∖ K_t containing z is all of ℍ ∖ K_t
+    (AUD-T2426C §3.4). The printed "Equivalently, …" sentence restates the hypothesis (AUD-T2426C §2).
+40. Theorem 2.6's conclusion "the driving process is SLE_κ(ρ) up to σ" is read as agreement before σ, on an extension,
+    with a full integrated evolution (AUD-T2426C N3).
+
+**Scope**
+
+41. Not formalized: the paragraph "Fan statements" after Theorem 1.5 (Proposition 7.33 and Theorem OT1) (R16, R17),
+    and the Markov sentence of Theorem 2.2 (item 15).
 
 ## The inputs are proved, not assumed
 
-The frozen theorems have no hypotheses beyond those in their statements. [`Check.lean`](Check.lean) confirms that every declaration of the library depends only on the three standard axioms. So every result from the literature that the proofs use is proved in Lean, in this release or in the released libraries it imports. The larger ones are:
+The specification names an external foundation (p. 4) and cites research papers. None of them is assumed here: each is
+reused from a sorry-free library, ported, or proved in this library (development inventory `planning/EXT-INV.md`, not released).
 
-| Input | Where it is proved |
-| --- | --- |
-| Loewner chains, Rohde–Schramm continuity of SLE_κ, Koebe distortion, the GFF and the strong Markov property | the released [`QuantumZipper`](../quantum-zipper/) library |
-| Stochastic calculus: stochastic integrals, Itô's formula, martingale and optional-sampling results, exponential martingales | `InteractingSLE/Stochastic`, `InteractingSLE/Spec/Ito`, with the vendored `MathFin` and `BrownianMotion` |
-| The Markov property and local sets of the GFF | `InteractingSLE/GFF` |
-| Level lines of the GFF (Wang and Wu) | `InteractingSLE/WangWu` |
-| Results of Zhan on SLE_κ(ρ), for κ ≤ 4 and for κ > 4 | `InteractingSLE/Spec/Zhan`, `InteractingSLE/Spec/ZhanGT4` |
-| The Jordan curve theorem, Jordan separation and the Schoenflies theorem | `InteractingSLE/Foundations/Topology` |
-| Continuity of SLE₈ (Alvisio–Lawler) | `InteractingSLE/SLE8`, the [SLE₈ release](../elementary-sle8-continuity/) |
+| Input | Used for | How it is provided | Record |
+|---|---|---|---|
+| Itô integral and formula, Girsanov, Lévy's characterization, SDE existence and uniqueness, martingale tools | Definition 2.1 onward | ported (Apache-2.0) from formal-mathfin `db26174` and the brownian-motion modules it uses (`497e5e2a`), without unfinished upstream declarations, and extended in the library (`InteractingSLE/Stochastic/`, `InteractingSLE/Spec/Ito/`) | R14, R20; `vendor/NOTICE.md` |
+| Continuous-time optional sampling, Tanaka's formula and local time, Bessel processes, Jacobi diffusions | Theorem 2.2's constructions, force-point arguments | proved in the library (`InteractingSLE/Stochastic/`, `InteractingSLE/Spec/Sec2/`) | R14, R20; EXT-RY-bessel, -jacobi, -tanaka |
+| GFF Markov property, local sets and their conditional laws | Theorem 1.1 and every field argument | proved in the library (`InteractingSLE/GFF/`), local sets on ℍ | R19 (5), R34, R35; EXT-GFF-localsets |
+| Rohde–Schramm: SLE_κ trace for κ < 8, simplicity for κ ≤ 4 | ordinary SLE_κ inputs | reused from the released QuantumZipper library | `planning/REUSE-GEOM.md` §4; R41 |
+| Rohde–Schramm: trace for κ > 8, transience, Lemma 7.3, Corollary 7.4 (space filling) | counterflow lines, κ′ = 16/κ > 4 | proved in the library (`InteractingSLE/Foundations/SLE/`) | EXT-RS05-*; R16, R41 |
+| SLE₈ trace exists and is continuous | counterflow lines with κ′ = 8 | Theorem 1.1 of the separate SLE₈ note, proved, with the Alvisio–Lawler estimate by a repaired route; used instead of the Lawler–Schramm–Werner citations | R16, R24, R30 |
+| Zhan's SLE_κ(ρ) results: target change, noncollision, transience, strip and constant-drift endpoints, collars | endpoint and transience arguments of Theorems 1.2–1.5 | proved in the library (`InteractingSLE/Spec/Zhan/`, `InteractingSLE/Spec/ZhanGT4/`) | R35, R38, R39, R41 |
+| Yuan's characterization of Loewner traces and his Corollary 1.3 | continuity of a trace after mapping out a prefix | proved in the library (`InteractingSLE/Foundations/Loewner/`) | R35, R41; EXT-Yua22-* |
+| Wang–Wu level lines at κ = 4: determination, continuity, transience | Theorems 1.2–1.3 at κ = 4 | formalized from a pinned Lean-oriented edition of the paper (`InteractingSLE/WangWu/`); the coupling is Theorem 1.1 at κ = 4, and determination reaches every coupling by whole-field identification | R21, R31, R36, R38, R40, R41 |
+| Jordan curve theorem and Jordan–Schoenflies theorem | planar separation throughout | ported from R. Kirov's Apache-2.0 formalization of Maehara's proof, through an earlier sorry-free formalization (`InteractingSLE/Foundations/Topology/`; see `vendor/NOTICE.md`) | R21; EXT-JORDAN, EXT-SCHOENFLIES |
+| Normalized Riemann mapping theorem, prime ends | conformal charts of subdomains | proved in the library (`InteractingSLE/Foundations/Complex/`, `InteractingSLE/Foundations/PrimeEnd/`) | EXT-RMT, EXT-PRIMEENDS |
 
-**One input is not used.** The specification's Aux. 136 cites Zhan for a singleton-tip property of SLE_κ′ at stopping times. That statement is not proved here, and none of the frozen theorems needs it. They have no such hypothesis, and they depend only on the three standard axioms.
+Two cited inputs are not used. Zhan's stopping-time singleton-tip assertion (Theorem 6.1 (iii)–(iv) of his 2010 paper)
+is not proved, and a machine check of the proofs' constant dependencies finds it in none of them (R41, R105, R105b).
+The inputs from Imaginary Geometry IV serve only Theorem OT1, which is not formalized (R16, R17).
 
 ## What is in the library
 
