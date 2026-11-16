@@ -12,12 +12,15 @@ This ledger answers each item in the audit's requested form. "New anchor" means 
 added beside the original 17, which stay unchanged. "Supplementary" means a public theorem whose statement passed an
 independent statement audit but is not a frozen anchor.
 
+**Update of 16 November 2026.** The one item left open, item 2's critical-angle clauses at real points, is resolved by
+two further new anchors (§2).
+
 ## Summary
 
 | Item (audit priority) | Status | Where |
 | --- | --- | --- |
 | 1. Crossing predicate permits merging (1) | **Resolved**: new anchor | `IsFlowLine.crosses_of_lt_of_contact` |
-| 2. Contact clauses fire only on interior contacts (1) | **Resolved** for merging and crossing (new anchors). **Open, disclosed**: critical-angle non-intersection at real points | `IsFlowLine.merges_of_contact`, `IsFlowLine.crosses_of_lt_of_contact` |
+| 2. Contact clauses fire only on interior contacts (1) | **Resolved**: merging and crossing (new anchors, 15 Nov.); critical-angle non-intersection at every contact (two new anchors, 16 Nov.) | `IsFlowLine.merges_of_contact`, `IsFlowLine.crosses_of_lt_of_contact`, `IsFlowLine.start_or_terminal_of_contact_of_critical`, `IsFlowLine.first_or_terminal_of_contact_of_critical` |
 | 3. Theorem 2.6 normalization (2) | **Resolved** in the documentation; the statement was already correct | [Errata A3](ERRATA.md) |
 | 4a. Counterflow frame (2) | **Resolved**: supplementary bridge theorems | `AuditFix.literalCounterflowBridge_holds` and corollaries |
 | 4b. Frontier meaning (2) | **Resolved**: new anchor in the paper's case; supplementary general bridge | `IsCenteredCounterflowDriver.boundaryWalks_outerBoundaries` |
@@ -67,17 +70,49 @@ was changed there.
   first-contact restart and Theorem 7.12C already cover first contacts on the boundary
   (`Spec/AuditFix/BoundaryContact*.lean`).
 - **Verification.** AUD-AF-T15, both seal keys, the axioms and kernel replay. Both new anchors imply their originals.
-- **Open, and disclosed.** The critical-angle clauses ("otherwise the paths almost surely do not intersect, except
-  possibly at their starting point", p. 30) are proved only for contacts in the open half-plane. That is at any
-  parameter, terminal times included: `AuditFix.criticalOrderedNoInteriorPoint_holds` and
-  `AuditFix.criticalCrossingNoLaterInteriorPoint_holds`, which are supplementary.
-  - **Why the real-point claim is not proved:** the project's critical-angle argument excludes first hits inside the
-    half-plane only. The specification restricts these clauses in the same way (spec pp. 5, 543–544).
-  - **What it would need:** a first-hit exclusion at points where one curve touches the real line, and a junction lemma
-    at random boundary points under the conditional law. Neither is available.
-  - **A note on the paper's wording.** A hand-checked example (not formalized) shows that a terminal contact at one
-    path's starting point can occur almost surely. So "except possibly at their starting point" must mean a starting
-    point of either path, not only a common one.
+- **Critical angles: resolved on 16 November 2026.** This paragraph first read "Open, and disclosed": the clauses were
+  proved only for contacts in the open half-plane, as the specification states them (spec pp. 5, 543–544). Two new
+  anchors now prove the critical-angle clauses of p. 30 at every contact of the closed paths, points of the half-plane
+  and of the real line, starting points and terminal values included. The clauses are "otherwise the paths almost
+  surely do not intersect (except possibly at their starting point)" and "otherwise the paths almost surely do not
+  subsequently intersect".
+  - `InteractingSLE.IsFlowLine.start_or_terminal_of_contact_of_critical`, clause (i). Assume x₂ ≤ x₁, θ₁ < θ₂ and
+    θ₂ − θ₁ ≥ πκ/(4 − κ). Then almost surely every common point η₁(s) = η₂(t) with s ≤ ζ₁ and t ≤ ζ₂ is either
+    the common starting point (x₁ = x₂ and s = t = 0) or terminal for both paths (s = ζ₁ and t = ζ₂).
+  - `InteractingSLE.IsFlowLine.first_or_terminal_of_contact_of_critical`, clause (iii). Assume x₂ < x₁,
+    θ₂ < θ₁ < θ₂ + π and θ₁ − θ₂ ≥ πκ/(4 − κ). Then almost surely every common point is either the first contact or
+    terminal for both paths.
+  - **The exception for common terminal points is forced.** For suitable piecewise-constant boundary data, two
+    critical flow lines end at the same real point almost surely, and that point is neither starting point. So the
+    paper's sentence needs "or at a common terminal point" ([errata A9](ERRATA.md)). The specification already
+    excludes common terminal points from its non-intersection conclusions (p. 5).
+  - **"Their starting point."** The first version of this item noted a hand-checked example in which one path ends
+    at the other's starting point. In that example the other path has lifetime zero, so the contact is terminal for
+    both paths, and the new statement allows it. When both lifetimes are positive, a contact at a starting point that
+    the paths do not share has probability zero. So the common starting point is the only one the theorem has to
+    allow.
+  - **How it was proved.** The project's critical-angle argument (the specification's Theorem 7.12D) excluded first
+    hits in the half-plane. It is extended to the real line as follows. Condition on the higher-angle path. Then a
+    real first hit of the other path lands in one of two places:
+    - inside an open interval of the boundary seen by that conditional flow line, where its boundary data forbid hits;
+    - at a marked point whose weight is too large to be reached.
+    One configuration needed a new ingredient: the conditional law of the field given the *completed* second path.
+    - In it, the first path touches the real line to the left of the second seed, closing a bounded pocket that traps
+      the second path, and the second path ends exactly at the pocket's corner.
+    - In the chart of the remaining domain, that corner is a marked point of weight greater than κ/2 − 4, which a flow
+      line almost surely does not hit.
+    - The proof is in `InteractingSLE/Spec/RealContact/` (55 modules). It uses the closed Theorem 1.3 and Lemma 7.5,
+      and none of it is an input of Theorems 1.2–1.3.
+  - **Verification.**
+    - the independent statement audit AUD-RC-STMT, which also checks the example;
+    - both seal keys (second key AUD-SEAL-RC);
+    - only the three standard axioms;
+    - the seal-closure check with 76 roots;
+    - an exact kernel replay of the new modules;
+    - a fresh compile from the exported files.
+
+    The interior-only supplementary theorems `AuditFix.criticalOrderedNoInteriorPoint_holds` and
+    `AuditFix.criticalCrossingNoLaterInteriorPoint_holds` are unchanged, and the new anchors imply them.
 
 ## 3. Theorem 2.6 normalization (priority 2)
 
@@ -176,5 +211,8 @@ was changed there.
     `Quot.sound`;
   - for this response, the 26 new modules (18 proof modules, four anchors, four providers) compiled afresh and
     replayed exactly;
-  - the seal-closure check now includes Theorems 2.4, 2.6 and the four new anchors among its roots.
+  - the seal-closure check now includes Theorems 2.4, 2.6 and the four new anchors among its roots;
+  - on 16 November 2026, for the two critical-angle anchors: the 59 new files (55 proof modules, two anchors, two
+    providers) were compiled afresh from the exported files and replayed exactly. The seal-closure check passes with 76
+    roots, and the focused certificate covers the two anchors and six supplementary theorems.
 - **Pending.** The public workflow runs for this release.

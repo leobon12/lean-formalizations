@@ -60,6 +60,7 @@ swallowed, and C(z; D) the conformal radius of D seen from z.
 | A6 | Proposition 5.1, p. 99 | the no-wrap step misses two endings | gap in a proof |
 | A7 | Lemma 6.2, pp. 112–113 | hypothesis applied at first-entrance times | imprecise statement; gap in a proof |
 | A8 | Proposition 3.3, p. 57 | the closure of K must be excluded | imprecise statement |
+| A9 | Theorem 1.5 (i) and (iii), p. 30 | critical flow lines can end at a common real point; the non-intersection clauses must allow it | false as stated (missing exception) |
 | B1 | spec Lemma S5, p. 582 | the inside clause is false as printed | false as stated |
 | B2 | spec pp. 3–4, 20–21, 37 | wording of Section 2 and Theorem 1.3 | imprecise statement |
 | B3 | spec Theorem 1.4, GW2–GW4 | wording of the light-cone statements | imprecise statement |
@@ -273,6 +274,36 @@ swallowed, and C(z; D) the conformal radius of D seen from z.
 - **Correction and formal treatment.** The specification states the limit for z0 ∈ ∂D outside the closure of K (spec
   p. 44), and the formalization uses this form.
 - **Records.** Astra (R35) §6, item 3; R35.
+
+### A9. Theorem 1.5: critical flow lines can end at a common real point
+
+- **Where.** §1, Theorem 1.5 (i) and (iii), p. 30.
+- **Printed.** (i), for θ₁ < θ₂: "If, in addition, θ₂ − θ₁ < πκ/(4 − κ), then η₁ and η₂ can bounce off of each other;
+  otherwise the paths almost surely do not intersect (except possibly at their starting point)". (iii), for
+  θ₁ > θ₂: "otherwise the paths almost surely do not subsequently intersect".
+- **Why it is false.** Write λ = π/√κ, χ = 2/√κ − √κ/2 and D = (θ₂ − θ₁)χ/λ. The angle gap is critical exactly when
+  D ≥ κ/2. Two critical flow lines can end at the same point of the real line, almost surely, and that point is
+  neither starting point.
+  - **Example for (i).** Take x₂ < x₁ < z, D ∈ [κ/2, 2), and boundary data b = −λ − θ₂χ on (−∞, x₂), λ − θ₂χ on
+    (x₂, z), and λ(κ/2 − 3) − θ₂χ on (z, ∞).
+    - The flow line η₂ of angle θ₂ from x₂ is SLE_κ(0; 0, κ/2 − 4), with its marked point at z. Retargeted to z, it
+      is SLE_κ(κ/2 − 2) with force point ∞, which hits no boundary arc. So η₂ ends at z.
+    - The flow line η₁ of angle θ₁ from x₁ has left weights D − 2 at x₁⁻ and 2 at x₂, and right weights −D at x₁⁺ and
+      κ/2 − 4 at z. Its weights sum to κ/2 − 4, so retargeted to z its force point ∞ has weight κ/2 − 2.
+    - Its left arcs have cumulative weights D − 2, D and D + κ/2 − 2, all at least κ/2 − 2. Its right arc has
+      weight −D > −2. So η₁ also ends at z, almost surely.
+  - **Example for (iii).** Take κ = 1, θ₂ = 0, θ₁ = π/3 (so D = 1/2), x₂ < x₁ < z, and b = −λ on (−∞, x₂), −λ/4 on
+    (x₂, z), and −13λ/4 on (z, ∞). The paths cross at a first contact before z, and both then end at z.
+- **Kind.** False as stated (a missing exception).
+- **Correction and formal treatment.** In (i), add "or at a point where both paths end". In (iii), "do not
+  subsequently intersect" should read "every intersection after the first is a point where both paths end".
+  - The specification already excludes common terminal points from its non-intersection conclusions (p. 5).
+  - The frozen theorems `IsFlowLine.start_or_terminal_of_contact_of_critical` and
+    `IsFlowLine.first_or_terminal_of_contact_of_critical` allow exactly these points. Otherwise they assert the
+    clauses at every contact of the closed paths, real points and terminal values included.
+  - With both lifetimes positive, a contact at a starting point the paths do not share has probability zero. So
+    "their starting point" can be read as the common one.
+- **Records.** R124 (example corrected after AUD-RC-STMT N2), R125; AUD-RC-STMT §4.
 
 ## B. Errors introduced by the specification
 

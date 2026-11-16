@@ -491,7 +491,7 @@ To reproduce:
 
 ```sh
 lake exe cache get
-lake build InteractingSLE.Frozen.Spec.IsCenteredCounterflowDriver_componentKernels
+lake build $(sed -n 's/^import //p' results/imaginary-geometry-i/Check.lean | grep -v '^Mathlib')
 lake env lean results/imaginary-geometry-i/Check.lean
 python3 -I scripts/verify.py --scan-only
 ```
@@ -527,3 +527,33 @@ file changed.
 - **Focused certificate:** compiled against the fresh build and passed. All 42 axiom reports (the 21 frozen theorems
   and 21 supplementary theorems) list only `propext`, `Classical.choice` and `Quot.sound`. Its audit covered 149,327
   project declarations, with 245,319 reachable.
+
+## Imaginary geometry I: the critical-angle clauses at every contact (2026-11-16)
+
+**What prompted it.** The audit response of 2026-11-15 left one item open and disclosed: Theorem 1.5's critical-angle
+non-intersection clauses were proved only for contacts in the open half-plane. This update proves them at every contact
+of the closed paths, real points and terminal values included.
+
+**What was added.** 59 new files, copied byte-for-byte from source commit `3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8`:
+- two new frozen theorem anchors, sealed with two keys:
+  - `IsFlowLine.start_or_terminal_of_contact_of_critical` (Theorem 1.5 (i), critical angles, at every contact);
+  - `IsFlowLine.first_or_terminal_of_contact_of_critical` (Theorem 1.5 (iii), critical angles, at every contact);
+- their two providers;
+- 55 proof modules under `InteractingSLE/Spec/RealContact/`.
+
+Each statement allows one forced exception: a point where both paths end ([errata A9](results/imaginary-geometry-i/ERRATA.md)).
+The new files import only released modules, all 6,759 of which are byte-identical to the released copies. The manifest
+gains three roots. No previously released file changed.
+
+**Checks.**
+- **Statement audit:** AUD-RC-STMT, PASS-WITH-NOTES for both statements; it corrected the arithmetic of the worked
+  example (errata A9).
+- **Seals:** frozen-anchor checker OK; the second-key seal audit AUD-SEAL-RC passed for both anchors.
+- **Seal-closure check:** `SEAL_CLOSURE_OK roots=76`; the eight new roots show no R48, R77 or R105 violation. The
+  proof uses the closed Theorem 1.3 and Lemma 7.5, and none of it is an input of Theorems 1.2–1.3.
+- **Source scan:** passed for all 21,283 files.
+- **Fresh compile and replay:** the 59 new modules compiled afresh from the exported files with `lean -j1 -M8192` (no
+  errors, no `sorry`, at most 7.0 GB) and were replayed exactly in the kernel (59 of 59).
+- **Focused certificate:** compiled against the fresh build and passed. All 50 axiom reports (the 23 frozen theorems
+  and 27 supplementary theorems) list only `propext`, `Classical.choice` and `Quot.sound`. Its audit covered 149,983
+  project declarations, with 245,979 reachable.

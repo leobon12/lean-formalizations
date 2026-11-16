@@ -1,6 +1,6 @@
 # Imaginary geometry I: interacting SLEs
 
-**Status.** Theorems 1.1–1.5, 2.2, 2.4 and 2.6 are `PROVED` in Lean with no assumptions. So are four companion statements and four statements added after an [external audit](AUDIT-RESPONSE.md) of the first publication. Each of these 21 frozen theorems is sealed. It depends only on Lean's standard axioms `propext`, `Classical.choice` and `Quot.sound`, as does every declaration of the released library.
+**Status.** Theorems 1.1–1.5, 2.2, 2.4 and 2.6 are `PROVED` in Lean with no assumptions. So are four companion statements, four statements added after an [external audit](AUDIT-RESPONSE.md) of the first publication, and two statements that resolve that audit's one open item: Theorem 1.5's critical-angle clauses at every contact, real points included. Each of these 23 frozen theorems is sealed. It depends only on Lean's standard axioms `propext`, `Classical.choice` and `Quot.sound`, as does every declaration of the released library.
 
 This Lean 4 project formalizes the main theorems of Jason Miller and Scott Sheffield, *Imaginary geometry I: interacting SLEs*, Probability Theory and Related Fields 164 (2016), 553–705, [arXiv:1201.1496](https://arxiv.org/abs/1201.1496).
 
@@ -15,7 +15,7 @@ The edition is included in this release, in [`specification/`](specification/), 
 - [Errata](ERRATA.md): the errors in Miller and Sheffield's paper that the formalization uncovered, each checked against arXiv v2. It also covers errors of the specification and gaps in cited works.
 - [Correspondence](CORRESPONDENCE.md): every difference between the Lean statements and the paper, theorem by theorem and definition by definition.
 - [The specification](specification/): the 671-page edition the statements were frozen from, as a PDF with its transcription.
-- [Response to the external audit](AUDIT-RESPONSE.md): an independent audit of the first publication and, item by item, how it was answered: four new frozen theorems, supplementary bridge theorems, and one disclosed restriction.
+- [Response to the external audit](AUDIT-RESPONSE.md): an independent audit of the first publication and, item by item, how it was answered: four new frozen theorems and supplementary bridge theorems. Its one disclosed restriction, the critical-angle clauses at real points, was resolved on 2026-11-16 by two further frozen theorems.
 
 **What the theorems say.** The theorems construct and characterize the flow lines of the Gaussian free field (GFF):
 - Theorem 1.1: SLE_κ(ρ) processes couple with the GFF as flow lines.
@@ -48,23 +48,26 @@ The edition is included in this release, in [`specification/`](specification/), 
 | *Added:* Theorem 1.5 (iii) at every available contact, with no common outgoing arc (paper pp. 30, 141) | `IsFlowLine.crosses_of_lt_of_contact` | **PROVED**, two keys (`AUD-SEAL-AF`); `AUD-AF-T15` |
 | *Added:* Theorem 2.2's Markov sentence, as a strong Markov property (paper p. 40) | `exists_strongMarkovKernel_isIntegratedSLEEvolution` | **PROVED**, two keys (`AUD-SEAL-AF`); `AUD-AF-T22` |
 | *Added:* Theorem 1.4, the walks are the left and right boundaries when η′ is nowhere boundary filling (paper p. 22) | `IsCenteredCounterflowDriver.boundaryWalks_outerBoundaries` | **PROVED**, two keys (`AUD-SEAL-AF`); `AUD-AF-T14` |
+| *Added 2026-11-16:* Theorem 1.5 (i), critical angles: no contact except the common starting point or a point terminal for both paths, at every contact, real points and terminal values included (paper p. 30) | `IsFlowLine.start_or_terminal_of_contact_of_critical` | **PROVED**, two keys (`AUD-SEAL-RC`); statement audited (`AUD-RC-STMT`) |
+| *Added 2026-11-16:* Theorem 1.5 (iii), critical angles: every contact is the first contact or terminal for both paths, real points and terminal values included (paper p. 30) | `IsFlowLine.first_or_terminal_of_contact_of_critical` | **PROVED**, two keys (`AUD-SEAL-RC`); `AUD-RC-STMT` |
 
 **The two keys.**
 - *First key:* only the frozen proof body changes, from `by sorry` to `by exact InteractingSLE.Spec.Provider.<name>`. Here `<name>` is a provider theorem with exactly the frozen statement. The frozen-anchor checker, the build, an unchanged statement hash and `#print axioms` must pass. The seals of Theorems 1.4, 2.4 and 2.6 also replayed the anchor modules in the kernel and checked the constant closure of the proof.
 - *Second key:* an independent seal audit repeats these checks. It also reads the provider chain for hypotheses that encode proof steps.
 
-All 21 theorems have both keys.
+All 23 theorems have both keys.
 - The last five of the original 17, Theorems 1.4 (three statements), 2.4 and 2.6, received their second keys after the first publication of this release, from the seal audits `AUD-SEAL-T14` and `AUD-SEAL-T2426`. No proof or statement changed.
 - The four statements added after the external audit were frozen and sealed in one commit, so there is no `by sorry` stage to compare. Their second key, `AUD-SEAL-AF`, compared the frozen statements with the texts approved by their statement audits instead, and replayed their modules in the kernel.
+- The two critical-angle statements added on 2026-11-16 were frozen with `by sorry` after their statement audit `AUD-RC-STMT`, then sealed once proved. Their second key is `AUD-SEAL-RC`.
 
 The [focused certificate](Check.lean) and the public workflow check every theorem's axioms again.
 
-The 96 frozen definitions that these statements use are part of the release, in the same folder [`InteractingSLE/Frozen/Spec/`](../../InteractingSLE/Frozen/Spec/). This folder also holds the 21 frozen theorem files. The released SLE₈ theorem of the same development is described in [its own guide](../elementary-sle8-continuity/).
+The 96 frozen definitions that these statements use are part of the release, in the same folder [`InteractingSLE/Frozen/Spec/`](../../InteractingSLE/Frozen/Spec/). This folder also holds the 23 frozen theorem files. The released SLE₈ theorem of the same development is described in [its own guide](../elementary-sle8-continuity/).
 
 **Scope.** The formal statements cover Theorems 1.1–1.5, 2.2, 2.4 and 2.6.
 - **Left out:** the "fan statements" after Theorem 1.5, that is, the specification's Proposition 7.33 and Theorem OT1 (rulings R16 and R17).
 - **Added after the external audit:** Theorem 2.2's last sentence (the joint process is Markov), as a strong Markov property; Theorem 1.5 (ii) and (iii) for contacts on the real line; and the exclusion of a common outgoing arc in the crossing. See the [audit response](AUDIT-RESPONSE.md).
-- **Disclosed restriction:** the critical-angle clauses of Theorem 1.5 (i) and (iii) ("the paths almost surely do not intersect, except possibly at their starting point") are proved for contacts in the open half-plane only. The specification states them that way (pp. 5, 543–544); the paper's claim at real points is not proved.
+- **Added on 2026-11-16, resolving the one disclosed restriction:** the critical-angle clauses of Theorem 1.5 (i) and (iii) ("the paths almost surely do not intersect, except possibly at their starting point"; "do not subsequently intersect") at every contact of the closed paths, real points and terminal values included. The specification states them for contacts in the open half-plane only (pp. 5, 543–544). One exception is forced: two critical flow lines can end at the same real point almost surely, so a point terminal for both paths is allowed ([errata A9](ERRATA.md)). See the [audit response](AUDIT-RESPONSE.md), item 2.
 
 **One correction to a main theorem.** Theorem 2.4 is formalized in a corrected form. As printed in the specification, it asks for the martingale property only until z is absorbed. Read that way, its forward direction is false, by an explicit counterexample with an inadmissible seed. The formal statement stops the martingale condition at min(τ_z, T_*), which is the horizon of the specification's own proof and of Theorem 2.6 (item 33 below). The paper prints the same horizon (its p. 43). This and the other errors the project found in the paper are listed in the [errata](ERRATA.md).
 
@@ -1065,7 +1068,9 @@ records that are not part of this release; they are given so that each reading c
     §3.9). The sentences allowing bouncing, and the remark that contact is not asserted, are non-assertions and are
     not formalized (AUD-3 §1, B11). After the external audit, the merging and crossing clauses also hold at every
     contact, real ones included (`IsFlowLine.merges_of_contact`, `IsFlowLine.crosses_of_lt_of_contact`, R122,
-    AUD-AF-T15). The critical-angle clauses remain interior-only.
+    AUD-AF-T15). The critical-angle clauses also hold at every contact, with a point terminal for both paths as the only
+    further exception (`IsFlowLine.start_or_terminal_of_contact_of_critical`,
+    `IsFlowLine.first_or_terminal_of_contact_of_critical`, R124, R125, AUD-RC-STMT; errata A9).
 30. Merging in (ii) is agreement as ordered unparametrized curves via an increasing bijection, one of whose end
     parameters is the whole available lifetime (AUD-3 §2.2, §8).
 31. In (iii) the crossing is asserted at the first contact, which may be a real point before the given interior
@@ -1199,6 +1204,14 @@ The project follows Scott Armstrong's [LeanAutoformalizationSkills](https://gith
    - **Exact per-module replay:** each of the 8,618 compiled modules was replayed on its own by `leanchecker`, against the environment of its imports, by the alias method of the development's `tools/replay.sh`. All passed (in about 80 minutes on up to 10 processes).
    - **Public workflow:** it rebuilds every module from the released sources and then compiles `Check.lean`.
 6. **Response to the external audit.** The four statements added after the audit passed independent statement audits (`AUD-AF-T15`, `AUD-AF-T14`, `AUD-AF-T22`) and were sealed with both keys (`AUD-SEAL-AF`). The seal-closure check now covers 68 roots, including Theorems 2.4 and 2.6. The 26 new modules were compiled afresh from the exported files and replayed exactly, and the focused certificate on the fresh build reports only the three standard axioms for all 42 advertised theorems. See the [audit response](AUDIT-RESPONSE.md).
+7. **The critical-angle clauses at every contact (2026-11-16).**
+   - The two statements passed their statement audit (`AUD-RC-STMT`) before the proof and were sealed with both keys
+     (`AUD-SEAL-RC`).
+   - The seal-closure check covers 76 roots, with no violation.
+   - The 59 new modules (55 proof modules, two anchors, two providers) were compiled afresh from the exported files and
+     replayed exactly.
+   - The focused certificate on the fresh build reports only the three standard axioms for all 50 theorems it lists:
+     the 23 frozen theorems and 27 supplementary ones.
 
 ## Comments in the source files
 
@@ -1221,16 +1234,16 @@ The pinned toolchain is `leanprover/lean4:v4.34.0-rc2` and Mathlib is `a4c8ef0a6
 
 ```sh
 lake exe cache get
-lake build InteractingSLE.Frozen.Spec.IsCenteredCounterflowDriver_componentKernels
+lake build $(sed -n 's/^import //p' results/imaginary-geometry-i/Check.lean | grep -v '^Mathlib')
 lake env lean results/imaginary-geometry-i/Check.lean
 python3 -I scripts/verify.py --scan-only
 lake env leanchecker --fresh InteractingSLE.Frozen.Spec.IsCenteredCounterflowDriver_componentKernels
 ```
 
-`lake build` of one of the Theorem 1.4 files compiles most of the closure. To build all of it, add the other frozen modules to the command, or run `python3 scripts/verify.py`, which rebuilds the whole release from source.
+The `lake build` line builds every module that `Check.lean` imports: all 23 frozen theorems, the supplementary theorems, and their import closure. `python3 scripts/verify.py` instead rebuilds the whole release from source.
 
 `Check.lean` does two things:
-- it runs `assert_no_sorry` and `#print axioms` on each of the 17 theorems; every reported axiom must be one of `propext`, `Classical.choice` and `Quot.sound`;
+- it runs `assert_no_sorry` and `#print axioms` on each of the 23 frozen theorems and 27 supplementary theorems; every reported axiom must be one of `propext`, `Classical.choice` and `Quot.sound`;
 - it audits every declaration of the included `InteractingSLE`, `MathFin`, `BrownianMotion`, `QuantumZipper`, `LQGMetric`, `LQGDimension`, `SupercriticalConformalCovariance`, `SmallGammaGeodesics` and `GaussianLQG` modules (`IMAGINARY_GEOMETRY_I_AUDIT`).
 
 It needs about 9 GB of memory. `leanchecker --fresh` replays the named module, with its whole import closure, in an independent kernel; it needs about 9 GB and, for the module above, roughly 20 minutes.

@@ -282,7 +282,10 @@
     "InteractingSLE.Spec.AuditFix.Markov",
     "InteractingSLE.Spec.AuditFix.BoundaryContact",
     "InteractingSLE.Spec.AuditFix.BoundaryContactStrong",
-    "InteractingSLE.Spec.AuditFix.StrongCross"
+    "InteractingSLE.Spec.AuditFix.StrongCross",
+    "InteractingSLE.Frozen.Spec.IsFlowLine_start_or_terminal_of_contact_of_critical",
+    "InteractingSLE.Frozen.Spec.IsFlowLine_first_or_terminal_of_contact_of_critical",
+    "InteractingSLE.Spec.RealContact.Main"
   ],
   "modules": {
     "BouRabeeGwynne.AbsorbingExcursionKernel": {
@@ -346449,6 +346452,1061 @@
         "InteractingSLE.Spec.AuditFix.FrontierBridge"
       ],
       "bytes": 2882
+    },
+    "InteractingSLE.Spec.RealContact.Statements": {
+      "path": "InteractingSLE/Spec/RealContact/Statements.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/Statements.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "fd74d5baf0a45a9398426bfb0efdcfe07486c1ee090bded96212dc87d081a6d9",
+      "imports": [
+        "InteractingSLE.Spec.Theorem15D5Inputs",
+        "InteractingSLE.Frozen.Spec.IsFirstContact"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.Theorem15D5Inputs",
+        "InteractingSLE.Frozen.Spec.IsFirstContact"
+      ],
+      "bytes": 8622
+    },
+    "InteractingSLE.Spec.RealContact.PocketCarrier": {
+      "path": "InteractingSLE/Spec/RealContact/PocketCarrier.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/PocketCarrier.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "eec02df9c09d5fe7b48b828b01f55ea2255ea497212398ebcbe14db94eda297d",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.Statements",
+        "InteractingSLE.Spec.Supplement.G7Carrier"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.Statements",
+        "InteractingSLE.Spec.Supplement.G7Carrier"
+      ],
+      "bytes": 9347
+    },
+    "InteractingSLE.Spec.RealContact.HitReal": {
+      "path": "InteractingSLE/Spec/RealContact/HitReal.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/HitReal.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "701a970409fb4c06912c12c89b301827cbe086e9ad01d63f8c276528a511368f",
+      "imports": [
+        "InteractingSLE.Spec.Supplement.GB7aCmp",
+        "InteractingSLE.Spec.Supplement.G12Low",
+        "InteractingSLE.Spec.Supplement.RLCGJump",
+        "InteractingSLE.Spec.Restart.FCK2BdryVisit",
+        "InteractingSLE.Spec.Exist.StagedLawData",
+        "InteractingSLE.Spec.Supplement.S10Main",
+        "InteractingSLE.Spec.Theorem15Inputs"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.Supplement.GB7aCmp",
+        "InteractingSLE.Spec.Supplement.G12Low",
+        "InteractingSLE.Spec.Supplement.RLCGJump",
+        "InteractingSLE.Spec.Restart.FCK2BdryVisit",
+        "InteractingSLE.Spec.Exist.StagedLawData",
+        "InteractingSLE.Spec.Supplement.S10Main",
+        "InteractingSLE.Spec.Theorem15Inputs"
+      ],
+      "bytes": 15078
+    },
+    "InteractingSLE.Spec.RealContact.Hit": {
+      "path": "InteractingSLE/Spec/RealContact/Hit.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/Hit.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "0b1093b504189b54875c750634f513bead282443771a319e3228493e3c2f6381",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.Statements",
+        "InteractingSLE.Spec.RealContact.HitReal",
+        "InteractingSLE.Spec.AuditFix.BoundaryContact",
+        "InteractingSLE.Spec.Supplement.G7Measurable",
+        "InteractingSLE.Spec.Supplement.G7RetainedReduce",
+        "InteractingSLE.Spec.Supplement.S10Weights",
+        "InteractingSLE.Spec.Supplement.S9BOrder",
+        "InteractingSLE.Spec.Theorem15D5Critical",
+        "InteractingSLE.Frozen.Spec.IsFlowLine_stays_right_of_lt"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.Statements",
+        "InteractingSLE.Spec.RealContact.HitReal",
+        "InteractingSLE.Spec.AuditFix.BoundaryContact",
+        "InteractingSLE.Spec.Supplement.G7Measurable",
+        "InteractingSLE.Spec.Supplement.G7RetainedReduce",
+        "InteractingSLE.Spec.Supplement.S10Weights",
+        "InteractingSLE.Spec.Supplement.S9BOrder",
+        "InteractingSLE.Spec.Theorem15D5Critical",
+        "InteractingSLE.Frozen.Spec.IsFlowLine_stays_right_of_lt"
+      ],
+      "bytes": 11306
+    },
+    "InteractingSLE.Spec.RealContact.PocketMain": {
+      "path": "InteractingSLE/Spec/RealContact/PocketMain.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/PocketMain.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "2d1935ac2634c4a978acd98e5d39fdc43a91a07d14981cd397659b9e4f8ba93a",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.PocketCarrier",
+        "InteractingSLE.Spec.RealContact.Hit",
+        "InteractingSLE.Spec.Sec7.Lemma76Kernel"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.PocketCarrier",
+        "InteractingSLE.Spec.RealContact.Hit",
+        "InteractingSLE.Spec.Sec7.Lemma76Kernel"
+      ],
+      "bytes": 10252
+    },
+    "InteractingSLE.Spec.RealContact.PocketCondDet": {
+      "path": "InteractingSLE/Spec/RealContact/PocketCondDet.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/PocketCondDet.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "67a1a3f7492f96a609dc1bf7c4d0423c18db8048437da1f6fa9619d57bb337c7",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.PocketMain",
+        "InteractingSLE.Spec.Restart.CondDet",
+        "InteractingSLE.Spec.Exist.Param12Canonical"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.PocketMain",
+        "InteractingSLE.Spec.Restart.CondDet",
+        "InteractingSLE.Spec.Exist.Param12Canonical"
+      ],
+      "bytes": 8413
+    },
+    "InteractingSLE.Spec.RealContact.TermField": {
+      "path": "InteractingSLE/Spec/RealContact/TermField.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermField.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "7d46881a8d56242ca41db5c31c6dbac5db9263957571d835d12ce5993c8c228e",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.PocketCondDet",
+        "InteractingSLE.Spec.Exist.StagedLaw3Main",
+        "InteractingSLE.Spec.Supplement.StagedRegularize",
+        "InteractingSLE.Spec.Supplement.W5CommonSeedShift",
+        "InteractingSLE.Spec.Supplement.HullDetGenBR4a"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.PocketCondDet",
+        "InteractingSLE.Spec.Exist.StagedLaw3Main",
+        "InteractingSLE.Spec.Supplement.StagedRegularize",
+        "InteractingSLE.Spec.Supplement.W5CommonSeedShift",
+        "InteractingSLE.Spec.Supplement.HullDetGenBR4a"
+      ],
+      "bytes": 18161
+    },
+    "InteractingSLE.Spec.RealContact.TermChart": {
+      "path": "InteractingSLE/Spec/RealContact/TermChart.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermChart.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "0cc8c4c9299043ee7e9a1ac7c234ffc20d278f1f512d47b9951704c84f81227f",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermField",
+        "InteractingSLE.Spec.Supplement.SB2WfTip",
+        "InteractingSLE.Spec.Supplement.SB2WfSwal",
+        "InteractingSLE.Spec.Supplement.SB2LkDom",
+        "InteractingSLE.Spec.Supplement.CollarActivity"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermField",
+        "InteractingSLE.Spec.Supplement.SB2WfTip",
+        "InteractingSLE.Spec.Supplement.SB2WfSwal",
+        "InteractingSLE.Spec.Supplement.SB2LkDom",
+        "InteractingSLE.Spec.Supplement.CollarActivity"
+      ],
+      "bytes": 10038
+    },
+    "InteractingSLE.Spec.RealContact.TermPath": {
+      "path": "InteractingSLE/Spec/RealContact/TermPath.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermPath.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "4d8d0d1c46551f8b3456d2e104409122a1a4be505652761f1ca414a2723efd3f",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermChart",
+        "InteractingSLE.Spec.Supplement.CounterflowRange",
+        "InteractingSLE.Spec.Restart.ClockTrace"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermChart",
+        "InteractingSLE.Spec.Supplement.CounterflowRange",
+        "InteractingSLE.Spec.Restart.ClockTrace"
+      ],
+      "bytes": 10720
+    },
+    "InteractingSLE.Spec.RealContact.TermInv": {
+      "path": "InteractingSLE/Spec/RealContact/TermInv.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermInv.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "9210d306cea387ff9cbe7dd4af7ecd229692a93ecc80ac08ce3ba45900f0cc35",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermPath"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermPath"
+      ],
+      "bytes": 13015
+    },
+    "InteractingSLE.Spec.RealContact.TermAssemble": {
+      "path": "InteractingSLE/Spec/RealContact/TermAssemble.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermAssemble.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "a4b0fab7b080a42e5988aedfab1140fc76897f8df63d318af5074ffcc8b22974",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermInv"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermInv"
+      ],
+      "bytes": 10056
+    },
+    "InteractingSLE.Spec.RealContact.TermWord": {
+      "path": "InteractingSLE/Spec/RealContact/TermWord.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermWord.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "c78110000f4da43f990a0424a46050ab79e90dfcaf9f76069a9293d578e00c11",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermAssemble",
+        "InteractingSLE.Spec.Supplement.GW1ActiveWord",
+        "InteractingSLE.Spec.Supplement.GW2SdpHeight",
+        "InteractingSLE.Spec.Supplement.SB2WdLaunch",
+        "InteractingSLE.Spec.Supplement.Aux10FullLocal",
+        "InteractingSLE.Spec.Sec7.R6FdLand"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermAssemble",
+        "InteractingSLE.Spec.Supplement.GW1ActiveWord",
+        "InteractingSLE.Spec.Supplement.GW2SdpHeight",
+        "InteractingSLE.Spec.Supplement.SB2WdLaunch",
+        "InteractingSLE.Spec.Supplement.Aux10FullLocal",
+        "InteractingSLE.Spec.Sec7.R6FdLand"
+      ],
+      "bytes": 18141
+    },
+    "InteractingSLE.Spec.RealContact.TermClock": {
+      "path": "InteractingSLE/Spec/RealContact/TermClock.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermClock.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "03d7bf5f8a543cbe14d6ca68e747e30775db550fb448ad987c7ffca66f5590cf",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermWord"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermWord"
+      ],
+      "bytes": 9764
+    },
+    "InteractingSLE.Spec.RealContact.TermEntryChart": {
+      "path": "InteractingSLE/Spec/RealContact/TermEntryChart.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermEntryChart.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "0ee81a616b98f50f0bf81839f649bf5644fb8695c0500f3125c99400475ec3b4",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermClock",
+        "InteractingSLE.Spec.Supplement.SB2BqCfg",
+        "InteractingSLE.Spec.Supplement.SBLvPinch"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermClock",
+        "InteractingSLE.Spec.Supplement.SB2BqCfg",
+        "InteractingSLE.Spec.Supplement.SBLvPinch"
+      ],
+      "bytes": 21457
+    },
+    "InteractingSLE.Spec.RealContact.TermSide": {
+      "path": "InteractingSLE/Spec/RealContact/TermSide.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermSide.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "1c456a02d30795537b0c5dce493ca582b1dd508c4a5ecba566d9eb8b7750cd5e",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermEntryChart",
+        "InteractingSLE.Spec.Supplement.S9BOrder",
+        "InteractingSLE.Spec.Supplement.S9DActivity"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermEntryChart",
+        "InteractingSLE.Spec.Supplement.S9BOrder",
+        "InteractingSLE.Spec.Supplement.S9DActivity"
+      ],
+      "bytes": 32446
+    },
+    "InteractingSLE.Spec.RealContact.TermFrozen": {
+      "path": "InteractingSLE/Spec/RealContact/TermFrozen.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermFrozen.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "0bcf415d2ad824d0f40cd1bb7b50de763a40766f28aede99d8960b63f95a02d9",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermSide",
+        "InteractingSLE.Spec.Supplement.RLCFAvgSide",
+        "InteractingSLE.Spec.Supplement.SB2GSide"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermSide",
+        "InteractingSLE.Spec.Supplement.RLCFAvgSide",
+        "InteractingSLE.Spec.Supplement.SB2GSide"
+      ],
+      "bytes": 10222
+    },
+    "InteractingSLE.Spec.RealContact.TermBuilder": {
+      "path": "InteractingSLE/Spec/RealContact/TermBuilder.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermBuilder.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "8eb0e11842a2ad779c9947ce5b853fcf758eb9b35ab5b4de7a106222a6bdb8a0",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermFrozen"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermFrozen"
+      ],
+      "bytes": 18311
+    },
+    "InteractingSLE.Spec.RealContact.TermBdry": {
+      "path": "InteractingSLE/Spec/RealContact/TermBdry.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermBdry.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "878fdf92d00f51eb3c47df62e3a94aac4bf2e7f609119966287a17926357f0f1",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermBuilder",
+        "InteractingSLE.Spec.Restart.ChartDataFibre"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermBuilder",
+        "InteractingSLE.Spec.Restart.ChartDataFibre"
+      ],
+      "bytes": 21576
+    },
+    "InteractingSLE.Spec.RealContact.TermClockPath": {
+      "path": "InteractingSLE/Spec/RealContact/TermClockPath.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermClockPath.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "be6dc8086296b8c0e105ba9816a5655bf2ed97e9124feaeb191c306129d79405",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermBdry",
+        "InteractingSLE.Spec.Sec5.Aux61FibDataClock"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermBdry",
+        "InteractingSLE.Spec.Sec5.Aux61FibDataClock"
+      ],
+      "bytes": 4985
+    },
+    "InteractingSLE.Spec.RealContact.TermPathGood": {
+      "path": "InteractingSLE/Spec/RealContact/TermPathGood.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermPathGood.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "096077d84d4ba76b6d025456899bdd7adecfe96728683ea6a7fca2d1049ae8be",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermClockPath",
+        "InteractingSLE.Spec.Supplement.AStopProcClock"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermClockPath",
+        "InteractingSLE.Spec.Supplement.AStopProcClock"
+      ],
+      "bytes": 21256
+    },
+    "InteractingSLE.Spec.RealContact.TermPathClock": {
+      "path": "InteractingSLE/Spec/RealContact/TermPathClock.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermPathClock.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "78f795d66bcd1254ccc940481b0c922a43d8e3b076054384277656f30c9e3ee3",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermPathGood",
+        "InteractingSLE.Spec.Restart.RetAux79Path",
+        "InteractingSLE.Spec.Sec7.ReverseArcLift"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermPathGood",
+        "InteractingSLE.Spec.Restart.RetAux79Path",
+        "InteractingSLE.Spec.Sec7.ReverseArcLift"
+      ],
+      "bytes": 14069
+    },
+    "InteractingSLE.Spec.RealContact.TermOrder": {
+      "path": "InteractingSLE/Spec/RealContact/TermOrder.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermOrder.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "ca98c231b2510e95f8fb18aa0a0403c5a656da3d59a1bf204a542c66a427d818",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermPathClock",
+        "InteractingSLE.Spec.Supplement.RLCGlue"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermPathClock",
+        "InteractingSLE.Spec.Supplement.RLCGlue"
+      ],
+      "bytes": 5068
+    },
+    "InteractingSLE.Spec.RealContact.TermK2": {
+      "path": "InteractingSLE/Spec/RealContact/TermK2.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermK2.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "cf08c82d3f2cf47fb8fcce238d9d49b931b92a488c2615871b91401d4fa217c1",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermOrder",
+        "InteractingSLE.Spec.Restart.FCKerDReflChart",
+        "InteractingSLE.Spec.Supplement.CounterflowNoReturnBack",
+        "InteractingSLE.Spec.Supplement.SB2VoCol"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermOrder",
+        "InteractingSLE.Spec.Restart.FCKerDReflChart",
+        "InteractingSLE.Spec.Supplement.CounterflowNoReturnBack",
+        "InteractingSLE.Spec.Supplement.SB2VoCol"
+      ],
+      "bytes": 13035
+    },
+    "InteractingSLE.Spec.RealContact.TermSample": {
+      "path": "InteractingSLE/Spec/RealContact/TermSample.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermSample.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "feea06235b6850a707710ad550c834dee4917f3c1a55b26058e297e7404a4b73",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermK2",
+        "InteractingSLE.Spec.Supplement.W5CommonSeedShift"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermK2",
+        "InteractingSLE.Spec.Supplement.W5CommonSeedShift"
+      ],
+      "bytes": 12641
+    },
+    "InteractingSLE.Spec.RealContact.TermK2Chart": {
+      "path": "InteractingSLE/Spec/RealContact/TermK2Chart.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermK2Chart.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "53eb591574fbde7e2f0079e14e70dee1b167b24c7feacc0ad55f7edf8b654d14",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermSample",
+        "InteractingSLE.Spec.Supplement.AStopPathMono",
+        "InteractingSLE.Spec.Supplement.LP3Flow"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermSample",
+        "InteractingSLE.Spec.Supplement.AStopPathMono",
+        "InteractingSLE.Spec.Supplement.LP3Flow"
+      ],
+      "bytes": 17253
+    },
+    "InteractingSLE.Spec.RealContact.TermK2Ends": {
+      "path": "InteractingSLE/Spec/RealContact/TermK2Ends.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermK2Ends.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "718cc927b5a13718f56e7d7c4e5d4aabd8544c38b12f9cce8438d88a326a46cf",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermK2Chart",
+        "InteractingSLE.Spec.Supplement.GW1ActiveWord",
+        "InteractingSLE.Spec.Supplement.OrdModelCode"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermK2Chart",
+        "InteractingSLE.Spec.Supplement.GW1ActiveWord",
+        "InteractingSLE.Spec.Supplement.OrdModelCode"
+      ],
+      "bytes": 18853
+    },
+    "InteractingSLE.Spec.RealContact.TermK2Stop": {
+      "path": "InteractingSLE/Spec/RealContact/TermK2Stop.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermK2Stop.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "bcbbc70e0c3dec3ae3bc74ea8ce42c3229ac597ccc93ebdb3939936f60013264",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermK2Ends",
+        "InteractingSLE.Spec.Supplement.AStopPathTerm"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermK2Ends",
+        "InteractingSLE.Spec.Supplement.AStopPathTerm"
+      ],
+      "bytes": 20722
+    },
+    "InteractingSLE.Spec.RealContact.TermK2Word": {
+      "path": "InteractingSLE/Spec/RealContact/TermK2Word.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermK2Word.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "eff16e0e39232b98abaaa5f1b376d0829aca96a6bc9a5d3162741a31d1f6767f",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermK2Stop",
+        "InteractingSLE.Spec.Sec5.CrossCondStagedFinalWord",
+        "InteractingSLE.Spec.Supplement.GW2RdHitSet",
+        "InteractingSLE.Spec.Supplement.GW3Word"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermK2Stop",
+        "InteractingSLE.Spec.Sec5.CrossCondStagedFinalWord",
+        "InteractingSLE.Spec.Supplement.GW2RdHitSet",
+        "InteractingSLE.Spec.Supplement.GW3Word"
+      ],
+      "bytes": 21757
+    },
+    "InteractingSLE.Spec.RealContact.TermRecMeas": {
+      "path": "InteractingSLE/Spec/RealContact/TermRecMeas.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermRecMeas.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "77e4e0c7b25e38ba637ca51e69e647145dfb2f1132030b42489857abf807af57",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermK2Word",
+        "InteractingSLE.Spec.Supplement.WalkLeafRead",
+        "InteractingSLE.Spec.Supplement.WalkInfCap",
+        "InteractingSLE.Spec.Restart.RetPlumbProofFilled",
+        "InteractingSLE.Spec.Restart.RetPlumbProofChart"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermK2Word",
+        "InteractingSLE.Spec.Supplement.WalkLeafRead",
+        "InteractingSLE.Spec.Supplement.WalkInfCap",
+        "InteractingSLE.Spec.Restart.RetPlumbProofFilled",
+        "InteractingSLE.Spec.Restart.RetPlumbProofChart"
+      ],
+      "bytes": 9357
+    },
+    "InteractingSLE.Spec.RealContact.TermProcDefs": {
+      "path": "InteractingSLE/Spec/RealContact/TermProcDefs.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermProcDefs.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "b1c71d2fe295cd9b157becfcea4ba5469ff3addd7d6cc2a8bc097b370b88da8f",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermRecMeas",
+        "InteractingSLE.Spec.Supplement.AStopProcFstMain"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermRecMeas",
+        "InteractingSLE.Spec.Supplement.AStopProcFstMain"
+      ],
+      "bytes": 8180
+    },
+    "InteractingSLE.Spec.RealContact.TermProcObs": {
+      "path": "InteractingSLE/Spec/RealContact/TermProcObs.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermProcObs.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "481afe25929689183c1ddc65b4840e382d691de5b00c757ef7c96aaa9a191c36",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermProcDefs"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermProcDefs"
+      ],
+      "bytes": 15980
+    },
+    "InteractingSLE.Spec.RealContact.TermProcMain": {
+      "path": "InteractingSLE/Spec/RealContact/TermProcMain.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermProcMain.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "85d1953074c3251e04df6176db0b3cfc57bde878e793bf9c53413de05e8761b3",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermProcObs"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermProcObs"
+      ],
+      "bytes": 7759
+    },
+    "InteractingSLE.Spec.RealContact.TermGoodAe": {
+      "path": "InteractingSLE/Spec/RealContact/TermGoodAe.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermGoodAe.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "f8756b74dd2916f3d44ef2d4f0d6ca581bb11cfc25d437999bb4510c532a4265",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermProcMain",
+        "InteractingSLE.Spec.RealContact.Hit"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermProcMain",
+        "InteractingSLE.Spec.RealContact.Hit"
+      ],
+      "bytes": 18742
+    },
+    "InteractingSLE.Spec.RealContact.TermPhysChart": {
+      "path": "InteractingSLE/Spec/RealContact/TermPhysChart.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermPhysChart.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "436e3f5107ed64cce6b8dd5e2c225c2e343b7b563c09043e4852fd3f913d1f0a",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermGoodAe",
+        "InteractingSLE.Spec.Supplement.WalkInfMeas",
+        "InteractingSLE.Spec.Supplement.GW2JointKernelProofChart",
+        "InteractingSLE.Spec.Supplement.CondDriverBridge",
+        "InteractingSLE.Spec.Supplement.BR4aPathField",
+        "InteractingSLE.Spec.Supplement.OrdFstShift",
+        "InteractingSLE.Spec.Restart.RetFinGlue"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermGoodAe",
+        "InteractingSLE.Spec.Supplement.WalkInfMeas",
+        "InteractingSLE.Spec.Supplement.GW2JointKernelProofChart",
+        "InteractingSLE.Spec.Supplement.CondDriverBridge",
+        "InteractingSLE.Spec.Supplement.BR4aPathField",
+        "InteractingSLE.Spec.Supplement.OrdFstShift",
+        "InteractingSLE.Spec.Restart.RetFinGlue"
+      ],
+      "bytes": 8620
+    },
+    "InteractingSLE.Spec.RealContact.TermLineSets": {
+      "path": "InteractingSLE/Spec/RealContact/TermLineSets.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermLineSets.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "8e4b9a3d2c09eac15e23c31e3d6feafdebb4f62b8aeb178eec8dbb6cb28fcfec",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermPhysChart",
+        "InteractingSLE.Spec.Supplement.AStopSafeFill",
+        "InteractingSLE.Spec.Sec5.GlueCondTopo"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermPhysChart",
+        "InteractingSLE.Spec.Supplement.AStopSafeFill",
+        "InteractingSLE.Spec.Sec5.GlueCondTopo"
+      ],
+      "bytes": 16810
+    },
+    "InteractingSLE.Spec.RealContact.TermHull": {
+      "path": "InteractingSLE/Spec/RealContact/TermHull.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermHull.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "df3d1aa85d231c12dd894683bef67b9fa22e943db3b10b287feada3cde00908d",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermLineSets"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermLineSets"
+      ],
+      "bytes": 14588
+    },
+    "InteractingSLE.Spec.RealContact.TermPrefixMean": {
+      "path": "InteractingSLE/Spec/RealContact/TermPrefixMean.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermPrefixMean.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "fc0d88cfcd539c9fd586e5f2b54e6f6eb6b48a1c48966c021ae544a43ad40685",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermHull",
+        "InteractingSLE.Spec.Sec5.CrossCondStagedMean",
+        "InteractingSLE.Spec.Supplement.SB2LkDom",
+        "InteractingSLE.WangWu.PrefixLocalMean"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermHull",
+        "InteractingSLE.Spec.Sec5.CrossCondStagedMean",
+        "InteractingSLE.Spec.Supplement.SB2LkDom",
+        "InteractingSLE.WangWu.PrefixLocalMean"
+      ],
+      "bytes": 18719
+    },
+    "InteractingSLE.Spec.RealContact.TermLineMeans": {
+      "path": "InteractingSLE/Spec/RealContact/TermLineMeans.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermLineMeans.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "09942672085493e15ce82be8797bbc01fc4970559c021f1159300fe3da1cf0fe",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermPrefixMean"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermPrefixMean"
+      ],
+      "bytes": 10940
+    },
+    "InteractingSLE.Spec.RealContact.TermCfg": {
+      "path": "InteractingSLE/Spec/RealContact/TermCfg.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermCfg.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "14d956e5617ee2db7c4719eb69058367c8578803c4126776eba64ad176cf39b6",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermLineMeans",
+        "InteractingSLE.Spec.Supplement.SB2OmCfg",
+        "InteractingSLE.Spec.Supplement.SB2OmWord",
+        "InteractingSLE.Spec.Supplement.SB2XfChain",
+        "InteractingSLE.Spec.Supplement.SB2KqDrv",
+        "InteractingSLE.Spec.Sec5.CrossRestartKernelSlitBase"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermLineMeans",
+        "InteractingSLE.Spec.Supplement.SB2OmCfg",
+        "InteractingSLE.Spec.Supplement.SB2OmWord",
+        "InteractingSLE.Spec.Supplement.SB2XfChain",
+        "InteractingSLE.Spec.Supplement.SB2KqDrv",
+        "InteractingSLE.Spec.Sec5.CrossRestartKernelSlitBase"
+      ],
+      "bytes": 21126
+    },
+    "InteractingSLE.Spec.RealContact.TermLineCfg": {
+      "path": "InteractingSLE/Spec/RealContact/TermLineCfg.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermLineCfg.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "9821e22ab145b9f12b2622c88bb3f106153221d314742b7a0aa64939ec7b4cf1",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermCfg",
+        "InteractingSLE.Spec.Supplement.BW1PropFrozen",
+        "InteractingSLE.Spec.Supplement.SB2LnMean"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermCfg",
+        "InteractingSLE.Spec.Supplement.BW1PropFrozen",
+        "InteractingSLE.Spec.Supplement.SB2LnMean"
+      ],
+      "bytes": 11160
+    },
+    "InteractingSLE.Spec.RealContact.TermLineMean": {
+      "path": "InteractingSLE/Spec/RealContact/TermLineMean.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermLineMean.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "bc8280956be9a5d0d43581514a363c11cea67a0b01ea8cbd0945242d88a54a2d",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermLineCfg",
+        "InteractingSLE.Spec.Supplement.SB2KqWord",
+        "InteractingSLE.Spec.Supplement.OrdGapFixed",
+        "InteractingSLE.Spec.Supplement.OrdFstShift"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermLineCfg",
+        "InteractingSLE.Spec.Supplement.SB2KqWord",
+        "InteractingSLE.Spec.Supplement.OrdGapFixed",
+        "InteractingSLE.Spec.Supplement.OrdFstShift"
+      ],
+      "bytes": 19710
+    },
+    "InteractingSLE.Spec.RealContact.TermLineZero": {
+      "path": "InteractingSLE/Spec/RealContact/TermLineZero.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermLineZero.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "468b12ec4e7b2518a17e66e59e7df2e325f51dfe45bc637ce2e086c968294707",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermLineMean",
+        "InteractingSLE.Spec.Restart.RetAux79Word",
+        "InteractingSLE.Spec.Restart.R1MeanChart"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermLineMean",
+        "InteractingSLE.Spec.Restart.RetAux79Word",
+        "InteractingSLE.Spec.Restart.R1MeanChart"
+      ],
+      "bytes": 10439
+    },
+    "InteractingSLE.Spec.RealContact.TermKernel": {
+      "path": "InteractingSLE/Spec/RealContact/TermKernel.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermKernel.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "51428a1c33bb9412ac369111710fc90e50ed39f1f1e40adc91ad4beef7f24d4d",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermLineZero",
+        "InteractingSLE.Spec.Sec6.Prop61BMarked",
+        "InteractingSLE.Spec.Restart.RetPlumbProofResidualLines"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermLineZero",
+        "InteractingSLE.Spec.Sec6.Prop61BMarked",
+        "InteractingSLE.Spec.Restart.RetPlumbProofResidualLines"
+      ],
+      "bytes": 8731
+    },
+    "InteractingSLE.Spec.RealContact.TermSafe": {
+      "path": "InteractingSLE/Spec/RealContact/TermSafe.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermSafe.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "e67563a9c2dc06c77656e171f4cd3acc612d62ebaa50bca6b4b8232f2f69b306",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermKernel",
+        "InteractingSLE.Spec.Supplement.AStopSafeLaw",
+        "InteractingSLE.Spec.Supplement.AStopSafeLine",
+        "InteractingSLE.Spec.Restart.RetFinGlue"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermKernel",
+        "InteractingSLE.Spec.Supplement.AStopSafeLaw",
+        "InteractingSLE.Spec.Supplement.AStopSafeLine",
+        "InteractingSLE.Spec.Restart.RetFinGlue"
+      ],
+      "bytes": 12375
+    },
+    "InteractingSLE.Spec.RealContact.TermStop": {
+      "path": "InteractingSLE/Spec/RealContact/TermStop.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermStop.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "58af6b4f0425812076c6fbc5f5423bc79cca8e854d6bef6961448c7486200971",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermSafe",
+        "InteractingSLE.Spec.Restart.FCK2TermSource",
+        "InteractingSLE.Spec.Restart.FCK2BdryVisit",
+        "InteractingSLE.Spec.Restart.FCK2DynCollision",
+        "InteractingSLE.Spec.Restart.FCK2SourceCollision",
+        "InteractingSLE.Spec.Restart.RetPlumbProofDriverModelInputs",
+        "InteractingSLE.Spec.Supplement.RLCGJump"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermSafe",
+        "InteractingSLE.Spec.Restart.FCK2TermSource",
+        "InteractingSLE.Spec.Restart.FCK2BdryVisit",
+        "InteractingSLE.Spec.Restart.FCK2DynCollision",
+        "InteractingSLE.Spec.Restart.FCK2SourceCollision",
+        "InteractingSLE.Spec.Restart.RetPlumbProofDriverModelInputs",
+        "InteractingSLE.Spec.Supplement.RLCGJump"
+      ],
+      "bytes": 11748
+    },
+    "InteractingSLE.Spec.RealContact.TermInputs": {
+      "path": "InteractingSLE/Spec/RealContact/TermInputs.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermInputs.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "93c88e86e351e4a3b3e98be84d3da13d5c111002cd88901120e148ccee4a1af9",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermStop",
+        "InteractingSLE.Spec.Supplement.AStopSafePair",
+        "InteractingSLE.Spec.Supplement.OrdModelSeed"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermStop",
+        "InteractingSLE.Spec.Supplement.AStopSafePair",
+        "InteractingSLE.Spec.Supplement.OrdModelSeed"
+      ],
+      "bytes": 15295
+    },
+    "InteractingSLE.Spec.RealContact.TermConclude": {
+      "path": "InteractingSLE/Spec/RealContact/TermConclude.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermConclude.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "1ff8ca73e9bea2c5513d07852d0b870650e1719f4a94a3e4dc1bad931db5fa36",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermInputs"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermInputs"
+      ],
+      "bytes": 6411
+    },
+    "InteractingSLE.Spec.RealContact.TermMain": {
+      "path": "InteractingSLE/Spec/RealContact/TermMain.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermMain.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "94ce602e6a6a7c685feefaabbcb0445bb8c9d0867c51e21652c1d501cac91786",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermConclude",
+        "InteractingSLE.Spec.RealContact.TermClock",
+        "InteractingSLE.Spec.Supplement.AStopPartType"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermConclude",
+        "InteractingSLE.Spec.RealContact.TermClock",
+        "InteractingSLE.Spec.Supplement.AStopPartType"
+      ],
+      "bytes": 9946
+    },
+    "InteractingSLE.Spec.RealContact.TermHolds": {
+      "path": "InteractingSLE/Spec/RealContact/TermHolds.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/TermHolds.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "f6068b545d65ee0b7b83d99e76621915b4cb3e1b0a4221575018226412837e70",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermMain",
+        "InteractingSLE.Spec.AuditFix.BoundaryContactInputs"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermMain",
+        "InteractingSLE.Spec.AuditFix.BoundaryContactInputs"
+      ],
+      "bytes": 1833
+    },
+    "InteractingSLE.Spec.RealContact.OrdLowVisit": {
+      "path": "InteractingSLE/Spec/RealContact/OrdLowVisit.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/OrdLowVisit.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "e7951ed5e1640466d87786c2f23dfcbde935fe775d698a4a2129a432bf95f963",
+      "imports": [
+        "InteractingSLE.Spec.Supplement.G12RemPassiveWord",
+        "InteractingSLE.Spec.Supplement.G12RemSwallow",
+        "InteractingSLE.Spec.Sec7.FlowReflectFlow"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.Supplement.G12RemPassiveWord",
+        "InteractingSLE.Spec.Supplement.G12RemSwallow",
+        "InteractingSLE.Spec.Sec7.FlowReflectFlow"
+      ],
+      "bytes": 15142
+    },
+    "InteractingSLE.Spec.RealContact.OrdCollar": {
+      "path": "InteractingSLE/Spec/RealContact/OrdCollar.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/OrdCollar.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "5d9f58afe12cb0be0dc0c1b48de1364764c268071bf58f1996ce1e40348c68c1",
+      "imports": [
+        "InteractingSLE.Spec.Theorem15D5Inputs"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.Theorem15D5Inputs"
+      ],
+      "bytes": 7800
+    },
+    "InteractingSLE.Spec.RealContact.OrdMain": {
+      "path": "InteractingSLE/Spec/RealContact/OrdMain.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/OrdMain.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "797d4c293c73a3c5d4bf8c108bd6c333112cab5f693362cd1757eda436a9a3a0",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.Statements",
+        "InteractingSLE.Spec.RealContact.OrdLowVisit",
+        "InteractingSLE.Spec.RealContact.OrdCollar",
+        "InteractingSLE.Spec.Theorem15D5Critical",
+        "InteractingSLE.Spec.Supplement.G12Low",
+        "InteractingSLE.Spec.Supplement.S9BOrder",
+        "InteractingSLE.Spec.Supplement.W0b",
+        "InteractingSLE.Spec.Sec4.Aux25Term",
+        "InteractingSLE.Spec.Sec7.InteractionProbLemma77",
+        "InteractingSLE.Spec.Restart.FCThresholdDriverPremises",
+        "InteractingSLE.Spec.Sec5.Aux61CptThm",
+        "InteractingSLE.Frozen.Spec.IsFlowLine_stays_right_of_lt"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.Statements",
+        "InteractingSLE.Spec.RealContact.OrdLowVisit",
+        "InteractingSLE.Spec.RealContact.OrdCollar",
+        "InteractingSLE.Spec.Theorem15D5Critical",
+        "InteractingSLE.Spec.Supplement.G12Low",
+        "InteractingSLE.Spec.Supplement.S9BOrder",
+        "InteractingSLE.Spec.Supplement.W0b",
+        "InteractingSLE.Spec.Sec4.Aux25Term",
+        "InteractingSLE.Spec.Sec7.InteractionProbLemma77",
+        "InteractingSLE.Spec.Restart.FCThresholdDriverPremises",
+        "InteractingSLE.Spec.Sec5.Aux61CptThm",
+        "InteractingSLE.Frozen.Spec.IsFlowLine_stays_right_of_lt"
+      ],
+      "bytes": 9922
+    },
+    "InteractingSLE.Spec.RealContact.CrossChart": {
+      "path": "InteractingSLE/Spec/RealContact/CrossChart.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/CrossChart.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "b71896baea2794510f319c822d53957cacc40faf8325ff946b531fc1f53ac598",
+      "imports": [
+        "InteractingSLE.Spec.Supplement.S9DChart"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.Supplement.S9DChart"
+      ],
+      "bytes": 21457
+    },
+    "InteractingSLE.Spec.RealContact.Cross": {
+      "path": "InteractingSLE/Spec/RealContact/Cross.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/Cross.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "0407ff23a888a17ff650fb18f739a2ac616fba6ac893409bd1af8c08e166bd82",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.Statements",
+        "InteractingSLE.Spec.RealContact.CrossChart",
+        "InteractingSLE.Spec.AuditFix.BoundaryContactInputs"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.Statements",
+        "InteractingSLE.Spec.RealContact.CrossChart",
+        "InteractingSLE.Spec.AuditFix.BoundaryContactInputs"
+      ],
+      "bytes": 4766
+    },
+    "InteractingSLE.Spec.RealContact.Main": {
+      "path": "InteractingSLE/Spec/RealContact/Main.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/RealContact/Main.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "c6067b3f0eaf960dab7927d90b000b057523140561ac676b5a612c8c4b25e81d",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.TermHolds",
+        "InteractingSLE.Spec.RealContact.OrdMain",
+        "InteractingSLE.Spec.RealContact.Cross"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.TermHolds",
+        "InteractingSLE.Spec.RealContact.OrdMain",
+        "InteractingSLE.Spec.RealContact.Cross"
+      ],
+      "bytes": 1366
+    },
+    "InteractingSLE.Spec.Provider.IsFlowLine_first_or_terminal_of_contact_of_critical": {
+      "path": "InteractingSLE/Spec/Provider/IsFlowLine_first_or_terminal_of_contact_of_critical.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/Provider/IsFlowLine_first_or_terminal_of_contact_of_critical.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "7ff98dc83d881c3031d3f3cc14d36b9ae0423e28e259aeb6d3f69f506728d845",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.Main"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.Main"
+      ],
+      "bytes": 2343
+    },
+    "InteractingSLE.Frozen.Spec.IsFlowLine_first_or_terminal_of_contact_of_critical": {
+      "path": "InteractingSLE/Frozen/Spec/IsFlowLine_first_or_terminal_of_contact_of_critical.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Frozen/Spec/IsFlowLine_first_or_terminal_of_contact_of_critical.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "6f8f2d377b93b63ae9c219e7e8afa329d3ff80db0e3b125acb1a72048c62fa30",
+      "imports": [
+        "Mathlib.Probability.BrownianMotion.Basic",
+        "Mathlib.Probability.Process.Stopping",
+        "Mathlib.Probability.ConditionalExpectation",
+        "Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic",
+        "Mathlib.Topology.Connected.Basic",
+        "Mathlib.Analysis.InnerProductSpace.Harmonic.Basic",
+        "QuantumZipper.Loewner.Forward",
+        "QuantumZipper.GFF.Kernels",
+        "LQGMetric.Field.ZeroBoundary",
+        "Mathlib.Analysis.Complex.Basic",
+        "Mathlib.Order.Interval.Finset.Fin",
+        "InteractingSLE.Frozen.Spec.upperHalfPlaneOpens",
+        "InteractingSLE.Frozen.Spec.IsGFFWithBoundaryData",
+        "InteractingSLE.Frozen.Spec.IsPiecewiseConstantBoundaryData",
+        "InteractingSLE.Frozen.Spec.IsFlowLine",
+        "InteractingSLE.Frozen.Spec.IsFirstContact",
+        "InteractingSLE.Spec.Provider.IsFlowLine_first_or_terminal_of_contact_of_critical"
+      ],
+      "local_imports": [
+        "QuantumZipper.Loewner.Forward",
+        "QuantumZipper.GFF.Kernels",
+        "LQGMetric.Field.ZeroBoundary",
+        "InteractingSLE.Frozen.Spec.upperHalfPlaneOpens",
+        "InteractingSLE.Frozen.Spec.IsGFFWithBoundaryData",
+        "InteractingSLE.Frozen.Spec.IsPiecewiseConstantBoundaryData",
+        "InteractingSLE.Frozen.Spec.IsFlowLine",
+        "InteractingSLE.Frozen.Spec.IsFirstContact",
+        "InteractingSLE.Spec.Provider.IsFlowLine_first_or_terminal_of_contact_of_critical"
+      ],
+      "bytes": 3352
+    },
+    "InteractingSLE.Spec.Provider.IsFlowLine_start_or_terminal_of_contact_of_critical": {
+      "path": "InteractingSLE/Spec/Provider/IsFlowLine_start_or_terminal_of_contact_of_critical.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/Provider/IsFlowLine_start_or_terminal_of_contact_of_critical.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "d1a587f3e033d11068c0fea773722ab18eed558756f02e0d59711034d81b2ecd",
+      "imports": [
+        "InteractingSLE.Spec.RealContact.Main"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.RealContact.Main"
+      ],
+      "bytes": 2151
+    },
+    "InteractingSLE.Frozen.Spec.IsFlowLine_start_or_terminal_of_contact_of_critical": {
+      "path": "InteractingSLE/Frozen/Spec/IsFlowLine_start_or_terminal_of_contact_of_critical.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Frozen/Spec/IsFlowLine_start_or_terminal_of_contact_of_critical.lean",
+      "source_commit": "3874e7619ad209a4a6f1c8e93edb0bf0cea94eb8",
+      "sha256": "272db068edebc9b509f14c5e0f04180d946e01f8deedf2f3f3a0e688edca15cb",
+      "imports": [
+        "Mathlib.Probability.BrownianMotion.Basic",
+        "Mathlib.Probability.Process.Stopping",
+        "Mathlib.Probability.ConditionalExpectation",
+        "Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic",
+        "Mathlib.Topology.Connected.Basic",
+        "Mathlib.Analysis.InnerProductSpace.Harmonic.Basic",
+        "QuantumZipper.Loewner.Forward",
+        "QuantumZipper.GFF.Kernels",
+        "LQGMetric.Field.ZeroBoundary",
+        "Mathlib.Analysis.Complex.Basic",
+        "Mathlib.Order.Interval.Finset.Fin",
+        "InteractingSLE.Frozen.Spec.upperHalfPlaneOpens",
+        "InteractingSLE.Frozen.Spec.IsGFFWithBoundaryData",
+        "InteractingSLE.Frozen.Spec.IsPiecewiseConstantBoundaryData",
+        "InteractingSLE.Frozen.Spec.IsFlowLine",
+        "InteractingSLE.Spec.Provider.IsFlowLine_start_or_terminal_of_contact_of_critical"
+      ],
+      "local_imports": [
+        "QuantumZipper.Loewner.Forward",
+        "QuantumZipper.GFF.Kernels",
+        "LQGMetric.Field.ZeroBoundary",
+        "InteractingSLE.Frozen.Spec.upperHalfPlaneOpens",
+        "InteractingSLE.Frozen.Spec.IsGFFWithBoundaryData",
+        "InteractingSLE.Frozen.Spec.IsPiecewiseConstantBoundaryData",
+        "InteractingSLE.Frozen.Spec.IsFlowLine",
+        "InteractingSLE.Spec.Provider.IsFlowLine_start_or_terminal_of_contact_of_critical"
+      ],
+      "bytes": 3298
     }
   }
 }

@@ -9,7 +9,10 @@ the Lean statement and the paper's text, so that a reader can see exactly what t
 more frozen theorems; see the [audit response](AUDIT-RESPONSE.md). They narrow these differences:
 - **Theorem 1.5 (ii) and (iii)** now hold at every contact, real contacts included (`IsFlowLine.merges_of_contact`,
   `IsFlowLine.crosses_of_lt_of_contact`). The crossing excludes a common outgoing arc, so it no longer permits merging.
-  The critical-angle non-intersection clauses remain interior-only.
+  The critical-angle non-intersection clauses were then still interior-only. Since 16 November 2026 they hold at every
+  contact too (`IsFlowLine.start_or_terminal_of_contact_of_critical`,
+  `IsFlowLine.first_or_terminal_of_contact_of_critical`), with one exception that the paper misses: a point where
+  both paths end ([errata A9](ERRATA.md)).
 - **Theorem 2.2's Markov sentence** is now stated, as a strong Markov property
   (`exists_strongMarkovKernel_isIntegratedSLEEvolution`).
 - **Theorem 1.4's** "the left and right boundaries of η′" is now stated literally in the nowhere-boundary-filling case
@@ -293,10 +296,21 @@ only together with `exists_isFlowLine` (R26).
   in (ii) and crossing in (iii) are asserted after such contacts. (spec p. 5; AUD-3 §2.1, §3.9) *Added after the
   external audit:* `IsFlowLine.merges_of_contact` and `IsFlowLine.crosses_of_lt_of_contact` assert them after every
   contact, real ones included, as in the paper's Proposition 7.12 (p. 141). (R122; AUD-AF-T15)
-- **weaker in Lean.** The non-intersection clauses of (i) and (iii) exclude only interior available contacts: common
-  real points and common terminal points are not covered, where the paper says that the paths do not intersect
-  except possibly at their starting point. (spec p. 5: "Common terminal points are excluded from nonintersection
-  conclusions"; AUD-3 §2.1, §3.9)
+- **weaker in Lean, in the original anchors.** The non-intersection clauses of (i) and (iii) in `IsFlowLine.stays_right_of_lt`
+  and `IsFlowLine.crosses_of_lt` exclude only interior available contacts: common real points and common terminal
+  points are not covered, where the paper says that the paths do not intersect except possibly at their starting
+  point. (spec p. 5: "Common terminal points are excluded from nonintersection conclusions"; AUD-3 §2.1, §3.9)
+  *Added on 16 November 2026:* `IsFlowLine.start_or_terminal_of_contact_of_critical` and
+  `IsFlowLine.first_or_terminal_of_contact_of_critical` assert them at every contact of the closed paths, real
+  points and terminal values included.
+  - **(i):** every contact is the common starting point or a point terminal for both paths.
+  - **(iii):** every contact is the first contact or a point terminal for both paths.
+  - **The exception is forced:** two critical flow lines can end at a common real point almost surely
+    ([errata A9](ERRATA.md)).
+  - **Reading:** the paper's "their starting point" is read as the common one. A contact at a starting point the
+    paths do not share has probability zero when both lifetimes are positive. With a zero lifetime it is terminal for
+    both paths.
+  (R124, R125; AUD-RC-STMT)
 - **made precise.** Merging (ii): after every interior available contact η₁(s) = η₂(t), an increasing bijection from
   [s, a] onto [t, c], with a = ζ₁ or c = ζ₂, carries η₁ to η₂; "never separate" means while both are available.
   (AUD-3 §2.2, §3.11)
