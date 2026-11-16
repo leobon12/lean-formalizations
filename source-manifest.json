@@ -285,7 +285,9 @@
     "InteractingSLE.Spec.AuditFix.StrongCross",
     "InteractingSLE.Frozen.Spec.IsFlowLine_start_or_terminal_of_contact_of_critical",
     "InteractingSLE.Frozen.Spec.IsFlowLine_first_or_terminal_of_contact_of_critical",
-    "InteractingSLE.Spec.RealContact.Main"
+    "InteractingSLE.Spec.RealContact.Main",
+    "InteractingSLE.Frozen.Spec.IsCenteredCounterflowDriver_completedRange_eq_closure_lightCone_of_schedule",
+    "InteractingSLE.Spec.LightConeAllQ.Main"
   ],
   "modules": {
     "BouRabeeGwynne.AbsorbingExcursionKernel": {
@@ -347507,6 +347509,146 @@
         "InteractingSLE.Spec.Provider.IsFlowLine_start_or_terminal_of_contact_of_critical"
       ],
       "bytes": 3298
+    },
+    "InteractingSLE.Spec.LightConeAllQ.Statements": {
+      "path": "InteractingSLE/Spec/LightConeAllQ/Statements.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/LightConeAllQ/Statements.lean",
+      "source_commit": "179cf9717daebf61fe002af037fa1ab0cbec2fbe",
+      "sha256": "62eec26fdeb3bb61d92956b094e24c0036754edb983adb39b6af96ce5311d67a",
+      "imports": [
+        "InteractingSLE.Frozen.Spec.IsCenteredCounterflowDriver_completedRange_eq_closure_lightCone",
+        "InteractingSLE.Spec.Supplement.GW2InteriorQFixed"
+      ],
+      "local_imports": [
+        "InteractingSLE.Frozen.Spec.IsCenteredCounterflowDriver_completedRange_eq_closure_lightCone",
+        "InteractingSLE.Spec.Supplement.GW2InteriorQFixed"
+      ],
+      "bytes": 5734
+    },
+    "InteractingSLE.Spec.LightConeAllQ.PieceTip": {
+      "path": "InteractingSLE/Spec/LightConeAllQ/PieceTip.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/LightConeAllQ/PieceTip.lean",
+      "source_commit": "179cf9717daebf61fe002af037fa1ab0cbec2fbe",
+      "sha256": "6b0f98b5c2a0004ad1ee5cb7e69725b472c9984c19b4a77ae56123a119a86784",
+      "imports": [
+        "InteractingSLE.Spec.LightConeAllQ.Statements",
+        "InteractingSLE.Spec.Supplement.GW2LaterPass",
+        "InteractingSLE.Spec.Supplement.GW2aStepBW1",
+        "InteractingSLE.Spec.Supplement.GW2aPieceChart",
+        "InteractingSLE.Spec.Sec5.Lemma56Stages"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.LightConeAllQ.Statements",
+        "InteractingSLE.Spec.Supplement.GW2LaterPass",
+        "InteractingSLE.Spec.Supplement.GW2aStepBW1",
+        "InteractingSLE.Spec.Supplement.GW2aPieceChart",
+        "InteractingSLE.Spec.Sec5.Lemma56Stages"
+      ],
+      "bytes": 14268
+    },
+    "InteractingSLE.Spec.LightConeAllQ.Core": {
+      "path": "InteractingSLE/Spec/LightConeAllQ/Core.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/LightConeAllQ/Core.lean",
+      "source_commit": "179cf9717daebf61fe002af037fa1ab0cbec2fbe",
+      "sha256": "0487abee5e8b376d1a0ee99d4687aaa15de369efc079aed7d33b7eb644d4f09a",
+      "imports": [
+        "InteractingSLE.Spec.LightConeAllQ.PieceTip",
+        "InteractingSLE.Spec.Supplement.AbsMergeFlow",
+        "InteractingSLE.Spec.Wire.T14Asm7"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.LightConeAllQ.PieceTip",
+        "InteractingSLE.Spec.Supplement.AbsMergeFlow",
+        "InteractingSLE.Spec.Wire.T14Asm7"
+      ],
+      "bytes": 1173
+    },
+    "InteractingSLE.Spec.LightConeAllQ.Main": {
+      "path": "InteractingSLE/Spec/LightConeAllQ/Main.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/LightConeAllQ/Main.lean",
+      "source_commit": "179cf9717daebf61fe002af037fa1ab0cbec2fbe",
+      "sha256": "79a32633dcb082119dd11194c12a82510fe0b66fff17789347b48749bf309e7a",
+      "imports": [
+        "InteractingSLE.Spec.LightConeAllQ.Core",
+        "InteractingSLE.Spec.Wire.Thm1415CurrentCone",
+        "InteractingSLE.Spec.Seal.PrepT1415",
+        "InteractingSLE.Spec.Wire.T14FnTop"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.LightConeAllQ.Core",
+        "InteractingSLE.Spec.Wire.Thm1415CurrentCone",
+        "InteractingSLE.Spec.Seal.PrepT1415",
+        "InteractingSLE.Spec.Wire.T14FnTop"
+      ],
+      "bytes": 8346
+    },
+    "InteractingSLE.Spec.Provider.IsCenteredCounterflowDriver_completedRange_eq_closure_lightCone_of_schedule": {
+      "path": "InteractingSLE/Spec/Provider/IsCenteredCounterflowDriver_completedRange_eq_closure_lightCone_of_schedule.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Spec/Provider/IsCenteredCounterflowDriver_completedRange_eq_closure_lightCone_of_schedule.lean",
+      "source_commit": "179cf9717daebf61fe002af037fa1ab0cbec2fbe",
+      "sha256": "fa948ba96b58bf9fe22bbcbc8d6da94e6a703effdd199c30b146bc367ebddeb4",
+      "imports": [
+        "InteractingSLE.Spec.LightConeAllQ.Main"
+      ],
+      "local_imports": [
+        "InteractingSLE.Spec.LightConeAllQ.Main"
+      ],
+      "bytes": 2851
+    },
+    "InteractingSLE.Frozen.Spec.IsCenteredCounterflowDriver_completedRange_eq_closure_lightCone_of_schedule": {
+      "path": "InteractingSLE/Frozen/Spec/IsCenteredCounterflowDriver_completedRange_eq_closure_lightCone_of_schedule.lean",
+      "source_path": "formalizations/interacting_sle/InteractingSLE/Frozen/Spec/IsCenteredCounterflowDriver_completedRange_eq_closure_lightCone_of_schedule.lean",
+      "source_commit": "179cf9717daebf61fe002af037fa1ab0cbec2fbe",
+      "sha256": "f6459b1e32a379435fe36efb9631d1286a7dfa990f86ce73e0f3a79f932f71f2",
+      "imports": [
+        "Mathlib.Probability.BrownianMotion.Basic",
+        "Mathlib.Probability.Process.Stopping",
+        "Mathlib.Probability.ConditionalExpectation",
+        "Mathlib.Probability.Kernel.Condexp",
+        "Mathlib.Probability.Independence.Basic",
+        "Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic",
+        "Mathlib.Topology.Connected.Basic",
+        "Mathlib.Analysis.InnerProductSpace.Harmonic.Basic",
+        "Mathlib.Analysis.Complex.Basic",
+        "Mathlib.Order.Interval.Finset.Fin",
+        "QuantumZipper.Loewner.Forward",
+        "QuantumZipper.GFF.Kernels",
+        "LQGMetric.Field.ZeroBoundary",
+        "InteractingSLE.Frozen.Spec.IsGFFWithBoundaryData",
+        "InteractingSLE.Frozen.Spec.IsPiecewiseConstantBoundaryData",
+        "InteractingSLE.Frozen.Spec.upperHalfPlaneOpens",
+        "InteractingSLE.Frozen.Spec.IsCenteredCounterflowDriver",
+        "InteractingSLE.Frozen.Spec.counterflowCompletedRange",
+        "InteractingSLE.Frozen.Spec.Instr",
+        "InteractingSLE.Frozen.Spec.ExplSpec",
+        "InteractingSLE.Frozen.Spec.ExplState",
+        "InteractingSLE.Frozen.Spec.ExplState_physSet",
+        "InteractingSLE.Frozen.Spec.IsStagedHistory",
+        "InteractingSLE.Frozen.Spec.boundaryLightConeFamily",
+        "InteractingSLE.Frozen.Spec.IsBoundaryContinuedProgram",
+        "InteractingSLE.Frozen.Spec.StagedPiecesRegular",
+        "InteractingSLE.Spec.Provider.IsCenteredCounterflowDriver_completedRange_eq_closure_lightCone_of_schedule"
+      ],
+      "local_imports": [
+        "QuantumZipper.Loewner.Forward",
+        "QuantumZipper.GFF.Kernels",
+        "LQGMetric.Field.ZeroBoundary",
+        "InteractingSLE.Frozen.Spec.IsGFFWithBoundaryData",
+        "InteractingSLE.Frozen.Spec.IsPiecewiseConstantBoundaryData",
+        "InteractingSLE.Frozen.Spec.upperHalfPlaneOpens",
+        "InteractingSLE.Frozen.Spec.IsCenteredCounterflowDriver",
+        "InteractingSLE.Frozen.Spec.counterflowCompletedRange",
+        "InteractingSLE.Frozen.Spec.Instr",
+        "InteractingSLE.Frozen.Spec.ExplSpec",
+        "InteractingSLE.Frozen.Spec.ExplState",
+        "InteractingSLE.Frozen.Spec.ExplState_physSet",
+        "InteractingSLE.Frozen.Spec.IsStagedHistory",
+        "InteractingSLE.Frozen.Spec.boundaryLightConeFamily",
+        "InteractingSLE.Frozen.Spec.IsBoundaryContinuedProgram",
+        "InteractingSLE.Frozen.Spec.StagedPiecesRegular",
+        "InteractingSLE.Spec.Provider.IsCenteredCounterflowDriver_completedRange_eq_closure_lightCone_of_schedule"
+      ],
+      "bytes": 5397
     }
   }
 }

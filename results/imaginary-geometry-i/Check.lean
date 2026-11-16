@@ -28,12 +28,15 @@ import InteractingSLE.Spec.AuditFix.StrongCross
 import InteractingSLE.Frozen.Spec.IsFlowLine_start_or_terminal_of_contact_of_critical
 import InteractingSLE.Frozen.Spec.IsFlowLine_first_or_terminal_of_contact_of_critical
 import InteractingSLE.Spec.RealContact.Main
+import InteractingSLE.Frozen.Spec.IsCenteredCounterflowDriver_completedRange_eq_closure_lightCone_of_schedule
+import InteractingSLE.Spec.LightConeAllQ.Main
 import Mathlib.Util.AssertNoSorry
 
 /-! Release audit of the advertised theorems of *Imaginary geometry I* (Miller–Sheffield): the 21 frozen theorems
 (Theorems 1.1–1.5, 2.2, 2.4, 2.6, four companions, and four statements added after the external audit of
-2026-11-15), the two critical-angle statements of Theorem 1.5 at every contact (2026-11-16), then the supplementary
-theorems of the audit response and of the critical-angle proof. Every `#print axioms` report must list only axioms among
+2026-11-15), the two critical-angle statements of Theorem 1.5 at every contact and Theorem 1.4's light cone for every
+prescribed schedule set (2026-11-16), then the supplementary theorems of the audit response, of the critical-angle proof
+and of the light-cone proof. Every `#print axioms` report must list only axioms among
 `propext`, `Classical.choice` and `Quot.sound` (any subset). -/
 set_option autoImplicit false
 
@@ -110,6 +113,9 @@ assert_no_sorry InteractingSLE.IsFlowLine.start_or_terminal_of_contact_of_critic
 -- Theorem 1.5 (iii), critical angles, at every contact (real points and terminal values included).
 assert_no_sorry InteractingSLE.IsFlowLine.first_or_terminal_of_contact_of_critical
 #print axioms InteractingSLE.IsFlowLine.first_or_terminal_of_contact_of_critical
+-- Theorem 1.4, light cone, for every prescribed schedule set (rulings R126, R127), e.g. the positive rationals.
+assert_no_sorry InteractingSLE.IsCenteredCounterflowDriver.completedRange_eq_closure_lightCone_of_schedule
+#print axioms InteractingSLE.IsCenteredCounterflowDriver.completedRange_eq_closure_lightCone_of_schedule
 
 -- Supplementary theorems of the audit response (statement-audited, not frozen).
 assert_no_sorry InteractingSLE.AuditFix.literalCounterflowBridge_holds
@@ -170,6 +176,13 @@ assert_no_sorry InteractingSLE.RealContact.terminalRetainedCondDet_holds
 #print axioms InteractingSLE.RealContact.terminalRetainedCondDet_holds
 assert_no_sorry InteractingSLE.RealContact.terminalRetainedPath_holds
 #print axioms InteractingSLE.RealContact.terminalRetainedPath_holds
+
+-- Supplementary theorems of the light-cone proof (rulings R126, R127; not frozen): the statement-audited form, and
+-- interior switching tips at every deterministic schedule.
+assert_no_sorry InteractingSLE.LightConeAllQ.lightConeAllSchedule_holds
+#print axioms InteractingSLE.LightConeAllQ.lightConeAllSchedule_holds
+assert_no_sorry InteractingSLE.LightConeAllQ.gw2InteriorScheduleAllQ_holds
+#print axioms InteractingSLE.LightConeAllQ.gw2InteriorScheduleAllQ_holds
 
 /-! Every declaration of the included project modules (the `InteractingSLE`, `MathFin` and `BrownianMotion` modules
 and the released `QuantumZipper`, `LQGMetric`, `LQGDimension`, `SupercriticalConformalCovariance`,

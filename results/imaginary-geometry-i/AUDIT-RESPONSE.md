@@ -12,8 +12,11 @@ This ledger answers each item in the audit's requested form. "New anchor" means 
 added beside the original 17, which stay unchanged. "Supplementary" means a public theorem whose statement passed an
 independent statement audit but is not a frozen anchor.
 
-**Update of 16 November 2026.** The one item left open, item 2's critical-angle clauses at real points, is resolved by
-two further new anchors (§2).
+**Update of 16 November 2026.**
+- The one item left open, item 2's critical-angle clauses at real points, is resolved by two further new anchors
+  (§2).
+- A second assessment by the same reviewer is answered in the [last section](#second-assessment-16-november-2026). It
+  led to one more anchor, Theorem 1.4's light cone for every prescribed set of switching times.
 
 ## Summary
 
@@ -25,7 +28,7 @@ two further new anchors (§2).
 | 4a. Counterflow frame (2) | **Resolved**: supplementary bridge theorems | `AuditFix.literalCounterflowBridge_holds` and corollaries |
 | 4b. Frontier meaning (2) | **Resolved**: new anchor in the paper's case; supplementary general bridge | `IsCenteredCounterflowDriver.boundaryWalks_outerBoundaries` |
 | 5. Markov sentence of Theorem 2.2 (3) | **Resolved**: new anchor (strong Markov); supplementary simple and increment forms | `exists_strongMarkovKernel_isIntegratedSLEEvolution` |
-| 6. Verification evidence (3) | **Resolved**; the public workflow run is pending | [Specification](specification/), [Correspondence](CORRESPONDENCE.md), the guide's "How it was checked" |
+| 6. Verification evidence (3) | **Resolved**; the full public workflow passed for the first publication | [Specification](specification/), [Correspondence](CORRESPONDENCE.md), the guide's "How it was checked" |
 
 The audit also judged the Theorem 2.4 horizon correction justified, already disclosed, and not a hidden gap. Nothing
 was changed there.
@@ -215,4 +218,67 @@ was changed there.
   - on 16 November 2026, for the two critical-angle anchors: the 59 new files (55 proof modules, two anchors, two
     providers) were compiled afresh from the exported files and replayed exactly. The seal-closure check passes with 76
     roots, and the focused certificate covers the two anchors and six supplementary theorems.
-- **Pending.** The public workflow runs for this release.
+- **Public workflow.** The full run for the first publication passed: `bcee07e`, run 43738522513, five build parts
+  and the verification job. The runs for the later commits were in progress when this was written.
+
+## Second assessment (16 November 2026)
+
+The same reviewer assessed commit `b8741ef`, which includes the critical-angle anchors.
+- **Verdict:** "a substantial formalization with close correspondence to the intended main theorems". It is not a
+  complete, literal formalization of the whole paper.
+- **Checked:**
+  - that the field, SLE, coupling and trace definitions encode the actual objects;
+  - that the existence companions keep the hypotheses from being vacuous.
+- **Not found,** in the statements and proof chains it examined: any headline conclusion concealed in an extra
+  hypothesis.
+- **Independently confirmed:** the corrections of Theorems 2.4 and 2.6, the counterflow normalization, and the
+  common-terminal-point exception of the critical-angle anchors, with its own example.
+
+Its remaining points, and the answers:
+
+| Point (section of the assessment) | Status | Where |
+| --- | --- | --- |
+| The light cone's switching-time set is existential (§3) | **Resolved**: new anchor for every prescribed countable dense set | `IsCenteredCounterflowDriver.completedRange_eq_closure_lightCone_of_schedule` |
+| One concise corrected target (§11, item 2) | **Done** | [The formal target in one page](STATEMENTS.md) |
+| "False as stated" for Theorem 2.4 (§9) | **Qualified**: false as literally stated; the correction makes a stopping convention explicit | [Errata A1](ERRATA.md) |
+| Proposition 3.3's closure (§9) | **Qualified**: it depends on the closure convention | [Errata A8](ERRATA.md) |
+| Older docstrings say the critical real-point clause is unproved (§10) | **Noted**: frozen files are never edited after sealing | the guide, "Comments in the source files" |
+| Exact-commit verification record (§10; §11, item 5) | The full public workflow passed for `bcee07e`; later runs in progress | [VERIFICATION.md](../../VERIFICATION.md), §6 above |
+| Counterflow normalization (§4) | Already disclosed; the assessment confirms the correction with its own example | [Errata A2](ERRATA.md), `AuditFix.literalCounterflowBridge_holds` |
+| Definition 2.1 in integrated form, with no equivalence theorem (§7) | Disclosed, unchanged | [Correspondence §3.3](CORRESPONDENCE.md) |
+| The Markov property is not a Mathlib `Kernel` or semigroup (§7) | Disclosed, unchanged | §5 above |
+| The fan statements (§8) | Outside the scope, unchanged | [Correspondence §3.1](CORRESPONDENCE.md) |
+| General-domain declarations; one declaration for Proposition 5.9 (§8; §11, item 4) | Outside the scope, unchanged | [The formal target](STATEMENTS.md), "Outside the scope" |
+
+### The light cone for prescribed switching times
+
+- **Finding: confirmed.** `completedRange_eq_closure_lightCone` asserts the range identity for *some* deterministic
+  countable dense set Q of switching times, chosen after the law (∃ Q). The paper's light cone uses the positive
+  rational times (p. 100), and its Proposition 5.9 lets the times range over any dense set (p. 104).
+- **Change.** New anchor `InteractingSLE.IsCenteredCounterflowDriver.completedRange_eq_closure_lightCone_of_schedule`.
+  It asserts both identities of the original for every deterministic countable dense Q ⊂ (0, ∞) fixed in advance, for
+  instance the positive rationals. It implies the original theorem.
+- **Mathematical argument.** The identity has two inclusions.
+  - That the range lies in the closure of the light cone already held for every Q.
+  - The other inclusion, that each angle-varying path lies in the range, needs every switching tip to be an interior
+    point of the domain left by the earlier pieces. The original proof had this only for almost every vector of
+    switching times: along each sample path the bad times form a Lebesgue-null set, and Fubini then gives a suitable
+    Q.
+  - The new proof shows it at every fixed switching time. For a single flow line, the tip at a fixed time is almost
+    surely interior; that was already proved, from the fixed-time non-collision of the SLE driver with its force
+    points.
+  - That lemma is applied piece by piece, under the conditional law of each piece given its past. It passes through a
+    measurable event that, on regular samples, holds exactly when the tip is interior.
+  - The proof is in `InteractingSLE/Spec/LightConeAllQ/` (four modules). It uses the closed Theorem 1.3, and none of
+    it is an input of Theorems 1.2–1.3.
+- **Verification.**
+  - the independent statement audit AUD-LC-STMT, which proves that the new statement implies the original one and
+    looks for counterexamples to the fixed-time step;
+  - both seal keys (second key AUD-SEAL-LC);
+  - only the three standard axioms;
+  - the seal-closure check with 80 roots;
+  - an exact kernel replay of the six new modules;
+  - a fresh compile from the exported files;
+  - the focused certificate on the fresh build.
+- **Not a correction of the paper.** The specification's GB9a explicitly does not claim the result for every
+  prescribed set (spec p. 527). The paper's reading is the one now proved.

@@ -52,7 +52,7 @@ swallowed, and C(z; D) the conformal radius of D seen from z.
 
 | Item | Location (arXiv v2) | Problem | Kind |
 |---|---|---|---|
-| A1 | Theorem 2.4, p. 43 | the martingale side must stop at T∗ | false as stated |
+| A1 | Theorem 2.4, p. 43 | the martingale side must stop at T∗ | false as literally stated (a stopping convention made explicit) |
 | A2 | Definition of counterflow lines, pp. 19–20; Theorem 1.4, p. 22 | the conformal definition is off by πχ from the normalization of the paper's figures and of Theorem 1.4 | imprecise statement (normalization) |
 | A3 | Theorem 2.6, pp. 52–53 | the factor √κ belongs to the rescaled function (2.12), not to h_t | inconsistent normalization |
 | A4 | Definition 2.1, p. 35; Theorem 2.2, p. 40 | circular threshold; unspecified Markov property | imprecise statement |
@@ -92,7 +92,10 @@ swallowed, and C(z; D) the conformal radius of D seen from z.
   uses (1.10), which holds only below T∗ ("We will only construct SLE_κ(ρ) for t below the continuation threshold",
   p. 35). The remark on p. 17 that all results hold "up until (and including) the continuation threshold" concerns
   SLE_κ(ρ) processes and does not override the explicit horizon of the theorem.
-- **Kind.** False as stated (the "only if" direction).
+- **Kind.** False as literally stated (the "only if" direction). Read with a standing convention that everything is
+  stopped at the continuation threshold, the printed theorem is the corrected one. An independent assessment of the
+  release (16 November 2026) regards the correction as making that stopping convention explicit, not as a failure of
+  the intended characterization.
 - **Correction and formal treatment.** Require the martingale property before min(τ_z, T∗); both directions then hold.
   The frozen Theorem 2.4 has this horizon and is proved. The specification prints the paper's wording (spec
   pp. 34–35), but its proof says "All statements below are stopped strictly before the continuation threshold" (spec
@@ -269,7 +272,9 @@ swallowed, and C(z; D) the conformal radius of D seen from z.
   variable h1(x + iy) has variance
   log(C(x + iy; H)/C(x + iy; H ∖ K)), which tends to ∞ as x + iy → 0 with x/y → 0. The statement should exclude the
   closure of K. The paper's own use (proof of Proposition 3.8, p. 70) concerns only points at positive distance from
-  the set.
+  the set. Whether the printed statement is wrong depends on the closure convention. If K is closed in ℂ, every
+  z0 ∈ ∂D ∖ K is at positive distance from K, and the statement holds as printed. The issue arises only when K is
+  closed relative to D.
 - **Kind.** Imprecise statement.
 - **Correction and formal treatment.** The specification states the limit for z0 ∈ ∂D outside the closure of K (spec
   p. 44), and the formalization uses this form.

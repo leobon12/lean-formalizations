@@ -240,7 +240,15 @@ of the staged histories (items 4–6). Theorem 1.4 counts as proved only with al
     probability space and the field. The paper's light cone (p. 100) uses positive rational switch times, and its
     Proposition 5.9 (p. 104) lets the times range over any dense set; the Lean identity is asserted for one Q, while
     containment (item 9) holds for every countable family of histories. (spec GW2: "There is a deterministic countable
-    dense schedule set Q"; AUD-4 note N3)
+    dense schedule set Q"; AUD-4 note N3) *Added on 16 November 2026:*
+    `IsCenteredCounterflowDriver.completedRange_eq_closure_lightCone_of_schedule` asserts both identities for every
+    deterministic countable dense Q ⊂ (0, ∞) fixed in advance, the positive rationals included. With it, the light cone
+    of Lean is no longer weaker than the paper's in its switching times.
+    - The ingredient added to the proof: at every fixed switching time, the tip of each piece of a staged history is
+      almost surely interior, under the conditional law of the piece given its past. The original proof had this only
+      for almost every time.
+    - The specification's GB9a explicitly does not claim this (spec p. 527).
+    (R126, R127; AUD-LC-STMT, including its note N2)
 11. **stronger in Lean.** The frontier statement (b) holds on every event, not only when η′ is nowhere boundary
     filling: almost surely the right walk R lies in the completed range and no point of the range lies strictly to
     its right, and the left walk L lies in it with no point of the range strictly to its left. R starts at 0 at angle

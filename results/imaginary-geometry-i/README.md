@@ -1,6 +1,6 @@
 # Imaginary geometry I: interacting SLEs
 
-**Status.** Theorems 1.1–1.5, 2.2, 2.4 and 2.6 are `PROVED` in Lean with no assumptions. So are four companion statements, four statements added after an [external audit](AUDIT-RESPONSE.md) of the first publication, and two statements that resolve that audit's one open item: Theorem 1.5's critical-angle clauses at every contact, real points included. Each of these 23 frozen theorems is sealed. It depends only on Lean's standard axioms `propext`, `Classical.choice` and `Quot.sound`, as does every declaration of the released library.
+**Status.** Theorems 1.1–1.5, 2.2, 2.4 and 2.6 are `PROVED` in Lean with no assumptions. So are four companion statements, four statements added after an [external audit](AUDIT-RESPONSE.md) of the first publication, and three statements added on 16 November 2026: Theorem 1.5's critical-angle clauses at every contact, real points included, and Theorem 1.4's light cone for every prescribed set of switching times. Each of these 24 frozen theorems is sealed. It depends only on Lean's standard axioms `propext`, `Classical.choice` and `Quot.sound`, as does every declaration of the released library.
 
 This Lean 4 project formalizes the main theorems of Jason Miller and Scott Sheffield, *Imaginary geometry I: interacting SLEs*, Probability Theory and Related Fields 164 (2016), 553–705, [arXiv:1201.1496](https://arxiv.org/abs/1201.1496).
 
@@ -13,6 +13,7 @@ The edition is included in this release, in [`specification/`](specification/), 
 
 **Companion documents.**
 - [Errata](ERRATA.md): the errors in Miller and Sheffield's paper that the formalization uncovered, each checked against arXiv v2. It also covers errors of the specification and gaps in cited works.
+- [The formal target in one page](STATEMENTS.md): the eight theorems as formalized, in the paper's notation, with every convention and correction in one place.
 - [Correspondence](CORRESPONDENCE.md): every difference between the Lean statements and the paper, theorem by theorem and definition by definition.
 - [The specification](specification/): the 671-page edition the statements were frozen from, as a PDF with its transcription.
 - [Response to the external audit](AUDIT-RESPONSE.md): an independent audit of the first publication and, item by item, how it was answered: four new frozen theorems and supplementary bridge theorems. Its one disclosed restriction, the critical-angle clauses at real points, was resolved on 2026-11-16 by two further frozen theorems.
@@ -50,24 +51,27 @@ The edition is included in this release, in [`specification/`](specification/), 
 | *Added:* Theorem 1.4, the walks are the left and right boundaries when η′ is nowhere boundary filling (paper p. 22) | `IsCenteredCounterflowDriver.boundaryWalks_outerBoundaries` | **PROVED**, two keys (`AUD-SEAL-AF`); `AUD-AF-T14` |
 | *Added 2026-11-16:* Theorem 1.5 (i), critical angles: no contact except the common starting point or a point terminal for both paths, at every contact, real points and terminal values included (paper p. 30) | `IsFlowLine.start_or_terminal_of_contact_of_critical` | **PROVED**, two keys (`AUD-SEAL-RC`); statement audited (`AUD-RC-STMT`) |
 | *Added 2026-11-16:* Theorem 1.5 (iii), critical angles: every contact is the first contact or terminal for both paths, real points and terminal values included (paper p. 30) | `IsFlowLine.first_or_terminal_of_contact_of_critical` | **PROVED**, two keys (`AUD-SEAL-RC`); `AUD-RC-STMT` |
+| *Added 2026-11-16:* Theorem 1.4, the light cone for every prescribed countable dense set of switching times, the paper's positive rationals included (paper pp. 22, 100, 104) | `IsCenteredCounterflowDriver.completedRange_eq_closure_lightCone_of_schedule` | **PROVED**, two keys (`AUD-SEAL-LC`); statement audited (`AUD-LC-STMT`) |
 
 **The two keys.**
 - *First key:* only the frozen proof body changes, from `by sorry` to `by exact InteractingSLE.Spec.Provider.<name>`. Here `<name>` is a provider theorem with exactly the frozen statement. The frozen-anchor checker, the build, an unchanged statement hash and `#print axioms` must pass. The seals of Theorems 1.4, 2.4 and 2.6 also replayed the anchor modules in the kernel and checked the constant closure of the proof.
 - *Second key:* an independent seal audit repeats these checks. It also reads the provider chain for hypotheses that encode proof steps.
 
-All 23 theorems have both keys.
+All 24 theorems have both keys.
 - The last five of the original 17, Theorems 1.4 (three statements), 2.4 and 2.6, received their second keys after the first publication of this release, from the seal audits `AUD-SEAL-T14` and `AUD-SEAL-T2426`. No proof or statement changed.
 - The four statements added after the external audit were frozen and sealed in one commit, so there is no `by sorry` stage to compare. Their second key, `AUD-SEAL-AF`, compared the frozen statements with the texts approved by their statement audits instead, and replayed their modules in the kernel.
 - The two critical-angle statements added on 2026-11-16 were frozen with `by sorry` after their statement audit `AUD-RC-STMT`, then sealed once proved. Their second key is `AUD-SEAL-RC`.
+- The light-cone statement for prescribed switching times, added the same day, was frozen after its statement audit `AUD-LC-STMT` and sealed once proved. Its second key is `AUD-SEAL-LC`.
 
 The [focused certificate](Check.lean) and the public workflow check every theorem's axioms again.
 
-The 96 frozen definitions that these statements use are part of the release, in the same folder [`InteractingSLE/Frozen/Spec/`](../../InteractingSLE/Frozen/Spec/). This folder also holds the 23 frozen theorem files. The released SLE₈ theorem of the same development is described in [its own guide](../elementary-sle8-continuity/).
+The 96 frozen definitions that these statements use are part of the release, in the same folder [`InteractingSLE/Frozen/Spec/`](../../InteractingSLE/Frozen/Spec/). This folder also holds the 24 frozen theorem files. The released SLE₈ theorem of the same development is described in [its own guide](../elementary-sle8-continuity/).
 
 **Scope.** The formal statements cover Theorems 1.1–1.5, 2.2, 2.4 and 2.6.
 - **Left out:** the "fan statements" after Theorem 1.5, that is, the specification's Proposition 7.33 and Theorem OT1 (rulings R16 and R17).
 - **Added after the external audit:** Theorem 2.2's last sentence (the joint process is Markov), as a strong Markov property; Theorem 1.5 (ii) and (iii) for contacts on the real line; and the exclusion of a common outgoing arc in the crossing. See the [audit response](AUDIT-RESPONSE.md).
 - **Added on 2026-11-16, resolving the one disclosed restriction:** the critical-angle clauses of Theorem 1.5 (i) and (iii) ("the paths almost surely do not intersect, except possibly at their starting point"; "do not subsequently intersect") at every contact of the closed paths, real points and terminal values included. The specification states them for contacts in the open half-plane only (pp. 5, 543–544). One exception is forced: two critical flow lines can end at the same real point almost surely, so a point terminal for both paths is allowed ([errata A9](ERRATA.md)). See the [audit response](AUDIT-RESPONSE.md), item 2.
+- **Added on 2026-11-16, after a second independent assessment:** Theorem 1.4's light cone for every prescribed countable dense set of switching times, for instance the paper's positive rationals. The original light-cone theorem asserts it only for some set chosen after the law. See the [audit response](AUDIT-RESPONSE.md), second assessment.
 
 **One correction to a main theorem.** Theorem 2.4 is formalized in a corrected form. As printed in the specification, it asks for the martingale property only until z is absorbed. Read that way, its forward direction is false, by an explicit counterexample with an inadmissible seed. The formal statement stops the martingale condition at min(τ_z, T_*), which is the horizon of the specification's own proof and of Theorem 2.6 (item 33 below). The paper prints the same horizon (its p. 43). This and the other errors the project found in the paper are listed in the [errata](ERRATA.md).
 
@@ -186,7 +190,10 @@ positive times such that, for every such E, almost surely the completed range of
 terminal times in Q, each kept only through its first threshold; and, if the angle −π/2 seed at 0 is inadmissible on
 the right (b(0⁺) − πχ/2 ≤ −λ), for every rational v in the first low right boundary arc, the segment [0, v] and the
 physical sets of all such schedules from v. Adding the physical sets of any fixed countable collection of histories
-from 0 with angles in [−π/2, π/2] gives, almost surely, the same closed set.
+from 0 with angles in [−π/2, π/2] gives, almost surely, the same closed set. *Added on 16 November 2026:* both
+identities hold for every deterministic countable dense set Q of positive times fixed in advance, for instance the
+positive rationals, as in the paper's light cone (p. 100) and Proposition 5.9 (p. 104)
+(`IsCenteredCounterflowDriver.completedRange_eq_closure_lightCone_of_schedule`).
 
 **Frontiers.** For every such E, almost surely: R lies in the completed range of η′ and no point of the range lies
 strictly to the right of R; L lies in the range and no point of the range lies strictly to the left of L; and if the
@@ -963,11 +970,95 @@ theorem IsCenteredCounterflowDriver.boundaryWalks_outerBoundaries :
 
 </details>
 
+<details><summary>Added 2026-11-16: Theorem 1.5 (i), critical angles, at every contact: <code>IsFlowLine_start_or_terminal_of_contact_of_critical.lean</code></summary>
+
+File: [`InteractingSLE/Frozen/Spec/IsFlowLine_start_or_terminal_of_contact_of_critical.lean`](../../InteractingSLE/Frozen/Spec/IsFlowLine_start_or_terminal_of_contact_of_critical.lean). It opens:
+
+```lean
+open MeasureTheory ProbabilityTheory Filter Set Topology TopologicalSpace
+open scoped NNReal ENNReal
+```
+
+```lean
+theorem IsFlowLine.start_or_terminal_of_contact_of_critical {κ : ℝ} (hκ : 0 < κ) (hκ4 : κ < 4)
+    (b : ℝ → ℝ) (jumps : Finset ℝ) (hb : IsPiecewiseConstantBoundaryData b jumps)
+    {x₁ x₂ θ₁ θ₂ : ℝ} (hx : x₂ ≤ x₁) (hθ : θ₁ < θ₂)
+    {Ω : Type u} [MeasurableSpace Ω] {P : Measure Ω} [IsProbabilityMeasure P]
+    {h : Ω → LQGMetric.DistOn upperHalfPlaneOpens} (hh : IsGFFWithBoundaryData P h b jumps)
+    {η₁ η₂ : Ω → ℝ≥0 → ℂ} {ζ₁ ζ₂ : Ω → ℝ≥0∞}
+    (hη₁ : IsFlowLine κ b jumps x₁ θ₁ P h η₁ ζ₁) (hη₂ : IsFlowLine κ b jumps x₂ θ₂ P h η₂ ζ₂)
+    (hcrit : Real.pi * κ / (4 - κ) ≤ θ₂ - θ₁) :
+    ∀ᵐ ω ∂P, ∀ s t : ℝ≥0, (s : ℝ≥0∞) ≤ ζ₁ ω → (t : ℝ≥0∞) ≤ ζ₂ ω → η₁ ω s = η₂ ω t →
+      (x₁ = x₂ ∧ s = 0 ∧ t = 0) ∨ ((s : ℝ≥0∞) = ζ₁ ω ∧ (t : ℝ≥0∞) = ζ₂ ω) :=
+```
+
+</details>
+
+<details><summary>Added 2026-11-16: Theorem 1.5 (iii), critical angles, at every contact: <code>IsFlowLine_first_or_terminal_of_contact_of_critical.lean</code></summary>
+
+File: [`InteractingSLE/Frozen/Spec/IsFlowLine_first_or_terminal_of_contact_of_critical.lean`](../../InteractingSLE/Frozen/Spec/IsFlowLine_first_or_terminal_of_contact_of_critical.lean). It opens:
+
+```lean
+open MeasureTheory ProbabilityTheory Filter Set Topology TopologicalSpace
+open scoped NNReal ENNReal
+```
+
+```lean
+theorem IsFlowLine.first_or_terminal_of_contact_of_critical {κ : ℝ} (hκ : 0 < κ) (hκ4 : κ < 4)
+    (b : ℝ → ℝ) (jumps : Finset ℝ) (hb : IsPiecewiseConstantBoundaryData b jumps)
+    {x₁ x₂ θ₁ θ₂ : ℝ} (hx : x₂ < x₁) (hθ : θ₂ < θ₁) (hθπ : θ₁ < θ₂ + Real.pi)
+    {Ω : Type u} [MeasurableSpace Ω] {P : Measure Ω} [IsProbabilityMeasure P]
+    {h : Ω → LQGMetric.DistOn upperHalfPlaneOpens} (hh : IsGFFWithBoundaryData P h b jumps)
+    {η₁ η₂ : Ω → ℝ≥0 → ℂ} {ζ₁ ζ₂ : Ω → ℝ≥0∞}
+    (hη₁ : IsFlowLine κ b jumps x₁ θ₁ P h η₁ ζ₁) (hη₂ : IsFlowLine κ b jumps x₂ θ₂ P h η₂ ζ₂)
+    (hcrit : Real.pi * κ / (4 - κ) ≤ θ₁ - θ₂) :
+    ∀ᵐ ω ∂P, ∀ s t : ℝ≥0, (s : ℝ≥0∞) ≤ ζ₁ ω → (t : ℝ≥0∞) ≤ ζ₂ ω → η₁ ω s = η₂ ω t →
+      IsFirstContact (η₁ ω) (ζ₁ ω) (η₂ ω) (ζ₂ ω) s t ∨ ((s : ℝ≥0∞) = ζ₁ ω ∧ (t : ℝ≥0∞) = ζ₂ ω) :=
+```
+
+</details>
+
+<details><summary>Added 2026-11-16: Theorem 1.4, light cone, for every prescribed schedule set: <code>IsCenteredCounterflowDriver_completedRange_eq_closure_lightCone_of_schedule.lean</code></summary>
+
+File: [`InteractingSLE/Frozen/Spec/IsCenteredCounterflowDriver_completedRange_eq_closure_lightCone_of_schedule.lean`](../../InteractingSLE/Frozen/Spec/IsCenteredCounterflowDriver_completedRange_eq_closure_lightCone_of_schedule.lean). It opens:
+
+```lean
+open MeasureTheory ProbabilityTheory Filter Set Topology TopologicalSpace
+open scoped NNReal ENNReal
+```
+
+```lean
+theorem IsCenteredCounterflowDriver.completedRange_eq_closure_lightCone_of_schedule {κ : ℝ} (hκ : 0 < κ)
+    (hκ4 : κ < 4) (b : ℝ → ℝ) (jumps : Finset ℝ) (hb : IsPiecewiseConstantBoundaryData b jumps)
+    {Ω : Type u} [MeasurableSpace Ω] [StandardBorelSpace Ω] {P : Measure Ω} [IsProbabilityMeasure P]
+    {h : Ω → LQGMetric.DistOn upperHalfPlaneOpens} (hh : IsGFFWithBoundaryData P h b jumps)
+    {W' : ℝ≥0 → Ω → ℝ} {ζ' : Ω → ℝ≥0∞}
+    (hcf : IsCenteredCounterflowDriver κ P h W' ζ') (hζ' : ∀ᵐ ω ∂P, ζ' ω = ⊤)
+    (Θ : Set ℝ) (hΘ : Θ ⊆ Ioo (-(Real.pi / 2)) (Real.pi / 2)) (hΘc : Θ.Countable)
+    (hΘd : Ioo (-(Real.pi / 2)) (Real.pi / 2) ⊆ closure Θ)
+    (Q : Set ℝ≥0) (hQc : Q.Countable) (hQd : Dense Q) (hQpos : ∀ q ∈ Q, 0 < q) :
+    ∀ E : ExplSpec → ℕ → Ω → (ℝ≥0 → ℝ) × ℝ≥0∞,
+      (∀ spec : ExplSpec, IsBoundaryContinuedProgram spec.2.2 →
+        IsStagedHistory κ b jumps P h spec (E spec)) →
+      (∀ spec : ExplSpec, IsBoundaryContinuedProgram spec.2.2 →
+        StagedPiecesRegular κ b jumps P spec (E spec)) →
+      (∀ᵐ ω ∂P, closure (boundaryLightConeFamily κ b jumps Θ Q (fun spec k => E spec k ω) ∪ {0}) =
+          counterflowCompletedRange (fun t => W' t ω)) ∧
+      ∀ 𝒞 : Set (List Instr), 𝒞.Countable → (∀ p ∈ 𝒞, IsBoundaryContinuedProgram p) →
+        ∀ᵐ ω ∂P, closure (boundaryLightConeFamily κ b jumps Θ Q (fun spec k => E spec k ω) ∪
+            (⋃ p ∈ 𝒞, ExplState.physSet κ b jumps ⟨0, false, p⟩ (fun k => E ⟨0, false, p⟩ k ω)) ∪
+            {0}) =
+          counterflowCompletedRange (fun t => W' t ω) :=
+```
+
+</details>
+
 ## How the formal statements read the paper
 
 Every frozen statement went through an independent statement audit that sorts each hypothesis as a source premise, a
 standing convention, typing data, a ruled reading, or an excess hypothesis. No frozen statement has an excess
-hypothesis (AUD-1a, AUD-1b, AUD-2, AUD-3 §8, AUD-3c, AUD-4, AUD-4b, AUD-T14-R51, AUD-T2426A-v2, AUD-T2426C). The
+hypothesis (AUD-1a, AUD-1b, AUD-2, AUD-3 §8, AUD-3c, AUD-4, AUD-4b, AUD-T14-R51, AUD-T2426A-v2, AUD-T2426C; for the
+statements added on 16 November 2026, AUD-RC-STMT and AUD-LC-STMT). The
 readings, conventions and changes are these. Ruling (R…), audit (AUD-…) and errata (E…) labels refer to development
 records that are not part of this release; they are given so that each reading can be traced.
 
@@ -1041,8 +1132,11 @@ records that are not part of this release; they are given so that each reading c
 20. η′ = CF_d(h) is encoded in the chart R(z) = −1/z with lift −2 Log z, as the angle-0 flow line at κ′ of the field
     −h∘R + πχ − 2χ arg w (FD12.5), whose boundary data are existential, being fixed by its law (AUD-4 §4.1). The
     initial point ∞ of η′ is left out of both sides of each set equality, which are equalities in ℂ (AUD-4 N4).
-21. The schedule set Q is chosen after Θ and before E, and it is positive; it may depend on the probability space and
-    the field, not only on κ, b and Θ, which is equivalent in substance (AUD-4 N3, §8).
+21. In `completedRange_eq_closure_lightCone` the schedule set Q is existential: it is chosen after Θ and before E, it
+    is positive, and it may depend on the probability space and the field, not only on κ, b and Θ (AUD-4 N3, §8). That
+    is weaker than the paper, whose light cone uses the positive rational times (p. 100). The anchor added on
+    16 November 2026, `completedRange_eq_closure_lightCone_of_schedule`, removes the difference: it asserts both
+    identities for every deterministic countable dense Q ⊂ (0, ∞) (R126, R127; AUD-LC-STMT).
 22. "The actual frontiers are the walks" is read in GW4's side-boundary sense: each walk lies in the completed range
     and the range has no point strictly on its exterior side (AUD-4 §1, §4.4).
 23. "Both walks are complete ordinary extreme flow lines" is read as: the first piece of each walk has infinite
@@ -1212,10 +1306,23 @@ The project follows Scott Armstrong's [LeanAutoformalizationSkills](https://gith
      replayed exactly.
    - The focused certificate on the fresh build reports only the three standard axioms for all 50 theorems it lists:
      the 23 frozen theorems and 27 supplementary ones.
+8. **The light cone for prescribed switching times (2026-11-16).**
+   - The statement passed its statement audit (`AUD-LC-STMT`) and was sealed with both keys (`AUD-SEAL-LC`).
+   - The seal-closure check covers 80 roots, with no violation.
+   - The six new modules (four proof modules, the anchor and its provider) were compiled afresh from the exported files
+     and replayed exactly.
+   - The focused certificate on the fresh build reports only the three standard axioms for all 53 theorems it lists:
+     the 24 frozen theorems and 29 supplementary ones.
 
 ## Comments in the source files
 
 The files ship byte for byte as in the development repository, with one exception. Before export, the provenance comments of the Jordan and Schoenflies ports and of three nearby files were reworded so that they no longer give private repository paths; their code is unchanged.
+
+Docstrings written before 16 November 2026 say that the critical-angle exclusion at real points is not proved. They
+are the frozen `IsFlowLine.crosses_of_lt_of_contact`, which is never edited after sealing, and the supplementary
+`AuditFix.BoundaryContact`, which says "not proved here". Both were accurate when written. The anchors of 16 November,
+`IsFlowLine.start_or_terminal_of_contact_of_critical` and `IsFlowLine.first_or_terminal_of_contact_of_critical`, prove
+the exclusion.
 
 The comments cite development records that are not part of this release:
 - the specification and its transcription (`source/ig1-specification.pdf`, `source/spec/…` with page and line anchors);
@@ -1240,10 +1347,10 @@ python3 -I scripts/verify.py --scan-only
 lake env leanchecker --fresh InteractingSLE.Frozen.Spec.IsCenteredCounterflowDriver_componentKernels
 ```
 
-The `lake build` line builds every module that `Check.lean` imports: all 23 frozen theorems, the supplementary theorems, and their import closure. `python3 scripts/verify.py` instead rebuilds the whole release from source.
+The `lake build` line builds every module that `Check.lean` imports: all 24 frozen theorems, the supplementary theorems, and their import closure. `python3 scripts/verify.py` instead rebuilds the whole release from source.
 
 `Check.lean` does two things:
-- it runs `assert_no_sorry` and `#print axioms` on each of the 23 frozen theorems and 27 supplementary theorems; every reported axiom must be one of `propext`, `Classical.choice` and `Quot.sound`;
+- it runs `assert_no_sorry` and `#print axioms` on each of the 24 frozen theorems and 29 supplementary theorems; every reported axiom must be one of `propext`, `Classical.choice` and `Quot.sound`;
 - it audits every declaration of the included `InteractingSLE`, `MathFin`, `BrownianMotion`, `QuantumZipper`, `LQGMetric`, `LQGDimension`, `SupercriticalConformalCovariance`, `SmallGammaGeodesics` and `GaussianLQG` modules (`IMAGINARY_GEOMETRY_I_AUDIT`).
 
 It needs about 9 GB of memory. `leanchecker --fresh` replays the named module, with its whole import closure, in an independent kernel; it needs about 9 GB and, for the module above, roughly 20 minutes.

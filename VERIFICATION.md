@@ -557,3 +557,40 @@ gains three roots. No previously released file changed.
 - **Focused certificate:** compiled against the fresh build and passed. All 50 axiom reports (the 23 frozen theorems
   and 27 supplementary theorems) list only `propext`, `Classical.choice` and `Quot.sound`. Its audit covered 149,983
   project declarations, with 245,979 reachable.
+
+## Imaginary geometry I: the light cone for prescribed switching times (2026-11-16)
+
+**What prompted it.** A second independent assessment (see the
+[audit response](results/imaginary-geometry-i/AUDIT-RESPONSE.md#second-assessment-16-november-2026)) named one
+remaining weakening of an advertised main statement. The light-cone theorem asserted its identity only for some
+deterministic countable dense set of switching times, chosen after the law, where the paper uses the positive
+rationals.
+
+**What was added.** Six new files, copied byte-for-byte from source commit `179cf9717daebf61fe002af037fa1ab0cbec2fbe`:
+- one new frozen theorem anchor, sealed with two keys:
+  `IsCenteredCounterflowDriver.completedRange_eq_closure_lightCone_of_schedule` (the identity for every prescribed
+  countable dense set of switching times);
+- its provider;
+- four proof modules under `InteractingSLE/Spec/LightConeAllQ/`.
+
+The new files import only released modules, all byte-identical to the released copies. The manifest gains two roots.
+No previously released Lean file changed.
+
+**Documentation changes in the same commit.**
+- [The formal target in one page](results/imaginary-geometry-i/STATEMENTS.md), which is new.
+- Errata A1 and A8 qualified.
+- The guide's note 21 corrected, and the frozen statements of the anchors added on 16 November.
+
+**Checks.**
+- **Statement audit:** AUD-LC-STMT, PASS-WITH-NOTES. It includes a Lean proof that the new statement implies the
+  original one.
+- **Seals:** the frozen-anchor checker passed; the second-key seal audit AUD-SEAL-LC passed.
+- **Seal-closure check:** `SEAL_CLOSURE_OK roots=80`; the four new roots show no R48, R77 or R105 violation.
+- **Source scan:** passed for all 21,289 files.
+- **Fresh compile and replay:** the six new modules compiled afresh from the exported files with `lean -j1 -M8192`
+  (no errors, no `sorry`, at most 7.3 GB) and were replayed exactly in the kernel (6 of 6).
+- **Focused certificate:** compiled against the fresh build and passed. All 53 axiom reports (the 24 frozen theorems
+  and 29 supplementary theorems) list only `propext`, `Classical.choice` and `Quot.sound`. Its audit covered 150,022
+  project declarations, with 246,018 reachable.
+- **Public workflow:** the full run for the first publication of this release passed (`bcee07e`, run 43738522513: five
+  build parts and the verification job).
